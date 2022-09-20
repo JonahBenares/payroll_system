@@ -1,4 +1,5 @@
 
+<main class="bg-gray-100 white:bg-gray-800 rounded-2xl h-screen overflow-hidden relative">
     <div class="flex items-start justify-between">
         <div class="h-screen hidden lg:block my-4 ml-4 shadow-lg relative w-80">
             <div class="bg-white h-full rounded-2xl white:bg-gray-700">
@@ -866,3 +867,4 @@
                 </div>
             </div>
         </div>
+    </main>

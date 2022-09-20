@@ -25,7 +25,7 @@
             </header> --}}
 
             <!-- Page Content -->
-            <main class="bg-gray-100 white:bg-gray-800 rounded-2xl h-screen overflow-hidden relative">
+            <main>
                 {{ $slot }}
             </main>
         </div>
