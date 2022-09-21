@@ -23,7 +23,7 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::resource('masterfile', MasterfileController::class);
-Route::get('/employee_list', [MasterfileController::class, 'index'])->middleware(['auth'])->name("employee_list");
+//Route::get('/employee_list', [MasterfileController::class, 'index'])->middleware(['auth'])->name("employee_list");
 
 // Route::get('/masterfile', 'App\Http\Controllers\MasterfileController@index');
 
