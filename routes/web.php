@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use app\Http\Controllers\MasterfileController;
+use App\Http\Controllers\MasterfileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,10 +20,10 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+require __DIR__.'/auth.php';
 
-
-Route::get('/', [MasterfileController::class, 'index'])->middleware(['auth']);
+Route::resource('masterfile', MasterfileController::class);
+Route::get('/employee_list', [MasterfileController::class, 'index'])->middleware(['auth'])->name("employee_list");
 
 // Route::get('/masterfile', 'App\Http\Controllers\MasterfileController@index');
 
-require __DIR__.'/auth.php';

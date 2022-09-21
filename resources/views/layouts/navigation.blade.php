@@ -65,7 +65,7 @@
                             <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container1" x-bind:style="selected == 1 ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
                                 <ul>
                                     <li class="px-14 py-2 my-1">
-                                        <a href="{{route('masterfile/employee_list')}}"  >Employee List</a>
+                                        <a href="{{route('masterfile.index')}}"  >Employee List</a>
                                     </li>
                                     <li class="px-14 py-2 my-1">Report 2</li>
                                     <li class="px-14 py-2 my-1">Report 3</li>
