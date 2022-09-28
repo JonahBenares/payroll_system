@@ -1,4 +1,4 @@
-<div class="h-screen hidden lg:block my-4 ml-4 shadow-lg relative w-80">
+<div class="h-screen hidden lg:block my-4 ml-4 shadow-lg relative w-72">
     <div class="bg-white h-full rounded-2xl white:bg-gray-700">
         <div class="flex items-center justify-center pt-6">
             <svg width="35" height="30" viewBox="0 0 256 366" version="1.1" preserveAspectRatio="xMidYMid">
@@ -26,7 +26,7 @@
                 <div class="bg-white" x-data="{selected:0}">
                     <ul >  
                         <li class="relative ">
-                            <a class="w-full font-thin uppercase text-blue-500 text-gray-500 white:text-gray-200 flex items-center px-4 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500 bg-gradient-to-r from-white to-blue-100 white:from-gray-700 white:to-gray-800" href="#">
+                            <a class="w-full font-thin uppercase text-blue-500 text-gray-500 white:text-gray-200 flex items-center px-4 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500 bg-gradient-to-r from-white to-blue-100 white:from-gray-700 white:to-gray-800" href="<?php echo e(route("dashboard")); ?>">
                                 <span class="text-left">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                                         <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
@@ -34,7 +34,7 @@
                                     </svg>
                                       
                                 </span>
-                                <span class="mx-4 text-sm font-medium">
+                                <span class="mx-4 text-xs font-bold">
                                     Dashboard
                                 </span>
                             </a>
@@ -48,19 +48,36 @@
                                       
                                       
                                 </span>
-                                <span class="mx-4 text-sm font-medium">
+                                <span class="mx-4 text-xs font-bold">
                                     Masterfile
                                 </span>
                             </a>
-                            <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container1" x-bind:style="selected == 1 ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
+                            <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container" x-bind:style="selected == 1 ? 'max-height: ' + $refs.container.scrollHeight + 'px' : ''">
                                 <ul>
-                                    <li class="px-14 py-2 my-1">
-                                        <a href="<?php echo e(route('masterfile.index')); ?>"  >Employee List</a>
+                                    <li class="relative">
+                                        <a href="<?php echo e(route('calendar_list')); ?>" class="w-full font-thin text-gray-500 text-sm white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Calendar</a>
                                     </li>
-                                    <li class="px-14 py-2 my-1">Report 2</li>
-                                    <li class="px-14 py-2 my-1">Report 3</li>
-                                    <li class="px-14 py-2 my-1">Report 4</li>
-                                    <li class="px-14 py-2 my-1">Report 5</li>
+                                    <li class="relative">
+                                        <a href="<?php echo e(route('cut_off_list')); ?>" class="w-full font-thin text-gray-500 text-sm white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Cut Off</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a href="<?php echo e(route('deduction_list')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Deductions</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a href="<?php echo e(route('employee_list')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Employee List</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a href="<?php echo e(route('rates_list')); ?>" class="w-full font-thin text-sm text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Rates</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a href="<?php echo e(route('schedule_list')); ?>" class="w-full font-thin text-sm text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Schedules</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a href="<?php echo e(route('statutory_bracket')); ?>" class="w-full font-thin text-sm text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Statutory Bracket</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a href="<?php echo e(route('tardiness_rate_list')); ?>" class="w-full font-thin text-sm text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Tardiness Rates</a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>       
@@ -73,7 +90,7 @@
                                       
                                       
                                 </span>
-                                <span class="mx-4 text-sm font-medium">
+                                <span class="mx-4 text-xs font-bold">
                                     Payroll
                                 </span>
                             </a>
@@ -94,7 +111,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
                                       </svg>
                                 </span>
-                                <span class="mx-4 text-sm font-medium">
+                                <span class="mx-4 text-xs font-bold">
                                     Reports
                                 </span>
                             </a>

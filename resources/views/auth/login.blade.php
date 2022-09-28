@@ -32,6 +32,14 @@
                                 required autocomplete="current-password" />
             </div>
 
+            <div class="mt-4">
+                <x-input-label for="company" :value="__('Company')" />
+
+                <x-text-input id="" class="block mt-1 w-full"
+                                type="text"
+                                name="company"/>
+            </div>
+
             <!-- Remember Me -->
             <div class="block mt-4">
                 <label for="remember_me" class="inline-flex items-center">
