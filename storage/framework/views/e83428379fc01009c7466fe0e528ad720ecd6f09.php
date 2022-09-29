@@ -22,10 +22,10 @@
                 <?php echo $__env->make('layouts.navigation', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
                 <div class="flex flex-col w-full pl-0 md:p-4 md:space-y-4">
-                    <header class="w-full shadow-lg bg-white white:bg-gray-700 items-center h-16 rounded-2xl z-40">
-                        <div class="relative z-20 flex flex-col justify-center h-full px-3 mx-auto flex-center">
+                    <header class="w-full shadow-lg bg-white white:bg-gray-700 items-center h-16 rounded-2xl ">
+                        <div class="relative  flex flex-col justify-center h-full px-3 mx-auto flex-center">
                             <div class="relative items-center pl-1 flex w-full lg:max-w-68 sm:pr-2 sm:ml-0">
-                                <div class="container relative left-0 z-50 flex w-3/4 h-auto h-full">
+                                <div class="container relative left-0  flex w-3/4 h-auto h-full">
                                     <div class="relative">
                                         <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                                             <svg class="w-5 h-5 text-gray-500 white:text-gray-400" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
