@@ -12,16 +12,23 @@
 
         <!-- Scripts -->
         <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
+         <!-- Styles -->
+        <?php echo \Livewire\Livewire::styles(); ?>
+
+        <?php echo view('livewire-powergrid::assets.styles')->render(); ?>
     </head>
     <body class="font-sans antialiased">
+        <div class="p-20s"></div>
         <div class="min-h-screen bg-gray-100">
             <main class="bg-gray-100 white:bg-gray-800 rounded-2xl h-screen overflow-hidden relative">
+                
                 <div class="flex items-start justify-between">
-
+                    
                 
                 <?php echo $__env->make('layouts.navigation', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-
+                
                 <div class="flex flex-col w-full pl-0 md:p-4 md:space-y-4">
+                    
                     <header class="w-full shadow-lg bg-white white:bg-gray-700 items-center h-16 rounded-2xl ">
                         <div class="relative  flex flex-col justify-center h-full px-3 mx-auto flex-center">
                             <div class="relative items-center pl-1 flex w-full lg:max-w-68 sm:pr-2 sm:ml-0">
@@ -104,6 +111,10 @@
                 </div>
             </main>
         </div>
+        <!-- Scripts -->
+        <?php echo \Livewire\Livewire::scripts(); ?>
+
+        <?php echo view('livewire-powergrid::assets.scripts')->render(); ?>
     </body>
 </html>
 <?php /**PATH C:\xampp\htdocs\payroll_system\resources\views/layouts/app.blade.php ENDPATH**/ ?>
