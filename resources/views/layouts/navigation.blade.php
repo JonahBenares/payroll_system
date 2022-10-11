@@ -22,17 +22,6 @@
         </div>
         <nav class="mt-6 ">
             <div class="overflow-auto h-screen pb-24 pt-2 pr-2 pl-2 md:pt-0 md:pr-0 md:pl-0">
-                {{-- <a class="w-full font-thin uppercase text-blue-500 flex items-center p-4 py-3 my-2 transition-colors duration-200 justify-start bg-gradient-to-r from-white to-blue-100 white:from-gray-700 white:to-gray-800" href="#">
-                    <span class="text-left">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1070 1178l306-564h-654l-306 564h654zm722-282q0 182-71 348t-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z">
-                            </path>
-                        </svg>
-                    </span>
-                    <span class="mx-4 text-xs font-bold">
-                        Dashboard
-                    </span>
-                </a> --}}
                 <div class="bg-white" x-data="{selected:0}">
                     <ul >  
                         <li class="relative ">
@@ -55,8 +44,6 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M7.875 14.25l1.214 1.942a2.25 2.25 0 001.908 1.058h2.006c.776 0 1.497-.4 1.908-1.058l1.214-1.942M2.41 9h4.636a2.25 2.25 0 011.872 1.002l.164.246a2.25 2.25 0 001.872 1.002h2.092a2.25 2.25 0 001.872-1.002l.164-.246A2.25 2.25 0 0116.954 9h4.636M2.41 9a2.25 2.25 0 00-.16.832V12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 12V9.832c0-.287-.055-.57-.16-.832M2.41 9a2.25 2.25 0 01.382-.632l3.285-3.832a2.25 2.25 0 011.708-.786h8.43c.657 0 1.281.287 1.709.786l3.284 3.832c.163.19.291.404.382.632M4.5 20.25h15A2.25 2.25 0 0021.75 18v-2.625c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125V18a2.25 2.25 0 002.25 2.25z" />
                                     </svg>
-                                      
-                                      
                                 </span>
                                 <span class="mx-4 text-xs font-bold">
                                     Masterfile
@@ -65,22 +52,25 @@
                             <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container" x-bind:style="selected == 1 ? 'max-height: ' + $refs.container.scrollHeight + 'px' : ''">
                                 <ul>
                                     <li class="relative">
+                                        <a href="{{ route('employee_list') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Employee List</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a href="{{ route('schedule_list') }}" class="w-full font-thin text-sm text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Schedule</a>
+                                    </li>
+                                    <li class="relative">
                                         <a href="{{ route('calendar_list') }}" class="w-full font-thin text-gray-500 text-sm white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Calendar</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="{{ route('cut_off_list') }}" class="w-full font-thin text-gray-500 text-sm white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Cut Off</a>
+                                        <a href="{{ route('allowance_list') }}" class="w-full font-thin text-gray-500 text-sm white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowances</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a href="{{ route('allowance_rate_list') }}" class="w-full font-thin text-gray-500 text-sm white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowance Rates</a>
                                     </li>
                                     <li class="relative">
                                         <a href="{{ route('deduction_list') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Deductions</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="{{ route('employee_list') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Employee List</a>
-                                    </li>
-                                    <li class="relative">
                                         <a href="{{ route('rates_list') }}" class="w-full font-thin text-sm text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Rates</a>
-                                    </li>
-                                    <li class="relative">
-                                        <a href="{{ route('schedule_list') }}" class="w-full font-thin text-sm text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Schedules</a>
                                     </li>
                                     <li class="relative">
                                         <a href="{{ route('statutory_bracket') }}" class="w-full font-thin text-sm text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Statutory Bracket</a>
@@ -88,9 +78,48 @@
                                     <li class="relative">
                                         <a href="{{ route('tardiness_rate_list') }}" class="w-full font-thin text-sm text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Tardiness Rates</a>
                                     </li>
+                                    <li class="relative mb-10">
+                                        <a href="{{ route('cut_off_list') }}" class="w-full font-thin text-gray-500 text-sm white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Cut Off</a>
+                                    </li>
+                                    
                                 </ul>
                             </div>
-                        </li>       
+                        </li> 
+                        <li class="relative ">
+                            <a class="w-full font-thin uppercase text-gray-500 white:text-gray-200 flex items-center px-4 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500 bg-gradient-to-r white:from-gray-700 white:to-gray-800" href="{{  route("dashboard") }}">
+                                <span class="text-left">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+                                    </svg>                                         
+                                      
+                                </span>
+                                <span class="mx-4 text-xs font-bold">
+                                    Shift Schedule
+                                </span>
+                            </a>
+                        </li>    
+                        <li class="relative ">
+                            <a class="w-full font-thin uppercase text-gray-500 white:text-gray-200 flex items-center px-4 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" href="#" @click="selected !== 5 ? selected = 5 : selected = null">
+                                <span class="text-left">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                                    </svg>
+                                </span>
+                                <span class="mx-4 text-xs font-bold">
+                                    Filing
+                                </span>
+                            </a>
+                            <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container1" x-bind:style="selected == 5 ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
+                                <ul>
+                                    <li class="relative">
+                                        <a href="{{ route('employee_list') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Leave/Failure to Log In/Out</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a href="{{ route('schedule_list') }}" class="w-full font-thin text-sm text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Overtime</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>    
                         <li class="relative ">
                             <a class="w-full font-thin uppercase text-gray-500 white:text-gray-200 flex items-center px-4 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" href="#" @click="selected !== 2 ? selected = 2 : selected = null">
                                 <span class="text-left">
@@ -106,11 +135,18 @@
                             </a>
                             <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container1" x-bind:style="selected == 2 ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
                                 <ul>
-                                    <li class="px-14 py-2 my-1">Report 1</li>
-                                    <li class="px-14 py-2 my-1">Report 2</li>
-                                    <li class="px-14 py-2 my-1">Report 3</li>
-                                    <li class="px-14 py-2 my-1">Report 4</li>
-                                    <li class="px-14 py-2 my-1">Report 5</li>
+                                    <li class="relative">
+                                        <a href="{{ route('employee_list') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Salary</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a href="{{ route('schedule_list') }}" class="w-full font-thin text-sm text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowance</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a href="{{ route('calendar_list') }}" class="w-full font-thin text-gray-500 text-sm white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Overtime</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a href="{{ route('calendar_list') }}" class="w-full font-thin text-gray-500 text-sm white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Bonus</a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>
@@ -127,11 +163,15 @@
                             </a>
                             <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container1" x-bind:style="selected == 3 ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
                                 <ul>
-                                    <li class="px-14 py-2 my-1">Report 1</li>
-                                    <li class="px-14 py-2 my-1">Report 2</li>
-                                    <li class="px-14 py-2 my-1">Report 3</li>
-                                    <li class="px-14 py-2 my-1">Report 4</li>
-                                    <li class="px-14 py-2 my-1">Report 5</li>
+                                    <li class="relative">
+                                        <a href="{{ route('employee_list') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Sample 1</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a href="{{ route('schedule_list') }}" class="w-full font-thin text-sm text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Sample 2</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a href="{{ route('calendar_list') }}" class="w-full font-thin text-gray-500 text-sm white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Sample 3</a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>
