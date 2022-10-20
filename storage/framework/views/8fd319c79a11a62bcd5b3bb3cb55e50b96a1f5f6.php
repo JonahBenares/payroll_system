@@ -136,27 +136,15 @@
                 <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('employee-table', [])->html();
-<<<<<<< HEAD
-} elseif ($_instance->childHasBeenRendered('Hijae0n')) {
-    $componentId = $_instance->getRenderedChildComponentId('Hijae0n');
-    $componentTag = $_instance->getRenderedChildComponentTagName('Hijae0n');
+} elseif ($_instance->childHasBeenRendered('nkD7LFs')) {
+    $componentId = $_instance->getRenderedChildComponentId('nkD7LFs');
+    $componentTag = $_instance->getRenderedChildComponentTagName('nkD7LFs');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('Hijae0n');
+    $_instance->preserveRenderedChild('nkD7LFs');
 } else {
     $response = \Livewire\Livewire::mount('employee-table', []);
     $html = $response->html();
-    $_instance->logRenderedChild('Hijae0n', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
-=======
-} elseif ($_instance->childHasBeenRendered('5bLLFBi')) {
-    $componentId = $_instance->getRenderedChildComponentId('5bLLFBi');
-    $componentTag = $_instance->getRenderedChildComponentTagName('5bLLFBi');
-    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('5bLLFBi');
-} else {
-    $response = \Livewire\Livewire::mount('employee-table', []);
-    $html = $response->html();
-    $_instance->logRenderedChild('5bLLFBi', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
->>>>>>> c270d29172ef8ec66a9ea9c294f6e7c999536dc7
+    $_instance->logRenderedChild('nkD7LFs', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
