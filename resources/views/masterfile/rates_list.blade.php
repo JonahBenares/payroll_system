@@ -54,17 +54,12 @@
                     
                                         <form class="mt-5">
                                             <div>
-                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Period Name</label>
-                                                <input placeholder="Cut-off 25-05 2022" type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Rate Name</label>
+                                                <input placeholder="" type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                             </div>
                     
                                             <div class="mt-4">
-                                                <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">Period From</label>
-                                                <input placeholder="25" type="email" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                                            </div>
-
-                                            <div class="mt-4">
-                                                <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">Period To</label>
+                                                <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">Rate</label>
                                                 <input placeholder="25" type="email" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                             </div>
                                             

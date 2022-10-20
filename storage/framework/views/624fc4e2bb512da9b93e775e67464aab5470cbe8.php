@@ -63,18 +63,18 @@
             
                                 <form class="mt-5">
                                     <div>
-                                        <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Period Name</label>
-                                        <input placeholder="Cut-off 25-05 2022" type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                        <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Cut Off Type</label>
+                                        <input placeholder="" type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                     </div>
             
                                     <div class="mt-4">
-                                        <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">Period From</label>
-                                        <input placeholder="25" type="email" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                        <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">Cut Off Start</label>
+                                        <input placeholder="" type="email" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                     </div>
 
                                     <div class="mt-4">
-                                        <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">Period To</label>
-                                        <input placeholder="25" type="email" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                        <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">Cut Off End</label>
+                                        <input placeholder="" type="email" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                     </div>
                                     
                                     <div class="flex justify-end mt-6">
@@ -104,13 +104,13 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0">
                     <tr class="">
                         <th scope="col" class="py-3 px-6" width="%">
-                            Period Name
+                            Cut Off Type
                         </th>
                         <th scope="col" class="py-3 px-6" width="%">
-                            Period From
+                            Cut Off Start
                         </th>
                         <th scope="col" class="py-3 px-6" width="%">
-                            Period To
+                            Cut Off End
                         </th>
                         <th scope="col" class="py-3 px-6" width="13%" align="center">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
