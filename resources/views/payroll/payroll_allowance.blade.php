@@ -80,9 +80,6 @@
                                 <th scope="col" class="py-3 px-6" width="15%">
                                     Allowance 
                                 </th>
-                                <th scope="col" class="py-3 px-6" width="20%">
-                                    Overtime
-                                </th>
                                 <th scope="col" class="py-3 px-6" width="15%">
                                     Total Amount
                                 </th>
@@ -97,9 +94,6 @@
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     Jonah May Benares
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    2
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     2
@@ -155,11 +149,8 @@
                                     <button class="my-1 mx-1 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-emerald-500 rounded-2xl white:bg-emerald-600 white:hover:bg-emerald-700 white:focus:bg-emerald-700 hover:bg-emerald-600 focus:outline-none focus:bg-emerald-500 focus:ring focus:ring-emerald-300 focus:ring-opacity-50" title="Update"> 
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-                                          </svg>
-                                          
+                                        </svg>
                                     </button>
-                                    
-                                      
                                 </td>
                             </tr>
                         </tbody>
