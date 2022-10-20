@@ -131,11 +131,11 @@
                                     Payroll
                                 </span>
                             </a>
-                            <div class="relative overflow-hidden transition-all max-h-0 duration-700" x-ref="container1" x-bind:style="selected == 2 ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
+                            <div class="relative overflow-hidden transition-all max-h-0 duration-700" x-ref="container2" x-bind:style="selected == 2 ? 'max-height: ' + $refs.container2.scrollHeight + 'px' : ''">
                                 <ul>
-                                    {{-- <li class="relative">
+                                    <li class="relative">
                                         <a href="{{ route('payroll_salary') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Salary</a>
-                                    </li> --}}
+                                    </li>
                                     <li class="relative">
                                         <a href="{{ route('payroll_allowance') }}" class="w-full font-thin text-sm text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowance</a>
                                     </li>
