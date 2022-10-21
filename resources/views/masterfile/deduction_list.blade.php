@@ -63,11 +63,21 @@
                                             <div class="flex ">
                                                 <div class="mt-4 w-full px-2">
                                                     <label class="block text-sm text-gray-700 capitalize white:text-gray-200">Frequency</label>
-                                                    <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                    <!-- <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40"> -->
+                                                    <select name="" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                        <option value="">--Select Frequency--</option>
+                                                        <option value="">Once a month</option>
+                                                        <option value="">Twice a month</option>
+                                                    </select>
                                                 </div>
                                                 <div class="mt-4 w-full px-2">
                                                     <label class="block text-sm text-gray-700 capitalize white:text-gray-200">Deduction Period</label>
-                                                    <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                    <!-- <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40"> -->
+                                                    <select name="" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                        <option value="">--Select Deduction Period--</option>
+                                                        <option value="">MID</option>
+                                                        <option value="">EOM</option>
+                                                    </select>
                                                 </div>
                                             </div> 
                                             <div class="flex justify-end mt-6 px-2">
@@ -352,12 +362,12 @@
                             </tr>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    Apple Watch
+                                    SSS Loan
                                 </th>
                                 <td class="py-3 px-6">
-                                    June 05, 2022
+                                    Once a month
                                 </td>
-                                <td class="py-3 px-6">June 29, 2002</td>
+                                <td class="py-3 px-6">MID</td>
                                 <td class="py-3 px-6 flex justify-between" align="center">
                                     <div x-data="{ updateModal: false }">
                                         <button @click="updateModal =!updateModal" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
@@ -432,12 +442,12 @@
                             </tr>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    iPad
+                                    COOP Loan
                                 </th>
                                 <td class="py-3 px-6">
-                                    June 05, 2022
+                                    Twice a month
                                 </td>
-                                <td class="py-3 px-6">June 29, 2002</td>
+                                <td class="py-3 px-6"></td>
                                 <td class="py-3 px-6 flex justify-between" align="center">
                                     <div x-data="{ updateModal: false }">
                                         <button @click="updateModal =!updateModal" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
@@ -512,10 +522,10 @@
                             </tr>
                             <tr class="bg-white border-b white:bg-gray-800 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    Apple iMac 27"
+                                    COOP Investment
                                 </th>
                                 <td class="py-3 px-6">
-                                    June 05, 2022
+                                    Twice a month
                                 </td>
                                 <td class="py-3 px-6">June 29, 2002</td>
                                 <td class="py-3 px-6 flex justify-between" align="center">
