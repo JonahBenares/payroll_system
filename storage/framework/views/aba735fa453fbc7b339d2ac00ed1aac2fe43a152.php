@@ -120,12 +120,12 @@
                         <tbody>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    Apple MacBook Pro 17"
+                                    SSS Contribution
                                 </th>
                                 <td class="py-3 px-6">
-                                    June 05, 2022
+                                    Once a month
                                 </td>
-                                <td class="py-3 px-6">June 29, 2002</td>
+                                <td class="py-3 px-6">EOM</td>
                                 <td class="py-3 px-6 flex justify-between" align="center">
                                     <div x-data="{ updateModal: false }">
                                         <button @click="updateModal =!updateModal" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
@@ -200,12 +200,12 @@
                             </tr>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    Microsoft Surface Pro
+                                    Philhealth Contribution
                                 </th>
                                 <td class="py-3 px-6">
-                                    June 05, 2022
+                                    Once a month
                                 </td>
-                                <td class="py-3 px-6">June 29, 2002</td>
+                                <td class="py-3 px-6">MID</td>
                                 <td class="py-3 px-6 flex justify-between" align="center">
                                     <div x-data="{ updateModal: false }">
                                         <button @click="updateModal =!updateModal" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
@@ -280,12 +280,12 @@
                             </tr>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    Magic Mouse 2
+                                    Pag-ibig
                                 </th>
                                 <td class="py-3 px-6">
-                                    June 05, 2022
+                                    Once a month
                                 </td>
-                                <td class="py-3 px-6">June 29, 2002</td>
+                                <td class="py-3 px-6">MID</td>
                                 <td class="py-3 px-6 flex justify-between" align="center">
                                     <div x-data="{ updateModal: false }">
                                         <button @click="updateModal =!updateModal" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
