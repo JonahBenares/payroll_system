@@ -37,7 +37,7 @@
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-10">
                             <tr class="">
                                 <th scope="col" class="py-3 px-3 border border-gray-200" width="35%">
-                                    Employee Name Name
+                                    Employee Name
                                 </th>
                                 <th scope="col" class="py-3 px-3 border border-gray-200" width="30%">
                                     <div class="justify-between flex">
@@ -55,7 +55,7 @@
                         <tbody>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <th scope="row" class="py-3 px-3 font-medium text-gray-900 whitespace-nowrap white:text-white border border-gray-200 align-top">
-                                    Jushkyle Jambongana
+                                    Jusheen Dimapaso
                                 </th>
                                 <td class="border border-gray-200 py-3 px-3 align-top">
                                     <div class="justify-between flex">
@@ -228,7 +228,7 @@
                             </tr>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <th scope="row" class="py-3 px-3 font-medium text-gray-900 whitespace-nowrap white:text-white border border-gray-200 align-top">
-                                    Mary Grace Bugna
+                                    Mary Jane Damaso
                                 </th>
                                 <td class="border border-gray-200 py-3 px-3 align-top">
                                     <div class="justify-between flex">
@@ -396,7 +396,7 @@
                             </tr>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <th scope="row" class="py-3 px-3 font-medium text-gray-900 whitespace-nowrap white:text-white border border-gray-200 align-top">
-                                    Stephen Jardinico
+                                    Steven James Flores
                                 </th>
                                 <td class="border border-gray-200 py-3 px-3 align-top">
                                     <div class="justify-between flex">
@@ -568,7 +568,7 @@
                             </tr>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <th scope="row" class="py-3 px-3 font-medium text-gray-900 whitespace-nowrap white:text-white border border-gray-200 align-top">
-                                    Julyn Divinagracia
+                                    James Ganid
                                 </th>
                                 <td class="border border-gray-200 py-3 px-3 align-top">
                                     <div class="justify-between flex">
@@ -740,7 +740,7 @@
                             </tr>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <th scope="row" class="py-3 px-3 font-medium text-gray-900 whitespace-nowrap white:text-white border border-gray-200 align-top">
-                                    Mark De Los Santos
+                                    Marcial Hipoclito
                                 </th>
                                 <td class="border border-gray-200 py-3 px-3 align-top">
                                     <div class="justify-between flex">
