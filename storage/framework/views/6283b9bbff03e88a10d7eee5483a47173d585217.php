@@ -54,15 +54,10 @@
                     <div class="mx-2 text-left">
                         <select class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
                             <option value="" selected>Select Year</option>
-                            <option value="">2022</option>
-                            <option value="">2022</option>
-                            <option value="">2022</option>
-                            <option value="">2022</option>
-                            <option value="">2022</option>
-                            <option value="">2022</option>
-                            <option value="">2022</option>
-                            <option value="">2022</option>
-                            <option value="">2022</option>
+                            <option value="">2018</option>
+                            <option value="">2019</option>
+                            <option value="">2020</option>
+                            <option value="">2021</option>
                             <option value="">2022</option>
                         </select>
                     </div>
@@ -105,7 +100,7 @@
                         <tbody>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    Glenn Paul Toledo
+                                    Glenda Paternal
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     2
@@ -148,7 +143,7 @@
                                                     class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
                                                 >
                                                     <div class="flex items-center justify-between space-x-4 px-2">
-                                                        <h1 class="text-xl font-medium text-gray-800 ">Glenn Paul Toledo</h1>
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Glenda Paternal</h1>
                                 
                                                         <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
                                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -178,7 +173,7 @@
                                                                             <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            June 12, 2022
+                                                                            September 23, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             Absent
@@ -189,7 +184,7 @@
                                                                             <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            June 12, 2022
+                                                                            September 26, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             Absent
@@ -200,10 +195,10 @@
                                                                             <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            June 12, 2022
+                                                                            October 13, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            Absent
+                                                                            Failure To Log In/Out
                                                                         </td>
                                                                     </tr>
                                                                     <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
@@ -211,10 +206,10 @@
                                                                             <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            June 12, 2022
+                                                                            October 17, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            Absent
+                                                                            Undertime/Tardiness
                                                                         </td>
                                                                     </tr>
                                                                     <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
@@ -222,10 +217,10 @@
                                                                             <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            June 12, 2022
+                                                                            October 19, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            Absent
+                                                                            Undertime/Tardiness
                                                                         </td>
                                                                     </tr>
                                                                     <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
@@ -233,112 +228,12 @@
                                                                             <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            June 12, 2022
+                                                                            October 24, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            Absent
+                                                                            Undertime/Tardiness
                                                                         </td>
                                                                     </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -356,16 +251,16 @@
                             </tr>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    Jonah May Benares
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    2
+                                    Stephanie Rose Dumagoso
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     3
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    4
+                                    1
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    5
                                 </td>
                                 <td class="py-3 px-6 justify-between flex" align="center">
                                     <div x-data="{ modelOpen: false }">
@@ -399,7 +294,7 @@
                                                     class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
                                                 >
                                                     <div class="flex items-center justify-between space-x-4 px-2">
-                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Stephanie Rose Dumagoso </h1>
                                 
                                                         <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
                                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -429,7 +324,7 @@
                                                                             <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            June 12, 2022
+                                                                            September 12, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             Absent
@@ -440,7 +335,7 @@
                                                                             <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            June 12, 2022
+                                                                            September 13, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             Absent
@@ -451,7 +346,7 @@
                                                                             <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            June 12, 2022
+                                                                            September 14, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             Absent
@@ -462,10 +357,10 @@
                                                                             <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            June 12, 2022
+                                                                            September 21, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            Absent
+                                                                            Failure To Login/Logout
                                                                         </td>
                                                                     </tr>
                                                                     <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
@@ -473,10 +368,10 @@
                                                                             <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            June 12, 2022
+                                                                            September 23, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            Absent
+                                                                            Undertime/Tardiness
                                                                         </td>
                                                                     </tr>
                                                                     <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
@@ -484,10 +379,10 @@
                                                                             <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            June 12, 2022
+                                                                            September 27, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            Absent
+                                                                            Undertime/Tardiness
                                                                         </td>
                                                                     </tr>
                                                                     <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
@@ -495,10 +390,10 @@
                                                                             <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            June 12, 2022
+                                                                            September 29, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            Absent
+                                                                            Undertime/Tardiness
                                                                         </td>
                                                                     </tr>
                                                                     <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
@@ -506,10 +401,10 @@
                                                                             <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            June 12, 2022
+                                                                            October 5, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            Absent
+                                                                            Undertime/Tardiness
                                                                         </td>
                                                                     </tr>
                                                                     <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
@@ -517,79 +412,12 @@
                                                                             <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            June 12, 2022
+                                                                            October 11, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            Absent
+                                                                            Undertime/Tardiness
                                                                         </td>
                                                                     </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -607,16 +435,16 @@
                             </tr>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    Jonah May Benares
+                                    Janssen Gardose
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    0
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     2
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    3
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    4
+                                    0
                                 </td>
                                 <td class="py-3 px-6 justify-between flex" align="center">
                                     <div x-data="{ modelOpen: false }">
@@ -650,7 +478,7 @@
                                                     class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
                                                 >
                                                     <div class="flex items-center justify-between space-x-4 px-2">
-                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Janssen Gardose </h1>
                                 
                                                         <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
                                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -680,10 +508,10 @@
                                                                             <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            June 12, 2022
+                                                                            September 10, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            Absent
+                                                                            Failure To Login/Logout
                                                                         </td>
                                                                     </tr>
                                                                     <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
@@ -691,156 +519,12 @@
                                                                             <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            June 12, 2022
+                                                                            September 22, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            Absent
+                                                                            Failure To Login/Logout
                                                                         </td>
                                                                     </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -858,16 +542,16 @@
                             </tr>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    Jonah May Benares
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    2
+                                    Jamila Pascual
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     3
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    4
+                                    0
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    1
                                 </td>
                                 <td class="py-3 px-6 justify-between flex" align="center">
                                     <div x-data="{ modelOpen: false }">
@@ -901,7 +585,7 @@
                                                     class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
                                                 >
                                                     <div class="flex items-center justify-between space-x-4 px-2">
-                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Jamila Pascual </h1>
                                 
                                                         <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
                                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -931,7 +615,7 @@
                                                                             <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            June 12, 2022
+                                                                            October 12, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             Absent
@@ -942,7 +626,7 @@
                                                                             <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            June 12, 2022
+                                                                            October 13, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             Absent
@@ -953,7 +637,7 @@
                                                                             <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            June 12, 2022
+                                                                            October 14, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             Absent
@@ -964,134 +648,12 @@
                                                                             <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            June 12, 2022
+                                                                            Ocotber 18, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            Absent
+                                                                            Undertime/Tardiness
                                                                         </td>
                                                                     </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -1109,16 +671,16 @@
                             </tr>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    Jonah May Benares
+                                    Johnson Sapol
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    2
+                                    1
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    3
+                                    0
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    4
+                                    0
                                 </td>
                                 <td class="py-3 px-6 justify-between flex" align="center">
                                     <div x-data="{ modelOpen: false }">
@@ -1152,7 +714,7 @@
                                                     class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
                                                 >
                                                     <div class="flex items-center justify-between space-x-4 px-2">
-                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Johnson Sapol </h1>
                                 
                                                         <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
                                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1182,2175 +744,12 @@
                                                                             <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                                                                         </td>
                                                                         <td class="py-3 px-3">
-                                                                            June 12, 2022
+                                                                            October 19, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             Absent
                                                                         </td>
                                                                     </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                        <div class="flex justify-end mt-6 px-2">
-                                                            <button type="button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                                                Filed
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    Jonah May Benares
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    2
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    3
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    4
-                                </td>
-                                <td class="py-3 px-6 justify-between flex" align="center">
-                                    <div x-data="{ modelOpen: false }">
-                                        <button @click="modelOpen =!modelOpen" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                              </svg>
-                                              
-                                        </button>
-                                
-                                        <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                                            <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
-                                                <div x-cloak @click="modelOpen = false"  
-                                                    x-transition:enter="transition ease-out duration-300 transform"
-                                                    x-transition:enter-start="opacity-0" 
-                                                    x-transition:enter-end="opacity-100"
-                                                    x-transition:leave="transition ease-in duration-200 transform"
-                                                    x-transition:leave-start="opacity-100" 
-                                                    x-transition:leave-end="opacity-0"
-                                                    class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40" aria-hidden="true"
-                                                ></div>
-                                
-                                                <div x-cloak
-                                                    x-transition:enter="transition ease-out duration-300 transform"
-                                                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
-                                                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
-                                                    x-transition:leave="transition ease-in duration-200 transform"
-                                                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
-                                                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                                    class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
-                                                >
-                                                    <div class="flex items-center justify-between space-x-4 px-2">
-                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
-                                
-                                                        <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                            </svg>
-                                                        </button>
-                                                    </div>
-                                                    <form class="mt-5">
-                                                        <div class="overflow-x-auto relative">
-                                                            <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
-                                                                <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400">
-                                                                    <tr>
-                                                                        <th scope="col" class="py-3 px-3" width="4%">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </th>
-                                                                        <th scope="col" class="py-3 px-3" width="48%">
-                                                                            Date
-                                                                        </th>
-                                                                        <th scope="col" class="py-3 px-3" width="48%">
-                                                                            Type
-                                                                        </th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                        <div class="flex justify-end mt-6 px-2">
-                                                            <button type="button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                                                Filed
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    Jonah May Benares
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    2
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    3
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    4
-                                </td>
-                                <td class="py-3 px-6 justify-between flex" align="center">
-                                    <div x-data="{ modelOpen: false }">
-                                        <button @click="modelOpen =!modelOpen" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                              </svg>
-                                              
-                                        </button>
-                                
-                                        <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                                            <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
-                                                <div x-cloak @click="modelOpen = false"  
-                                                    x-transition:enter="transition ease-out duration-300 transform"
-                                                    x-transition:enter-start="opacity-0" 
-                                                    x-transition:enter-end="opacity-100"
-                                                    x-transition:leave="transition ease-in duration-200 transform"
-                                                    x-transition:leave-start="opacity-100" 
-                                                    x-transition:leave-end="opacity-0"
-                                                    class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40" aria-hidden="true"
-                                                ></div>
-                                
-                                                <div x-cloak
-                                                    x-transition:enter="transition ease-out duration-300 transform"
-                                                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
-                                                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
-                                                    x-transition:leave="transition ease-in duration-200 transform"
-                                                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
-                                                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                                    class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
-                                                >
-                                                    <div class="flex items-center justify-between space-x-4 px-2">
-                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
-                                
-                                                        <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                            </svg>
-                                                        </button>
-                                                    </div>
-                                                    <form class="mt-5">
-                                                        <div class="overflow-x-auto relative">
-                                                            <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
-                                                                <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400">
-                                                                    <tr>
-                                                                        <th scope="col" class="py-3 px-3" width="4%">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </th>
-                                                                        <th scope="col" class="py-3 px-3" width="48%">
-                                                                            Date
-                                                                        </th>
-                                                                        <th scope="col" class="py-3 px-3" width="48%">
-                                                                            Type
-                                                                        </th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                        <div class="flex justify-end mt-6 px-2">
-                                                            <button type="button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                                                Filed
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    Jonah May Benares
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    2
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    3
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    4
-                                </td>
-                                <td class="py-3 px-6 justify-between flex" align="center">
-                                    <div x-data="{ modelOpen: false }">
-                                        <button @click="modelOpen =!modelOpen" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                              </svg>
-                                              
-                                        </button>
-                                
-                                        <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                                            <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
-                                                <div x-cloak @click="modelOpen = false"  
-                                                    x-transition:enter="transition ease-out duration-300 transform"
-                                                    x-transition:enter-start="opacity-0" 
-                                                    x-transition:enter-end="opacity-100"
-                                                    x-transition:leave="transition ease-in duration-200 transform"
-                                                    x-transition:leave-start="opacity-100" 
-                                                    x-transition:leave-end="opacity-0"
-                                                    class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40" aria-hidden="true"
-                                                ></div>
-                                
-                                                <div x-cloak
-                                                    x-transition:enter="transition ease-out duration-300 transform"
-                                                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
-                                                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
-                                                    x-transition:leave="transition ease-in duration-200 transform"
-                                                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
-                                                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                                    class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
-                                                >
-                                                    <div class="flex items-center justify-between space-x-4 px-2">
-                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
-                                
-                                                        <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                            </svg>
-                                                        </button>
-                                                    </div>
-                                                    <form class="mt-5">
-                                                        <div class="overflow-x-auto relative">
-                                                            <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
-                                                                <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400">
-                                                                    <tr>
-                                                                        <th scope="col" class="py-3 px-3" width="4%">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </th>
-                                                                        <th scope="col" class="py-3 px-3" width="48%">
-                                                                            Date
-                                                                        </th>
-                                                                        <th scope="col" class="py-3 px-3" width="48%">
-                                                                            Type
-                                                                        </th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                        <div class="flex justify-end mt-6 px-2">
-                                                            <button type="button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                                                Filed
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    Jonah May Benares
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    2
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    3
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    4
-                                </td>
-                                <td class="py-3 px-6 justify-between flex" align="center">
-                                    <div x-data="{ modelOpen: false }">
-                                        <button @click="modelOpen =!modelOpen" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                              </svg>
-                                              
-                                        </button>
-                                
-                                        <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                                            <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
-                                                <div x-cloak @click="modelOpen = false"  
-                                                    x-transition:enter="transition ease-out duration-300 transform"
-                                                    x-transition:enter-start="opacity-0" 
-                                                    x-transition:enter-end="opacity-100"
-                                                    x-transition:leave="transition ease-in duration-200 transform"
-                                                    x-transition:leave-start="opacity-100" 
-                                                    x-transition:leave-end="opacity-0"
-                                                    class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40" aria-hidden="true"
-                                                ></div>
-                                
-                                                <div x-cloak
-                                                    x-transition:enter="transition ease-out duration-300 transform"
-                                                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
-                                                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
-                                                    x-transition:leave="transition ease-in duration-200 transform"
-                                                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
-                                                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                                    class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
-                                                >
-                                                    <div class="flex items-center justify-between space-x-4 px-2">
-                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
-                                
-                                                        <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                            </svg>
-                                                        </button>
-                                                    </div>
-                                                    <form class="mt-5">
-                                                        <div class="overflow-x-auto relative">
-                                                            <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
-                                                                <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400">
-                                                                    <tr>
-                                                                        <th scope="col" class="py-3 px-3" width="4%">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </th>
-                                                                        <th scope="col" class="py-3 px-3" width="48%">
-                                                                            Date
-                                                                        </th>
-                                                                        <th scope="col" class="py-3 px-3" width="48%">
-                                                                            Type
-                                                                        </th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                        <div class="flex justify-end mt-6 px-2">
-                                                            <button type="button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                                                Filed
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    Jonah May Benares
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    2
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    3
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    4
-                                </td>
-                                <td class="py-3 px-6 justify-between flex" align="center">
-                                    <div x-data="{ modelOpen: false }">
-                                        <button @click="modelOpen =!modelOpen" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                              </svg>
-                                              
-                                        </button>
-                                
-                                        <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                                            <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
-                                                <div x-cloak @click="modelOpen = false"  
-                                                    x-transition:enter="transition ease-out duration-300 transform"
-                                                    x-transition:enter-start="opacity-0" 
-                                                    x-transition:enter-end="opacity-100"
-                                                    x-transition:leave="transition ease-in duration-200 transform"
-                                                    x-transition:leave-start="opacity-100" 
-                                                    x-transition:leave-end="opacity-0"
-                                                    class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40" aria-hidden="true"
-                                                ></div>
-                                
-                                                <div x-cloak
-                                                    x-transition:enter="transition ease-out duration-300 transform"
-                                                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
-                                                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
-                                                    x-transition:leave="transition ease-in duration-200 transform"
-                                                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
-                                                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                                    class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
-                                                >
-                                                    <div class="flex items-center justify-between space-x-4 px-2">
-                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
-                                
-                                                        <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                            </svg>
-                                                        </button>
-                                                    </div>
-                                                    <form class="mt-5">
-                                                        <div class="overflow-x-auto relative">
-                                                            <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
-                                                                <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400">
-                                                                    <tr>
-                                                                        <th scope="col" class="py-3 px-3" width="4%">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </th>
-                                                                        <th scope="col" class="py-3 px-3" width="48%">
-                                                                            Date
-                                                                        </th>
-                                                                        <th scope="col" class="py-3 px-3" width="48%">
-                                                                            Type
-                                                                        </th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                        <div class="flex justify-end mt-6 px-2">
-                                                            <button type="button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                                                Filed
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    Jonah May Benares
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    2
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    3
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    4
-                                </td>
-                                <td class="py-3 px-6 justify-between flex" align="center">
-                                    <div x-data="{ modelOpen: false }">
-                                        <button @click="modelOpen =!modelOpen" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                              </svg>
-                                              
-                                        </button>
-                                
-                                        <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                                            <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
-                                                <div x-cloak @click="modelOpen = false"  
-                                                    x-transition:enter="transition ease-out duration-300 transform"
-                                                    x-transition:enter-start="opacity-0" 
-                                                    x-transition:enter-end="opacity-100"
-                                                    x-transition:leave="transition ease-in duration-200 transform"
-                                                    x-transition:leave-start="opacity-100" 
-                                                    x-transition:leave-end="opacity-0"
-                                                    class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40" aria-hidden="true"
-                                                ></div>
-                                
-                                                <div x-cloak
-                                                    x-transition:enter="transition ease-out duration-300 transform"
-                                                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
-                                                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
-                                                    x-transition:leave="transition ease-in duration-200 transform"
-                                                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
-                                                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                                    class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
-                                                >
-                                                    <div class="flex items-center justify-between space-x-4 px-2">
-                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
-                                
-                                                        <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                            </svg>
-                                                        </button>
-                                                    </div>
-                                                    <form class="mt-5">
-                                                        <div class="overflow-x-auto relative">
-                                                            <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
-                                                                <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400">
-                                                                    <tr>
-                                                                        <th scope="col" class="py-3 px-3" width="4%">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </th>
-                                                                        <th scope="col" class="py-3 px-3" width="48%">
-                                                                            Date
-                                                                        </th>
-                                                                        <th scope="col" class="py-3 px-3" width="48%">
-                                                                            Type
-                                                                        </th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                        <div class="flex justify-end mt-6 px-2">
-                                                            <button type="button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                                                Filed
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    Jonah May Benares
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    2
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    3
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    4
-                                </td>
-                                <td class="py-3 px-6 justify-between flex" align="center">
-                                    <div x-data="{ modelOpen: false }">
-                                        <button @click="modelOpen =!modelOpen" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                              </svg>
-                                              
-                                        </button>
-                                
-                                        <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                                            <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
-                                                <div x-cloak @click="modelOpen = false"  
-                                                    x-transition:enter="transition ease-out duration-300 transform"
-                                                    x-transition:enter-start="opacity-0" 
-                                                    x-transition:enter-end="opacity-100"
-                                                    x-transition:leave="transition ease-in duration-200 transform"
-                                                    x-transition:leave-start="opacity-100" 
-                                                    x-transition:leave-end="opacity-0"
-                                                    class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40" aria-hidden="true"
-                                                ></div>
-                                
-                                                <div x-cloak
-                                                    x-transition:enter="transition ease-out duration-300 transform"
-                                                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
-                                                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
-                                                    x-transition:leave="transition ease-in duration-200 transform"
-                                                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
-                                                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                                    class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
-                                                >
-                                                    <div class="flex items-center justify-between space-x-4 px-2">
-                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
-                                
-                                                        <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                            </svg>
-                                                        </button>
-                                                    </div>
-                                                    <form class="mt-5">
-                                                        <div class="overflow-x-auto relative">
-                                                            <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
-                                                                <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400">
-                                                                    <tr>
-                                                                        <th scope="col" class="py-3 px-3" width="4%">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </th>
-                                                                        <th scope="col" class="py-3 px-3" width="48%">
-                                                                            Date
-                                                                        </th>
-                                                                        <th scope="col" class="py-3 px-3" width="48%">
-                                                                            Type
-                                                                        </th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                        <div class="flex justify-end mt-6 px-2">
-                                                            <button type="button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                                                Filed
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    Jonah May Benares
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    2
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    3
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    4
-                                </td>
-                                <td class="py-3 px-6 justify-between flex" align="center">
-                                    <div x-data="{ modelOpen: false }">
-                                        <button @click="modelOpen =!modelOpen" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                              </svg>
-                                              
-                                        </button>
-                                
-                                        <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                                            <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
-                                                <div x-cloak @click="modelOpen = false"  
-                                                    x-transition:enter="transition ease-out duration-300 transform"
-                                                    x-transition:enter-start="opacity-0" 
-                                                    x-transition:enter-end="opacity-100"
-                                                    x-transition:leave="transition ease-in duration-200 transform"
-                                                    x-transition:leave-start="opacity-100" 
-                                                    x-transition:leave-end="opacity-0"
-                                                    class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40" aria-hidden="true"
-                                                ></div>
-                                
-                                                <div x-cloak
-                                                    x-transition:enter="transition ease-out duration-300 transform"
-                                                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
-                                                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
-                                                    x-transition:leave="transition ease-in duration-200 transform"
-                                                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
-                                                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                                    class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
-                                                >
-                                                    <div class="flex items-center justify-between space-x-4 px-2">
-                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
-                                
-                                                        <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                            </svg>
-                                                        </button>
-                                                    </div>
-                                                    <form class="mt-5">
-                                                        <div class="overflow-x-auto relative">
-                                                            <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
-                                                                <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400">
-                                                                    <tr>
-                                                                        <th scope="col" class="py-3 px-3" width="4%">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </th>
-                                                                        <th scope="col" class="py-3 px-3" width="48%">
-                                                                            Date
-                                                                        </th>
-                                                                        <th scope="col" class="py-3 px-3" width="48%">
-                                                                            Type
-                                                                        </th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
-                                                                        <td class="py-3 px-3">
-                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            June 12, 2022
-                                                                        </td>
-                                                                        <td class="py-3 px-3">
-                                                                            Absent
-                                                                        </td>
-                                                                    </tr>
-                                                                    
                                                                 </tbody>
                                                             </table>
                                                         </div>
