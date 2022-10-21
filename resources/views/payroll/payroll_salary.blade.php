@@ -107,12 +107,12 @@
                                     Jonah May Benares
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    999,999
+                                    30,000
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     <div x-data="{ modelOpen: false }">
                                         <a href="#" @click="modelOpen =!modelOpen" class="my-1 py-2 " title="Update">
-                                              999,999
+                                              550
                                         </a>
                                 
                                         <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -151,27 +151,27 @@
                                                         </tr>
                                                         <tr class="bg-white border-b">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Rest Day</td>
-                                                            <td align="right">999,999</td>
+                                                            <td align="right">0</td>
                                                         </tr>
                                                         <tr class="bg-white border-b">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Holiday Pay</td>
-                                                            <td align="right">999,999</td>
+                                                            <td align="right">0</td>
                                                         </tr>
                                                         <tr class="bg-white border-b">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Overtime Pay</td>
-                                                            <td align="right">999,999</td>
+                                                            <td align="right">0</td>
                                                         </tr>
                                                         <tr class="bg-white border-b">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Night Premium</td>
-                                                            <td align="right">999,999</td>
+                                                            <td align="right">0</td>
                                                         </tr>
                                                         <tr class="bg-white border-b">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Adjustments</td>
-                                                            <td align="right">999,999</td>
+                                                            <td align="right">550</td>
                                                         </tr>
                                                         <tr class="bg-white border-b text-lg bg-yellow-200">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Total</td>
-                                                            <td align="right"><b>999,999</b></td>
+                                                            <td align="right"><b>550</b></td>
                                                         </tr>
                                                     </table>
                                                 </div>
@@ -182,7 +182,7 @@
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     <div x-data="{ modelOpen: false }">
                                         <a href="#" @click="modelOpen =!modelOpen" class="my-1 py-2 " title="Update">
-                                              999,999
+                                              242
                                         </a>
                                 
                                         <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -221,15 +221,15 @@
                                                         </tr>
                                                         <tr class="bg-white border-b">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Absences/Undertime</td>
-                                                            <td align="right">999,999</td>
+                                                            <td align="right">150</td>
                                                         </tr>
                                                         <tr class="bg-white border-b">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Tardiness</td>
-                                                            <td align="right">999,999</td>
+                                                            <td align="right">92</td>
                                                         </tr>
                                                         <tr class="bg-white border-b text-lg bg-yellow-200">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Total</td>
-                                                            <td align="right"><b>999,999</b></td>
+                                                            <td align="right"><b>242</b></td>
                                                         </tr>
                                                     </table>
                                                 </div>
@@ -238,12 +238,12 @@
                                     </div>
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    999,999
+                                    30,308
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     <div x-data="{ modelOpen: false }">
                                         <a href="#" @click="modelOpen =!modelOpen" class="my-1  py-2" title="Update">
-                                              999,999
+                                              10,400
                                         </a>
                                 
                                         <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -278,51 +278,51 @@
                                                     </div>
                                                     <table class="w-full text-sm text-left">
                                                         <tr class="bg-white border-b">
-                                                            <td colspan="2" class="py-2 px-2 font-medium text-base text-gray-500 whitespace-nowrap ">Less</td>
+                                                            <td colspan="2" class="py-2 px-2 font-medium text-base text-gray-500 whitespace-nowrap ">Deductions</td>
                                                         </tr>
                                                         <tr class="bg-white border-b">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">SSS Premium</td>
-                                                            <td align="right">999,999</td>
+                                                            <td align="right">1,900</td>
                                                         </tr>
                                                         <tr class="bg-white border-b">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">SSS Loan</td>
-                                                            <td align="right">999,999</td>
+                                                            <td align="right">4,000</td>
                                                         </tr>
                                                         <tr class="bg-white border-b">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">SSS With TAX</td>
-                                                            <td align="right">999,999</td>
+                                                            <td align="right">0</td>
                                                         </tr>
                                                         <tr class="bg-white border-b">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">PHILHEALTH</td>
-                                                            <td align="right">999,999</td>
+                                                            <td align="right">500</td>
                                                         </tr>
                                                         <tr class="bg-white border-b">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">PAG-IBIG FUND</td>
-                                                            <td align="right">999,999</td>
+                                                            <td align="right">500</td>
                                                         </tr>
                                                         <tr class="bg-white border-b">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">PAG-IBIG MP2</td>
-                                                            <td align="right">999,999</td>
+                                                            <td align="right">1,500</td>
                                                         </tr>
                                                         <tr class="bg-white border-b">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">COOP INVESTMENT</td>
-                                                            <td align="right">999,999</td>
+                                                            <td align="right">2,000</td>
                                                         </tr>
                                                         <tr class="bg-white border-b">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">COOP LOAN</td>
-                                                            <td align="right">999,999</td>
+                                                            <td align="right">0</td>
                                                         </tr>
                                                         <tr class="bg-white border-b">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">AUB LOAN</td>
-                                                            <td align="right">999,999</td>
+                                                            <td align="right">0</td>
                                                         </tr>
                                                         <tr class="bg-white border-b">
-                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Other</td>
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Others</td>
                                                             <td align="right"><input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="00" required></td>
                                                         </tr>
                                                         <tr class="bg-white border-b text-lg bg-yellow-200">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Total</td>
-                                                            <td align="right"><b>999,999</b></td>
+                                                            <td align="right"><b>10,400</b></td>
                                                         </tr>
                                                     </table>
                                                 </div>
@@ -331,7 +331,7 @@
                                     </div>
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    999,999
+                                    19,908
                                 </td>
                                 <td class="py-3 px-6 justify-center flex" align="center">
                                     <div x-data="{ modelOpen: false }">
