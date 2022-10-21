@@ -53,7 +53,7 @@
                                     Night Premium
                                 </th>
                                 <td class="py-4 px-6">
-                                    90%
+                                    10%
                                 </td>
                                 <td class="py-4 px-6" align="center">
                                     <div x-data="{ updateModal: false }">
@@ -118,7 +118,7 @@
                                     HMO Rate
                                 </th>
                                 <td class="py-4 px-6">
-                                    5000
+                                    996.35
                                 </td>
                                 <td class="py-4 px-6" align="center">
                                     <div x-data="{ updateModal: false }">
@@ -183,7 +183,7 @@
                                     Regular Holiday 
                                 </th>
                                 <td class="py-4 px-6">
-                                    90%
+                                    100%
                                 </td>
                                 <td class="py-4 px-6" align="center">
                                     <div x-data="{ updateModal: false }">
@@ -248,7 +248,7 @@
                                     Special Holiday 
                                 </th>
                                 <td class="py-4 px-6">
-                                    90%
+                                    30%
                                 </td>
                                 <td class="py-4 px-6" align="center">
                                     <div x-data="{ updateModal: false }">
@@ -313,7 +313,7 @@
                                     Rest Day 
                                 </th>
                                 <td class="py-4 px-6">
-                                    90%
+                                    100%
                                 </td>
                                 <td class="py-4 px-6" align="center">
                                     <div x-data="{ updateModal: false }">
