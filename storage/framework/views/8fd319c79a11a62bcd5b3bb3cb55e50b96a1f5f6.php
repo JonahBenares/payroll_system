@@ -133,25 +133,7 @@
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
-                <?php
-if (! isset($_instance)) {
-    $html = \Livewire\Livewire::mount('employee-table', [])->html();
-} elseif ($_instance->childHasBeenRendered('nkD7LFs')) {
-    $componentId = $_instance->getRenderedChildComponentId('nkD7LFs');
-    $componentTag = $_instance->getRenderedChildComponentTagName('nkD7LFs');
-    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('nkD7LFs');
-} else {
-    $response = \Livewire\Livewire::mount('employee-table', []);
-    $html = $response->html();
-    $_instance->logRenderedChild('nkD7LFs', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
-}
-echo $html;
-?>
-=======
                 
->>>>>>> fc0172522387cf1e5055e461f316a8bcb0636b91
                 <!-- component -->
                 <div class=""></div>
                 

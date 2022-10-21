@@ -114,8 +114,8 @@
                     <div class="mx-2 text-left">
                         <select class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
                             <option value="" selected>Period</option>
-                            <option value="">2022</option>
-                            <option value="">2022</option>
+                            <option value="">MID</option>
+                            <option value="">EOM</option>
                         </select>
                     </div>
                     <div class="mx-2 pt-3 text-left">
