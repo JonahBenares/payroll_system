@@ -95,7 +95,7 @@
                         <tbody>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    Sample Allowance
+                                    Meal and Transportation Allowance
                                 </th>
                                 <td class="py-3 px-6 justify-between flex" align="center">
                                     <div x-data="{ modelOpen: false }">
