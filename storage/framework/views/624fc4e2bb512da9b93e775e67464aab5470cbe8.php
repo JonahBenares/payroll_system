@@ -64,17 +64,28 @@
                                 <form class="mt-5">
                                     <div>
                                         <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Cut Off Type</label>
-                                        <input placeholder="" type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                        <select class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                            <option>MID</option>
+                                            <option>EOM</option>
+                                        </select>
                                     </div>
             
                                     <div class="mt-4">
                                         <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">Cut Off Start</label>
-                                        <input placeholder="" type="email" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                        <select class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                            <?php for($x=1;$x<=31;$x++): ?>
+                                            <option><?php echo e($x); ?></option>
+                                            <?php endfor; ?>
+                                        </select>
                                     </div>
 
                                     <div class="mt-4">
                                         <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">Cut Off End</label>
-                                        <input placeholder="" type="email" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                        <select class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                            <?php for($x=1;$x<=31;$x++): ?>
+                                            <option><?php echo e($x); ?></option>
+                                            <?php endfor; ?>
+                                        </select>
                                     </div>
                                     
                                     <div class="flex justify-end mt-6">
@@ -122,12 +133,12 @@
                 <tbody class="sticky top-12">
                     <tr class="bg-green-200 border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                         <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                            Apple MacBook Pro 17"
+                            MID
                         </th>
                         <td class="py-3 px-6">
-                            June 05, 2022
+                            21
                         </td>
-                        <td class="py-3 px-6">June 29, 2002</td>
+                        <td class="py-3 px-6">5</td>
                         <td class="py-3 px-6" align="center">
                             <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-green-500 rounded-2xl hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-green-500 white:focus:ring-green-800" title="Update"> 
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
@@ -145,12 +156,12 @@
                 <tbody>
                     <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                         <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                            Apple MacBook Pro 17"
+                            EOM
                         </th>
                         <td class="py-3 px-6">
-                            June 05, 2022
+                            6
                         </td>
-                        <td class="py-3 px-6">June 29, 2002</td>
+                        <td class="py-3 px-6">20</td>
                         <td class="py-3 px-6" align="center">
                             <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-green-500 rounded-2xl hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-green-500 white:focus:ring-green-800" title="Update"> 
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
@@ -164,363 +175,7 @@
                             </button>
                         </td>
                     </tr>
-                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                        <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                            Microsoft Surface Pro
-                        </th>
-                        <td class="py-3 px-6">
-                            June 05, 2022
-                        </td>
-                        <td class="py-3 px-6">June 29, 2002</td>
-                        <td class="py-3 px-6" align="center">
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-green-500 rounded-2xl hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-green-500 white:focus:ring-green-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                                </svg>                                                
-                            </button>
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>                                                
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                        <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                            Magic Mouse 2
-                        </th>
-                        <td class="py-3 px-6">
-                            June 05, 2022
-                        </td>
-                        <td class="py-3 px-6">June 29, 2002</td>
-                        <td class="py-3 px-6" align="center">
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-green-500 rounded-2xl hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-green-500 white:focus:ring-green-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                                </svg>                                                
-                            </button>
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>                                                
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                        <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                            Apple Watch
-                        </th>
-                        <td class="py-3 px-6">
-                            June 05, 2022
-                        </td>
-                        <td class="py-3 px-6">June 29, 2002</td>
-                        <td class="py-3 px-6" align="center">
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-green-500 rounded-2xl hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-green-500 white:focus:ring-green-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                                </svg>                                                
-                            </button>
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>                                                
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                        <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                            iPad
-                        </th>
-                        <td class="py-3 px-6">
-                            June 05, 2022
-                        </td>
-                        <td class="py-3 px-6">June 29, 2002</td>
-                        <td class="py-3 px-6" align="center">
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-green-500 rounded-2xl hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-green-500 white:focus:ring-green-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                                </svg>                                                
-                            </button>
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>                                                
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b white:bg-gray-800 hover:bg-gray-50 white:hover:bg-gray-600">
-                        <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                            Apple iMac 27"
-                        </th>
-                        <td class="py-3 px-6">
-                            June 05, 2022
-                        </td>
-                        <td class="py-3 px-6">June 29, 2002</td>
-                        <td class="py-3 px-6" align="center">
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-green-500 rounded-2xl hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-green-500 white:focus:ring-green-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                                </svg>                                                
-                            </button>
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>                                                
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                        <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                            Apple MacBook Pro 17"
-                        </th>
-                        <td class="py-3 px-6">
-                            June 05, 2022
-                        </td>
-                        <td class="py-3 px-6">June 29, 2002</td>
-                        <td class="py-3 px-6" align="center">
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-green-500 rounded-2xl hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-green-500 white:focus:ring-green-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                                </svg>                                                
-                            </button>
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>                                                
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                        <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                            Microsoft Surface Pro
-                        </th>
-                        <td class="py-3 px-6">
-                            June 05, 2022
-                        </td>
-                        <td class="py-3 px-6">June 29, 2002</td>
-                        <td class="py-3 px-6" align="center">
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-green-500 rounded-2xl hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-green-500 white:focus:ring-green-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                                </svg>                                                
-                            </button>
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>                                                
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                        <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                            Magic Mouse 2
-                        </th>
-                        <td class="py-3 px-6">
-                            June 05, 2022
-                        </td>
-                        <td class="py-3 px-6">June 29, 2002</td>
-                        <td class="py-3 px-6" align="center">
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-green-500 rounded-2xl hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-green-500 white:focus:ring-green-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                                </svg>                                                
-                            </button>
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>                                                
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                        <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                            Apple Watch
-                        </th>
-                        <td class="py-3 px-6">
-                            June 05, 2022
-                        </td>
-                        <td class="py-3 px-6">June 29, 2002</td>
-                        <td class="py-3 px-6" align="center">
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-green-500 rounded-2xl hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-green-500 white:focus:ring-green-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                                </svg>                                                
-                            </button>
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>                                                
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                        <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                            iPad
-                        </th>
-                        <td class="py-3 px-6">
-                            June 05, 2022
-                        </td>
-                        <td class="py-3 px-6">June 29, 2002</td>
-                        <td class="py-3 px-6" align="center">
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-green-500 rounded-2xl hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-green-500 white:focus:ring-green-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                                </svg>                                                
-                            </button>
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>                                                
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b white:bg-gray-800 hover:bg-gray-50 white:hover:bg-gray-600">
-                        <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                            Apple iMac 27"
-                        </th>
-                        <td class="py-3 px-6">
-                            June 05, 2022
-                        </td>
-                        <td class="py-3 px-6">June 29, 2002</td>
-                        <td class="py-3 px-6" align="center">
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-green-500 rounded-2xl hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-green-500 white:focus:ring-green-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                                </svg>                                                
-                            </button>
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>                                                
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                        <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                            Apple MacBook Pro 17"
-                        </th>
-                        <td class="py-3 px-6">
-                            June 05, 2022
-                        </td>
-                        <td class="py-3 px-6">June 29, 2002</td>
-                        <td class="py-3 px-6" align="center">
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-green-500 rounded-2xl hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-green-500 white:focus:ring-green-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                                </svg>                                                
-                            </button>
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>                                                
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                        <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                            Microsoft Surface Pro
-                        </th>
-                        <td class="py-3 px-6">
-                            June 05, 2022
-                        </td>
-                        <td class="py-3 px-6">June 29, 2002</td>
-                        <td class="py-3 px-6" align="center">
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-green-500 rounded-2xl hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-green-500 white:focus:ring-green-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                                </svg>                                                
-                            </button>
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>                                                
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                        <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                            Magic Mouse 2
-                        </th>
-                        <td class="py-3 px-6">
-                            June 05, 2022
-                        </td>
-                        <td class="py-3 px-6">June 29, 2002</td>
-                        <td class="py-3 px-6" align="center">
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-green-500 rounded-2xl hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-green-500 white:focus:ring-green-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                                </svg>                                                
-                            </button>
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>                                                
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                        <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                            Apple Watch
-                        </th>
-                        <td class="py-3 px-6">
-                            June 05, 2022
-                        </td>
-                        <td class="py-3 px-6">June 29, 2002</td>
-                        <td class="py-3 px-6" align="center">
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-green-500 rounded-2xl hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-green-500 white:focus:ring-green-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                                </svg>                                                
-                            </button>
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>                                                
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                        <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                            iPad
-                        </th>
-                        <td class="py-3 px-6">
-                            June 05, 2022
-                        </td>
-                        <td class="py-3 px-6">June 29, 2002</td>
-                        <td class="py-3 px-6" align="center">
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-green-500 rounded-2xl hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-green-500 white:focus:ring-green-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                                </svg>                                                
-                            </button>
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>                                                
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="bg-white white:bg-gray-800 hover:bg-gray-50 white:hover:bg-gray-600">
-                        <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                            Apple iMac 27"
-                        </th>
-                        <td class="py-3 px-6">
-                            June 05, 2022
-                        </td>
-                        <td class="py-3 px-6">June 29, 2002</td>
-                        <td class="py-3 px-6" align="center">
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-green-500 rounded-2xl hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-green-500 white:focus:ring-green-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                                </svg>                                                
-                            </button>
-                            <button type="button" class="py-1.5 px-1.5 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>                                                
-                            </button>
-                        </td>
-                    </tr>
+                   
                 </tbody>
             </table>
         </div>
