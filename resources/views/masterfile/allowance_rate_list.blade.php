@@ -47,20 +47,16 @@
                         <tbody>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <th scope="row" class="py-3 px-3 font-medium text-gray-900 whitespace-nowrap white:text-white border border-gray-200 align-top">
-                                    Sample Employee
+                                    Jushkyle Jambongana
                                 </th>
                                 <td class="border border-gray-200 py-3 px-3 align-top">
                                     <div class="justify-between flex">
-                                        <span class="relative">Allowance Name</span>
-                                        <span class="relative">999,999</span>
+                                        <span class="relative">Meal and Transportation Allowance</span>
+                                        <span class="relative">1,000</span>
                                     </div>
                                     <div class="justify-between flex">
-                                        <span class="relative">Allowance Name</span>
-                                        <span class="relative">999,999</span>
-                                    </div>
-                                    <div class="justify-between flex">
-                                        <span class="relative">Allowance Name</span>
-                                        <span class="relative">999,999</span>
+                                        <span class="relative">Clothing Allownce</span>
+                                        <span class="relative">1,200</span>
                                     </div>
                                 </td>
                                 <td class="border border-gray-200 py-3 px-3 align-top" align="center">
@@ -195,12 +191,12 @@
                             </tr>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <th scope="row" class="py-3 px-3 font-medium text-gray-900 whitespace-nowrap white:text-white border border-gray-200 align-top">
-                                    Sample Employee
+                                    Mary Grace Bugna
                                 </th>
                                 <td class="border border-gray-200 py-3 px-3 align-top">
                                     <div class="justify-between flex">
-                                        <span class="relative">Allowance Name</span>
-                                        <span class="relative">999,999</span>
+                                        <span class="relative">Meal and Transportation Allowance</span>
+                                        <span class="relative">900</span>
                                     </div>
                                 </td>
                                 <td class="border border-gray-200 py-3 px-3 align-top" align="center">
