@@ -111,12 +111,12 @@
                                     Jonah May Benares
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    30,000
+                                    30,000.00
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     <div x-data="{ modelOpen: false }">
                                         <a href="#" @click="modelOpen =!modelOpen" class="my-1 py-2 " title="Update">
-                                              550
+                                              550.00
                                         </a>
                                 
                                         <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -186,7 +186,7 @@
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     <div x-data="{ modelOpen: false }">
                                         <a href="#" @click="modelOpen =!modelOpen" class="my-1 py-2 " title="Update">
-                                              242
+                                              242.00
                                         </a>
                                 
                                         <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -242,12 +242,12 @@
                                     </div>
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    30,308
+                                    30,308.00
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     <div x-data="{ modelOpen: false }">
                                         <a href="#" @click="modelOpen =!modelOpen" class="my-1  py-2" title="Update">
-                                              10,400
+                                              10,400.00
                                         </a>
                                 
                                         <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -335,7 +335,1151 @@
                                     </div>
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    19,908
+                                    19,908.00
+                                </td>
+                                <td class="py-3 px-6 justify-center flex" align="center">
+                                    <div x-data="{ modelOpen: false }">
+                                        <button @click="modelOpen =!modelOpen" class="my-1 mx-1 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                              </svg>
+                                              
+                                        </button>
+                                
+                                        <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                                            <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
+                                                <div x-cloak @click="modelOpen = false"  
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0" 
+                                                    x-transition:enter-end="opacity-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100" 
+                                                    x-transition:leave-end="opacity-0"
+                                                    class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40" aria-hidden="true"
+                                                ></div>
+                                
+                                                <div x-cloak
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
+                                                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
+                                                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                                                    class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
+                                                >
+                                                    <div class="flex items-center justify-between space-x-4 px-2">
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
+                                
+                                                        <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                    Payslip here
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="my-1 mx-1 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-emerald-500 rounded-2xl white:bg-emerald-600 white:hover:bg-emerald-700 white:focus:bg-emerald-700 hover:bg-emerald-600 focus:outline-none focus:bg-emerald-500 focus:ring focus:ring-emerald-300 focus:ring-opacity-50" title="Update"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                                          </svg>
+                                          
+                                    </button>
+                                    
+                                      
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    Paul John Tulena
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    10,000.00
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    <div x-data="{ modelOpen: false }">
+                                        <a href="#" @click="modelOpen =!modelOpen" class="my-1 py-2 " title="Update">
+                                              0.00
+                                        </a>
+                                
+                                        <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                                            <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
+                                                <div x-cloak @click="modelOpen = false"  
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0" 
+                                                    x-transition:enter-end="opacity-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100" 
+                                                    x-transition:leave-end="opacity-0"
+                                                    class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40" aria-hidden="true"
+                                                ></div>
+                                
+                                                <div x-cloak
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
+                                                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
+                                                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                                                    class="inline-block w-full max-w-lg p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl lg:max-w-lg"
+                                                >
+                                                    <div class="flex items-center justify-between space-x-4 px-2">
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
+                                
+                                                        <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                    <table class="w-full text-sm text-left">
+                                                        <tr class="bg-white border-b">
+                                                            <td colspan="2" class="py-2 px-2 font-medium text-base text-gray-500 whitespace-nowrap ">Adjustments</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Rest Day</td>
+                                                            <td align="right">0</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Holiday Pay</td>
+                                                            <td align="right">0</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Overtime Pay</td>
+                                                            <td align="right">0</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Night Premium</td>
+                                                            <td align="right">0</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Adjustments</td>
+                                                            <td align="right">550</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b text-lg bg-yellow-200">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Total</td>
+                                                            <td align="right"><b>550</b></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    <div x-data="{ modelOpen: false }">
+                                        <a href="#" @click="modelOpen =!modelOpen" class="my-1 py-2 " title="Update">
+                                              100.00
+                                        </a>
+                                
+                                        <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                                            <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
+                                                <div x-cloak @click="modelOpen = false"  
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0" 
+                                                    x-transition:enter-end="opacity-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100" 
+                                                    x-transition:leave-end="opacity-0"
+                                                    class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40" aria-hidden="true"
+                                                ></div>
+                                
+                                                <div x-cloak
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
+                                                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
+                                                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                                                    class="inline-block w-full max-w-lg p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl lg:max-w-lg"
+                                                >
+                                                    <div class="flex items-center justify-between space-x-4 px-2">
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
+                                
+                                                        <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                    <table class="w-full text-sm text-left">
+                                                        <tr class="bg-white border-b">
+                                                            <td colspan="2" class="py-2 px-2 font-medium text-base text-gray-500 whitespace-nowrap ">Less</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Absences/Undertime</td>
+                                                            <td align="right">150</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Tardiness</td>
+                                                            <td align="right">92</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b text-lg bg-yellow-200">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Total</td>
+                                                            <td align="right"><b>242</b></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    9,900.00
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    <div x-data="{ modelOpen: false }">
+                                        <a href="#" @click="modelOpen =!modelOpen" class="my-1  py-2" title="Update">
+                                              2,000.00
+                                        </a>
+                                
+                                        <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                                            <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
+                                                <div x-cloak @click="modelOpen = false"  
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0" 
+                                                    x-transition:enter-end="opacity-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100" 
+                                                    x-transition:leave-end="opacity-0"
+                                                    class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40" aria-hidden="true"
+                                                ></div>
+                                
+                                                <div x-cloak
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
+                                                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
+                                                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                                                    class="inline-block w-full max-w-lg p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl lg:max-w-lg"
+                                                >
+                                                    <div class="flex items-center justify-between space-x-4 px-2">
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
+                                
+                                                        <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                    <table class="w-full text-sm text-left">
+                                                        <tr class="bg-white border-b">
+                                                            <td colspan="2" class="py-2 px-2 font-medium text-base text-gray-500 whitespace-nowrap ">Deductions</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">SSS Premium</td>
+                                                            <td align="right">1,900</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">SSS Loan</td>
+                                                            <td align="right">4,000</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">SSS With TAX</td>
+                                                            <td align="right">0</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">PHILHEALTH</td>
+                                                            <td align="right">500</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">PAG-IBIG FUND</td>
+                                                            <td align="right">500</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">PAG-IBIG MP2</td>
+                                                            <td align="right">1,500</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">COOP INVESTMENT</td>
+                                                            <td align="right">2,000</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">COOP LOAN</td>
+                                                            <td align="right">0</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">AUB LOAN</td>
+                                                            <td align="right">0</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Others</td>
+                                                            <td align="right"><input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="00" required></td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b text-lg bg-yellow-200">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Total</td>
+                                                            <td align="right"><b>10,400</b></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    7,900.00
+                                </td>
+                                <td class="py-3 px-6 justify-center flex" align="center">
+                                    <div x-data="{ modelOpen: false }">
+                                        <button @click="modelOpen =!modelOpen" class="my-1 mx-1 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                              </svg>
+                                              
+                                        </button>
+                                
+                                        <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                                            <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
+                                                <div x-cloak @click="modelOpen = false"  
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0" 
+                                                    x-transition:enter-end="opacity-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100" 
+                                                    x-transition:leave-end="opacity-0"
+                                                    class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40" aria-hidden="true"
+                                                ></div>
+                                
+                                                <div x-cloak
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
+                                                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
+                                                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                                                    class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
+                                                >
+                                                    <div class="flex items-center justify-between space-x-4 px-2">
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
+                                
+                                                        <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                    Payslip here
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="my-1 mx-1 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-emerald-500 rounded-2xl white:bg-emerald-600 white:hover:bg-emerald-700 white:focus:bg-emerald-700 hover:bg-emerald-600 focus:outline-none focus:bg-emerald-500 focus:ring focus:ring-emerald-300 focus:ring-opacity-50" title="Update"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                                          </svg>
+                                          
+                                    </button>
+                                    
+                                      
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    Jasonyo Dy Pinily
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    15,000.00
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    <div x-data="{ modelOpen: false }">
+                                        <a href="#" @click="modelOpen =!modelOpen" class="my-1 py-2 " title="Update">
+                                              0.00
+                                        </a>
+                                
+                                        <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                                            <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
+                                                <div x-cloak @click="modelOpen = false"  
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0" 
+                                                    x-transition:enter-end="opacity-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100" 
+                                                    x-transition:leave-end="opacity-0"
+                                                    class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40" aria-hidden="true"
+                                                ></div>
+                                
+                                                <div x-cloak
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
+                                                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
+                                                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                                                    class="inline-block w-full max-w-lg p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl lg:max-w-lg"
+                                                >
+                                                    <div class="flex items-center justify-between space-x-4 px-2">
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
+                                
+                                                        <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                    <table class="w-full text-sm text-left">
+                                                        <tr class="bg-white border-b">
+                                                            <td colspan="2" class="py-2 px-2 font-medium text-base text-gray-500 whitespace-nowrap ">Adjustments</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Rest Day</td>
+                                                            <td align="right">0</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Holiday Pay</td>
+                                                            <td align="right">0</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Overtime Pay</td>
+                                                            <td align="right">0</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Night Premium</td>
+                                                            <td align="right">0</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Adjustments</td>
+                                                            <td align="right">550</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b text-lg bg-yellow-200">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Total</td>
+                                                            <td align="right"><b>550</b></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    <div x-data="{ modelOpen: false }">
+                                        <a href="#" @click="modelOpen =!modelOpen" class="my-1 py-2 " title="Update">
+                                              0.00
+                                        </a>
+                                
+                                        <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                                            <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
+                                                <div x-cloak @click="modelOpen = false"  
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0" 
+                                                    x-transition:enter-end="opacity-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100" 
+                                                    x-transition:leave-end="opacity-0"
+                                                    class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40" aria-hidden="true"
+                                                ></div>
+                                
+                                                <div x-cloak
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
+                                                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
+                                                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                                                    class="inline-block w-full max-w-lg p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl lg:max-w-lg"
+                                                >
+                                                    <div class="flex items-center justify-between space-x-4 px-2">
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
+                                
+                                                        <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                    <table class="w-full text-sm text-left">
+                                                        <tr class="bg-white border-b">
+                                                            <td colspan="2" class="py-2 px-2 font-medium text-base text-gray-500 whitespace-nowrap ">Less</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Absences/Undertime</td>
+                                                            <td align="right">150</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Tardiness</td>
+                                                            <td align="right">92</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b text-lg bg-yellow-200">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Total</td>
+                                                            <td align="right"><b>242</b></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    15,000.00
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    <div x-data="{ modelOpen: false }">
+                                        <a href="#" @click="modelOpen =!modelOpen" class="my-1  py-2" title="Update">
+                                              1,500.0
+                                        </a>
+                                
+                                        <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                                            <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
+                                                <div x-cloak @click="modelOpen = false"  
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0" 
+                                                    x-transition:enter-end="opacity-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100" 
+                                                    x-transition:leave-end="opacity-0"
+                                                    class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40" aria-hidden="true"
+                                                ></div>
+                                
+                                                <div x-cloak
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
+                                                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
+                                                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                                                    class="inline-block w-full max-w-lg p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl lg:max-w-lg"
+                                                >
+                                                    <div class="flex items-center justify-between space-x-4 px-2">
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
+                                
+                                                        <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                    <table class="w-full text-sm text-left">
+                                                        <tr class="bg-white border-b">
+                                                            <td colspan="2" class="py-2 px-2 font-medium text-base text-gray-500 whitespace-nowrap ">Deductions</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">SSS Premium</td>
+                                                            <td align="right">1,900</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">SSS Loan</td>
+                                                            <td align="right">4,000</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">SSS With TAX</td>
+                                                            <td align="right">0</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">PHILHEALTH</td>
+                                                            <td align="right">500</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">PAG-IBIG FUND</td>
+                                                            <td align="right">500</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">PAG-IBIG MP2</td>
+                                                            <td align="right">1,500</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">COOP INVESTMENT</td>
+                                                            <td align="right">2,000</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">COOP LOAN</td>
+                                                            <td align="right">0</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">AUB LOAN</td>
+                                                            <td align="right">0</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Others</td>
+                                                            <td align="right"><input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="00" required></td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b text-lg bg-yellow-200">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Total</td>
+                                                            <td align="right"><b>10,400</b></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    13,500.00
+                                </td>
+                                <td class="py-3 px-6 justify-center flex" align="center">
+                                    <div x-data="{ modelOpen: false }">
+                                        <button @click="modelOpen =!modelOpen" class="my-1 mx-1 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                              </svg>
+                                              
+                                        </button>
+                                
+                                        <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                                            <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
+                                                <div x-cloak @click="modelOpen = false"  
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0" 
+                                                    x-transition:enter-end="opacity-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100" 
+                                                    x-transition:leave-end="opacity-0"
+                                                    class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40" aria-hidden="true"
+                                                ></div>
+                                
+                                                <div x-cloak
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
+                                                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
+                                                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                                                    class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
+                                                >
+                                                    <div class="flex items-center justify-between space-x-4 px-2">
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
+                                
+                                                        <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                    Payslip here
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="my-1 mx-1 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-emerald-500 rounded-2xl white:bg-emerald-600 white:hover:bg-emerald-700 white:focus:bg-emerald-700 hover:bg-emerald-600 focus:outline-none focus:bg-emerald-500 focus:ring focus:ring-emerald-300 focus:ring-opacity-50" title="Update"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                                          </svg>
+                                          
+                                    </button>
+                                    
+                                      
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    Henne Huaw
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    15,000.00
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    <div x-data="{ modelOpen: false }">
+                                        <a href="#" @click="modelOpen =!modelOpen" class="my-1 py-2 " title="Update">
+                                              450.00
+                                        </a>
+                                
+                                        <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                                            <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
+                                                <div x-cloak @click="modelOpen = false"  
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0" 
+                                                    x-transition:enter-end="opacity-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100" 
+                                                    x-transition:leave-end="opacity-0"
+                                                    class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40" aria-hidden="true"
+                                                ></div>
+                                
+                                                <div x-cloak
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
+                                                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
+                                                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                                                    class="inline-block w-full max-w-lg p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl lg:max-w-lg"
+                                                >
+                                                    <div class="flex items-center justify-between space-x-4 px-2">
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
+                                
+                                                        <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                    <table class="w-full text-sm text-left">
+                                                        <tr class="bg-white border-b">
+                                                            <td colspan="2" class="py-2 px-2 font-medium text-base text-gray-500 whitespace-nowrap ">Adjustments</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Rest Day</td>
+                                                            <td align="right">0</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Holiday Pay</td>
+                                                            <td align="right">0</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Overtime Pay</td>
+                                                            <td align="right">0</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Night Premium</td>
+                                                            <td align="right">0</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Adjustments</td>
+                                                            <td align="right">550</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b text-lg bg-yellow-200">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Total</td>
+                                                            <td align="right"><b>550</b></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    <div x-data="{ modelOpen: false }">
+                                        <a href="#" @click="modelOpen =!modelOpen" class="my-1 py-2 " title="Update">
+                                              150.00
+                                        </a>
+                                
+                                        <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                                            <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
+                                                <div x-cloak @click="modelOpen = false"  
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0" 
+                                                    x-transition:enter-end="opacity-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100" 
+                                                    x-transition:leave-end="opacity-0"
+                                                    class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40" aria-hidden="true"
+                                                ></div>
+                                
+                                                <div x-cloak
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
+                                                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
+                                                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                                                    class="inline-block w-full max-w-lg p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl lg:max-w-lg"
+                                                >
+                                                    <div class="flex items-center justify-between space-x-4 px-2">
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
+                                
+                                                        <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                    <table class="w-full text-sm text-left">
+                                                        <tr class="bg-white border-b">
+                                                            <td colspan="2" class="py-2 px-2 font-medium text-base text-gray-500 whitespace-nowrap ">Less</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Absences/Undertime</td>
+                                                            <td align="right">150</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Tardiness</td>
+                                                            <td align="right">92</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b text-lg bg-yellow-200">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Total</td>
+                                                            <td align="right"><b>242</b></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    15,300.00
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    <div x-data="{ modelOpen: false }">
+                                        <a href="#" @click="modelOpen =!modelOpen" class="my-1  py-2" title="Update">
+                                              2,000.00
+                                        </a>
+                                
+                                        <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                                            <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
+                                                <div x-cloak @click="modelOpen = false"  
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0" 
+                                                    x-transition:enter-end="opacity-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100" 
+                                                    x-transition:leave-end="opacity-0"
+                                                    class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40" aria-hidden="true"
+                                                ></div>
+                                
+                                                <div x-cloak
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
+                                                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
+                                                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                                                    class="inline-block w-full max-w-lg p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl lg:max-w-lg"
+                                                >
+                                                    <div class="flex items-center justify-between space-x-4 px-2">
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
+                                
+                                                        <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                    <table class="w-full text-sm text-left">
+                                                        <tr class="bg-white border-b">
+                                                            <td colspan="2" class="py-2 px-2 font-medium text-base text-gray-500 whitespace-nowrap ">Deductions</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">SSS Premium</td>
+                                                            <td align="right">1,900</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">SSS Loan</td>
+                                                            <td align="right">4,000</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">SSS With TAX</td>
+                                                            <td align="right">0</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">PHILHEALTH</td>
+                                                            <td align="right">500</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">PAG-IBIG FUND</td>
+                                                            <td align="right">500</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">PAG-IBIG MP2</td>
+                                                            <td align="right">1,500</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">COOP INVESTMENT</td>
+                                                            <td align="right">2,000</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">COOP LOAN</td>
+                                                            <td align="right">0</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">AUB LOAN</td>
+                                                            <td align="right">0</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Others</td>
+                                                            <td align="right"><input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="00" required></td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b text-lg bg-yellow-200">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Total</td>
+                                                            <td align="right"><b>10,400</b></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    13,300.00
+                                </td>
+                                <td class="py-3 px-6 justify-center flex" align="center">
+                                    <div x-data="{ modelOpen: false }">
+                                        <button @click="modelOpen =!modelOpen" class="my-1 mx-1 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                              </svg>
+                                              
+                                        </button>
+                                
+                                        <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                                            <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
+                                                <div x-cloak @click="modelOpen = false"  
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0" 
+                                                    x-transition:enter-end="opacity-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100" 
+                                                    x-transition:leave-end="opacity-0"
+                                                    class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40" aria-hidden="true"
+                                                ></div>
+                                
+                                                <div x-cloak
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
+                                                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
+                                                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                                                    class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
+                                                >
+                                                    <div class="flex items-center justify-between space-x-4 px-2">
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
+                                
+                                                        <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                    Payslip here
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="my-1 mx-1 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-emerald-500 rounded-2xl white:bg-emerald-600 white:hover:bg-emerald-700 white:focus:bg-emerald-700 hover:bg-emerald-600 focus:outline-none focus:bg-emerald-500 focus:ring focus:ring-emerald-300 focus:ring-opacity-50" title="Update"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                                          </svg>
+                                          
+                                    </button>
+                                    
+                                      
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    Stephanie Leng Sakulam
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    17,000.00
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    <div x-data="{ modelOpen: false }">
+                                        <a href="#" @click="modelOpen =!modelOpen" class="my-1 py-2 " title="Update">
+                                              450.00
+                                        </a>
+                                
+                                        <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                                            <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
+                                                <div x-cloak @click="modelOpen = false"  
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0" 
+                                                    x-transition:enter-end="opacity-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100" 
+                                                    x-transition:leave-end="opacity-0"
+                                                    class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40" aria-hidden="true"
+                                                ></div>
+                                
+                                                <div x-cloak
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
+                                                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
+                                                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                                                    class="inline-block w-full max-w-lg p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl lg:max-w-lg"
+                                                >
+                                                    <div class="flex items-center justify-between space-x-4 px-2">
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
+                                
+                                                        <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                    <table class="w-full text-sm text-left">
+                                                        <tr class="bg-white border-b">
+                                                            <td colspan="2" class="py-2 px-2 font-medium text-base text-gray-500 whitespace-nowrap ">Adjustments</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Rest Day</td>
+                                                            <td align="right">0</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Holiday Pay</td>
+                                                            <td align="right">0</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Overtime Pay</td>
+                                                            <td align="right">0</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Night Premium</td>
+                                                            <td align="right">0</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Adjustments</td>
+                                                            <td align="right">550</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b text-lg bg-yellow-200">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Total</td>
+                                                            <td align="right"><b>550</b></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    <div x-data="{ modelOpen: false }">
+                                        <a href="#" @click="modelOpen =!modelOpen" class="my-1 py-2 " title="Update">
+                                              120.00
+                                        </a>
+                                
+                                        <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                                            <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
+                                                <div x-cloak @click="modelOpen = false"  
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0" 
+                                                    x-transition:enter-end="opacity-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100" 
+                                                    x-transition:leave-end="opacity-0"
+                                                    class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40" aria-hidden="true"
+                                                ></div>
+                                
+                                                <div x-cloak
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
+                                                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
+                                                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                                                    class="inline-block w-full max-w-lg p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl lg:max-w-lg"
+                                                >
+                                                    <div class="flex items-center justify-between space-x-4 px-2">
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
+                                
+                                                        <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                    <table class="w-full text-sm text-left">
+                                                        <tr class="bg-white border-b">
+                                                            <td colspan="2" class="py-2 px-2 font-medium text-base text-gray-500 whitespace-nowrap ">Less</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Absences/Undertime</td>
+                                                            <td align="right">150</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Tardiness</td>
+                                                            <td align="right">92</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b text-lg bg-yellow-200">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Total</td>
+                                                            <td align="right"><b>242</b></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    17,330.00
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    <div x-data="{ modelOpen: false }">
+                                        <a href="#" @click="modelOpen =!modelOpen" class="my-1  py-2" title="Update">
+                                              1,000.00
+                                        </a>
+                                
+                                        <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                                            <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
+                                                <div x-cloak @click="modelOpen = false"  
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0" 
+                                                    x-transition:enter-end="opacity-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100" 
+                                                    x-transition:leave-end="opacity-0"
+                                                    class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40" aria-hidden="true"
+                                                ></div>
+                                
+                                                <div x-cloak
+                                                    x-transition:enter="transition ease-out duration-300 transform"
+                                                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
+                                                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                                                    x-transition:leave="transition ease-in duration-200 transform"
+                                                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
+                                                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                                                    class="inline-block w-full max-w-lg p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl lg:max-w-lg"
+                                                >
+                                                    <div class="flex items-center justify-between space-x-4 px-2">
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
+                                
+                                                        <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                    <table class="w-full text-sm text-left">
+                                                        <tr class="bg-white border-b">
+                                                            <td colspan="2" class="py-2 px-2 font-medium text-base text-gray-500 whitespace-nowrap ">Deductions</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">SSS Premium</td>
+                                                            <td align="right">1,900</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">SSS Loan</td>
+                                                            <td align="right">4,000</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">SSS With TAX</td>
+                                                            <td align="right">0</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">PHILHEALTH</td>
+                                                            <td align="right">500</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">PAG-IBIG FUND</td>
+                                                            <td align="right">500</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">PAG-IBIG MP2</td>
+                                                            <td align="right">1,500</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">COOP INVESTMENT</td>
+                                                            <td align="right">2,000</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">COOP LOAN</td>
+                                                            <td align="right">0</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">AUB LOAN</td>
+                                                            <td align="right">0</td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Others</td>
+                                                            <td align="right"><input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="00" required></td>
+                                                        </tr>
+                                                        <tr class="bg-white border-b text-lg bg-yellow-200">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Total</td>
+                                                            <td align="right"><b>10,400</b></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    16,330.00
                                 </td>
                                 <td class="py-3 px-6 justify-center flex" align="center">
                                     <div x-data="{ modelOpen: false }">
