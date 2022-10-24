@@ -32,6 +32,16 @@
                         <div class="mx-2 text-left">
                             <input type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
                         </div>
+                        <div class="mx-2 text-left">
+                        <select class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
+                            <option value="" selected>Select Allowance Description</option>
+                            <option value="">Cash Allowance</option>
+                            <option value="">Clothing Allowance</option>
+                            <option value="">House Rent Allowance</option>
+                            <option value="">Meal and Transportation Allowance</option>
+                            <option value="">Uniform Allowance</option>
+                        </select>
+                        </div>
                     </div>
                     <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900">
                         <div class="mx-2 text-left">
