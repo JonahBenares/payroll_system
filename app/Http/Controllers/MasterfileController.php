@@ -47,4 +47,8 @@ class MasterfileController extends Controller
         return view('masterfile.cut_off_list');
     }
 
+    public function payslip_info(){
+        return view('masterfile.payslip_info');
+    }
+
 }

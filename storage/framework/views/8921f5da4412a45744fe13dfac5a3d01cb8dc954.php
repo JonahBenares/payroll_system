@@ -18,9 +18,73 @@
             <div class="p-4 relative h-full w-full text-center  bg-white rounded-2xl shadow-lg white:bg-gray-800 white:border-gray-700">
                 <div class="flex justify-between  pb-4 bg-white white:bg-gray-900">
                     <div > 
-                        <h2 class="uppercase font-semibold py-2">Rates</h2>
+                        <h2 class="uppercase font-semibold py-2">Adjustment Rates</h2>
                     </div>
                     <div class="flex">
+                        <div x-data="{ modelOpen: false }">
+                            <button @click="modelOpen =!modelOpen" class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                                </svg>
+                                <span>Add Adjustment</span>
+                            </button>
+                    
+                            <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                                <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
+                                    <div x-cloak @click="modelOpen = false" 
+                                        x-transition:enter="transition ease-out duration-300 transform"
+                                        x-transition:enter-start="opacity-0" 
+                                        x-transition:enter-end="opacity-100"
+                                        x-transition:leave="transition ease-in duration-200 transform"
+                                        x-transition:leave-start="opacity-100" 
+                                        x-transition:leave-end="opacity-0"
+                                        class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40" aria-hidden="true"
+                                    ></div>
+                    
+                                    <div x-cloak
+                                        x-transition:enter="transition ease-out duration-300 transform"
+                                        x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
+                                        x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                                        x-transition:leave="transition ease-in duration-200 transform"
+                                        x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
+                                        x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                                        class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
+                                    >
+                                        <div class="flex items-center justify-between space-x-4 px-2">
+                                            <h1 class="text-xl font-medium text-gray-800 ">Add Adjustment Rate</h1>
+                    
+                                            <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                    
+                                        <form class="mt-5">
+                                            <div class="px-2">
+                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Adjustment Rate Name</label>
+                                                <select class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                    <option value="">SSS Loan</option>
+                                                    <option value="">Pag-Ibig </option>
+                                                    <option value="">Philhealth Contribution</option>
+                                                    <option value="">Coop Loan</option>
+                                                    <option value="">SSS Contribution</option>
+                                                </select>
+                                            </div>
+                                            <div class="px-2 mt-2">
+                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Rate </label>
+                                                <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                            </div>
+                                            <div class="flex justify-end mt-6 px-2">
+                                                <button type="button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                                                    Save
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <label for="table-search" class="sr-only">Search</label>
                         <div class="relative">
                             <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
@@ -34,10 +98,13 @@
                     <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-1">
                             <tr class="">
-                                <th scope="col" class="py-3 px-6" width="45%">
-                                    Rate name
+                                <th scope="col" class="py-3 px-6" width="30%">
+                                    Adjustment Rate name
                                 </th>
-                                <th scope="col" class="py-3 px-6" width="45%">
+                                <th scope="col" class="py-3 px-6" width="30%">
+                                    Deduction Type
+                                </th>
+                                <th scope="col" class="py-3 px-6" width="30%">
                                     Rate
                                 </th>
                                 <th scope="col" class="py-3 px-6" width="10%" align="center">
@@ -53,9 +120,12 @@
                                     Night Premium
                                 </th>
                                 <td class="py-4 px-6">
+                                    Percentage
+                                </td>
+                                <td class="py-4 px-6">
                                     10%
                                 </td>
-                                <td class="py-4 px-6" align="center">
+                                <td class="py-4 px-6 flex justify-center" align="center">
                                     <div x-data="{ updateModal: false }">
                                         <button @click="updateModal =!updateModal" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
@@ -86,7 +156,7 @@
                                                     class="inline-block w-full max-w-xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
                                                 >
                                                     <div class="flex items-center justify-between space-x-4">
-                                                        <h1 class="text-xl font-medium text-gray-800 ">Update Night Premium</h1>
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Update Adjustment Rate</h1>
                                 
                                                         <button @click="updateModal = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
                                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -96,14 +166,23 @@
                                                     </div>
                                 
                                                     <form class="mt-5">
-                                                        <div class="mt-4">
-                                                            <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">Rate</label>
-                                                            <input placeholder="25" type="email" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                        <div class="px-2">
+                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Adjustment Rate Name</label>
+                                                            <select class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                                <option value="">SSS Loan</option>
+                                                                <option value="">Pag-Ibig </option>
+                                                                <option value="">Philhealth Contribution</option>
+                                                                <option value="">Coop Loan</option>
+                                                                <option value="">SSS Contribution</option>
+                                                            </select>
                                                         </div>
-                                                        
-                                                        <div class="flex justify-end mt-6">
+                                                        <div class="px-2 mt-2">
+                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Rate </label>
+                                                            <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                        </div>
+                                                        <div class="flex justify-end mt-6 px-2">
                                                             <button type="button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                                                Submit
+                                                                Update
                                                             </button>
                                                         </div>
                                                     </form>
@@ -111,6 +190,11 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <button type="button" class="ml-2 py-1.5 px-2 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                        </svg>                                                
+                                    </button>
                                 </td>
                             </tr>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
@@ -118,9 +202,12 @@
                                     HMO Rate
                                 </th>
                                 <td class="py-4 px-6">
+                                    Actual Amount
+                                </td>
+                                <td class="py-4 px-6">
                                     996.35
                                 </td>
-                                <td class="py-4 px-6" align="center">
+                                <td class="py-4 px-6 flex justify-center" align="center">
                                     <div x-data="{ updateModal: false }">
                                         <button @click="updateModal =!updateModal" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
@@ -151,7 +238,7 @@
                                                     class="inline-block w-full max-w-xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
                                                 >
                                                     <div class="flex items-center justify-between space-x-4">
-                                                        <h1 class="text-xl font-medium text-gray-800 ">Update HMO Rate</h1>
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Update Adjustment Rate</h1>
                                 
                                                         <button @click="updateModal = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
                                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -161,14 +248,23 @@
                                                     </div>
                                 
                                                     <form class="mt-5">
-                                                        <div class="mt-4">
-                                                            <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">Rate</label>
-                                                            <input placeholder="25" type="email" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                        <div class="px-2">
+                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Adjustment Rate Name</label>
+                                                            <select class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                                <option value="">SSS Loan</option>
+                                                                <option value="">Pag-Ibig </option>
+                                                                <option value="">Philhealth Contribution</option>
+                                                                <option value="">Coop Loan</option>
+                                                                <option value="">SSS Contribution</option>
+                                                            </select>
                                                         </div>
-                                                        
-                                                        <div class="flex justify-end mt-6">
+                                                        <div class="px-2 mt-2">
+                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Rate </label>
+                                                            <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                        </div>
+                                                        <div class="flex justify-end mt-6 px-2">
                                                             <button type="button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                                                Submit
+                                                                Update
                                                             </button>
                                                         </div>
                                                     </form>
@@ -176,6 +272,11 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <button type="button" class="ml-2 py-1.5 px-2 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                        </svg>                                                
+                                    </button>
                                 </td>
                             </tr>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
@@ -183,9 +284,12 @@
                                     Regular Holiday 
                                 </th>
                                 <td class="py-4 px-6">
+                                    Percentage
+                                </td>
+                                <td class="py-4 px-6">
                                     100%
                                 </td>
-                                <td class="py-4 px-6" align="center">
+                                <td class="py-4 px-6 flex justify-center" align="center">
                                     <div x-data="{ updateModal: false }">
                                         <button @click="updateModal =!updateModal" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
@@ -216,7 +320,7 @@
                                                     class="inline-block w-full max-w-xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
                                                 >
                                                     <div class="flex items-center justify-between space-x-4">
-                                                        <h1 class="text-xl font-medium text-gray-800 ">Update Regular Holiday</h1>
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Update Adjustment Rate</h1>
                                 
                                                         <button @click="updateModal = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
                                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -226,14 +330,23 @@
                                                     </div>
                                 
                                                     <form class="mt-5">
-                                                        <div class="mt-4">
-                                                            <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">Rate</label>
-                                                            <input placeholder="25" type="email" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                        <div class="px-2">
+                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Adjustment Rate Name</label>
+                                                            <select class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                                <option value="">SSS Loan</option>
+                                                                <option value="">Pag-Ibig </option>
+                                                                <option value="">Philhealth Contribution</option>
+                                                                <option value="">Coop Loan</option>
+                                                                <option value="">SSS Contribution</option>
+                                                            </select>
                                                         </div>
-                                                        
-                                                        <div class="flex justify-end mt-6">
+                                                        <div class="px-2 mt-2">
+                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Rate </label>
+                                                            <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                        </div>
+                                                        <div class="flex justify-end mt-6 px-2">
                                                             <button type="button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                                                Submit
+                                                                Update
                                                             </button>
                                                         </div>
                                                     </form>
@@ -241,6 +354,11 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <button type="button" class="ml-2 py-1.5 px-2 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                        </svg>                                                
+                                    </button>
                                 </td>
                             </tr>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
@@ -248,9 +366,12 @@
                                     Special Holiday 
                                 </th>
                                 <td class="py-4 px-6">
+                                    Percentage
+                                </td>
+                                <td class="py-4 px-6">
                                     30%
                                 </td>
-                                <td class="py-4 px-6" align="center">
+                                <td class="py-4 px-6 flex justify-center" align="center">
                                     <div x-data="{ updateModal: false }">
                                         <button @click="updateModal =!updateModal" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
@@ -281,7 +402,7 @@
                                                     class="inline-block w-full max-w-xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
                                                 >
                                                     <div class="flex items-center justify-between space-x-4">
-                                                        <h1 class="text-xl font-medium text-gray-800 ">Update Special Holiday</h1>
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Update Adjustment Rate</h1>
                                 
                                                         <button @click="updateModal = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
                                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -291,14 +412,23 @@
                                                     </div>
                                 
                                                     <form class="mt-5">
-                                                        <div class="mt-4">
-                                                            <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">Rate</label>
-                                                            <input placeholder="25" type="email" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                        <div class="px-2">
+                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Adjustment Rate Name</label>
+                                                            <select class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                                <option value="">SSS Loan</option>
+                                                                <option value="">Pag-Ibig </option>
+                                                                <option value="">Philhealth Contribution</option>
+                                                                <option value="">Coop Loan</option>
+                                                                <option value="">SSS Contribution</option>
+                                                            </select>
                                                         </div>
-                                                        
-                                                        <div class="flex justify-end mt-6">
+                                                        <div class="px-2 mt-2">
+                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Rate </label>
+                                                            <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                        </div>
+                                                        <div class="flex justify-end mt-6 px-2">
                                                             <button type="button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                                                Submit
+                                                                Update
                                                             </button>
                                                         </div>
                                                     </form>
@@ -306,6 +436,11 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <button type="button" class="ml-2 py-1.5 px-2 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                        </svg>                                                
+                                    </button>
                                 </td>
                             </tr>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
@@ -313,9 +448,12 @@
                                     Rest Day 
                                 </th>
                                 <td class="py-4 px-6">
+                                    Percentage
+                                </td>
+                                <td class="py-4 px-6">
                                     100%
                                 </td>
-                                <td class="py-4 px-6" align="center">
+                                <td class="py-4 px-6 flex justify-center" align="center">
                                     <div x-data="{ updateModal: false }">
                                         <button @click="updateModal =!updateModal" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
@@ -346,7 +484,7 @@
                                                     class="inline-block w-full max-w-xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
                                                 >
                                                     <div class="flex items-center justify-between space-x-4">
-                                                        <h1 class="text-xl font-medium text-gray-800 ">Update Rest Day</h1>
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Update Adjustment Rate</h1>
                                 
                                                         <button @click="updateModal = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
                                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -356,14 +494,23 @@
                                                     </div>
                                 
                                                     <form class="mt-5">
-                                                        <div class="mt-4">
-                                                            <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">Rate</label>
-                                                            <input placeholder="25" type="email" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                        <div class="px-2">
+                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Adjustment Rate Name</label>
+                                                            <select class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                                <option value="">SSS Loan</option>
+                                                                <option value="">Pag-Ibig </option>
+                                                                <option value="">Philhealth Contribution</option>
+                                                                <option value="">Coop Loan</option>
+                                                                <option value="">SSS Contribution</option>
+                                                            </select>
                                                         </div>
-                                                        
-                                                        <div class="flex justify-end mt-6">
+                                                        <div class="px-2 mt-2">
+                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Rate </label>
+                                                            <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                        </div>
+                                                        <div class="flex justify-end mt-6 px-2">
                                                             <button type="button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                                                Submit
+                                                                Update
                                                             </button>
                                                         </div>
                                                     </form>
@@ -371,6 +518,11 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <button type="button" class="ml-2 py-1.5 px-2 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                        </svg>                                                
+                                    </button>
                                 </td>
                             </tr>
                         </tbody>

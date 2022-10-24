@@ -58,7 +58,10 @@
                                         <a href="<?php echo e(route('schedule_list')); ?>" class="w-full font-thin text-sm text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Schedule</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('calendar_list')); ?>" class="w-full font-thin text-gray-500 text-sm white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Calendar</a>
+                                        <a href="<?php echo e(route('calendar_list')); ?>" class="w-full font-thin text-gray-500 text-sm white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Holidays</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a href="<?php echo e(route('payslip_info')); ?>" class="w-full font-thin text-gray-500 text-sm white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Payslip Info</a>
                                     </li>
                                     <li class="relative">
                                         <a href="<?php echo e(route('allowance_list')); ?>" class="w-full font-thin text-gray-500 text-sm white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowances</a>
@@ -67,18 +70,19 @@
                                         <a href="<?php echo e(route('allowance_rate_list')); ?>" class="w-full font-thin text-gray-500 text-sm white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowance Rates</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('deduction_list')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Deductions</a>
+                                        <a href="<?php echo e(route('rates_list')); ?>" class="w-full font-thin text-sm text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Adjustment Rates</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('rates_list')); ?>" class="w-full font-thin text-sm text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Rates</a>
+                                        <a href="<?php echo e(route('deduction_list')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Deductions Schedule</a>
                                     </li>
+                                   
                                     <li class="relative">
                                         <a href="<?php echo e(route('statutory_bracket')); ?>" class="w-full font-thin text-sm text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Statutory Bracket</a>
                                     </li>
                                     <li class="relative">
                                         <a href="<?php echo e(route('tardiness_rate_list')); ?>" class="w-full font-thin text-sm text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Tardiness Rates</a>
                                     </li>
-                                    <li class="relative mb-10">
+                                    <li class="relative">
                                         <a href="<?php echo e(route('cut_off_list')); ?>" class="w-full font-thin text-gray-500 text-sm white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Cut Off</a>
                                     </li>
                                     

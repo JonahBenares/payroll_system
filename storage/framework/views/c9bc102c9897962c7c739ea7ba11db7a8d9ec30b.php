@@ -20,7 +20,7 @@
 			<div class="p-4 relative h-full w-full text-center bg-white rounded-2xl shadow-lg white:bg-gray-800 white:border-gray-700">
 				<div class="flex justify-between  pb-4 bg-white white:bg-gray-900">
 					<div > 
-						<h2 class="uppercase font-semibold py-2">calendar</h2>
+						<h2 class="uppercase font-semibold py-2">Holidays</h2>
 					</div>
 					<div class="flex">
 						<div x-data="{ modelOpen: false }">
@@ -53,7 +53,7 @@
 										class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
 									>
 										<div class="flex items-center justify-between space-x-4 px-2">
-											<h1 class="text-xl font-medium text-gray-800 ">Create Calendar</h1>
+											<h1 class="text-xl font-medium text-gray-800 ">Add Holiday</h1>
 					
 											<button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
 												<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -167,7 +167,7 @@
 													class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
 												>
 													<div class="flex items-center justify-between space-x-4 px-2">
-														<h1 class="text-xl font-medium text-gray-800 ">Update Calendar</h1>
+														<h1 class="text-xl font-medium text-gray-800 ">Update Holiday</h1>
 								
 														<button @click="updateModal = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
 															<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -255,7 +255,7 @@
 													class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
 												>
 													<div class="flex items-center justify-between space-x-4 px-2">
-														<h1 class="text-xl font-medium text-gray-800 ">Update Calendar</h1>
+														<h1 class="text-xl font-medium text-gray-800 ">Update Holiday</h1>
 								
 														<button @click="updateModal = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
 															<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -343,7 +343,7 @@
 													class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
 												>
 													<div class="flex items-center justify-between space-x-4 px-2">
-														<h1 class="text-xl font-medium text-gray-800 ">Update Calendar</h1>
+														<h1 class="text-xl font-medium text-gray-800 ">Update Holiday</h1>
 								
 														<button @click="updateModal = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
 															<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -431,7 +431,7 @@
 													class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
 												>
 													<div class="flex items-center justify-between space-x-4 px-2">
-														<h1 class="text-xl font-medium text-gray-800 ">Update Calendar</h1>
+														<h1 class="text-xl font-medium text-gray-800 ">Update Holiday</h1>
 								
 														<button @click="updateModal = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
 															<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -519,7 +519,7 @@
 													class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
 												>
 													<div class="flex items-center justify-between space-x-4 px-2">
-														<h1 class="text-xl font-medium text-gray-800 ">Update Calendar</h1>
+														<h1 class="text-xl font-medium text-gray-800 ">Update Holiday</h1>
 								
 														<button @click="updateModal = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
 															<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -607,7 +607,7 @@
 													class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
 												>
 													<div class="flex items-center justify-between space-x-4 px-2">
-														<h1 class="text-xl font-medium text-gray-800 ">Update Calendar</h1>
+														<h1 class="text-xl font-medium text-gray-800 ">Update Holiday</h1>
 								
 														<button @click="updateModal = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
 															<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -695,7 +695,7 @@
 													class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
 												>
 													<div class="flex items-center justify-between space-x-4 px-2">
-														<h1 class="text-xl font-medium text-gray-800 ">Update Calendar</h1>
+														<h1 class="text-xl font-medium text-gray-800 ">Update Holiday</h1>
 								
 														<button @click="updateModal = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
 															<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -783,7 +783,7 @@
 													class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
 												>
 													<div class="flex items-center justify-between space-x-4 px-2">
-														<h1 class="text-xl font-medium text-gray-800 ">Update Calendar</h1>
+														<h1 class="text-xl font-medium text-gray-800 ">Update Holiday</h1>
 								
 														<button @click="updateModal = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
 															<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -871,7 +871,7 @@
 													class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
 												>
 													<div class="flex items-center justify-between space-x-4 px-2">
-														<h1 class="text-xl font-medium text-gray-800 ">Update Calendar</h1>
+														<h1 class="text-xl font-medium text-gray-800 ">Update Holiday</h1>
 								
 														<button @click="updateModal = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
 															<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
