@@ -12,7 +12,7 @@
 			<div class="p-4 relative h-full w-full text-center bg-white rounded-2xl shadow-lg white:bg-gray-800 white:border-gray-700">
 				<div class="flex justify-between  pb-4 bg-white white:bg-gray-900">
 					<div > 
-						<h2 class="uppercase font-semibold py-2">calendar</h2>
+						<h2 class="uppercase font-semibold py-2">Holidays</h2>
 					</div>
 					<div class="flex">
 						<div x-data="{ modelOpen: false }">
