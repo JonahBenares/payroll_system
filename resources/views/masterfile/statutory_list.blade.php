@@ -70,10 +70,15 @@
                                                     <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                                 </div>
                                             </div>
-
-                                            <div class="mt-4 px-2">
-                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Deductions</label>
-                                                <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                            <div class="flex ">
+                                                <div class="mt-4 w-full px-2">
+                                                    <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Deductions</label>
+                                                    <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                </div>
+                                                <div class="mt-4 w-full px-2">
+                                                    <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">As of Date</label>
+                                                    <input type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                </div>
                                             </div>
         
                                             <div class="flex justify-end mt-6 px-2">
@@ -111,6 +116,9 @@
                                 <th scope="col" class="py-3 px-6" width="%">
                                     Deductions
                                 </th>
+                                <th scope="col" class="py-3 px-6" width="%">
+                                    As of Date
+                                </th>
                                 <th scope="col" class="py-3 px-6" width="11%" align="center">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
@@ -131,6 +139,9 @@
                                 </td>
                                 <td class="py-3 px-6">
                                     135.00
+                                </td>
+                                <td class="py-3 px-6">
+                                    2022-10-01
                                 </td>
                                 <td class="py-3 px-6 justify-between flex" align="center">
                                     <div x-data="{ updateModal: false }">
@@ -189,9 +200,15 @@
                                                             </div>
                                                         </div>
             
-                                                        <div class="mt-4 px-2">
-                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Deductions</label>
-                                                            <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                        <div class="flex ">
+                                                            <div class="mt-4 w-full px-2">
+                                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Deductions</label>
+                                                                <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                            </div>
+                                                            <div class="mt-4 w-full px-2">
+                                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">As of Date</label>
+                                                                <input type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                            </div>
                                                         </div>
                     
                                                         <div class="flex justify-end mt-6 px-2">
@@ -224,6 +241,9 @@
                                 <td class="py-3 px-6">
                                     157.50
                                 </td>
+                                <td class="py-3 px-6">
+                                    2022-09-15
+                                </td>
                                 <td class="py-3 px-6 justify-between flex" align="center">
                                     <div x-data="{ updateModal: false }">
                                         <button @click="updateModal =!updateModal" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
@@ -280,10 +300,15 @@
                                                                 <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                                             </div>
                                                         </div>
-            
-                                                        <div class="mt-4 px-2">
-                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Deductions</label>
-                                                            <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                        <div class="flex ">
+                                                            <div class="mt-4 w-full px-2">
+                                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Deductions</label>
+                                                                <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                            </div>
+                                                            <div class="mt-4 w-full px-2">
+                                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">As of Date</label>
+                                                                <input type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                            </div>
                                                         </div>
                     
                                                         <div class="flex justify-end mt-6 px-2">
@@ -316,6 +341,9 @@
                                 <td class="py-3 px-6">
                                     180.00
                                 </td>
+                                <td class="py-3 px-6">
+                                    2022-08-01
+                                </td>
                                 <td class="py-3 px-6 justify-between flex" align="center">
                                     <div x-data="{ updateModal: false }">
                                         <button @click="updateModal =!updateModal" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
@@ -373,9 +401,15 @@
                                                             </div>
                                                         </div>
             
-                                                        <div class="mt-4 px-2">
-                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Deductions</label>
-                                                            <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                        <div class="flex ">
+                                                            <div class="mt-4 w-full px-2">
+                                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Deductions</label>
+                                                                <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                            </div>
+                                                            <div class="mt-4 w-full px-2">
+                                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">As of Date</label>
+                                                                <input type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                            </div>
                                                         </div>
                     
                                                         <div class="flex justify-end mt-6 px-2">
@@ -408,6 +442,9 @@
                                 <td class="py-3 px-6">
                                     202.50
                                 </td>
+                                <td class="py-3 px-6">
+                                    2022-07-15
+                                </td>
                                 <td class="py-3 px-6 justify-between flex" align="center">
                                     <div x-data="{ updateModal: false }">
                                         <button @click="updateModal =!updateModal" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
@@ -465,9 +502,15 @@
                                                             </div>
                                                         </div>
             
-                                                        <div class="mt-4 px-2">
-                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Deductions</label>
-                                                            <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                        <div class="flex ">
+                                                            <div class="mt-4 w-full px-2">
+                                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Deductions</label>
+                                                                <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                            </div>
+                                                            <div class="mt-4 w-full px-2">
+                                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">As of Date</label>
+                                                                <input type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                            </div>
                                                         </div>
                     
                                                         <div class="flex justify-end mt-6 px-2">
@@ -500,6 +543,9 @@
                                 <td class="py-3 px-6">
                                     225.00
                                 </td>
+                                <td class="py-3 px-6">
+                                    2022-08-15
+                                </td>
                                 <td class="py-3 px-6 justify-between flex" align="center">
                                     <div x-data="{ updateModal: false }">
                                         <button @click="updateModal =!updateModal" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
@@ -557,9 +603,15 @@
                                                             </div>
                                                         </div>
             
-                                                        <div class="mt-4 px-2">
-                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Deductions</label>
-                                                            <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                        <div class="flex ">
+                                                            <div class="mt-4 w-full px-2">
+                                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Deductions</label>
+                                                                <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                            </div>
+                                                            <div class="mt-4 w-full px-2">
+                                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">As of Date</label>
+                                                                <input type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                            </div>
                                                         </div>
                     
                                                         <div class="flex justify-end mt-6 px-2">
@@ -592,6 +644,9 @@
                                 <td class="py-3 px-6">
                                     400
                                 </td>
+                                <td class="py-3 px-6">
+                                    2022-07-15
+                                </td>
                                 <td class="py-3 px-6 justify-between flex" align="center">
                                     <div x-data="{ updateModal: false }">
                                         <button @click="updateModal =!updateModal" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
@@ -649,9 +704,15 @@
                                                             </div>
                                                         </div>
             
-                                                        <div class="mt-4 px-2">
-                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Deductions</label>
-                                                            <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                        <div class="flex ">
+                                                            <div class="mt-4 w-full px-2">
+                                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Deductions</label>
+                                                                <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                            </div>
+                                                            <div class="mt-4 w-full px-2">
+                                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">As of Date</label>
+                                                                <input type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                            </div>
                                                         </div>
                     
                                                         <div class="flex justify-end mt-6 px-2">
@@ -684,6 +745,9 @@
                                 <td class="py-3 px-6">
                                     3200.00
                                 </td>
+                                <td class="py-3 px-6">
+                                    2022-09-10
+                                </td>
                                 <td class="py-3 px-6 justify-between flex" align="center">
                                     <div x-data="{ updateModal: false }">
                                         <button @click="updateModal =!updateModal" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
@@ -741,9 +805,15 @@
                                                             </div>
                                                         </div>
             
-                                                        <div class="mt-4 px-2">
-                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Deductions</label>
-                                                            <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                        <div class="flex ">
+                                                            <div class="mt-4 w-full px-2">
+                                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Deductions</label>
+                                                                <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                            </div>
+                                                            <div class="mt-4 w-full px-2">
+                                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">As of Date</label>
+                                                                <input type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                            </div>
                                                         </div>
                     
                                                         <div class="flex justify-end mt-6 px-2">
@@ -776,6 +846,9 @@
                                 <td class="py-3 px-6">
                                     100.00
                                 </td>
+                                <td class="py-3 px-6">
+                                    2022-08-14
+                                </td>
                                 <td class="py-3 px-6 justify-between flex" align="center">
                                     <div x-data="{ updateModal: false }">
                                         <button @click="updateModal =!updateModal" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
@@ -833,9 +906,15 @@
                                                             </div>
                                                         </div>
             
-                                                        <div class="mt-4 px-2">
-                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Deductions</label>
-                                                            <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                        <div class="flex ">
+                                                            <div class="mt-4 w-full px-2">
+                                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Deductions</label>
+                                                                <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                            </div>
+                                                            <div class="mt-4 w-full px-2">
+                                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">As of Date</label>
+                                                                <input type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                            </div>
                                                         </div>
                     
                                                         <div class="flex justify-end mt-6 px-2">
