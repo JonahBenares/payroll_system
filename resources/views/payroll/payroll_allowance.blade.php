@@ -50,6 +50,9 @@
                                     Allowance 
                                 </th>
                                 <th scope="col" class="py-3 px-6" width="15%">
+                                    Total Hours 
+                                </th>
+                                <th scope="col" class="py-3 px-6" width="15%">
                                     Total Amount
                                 </th>
                                 <th scope="col" class="py-3 px-6" width="10%" align="center">
@@ -68,7 +71,10 @@
                                     5,000
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    5,000
+                                    8
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    40,000
                                 </td>
                                 <td class="py-3 px-6 justify-center flex" align="center">
                                     <div x-data="{ modelOpen: false }">
@@ -130,7 +136,10 @@
                                     9,000
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    9,000
+                                    10
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    90,000
                                 </td>
                                 <td class="py-3 px-6 justify-center flex" align="center">
                                     <div x-data="{ modelOpen: false }">
@@ -164,7 +173,7 @@
                                                     class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
                                                 >
                                                     <div class="flex items-center justify-between space-x-4 px-2">
-                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Suzzette Molina </h1>
                                 
                                                         <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
                                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -192,7 +201,10 @@
                                     4,500
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    4,500
+                                    15
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    67,500
                                 </td>
                                 <td class="py-3 px-6 justify-center flex" align="center">
                                     <div x-data="{ modelOpen: false }">
@@ -226,7 +238,7 @@
                                                     class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
                                                 >
                                                     <div class="flex items-center justify-between space-x-4 px-2">
-                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Sydney Austria </h1>
                                 
                                                         <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
                                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -254,7 +266,10 @@
                                     3,200
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    3,200
+                                    24
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    76,800
                                 </td>
                                 <td class="py-3 px-6 justify-center flex" align="center">
                                     <div x-data="{ modelOpen: false }">
@@ -288,7 +303,7 @@
                                                     class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
                                                 >
                                                     <div class="flex items-center justify-between space-x-4 px-2">
-                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Solenn De Leon </h1>
                                 
                                                         <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
                                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -317,7 +332,10 @@
                                     5,000
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    5,000
+                                    5
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    25,000
                                 </td>
                                 <td class="py-3 px-6 justify-center flex" align="center">
                                     <div x-data="{ modelOpen: false }">
@@ -351,7 +369,7 @@
                                                     class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
                                                 >
                                                     <div class="flex items-center justify-between space-x-4 px-2">
-                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Celine Tigbaliwana </h1>
                                 
                                                         <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
                                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
