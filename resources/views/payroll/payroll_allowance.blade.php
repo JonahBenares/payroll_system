@@ -136,39 +136,38 @@
                                                             <td></td>
                                                         </tr>
                                                         <tr>
-                                                            <td></td>
-                                                            <td></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td></td>
+                                                            <td>Overtime Pay</td>
                                                             <td></td>
                                                         </tr>
                                                         <tr>
-                                                            <td></td>
-                                                            <td></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td></td>
+                                                            <td>Night Premium</td>
                                                             <td></td>
                                                         </tr>
                                                         <tr>
-                                                            <td></td>
-                                                            <td></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td></td>
+                                                            <td>Adjustments</td>
                                                             <td></td>
                                                         </tr>
                                                         <tr>
-                                                            <td></td>
-                                                            <td></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td></td>
+                                                            <td>20% COMECQ Allowance</td>
                                                             <td></td>
                                                         </tr>
                                                         <tr>
+                                                            <td>Total</td>
                                                             <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="">Less:</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Absences/Undertime</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Tardiness</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Gross Pay</td>
                                                             <td></td>
                                                         </tr>
 

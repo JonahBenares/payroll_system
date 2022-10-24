@@ -71,12 +71,13 @@
                                             
                                             <div class="flex ">
                                                 <div class="mt-4 w-full px-2">
-                                                    <label class="block text-sm text-gray-700 capitalize white:text-gray-200">Time In</label>
-                                                    <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                                                </div>
-                                                <div class="mt-4 w-full px-2">
-                                                    <label class="block text-sm text-gray-700 capitalize white:text-gray-200">Time Out</label>
-                                                    <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                    <label class="block text-sm text-gray-700 capitalize white:text-gray-200">Schedule Name</label>
+                                                    <select type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                        <option value=""></option>
+                                                        <option>Sample Schedule 1 - 7:00-4:00</option>
+                                                        <option>Sample Schedule 2 - 7:30-5:30</option>
+                                                        <option>Sample Schedule 32 - 8:00-5:00</option>
+                                                    </select>
                                                 </div>
                                             </div> 
                                             <div class="hidden" id="regulars">
@@ -103,33 +104,18 @@
                                                     </div>
 
                                                     <div class="" x-show="show">
-                                                        <div class="flex ">
-                                                            <div class="mt-4 w-full px-2">
-                                                                <label class="block text-sm text-gray-700 capitalize white:text-gray-200">
-                                                                    Rest Day 1
-                                                                </label>
-                                                                <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                                                            </div>
-                                                            <div class="mt-4 w-full px-2">
-                                                                <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">Rest Day 2</label>
-                                                                <input type="email" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                                                            </div>
-                                                        </div>
-                                                        <div class="flex ">
-                                                            <div class="mt-4 w-full px-2">
-                                                                <label class="block text-sm text-gray-700 capitalize white:text-gray-200">
-                                                                    Daily Rate
-                                                                </label>
-                                                                <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                                                            </div>
-                                                            <div class="mt-4 w-full px-2">
-                                                                <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">Monthly Rate</label>
-                                                                <input type="email" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                                                            </div>
+                                                        <div class="mt-4 px-2">
+                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Which Rest Day</label>
+                                                            <select class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                                <option value="">Rest Day 1</option>
+                                                            </select>   
                                                         </div>
                                                         <div class="mt-4 px-2">
-                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Salary Type</label>
-                                                            <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Alternate Week</label>
+                                                            <select class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                                <option value="">1,3,5</option>
+                                                                <option value="">2,4</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>

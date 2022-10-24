@@ -131,7 +131,7 @@
                     </tr>
                 </thead>
                 <tbody class="sticky top-12">
-                    <tr class="bg-green-200 border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
+                    <tr class=" border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                         <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                             MID
                         </th>
