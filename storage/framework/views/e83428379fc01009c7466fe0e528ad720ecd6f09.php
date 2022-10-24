@@ -22,13 +22,13 @@
         <div class="min-h-screen bg-gray-100">
             <main class="bg-gray-100 white:bg-gray-800 rounded-2xl h-screen overflow-hidden relative">
                 
-                <div class="flex items-start justify-between">
+                <div class="flex items-start justify-center">
                     
                 
                 <?php echo $__env->make('layouts.navigation', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                 
-                <div class="flex flex-col w-full pl-0 md:p-4 md:space-y-4">
-                    
+                <div class="flex flex-col w-3/4 pl-0 md:p-4 md:space-y-4">
+                
                     <header class="w-full shadow-lg bg-white white:bg-gray-700 items-center h-16 rounded-2xl ">
                         <div class="relative  flex flex-col justify-center h-full px-3 mx-auto flex-center">
                             <div class="relative items-center pl-1 flex w-full lg:max-w-68 sm:pr-2 sm:ml-0">

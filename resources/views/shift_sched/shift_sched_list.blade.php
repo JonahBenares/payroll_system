@@ -1,5 +1,4 @@
 <x-app-layout>
-    <x-slot name="header"></x-slot>
     <style>
         [x-cloak] {
         display: none;
@@ -237,7 +236,7 @@
                         </button>
                     </div>
                 </div>
-                <div class=" hover:overflow-x-auto overflow-x-hidden h-100 max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 border" style="width: 1100px">
+                <div class=" hover:overflow-x-auto overflow-x-hidden h-100 max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 border">
                     <table class="text-sm text-left text-gray-500 white:text-gray-400 border border-gray-200 border-collapse">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-10">
                             <tr>
