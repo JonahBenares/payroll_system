@@ -90,10 +90,13 @@
                     <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-1">
                             <tr class="">
-                                <th scope="col" class="py-3 px-6" width="45%">
+                                <th scope="col" class="py-3 px-6" width="30%">
                                     Adjustment Rate name
                                 </th>
-                                <th scope="col" class="py-3 px-6" width="45%">
+                                <th scope="col" class="py-3 px-6" width="30%">
+                                    Deduction Type
+                                </th>
+                                <th scope="col" class="py-3 px-6" width="30%">
                                     Rate
                                 </th>
                                 <th scope="col" class="py-3 px-6" width="10%" align="center">
@@ -108,6 +111,9 @@
                                 <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     Night Premium
                                 </th>
+                                <td class="py-4 px-6">
+                                    Percentage
+                                </td>
                                 <td class="py-4 px-6">
                                     10%
                                 </td>
@@ -188,6 +194,9 @@
                                     HMO Rate
                                 </th>
                                 <td class="py-4 px-6">
+                                    Actual Amount
+                                </td>
+                                <td class="py-4 px-6">
                                     996.35
                                 </td>
                                 <td class="py-4 px-6 flex justify-center" align="center">
@@ -266,6 +275,9 @@
                                 <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     Regular Holiday 
                                 </th>
+                                <td class="py-4 px-6">
+                                    Percentage
+                                </td>
                                 <td class="py-4 px-6">
                                     100%
                                 </td>
@@ -346,6 +358,9 @@
                                     Special Holiday 
                                 </th>
                                 <td class="py-4 px-6">
+                                    Percentage
+                                </td>
+                                <td class="py-4 px-6">
                                     30%
                                 </td>
                                 <td class="py-4 px-6 flex justify-center" align="center">
@@ -424,6 +439,9 @@
                                 <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     Rest Day 
                                 </th>
+                                <td class="py-4 px-6">
+                                    Percentage
+                                </td>
                                 <td class="py-4 px-6">
                                     100%
                                 </td>
