@@ -117,7 +117,7 @@
                                                     x-transition:leave="transition ease-in duration-200 transform"
                                                     x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
                                                     x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                                    class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
+                                                    class="inline-block w-full max-w-lg p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
                                                 >
                                                     <div class="flex items-center justify-between space-x-4 px-2">
                                                         <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
@@ -128,7 +128,118 @@
                                                             </svg>
                                                         </button>
                                                     </div>
-                                                    Payslip here
+                                                    <table class="border border-x border-y border-gray-300 mt-2 ">
+                                                        <tr>
+                                                            <td class="px-1 py-1 border-b" colspan="2">Period : Oct 15, 2022 (Sept 21-Oct 5, 2022)</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-1" colspan="2">Gross Pay:</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="50%" class="px-5">Basic Salary</td>
+                                                            <td width="50%" class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Rest Day</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Holiday</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Overtime Pay</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Night Premium</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Adjustments</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">20% COMECQ Allowance</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Total</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5" colspan="">Less:</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Absences/Undertime</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Tardiness</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="pl-20">Gross Pay</td>
+                                                            <td class="px-1 border-b-2"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-1 pt-2">Deductions:</td>
+                                                            <td class="px-1"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">SSS Premium</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">SSS Loan</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Withholding Tax</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Phil Health</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Pag-Ibig Fund</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Pag-Ibig Loan</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Pag-Ibig MP2</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Coop Investment</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Coop Loan</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">AUB Loan</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Others</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="pl-20">Total Deductions</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-1">Net Pay</td>
+                                                            <td class="px-1 px-1 border-b text-right"><span class="text-lg
+                                                                font-bold border-b-2">999,999</span></td>
+                                                        </tr>
+                                                    </table>
                                                 </div>
                                             </div>
                                         </div>
@@ -182,7 +293,7 @@
                                                     x-transition:leave="transition ease-in duration-200 transform"
                                                     x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
                                                     x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                                    class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
+                                                    class="inline-block w-full max-w-lg p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
                                                 >
                                                     <div class="flex items-center justify-between space-x-4 px-2">
                                                         <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
@@ -193,7 +304,118 @@
                                                             </svg>
                                                         </button>
                                                     </div>
-                                                    Payslip here
+                                                    <table class="border border-x border-y border-gray-300 mt-2 ">
+                                                        <tr>
+                                                            <td class="px-1 py-1 border-b" colspan="2">Period : Oct 15, 2022 (Sept 21-Oct 5, 2022)</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-1" colspan="2">Gross Pay:</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="50%" class="px-5">Basic Salary</td>
+                                                            <td width="50%" class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Rest Day</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Holiday</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Overtime Pay</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Night Premium</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Adjustments</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">20% COMECQ Allowance</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Total</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5" colspan="">Less:</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Absences/Undertime</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Tardiness</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="pl-20">Gross Pay</td>
+                                                            <td class="px-1 border-b-2"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-1 pt-2">Deductions:</td>
+                                                            <td class="px-1"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">SSS Premium</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">SSS Loan</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Withholding Tax</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Phil Health</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Pag-Ibig Fund</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Pag-Ibig Loan</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Pag-Ibig MP2</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Coop Investment</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Coop Loan</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">AUB Loan</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Others</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="pl-20">Total Deductions</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-1">Net Pay</td>
+                                                            <td class="px-1 px-1 border-b text-right"><span class="text-lg
+                                                                font-bold border-b-2">999,999</span></td>
+                                                        </tr>
+                                                    </table>
                                                 </div>
                                             </div>
                                         </div>
@@ -247,7 +469,7 @@
                                                     x-transition:leave="transition ease-in duration-200 transform"
                                                     x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
                                                     x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                                    class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
+                                                    class="inline-block w-full max-w-lg p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
                                                 >
                                                     <div class="flex items-center justify-between space-x-4 px-2">
                                                         <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
@@ -258,7 +480,118 @@
                                                             </svg>
                                                         </button>
                                                     </div>
-                                                    Payslip here
+                                                    <table class="border border-x border-y border-gray-300 mt-2 ">
+                                                        <tr>
+                                                            <td class="px-1 py-1 border-b" colspan="2">Period : Oct 15, 2022 (Sept 21-Oct 5, 2022)</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-1" colspan="2">Gross Pay:</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="50%" class="px-5">Basic Salary</td>
+                                                            <td width="50%" class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Rest Day</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Holiday</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Overtime Pay</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Night Premium</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Adjustments</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">20% COMECQ Allowance</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Total</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5" colspan="">Less:</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Absences/Undertime</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Tardiness</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="pl-20">Gross Pay</td>
+                                                            <td class="px-1 border-b-2"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-1 pt-2">Deductions:</td>
+                                                            <td class="px-1"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">SSS Premium</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">SSS Loan</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Withholding Tax</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Phil Health</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Pag-Ibig Fund</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Pag-Ibig Loan</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Pag-Ibig MP2</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Coop Investment</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Coop Loan</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">AUB Loan</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Others</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="pl-20">Total Deductions</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-1">Net Pay</td>
+                                                            <td class="px-1 px-1 border-b text-right"><span class="text-lg
+                                                                font-bold border-b-2">999,999</span></td>
+                                                        </tr>
+                                                    </table>
                                                 </div>
                                             </div>
                                         </div>
@@ -312,7 +645,7 @@
                                                     x-transition:leave="transition ease-in duration-200 transform"
                                                     x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
                                                     x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                                    class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
+                                                    class="inline-block w-full max-w-lg p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
                                                 >
                                                     <div class="flex items-center justify-between space-x-4 px-2">
                                                         <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
@@ -323,7 +656,118 @@
                                                             </svg>
                                                         </button>
                                                     </div>
-                                                    Payslip here
+                                                    <table class="border border-x border-y border-gray-300 mt-2 ">
+                                                        <tr>
+                                                            <td class="px-1 py-1 border-b" colspan="2">Period : Oct 15, 2022 (Sept 21-Oct 5, 2022)</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-1" colspan="2">Gross Pay:</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="50%" class="px-5">Basic Salary</td>
+                                                            <td width="50%" class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Rest Day</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Holiday</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Overtime Pay</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Night Premium</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Adjustments</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">20% COMECQ Allowance</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Total</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5" colspan="">Less:</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Absences/Undertime</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Tardiness</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="pl-20">Gross Pay</td>
+                                                            <td class="px-1 border-b-2"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-1 pt-2">Deductions:</td>
+                                                            <td class="px-1"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">SSS Premium</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">SSS Loan</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Withholding Tax</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Phil Health</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Pag-Ibig Fund</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Pag-Ibig Loan</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Pag-Ibig MP2</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Coop Investment</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Coop Loan</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">AUB Loan</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Others</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="pl-20">Total Deductions</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-1">Net Pay</td>
+                                                            <td class="px-1 px-1 border-b text-right"><span class="text-lg
+                                                                font-bold border-b-2">999,999</span></td>
+                                                        </tr>
+                                                    </table>
                                                 </div>
                                             </div>
                                         </div>
@@ -377,7 +821,7 @@
                                                     x-transition:leave="transition ease-in duration-200 transform"
                                                     x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
                                                     x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                                    class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
+                                                    class="inline-block w-full max-w-lg p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
                                                 >
                                                     <div class="flex items-center justify-between space-x-4 px-2">
                                                         <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares </h1>
@@ -388,7 +832,118 @@
                                                             </svg>
                                                         </button>
                                                     </div>
-                                                    Payslip here
+                                                    <table class="border border-x border-y border-gray-300 mt-2 ">
+                                                        <tr>
+                                                            <td class="px-1 py-1 border-b" colspan="2">Period : Oct 15, 2022 (Sept 21-Oct 5, 2022)</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-1" colspan="2">Gross Pay:</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="50%" class="px-5">Basic Salary</td>
+                                                            <td width="50%" class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Rest Day</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Holiday</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Overtime Pay</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Night Premium</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Adjustments</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">20% COMECQ Allowance</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Total</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5" colspan="">Less:</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Absences/Undertime</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Tardiness</td>
+                                                            <td class="px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="pl-20">Gross Pay</td>
+                                                            <td class="px-1 border-b-2"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-1 pt-2">Deductions:</td>
+                                                            <td class="px-1"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">SSS Premium</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">SSS Loan</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Withholding Tax</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Phil Health</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Pag-Ibig Fund</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Pag-Ibig Loan</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Pag-Ibig MP2</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Coop Investment</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Coop Loan</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">AUB Loan</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-5">Others</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="pl-20">Total Deductions</td>
+                                                            <td class="px-1 px-1 border-b"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="px-1">Net Pay</td>
+                                                            <td class="px-1 px-1 border-b text-right"><span class="text-lg
+                                                                font-bold border-b-2">999,999</span></td>
+                                                        </tr>
+                                                    </table>
                                                 </div>
                                             </div>
                                         </div>

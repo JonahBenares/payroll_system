@@ -541,7 +541,7 @@
                                 <td class="py-3 px-6">
                                     Twice a month
                                 </td>
-                                <td class="py-3 px-6">June 29, 2002</td>
+                                <td class="py-3 px-6"></td>
                                 <td class="py-3 px-6 flex justify-center" align="center">
                                     <div x-data="{ updateModal: false }">
                                         <button @click="updateModal =!updateModal" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 

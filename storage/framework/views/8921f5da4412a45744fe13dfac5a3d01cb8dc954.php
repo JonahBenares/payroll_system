@@ -72,6 +72,13 @@
                                                 </select>
                                             </div>
                                             <div class="px-2 mt-2">
+                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Deduction Type</label>
+                                                <select class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                    <option value="">Actual Amount</option>
+                                                    <option value="">Percentage</option>
+                                                </select>
+                                            </div>
+                                            <div class="px-2 mt-2">
                                                 <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Rate </label>
                                                 <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                             </div>
@@ -177,6 +184,13 @@
                                                             </select>
                                                         </div>
                                                         <div class="px-2 mt-2">
+                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Deduction Type</label>
+                                                            <select class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                                <option value="">Actual Amount</option>
+                                                                <option value="">Percentage</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="px-2 mt-2">
                                                             <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Rate </label>
                                                             <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                                         </div>
@@ -256,6 +270,13 @@
                                                                 <option value="">Philhealth Contribution</option>
                                                                 <option value="">Coop Loan</option>
                                                                 <option value="">SSS Contribution</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="px-2 mt-2">
+                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Deduction Type</label>
+                                                            <select class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                                <option value="">Actual Amount</option>
+                                                                <option value="">Percentage</option>
                                                             </select>
                                                         </div>
                                                         <div class="px-2 mt-2">
@@ -341,6 +362,13 @@
                                                             </select>
                                                         </div>
                                                         <div class="px-2 mt-2">
+                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Deduction Type</label>
+                                                            <select class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                                <option value="">Actual Amount</option>
+                                                                <option value="">Percentage</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="px-2 mt-2">
                                                             <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Rate </label>
                                                             <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                                         </div>
@@ -423,6 +451,13 @@
                                                             </select>
                                                         </div>
                                                         <div class="px-2 mt-2">
+                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Deduction Type</label>
+                                                            <select class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                                <option value="">Actual Amount</option>
+                                                                <option value="">Percentage</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="px-2 mt-2">
                                                             <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Rate </label>
                                                             <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                                         </div>
@@ -502,6 +537,13 @@
                                                                 <option value="">Philhealth Contribution</option>
                                                                 <option value="">Coop Loan</option>
                                                                 <option value="">SSS Contribution</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="px-2 mt-2">
+                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Deduction Type</label>
+                                                            <select class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                                <option value="">Actual Amount</option>
+                                                                <option value="">Percentage</option>
                                                             </select>
                                                         </div>
                                                         <div class="px-2 mt-2">
