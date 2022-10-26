@@ -52,6 +52,7 @@
                                 <th scope="col" class="py-3 px-3">
                                     Senior Dependent
                                 </th>
+                                <th scope="col" class="py-3 px-3">Pag-Ibig Rate</th>
                                 <th scope="col" class="py-3 px-3">Hourly Rate</th>
                                 <th scope="col" class="py-3 px-3">Daily Rate</th>
                                 <th scope="col" class="py-3 px-3">Monthly Rate</th>
@@ -115,6 +116,11 @@
                                 <td class="py-4 px-3">
                                     <div class="flex items-center">
                                         800
+                                    </div>
+                                </td>
+                                <td class="py-4 px-3">
+                                    <div class="flex items-center">
+                                        24,000
                                     </div>
                                 </td>
                                 <td class="py-4 px-3">
@@ -186,6 +192,11 @@
                                 </td>
                                 <td class="py-4 px-3">
                                     <div class="flex items-center">
+                                        24,000
+                                    </div>
+                                </td>
+                                <td class="py-4 px-3">
+                                    <div class="flex items-center">
                                         Daily
                                     </div>
                                 </td>
@@ -249,6 +260,11 @@
                                 <td class="py-4 px-3">
                                     <div class="flex items-center">
                                         800
+                                    </div>
+                                </td>
+                                <td class="py-4 px-3">
+                                    <div class="flex items-center">
+                                        24,000
                                     </div>
                                 </td>
                                 <td class="py-4 px-3">
@@ -320,6 +336,11 @@
                                 </td>
                                 <td class="py-4 px-3">
                                     <div class="flex items-center">
+                                        24,000
+                                    </div>
+                                </td>
+                                <td class="py-4 px-3">
+                                    <div class="flex items-center">
                                         Daily
                                     </div>
                                 </td>
@@ -383,6 +404,11 @@
                                 <td class="py-4 px-3">
                                     <div class="flex items-center">
                                         800
+                                    </div>
+                                </td>
+                                <td class="py-4 px-3">
+                                    <div class="flex items-center">
+                                        24,000
                                     </div>
                                 </td>
                                 <td class="py-4 px-3">
@@ -454,6 +480,11 @@
                                 </td>
                                 <td class="py-4 px-3">
                                     <div class="flex items-center">
+                                        24,000
+                                    </div>
+                                </td>
+                                <td class="py-4 px-3">
+                                    <div class="flex items-center">
                                         Monthly
                                     </div>
                                 </td>
@@ -521,6 +552,11 @@
                                 </td>
                                 <td class="py-4 px-3">
                                     <div class="flex items-center">
+                                        24,000
+                                    </div>
+                                </td>
+                                <td class="py-4 px-3">
+                                    <div class="flex items-center">
                                         Daily
                                     </div>
                                 </td>
@@ -584,6 +620,11 @@
                                 <td class="py-4 px-3">
                                     <div class="flex items-center">
                                         800
+                                    </div>
+                                </td>
+                                <td class="py-4 px-3">
+                                    <div class="flex items-center">
+                                        24,000
                                     </div>
                                 </td>
                                 <td class="py-4 px-3">
