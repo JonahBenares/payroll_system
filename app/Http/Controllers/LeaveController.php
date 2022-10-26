@@ -14,4 +14,8 @@ class LeaveController extends Controller
     public function overtime(){
         return view('filing.ot_list');
     }
+
+    public function swap_list(){
+        return view('filing.swap_list');
+    }
 }
