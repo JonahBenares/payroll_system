@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class MasterfileController extends Controller
 {
+
+    public function accounting_entry(){
+        return view('masterfile.accounting_entry');
+    }
+
     public function employee_list(){
         return view('masterfile.employee_list');
     }
@@ -28,6 +33,10 @@ class MasterfileController extends Controller
 
     public function rates_list(){
         return view('masterfile.rates_list');
+    }
+
+    public function hmo_rates(){
+        return view('masterfile.hmo_rates');
     }
 
     public function deduction_list(){
