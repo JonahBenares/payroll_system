@@ -1,3 +1,4 @@
+<script src="//unpkg.com/alpinejs" defer></script>
 <x-app-layout>
     <x-slot name="header"></x-slot>
     <!-- component -->
@@ -54,15 +55,16 @@
                                             </button>
                                         </div>
                     
-                                        <form class="mt-5">
+                                        <form class="mt-5" x-data="createAccountingEntry()"  @submit.prevent="submit">
                                             <div class="px-2">
                                                 <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Description</label>
-                                                <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                <input type="text" x-model="data.entry" name="entry" required class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                             </div>
                                             <div class="flex justify-end mt-6 px-2">
-                                                <button type="button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                                                <button type="submit" x-text="buttonText" :disabled="loading" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                                                     Save
                                                 </button>
+                                                
                                             </div>
                                         </form>
                                     </div>
@@ -496,7 +498,35 @@
             
         </div>
     </div>
-
-    
-        
 </x-app-layout>
+
+<script>
+    const FORMSPARK_ACTION_URL = "https://submit-form.com/technotrampoline";
+    function createAccountingEntry() {
+        return {
+            data: {
+                entry: "",
+            },
+            buttonText: "Save",
+            loading: false,
+            submit() {
+                this.buttonText = "Submitting...";
+                this.loading = true;
+               alert(this.data);
+              
+                 /*fetch(FORMSPARK_ACTION_URL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                },
+                body: JSON.stringify(this.data),
+            })*/
+
+            }
+
+           
+        };
+    
+    }
+</script>
