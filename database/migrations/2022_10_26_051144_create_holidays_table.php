@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('holiday_name');
             $table->string('holiday_type');
             $table->date('holiday_date');
+            $table->float('holiday_rate',10,2);
             $table->timestamps();
         });
     }
