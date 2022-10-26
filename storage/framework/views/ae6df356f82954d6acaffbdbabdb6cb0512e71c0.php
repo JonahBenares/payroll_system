@@ -166,7 +166,7 @@
                                     Month
                                 </th>
                                 <th scope="col" class="py-3 px-6" width="15%">
-                                    Shift From
+                                    Shift From (RD)
                                 </th>
                                 <th scope="col" class="py-3 px-6" width="15%">
                                     Shift To
