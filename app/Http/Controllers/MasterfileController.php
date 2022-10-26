@@ -7,22 +7,24 @@ use Illuminate\Http\Request;
 class MasterfileController extends Controller
 {
 
-    public function accounting_entry(){
-        return view('masterfile.accounting_entry');
-    }
+    // public function accounting_entry(){
+    //     return view('masterfile.accounting_entry');
+    // }
 
-    public function employee_list(){
-        return view('masterfile.employee_list');
-    }
+    // public function employee_list(){
+    //     return view('masterfile.employee_list');
+    // }
 
-    public function schedule_list(){
-        return view('masterfile.schedule_list');
-    }
+    // public function schedule_list(){
+    //     return view('masterfile.schedule_list');
+    // }
 
-    public function calendar_list(){
-        return view('masterfile.calendar_list');
+    // public function calendar_list(){
+    //     return view('masterfile.calendar_list');
+    // }
+    public function payslip_info(){
+        return view('masterfile.payslip_info');
     }
-
     public  function allowance_list(){
         return view('masterfile.allowance_list');
     }
@@ -56,8 +58,6 @@ class MasterfileController extends Controller
         return view('masterfile.cut_off_list');
     }
 
-    public function payslip_info(){
-        return view('masterfile.payslip_info');
-    }
+    
 
 }
