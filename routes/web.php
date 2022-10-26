@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MasterfileController;
 use App\Http\Controllers\Shift_ScheduleController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\UploadAllowController;
@@ -28,7 +29,12 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::get('/accounting_entry', [MasterfileController::class, 'accounting_entry'])->middleware(['auth'])->name('accounting_entry');
-Route::get('/employee_list', [MasterfileController::class, 'employee_list'])->middleware(['auth'])->name('employee_list');
+// Employee 
+Route::get('/employee_list', [EmployeeController::class, 'index'])->middleware(['auth'])->name('employee_list');
+Route::get('/employee_add', [EmployeeController::class, 'create'])->middleware(['auth'])->name('employee_add');
+Route::get('/employee_update', [EmployeeController::class, 'edit'])->middleware(['auth'])->name('employee_update');
+
+
 Route::get('/schedule_list', [MasterfileController::class, 'schedule_list'])->middleware(['auth'])->name('schedule_list');
 Route::get('/calendar_list', [MasterfileController::class, 'calendar_list'])->middleware(['auth'])->name('calendar_list');
 Route::get('/allowance_list', [MasterfileController::class, 'allowance_list'])->middleware(['auth'])->name('allowance_list');
