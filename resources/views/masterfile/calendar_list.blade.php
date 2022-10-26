@@ -545,18 +545,24 @@
 															<label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Date</label>
 															<input type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
 														</div>
-														<div class="mt-4 px-2">
+														<div class=" mt-4 px-2">
 															<label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Holiday Name</label>
 															<input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+														</div>
+														<div class=" mt-4 px-2">
+															<label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Holiday Type</label>
+															<select type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+																<option value=""> -- Select Type -- </option>
+															</select>
 														</div>
 														
 														<div class="flex ">
 															<div class="mt-4 w-full px-2">
-																<label class="block text-sm text-gray-700 capitalize white:text-gray-200">Holiday Type</label>
+																<label class="block text-sm text-gray-700 capitalize white:text-gray-200">Year</label>
 																<input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
 															</div>
 															<div class="mt-4 w-full px-2">
-																<label class="block text-sm text-gray-700 capitalize white:text-gray-200">Year</label>
+																<label class="block text-sm text-gray-700 capitalize white:text-gray-200">Rate</label>
 																<input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
 															</div>
 														</div> 
@@ -634,18 +640,24 @@
 															<label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Date</label>
 															<input type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
 														</div>
-														<div class="mt-4 px-2">
+														<div class=" mt-4 px-2">
 															<label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Holiday Name</label>
 															<input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+														</div>
+														<div class=" mt-4 px-2">
+															<label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Holiday Type</label>
+															<select type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+																<option value=""> -- Select Type -- </option>
+															</select>
 														</div>
 														
 														<div class="flex ">
 															<div class="mt-4 w-full px-2">
-																<label class="block text-sm text-gray-700 capitalize white:text-gray-200">Holiday Type</label>
+																<label class="block text-sm text-gray-700 capitalize white:text-gray-200">Year</label>
 																<input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
 															</div>
 															<div class="mt-4 w-full px-2">
-																<label class="block text-sm text-gray-700 capitalize white:text-gray-200">Year</label>
+																<label class="block text-sm text-gray-700 capitalize white:text-gray-200">Rate</label>
 																<input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
 															</div>
 														</div> 
@@ -723,18 +735,24 @@
 															<label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Date</label>
 															<input type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
 														</div>
-														<div class="mt-4 px-2">
+														<div class=" mt-4 px-2">
 															<label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Holiday Name</label>
 															<input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+														</div>
+														<div class=" mt-4 px-2">
+															<label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Holiday Type</label>
+															<select type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+																<option value=""> -- Select Type -- </option>
+															</select>
 														</div>
 														
 														<div class="flex ">
 															<div class="mt-4 w-full px-2">
-																<label class="block text-sm text-gray-700 capitalize white:text-gray-200">Holiday Type</label>
+																<label class="block text-sm text-gray-700 capitalize white:text-gray-200">Year</label>
 																<input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
 															</div>
 															<div class="mt-4 w-full px-2">
-																<label class="block text-sm text-gray-700 capitalize white:text-gray-200">Year</label>
+																<label class="block text-sm text-gray-700 capitalize white:text-gray-200">Rate</label>
 																<input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
 															</div>
 														</div> 
@@ -812,18 +830,24 @@
 															<label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Date</label>
 															<input type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
 														</div>
-														<div class="mt-4 px-2">
+														<div class=" mt-4 px-2">
 															<label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Holiday Name</label>
 															<input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+														</div>
+														<div class=" mt-4 px-2">
+															<label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Holiday Type</label>
+															<select type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+																<option value=""> -- Select Type -- </option>
+															</select>
 														</div>
 														
 														<div class="flex ">
 															<div class="mt-4 w-full px-2">
-																<label class="block text-sm text-gray-700 capitalize white:text-gray-200">Holiday Type</label>
+																<label class="block text-sm text-gray-700 capitalize white:text-gray-200">Year</label>
 																<input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
 															</div>
 															<div class="mt-4 w-full px-2">
-																<label class="block text-sm text-gray-700 capitalize white:text-gray-200">Year</label>
+																<label class="block text-sm text-gray-700 capitalize white:text-gray-200">Rate</label>
 																<input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
 															</div>
 														</div> 
@@ -901,18 +925,24 @@
 															<label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Date</label>
 															<input type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
 														</div>
-														<div class="mt-4 px-2">
+														<div class=" mt-4 px-2">
 															<label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Holiday Name</label>
 															<input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+														</div>
+														<div class=" mt-4 px-2">
+															<label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Holiday Type</label>
+															<select type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+																<option value=""> -- Select Type -- </option>
+															</select>
 														</div>
 														
 														<div class="flex ">
 															<div class="mt-4 w-full px-2">
-																<label class="block text-sm text-gray-700 capitalize white:text-gray-200">Holiday Type</label>
+																<label class="block text-sm text-gray-700 capitalize white:text-gray-200">Year</label>
 																<input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
 															</div>
 															<div class="mt-4 w-full px-2">
-																<label class="block text-sm text-gray-700 capitalize white:text-gray-200">Year</label>
+																<label class="block text-sm text-gray-700 capitalize white:text-gray-200">Rate</label>
 																<input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
 															</div>
 														</div> 
