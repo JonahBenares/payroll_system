@@ -378,46 +378,66 @@
                                                         </tr>
                                                         <tr>
                                                             <td width="50%" class="px-5">Basic Salary</td>
-                                                            <td width="50%" class="px-1 border-b"></td>
+                                                            <td width="50%" class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Rest Day</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Holiday</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Overtime Pay</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Night Premium</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Adjustments</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">20% COMECQ Allowance</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Total</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5" colspan="">Less:</td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Absences/Undertime</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Tardiness</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="pl-20">Gross Pay</td>
@@ -429,51 +449,75 @@
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">SSS Premium</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">SSS Loan</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Withholding Tax</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Phil Health</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Pag-Ibig Fund</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Pag-Ibig Loan</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Pag-Ibig MP2</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Coop Investment</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Coop Loan</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">AUB Loan</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Others</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="pl-20">Total Deductions</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-1">Net Pay</td>
@@ -775,46 +819,66 @@
                                                         </tr>
                                                         <tr>
                                                             <td width="50%" class="px-5">Basic Salary</td>
-                                                            <td width="50%" class="px-1 border-b"></td>
+                                                            <td width="50%" class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Rest Day</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Holiday</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Overtime Pay</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Night Premium</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Adjustments</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">20% COMECQ Allowance</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Total</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5" colspan="">Less:</td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Absences/Undertime</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Tardiness</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="pl-20">Gross Pay</td>
@@ -826,51 +890,75 @@
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">SSS Premium</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">SSS Loan</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Withholding Tax</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Phil Health</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Pag-Ibig Fund</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Pag-Ibig Loan</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Pag-Ibig MP2</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Coop Investment</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Coop Loan</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">AUB Loan</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Others</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="pl-20">Total Deductions</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-1">Net Pay</td>
@@ -1172,46 +1260,66 @@
                                                         </tr>
                                                         <tr>
                                                             <td width="50%" class="px-5">Basic Salary</td>
-                                                            <td width="50%" class="px-1 border-b"></td>
+                                                            <td width="50%" class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Rest Day</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Holiday</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Overtime Pay</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Night Premium</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Adjustments</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">20% COMECQ Allowance</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Total</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5" colspan="">Less:</td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Absences/Undertime</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Tardiness</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="pl-20">Gross Pay</td>
@@ -1223,51 +1331,75 @@
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">SSS Premium</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">SSS Loan</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Withholding Tax</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Phil Health</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Pag-Ibig Fund</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Pag-Ibig Loan</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Pag-Ibig MP2</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Coop Investment</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Coop Loan</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">AUB Loan</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Others</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="pl-20">Total Deductions</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-1">Net Pay</td>
@@ -1569,46 +1701,66 @@
                                                         </tr>
                                                         <tr>
                                                             <td width="50%" class="px-5">Basic Salary</td>
-                                                            <td width="50%" class="px-1 border-b"></td>
+                                                            <td width="50%" class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Rest Day</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Holiday</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Overtime Pay</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Night Premium</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Adjustments</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">20% COMECQ Allowance</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Total</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5" colspan="">Less:</td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Absences/Undertime</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Tardiness</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="pl-20">Gross Pay</td>
@@ -1620,51 +1772,75 @@
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">SSS Premium</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">SSS Loan</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Withholding Tax</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Phil Health</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Pag-Ibig Fund</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Pag-Ibig Loan</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Pag-Ibig MP2</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Coop Investment</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Coop Loan</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">AUB Loan</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Others</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="pl-20">Total Deductions</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-1">Net Pay</td>
@@ -1966,46 +2142,66 @@
                                                         </tr>
                                                         <tr>
                                                             <td width="50%" class="px-5">Basic Salary</td>
-                                                            <td width="50%" class="px-1 border-b"></td>
+                                                            <td width="50%" class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Rest Day</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Holiday</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Overtime Pay</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Night Premium</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Adjustments</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">20% COMECQ Allowance</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Total</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5" colspan="">Less:</td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Absences/Undertime</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Tardiness</td>
-                                                            <td class="px-1 border-b"></td>
+                                                            <td class="px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="pl-20">Gross Pay</td>
@@ -2017,51 +2213,75 @@
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">SSS Premium</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">SSS Loan</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Withholding Tax</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Phil Health</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Pag-Ibig Fund</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Pag-Ibig Loan</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Pag-Ibig MP2</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Coop Investment</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Coop Loan</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">AUB Loan</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-5">Others</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="pl-20">Total Deductions</td>
-                                                            <td class="px-1 px-1 border-b"></td>
+                                                            <td class="px-1 px-1 border-b">
+                                                                <input type="text" class="bg-gray-50 border-white text-gray-900 text-sm  block w-full p-1 h-5 text-right" required>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="px-1">Net Pay</td>

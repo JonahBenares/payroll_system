@@ -27,6 +27,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 require __DIR__.'/auth.php';
 
+Route::get('/accounting_entry', [MasterfileController::class, 'accounting_entry'])->middleware(['auth'])->name('accounting_entry');
 Route::get('/employee_list', [MasterfileController::class, 'employee_list'])->middleware(['auth'])->name('employee_list');
 Route::get('/schedule_list', [MasterfileController::class, 'schedule_list'])->middleware(['auth'])->name('schedule_list');
 Route::get('/calendar_list', [MasterfileController::class, 'calendar_list'])->middleware(['auth'])->name('calendar_list');
@@ -34,6 +35,7 @@ Route::get('/allowance_list', [MasterfileController::class, 'allowance_list'])->
 Route::get('/allowance_rate_list', [MasterfileController::class, 'allowance_rate_list'])->middleware(['auth'])->name('allowance_rate_list');
 Route::get('/deduction_list', [MasterfileController::class, 'deduction_list'])->middleware(['auth'])->name('deduction_list');
 Route::get('/rates_list', [MasterfileController::class, 'rates_list'])->middleware(['auth'])->name('rates_list');
+Route::get('/hmo_rates', [MasterfileController::class, 'hmo_rates'])->middleware(['auth'])->name('hmo_rates');
 Route::get('/statutory_bracket', [MasterfileController::class, 'statutory_bracket'])->middleware(['auth'])->name('statutory_bracket');
 Route::get('/tardiness_rate_list', [MasterfileController::class, 'tardiness_rate_list'])->middleware(['auth'])->name('tardiness_rate_list');
 Route::get('/cut_off_list', [MasterfileController::class, 'cut_off_list'])->middleware(['auth'])->name('cut_off_list');
