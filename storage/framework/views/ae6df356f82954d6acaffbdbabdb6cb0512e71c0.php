@@ -84,11 +84,11 @@
                                             </div> 
                                             <div class="flex ">
                                                 <div class="mt-4 w-full px-2">
-                                                    <label class="block text-sm text-gray-700 capitalize white:text-gray-200">Shift From</label>
+                                                    <label class="block text-sm text-gray-700 capitalize white:text-gray-200">Shift From (RD)</label>
                                                     <input type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                                 </div>
                                                 <div class="mt-4 w-full px-2">
-                                                    <label class="block text-sm text-gray-700 capitalize white:text-gray-200">Shift To</label>
+                                                    <label class="block text-sm text-gray-700 capitalize white:text-gray-200">Shift To (Duty)</label>
                                                     <input type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                                 </div>
                                             </div> 
@@ -169,7 +169,7 @@
                                     Shift From (RD)
                                 </th>
                                 <th scope="col" class="py-3 px-6" width="15%">
-                                    Shift To
+                                    Shift To (Duty)
                                 </th>
                                 <th scope="col" class="py-3 px-6" width="10%" align="center">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -252,11 +252,11 @@
                                                         </div> 
                                                         <div class="flex ">
                                                             <div class="mt-4 w-full px-2">
-                                                                <label class="block text-sm text-gray-700 capitalize white:text-gray-200">Shift From</label>
+                                                                <label class="block text-sm text-gray-700 capitalize white:text-gray-200">Shift From (RD)</label>
                                                                 <input type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                                             </div>
                                                             <div class="mt-4 w-full px-2">
-                                                                <label class="block text-sm text-gray-700 capitalize white:text-gray-200">Shift To</label>
+                                                                <label class="block text-sm text-gray-700 capitalize white:text-gray-200">Shift To (Duty)</label>
                                                                 <input type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                                             </div>
                                                         </div> 
