@@ -72,19 +72,11 @@
                                 <th scope="col" class="py-3 px-6" width="30%">
                                     Employee Name
                                 </th>
-                                <th scope="col" class="py-3 px-6" width="15%">
-                                    Hourly Rate
-                                </th>
                                 <th scope="col" class="py-3 px-6" width="20%">
                                     OT Hours
                                 </th>
                                 <th scope="col" class="py-3 px-6" width="15%">
                                     Amount
-                                </th>
-                                <th scope="col" class="py-3 px-6" width="10%" align="center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                                    </svg>
                                 </th>
                             </tr>
                         </thead>
@@ -93,24 +85,12 @@
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     Kylie Garapal
                                 </td>
+                                
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    50
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500" value="3">
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    150
-                                </td>
-                                <td class="py-3 px-6 justify-center flex" align="center">
                                     <div x-data="{ modelOpen: false }">
-                                        <button @click="modelOpen =!modelOpen" class="my-1 mx-1 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                              </svg>
-                                              
-                                        </button>
+                                        <a href="#" @click="modelOpen =!modelOpen" class="my-1  py-2" title="Update">
+                                              55
+                                        </a>
                                 
                                         <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
                                             <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
@@ -131,7 +111,7 @@
                                                     x-transition:leave="transition ease-in duration-200 transform"
                                                     x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
                                                     x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                                    class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
+                                                    class="inline-block w-full max-w-3xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl "
                                                 >
                                                     <div class="flex items-center justify-between space-x-4 px-2">
                                                         <h1 class="text-xl font-medium text-gray-800 ">Kylie Garapal </h1>
@@ -142,17 +122,79 @@
                                                             </svg>
                                                         </button>
                                                     </div>
-                                                    Payslip here
+                                                    <form action="">
+                                                        <div class="flex justify-between pt-4">
+                                                            <div class="w-1/2 px-2">
+                                                                <h6 class="font-semibold border-b ">No. of Days Worked</h6>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">REG DAY:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RD 2:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">SH:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">SH on RD:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">Reg Hol:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH on RD 2:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                            </div>
+                                                            <div class="w-1/2 px-2 border-l">
+                                                                <h6 class="font-semibold border-b">Night Premium</h6>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">REG NP:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">REG NP OT:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RD2/SH NP:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RD2/SH NP OT:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH NP:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH NP OT:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH on RD2 NP:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH on RD2 NP OT:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <button class="my-1 mx-1 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-emerald-500 rounded-2xl white:bg-emerald-600 white:hover:bg-emerald-700 white:focus:bg-emerald-700 hover:bg-emerald-600 focus:outline-none focus:bg-emerald-500 focus:ring focus:ring-emerald-300 focus:ring-opacity-50" title="Update"> 
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-                                          </svg>
-                                          
-                                    </button>
+                                    </div>  
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    150
                                 </td>
                             </tr>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
@@ -160,23 +202,10 @@
                                     Terence Dipasucat
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    50
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500" value="5">
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    250
-                                </td>
-                                <td class="py-3 px-6 justify-center flex" align="center">
                                     <div x-data="{ modelOpen: false }">
-                                        <button @click="modelOpen =!modelOpen" class="my-1 mx-1 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                              </svg>
-                                              
-                                        </button>
+                                        <a href="#" @click="modelOpen =!modelOpen" class="my-1  py-2" title="Update">
+                                              55
+                                        </a>
                                 
                                         <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
                                             <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
@@ -197,10 +226,10 @@
                                                     x-transition:leave="transition ease-in duration-200 transform"
                                                     x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
                                                     x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                                    class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
+                                                    class="inline-block w-full max-w-3xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl "
                                                 >
                                                     <div class="flex items-center justify-between space-x-4 px-2">
-                                                        <h1 class="text-xl font-medium text-gray-800 ">Terence Dipasucat </h1>
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Terence Dipasucat</h1>
                                 
                                                         <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
                                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -208,43 +237,91 @@
                                                             </svg>
                                                         </button>
                                                     </div>
-                                                    Payslip here
+                                                    <form action="">
+                                                        <div class="flex justify-between pt-4">
+                                                            <div class="w-1/2 px-2">
+                                                                <h6 class="font-semibold border-b ">No. of Days Worked</h6>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">REG DAY:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RD 2:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">SH:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">SH on RD:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">Reg Hol:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH on RD 2:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                            </div>
+                                                            <div class="w-1/2 px-2 border-l">
+                                                                <h6 class="font-semibold border-b">Night Premium</h6>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">REG NP:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">REG NP OT:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RD2/SH NP:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RD2/SH NP OT:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH NP:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH NP OT:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH on RD2 NP:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH on RD2 NP OT:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <button class="my-1 mx-1 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-emerald-500 rounded-2xl white:bg-emerald-600 white:hover:bg-emerald-700 white:focus:bg-emerald-700 hover:bg-emerald-600 focus:outline-none focus:bg-emerald-500 focus:ring focus:ring-emerald-300 focus:ring-opacity-50" title="Update"> 
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-                                          </svg>
-                                          
-                                    </button>
-                                    
-                                      
+                                    </div>  
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    250
                                 </td>
                             </tr>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     Martina Bagsik
                                 </td>
+                                
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    50
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500" value="1">
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    50
-                                </td>
-                                <td class="py-3 px-6 justify-center flex" align="center">
                                     <div x-data="{ modelOpen: false }">
-                                        <button @click="modelOpen =!modelOpen" class="my-1 mx-1 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                              </svg>
-                                              
-                                        </button>
+                                        <a href="#" @click="modelOpen =!modelOpen" class="my-1  py-2" title="Update">
+                                              55
+                                        </a>
                                 
                                         <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
                                             <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
@@ -265,10 +342,10 @@
                                                     x-transition:leave="transition ease-in duration-200 transform"
                                                     x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
                                                     x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                                    class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
+                                                    class="inline-block w-full max-w-3xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl "
                                                 >
                                                     <div class="flex items-center justify-between space-x-4 px-2">
-                                                        <h1 class="text-xl font-medium text-gray-800 ">Martina Bagsik </h1>
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Martina Bagsik</h1>
                                 
                                                         <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
                                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -276,43 +353,91 @@
                                                             </svg>
                                                         </button>
                                                     </div>
-                                                    Payslip here
+                                                    <form action="">
+                                                        <div class="flex justify-between pt-4">
+                                                            <div class="w-1/2 px-2">
+                                                                <h6 class="font-semibold border-b ">No. of Days Worked</h6>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">REG DAY:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RD 2:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">SH:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">SH on RD:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">Reg Hol:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH on RD 2:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                            </div>
+                                                            <div class="w-1/2 px-2 border-l">
+                                                                <h6 class="font-semibold border-b">Night Premium</h6>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">REG NP:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">REG NP OT:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RD2/SH NP:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RD2/SH NP OT:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH NP:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH NP OT:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH on RD2 NP:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH on RD2 NP OT:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <button class="my-1 mx-1 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-emerald-500 rounded-2xl white:bg-emerald-600 white:hover:bg-emerald-700 white:focus:bg-emerald-700 hover:bg-emerald-600 focus:outline-none focus:bg-emerald-500 focus:ring focus:ring-emerald-300 focus:ring-opacity-50" title="Update"> 
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-                                          </svg>
-                                          
-                                    </button>
-                                    
-                                      
+                                    </div> 
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    50
                                 </td>
                             </tr>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     Edgardo Hidalgo
                                 </td>
+                                
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    50
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500" value="2">
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    100
-                                </td>
-                                <td class="py-3 px-6 justify-center flex" align="center">
                                     <div x-data="{ modelOpen: false }">
-                                        <button @click="modelOpen =!modelOpen" class="my-1 mx-1 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                              </svg>
-                                              
-                                        </button>
+                                        <a href="#" @click="modelOpen =!modelOpen" class="my-1  py-2" title="Update">
+                                              55
+                                        </a>
                                 
                                         <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
                                             <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
@@ -333,10 +458,10 @@
                                                     x-transition:leave="transition ease-in duration-200 transform"
                                                     x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
                                                     x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                                    class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
+                                                    class="inline-block w-full max-w-3xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl "
                                                 >
                                                     <div class="flex items-center justify-between space-x-4 px-2">
-                                                        <h1 class="text-xl font-medium text-gray-800 ">Edgardo Hidalgo </h1>
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Edgardo Hidalgo</h1>
                                 
                                                         <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
                                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -344,43 +469,91 @@
                                                             </svg>
                                                         </button>
                                                     </div>
-                                                    Payslip here
+                                                    <form action="">
+                                                        <div class="flex justify-between pt-4">
+                                                            <div class="w-1/2 px-2">
+                                                                <h6 class="font-semibold border-b ">No. of Days Worked</h6>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">REG DAY:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RD 2:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">SH:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">SH on RD:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">Reg Hol:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH on RD 2:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                            </div>
+                                                            <div class="w-1/2 px-2 border-l">
+                                                                <h6 class="font-semibold border-b">Night Premium</h6>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">REG NP:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">REG NP OT:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RD2/SH NP:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RD2/SH NP OT:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH NP:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH NP OT:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH on RD2 NP:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH on RD2 NP OT:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <button class="my-1 mx-1 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-emerald-500 rounded-2xl white:bg-emerald-600 white:hover:bg-emerald-700 white:focus:bg-emerald-700 hover:bg-emerald-600 focus:outline-none focus:bg-emerald-500 focus:ring focus:ring-emerald-300 focus:ring-opacity-50" title="Update"> 
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-                                          </svg>
-                                          
-                                    </button>
-                                    
-                                      
+                                    </div> 
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    100
                                 </td>
                             </tr>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     Lhea Flores
                                 </td>
+                                
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    50
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500" value="4">
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    200
-                                </td>
-                                <td class="py-3 px-6 justify-center flex" align="center">
                                     <div x-data="{ modelOpen: false }">
-                                        <button @click="modelOpen =!modelOpen" class="my-1 mx-1 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                              </svg>
-                                              
-                                        </button>
+                                        <a href="#" @click="modelOpen =!modelOpen" class="my-1  py-2" title="Update">
+                                              55
+                                        </a>
                                 
                                         <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
                                             <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
@@ -401,7 +574,7 @@
                                                     x-transition:leave="transition ease-in duration-200 transform"
                                                     x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
                                                     x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                                    class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
+                                                    class="inline-block w-full max-w-3xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl "
                                                 >
                                                     <div class="flex items-center justify-between space-x-4 px-2">
                                                         <h1 class="text-xl font-medium text-gray-800 ">Lhea Flores</h1>
@@ -412,19 +585,79 @@
                                                             </svg>
                                                         </button>
                                                     </div>
-                                                    Payslip here
+                                                    <form action="">
+                                                        <div class="flex justify-between pt-4">
+                                                            <div class="w-1/2 px-2">
+                                                                <h6 class="font-semibold border-b ">No. of Days Worked</h6>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">REG DAY:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RD 2:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">SH:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">SH on RD:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">Reg Hol:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH on RD 2:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                                                </div>
+                                                            </div>
+                                                            <div class="w-1/2 px-2 border-l">
+                                                                <h6 class="font-semibold border-b">Night Premium</h6>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">REG NP:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">REG NP OT:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RD2/SH NP:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RD2/SH NP OT:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH NP:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH NP OT:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH on RD2 NP:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                                <div class="flex justify-between mt-2">
+                                                                    <label for="first_name" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH on RD2 NP OT:</label>
+                                                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <button class="my-1 mx-1 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-emerald-500 rounded-2xl white:bg-emerald-600 white:hover:bg-emerald-700 white:focus:bg-emerald-700 hover:bg-emerald-600 focus:outline-none focus:bg-emerald-500 focus:ring focus:ring-emerald-300 focus:ring-opacity-50" title="Update"> 
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-                                          </svg>
-                                          
-                                    </button>
-                                    
-                                      
+                                    </div> 
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    200
                                 </td>
                             </tr>
                         </tbody>
