@@ -42,7 +42,7 @@
                                         x-transition:leave="transition ease-in duration-200 transform"
                                         x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
                                         x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                        class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
+                                        class="inline-block w-full max-w-4xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
                                     >
                                         <div class="flex items-center justify-between space-x-4 px-2">
                                             <h1 class="text-xl font-medium text-gray-800 ">Add New Allowance</h1>
@@ -185,7 +185,7 @@
                                                     x-transition:leave="transition ease-in duration-200 transform"
                                                     x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
                                                     x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                                    class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
+                                                    class="inline-block w-full max-w-4xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
                                                 >
                                                     <div class="flex items-center justify-between space-x-4 px-2">
                                                         <h1 class="text-xl font-medium text-gray-800 ">Glenda Paternal</h1>
@@ -204,10 +204,19 @@
                                                                         <th scope="col" class="py-3 px-3" width="4%">
                                                                             <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                                                                         </th>
-                                                                        <th scope="col" class="py-3 px-3" width="48%">
+                                                                        <th scope="col" class="py-3 px-3" width="20%">
                                                                             Date
                                                                         </th>
-                                                                        <th scope="col" class="py-3 px-3" width="48%">
+                                                                        <th scope="col" class="py-3 px-3" width="20%">
+                                                                            Date Filed
+                                                                        </th>
+                                                                        <th scope="col" class="py-3 px-3" width="16%" align="center">
+                                                                            With Pay
+                                                                        </th>
+                                                                        <th scope="col" class="py-3 px-3" width="10%">
+                                                                            Percentage
+                                                                        </th>
+                                                                        <th scope="col" class="py-3 px-3" width="30%">
                                                                             Type
                                                                         </th>
                                                                     </tr>
@@ -221,6 +230,15 @@
                                                                             September 23, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
+                                                                            September 23, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            29%
+                                                                        </td>
+                                                                        <td class="py-3 px-3">
                                                                             Absent
                                                                         </td>
                                                                     </tr>
@@ -230,6 +248,15 @@
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             September 26, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3">
+                                                                            September 26, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            29%
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             Absent
@@ -243,6 +270,15 @@
                                                                             October 13, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
+                                                                            September 23, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            29%
+                                                                        </td>
+                                                                        <td class="py-3 px-3">
                                                                             Failure To Log In/Out
                                                                         </td>
                                                                     </tr>
@@ -252,6 +288,15 @@
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             October 17, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3">
+                                                                            September 23, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            29%
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             Undertime/Tardiness
@@ -265,6 +310,15 @@
                                                                             October 19, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
+                                                                            September 23, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            29%
+                                                                        </td>
+                                                                        <td class="py-3 px-3">
                                                                             Undertime/Tardiness
                                                                         </td>
                                                                     </tr>
@@ -274,6 +328,15 @@
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             October 24, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3">
+                                                                            September 23, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            29%
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             Undertime/Tardiness
@@ -336,7 +399,7 @@
                                                     x-transition:leave="transition ease-in duration-200 transform"
                                                     x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
                                                     x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                                    class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
+                                                    class="inline-block w-full max-w-4xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
                                                 >
                                                     <div class="flex items-center justify-between space-x-4 px-2">
                                                         <h1 class="text-xl font-medium text-gray-800 ">Stephanie Rose Dumagoso </h1>
@@ -355,10 +418,19 @@
                                                                         <th scope="col" class="py-3 px-3" width="4%">
                                                                             <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                                                                         </th>
-                                                                        <th scope="col" class="py-3 px-3" width="48%">
+                                                                        <th scope="col" class="py-3 px-3" width="20%">
                                                                             Date
                                                                         </th>
-                                                                        <th scope="col" class="py-3 px-3" width="48%">
+                                                                        <th scope="col" class="py-3 px-3" width="20%">
+                                                                            Date Filed
+                                                                        </th>
+                                                                        <th scope="col" class="py-3 px-3" width="16%" align="center">
+                                                                            With Pay
+                                                                        </th>
+                                                                        <th scope="col" class="py-3 px-3" width="10%">
+                                                                            Percentage
+                                                                        </th>
+                                                                        <th scope="col" class="py-3 px-3" width="30%">
                                                                             Type
                                                                         </th>
                                                                     </tr>
@@ -372,6 +444,15 @@
                                                                             September 12, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
+                                                                            September 23, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            29%
+                                                                        </td>
+                                                                        <td class="py-3 px-3">
                                                                             Absent
                                                                         </td>
                                                                     </tr>
@@ -381,6 +462,15 @@
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             September 13, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3">
+                                                                            September 23, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            29%
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             Absent
@@ -394,6 +484,15 @@
                                                                             September 14, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
+                                                                            September 23, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            29%
+                                                                        </td>
+                                                                        <td class="py-3 px-3">
                                                                             Absent
                                                                         </td>
                                                                     </tr>
@@ -403,6 +502,15 @@
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             September 21, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3">
+                                                                            September 23, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            29%
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             Failure To Login/Logout
@@ -416,6 +524,15 @@
                                                                             September 23, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
+                                                                            September 23, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            29%
+                                                                        </td>
+                                                                        <td class="py-3 px-3">
                                                                             Undertime/Tardiness
                                                                         </td>
                                                                     </tr>
@@ -425,6 +542,15 @@
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             September 27, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3">
+                                                                            September 23, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            29%
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             Undertime/Tardiness
@@ -438,6 +564,15 @@
                                                                             September 29, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
+                                                                            September 23, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            29%
+                                                                        </td>
+                                                                        <td class="py-3 px-3">
                                                                             Undertime/Tardiness
                                                                         </td>
                                                                     </tr>
@@ -449,6 +584,15 @@
                                                                             October 5, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
+                                                                            September 23, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            29%
+                                                                        </td>
+                                                                        <td class="py-3 px-3">
                                                                             Undertime/Tardiness
                                                                         </td>
                                                                     </tr>
@@ -458,6 +602,15 @@
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             October 11, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3">
+                                                                            September 23, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            29%
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             Undertime/Tardiness
@@ -520,7 +673,7 @@
                                                     x-transition:leave="transition ease-in duration-200 transform"
                                                     x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
                                                     x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                                    class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
+                                                    class="inline-block w-full max-w-4xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
                                                 >
                                                     <div class="flex items-center justify-between space-x-4 px-2">
                                                         <h1 class="text-xl font-medium text-gray-800 ">Janssen Gardose </h1>
@@ -539,10 +692,19 @@
                                                                         <th scope="col" class="py-3 px-3" width="4%">
                                                                             <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                                                                         </th>
-                                                                        <th scope="col" class="py-3 px-3" width="48%">
+                                                                        <th scope="col" class="py-3 px-3" width="20%">
                                                                             Date
                                                                         </th>
-                                                                        <th scope="col" class="py-3 px-3" width="48%">
+                                                                        <th scope="col" class="py-3 px-3" width="20%">
+                                                                            Date Filed
+                                                                        </th>
+                                                                        <th scope="col" class="py-3 px-3" width="16%" align="center">
+                                                                            With Pay
+                                                                        </th>
+                                                                        <th scope="col" class="py-3 px-3" width="10%">
+                                                                            Percentage
+                                                                        </th>
+                                                                        <th scope="col" class="py-3 px-3" width="30%">
                                                                             Type
                                                                         </th>
                                                                     </tr>
@@ -556,6 +718,15 @@
                                                                             September 10, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
+                                                                            September 23, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            29%
+                                                                        </td>
+                                                                        <td class="py-3 px-3">
                                                                             Failure To Login/Logout
                                                                         </td>
                                                                     </tr>
@@ -565,6 +736,15 @@
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             September 22, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3">
+                                                                            September 23, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            29%
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             Failure To Login/Logout
@@ -627,7 +807,7 @@
                                                     x-transition:leave="transition ease-in duration-200 transform"
                                                     x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
                                                     x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                                    class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
+                                                    class="inline-block w-full max-w-4xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
                                                 >
                                                     <div class="flex items-center justify-between space-x-4 px-2">
                                                         <h1 class="text-xl font-medium text-gray-800 ">Jamila Pascual </h1>
@@ -646,10 +826,19 @@
                                                                         <th scope="col" class="py-3 px-3" width="4%">
                                                                             <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                                                                         </th>
-                                                                        <th scope="col" class="py-3 px-3" width="48%">
+                                                                        <th scope="col" class="py-3 px-3" width="20%">
                                                                             Date
                                                                         </th>
-                                                                        <th scope="col" class="py-3 px-3" width="48%">
+                                                                        <th scope="col" class="py-3 px-3" width="20%">
+                                                                            Date Filed
+                                                                        </th>
+                                                                        <th scope="col" class="py-3 px-3" width="16%" align="center">
+                                                                            With Pay
+                                                                        </th>
+                                                                        <th scope="col" class="py-3 px-3" width="10%">
+                                                                            Percentage
+                                                                        </th>
+                                                                        <th scope="col" class="py-3 px-3" width="30%">
                                                                             Type
                                                                         </th>
                                                                     </tr>
@@ -663,6 +852,15 @@
                                                                             October 12, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
+                                                                            September 23, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            29%
+                                                                        </td>
+                                                                        <td class="py-3 px-3">
                                                                             Absent
                                                                         </td>
                                                                     </tr>
@@ -672,6 +870,15 @@
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             October 13, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3">
+                                                                            September 23, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            29%
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             Absent
@@ -685,6 +892,15 @@
                                                                             October 14, 2022
                                                                         </td>
                                                                         <td class="py-3 px-3">
+                                                                            September 23, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            29%
+                                                                        </td>
+                                                                        <td class="py-3 px-3">
                                                                             Absent
                                                                         </td>
                                                                     </tr>
@@ -694,6 +910,15 @@
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             Ocotber 18, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3">
+                                                                            September 23, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            29%
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             Undertime/Tardiness
@@ -756,7 +981,7 @@
                                                     x-transition:leave="transition ease-in duration-200 transform"
                                                     x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
                                                     x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                                    class="inline-block w-full max-w-2xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
+                                                    class="inline-block w-full max-w-4xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-2xl shadow-xl 2xl:max-w-2xl"
                                                 >
                                                     <div class="flex items-center justify-between space-x-4 px-2">
                                                         <h1 class="text-xl font-medium text-gray-800 ">Johnson Sapol </h1>
@@ -775,10 +1000,19 @@
                                                                         <th scope="col" class="py-3 px-3" width="4%">
                                                                             <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                                                                         </th>
-                                                                        <th scope="col" class="py-3 px-3" width="48%">
+                                                                        <th scope="col" class="py-3 px-3" width="20%">
                                                                             Date
                                                                         </th>
-                                                                        <th scope="col" class="py-3 px-3" width="48%">
+                                                                        <th scope="col" class="py-3 px-3" width="20%">
+                                                                            Date Filed
+                                                                        </th>
+                                                                        <th scope="col" class="py-3 px-3" width="16%" align="center">
+                                                                            With Pay
+                                                                        </th>
+                                                                        <th scope="col" class="py-3 px-3" width="10%">
+                                                                            Percentage
+                                                                        </th>
+                                                                        <th scope="col" class="py-3 px-3" width="30%">
                                                                             Type
                                                                         </th>
                                                                     </tr>
@@ -790,6 +1024,15 @@
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             October 19, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3">
+                                                                            September 23, 2022
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
+                                                                        </td>
+                                                                        <td class="py-3 px-3" align="center">
+                                                                            29%
                                                                         </td>
                                                                         <td class="py-3 px-3">
                                                                             Absent

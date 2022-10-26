@@ -67,13 +67,21 @@
                                                 <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Description</label>
                                                 <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                             </div>
-                                            <div class="px-2 mt-2">
-                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Type</label>
-                                                <select type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                                                    <option value="">Adjustment</option>
-                                                    <option value="">Less GP</option>
-                                                    <option value="">Deduction</option>
-                                                </select>
+                                            <div class="flex justify-between">
+                                                <div class="px-2 mt-2 w-3/4">
+                                                    <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Type</label>
+                                                    <select type="text" class="block w-full  px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                        <option value="">Adjustment</option>
+                                                        <option value="">Less GP</option>
+                                                        <option value="">Deduction</option>
+                                                    </select>
+                                                </div>
+                                                <div class="px-2 mt-2 w-1/4">
+                                                    <div class="flex items-right pl-4 mt-10">
+                                                        <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 ">
+                                                        <label for="default-checkbox" class="block ml-2 text-sm text-gray-700 capitalize white:text-gray-200">Editable</label>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="flex justify-end mt-6 px-2">
                                                 <button type="button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
@@ -104,6 +112,9 @@
                                 <th scope="col" class="py-3 px-6" width="%">
                                     Type
                                 </th>
+                                <th scope="col" class="py-3 px-6" width="10%" align="center"> 
+                                    Editable
+                                </th>
                                 <th scope="col" class="py-3 px-6" width="11%" align="center">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
@@ -119,6 +130,13 @@
                                 <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     Adjustment
                                 </th>
+                                <td align="center" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    <span class="text-green-700">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /> 
+                                        </svg>
+                                    </span>
+                                </td>
                                 <td class="py-3 px-6 justify-center flex" align="center">
                                     <div x-data="{ modelOpen: false }">
                                         <button @click="modelOpen =!modelOpen" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
@@ -164,17 +182,25 @@
                                                             <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Description</label>
                                                             <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                                         </div>
-                                                        <div class="px-2">
-                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Type</label>
-                                                            <select type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                                                                <option value="">Adjustment</option>
-                                                                <option value="">Less GP</option>
-                                                                <option value="">Deduction</option>
-                                                            </select>
+                                                        <div class="flex justify-between">
+                                                            <div class="px-2 mt-2 w-3/4">
+                                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Type</label>
+                                                                <select type="text" class="block w-full  px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                                    <option value="">Adjustment</option>
+                                                                    <option value="">Less GP</option>
+                                                                    <option value="">Deduction</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="px-2 mt-2 w-1/4">
+                                                                <div class="flex items-right pl-4 mt-10">
+                                                                    <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 ">
+                                                                    <label for="default-checkbox" class="block ml-2 text-sm text-gray-700 capitalize white:text-gray-200">Editable</label>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div class="flex justify-end mt-6 px-2">
                                                             <button type="button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                                                Update
+                                                                Save
                                                             </button>
                                                         </div>
                                                     </form>
@@ -196,6 +222,13 @@
                                 <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     Adjustment
                                 </th>
+                                <td align="center" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    <span class="text-green-700">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /> 
+                                        </svg>
+                                    </span>
+                                </td>
                                 <td class="py-3 px-6 justify-center flex" align="center">
                                     <div x-data="{ modelOpen: false }">
                                         <button @click="modelOpen =!modelOpen" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
@@ -241,17 +274,25 @@
                                                             <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Description</label>
                                                             <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                                         </div>
-                                                        <div class="px-2">
-                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Type</label>
-                                                            <select type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                                                                <option value="">Adjustment</option>
-                                                                <option value="">Less GP</option>
-                                                                <option value="">Deduction</option>
-                                                            </select>
+                                                        <div class="flex justify-between">
+                                                            <div class="px-2 mt-2 w-3/4">
+                                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Type</label>
+                                                                <select type="text" class="block w-full  px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                                    <option value="">Adjustment</option>
+                                                                    <option value="">Less GP</option>
+                                                                    <option value="">Deduction</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="px-2 mt-2 w-1/4">
+                                                                <div class="flex items-right pl-4 mt-10">
+                                                                    <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 ">
+                                                                    <label for="default-checkbox" class="block ml-2 text-sm text-gray-700 capitalize white:text-gray-200">Editable</label>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div class="flex justify-end mt-6 px-2">
                                                             <button type="button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                                                Update
+                                                                Save
                                                             </button>
                                                         </div>
                                                     </form>
@@ -273,6 +314,13 @@
                                 <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     Less GP
                                 </th>
+                                <td align="center" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    <span class="text-green-700">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /> 
+                                        </svg>
+                                    </span>
+                                </td>
                                 <td class="py-3 px-6 justify-center flex" align="center">
                                     <div x-data="{ modelOpen: false }">
                                         <button @click="modelOpen =!modelOpen" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
@@ -318,17 +366,25 @@
                                                             <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Description</label>
                                                             <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                                         </div>
-                                                        <div class="px-2">
-                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Type</label>
-                                                            <select type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                                                                <option value="">Adjustment</option>
-                                                                <option value="">Less GP</option>
-                                                                <option value="">Deduction</option>
-                                                            </select>
+                                                        <div class="flex justify-between">
+                                                            <div class="px-2 mt-2 w-3/4">
+                                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Type</label>
+                                                                <select type="text" class="block w-full  px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                                    <option value="">Adjustment</option>
+                                                                    <option value="">Less GP</option>
+                                                                    <option value="">Deduction</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="px-2 mt-2 w-1/4">
+                                                                <div class="flex items-right pl-4 mt-10">
+                                                                    <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 ">
+                                                                    <label for="default-checkbox" class="block ml-2 text-sm text-gray-700 capitalize white:text-gray-200">Editable</label>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div class="flex justify-end mt-6 px-2">
                                                             <button type="button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                                                Update
+                                                                Save
                                                             </button>
                                                         </div>
                                                     </form>
@@ -350,6 +406,13 @@
                                 <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     Less GP
                                 </th>
+                                <td align="center" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    <span class="text-green-700">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /> 
+                                        </svg>
+                                    </span>
+                                </td>
                                 <td class="py-3 px-6 justify-center flex" align="center">
                                     <div x-data="{ modelOpen: false }">
                                         <button @click="modelOpen =!modelOpen" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
@@ -395,17 +458,25 @@
                                                             <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Description</label>
                                                             <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                                         </div>
-                                                        <div class="px-2">
-                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Type</label>
-                                                            <select type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                                                                <option value="">Adjustment</option>
-                                                                <option value="">Less GP</option>
-                                                                <option value="">Deduction</option>
-                                                            </select>
+                                                        <div class="flex justify-between">
+                                                            <div class="px-2 mt-2 w-3/4">
+                                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Type</label>
+                                                                <select type="text" class="block w-full  px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                                    <option value="">Adjustment</option>
+                                                                    <option value="">Less GP</option>
+                                                                    <option value="">Deduction</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="px-2 mt-2 w-1/4">
+                                                                <div class="flex items-right pl-4 mt-10">
+                                                                    <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 ">
+                                                                    <label for="default-checkbox" class="block ml-2 text-sm text-gray-700 capitalize white:text-gray-200">Editable</label>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div class="flex justify-end mt-6 px-2">
                                                             <button type="button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                                                Update
+                                                                Save
                                                             </button>
                                                         </div>
                                                     </form>
@@ -427,6 +498,13 @@
                                 <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     Deductions
                                 </th>
+                                <td align="center" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    <span class="text-green-700">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /> 
+                                        </svg>
+                                    </span>
+                                </td>
                                 <td class="py-3 px-6 justify-center flex" align="center">
                                     <div x-data="{ modelOpen: false }">
                                         <button @click="modelOpen =!modelOpen" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
@@ -472,17 +550,25 @@
                                                             <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Description</label>
                                                             <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                                         </div>
-                                                        <div class="px-2">
-                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Type</label>
-                                                            <select type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                                                                <option value="">Adjustment</option>
-                                                                <option value="">Less GP</option>
-                                                                <option value="">Deduction</option>
-                                                            </select>
+                                                        <div class="flex justify-between">
+                                                            <div class="px-2 mt-2 w-3/4">
+                                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Type</label>
+                                                                <select type="text" class="block w-full  px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                                    <option value="">Adjustment</option>
+                                                                    <option value="">Less GP</option>
+                                                                    <option value="">Deduction</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="px-2 mt-2 w-1/4">
+                                                                <div class="flex items-right pl-4 mt-10">
+                                                                    <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 ">
+                                                                    <label for="default-checkbox" class="block ml-2 text-sm text-gray-700 capitalize white:text-gray-200">Editable</label>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div class="flex justify-end mt-6 px-2">
                                                             <button type="button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                                                Update
+                                                                Save
                                                             </button>
                                                         </div>
                                                     </form>
@@ -504,6 +590,13 @@
                                 <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     Deductions
                                 </th>
+                                <td align="center" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    <span class="text-green-700">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /> 
+                                        </svg>
+                                    </span>
+                                </td>
                                 <td class="py-3 px-6 justify-center flex" align="center">
                                     <div x-data="{ modelOpen: false }">
                                         <button @click="modelOpen =!modelOpen" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
@@ -549,17 +642,25 @@
                                                             <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Description</label>
                                                             <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                                         </div>
-                                                        <div class="px-2">
-                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Type</label>
-                                                            <select type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                                                                <option value="">Adjustment</option>
-                                                                <option value="">Less GP</option>
-                                                                <option value="">Deduction</option>
-                                                            </select>
+                                                        <div class="flex justify-between">
+                                                            <div class="px-2 mt-2 w-3/4">
+                                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Type</label>
+                                                                <select type="text" class="block w-full  px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                                    <option value="">Adjustment</option>
+                                                                    <option value="">Less GP</option>
+                                                                    <option value="">Deduction</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="px-2 mt-2 w-1/4">
+                                                                <div class="flex items-right pl-4 mt-10">
+                                                                    <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 ">
+                                                                    <label for="default-checkbox" class="block ml-2 text-sm text-gray-700 capitalize white:text-gray-200">Editable</label>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div class="flex justify-end mt-6 px-2">
                                                             <button type="button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                                                Update
+                                                                Save
                                                             </button>
                                                         </div>
                                                     </form>
@@ -581,6 +682,13 @@
                                 <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     Deductions
                                 </th>
+                                <td align="center" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    <span class="text-green-700">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /> 
+                                        </svg>
+                                    </span>
+                                </td>
                                 <td class="py-3 px-6 justify-center flex" align="center">
                                     <div x-data="{ modelOpen: false }">
                                         <button @click="modelOpen =!modelOpen" class="py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Update"> 
@@ -626,17 +734,25 @@
                                                             <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Description</label>
                                                             <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                                         </div>
-                                                        <div class="px-2">
-                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Type</label>
-                                                            <select type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                                                                <option value="">Adjustment</option>
-                                                                <option value="">Less GP</option>
-                                                                <option value="">Deduction</option>
-                                                            </select>
+                                                        <div class="flex justify-between">
+                                                            <div class="px-2 mt-2 w-3/4">
+                                                                <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Type</label>
+                                                                <select type="text" class="block w-full  px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                                    <option value="">Adjustment</option>
+                                                                    <option value="">Less GP</option>
+                                                                    <option value="">Deduction</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="px-2 mt-2 w-1/4">
+                                                                <div class="flex items-right pl-4 mt-10">
+                                                                    <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 ">
+                                                                    <label for="default-checkbox" class="block ml-2 text-sm text-gray-700 capitalize white:text-gray-200">Editable</label>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div class="flex justify-end mt-6 px-2">
                                                             <button type="button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                                                Update
+                                                                Save
                                                             </button>
                                                         </div>
                                                     </form>

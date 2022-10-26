@@ -86,8 +86,8 @@
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     5
                                 </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    3,500
+                                <td scope="row" class="py-3 px-3 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2">
                                 </td>
                                 <td class="py-3 px-6 justify-center flex" align="center">
                                     <div x-data="{ modelOpen: false }">
@@ -306,8 +306,8 @@
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     9
                                 </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    6,500
+                                <td scope="row" class="py-3 px-3 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2">
                                 </td>
                                 <td class="py-3 px-6 justify-center flex" align="center">
                                     <div x-data="{ modelOpen: false }">
@@ -526,8 +526,8 @@
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     2
                                 </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    1,500
+                                <td scope="row" class="py-3 px-3 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2">
                                 </td>
                                 <td class="py-3 px-6 justify-center flex" align="center">
                                     <div x-data="{ modelOpen: false }">
@@ -746,8 +746,8 @@
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     8
                                 </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    5,500
+                                <td scope="row" class="py-3 px-3 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2">
                                 </td>
                                 <td class="py-3 px-6 justify-center flex" align="center">
                                     <div x-data="{ modelOpen: false }">
@@ -966,8 +966,8 @@
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     7
                                 </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    6,500
+                                <td scope="row" class="py-3 px-3 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2">
                                 </td>
                                 <td class="py-3 px-6 justify-center flex" align="center">
                                     <div x-data="{ modelOpen: false }">
