@@ -8,6 +8,8 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\HolidayController;
 use App\Http\Controllers\PayslipInfoController;
+use App\Http\Controllers\AllowanceController;
+use App\Http\Controllers\AllowanceRateController;
 
 
 use App\Http\Controllers\LeaveController;
@@ -55,11 +57,16 @@ Route::get('/holiday_update', [HolidayController::class, 'edit'])->middleware(['
 Route::get('/payslip_info_list', [PayslipInfoController::class, 'index'])->middleware(['auth'])->name('payslip_info_list');
 Route::get('/payslip_info_add', [PayslipInfoController::class, 'create'])->middleware(['auth'])->name('payslip_info_add');
 Route::get('/payslip_info_update', [PayslipInfoController::class, 'edit'])->middleware(['auth'])->name('payslip_info_update');
+// Allowance
+Route::get('/allowance_list', [AllowanceController::class, 'index'])->middleware(['auth'])->name('allowance_list');
+Route::get('/allowance_add', [AllowanceController::class, 'create'])->middleware(['auth'])->name('allowance_add');
+Route::get('/allowance_update', [AllowanceController::class, 'edit'])->middleware(['auth'])->name('allowance_update');
+// AllowanceRate
+Route::get('/allowance_rate_list', [AllowanceRateController::class, 'index'])->middleware(['auth'])->name('allowance_rate_list');
+Route::get('/allowance_rate_add', [AllowanceRateController::class, 'create'])->middleware(['auth'])->name('allowance_rate_add');
+Route::get('/allowance_rate_update', [AllowanceRateController::class, 'edit'])->middleware(['auth'])->name('allowance_rate_update');
 
 
-
-Route::get('/allowance_list', [MasterfileController::class, 'allowance_list'])->middleware(['auth'])->name('allowance_list');
-Route::get('/allowance_rate_list', [MasterfileController::class, 'allowance_rate_list'])->middleware(['auth'])->name('allowance_rate_list');
 Route::get('/deduction_list', [MasterfileController::class, 'deduction_list'])->middleware(['auth'])->name('deduction_list');
 Route::get('/rates_list', [MasterfileController::class, 'rates_list'])->middleware(['auth'])->name('rates_list');
 Route::get('/hmo_rates', [MasterfileController::class, 'hmo_rates'])->middleware(['auth'])->name('hmo_rates');

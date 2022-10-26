@@ -22,9 +22,11 @@ class MasterfileController extends Controller
     // public function calendar_list(){
     //     return view('masterfile.calendar_list');
     // }
-    public function payslip_info(){
-        return view('masterfile.payslip_info');
-    }
+    
+    // public function payslip_info(){
+    //     return view('masterfile.payslip_info');
+    // }
+
     public  function allowance_list(){
         return view('masterfile.allowance_list');
     }
