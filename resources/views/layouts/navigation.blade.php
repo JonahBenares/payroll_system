@@ -61,13 +61,13 @@
                                         <a href="{{ route('schedule_list') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Schedule</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="{{ route('holiday_list') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Holidays</a>
+                                        <a href="{{ route('holiday.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Holidays</a>
                                     </li>
                                     <li class="relative">
                                         <a href="{{ route('payslip_info_list') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Payslip Info</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="{{ route('allowance_list') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowances</a>
+                                        <a href="{{ route('allowance.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowances</a>
                                     </li>
                                     <li class="relative">
                                         <a href="{{ route('allowance_rate_list') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowance Rates</a>
@@ -193,7 +193,7 @@
                                         <a href="{{ route('schedule_list') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Sample 2</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="{{ route('holiday_list') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Sample 3</a>
+                                        <a href="{{ route('holiday.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Sample 3</a>
                                     </li>
                                 </ul>
                             </div>

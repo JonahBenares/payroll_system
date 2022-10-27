@@ -50,17 +50,21 @@ Route::get('/schedule_list', [ScheduleController::class, 'index'])->middleware([
 Route::get('/schedule_add', [ScheduleController::class, 'create'])->middleware(['auth'])->name('schedule_add');
 Route::get('/schedule_update', [ScheduleController::class, 'edit'])->middleware(['auth'])->name('schedule_update');
 // Holiday
-Route::get('/holiday_list', [HolidayController::class, 'index'])->middleware(['auth'])->name('holiday_list');
-Route::get('/holiday_add', [HolidayController::class, 'create'])->middleware(['auth'])->name('holiday_add');
-Route::get('/holiday_update', [HolidayController::class, 'edit'])->middleware(['auth'])->name('holiday_update');
+Route::resource('holiday', HolidayController::class);
+// Route::get('/holiday_list', [HolidayController::class, 'index'])->middleware(['auth'])->name('holiday_list');
+// Route::get('/holiday_add', [HolidayController::class, 'create'])->middleware(['auth'])->name('holiday_add');
+// Route::get('/holiday_update', [HolidayController::class, 'edit'])->middleware(['auth'])->name('holiday_update');
 // PayslipInfo
 Route::get('/payslip_info_list', [PayslipInfoController::class, 'index'])->middleware(['auth'])->name('payslip_info_list');
 Route::get('/payslip_info_add', [PayslipInfoController::class, 'create'])->middleware(['auth'])->name('payslip_info_add');
 Route::get('/payslip_info_update', [PayslipInfoController::class, 'edit'])->middleware(['auth'])->name('payslip_info_update');
 // Allowance
-Route::get('/allowance_list', [AllowanceController::class, 'index'])->middleware(['auth'])->name('allowance_list');
-Route::get('/allowance_add', [AllowanceController::class, 'create'])->middleware(['auth'])->name('allowance_add');
-Route::get('/allowance_update', [AllowanceController::class, 'edit'])->middleware(['auth'])->name('allowance_update');
+// Route::get('/index', [AllowanceController::class, 'index'])->middleware(['auth'])->name('index');
+// Route::get('/create', [AllowanceController::class, 'create'])->middleware(['auth'])->name('create');
+// Route::post('/store',[AllowanceController::class, 'store'])->name('store');
+// Route::get('/edit/{id}', [AllowanceController::class, 'edit'])->middleware(['auth'])->name('edit');
+// Route::get('/update/{id}', [AllowanceController::class, 'update'])->name('update');
+Route::resource('allowance', AllowanceController::class);
 // AllowanceRate
 Route::get('/allowance_rate_list', [AllowanceRateController::class, 'index'])->middleware(['auth'])->name('allowance_rate_list');
 Route::get('/allowance_rate_add', [AllowanceRateController::class, 'create'])->middleware(['auth'])->name('allowance_rate_add');

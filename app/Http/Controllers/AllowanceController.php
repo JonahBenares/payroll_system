@@ -15,7 +15,8 @@ class AllowanceController extends Controller
      */
     public function index()
     {
-        return view('masterfile.allowance_list');
+        $allowances = Allowance::all();
+        return view('allowances.index')->with('allowances',$allowances);
     }
 
     /**
@@ -25,7 +26,7 @@ class AllowanceController extends Controller
      */
     public function create()
     {
-        return view('masterfile.allowance_add');
+        return view('allowances.create');
         
     }
 
@@ -37,7 +38,15 @@ class AllowanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $allowance=new Allowance();
+        $allowance->allowance_name=$request->allowance_name;
+        $allowance->allowance_rate=$request->allowance_rate;
+        $res = $allowance->save();
+        if($res){
+            return redirect()->route('allowance.create')->with('success',"Allowance Added Successfully");
+        }else{
+            return redirect()->route('allowance.create')->with('fail',"Error! Try Again!");
+        }
     }
 
     /**
@@ -57,9 +66,9 @@ class AllowanceController extends Controller
      * @param  \App\Models\Allowance  $allowance
      * @return \Illuminate\Http\Response
      */
-    public function edit(Allowance $allowance)
-    {
-        return view('masterfile.allowance_update');
+    public function edit($id){
+        $allowances=Allowance::find($id);
+        return view('allowances.edit')->with('allowance',$allowances);
     }
 
     /**
@@ -69,9 +78,12 @@ class AllowanceController extends Controller
      * @param  \App\Models\Allowance  $allowance
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Allowance $allowance)
-    {
-        //
+    public function update(Request $request, Allowance $allowance){
+        $allowance::where('id', '=', $request->id)->update([
+            'allowance_name' => $request->allowance_name, 
+            'allowance_rate' => $request->allowance_rate
+        ]);
+        return redirect()->route('allowance.edit',$request->id)->with('success',"Allowance Updated Successfully");
     }
 
     /**
@@ -80,8 +92,8 @@ class AllowanceController extends Controller
      * @param  \App\Models\Allowance  $allowance
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Allowance $allowance)
-    {
-        //
+    public function destroy($id){
+        Allowance::find($id)->delete();
+        return redirect()->route('allowance.index' )->with('success',"Allowance Deleted Successfully");
     }
 }
