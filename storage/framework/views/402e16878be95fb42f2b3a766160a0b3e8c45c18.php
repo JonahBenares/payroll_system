@@ -1,4 +1,3 @@
-<script src="//unpkg.com/alpinejs" defer></script>
 <?php if (isset($component)) { $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da = $component; } ?>
 <?php $component = $__env->getContainer()->make(App\View\Components\AppLayout::class, [] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('app-layout'); ?>

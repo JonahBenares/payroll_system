@@ -52,7 +52,7 @@
                             <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container" x-bind:style="selected == 1 ? 'max-height: ' + $refs.container.scrollHeight + 'px' : ''">
                                 <ul>
                                     <li class="relative">
-                                        <a href="{{ route('accounting_entry') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Accounting Entry</a>
+                                        <a href="{{ route('accounting_entry_list') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Accounting Entry</a>
                                     </li>
                                     <li class="relative">
                                         <a href="{{ route('employee_list') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Employee List</a>
@@ -61,10 +61,10 @@
                                         <a href="{{ route('schedule_list') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Schedule</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="{{ route('calendar_list') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Holidays</a>
+                                        <a href="{{ route('holiday_list') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Holidays</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="{{ route('payslip_info') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Payslip Info</a>
+                                        <a href="{{ route('payslip_info_list') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Payslip Info</a>
                                     </li>
                                     <li class="relative">
                                         <a href="{{ route('allowance_list') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowances</a>
@@ -193,7 +193,7 @@
                                         <a href="{{ route('schedule_list') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Sample 2</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="{{ route('calendar_list') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Sample 3</a>
+                                        <a href="{{ route('holiday_list') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Sample 3</a>
                                     </li>
                                 </ul>
                             </div>

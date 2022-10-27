@@ -15,7 +15,7 @@ class AccountingEntryController extends Controller
      */
     public function index()
     {
-        //
+        return view('masterfile.accounting_entry_list');
     }
 
     /**
@@ -25,7 +25,7 @@ class AccountingEntryController extends Controller
      */
     public function create()
     {
-        //
+        return view('masterfile.accounting_entry_add');
     }
 
     /**
@@ -58,7 +58,8 @@ class AccountingEntryController extends Controller
      */
     public function edit(AccountingEntry $accountingEntry)
     {
-        //
+        return view('masterfile.accounting_entry_update');
+        
     }
 
     /**
