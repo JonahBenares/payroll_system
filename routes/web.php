@@ -46,9 +46,10 @@ Route::get('/employee_list', [EmployeeController::class, 'index'])->middleware([
 Route::get('/employee_add', [EmployeeController::class, 'create'])->middleware(['auth'])->name('employee_add');
 Route::get('/employee_update', [EmployeeController::class, 'edit'])->middleware(['auth'])->name('employee_update');
 // Schedule
-Route::get('/schedule_list', [ScheduleController::class, 'index'])->middleware(['auth'])->name('schedule_list');
-Route::get('/schedule_add', [ScheduleController::class, 'create'])->middleware(['auth'])->name('schedule_add');
-Route::get('/schedule_update', [ScheduleController::class, 'edit'])->middleware(['auth'])->name('schedule_update');
+Route::resource('schedules', ScheduleController::class);
+// Route::get('/schedule', [ScheduleController::class, 'schedule'])->middleware(['auth'])->name('index');
+// Route::get('/schedule_add', [ScheduleController::class, 'create'])->middleware(['auth'])->name('create');
+// Route::get('/schedule_update', [ScheduleController::class, 'edit'])->middleware(['auth'])->name('schedule_update');
 // Holiday
 Route::get('/holiday_list', [HolidayController::class, 'index'])->middleware(['auth'])->name('holiday_list');
 Route::get('/holiday_add', [HolidayController::class, 'create'])->middleware(['auth'])->name('holiday_add');
