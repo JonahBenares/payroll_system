@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class AccountingEntry extends Model
 {
     use HasFactory;
+    protected $table = 'accounting_entry';
+
+    protected $fillable = ['description'];
 }
+    
