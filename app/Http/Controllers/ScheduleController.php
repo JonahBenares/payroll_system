@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Http\Request;
 use App\Models\Schedule;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+
 
 class ScheduleController extends Controller
 {
@@ -15,7 +15,8 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        return view('masterfile.schedule_list');
+        $sched = Schedule::all();
+        return view ('schedule.index')->with('sched', $sched);
     }
 
     /**
@@ -25,7 +26,7 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        return view('masterfile.schedule_add');
+        return view('schedule.create');
     }
 
     /**
@@ -36,7 +37,9 @@ class ScheduleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        Schedule::create($input);
+        return redirect('schedules')->with('flash_message', 'Schedule Successfully Addedd!'); 
     }
 
     /**
@@ -45,9 +48,10 @@ class ScheduleController extends Controller
      * @param  \App\Models\Schedule  $schedule
      * @return \Illuminate\Http\Response
      */
-    public function show(Schedule $schedule)
+    public function show($id)
     {
-        //
+        $sched = Schedule::find($id);
+        return view('schedule.show')->with('schedule', $sched);
     }
 
     /**
@@ -56,9 +60,10 @@ class ScheduleController extends Controller
      * @param  \App\Models\Schedule  $schedule
      * @return \Illuminate\Http\Response
      */
-    public function edit(Schedule $schedule)
+    public function edit($id)
     {
-        return view('masterfile.schedule_update');
+        $sched = Schedule::find($id);
+        return view('schedule.edit')->with('schedule', $sched);
     }
 
     /**
@@ -68,9 +73,12 @@ class ScheduleController extends Controller
      * @param  \App\Models\Schedule  $schedule
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Schedule $schedule)
+    public function update(Request $request, $id)
     {
-        //
+        $sched = Schedule::find($id);
+        $input = $request->all();
+        $sched->update($input);
+        return redirect('schedules')->with('flash_message', 'Schedule Successfully Updated!'); 
     }
 
     /**
@@ -79,8 +87,9 @@ class ScheduleController extends Controller
      * @param  \App\Models\Schedule  $schedule
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Schedule $schedule)
+    public function destroy($id)
     {
-        //
+        Schedule::destroy($id);
+        return redirect('schedules')->with('flash_message', 'Schedule Successfully deleted!');
     }
 }
