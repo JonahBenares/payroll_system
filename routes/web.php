@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MasterfileController;
+//use App\Http\Controllers\MasterfileController;
 use App\Http\Controllers\Shift_ScheduleController;
 use App\Http\Controllers\AccountingEntryController;
 use App\Http\Controllers\EmployeeController;
@@ -38,17 +38,18 @@ require __DIR__.'/auth.php';
 
 
 // AccountEntry
-Route::get('/accounting_entry_list', [AccountingEntryController::class, 'index'])->middleware(['auth'])->name('accounting_entry_list');
-Route::get('/accounting_entry_add', [AccountingEntryController::class, 'create'])->middleware(['auth'])->name('accounting_entry_add');
-Route::get('/accounting_entry_update', [AccountingEntryController::class, 'edit'])->middleware(['auth'])->name('accounting_entry_update');
+Route::resource('entry', AccountingEntryController::class);
+
+
 // Employee 
 Route::get('/employee_list', [EmployeeController::class, 'index'])->middleware(['auth'])->name('employee_list');
 Route::get('/employee_add', [EmployeeController::class, 'create'])->middleware(['auth'])->name('employee_add');
 Route::get('/employee_update', [EmployeeController::class, 'edit'])->middleware(['auth'])->name('employee_update');
 // Schedule
-Route::get('/schedule_list', [ScheduleController::class, 'index'])->middleware(['auth'])->name('schedule_list');
-Route::get('/schedule_add', [ScheduleController::class, 'create'])->middleware(['auth'])->name('schedule_add');
-Route::get('/schedule_update', [ScheduleController::class, 'edit'])->middleware(['auth'])->name('schedule_update');
+Route::resource('schedules', ScheduleController::class);
+// Route::get('/schedule', [ScheduleController::class, 'schedule'])->middleware(['auth'])->name('index');
+// Route::get('/schedule_add', [ScheduleController::class, 'create'])->middleware(['auth'])->name('create');
+// Route::get('/schedule_update', [ScheduleController::class, 'edit'])->middleware(['auth'])->name('schedule_update');
 // Holiday
 Route::resource('holiday', HolidayController::class);
 // Route::get('/holiday_list', [HolidayController::class, 'index'])->middleware(['auth'])->name('holiday_list');
