@@ -78,12 +78,11 @@ class AllowanceController extends Controller
      * @param  \App\Models\Allowance  $allowance
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Allowance $allowance){
-        $allowance::where('id', '=', $request->id)->update([
-            'allowance_name' => $request->allowance_name, 
-            'allowance_rate' => $request->allowance_rate
-        ]);
-        return redirect()->route('allowance.edit',$request->id)->with('success',"Allowance Updated Successfully");
+    public function update(Request $request, $id){
+        $allowance = Allowance::find($id);
+        $input = $request->all();
+        $allowance->update($input);
+        return redirect()->route('allowance.edit',$id)->with('success',"Allowance Updated Successfully");
     }
 
     /**

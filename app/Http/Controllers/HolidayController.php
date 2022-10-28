@@ -76,16 +76,12 @@ class HolidayController extends Controller
      * @param  \App\Models\Holiday  $holiday
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Holiday $holiday)
+    public function update(Request $request, $id)
     {
-        $holiday::where('id', '=', $request->id)->update([
-            'holiday_date' => $request->holiday_date, 
-            'holiday_name' => $request->holiday_name,
-            'holiday_type' => $request->holiday_type,
-            'calendar_year' => $request->calendar_year,
-            'holiday_rate' => $request->holiday_rate,
-        ]);
-        return redirect()->route('holiday.edit',$request->id)->with('success',"Holiday Updated Successfully");
+        $holiday = Holiday::find($id);
+        $input = $request->all();
+        $holiday->update($input);
+        return redirect()->route('holiday.edit',$id)->with('success',"Holiday Updated Successfully");
     }
 
     /**
