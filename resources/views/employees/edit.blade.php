@@ -116,7 +116,11 @@
                             </select>
                         </div>
                     </div>
-
+                    <div class="flex items-right pl-2 mt-4">
+                        <input type="hidden" name="editable" value="0" />
+                        <input class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500" name="editable" id="editable"  type="checkbox" value="1">
+                        <label for="default-checkbox" class="block ml-2 text-sm text-gray-700 capitalize white:text-gray-200">Supervisor</label>
+                    </div>
                     <div class="flex justify-end mt-6 px-2">
                         <button type="button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                             Update
