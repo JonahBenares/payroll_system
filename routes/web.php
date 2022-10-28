@@ -58,9 +58,8 @@ Route::resource('schedules', ScheduleController::class);
 Route::resource('holiday', HolidayController::class);
 
 // PayslipInfo
-Route::get('/payslip_info_list', [PayslipInfoController::class, 'index'])->middleware(['auth'])->name('payslip_info_list');
-Route::get('/payslip_info_add', [PayslipInfoController::class, 'create'])->middleware(['auth'])->name('payslip_info_add');
-Route::get('/payslip_info_update', [PayslipInfoController::class, 'edit'])->middleware(['auth'])->name('payslip_info_update');
+
+Route::resource('payslip_info', PayslipInfoController::class);
 
 // Allowance
 Route::resource('allowance', AllowanceController::class);
