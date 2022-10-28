@@ -73,6 +73,9 @@
                                     Employee Name
                                 </th>
                                 <th scope="col" class="py-3 px-6" width="20%">
+                                    Tentative OT Hours
+                                </th>
+                                <th scope="col" class="py-3 px-6" width="20%">
                                     OT Hours
                                 </th>
                                 <th scope="col" class="py-3 px-6" width="15%">
@@ -196,6 +199,9 @@
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     150
                                 </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    150
+                                </td>
                             </tr>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
@@ -307,6 +313,9 @@
                                             </div>
                                         </div>
                                     </div>  
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    150
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     250
@@ -425,6 +434,9 @@
                                     </div> 
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    150
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     50
                                 </td>
                             </tr>
@@ -541,6 +553,9 @@
                                     </div> 
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    150
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     100
                                 </td>
                             </tr>
@@ -655,6 +670,9 @@
                                             </div>
                                         </div>
                                     </div> 
+                                </td>
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    150
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     200
