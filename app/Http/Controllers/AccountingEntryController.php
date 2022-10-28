@@ -93,8 +93,11 @@ class AccountingEntryController extends Controller
      * @param  \App\Models\AccountingEntry  $accountingEntry
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AccountingEntry $accountingEntry)
+    public function destroy($id)
     {
-        //
+        $accountingentries = AccountingEntry::find($id);
+        $accountingentries->delete();
+        return redirect()->route('entry.index');
+
     }
 }

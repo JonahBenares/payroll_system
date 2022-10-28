@@ -45,12 +45,10 @@ require __DIR__.'/auth.php';
 
 // AccountEntry
 Route::resource('entry', AccountingEntryController::class);
-
+Route::resource('emp', EmployeeController::class);
 
 // Employee 
-Route::get('/employee_list', [EmployeeController::class, 'index'])->middleware(['auth'])->name('employee_list');
-Route::get('/employee_add', [EmployeeController::class, 'create'])->middleware(['auth'])->name('employee_add');
-Route::get('/employee_update', [EmployeeController::class, 'edit'])->middleware(['auth'])->name('employee_update');
+
 // Schedule
 Route::resource('schedules', ScheduleController::class);
 
