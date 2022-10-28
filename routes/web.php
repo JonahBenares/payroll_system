@@ -10,6 +10,12 @@ use App\Http\Controllers\HolidayController;
 use App\Http\Controllers\PayslipInfoController;
 use App\Http\Controllers\AllowanceController;
 use App\Http\Controllers\AllowanceRateController;
+use App\Http\Controllers\AdjustmentRateController;
+use App\Http\Controllers\HmoRateController;
+use App\Http\Controllers\DeductionController;
+use App\Http\Controllers\StatutoryBracketController;
+use App\Http\Controllers\TardinessRateController;
+use App\Http\Controllers\CutOffController;
 
 
 use App\Http\Controllers\LeaveController;
@@ -45,30 +51,44 @@ Route::resource('emp', EmployeeController::class);
 
 // Schedule
 Route::resource('schedules', ScheduleController::class);
-// Route::get('/schedule', [ScheduleController::class, 'schedule'])->middleware(['auth'])->name('index');
-// Route::get('/schedule_add', [ScheduleController::class, 'create'])->middleware(['auth'])->name('create');
-// Route::get('/schedule_update', [ScheduleController::class, 'edit'])->middleware(['auth'])->name('schedule_update');
+
 // Holiday
-Route::get('/holiday_list', [HolidayController::class, 'index'])->middleware(['auth'])->name('holiday_list');
-Route::get('/holiday_add', [HolidayController::class, 'create'])->middleware(['auth'])->name('holiday_add');
-Route::get('/holiday_update', [HolidayController::class, 'edit'])->middleware(['auth'])->name('holiday_update');
+Route::resource('holiday', HolidayController::class);
+
 // PayslipInfo
-Route::get('/payslip_info_list', [PayslipInfoController::class, 'index'])->middleware(['auth'])->name('payslip_info_list');
-Route::get('/payslip_info_add', [PayslipInfoController::class, 'create'])->middleware(['auth'])->name('payslip_info_add');
-Route::get('/payslip_info_update', [PayslipInfoController::class, 'edit'])->middleware(['auth'])->name('payslip_info_update');
+
+Route::resource('payslip_info', PayslipInfoController::class);
+
 // Allowance
-Route::get('/allowance_list', [AllowanceController::class, 'index'])->middleware(['auth'])->name('allowance_list');
-Route::get('/allowance_add', [AllowanceController::class, 'create'])->middleware(['auth'])->name('allowance_add');
-Route::get('/allowance_update', [AllowanceController::class, 'edit'])->middleware(['auth'])->name('allowance_update');
+Route::resource('allowance', AllowanceController::class);
+
 // AllowanceRate
-Route::get('/allowance_rate_list', [AllowanceRateController::class, 'index'])->middleware(['auth'])->name('allowance_rate_list');
-Route::get('/allowance_rate_add', [AllowanceRateController::class, 'create'])->middleware(['auth'])->name('allowance_rate_add');
-Route::get('/allowance_rate_update', [AllowanceRateController::class, 'edit'])->middleware(['auth'])->name('allowance_rate_update');
+Route::resource('allowancerate', AllowanceRateController::class);
+
+// AdjustmentRate
+Route::resource('adjustmentrate', AdjustmentRateController::class);
+
+// HMORate
+Route::resource('hmorate', HmoRateController::class);
+
+//Deduction
+Route::resource('deductions', DeductionController::class); 
+
+// StatutoryBracket
+Route::resource('statutorybracket', StatutoryBracketController::class); 
+
+// TardinessRate
+Route::resource('tardinessrate', TardinessRateController::class); 
 
 
-Route::get('/deduction_list', [MasterfileController::class, 'deduction_list'])->middleware(['auth'])->name('deduction_list');
-Route::get('/rates_list', [MasterfileController::class, 'rates_list'])->middleware(['auth'])->name('rates_list');
-Route::get('/hmo_rates', [MasterfileController::class, 'hmo_rates'])->middleware(['auth'])->name('hmo_rates');
+Route::resource('cut_off', CutOffController::class); 
+
+
+
+
+// Route::get('/deduction_list', [MasterfileController::class, 'deduction_list'])->middleware(['auth'])->name('deduction_list');
+
+// Route::get('/hmo_rates', [MasterfileController::class, 'hmo_rates'])->middleware(['auth'])->name('hmo_rates');
 Route::get('/statutory_bracket', [MasterfileController::class, 'statutory_bracket'])->middleware(['auth'])->name('statutory_bracket');
 Route::get('/tardiness_rate_list', [MasterfileController::class, 'tardiness_rate_list'])->middleware(['auth'])->name('tardiness_rate_list');
 Route::get('/cut_off_list', [MasterfileController::class, 'cut_off_list'])->middleware(['auth'])->name('cut_off_list');

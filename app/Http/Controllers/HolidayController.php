@@ -15,7 +15,8 @@ class HolidayController extends Controller
      */
     public function index()
     {
-        return view('masterfile.holiday_list');
+        $holiday = Holiday::all();
+        return view('holidays.index')->with("holiday",$holiday);
     }
 
     /**
@@ -25,7 +26,7 @@ class HolidayController extends Controller
      */
     public function create()
     {
-        return view('masterfile.holiday_add');
+        return view('holidays.create');
     }
 
     /**
@@ -36,7 +37,13 @@ class HolidayController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input=$request->all();
+        $res=Holiday::create($input);
+        if($res){
+            return redirect()->route('holiday.create')->with('success',"Holiday Added Successfully");
+        }else{
+            return redirect()->route('holiday.create')->with('fail',"Error! Try Again!");
+        }
     }
 
     /**
@@ -56,9 +63,10 @@ class HolidayController extends Controller
      * @param  \App\Models\Holiday  $holiday
      * @return \Illuminate\Http\Response
      */
-    public function edit(Holiday $holiday)
+    public function edit($id)
     {
-        return view('masterfile.holiday_update');
+        $holidays=Holiday::find($id);
+        return view('holidays.edit')->with('holiday',$holidays);
     }
 
     /**
@@ -68,9 +76,12 @@ class HolidayController extends Controller
      * @param  \App\Models\Holiday  $holiday
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Holiday $holiday)
+    public function update(Request $request, $id)
     {
-        //
+        $holiday = Holiday::find($id);
+        $input = $request->all();
+        $holiday->update($input);
+        return redirect()->route('holiday.edit',$id)->with('success',"Holiday Updated Successfully");
     }
 
     /**
@@ -79,8 +90,9 @@ class HolidayController extends Controller
      * @param  \App\Models\Holiday  $holiday
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Holiday $holiday)
+    public function destroy($id)
     {
-        //
+        Holiday::find($id)->delete();
+        return redirect()->route('holiday.index' )->with('success',"Holiday Deleted Successfully");
     }
 }

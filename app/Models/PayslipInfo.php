@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class PayslipInfo extends Model
 {
     use HasFactory;
+    protected $table = 'payslip_info';
+    protected $primaryKey = 'id';
+    protected $fillable = ['description', 'pay_type', 'editable'];
 }

@@ -20,6 +20,16 @@
                         </a>
                     </div>
                 </div>
+                @if(Session::has('success'))
+                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline">{{Session::get('success')}}</span>
+                    </div>
+                @endif
+                @if(Session::has('fail'))
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline">{{Session::get('fail')}}</span>
+                    </div>
+                @endif
                 <form action="{{ url('schedules') }}" method="post" class="mt-5">
                 {!! csrf_field() !!}
                     <div class="px-2">
@@ -38,7 +48,7 @@
                         </div>
                     </div> 
                     <div class="flex justify-end mt-6 px-2">
-                        <button type="submit" value="Save"class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                        <button type="submit" value="Save" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                             Save
                         </button>
                     </div>
