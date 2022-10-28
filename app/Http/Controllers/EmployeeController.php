@@ -15,7 +15,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return view('masterfile.employee_list');
+        $accountingentries = AccountingEntry::all();
+        return view('employees.index');
     }
 
     /**
