@@ -15,7 +15,7 @@ class AllowanceRateController extends Controller
      */
     public function index()
     {
-        return view('masterfile.allowance_rate_list');
+        return view('all_rates.index');
         
     }
 
@@ -26,7 +26,7 @@ class AllowanceRateController extends Controller
      */
     public function create()
     {
-        return view('masterfile.allowance_rate_add');
+        return view('all_rates.create');
         
     }
 
@@ -60,7 +60,7 @@ class AllowanceRateController extends Controller
      */
     public function edit(AllowanceRate $allowanceRate)
     {
-        return view('masterfile.allowance_rate_update');
+        return view('all_rates.edit');
         
     }
 
