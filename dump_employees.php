@@ -2,7 +2,7 @@
  $con_online=mysqli_connect("cenpripower.com","admin_hris","1t@dm1N_cenpri","db_humanresource");
  $con_local=mysqli_connect("localhost","root","","db_payroll");
 
- $mysqli_online=mysqli_query($con_online,"SELECT personal_id, lname, fname, emp_num, current_bu, current_dept, current_location FROM personal_data WHERE emp_status = 'Regular' OR emp_status = 'Trainee'
+ $mysqli_online=mysqli_query($con_online,"SELECT personal_id, lname, fname, emp_num, current_bu, current_dept, current_location, supervisor FROM personal_data WHERE emp_status = 'Regular' OR emp_status = 'Trainee'
                         OR emp_status = 'Probationary' OR emp_status = 'Project Based'");
  $count_rows_online=mysqli_num_rows($mysqli_online);
 
@@ -20,8 +20,8 @@
         $check_fetch=mysqli_fetch_array($check_local);
         if($check_fetch['ct'] == 0){
 
-             $con_local->query("INSERT INTO employees (personal_id, full_name, emp_num, business_unit, department, emp_location, is_active) 
-                        VALUES ('$row_online[personal_id]', '$fullname','$row_online[emp_num]','$row_online[current_bu]','$row_online[current_dept]','$row_online[current_location]','1')"); 
+             $con_local->query("INSERT INTO employees (personal_id, full_name, emp_num, business_unit, department, supervisory, emp_location, is_active) 
+                        VALUES ('$row_online[personal_id]', '$fullname','$row_online[emp_num]','$row_online[current_bu]','$row_online[current_dept]','$row_online[supervisor]','$row_online[current_location]','1')"); 
         }
     }
  } else {

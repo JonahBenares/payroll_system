@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Models\HmoRate;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,12 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $accountingentries = AccountingEntry::all();
-        return view('employees.index');
+        $hmo = HmoRate::all();
+        $employeelist = Employee::join('departments', 'departments.dept_id', '=', 'employees.department')
+                ->join('business_units', 'business_units.bu_id', '=', 'employees.business_unit')
+                ->join('locations', 'locations.loc_id', '=', 'employees.emp_location')
+                ->get();
+        return view('employees.index',compact('hmo','employeelist'));
     }
 
     /**
@@ -59,7 +64,7 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        return view('masterfile.employee_update');
+        return view('employees.edit');
     }
 
     /**
