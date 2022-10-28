@@ -64,7 +64,7 @@
                                         <a href="<?php echo e(route('holiday.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Holidays</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('payslip_info_list')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Payslip Info</a>
+                                        <a href="<?php echo e(route('payslip_info.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Payslip Info</a>
                                     </li>
                                     <li class="relative">
                                         <a href="<?php echo e(route('allowance.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowances</a>

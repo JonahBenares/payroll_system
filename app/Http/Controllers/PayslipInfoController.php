@@ -15,7 +15,8 @@ class PayslipInfoController extends Controller
      */
     public function index()
     {
-        return view('masterfile.payslip_info_list');
+        $payslip = PayslipInfo::all();
+        return view ('payslip_info.index')->with('payslip', $payslip);
         
     }
 
@@ -26,7 +27,7 @@ class PayslipInfoController extends Controller
      */
     public function create()
     {
-        return view('masterfile.payslip_info_add');
+        return view('payslip_info.create');
         
     }
 
@@ -38,7 +39,16 @@ class PayslipInfoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $payslip=new PayslipInfo();
+        $payslip->description=$request->description;
+        $payslip->pay_type=$request->pay_type;
+        $payslip->editable=$request->editable;
+        $res = $payslip->save();
+        if($res){
+            return redirect()->route('payslip_info.create')->with('success',"Payslip Information Added Successfully");
+        }else{
+            return redirect()->route('payslip_info.create')->with('fail',"Error! Try Again!");
+        }
     }
 
     /**
@@ -47,9 +57,10 @@ class PayslipInfoController extends Controller
      * @param  \App\Models\PayslipInfo  $payslipInfo
      * @return \Illuminate\Http\Response
      */
-    public function show(PayslipInfo $payslipInfo)
+    public function show($id)
     {
-        //
+        $payslip = PayslipInfo::find($id);
+        return view('payslip_info.show')->with('payslip', $payslip);
     }
 
     /**
@@ -58,10 +69,10 @@ class PayslipInfoController extends Controller
      * @param  \App\Models\PayslipInfo  $payslipInfo
      * @return \Illuminate\Http\Response
      */
-    public function edit(PayslipInfo $payslipInfo)
+    public function edit($id)
     {
-        return view('masterfile.payslip_info_update');
-        
+        $payslip = PayslipInfo::find($id);
+        return view('payslip_info.edit')->with('payslip', $payslip);
     }
 
     /**
@@ -71,9 +82,12 @@ class PayslipInfoController extends Controller
      * @param  \App\Models\PayslipInfo  $payslipInfo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PayslipInfo $payslipInfo)
+    public function update(Request $request, $id)
     {
-        //
+        $payslip = PayslipInfo::find($id);
+        $input = $request->all();
+        $payslip->update($input);
+        return redirect()->route('payslip_info.edit',$id)->with('success',"Payslip Information Updated Successfully");
     }
 
     /**
@@ -82,8 +96,9 @@ class PayslipInfoController extends Controller
      * @param  \App\Models\PayslipInfo  $payslipInfo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PayslipInfo $payslipInfo)
+    public function destroy($id)
     {
-        //
+        PayslipInfo::destroy($id);
+        return redirect()->route('payslip_info.index')->with('success',"Payslip Information Deleted Successfully");
     }
 }
