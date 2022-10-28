@@ -67,10 +67,11 @@ Route::resource('payslip_info', PayslipInfoController::class);
 // Route::get('/edit/{id}', [AllowanceController::class, 'edit'])->middleware(['auth'])->name('edit');
 // Route::get('/update/{id}', [AllowanceController::class, 'update'])->name('update');
 Route::resource('allowance', AllowanceController::class);
+Route::resource('allowancerate', AllowanceRateController::class);
 // AllowanceRate
-Route::get('/allowance_rate_list', [AllowanceRateController::class, 'index'])->middleware(['auth'])->name('allowance_rate_list');
-Route::get('/allowance_rate_add', [AllowanceRateController::class, 'create'])->middleware(['auth'])->name('allowance_rate_add');
-Route::get('/allowance_rate_update', [AllowanceRateController::class, 'edit'])->middleware(['auth'])->name('allowance_rate_update');
+// Route::get('/allowance_rate_list', [AllowanceRateController::class, 'index'])->middleware(['auth'])->name('allowance_rate_list');
+// Route::get('/allowance_rate_add', [AllowanceRateController::class, 'create'])->middleware(['auth'])->name('allowance_rate_add');
+// Route::get('/allowance_rate_update', [AllowanceRateController::class, 'edit'])->middleware(['auth'])->name('allowance_rate_update');
 
 
 Route::get('/deduction_list', [MasterfileController::class, 'deduction_list'])->middleware(['auth'])->name('deduction_list');
