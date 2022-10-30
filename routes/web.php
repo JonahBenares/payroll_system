@@ -104,4 +104,3 @@ Route::get('/upload_allowance', [UploadAllowController::class, 'uploadAllowance'
 
 // Route::get('/dash', [MasterfileController::class, 'dash'])->middleware(['auth'])->name("dash");
 // Route::get('/masterfile/employee_list', 'App\Http\Controllers\MasterfileController@index');
-

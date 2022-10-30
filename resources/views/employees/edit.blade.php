@@ -22,20 +22,30 @@
                 </div>
                 {{-- <livewire:employee-table/> --}}
                 <!-- component -->
-                <form class="mt-2">
-                    <div class="px-2">
+                @foreach($employeedata AS $e)  
+                <form method="POST" class="mt-2" action ="{{ route('emp.update', $e->id) }}" >
+                    @method('PUT')
+                    @csrf
+                   <div class="flex ">
+                        <div class="mt-4 w-full px-2">
                         <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Employee Name</label>
-                        <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                        <input type="text" name="full_name" value="{{ $e->full_name }}" disabled class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                     </div>
+                    <div class="mt-4 w-full px-2>
+                        <input type="hidden" name="supervisor" value="0" />
+                        <input class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500" name="supervisor" id="supervisor"  type="checkbox" value="1">
+                        <label for="default-checkbox" class="block ml-2 text-sm text-gray-700 capitalize white:text-gray-200">Supervisor</label>
+                    </div>
+                </div>
                     
                     <div class="flex ">
                         <div class="mt-4 w-full px-2">
                             <label class="block text-sm text-gray-700 capitalize white:text-gray-200">Employee Number</label>
-                            <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                            <input type="text" name="emp_num" value="{{ $e->emp_num }}" disabled class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                         </div>
                         <div class="mt-4 w-full px-2">
                             <label class="block text-sm text-gray-700 capitalize white:text-gray-200">Employee Type</label>
-                            <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                            <input  disabled  class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                         </div>
                     </div>
 
@@ -44,49 +54,24 @@
                             <label class="block text-sm text-gray-700 capitalize white:text-gray-200">
                                 Location
                             </label>
-                            <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                            <input name="location" value="{{ $e->location_name }}" disabled class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                         </div>
                         <div class="mt-4 w-full px-2">
-                            <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">Department</label>
-                            <input type="email" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                            <label for="department" class="block text-sm text-gray-700 capitalize white:text-gray-200">Department</label>
+                            <input type="text" name="department" value="{{ $e->dept_name }}" disabled class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                         </div>
                     </div>
-                    <div class="flex ">
-                        <div class="mt-4 w-full px-2">
-                            <label class="block text-sm text-gray-700 capitalize white:text-gray-200">
-                                HMO L1 Dependent
-                            </label>
-                            <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                        </div>
-                        <div class="mt-4 w-full px-2">
-                            <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">
-                                HMO L2 Dependent</label>
-                            <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                        </div>
-                    </div>
-                    <div class="flex ">
-                        <div class="mt-4 w-full px-2">
-                            <label class="block text-sm text-gray-700 capitalize white:text-gray-200">
-                                HMO L3 Dependent
-                            </label>
-                            <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                        </div>
-                        <div class="mt-4 w-full px-2">
-                            <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">
-                                Senior Dependent</label>
-                            <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                        </div>
-                    </div>
+                  
                     <div class="flex ">
                         <div class="mt-4 w-full px-2">
                             <label class="block text-sm text-gray-700 capitalize white:text-gray-200">
                                 Pag-Ibig Rate
                             </label>
-                            <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                            <input  type="text" name="pagibig_rate" value="{{ $e->pagibig_rate }}" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                         </div>
                         <div class="mt-4 w-full px-2">
-                            <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">Hourly Rate</label>
-                            <input type="email" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                            <label for="hourly_rate" class="block text-sm text-gray-700 capitalize white:text-gray-200">Hourly Rate</label>
+                            <input type="text" name="hourly_rate" value="{{ $e->hourly_rate }}" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                         </div>
                     </div>
                     <div class="flex ">
@@ -94,11 +79,11 @@
                             <label class="block text-sm text-gray-700 capitalize white:text-gray-200">
                                 Daily Rate
                             </label>
-                            <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                            <input type="text" name="daily_rate" value="{{ $e->daily_rate }}" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                         </div>
                         <div class="mt-4 w-full px-2">
-                            <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">Monthly Rate</label>
-                            <input type="email" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                            <label for="monthly_rate" class="block text-sm text-gray-700 capitalize white:text-gray-200">Monthly Rate</label>
+                            <input type="text" name="monthly_rate" value="{{ $e->monthly_rate }}" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                         </div>
                     </div>
 
@@ -107,26 +92,59 @@
                             <label class="block text-sm text-gray-700 capitalize white:text-gray-200">
                                 Salary Type
                             </label>
-                            <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                            <select name="salary_type" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                <option value="" selected>--Select Salary Type--</option>
+                                <option value="Monthly">Monthly</option>
+                                <option value="Daily">Daily</option>
+                            </select>
                         </div>
                         <div class="mt-4 w-full px-2">
                             <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">Accounting Entry</label>
-                            <select type="email" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                                <option value="">--Select Accounting Entry--</option>
+                            <select name="accounting_entry_id" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                <option value="" selected>--Select Accounting Entry--</option>
+                                @foreach($accent AS $acc)
+                                    <option value="{{ $acc->id }}">{{ $acc->description }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
-                    <div class="flex items-right pl-2 mt-4">
-                        <input type="hidden" name="editable" value="0" />
-                        <input class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500" name="editable" id="editable"  type="checkbox" value="1">
-                        <label for="default-checkbox" class="block ml-2 text-sm text-gray-700 capitalize white:text-gray-200">Supervisor</label>
-                    </div>
+                    
+                    @foreach($hmo AS $h)
+                        @foreach($emp_hmo AS $r)
+                            @if($h->id === $r->hmo_rate_id) 
+                               
+                          
+                            <div class="flex ">
+                                <div class="mt-4 w-full px-2">
+                                    <label class="block text-sm text-gray-700 capitalize white:text-gray-200">
+                                        {{ $h->level_description }}
+                                    </label>
+                                    <input type="number" name="{{ 'dependent_'.$h->id }}" value="{{ $r->no_of_dependent }}" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                </div>
+                            </div>
+                            @else
+                            <div class="flex ">
+                                <div class="mt-4 w-full px-2">
+                                    <label class="block text-sm text-gray-700 capitalize white:text-gray-200">
+                                        {{ $h->level_description }}
+                                    </label>
+                                    <input type="number" name="{{ 'dependent_'.$h->id }}"  class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                </div>
+                            </div>
+                                
+                            @endif 
+                        @endforeach
+                    @endforeach
+                  
+                    
+                   
                     <div class="flex justify-end mt-6 px-2">
-                        <button type="button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                        <button type="submit" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                             Update
                         </button>
                     </div>
                 </form>
+                @endforeach
             </div> 
         </div>
     </div>
