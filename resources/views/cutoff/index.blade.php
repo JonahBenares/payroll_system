@@ -28,10 +28,12 @@
                     <input type="text" id="table-search-users" class="block p-2 pl-10 w-80 text-sm text-gray-900 bg-gray-50 rounded-2xl border border-gray-300 focus:ring-blue-500 focus:border-blue-500 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500" placeholder="Search for Cut off">
                 </div>
             </div>
-             
         </div>
-        
-        
+        @if(Session::has('success'))
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline">{{Session::get('success')}}</span>
+                    </div>
+        @endif
         <div class="overflow-x-auto h-96 relative  sm:rounded-2xl">
             <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0">
@@ -53,16 +55,15 @@
                     </tr>
                 </thead>
                 <tbody class="sticky top-12">
+                @foreach($cutoff as $co)
                     <tr class=" border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                         <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                            MID
+                        {{ $co->cutoff_type }}
                         </th>
-                        <td class="py-3 px-6">
-                            21
-                        </td>
-                        <td class="py-3 px-6">5</td>
+                        <td class="py-3 px-6">{{ $co->cutoff_start }}</td>
+                        <td class="py-3 px-6">{{ $co->cutoff_end }}</td>
                         <td class="py-3 px-6 flex justify-center" align="center">
-                            <a href="{{ route('cut_off.edit','1') }}" class="" title="Update">
+                            <a href="{{ route('cut_off.edit',$co->id) }}" class="" title="Update">
                                 <div class="py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
                                         <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
@@ -70,38 +71,18 @@
                                     </svg>
                                 </div>
                             </a>
-                            <button type="button" class="ml-2 py-1.5 px-2 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
+                            <form method="post" action="{{route('cut_off.destroy',$co->id)}}" accept-charset="UTF-8" style="display:inline">
+                                    {{ method_field('DELETE') }}
+                                    {{ csrf_field() }}
+                            <button type="submit" onclick="return confirm(&quot;Are you sure you want to delete this record?&quot;)" class="ml-2 py-1.5 px-2 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                                 </svg>                                                
                             </button>
+                            </form>
                         </td>
                     </tr>
-                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                        <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                            EOM
-                        </th>
-                        <td class="py-3 px-6">
-                            6
-                        </td>
-                        <td class="py-3 px-6">20</td>
-                        <td class="py-3 px-6 flex justify-center" align="center">
-                            <a href="{{ route('cut_off.edit','1') }}" class="" title="Update">
-                                <div class="py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
-                                        <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
-                                        <path d="M5.25 5.25a3 3 0 00-3 3v10.5a3 3 0 003 3h10.5a3 3 0 003-3V13.5a.75.75 0 00-1.5 0v5.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V8.25a1.5 1.5 0 011.5-1.5h5.25a.75.75 0 000-1.5H5.25z" />
-                                    </svg>
-                                </div>
-                            </a>
-                            <button type="button" class="ml-2 py-1.5 px-2 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>                                                
-                            </button>
-                        </td>
-                    </tr>
-                   
+                    @endforeach
                 </tbody>
             </table>
         </div>

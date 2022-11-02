@@ -10,4 +10,5 @@ class CutOff extends Model
     use HasFactory;
     protected $table = 'cutoff';
     protected $primaryKey = 'id';
+    protected $fillable = ['cutoff_type', 'cutoff_start', 'cutoff_end'];
 }
