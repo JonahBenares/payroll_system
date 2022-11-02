@@ -1,9 +1,9 @@
 <?php if (isset($component)) { $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da = $component; } ?>
-<?php $component = $__env->getContainer()->make(App\View\Components\AppLayout::class, [] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
+<?php $component = App\View\Components\AppLayout::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('app-layout'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $constructor = (new ReflectionClass(App\View\Components\AppLayout::class))->getConstructor()): ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(App\View\Components\AppLayout::class))->getConstructor()): ?>
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
@@ -40,6 +40,11 @@
                         </div>
                     </div>
                 </div>
+                <?php if(Session::has('success')): ?>
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline"><?php echo e(Session::get('success')); ?></span>
+                    </div>
+                <?php endif; ?>
                 <div class="overflow-x-auto hover:overflow-y-auto overflow-y-hidden h-100 relative  sm:rounded-2xl">
                     <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-10">
@@ -75,12 +80,12 @@
                                             </svg>
                                         </div>
                                     </a>
-                                    <form method="POST" action="<?php echo e(url('/schedules' . '/' . $sc->id)); ?>" accept-charset="UTF-8" style="display:inline">
+                                    <form method="post" action="<?php echo e(route('schedules.destroy',$sc->id)); ?>" accept-charset="UTF-8" style="display:inline">
                                     <?php echo e(method_field('DELETE')); ?>
 
                                     <?php echo e(csrf_field()); ?>
 
-                                    <button type="submit" onclick="return confirm(&quot;Confirm delete?&quot;)" class="ml-1 py-1.5 px-2 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Delete"> 
+                                    <button type="submit" onclick="return confirm(&quot;Are you sure you want to delete this record?&quot;)" class="ml-1 py-1.5 px-2 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Delete"> 
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                                         </svg>                                                
