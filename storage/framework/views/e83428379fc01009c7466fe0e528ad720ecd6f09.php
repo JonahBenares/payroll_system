@@ -185,5 +185,4 @@
 
         <?php echo view('livewire-powergrid::assets.scripts')->render(); ?>
     </body>
-</html>
-<?php /**PATH C:\xampp\htdocs\payroll_system\resources\views/layouts/app.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\xampp\htdocs\payroll_system\resources\views/layouts/app.blade.php ENDPATH**/ ?>

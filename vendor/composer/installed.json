@@ -1611,17 +1611,17 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v9.37.0",
-            "version_normalized": "9.37.0.0",
+            "version": "v9.38.0",
+            "version_normalized": "9.38.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "0c9675abf6d966e834b2ebeca3319f524e07a330"
+                "reference": "abf198e443e06696af3f356b44de67c0fa516107"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/0c9675abf6d966e834b2ebeca3319f524e07a330",
-                "reference": "0c9675abf6d966e834b2ebeca3319f524e07a330",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/abf198e443e06696af3f356b44de67c0fa516107",
+                "reference": "abf198e443e06696af3f356b44de67c0fa516107",
                 "shasum": ""
             },
             "require": {
@@ -1752,7 +1752,7 @@
                 "symfony/postmark-mailer": "Required to enable support for the Postmark mail transport (^6.0).",
                 "symfony/psr-http-message-bridge": "Required to use PSR-7 bridging features (^2.0)."
             },
-            "time": "2022-10-25T15:43:46+00:00",
+            "time": "2022-11-01T14:05:55+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -2134,17 +2134,17 @@
         },
         {
             "name": "league/commonmark",
-            "version": "2.3.5",
-            "version_normalized": "2.3.5.0",
+            "version": "2.3.6",
+            "version_normalized": "2.3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "84d74485fdb7074f4f9dd6f02ab957b1de513257"
+                "reference": "857afc47ce113454bd629037213378ba3219dd40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/84d74485fdb7074f4f9dd6f02ab957b1de513257",
-                "reference": "84d74485fdb7074f4f9dd6f02ab957b1de513257",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/857afc47ce113454bd629037213378ba3219dd40",
+                "reference": "857afc47ce113454bd629037213378ba3219dd40",
                 "shasum": ""
             },
             "require": {
@@ -2164,7 +2164,7 @@
                 "erusev/parsedown": "^1.0",
                 "ext-json": "*",
                 "github/gfm": "0.29.0",
-                "michelf/php-markdown": "^1.4",
+                "michelf/php-markdown": "^1.4 || ^2.0",
                 "nyholm/psr7": "^1.5",
                 "phpstan/phpstan": "^1.8.2",
                 "phpunit/phpunit": "^9.5.21",
@@ -2177,7 +2177,7 @@
             "suggest": {
                 "symfony/yaml": "v2.3+ required if using the Front Matter extension"
             },
-            "time": "2022-07-29T10:59:45+00:00",
+            "time": "2022-10-30T16:45:38+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -4025,17 +4025,17 @@
         },
         {
             "name": "power-components/livewire-powergrid",
-            "version": "v3.5.5",
-            "version_normalized": "3.5.5.0",
+            "version": "v3.5.9",
+            "version_normalized": "3.5.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Power-Components/livewire-powergrid.git",
-                "reference": "ad9645e5828e51f4597606ac898897942e3caf83"
+                "reference": "66e8515453e64f3527d07881c9a3156c9b9cc9f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Power-Components/livewire-powergrid/zipball/ad9645e5828e51f4597606ac898897942e3caf83",
-                "reference": "ad9645e5828e51f4597606ac898897942e3caf83",
+                "url": "https://api.github.com/repos/Power-Components/livewire-powergrid/zipball/66e8515453e64f3527d07881c9a3156c9b9cc9f8",
+                "reference": "66e8515453e64f3527d07881c9a3156c9b9cc9f8",
                 "shasum": ""
             },
             "require": {
@@ -4056,7 +4056,7 @@
                 "pestphp/pest-plugin-livewire": "^1.0",
                 "phpunit/phpunit": "^9.5"
             },
-            "time": "2022-10-28T09:42:25+00:00",
+            "time": "2022-11-01T13:26:40+00:00",
             "type": "library",
             "extra": {
                 "laravel": {
@@ -4089,7 +4089,7 @@
             "homepage": "https://github.com/power-components/livewire-powergrid",
             "support": {
                 "issues": "https://github.com/Power-Components/livewire-powergrid/issues",
-                "source": "https://github.com/Power-Components/livewire-powergrid/tree/v3.5.5"
+                "source": "https://github.com/Power-Components/livewire-powergrid/tree/v3.5.9"
             },
             "funding": [
                 {
