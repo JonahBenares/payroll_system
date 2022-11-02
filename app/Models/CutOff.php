@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class CutOff extends Model
 {
     use HasFactory;
+    protected $table = 'cutoff';
+    protected $primaryKey = 'id';
 }

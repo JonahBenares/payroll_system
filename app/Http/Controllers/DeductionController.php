@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Deduction;
 use App\Models\PayslipInfo;
+use App\Models\CutOff;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -16,8 +17,8 @@ class DeductionController extends Controller
      */
     public function index()
     {
-        $deduct = Deduction::join('payslip_info', 'payslip_info.id', '=', 'deductions.payslip_info_id')
-        ->get(['deductions.id','payslip_info.description','deductions.deduction_frequency','deductions.deduction_period']);
+        $deduct = Deduction::join('payslip_info', 'payslip_info.id', '=', 'deductions.payslip_info_id')->join('cutoff', 'cutoff.id', '=', 'deductions.deduction_period')
+        ->get(['deductions.id','payslip_info.description','deductions.deduction_frequency','cutoff.cutoff_type']);
         return view ('deduct.index')->with('deduction', $deduct);
     }
 
@@ -29,7 +30,8 @@ class DeductionController extends Controller
     public function create()
     {
         $deduct = PayslipInfo::where('pay_type',"=",'3')->get();
-        return view('deduct.create',compact('deduct'));
+        $cutoff=CutOff::all()->sortBy('cutoff_start');
+        return view('deduct.create',compact('deduct','cutoff'));
     }
 
     /**
@@ -43,12 +45,12 @@ class DeductionController extends Controller
         $deduct=new Deduction();
         $deduct->payslip_info_id=$request->payslip_info_id;
         $deduct->deduction_frequency=$request->deduction_frequency;
-        $deduct->salary_to=$request->deduction_period;
+        $deduct->deduction_period=$request->deduction_period;
         $res = $deduct->save();
         if($res){
-            return redirect()->route('deduct.create')->with('success',"Deduction Added Successfully");
+            return redirect()->route('deductions.create')->with('success',"Deduction Added Successfully");
         }else{
-            return redirect()->route('deduct.create')->with('fail',"Error! Try Again!");
+            return redirect()->route('deductions.create')->with('fail',"Error! Try Again!");
         }
     }
 
@@ -61,7 +63,7 @@ class DeductionController extends Controller
     public function show($id)
     {
         $deduct = Deductions::find($id);
-        return view('deduct.show')->with('deduction', $deduct);
+        return view('deductions.show')->with('deduction', $deduct);
     }
 
     /**
@@ -74,7 +76,8 @@ class DeductionController extends Controller
     {
         $deduct = Deduction::find($id);
         $pay = PayslipInfo::where('pay_type',"=",'3')->get();
-        return view('deduct.edit')->with('deduction', $deduct)->with('payslip', $pay);
+        $cutoff = CutOff::all();
+        return view('deduct.edit')->with('deduction', $deduct)->with('payslip', $pay)->with('cutoff', $cutoff);
     }
 
     /**
@@ -89,7 +92,7 @@ class DeductionController extends Controller
         $deduct = Deduction::find($id);
         $input = $request->all();
         $deduct->update($input);
-        return redirect()->route('deduct.edit',$id)->with('success',"Deduction Updated Successfully");
+        return redirect()->route('deductions.edit',$id)->with('success',"Deduction Updated Successfully");
     }
 
     /**
@@ -101,6 +104,6 @@ class DeductionController extends Controller
     public function destroy($id)
     {
         Deduction::destroy($id);
-        return redirect()->route('deduct.index')->with('success',"Deduction Deleted Successfully");
+        return redirect()->route('deductions.index')->with('success',"Deduction Deleted Successfully");
     }
 }
