@@ -62,10 +62,10 @@ Route::resource('payslip_info', PayslipInfoController::class);
 
 // Allowance
 Route::resource('allowance', AllowanceController::class);
-Route::resource('allowancerate', AllowanceRateController::class);
-Route::post('/allowancerate/fetchrate', [AllowanceRateController::class, 'fetchRate']);
+
 // AllowanceRate
 Route::resource('allowancerate', AllowanceRateController::class);
+Route::post('/allowancerate/fetchrate', [AllowanceRateController::class, 'fetchRate']);
 
 // AdjustmentRate
 Route::resource('adjustmentrate', AdjustmentRateController::class);
@@ -89,11 +89,7 @@ Route::resource('cut_off', CutOffController::class);
 
 
 Route::resource('leavefailure', LeaveFailureController::class); 
-
-
-
 // Route::get('/leave_list', [LeaveController::class, 'filingLeave'])->middleware(['auth'])->name('leave_list');
-
 // Route::get('/deduction_list', [MasterfileController::class, 'deduction_list'])->middleware(['auth'])->name('deduction_list');
 // Route::get('/hmo_rates', [MasterfileController::class, 'hmo_rates'])->middleware(['auth'])->name('hmo_rates');
 // Route::get('/statutory_bracket', [MasterfileController::class, 'statutory_bracket'])->middleware(['auth'])->name('statutory_bracket');
