@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Schedule extends Model
 {
+    use HasFactory;
     protected $table = 'schedule_code';
     protected $primaryKey = 'id';
     protected $fillable = ['schedule_code', 'time_in', 'time_out'];

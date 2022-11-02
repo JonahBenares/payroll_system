@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Models\EmployeeHMO;
+use App\Models\HmoRate;
+use App\Models\AccountingEntry;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -15,7 +18,12 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return view('masterfile.employee_list');
+        $hmo = HmoRate::all();
+        $employeelist = Employee::join('departments', 'departments.dept_id', '=', 'employees.department')
+                ->join('business_units', 'business_units.bu_id', '=', 'employees.business_unit')
+                ->join('locations', 'locations.loc_id', '=', 'employees.emp_location')
+                ->get();
+        return view('employees.index',compact('hmo','employeelist'));
     }
 
     /**
@@ -56,9 +64,20 @@ class EmployeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function edit(Employee $employee)
+    public function edit($id)
     {
-        return view('masterfile.employee_update');
+        $hmo = HmoRate::all();
+        $accent = AccountingEntry::all();
+        $emp_hmo = EmployeeHMO::where('employee_id', $id)->get();
+      
+        $employeedata = Employee::join('departments', 'departments.dept_id', '=', 'employees.department')
+                ->join('business_units', 'business_units.bu_id', '=', 'employees.business_unit')
+                ->join('locations', 'locations.loc_id', '=', 'employees.emp_location')
+                ->where('employees.id', '=', $id)
+                ->get();
+
+              
+        return view('employees.edit',compact('hmo', 'accent', 'employeedata','emp_hmo')); 
     }
 
     /**
@@ -68,9 +87,14 @@ class EmployeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employee $employee)
+    public function update(Request $request, $id)
     {
-        //
+       
+        //$employeedata = Employee::find($id);
+        $input = $request->all();
+        //$employeedata->update($input);
+        return $input;
+        //return redirect()->route('emp.index');
     }
 
     /**

@@ -37,9 +37,17 @@ class ScheduleController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
-        Schedule::create($input);
-        return redirect('schedules')->with('flash_message', 'Schedule Successfully Addedd!'); 
+        $schedule=new Schedule();
+        $schedule->schedule_code=$request->schedule_code;
+        $schedule->time_in=$request->time_in;
+        $schedule->time_out=$request->time_out;
+        $res = $schedule->save();
+        if($res){
+            return redirect()->route('schedules.create')->with('success',"Schedule Added Successfully");
+        }else{
+            return redirect()->route('schedules.create')->with('fail',"Error! Try Again!");
+        }
+        //return redirect('schedules')->with('flash_message', 'Schedule Successfully Addedd!'); 
     }
 
     /**
@@ -78,7 +86,7 @@ class ScheduleController extends Controller
         $sched = Schedule::find($id);
         $input = $request->all();
         $sched->update($input);
-        return redirect('schedules')->with('flash_message', 'Schedule Successfully Updated!'); 
+        return redirect()->route('schedules.edit',$id)->with('success',"Schedule Updated Successfully"); 
     }
 
     /**
@@ -90,6 +98,6 @@ class ScheduleController extends Controller
     public function destroy($id)
     {
         Schedule::destroy($id);
-        return redirect('schedules')->with('flash_message', 'Schedule Successfully deleted!');
+        return redirect()->route('schedules.index')->with('success',"Schedule Deleted Successfully");
     }
 }
