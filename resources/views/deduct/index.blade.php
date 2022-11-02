@@ -61,10 +61,10 @@
                                 <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                 {{ $deduct->description }}
                                 </th>
-                                <td class="py-3 px-6">{{ $deduct->deduction_frequency }}</td>
-                                <td class="py-3 px-6">{{ $deduct->deduction_period }}</td>
+                                <td class="py-3 px-6">{{ ($deduct->deduction_frequency == 1) ? 'Once a month' : 'Twice a month' }}</td>
+                                <td class="py-3 px-6">{{ $deduct->cutoff_type }}</td>
                                 <td class="py-3 px-6 flex justify-center" align="center">
-                                    <a href="{{ route('deduct.edit', $deduct->id) }}" class="" title="Update">
+                                    <a href="{{ route('deductions.edit', $deduct->id) }}" class="" title="Update">
                                         <div class="py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
                                                 <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
@@ -72,7 +72,7 @@
                                             </svg>
                                         </div>
                                     </a>
-                                    <form method="post" action="{{route('deduct.destroy',$deduct->id)}}" accept-charset="UTF-8" style="display:inline">
+                                    <form method="post" action="{{route('deductions.destroy',$deduct->id)}}" accept-charset="UTF-8" style="display:inline">
                                     {{ method_field('DELETE') }}
                                     {{ csrf_field() }}
                                     <button type="submit" onclick="return confirm(&quot;Are you sure you want to delete this record?&quot;)" class="ml-2 py-1.5 px-2 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
