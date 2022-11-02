@@ -86,7 +86,7 @@
             </main>
         </div>
         <!-- Scripts -->
-        <script>
+        {{-- <script>
             function isNumberKey(txt, evt){
                 var charCode = (evt.which) ? evt.which : evt.keyCode;
                 if (charCode == 46) {
@@ -153,7 +153,7 @@
             $("body").on("click", ".remAllowance", function() {
                 $(this).parents('.appends').remove();
             });
-        </script>
+        </script> --}}
         @livewireScripts
         @powerGridScripts
     </body>
