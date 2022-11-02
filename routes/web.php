@@ -61,12 +61,8 @@ Route::resource('payslip_info', PayslipInfoController::class);
 
 // Allowance
 Route::resource('allowance', AllowanceController::class);
-<<<<<<< HEAD
 Route::resource('allowancerate', AllowanceRateController::class);
 Route::post('/allowancerate/fetchrate', [AllowanceRateController::class, 'fetchRate']);
-=======
-
->>>>>>> bec47f8f7c35b16bcc36d408b7d386b71344bdef
 // AllowanceRate
 Route::resource('allowancerate', AllowanceRateController::class);
 
