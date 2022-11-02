@@ -67,6 +67,7 @@ Route::get('/payslip_info_update', [PayslipInfoController::class, 'edit'])->midd
 // Route::get('/update/{id}', [AllowanceController::class, 'update'])->name('update');
 Route::resource('allowance', AllowanceController::class);
 Route::resource('allowancerate', AllowanceRateController::class);
+Route::post('/allowancerate/fetchrate', [AllowanceRateController::class, 'fetchRate']);
 // AllowanceRate
 // Route::get('/allowance_rate_list', [AllowanceRateController::class, 'index'])->middleware(['auth'])->name('allowance_rate_list');
 // Route::get('/allowance_rate_add', [AllowanceRateController::class, 'create'])->middleware(['auth'])->name('allowance_rate_add');
