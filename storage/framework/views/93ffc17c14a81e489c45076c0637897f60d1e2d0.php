@@ -202,7 +202,4 @@
             </div>
         </nav>
     </div>
-</div>
-        
-    
-<?php /**PATH C:\xampp\htdocs\payroll_system\resources\views/layouts/navigation.blade.php ENDPATH**/ ?>
+</div><?php /**PATH C:\xampp\htdocs\payroll_system\resources\views/layouts/navigation.blade.php ENDPATH**/ ?>
