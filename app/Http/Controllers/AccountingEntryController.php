@@ -15,7 +15,9 @@ class AccountingEntryController extends Controller
      */
     public function index()
     {
-        //
+       // return 'aaa';
+        $accountingentries = AccountingEntry::all();
+        return view('accent.index', compact('accountingentries'));
     }
 
     /**
@@ -25,7 +27,7 @@ class AccountingEntryController extends Controller
      */
     public function create()
     {
-        //
+        return view('accent.create');
     }
 
     /**
@@ -36,7 +38,12 @@ class AccountingEntryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        AccountingEntry::create([
+            'description'=>$request->input('description')
+        ]);
+
+        return redirect()->route('entry.index');
     }
 
     /**
@@ -56,9 +63,12 @@ class AccountingEntryController extends Controller
      * @param  \App\Models\AccountingEntry  $accountingEntry
      * @return \Illuminate\Http\Response
      */
-    public function edit(AccountingEntry $accountingEntry)
+    public function edit($id)
     {
-        //
+        $accountingentries = AccountingEntry::findorFail($id);
+        
+        return view('accent.edit', compact('accountingentries'));
+        
     }
 
     /**
@@ -68,9 +78,13 @@ class AccountingEntryController extends Controller
      * @param  \App\Models\AccountingEntry  $accountingEntry
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AccountingEntry $accountingEntry)
+    public function update(Request $request, $id)
     {
-        //
+        $accountingentries = AccountingEntry::find($id);
+        $input = $request->all();
+        $accountingentries->update($input);
+
+        return redirect()->route('entry.index');
     }
 
     /**
@@ -79,8 +93,11 @@ class AccountingEntryController extends Controller
      * @param  \App\Models\AccountingEntry  $accountingEntry
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AccountingEntry $accountingEntry)
+    public function destroy($id)
     {
-        //
+        $accountingentries = AccountingEntry::find($id);
+        $accountingentries->delete();
+        return redirect()->route('entry.index');
+
     }
 }

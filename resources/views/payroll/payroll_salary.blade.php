@@ -285,7 +285,7 @@
                                                             <td align="right">4,000</td>
                                                         </tr>
                                                         <tr class="bg-white border-b">
-                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">SSS With TAX</td>
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Withholding TAX</td>
                                                             <td align="right">0</td>
                                                         </tr>
                                                         <tr class="bg-white border-b">
@@ -726,7 +726,7 @@
                                                             <td align="right">4,000</td>
                                                         </tr>
                                                         <tr class="bg-white border-b">
-                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">SSS With TAX</td>
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Withholding TAX</td>
                                                             <td align="right">0</td>
                                                         </tr>
                                                         <tr class="bg-white border-b">
@@ -1167,7 +1167,7 @@
                                                             <td align="right">4,000</td>
                                                         </tr>
                                                         <tr class="bg-white border-b">
-                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">SSS With TAX</td>
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Withholding TAX</td>
                                                             <td align="right">0</td>
                                                         </tr>
                                                         <tr class="bg-white border-b">
@@ -1608,7 +1608,7 @@
                                                             <td align="right">4,000</td>
                                                         </tr>
                                                         <tr class="bg-white border-b">
-                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">SSS With TAX</td>
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Withholding TAX</td>
                                                             <td align="right">0</td>
                                                         </tr>
                                                         <tr class="bg-white border-b">
@@ -2049,7 +2049,7 @@
                                                             <td align="right">4,000</td>
                                                         </tr>
                                                         <tr class="bg-white border-b">
-                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">SSS With TAX</td>
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Withholding TAX</td>
                                                             <td align="right">0</td>
                                                         </tr>
                                                         <tr class="bg-white border-b">

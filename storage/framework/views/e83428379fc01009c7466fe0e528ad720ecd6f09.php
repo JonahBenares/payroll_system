@@ -10,6 +10,7 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!-- Scripts -->
         <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
          <!-- Styles -->
@@ -112,9 +113,76 @@
             </main>
         </div>
         <!-- Scripts -->
+        <script>
+            function isNumberKey(txt, evt){
+                var charCode = (evt.which) ? evt.which : evt.keyCode;
+                if (charCode == 46) {
+                    //Check if the text already contains the . character
+                    if (txt.value.indexOf('.') === -1) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    if (charCode > 31
+                        && (charCode < 48 || charCode > 57))
+                        return false;
+                }
+                return true;
+            }
+
+            function fetchRates(){
+                var allowance_id = document.getElementById("allowance_name").value;
+                $.ajax({
+                    type: 'POST',
+                    url: "fetchrate",
+                    data: {
+                        allowance_id: allowance_id,
+                        _token: '<?php echo e(csrf_token()); ?>'
+                    },
+                    dataType: 'json',
+                    cache: false,
+                    success: function(response){
+                        $.each(response.allowance, function (key, item) {
+                            document.getElementById("allowance_rate").value  = item.allowance_rate;
+                        });
+                    }
+                }); 
+            }
+
+            var ee = 1;
+            $("body").on("click", ".addAllowance", function(e) {
+                e.preventDefault();
+                ee++;
+                var $append = $(this).parents('.appends');
+                var nextHtml = $append.clone().find("input:text").val('').end();
+                nextHtml.attr('id', 'appends' + ee);
+                var hasRmBtn = $('.remAllowance', nextHtml).length > 0;
+                if (!hasRmBtn) {
+                    var rms = "<button class='flex items-center justify-center px-2 py-2 mt-3 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 rounded-2xl white:bg-red-600 white:hover:bg-red-700 white:focus:bg-red-700 hover:bg-red-600 focus:outline-none focus:bg-red-500 focus:ring focus:ring-red-300 focus:ring-opacity-50 remAllowance'><svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-4 h-4'><path stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12' /></svg></button>"
+                    $('.addmoreappend', nextHtml).append(rms);
+                }
+                $append.after(nextHtml);
+                $(".addAllowance").hide();
+                var btn_allowance = document.getElementById("btn_allowance");
+                btn_allowance.style.display = "block";
+                refreshTable();
+            });
+
+            function refreshTable(){
+                $(".appends").each(function(index, element){
+                    var ind = index+1;
+                    $(this).find("input#allowance_name").attr('id', 'allowance_name' + ind);
+                    $(this).find("input#allowance_rate").attr('id', 'allowance_rate' + ind);
+                });
+            }
+
+            $("body").on("click", ".remAllowance", function() {
+                $(this).parents('.appends').remove();
+            });
+        </script>
         <?php echo \Livewire\Livewire::scripts(); ?>
 
         <?php echo view('livewire-powergrid::assets.scripts')->render(); ?>
     </body>
-</html>
-<?php /**PATH C:\xampp\htdocs\payroll_system\resources\views/layouts/app.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\xampp\htdocs\payroll_system\resources\views/layouts/app.blade.php ENDPATH**/ ?>
