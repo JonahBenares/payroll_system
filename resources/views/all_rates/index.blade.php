@@ -52,12 +52,12 @@
                                 </th>
                                 <td class="border border-gray-200 py-3 px-3 align-top">
                                     @foreach($rates AS $r)
-                                    @if($e->id==$r->employee_id)
-                                    <div class="justify-between flex">
-                                        <span class="relative">{{ $r->allowance_name }}</span>
-                                        <span class="relative">{{ number_format($r->allowance_rate,2) }}</span>
-                                    </div>
-                                    @endif
+                                        @if($e->id==$r->employee_id)
+                                        <div class="justify-between flex">
+                                            <span class="relative">{{ $r->allowance_name }}</span>
+                                            <span class="relative">{{ number_format($r->allowance_rate,2) }}</span>
+                                        </div>
+                                        @endif
                                     @endforeach
                                     <!-- <div class="justify-between flex">
                                         <span class="relative">Clothing Allowance</span>
