@@ -1,9 +1,17 @@
 <?php if (isset($component)) { $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da = $component; } ?>
+<<<<<<< HEAD
 <?php $component = $__env->getContainer()->make(App\View\Components\AppLayout::class, [] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('app-layout'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $constructor = (new ReflectionClass(App\View\Components\AppLayout::class))->getConstructor()): ?>
+=======
+<?php $component = App\View\Components\AppLayout::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('app-layout'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(App\View\Components\AppLayout::class))->getConstructor()): ?>
+>>>>>>> af1388992479bd516bfb86455a1e0f9596c40e65
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
@@ -36,10 +44,19 @@
                     <input type="text" id="table-search-users" class="block p-2 pl-10 w-80 text-sm text-gray-900 bg-gray-50 rounded-2xl border border-gray-300 focus:ring-blue-500 focus:border-blue-500 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500" placeholder="Search for Cut off">
                 </div>
             </div>
+<<<<<<< HEAD
              
         </div>
         
         
+=======
+        </div>
+        <?php if(Session::has('success')): ?>
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline"><?php echo e(Session::get('success')); ?></span>
+                    </div>
+        <?php endif; ?>
+>>>>>>> af1388992479bd516bfb86455a1e0f9596c40e65
         <div class="overflow-x-auto h-96 relative  sm:rounded-2xl">
             <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0">
@@ -61,6 +78,7 @@
                     </tr>
                 </thead>
                 <tbody class="sticky top-12">
+<<<<<<< HEAD
                     <tr class=" border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                         <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                             MID
@@ -95,6 +113,18 @@
                         <td class="py-3 px-6">20</td>
                         <td class="py-3 px-6 flex justify-center" align="center">
                             <a href="<?php echo e(route('cut_off.edit','1')); ?>" class="" title="Update">
+=======
+                <?php $__currentLoopData = $cutoff; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $co): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <tr class=" border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
+                        <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                        <?php echo e($co->cutoff_type); ?>
+
+                        </th>
+                        <td class="py-3 px-6"><?php echo e($co->cutoff_start); ?></td>
+                        <td class="py-3 px-6"><?php echo e($co->cutoff_end); ?></td>
+                        <td class="py-3 px-6 flex justify-center" align="center">
+                            <a href="<?php echo e(route('cut_off.edit',$co->id)); ?>" class="" title="Update">
+>>>>>>> af1388992479bd516bfb86455a1e0f9596c40e65
                                 <div class="py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
                                         <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
@@ -102,14 +132,30 @@
                                     </svg>
                                 </div>
                             </a>
+<<<<<<< HEAD
                             <button type="button" class="ml-2 py-1.5 px-2 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
+=======
+                            <form method="post" action="<?php echo e(route('cut_off.destroy',$co->id)); ?>" accept-charset="UTF-8" style="display:inline">
+                                    <?php echo e(method_field('DELETE')); ?>
+
+                                    <?php echo e(csrf_field()); ?>
+
+                            <button type="submit" onclick="return confirm(&quot;Are you sure you want to delete this record?&quot;)" class="ml-2 py-1.5 px-2 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
+>>>>>>> af1388992479bd516bfb86455a1e0f9596c40e65
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                                 </svg>                                                
                             </button>
+<<<<<<< HEAD
                         </td>
                     </tr>
                    
+=======
+                            </form>
+                        </td>
+                    </tr>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+>>>>>>> af1388992479bd516bfb86455a1e0f9596c40e65
                 </tbody>
             </table>
         </div>

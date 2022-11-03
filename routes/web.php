@@ -17,6 +17,11 @@ use App\Http\Controllers\StatutoryBracketController;
 use App\Http\Controllers\TardinessRateController;
 use App\Http\Controllers\CutOffController;
 use App\Http\Controllers\LeaveFailureController;
+<<<<<<< HEAD
+=======
+use App\Http\Controllers\OvertimeController;
+use App\Http\Controllers\SwapScheduleController;
+>>>>>>> af1388992479bd516bfb86455a1e0f9596c40e65
 
 
 use App\Http\Controllers\LeaveController;
@@ -82,6 +87,7 @@ Route::resource('statutorybracket', StatutoryBracketController::class);
 // TardinessRate
 Route::resource('tardinessrate', TardinessRateController::class); 
 
+<<<<<<< HEAD
 
 Route::resource('cut_off', CutOffController::class); 
 
@@ -98,6 +104,22 @@ Route::resource('leavefailure', LeaveFailureController::class);
 Route::get('/shift_sched', [Shift_ScheduleController::class, 'shift_sched'])->middleware(['auth'])->name('shift_sched');
 Route::get('/ot_list', [LeaveController::class, 'overtime'])->middleware(['auth'])->name('ot_list');
 Route::get('/swap_list', [LeaveController::class, 'swap_list'])->middleware(['auth'])->name('swap_list');
+=======
+// CutOff
+Route::resource('cut_off', CutOffController::class); 
+
+// Leave
+Route::resource('leavefailure', LeaveFailureController::class); 
+
+// Overtime
+Route::resource('ot', OvertimeController::class); 
+
+
+Route::resource('swapsched', SwapScheduleController::class); 
+
+
+Route::get('/shift_sched', [Shift_ScheduleController::class, 'shift_sched'])->middleware(['auth'])->name('shift_sched');
+>>>>>>> af1388992479bd516bfb86455a1e0f9596c40e65
 Route::get('/payroll_salary', [PayrollController::class, 'payroll_salary'])->middleware(['auth'])->name('payroll_salary');
 Route::get('/payroll_allowance', [PayrollController::class, 'payroll_allowance'])->middleware(['auth'])->name('payroll_allowance');
 Route::get('/payroll_bonus', [PayrollController::class, 'payroll_bonus'])->middleware(['auth'])->name('payroll_bonus');

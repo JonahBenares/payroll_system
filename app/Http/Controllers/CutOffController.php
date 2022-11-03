@@ -15,7 +15,8 @@ class CutOffController extends Controller
      */
     public function index()
     {
-        return view('cutoff.index');
+        $cutoff = CutOff::all();
+        return view ('cutoff.index')->with('cutoff', $cutoff);
     }
 
     /**
@@ -36,7 +37,16 @@ class CutOffController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cutoff=new CutOff();
+        $cutoff->cutoff_type=$request->cutoff_type;
+        $cutoff->cutoff_start=$request->cutoff_start;
+        $cutoff->cutoff_end=$request->cutoff_end;
+        $res = $cutoff->save();
+        if($res){
+            return redirect()->route('cut_off.create')->with('success',"Cut Off Added Successfully");
+        }else{
+            return redirect()->route('cut_off.create')->with('fail',"Error! Try Again!");
+        }
     }
 
     /**
@@ -56,9 +66,10 @@ class CutOffController extends Controller
      * @param  \App\Models\CutOff  $cutOff
      * @return \Illuminate\Http\Response
      */
-    public function edit(CutOff $cutOff)
+    public function edit($id)
     {
-        return view('cutoff.edit');
+        $cutoff = CutOff::find($id);
+        return view('cutoff.edit')->with('cutoff', $cutoff);
     }
 
     /**
@@ -68,9 +79,12 @@ class CutOffController extends Controller
      * @param  \App\Models\CutOff  $cutOff
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CutOff $cutOff)
+    public function update(Request $request, $id)
     {
-        //
+        $cutoff = CutOff::find($id);
+        $input = $request->all();
+        $cutoff->update($input);
+        return redirect()->route('cut_off.edit',$id)->with('success',"Cut Off Updated Successfully"); 
     }
 
     /**
@@ -79,8 +93,9 @@ class CutOffController extends Controller
      * @param  \App\Models\CutOff  $cutOff
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CutOff $cutOff)
+    public function destroy($id)
     {
-        //
+        CutOff::destroy($id);
+        return redirect()->route('cut_off.index')->with('success',"Cut Off Deleted Successfully");
     }
 }
