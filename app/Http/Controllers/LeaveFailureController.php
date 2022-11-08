@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\LeaveFailure;
+use App\Models\LeaveFailureDetail;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
 class LeaveFailureController extends Controller
@@ -14,7 +16,15 @@ class LeaveFailureController extends Controller
      */
     public function index()
     {
-        return view("leave.index");
+        $leave = LeaveFailure::join('employees', 'employees.id', '=', 'leave_filing_head.employee_id')
+        ->join('leave_filing_detail', 'leave_filing_head_id', '=', 'leave_filing_head.id')
+        ->where('is_active', '=', 1)->where('filed', '=', 0)
+        ->get(['leave_filing_detail.leave_filing_head_id','employees.full_name','leave_filing_detail.leave_type']);
+        foreach($leave AS $l){
+            $absent = LeaveFailureDetail::where('leave_type','=','Absent')->where('leave_filing_head_id','=',$l->leave_filing_head_id)->count();
+        }
+
+        return view('leave.index')->with('leave', $leave)->with('absent', $absent);
     }
 
     /**
