@@ -28,35 +28,37 @@
                     <div class="mx-2 text-left">
                         <select class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
                             <option value="" selected>Select Month</option>
-                            <option value="">January</option>
-                            <option value="">February</option>
-                            <option value="">March</option>
-                            <option value="">April</option>
-                            <option value="">May</option>
-                            <option value="">June</option>
-                            <option value="">July</option>
-                            <option value="">August</option>
-                            <option value="">September</option>
-                            <option value="">October</option>
-                            <option value="">November</option>
-                            <option value="">December</option>
+                            <option value="01">January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
                         </select>
                     </div>
                     <div class="mx-2 text-left">
                         <select class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
-                            <option value="" selected>Select Year</option>
-                            <option value="">2018</option>
-                            <option value="">2019</option>
-                            <option value="">2020</option>
-                            <option value="">2021</option>
-                            <option value="">2022</option>
+                            <option value="">Select Year</option>
+                            @php
+                                $year=date('Y');
+                            @endphp
+                            @for($y=2015;$y<=$year;$y++)
+                                <option value="{{ $y }}">{{ $y }}</option>
+                            @endfor
                         </select>
                     </div>
                     <div class="mx-2 text-left">
                         <select class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
-                            <option value="" selected>Period</option>
-                            <option value="">MID</option>
-                            <option value="">EOM</option>
+                            <!-- <option value="" selected>Period</option> -->
+                            <option value="">--Select Period--</option>
+                            <option value="MID">MID</option>
+                            <option value="EOM">EOM</option>
                         </select>
                     </div>
                     <div class="mx-2 pt-3 text-left">
@@ -84,90 +86,36 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    Kylie Garapal
-                                </td>
-                                
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    <a href="{{ route('ot.create') }}"  class="my-1  py-2" title="Update">
-                                        55
-                                    </a> 
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    150
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    150
-                                </td>
-                            </tr>
-                            <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    Terence Dipasucat
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    <a href="{{ route('ot.create') }}"  class="my-1  py-2" title="Update">
-                                        55
-                                    </a>  
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    150
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    250
-                                </td>
-                            </tr>
-                            <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    Martina Bagsik
-                                </td>
-                                
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    <a href="{{ route('ot.create') }}"  class="my-1  py-2" title="Update">
-                                            55
-                                    </a>
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    150
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    50
-                                </td>
-                            </tr>
-                            <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    Edgardo Hidalgo
-                                </td>
-                                
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    <a href="{{ route('ot.create') }}"  class="my-1  py-2" title="Update">
-                                        55
-                                    </a> 
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    150
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    100
-                                </td>
-                            </tr>
-                            <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    Lhea Flores
-                                </td>
-                                
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    <a href="{{ route('ot.create') }}"  class="my-1  py-2" title="Update">
-                                        55
-                                    </a> 
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    150
-                                </td>
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    200
-                                </td>
-                            </tr>
+
+                            @php $x=0 @endphp
+                                @foreach($timekeeping AS $e)
+                                    @php
+                                        $in_out = explode(',', $e->in_out_time);
+                                        $time=0;
+                                        foreach ($in_out as $item) {
+                                            $recordtime[]=date("H:i",strtotime($item));
+                                            $time = App\Http\Controllers\OvertimeController::AddPlayTime($recordtime);
+                                        }
+                                    @endphp
+                                    <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
+                                        <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                            {{ $e->full_name }}
+                                        </td>
+                                        
+                                        <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                            <a href="{{ route('ot.create') }}"  class="my-1  py-2" title="Update">
+                                                {{ $time }}
+                                            </a> 
+                                        </td>
+                                        <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                            150
+                                        </td>
+                                        <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                            150
+                                        </td>
+                                    </tr>
+                                @php $x++ @endphp
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

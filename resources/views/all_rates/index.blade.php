@@ -24,6 +24,11 @@
                         </div>
                     </div>
                 </div>
+                @if(Session::has('success'))
+                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline">{{Session::get('success')}}</span>
+                    </div>
+                @endif
                 <div class="overflow-x-auto hover:overflow-y-auto overflow-y-hidden h-100 relative  sm:rounded-2xl">
                     <table class="w-full text-sm text-left border border-gray-200 text-gray-500 white:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-10">
@@ -65,13 +70,15 @@
                                     </div> -->
                                 </td>
                                 <td class="py-3 px-6 justify-center flex" >
-                                    <a href="{{ route('allowancerate.create','employee_id='.$e->id.'&personal_id='.$e->personal_id) }}" class="" title="Add">
+                                    <!-- <a href="{{ route('allowancerate.create','employee_id='.$e->id.'&personal_id='.$e->personal_id) }}" class="" title="Add"> -->
+                                    <a href="{{ route('allowancerate.create',['employee_id' => $e->id, 'personal_id' => $e->personal_id]) }}" class="" title="Add">
                                         <div class="py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                                               </svg>
                                         </div>
                                     </a>
+                                    @if($count!=0)
                                     <a href="{{ route('allowancerate.edit', $e->id) }}" class="" title="Update">
                                         <div class="ml-1 py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
@@ -80,6 +87,7 @@
                                             </svg>
                                         </div>
                                     </a>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach
