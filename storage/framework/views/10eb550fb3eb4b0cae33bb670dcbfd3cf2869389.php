@@ -1,3 +1,4 @@
+<?php $attributes ??= new \Illuminate\View\ComponentAttributeBag; ?>
 <?php foreach($attributes->onlyProps(['value']) as $__key => $__value) {
     $$__key = $$__key ?? $__value;
 } ?>

@@ -1,17 +1,9 @@
 <?php if (isset($component)) { $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da = $component; } ?>
-<<<<<<< HEAD
-<?php $component = $__env->getContainer()->make(App\View\Components\AppLayout::class, [] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
-<?php $component->withName('app-layout'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $constructor = (new ReflectionClass(App\View\Components\AppLayout::class))->getConstructor()): ?>
-=======
 <?php $component = App\View\Components\AppLayout::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('app-layout'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(App\View\Components\AppLayout::class))->getConstructor()): ?>
->>>>>>> af1388992479bd516bfb86455a1e0f9596c40e65
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
@@ -36,8 +28,6 @@
                         </a>
                     </div>
                 </div>
-<<<<<<< HEAD
-=======
                 <?php if(Session::has('success')): ?>
                     <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
                         <span class="block sm:inline"><?php echo e(Session::get('success')); ?></span>
@@ -48,7 +38,6 @@
                         <span class="block sm:inline"><?php echo e(Session::get('fail')); ?></span>
                     </div>
                 <?php endif; ?>
->>>>>>> af1388992479bd516bfb86455a1e0f9596c40e65
                 <form action="<?php echo e(url('schedules')); ?>" method="post" class="mt-5">
                 <?php echo csrf_field(); ?>
 
@@ -68,11 +57,7 @@
                         </div>
                     </div> 
                     <div class="flex justify-end mt-6 px-2">
-<<<<<<< HEAD
-                        <button type="submit" value="Save"class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-=======
                         <button type="submit" value="Save" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
->>>>>>> af1388992479bd516bfb86455a1e0f9596c40e65
                             Save
                         </button>
                     </div>
