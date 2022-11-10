@@ -15,7 +15,8 @@ class HmoRateController extends Controller
      */
     public function index()
     {
-        return view('hmo.index');
+        $hmo = HmoRate::all();
+        return view('hmo.index',compact('hmo'));
     }
 
     /**
@@ -36,7 +37,13 @@ class HmoRateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input=$request->all();
+        $res=HmoRate::create($input);
+        if($res){
+            return redirect()->route('hmorate.create')->with('success',"HMO Rate Added Successfully");
+        }else{
+            return redirect()->route('hmorate.create')->with('fail',"Error! Try Again!");
+        }
     }
 
     /**
@@ -56,9 +63,10 @@ class HmoRateController extends Controller
      * @param  \App\Models\HmoRate  $hmoRate
      * @return \Illuminate\Http\Response
      */
-    public function edit(HmoRate $hmoRate)
+    public function edit($id)
     {
-        return view('hmo.edit');
+        $hmo=HmoRate::find($id);
+        return view('hmo.edit',compact('hmo'));
     }
 
     /**
@@ -68,9 +76,12 @@ class HmoRateController extends Controller
      * @param  \App\Models\HmoRate  $hmoRate
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, HmoRate $hmoRate)
+    public function update(Request $request, $id)
     {
-        //
+        $hmo = HmoRate::find($id);
+        $input = $request->all();
+        $hmo->update($input);
+        return redirect()->route('hmorate.edit',$id)->with('success',"HMO Rate Updated Successfully");
     }
 
     /**
@@ -79,8 +90,9 @@ class HmoRateController extends Controller
      * @param  \App\Models\HmoRate  $hmoRate
      * @return \Illuminate\Http\Response
      */
-    public function destroy(HmoRate $hmoRate)
+    public function destroy($id)
     {
-        //
+        HmoRate::find($id)->delete();
+        return redirect()->route('hmorate.index' )->with('success',"HMO Rate Deleted Successfully");
     }
 }

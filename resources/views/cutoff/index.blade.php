@@ -72,13 +72,13 @@
                                 </div>
                             </a>
                             <form method="post" action="{{route('cut_off.destroy',$co->id)}}" accept-charset="UTF-8" style="display:inline">
-                                    {{ method_field('DELETE') }}
-                                    {{ csrf_field() }}
-                            <button type="submit" onclick="return confirm(&quot;Are you sure you want to delete this record?&quot;)" class="ml-2 py-1.5 px-2 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>                                                
-                            </button>
+                                {{ method_field('DELETE') }}
+                                {{ csrf_field() }}
+                                <button type="submit" onclick="return confirm(&quot;Are you sure you want to delete this record?&quot;)" class="ml-2 py-1.5 px-2 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" title="Update"> 
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>                                                
+                                </button>
                             </form>
                         </td>
                     </tr>

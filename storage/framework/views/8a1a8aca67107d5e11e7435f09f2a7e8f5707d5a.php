@@ -46,7 +46,7 @@
                         <label for="" class="block text-left text-sm text-gray-700 capitalize white:text-gray-200">Statutory Name</label>
                         <!-- <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40"> -->
                         <select type="text" name="payslip_info_id" id="payslip_info_id" class="block w-full  px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                                <option value="">Select Statutory Name</option>
+                        <option value="">Select Statutory Name</option>
                         <?php $__currentLoopData = $payslip; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <option value="<?php echo e($p->id); ?>" <?php echo e(($p->id  == $statutory->payslip_info_id) ? 'selected' : ''); ?>><?php echo e($p->description); ?></option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

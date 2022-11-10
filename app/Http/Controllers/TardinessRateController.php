@@ -15,7 +15,8 @@ class TardinessRateController extends Controller
      */
     public function index()
     {
-        return view('tardiness.index');
+        $tardiness = TardinessRate::all();
+        return view('tardiness.index',compact('tardiness'));
     }
 
     /**
@@ -36,7 +37,17 @@ class TardinessRateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $percentage=$request->percentage / 100;
+        $tardiness=new TardinessRate();
+        $tardiness->minute_from=$request->minute_from;
+        $tardiness->minute_to=$request->minute_to;
+        $tardiness->deduction_percent=$percentage;
+        $res = $tardiness->save();
+        if($res){
+            return redirect()->route('tardinessrate.create')->with('success',"Tardiness Rate Added Successfully");
+        }else{
+            return redirect()->route('tardinessrate.create')->with('fail',"Error! Try Again!");
+        }
     }
 
     /**
@@ -56,9 +67,10 @@ class TardinessRateController extends Controller
      * @param  \App\Models\TardinessRate  $tardinessRate
      * @return \Illuminate\Http\Response
      */
-    public function edit(TardinessRate $tardinessRate)
+    public function edit($id)
     {
-        return view('tardiness.edit');
+        $tardiness=TardinessRate::find($id);
+        return view('tardiness.edit',compact('tardiness'));
     }
 
     /**
@@ -68,9 +80,18 @@ class TardinessRateController extends Controller
      * @param  \App\Models\TardinessRate  $tardinessRate
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TardinessRate $tardinessRate)
+    public function update(Request $request, $id)
     {
-        //
+        $percentage=$request->percentage / 100;
+        $tardiness = TardinessRate::find($id);
+        $tardiness->update(
+            [
+                'minute_from' => $request->minute_from,
+                'minute_to' => $request->minute_to,
+                'deduction_percent' => $percentage,
+            ]
+        );
+        return redirect()->route('tardinessrate.edit',$id)->with('success',"Tardiness Rate Updated Successfully");
     }
 
     /**
@@ -79,8 +100,9 @@ class TardinessRateController extends Controller
      * @param  \App\Models\TardinessRate  $tardinessRate
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TardinessRate $tardinessRate)
+    public function destroy($id)
     {
-        //
+        TardinessRate::find($id)->delete();
+        return redirect()->route('tardinessrate.index' )->with('success',"Tardiness Rate Deleted Successfully");
     }
 }

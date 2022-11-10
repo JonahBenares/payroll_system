@@ -131,11 +131,75 @@
                 return true;
             }
 
-            function fetchRates(){
-                var allowance_id = document.getElementById("allowance_name").value;
+            //var ee = 1;
+            var host = window.location.href;
+            
+            if(host.indexOf('create')==36){
+                var ee = 1;
+            }else if(host.indexOf('edit')==38){
+                var ee = document.getElementById('count').value;
+            }else{
+                var ee = 1;
+            }
+            $("body").on("click", ".addAllowance", function(e) {
+                e.preventDefault();
+                ee++;
+                var $append = $(this).parents('.appends');
+                var nextHtml = $append.clone().find("input:text").val('').end();
+                nextHtml.find('select').val('');
+                nextHtml.attr('id', 'appends' + ee);
+                var hasRmBtn = $('.remAllowance', nextHtml).length > 0;
+                if (!hasRmBtn) {
+                    var rms = "<button class='flex items-center justify-center px-2 py-2 mt-3 ml-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 rounded-2xl white:bg-red-600 white:hover:bg-red-700 white:focus:bg-red-700 hover:bg-red-600 focus:outline-none focus:bg-red-500 focus:ring focus:ring-red-300 focus:ring-opacity-50 remAllowance'><svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-4 h-4'><path stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12' /></svg></button>";
+                    $('.addmoreappend', nextHtml).append(rms);
+                }
+
+                if(host.indexOf('edit')==38){
+                    document.getElementById("counterX").value = ee;
+                }
+                $append.after(nextHtml);
+                refreshTable();
+                //$(".addAllowance").hide();
+                //document.getElementsByClassName("remover").style.display = "block";
+                // var btn_allowance = document.getElementById("btn_allowance");
+                // btn_allowance.style.display = "block";
+            });
+
+            //}
+
+            function refreshTable(){
+                $(".appends").each(function(index, element){
+                    var ind = index+1;
+                    $(this).find("select.allowance_name").attr('id', 'allowance_name' + ind);
+                    $(this).find("input.allowance_rate").attr('id', 'allowance_rate' + ind);
+                    $("body").on("change", "#allowance_name"+ind, function(e) {
+                        e.preventDefault();
+                        var allowance_id = document.getElementById("allowance_name"+ind).value;
+                        var base_url = '<?php echo e(URL::to("/")); ?>';
+                        $.ajax({
+                            type: 'POST',
+                            url: base_url+"/allowancerate/fetchrate",
+                            data: {
+                                allowance_id: allowance_id,
+                                _token: '<?php echo e(csrf_token()); ?>'
+                            },
+                            dataType: 'json',
+                            cache: false,
+                            success: function(response){
+                                document.getElementById("allowance_rate"+ind).value  = response.allowance_rate;
+                            }
+                        }); 
+                    }); 
+                });
+            }
+
+            $("body").on("change", "#allowance_name1", function(e) {
+                e.preventDefault();
+                var allowance_id = document.getElementById("allowance_name1").value;
+                var base_url = '<?php echo e(URL::to("/")); ?>';
                 $.ajax({
                     type: 'POST',
-                    url: "fetchrate",
+                    url: base_url+"/allowancerate/fetchrate",
                     data: {
                         allowance_id: allowance_id,
                         _token: '<?php echo e(csrf_token()); ?>'
@@ -143,39 +207,10 @@
                     dataType: 'json',
                     cache: false,
                     success: function(response){
-                        $.each(response.allowance, function (key, item) {
-                            document.getElementById("allowance_rate").value  = item.allowance_rate;
-                        });
+                        document.getElementById("allowance_rate1").value  = response.allowance_rate;
                     }
                 }); 
-            }
-
-            var ee = 1;
-            $("body").on("click", ".addAllowance", function(e) {
-                e.preventDefault();
-                ee++;
-                var $append = $(this).parents('.appends');
-                var nextHtml = $append.clone().find("input:text").val('').end();
-                nextHtml.attr('id', 'appends' + ee);
-                var hasRmBtn = $('.remAllowance', nextHtml).length > 0;
-                if (!hasRmBtn) {
-                    var rms = "<button class='flex items-center justify-center px-2 py-2 mt-3 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 rounded-2xl white:bg-red-600 white:hover:bg-red-700 white:focus:bg-red-700 hover:bg-red-600 focus:outline-none focus:bg-red-500 focus:ring focus:ring-red-300 focus:ring-opacity-50 remAllowance'><svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-4 h-4'><path stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12' /></svg></button>"
-                    $('.addmoreappend', nextHtml).append(rms);
-                }
-                $append.after(nextHtml);
-                $(".addAllowance").hide();
-                var btn_allowance = document.getElementById("btn_allowance");
-                btn_allowance.style.display = "block";
-                refreshTable();
             });
-
-            function refreshTable(){
-                $(".appends").each(function(index, element){
-                    var ind = index+1;
-                    $(this).find("input#allowance_name").attr('id', 'allowance_name' + ind);
-                    $(this).find("input#allowance_rate").attr('id', 'allowance_rate' + ind);
-                });
-            }
 
             $("body").on("click", ".remAllowance", function() {
                 $(this).parents('.appends').remove();

@@ -19,6 +19,11 @@ use App\Http\Controllers\CutOffController;
 use App\Http\Controllers\LeaveFailureController;
 use App\Http\Controllers\OvertimeController;
 use App\Http\Controllers\SwapScheduleController;
+use App\Http\Controllers\UploadAllowanceController;
+use App\Http\Controllers\PayrollSalaryController;
+use App\Http\Controllers\PayrollAllowanceController;
+use App\Http\Controllers\PayrollOvertimeController;
+use App\Http\Controllers\PayrollBonusController;
 
 
 use App\Http\Controllers\LeaveController;
@@ -68,6 +73,7 @@ Route::resource('allowance', AllowanceController::class);
 // AllowanceRate
 Route::resource('allowancerate', AllowanceRateController::class);
 Route::post('/allowancerate/fetchrate', [AllowanceRateController::class, 'fetchRate']);
+//Route::get('/allowancerate/create/{employee_id}/{personal_id}', [AllowanceRateController::class, 'create'])->name('create');
 
 // AdjustmentRate
 Route::resource('adjustmentrate', AdjustmentRateController::class);
@@ -95,6 +101,20 @@ Route::resource('ot', OvertimeController::class);
 
 
 Route::resource('swapsched', SwapScheduleController::class); 
+
+Route::resource('uploadallowance', UploadAllowanceController::class); 
+
+Route::resource('payrollsalary', PayrollSalaryController::class); 
+Route::get('/payroll_salary/bulk', [PayrollSalaryController::class, 'printBulk'])->middleware(['auth'])->name('printBulkSalary');
+
+Route::resource('payrollallowance', PayrollAllowanceController::class); 
+Route::get('/payroll_allowance/bulk', [PayrollAllowanceController::class, 'printBulk'])->middleware(['auth'])->name('printBulkAllowance');
+
+Route::resource('payrollovertime', PayrollOvertimeController::class); 
+Route::get('/payroll_overtime/bulkprinting', [PayrollOvertimeController::class, 'printBulk'])->middleware(['auth'])->name('printBulkOvertime');
+
+Route::resource('payrollbonus', PayrollBonusController::class); 
+Route::get('/payroll_bonus/bulkprinting', [PayrollBonusController::class, 'printBulk'])->middleware(['auth'])->name('printBulkBonus');
 
 
 Route::get('/shift_sched', [Shift_ScheduleController::class, 'shift_sched'])->middleware(['auth'])->name('shift_sched');

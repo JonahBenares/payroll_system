@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class HmoRate extends Model
 {
     use HasFactory;
+    protected $table = 'hmo_rates';
+    protected $fillable = [
+        'level_description',
+        'hmo_rate',
+    ];
 }
