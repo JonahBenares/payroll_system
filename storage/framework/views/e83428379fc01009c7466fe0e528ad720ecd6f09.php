@@ -193,23 +193,29 @@
                 });
             }
 
-            $("body").on("change", "#allowance_name1", function(e) {
-                e.preventDefault();
-                var allowance_id = document.getElementById("allowance_name1").value;
-                var base_url = '<?php echo e(URL::to("/")); ?>';
-                $.ajax({
-                    type: 'POST',
-                    url: base_url+"/allowancerate/fetchrate",
-                    data: {
-                        allowance_id: allowance_id,
-                        _token: '<?php echo e(csrf_token()); ?>'
-                    },
-                    dataType: 'json',
-                    cache: false,
-                    success: function(response){
-                        document.getElementById("allowance_rate1").value  = response.allowance_rate;
-                    }
-                }); 
+            $( document ).ready(function() {
+                refreshTable();
+                $(".allowance_name").each(function(index, element){
+                    var add=index+1;
+                    $("body").on("change", "#allowance_name"+add, function(e) {
+                        e.preventDefault();
+                        var allowance_id = document.getElementById("allowance_name1").value;
+                        var base_url = '<?php echo e(URL::to("/")); ?>';
+                        $.ajax({
+                            type: 'POST',
+                            url: base_url+"/allowancerate/fetchrate",
+                            data: {
+                                allowance_id: allowance_id,
+                                _token: '<?php echo e(csrf_token()); ?>'
+                            },
+                            dataType: 'json',
+                            cache: false,
+                            success: function(response){
+                                document.getElementById("allowance_rate1").value  = response.allowance_rate;
+                            }
+                        }); 
+                    });
+                });
             });
 
             $("body").on("click", ".remAllowance", function() {

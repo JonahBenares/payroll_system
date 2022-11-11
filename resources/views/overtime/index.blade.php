@@ -92,11 +92,8 @@
                                     @php
                                         $in_out = explode(',', $e->in_out_time);
                                         $time=0;
-                                        foreach ($in_out as $item) {
-                                            $recordtime[]=date("H:i",strtotime($item));
-                                            $time = App\Http\Controllers\OvertimeController::AddPlayTime($recordtime);
-                                        }
                                     @endphp
+                                    
                                     <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                         <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                             {{ $e->full_name }}
@@ -104,7 +101,65 @@
                                         
                                         <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                             <a href="{{ route('ot.create') }}"  class="my-1  py-2" title="Update">
-                                                {{ $time }}
+                                                @php
+                                                    $data2 = array();
+                                                    foreach($timedate AS $value){
+                                                        if($value->personal_id==$e->personal_id){
+                                                            $key = date('Y-m-d',strtotime($value->recorded_time));
+                                                            if(!isset($data2[$key])) {   
+                                                                $data2[$key] = array(
+                                                                    'recorded_time' => array(),
+                                                                );
+                                                            }        
+                                                            $data2[$key]['recorded_time'][] = date('Y-m-d H:i:s',strtotime($value->recorded_time)).",";  
+                                                        }
+                                                    }
+                                                    $total_hours[]=0;
+                                                    $total_min[]=0;
+                                                    $z=0;
+                                                @endphp
+                                                @foreach($data2 AS $logs)
+                                                    @php 
+                                                        $exp=implode("",$logs['recorded_time']);
+                                                        $exp_time = explode(',', $exp); 
+                                                        $date1 = new DateTime($exp_time[0]);
+                                                        $date2 = new DateTime($exp_time[1]);
+                                                        $break='01:00';
+                                                        $breakBits = explode(":", $break);
+                                                        $date1->modify($breakBits[0]." hour ".$breakBits[1]." minutes");
+                                                        $interval = $date1->diff($date2);
+                                                        $hours   = $interval->format('%h'); 
+                                                        $minutes = $interval->format('%i');
+                                                        if($hours>=8 && $minutes>=30){
+                                                            $total_hours[]=$interval->format("%H");
+                                                            $total_min[]=$interval->format("%I");
+                                                        }
+                                                        
+                                                    @endphp
+                                                    <!-- OLD Calculation of hours
+                                                        $time1 = strtotime($exp_time[0]);
+                                                    $time2 = strtotime($exp_time[1]);
+                                                    $difference = round(abs($time2 - $time1) / 3600,2);
+                                                    $minutes=round(abs($time2 - $time1) / 60,2);
+                                                    $exclude_lunch=$difference - 1; -->
+                                                @endforeach
+                                                {{ array_sum($total_hours).":".array_sum($total_min) }}
+                                                <!-- @if(in_array('8',$total_hours) && in_array('34',$total_min))
+                                                    {{ array_sum($total_hours).":".array_sum($total_min) }}
+                                                @endif -->
+                                                @php
+                                                    $y=0; 
+                                                @endphp
+                                                @foreach ($in_out as $item)
+                                                    @php
+                                                        $recordtime[$y]=date("H:i",strtotime($item));
+                                                        $y++;
+                                                    @endphp
+                                                @endforeach
+                                                @php 
+                                                    $time = App\Http\Controllers\OvertimeController::AddPlayTime($recordtime);
+                                                @endphp
+                                                <!-- {{ $time }} -->
                                             </a> 
                                         </td>
                                         <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">

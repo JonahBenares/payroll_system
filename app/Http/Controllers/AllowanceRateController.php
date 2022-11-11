@@ -21,8 +21,12 @@ class AllowanceRateController extends Controller
         $rates = AllowanceRate::join('employees', 'employees.id', '=', 'allowance_rates.employee_id')
         ->join('allowances', 'allowances.id', '=', 'allowance_rates.allowance_id')
         ->get(['allowance_rates.employee_id','allowance_rates.personal_id','allowances.allowance_name','allowances.allowance_rate']);
+        $rates_count = AllowanceRate::join('employees', 'employees.id', '=', 'allowance_rates.employee_id')
+        ->join('allowances', 'allowances.id', '=', 'allowance_rates.allowance_id')->groupBy('allowance_rates.personal_id')
+        ->get(['allowance_rates.employee_id','allowance_rates.personal_id','allowances.allowance_name','allowances.allowance_rate']);
+        
         $count=AllowanceRate::count();
-        return view('all_rates.index',compact('employees','rates','count'));
+        return view('all_rates.index',compact('employees','rates','count','rates_count'));
         
     }
 
@@ -116,12 +120,19 @@ class AllowanceRateController extends Controller
             foreach ($request->allowance_name as $key => $value) {
                 $check = AllowanceRate::where('allowance_id',$request->allowance_name[$key])->where('employee_id',$id)->first();
                 $allowancerate = AllowanceRate::where("id",$request->allowance_rate_id[$key]);
-                $allowancerate->update(
-                    [
-                        'allowance_id' => $request->allowance_name[$key],
-                        'allowance_rate' => $request->allowance_rate[$key],
-                    ]
-                );
+                if($check){}else{
+                    $allowancerate->update(
+                        [
+                            'allowance_id' => $request->allowance_name[$key],
+                            'allowance_rate' => $request->allowance_rate[$key],
+                        ]
+                    );
+                }
+            }
+            if($check){
+                return redirect()->route('allowancerate.edit',$id)->with('fail',"Allowance Already Exist, Please try again!");
+            }else{
+                return redirect()->route('allowancerate.edit',$id)->with('success',"Allowance Rate Updated Successfully");
             }
         }else if($ctrx>$request->count){
             foreach ($request->allowance_name as $key => $value) {
@@ -133,12 +144,13 @@ class AllowanceRateController extends Controller
                     'allowance_rate'=> $request->allowance_rate[$key],
                 ]);
             }
+            if($check){
+                return redirect()->route('allowancerate.edit',$id)->with('fail',"Allowance Already Exist, Please try again!");
+            }else{
+                return redirect()->route('allowancerate.edit',$id)->with('success',"Allowance Rate Updated Successfully");
+            }
         }
-        if($check){
-            return redirect()->route('allowancerate.edit',$id)->with('fail',"Allowance Already Exist, Please try again!");
-        }else{
-            return redirect()->route('allowancerate.edit',$id)->with('success',"Allowance Rate Updated Successfully");
-        }
+        
     }
 
     /**

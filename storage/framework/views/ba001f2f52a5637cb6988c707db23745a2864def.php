@@ -53,6 +53,7 @@
                         </span>
                     </div>
                 </div>
+                <?php $x=1; ?>
                 <?php $__currentLoopData = $allowancerate; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <form class="mt-5" action="<?php echo e(route('allowancerate.update',$ar->employee_id)); ?>" method='POST'>
                     <?php echo csrf_field(); ?>
@@ -60,7 +61,7 @@
                     
                     <div class="flex flex-row justify-between appends" id="appends0">
                         <div class="px-3 w-3/4">
-                            <select name="allowance_name[]" id="allowance_name1" class=" w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 allowance_name">
+                            <select name="allowance_name[]" id="allowance_name<?php echo e($x); ?>" class=" w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 allowance_name">
                                 <option value="">--Select Allowance Name--</option>
                                 <?php $__currentLoopData = $allowance; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                
@@ -69,7 +70,7 @@
                             </select>
                         </div>
                         <div class="px-3 w-1/4">
-                            <input type="text" onkeypress="return isNumberKey(this, event)" name="allowance_rate[]" id="allowance_rate1" class=" w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 allowance_rate" value="<?php echo e($ar->allowance_rate); ?>">
+                            <input type="text" onkeypress="return isNumberKey(this, event)" name="allowance_rate[]" id="allowance_rate<?php echo e($x); ?>" class=" w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 allowance_rate" value="<?php echo e($ar->allowance_rate); ?>">
                         </div>
                         <div class="px-3 w-14 addmoreappend flex justify-center">
                             <!-- <button id="btn_allowance" class="flex items-center justify-center px-2 py-2 mt-3 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50 addAllowance" style="display:none;">
@@ -87,6 +88,7 @@
                             </button>
                         </div>
                     </div>
+                    <?php $x++; ?>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     <div class="flex justify-end mt-6 px-2">
                         <input type="hidden" name="count" id="count" value="<?php echo e($count); ?>">
