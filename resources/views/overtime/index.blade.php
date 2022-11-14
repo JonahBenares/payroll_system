@@ -59,7 +59,7 @@
                                 <!-- <option value="" selected>Period</option> -->
                                 <option value="">--Select Period--</option>
                                 @foreach($cutoff AS $ca)
-                                <option value="{{$ca->cutoff_type."|".$ca->cutoff_start."-".$ca->cutoff_end}}">{{$ca->cutoff_type}}</option>
+                                <option value="{{$ca->cutoff_start."-".$ca->cutoff_end}}">{{$ca->cutoff_type}}</option>
                                 @endforeach
                             </select>
                         </div>

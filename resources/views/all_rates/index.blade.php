@@ -56,9 +56,15 @@
                                     {{ $e->full_name }}
                                 </th>
                                 <td class="border border-gray-200 py-3 px-3 align-top">
+                                    @php 
+                                        $personal_id=array(); 
+                                    @endphp
                                     @foreach($rates AS $r)
                                         @if($e->id==$r->employee_id)
-                                        @php $counter=$r->allowance_name; @endphp
+                                        @php 
+                                            $personal_id[]=$r->personal_id;
+                                            $counter=$r->allowance_name; 
+                                        @endphp
                                         <div class="justify-between flex">
                                             <span class="relative">{{ $r->allowance_name }}</span>
                                             <span class="relative">{{ number_format($r->allowance_rate,2) }}</span>
@@ -72,18 +78,7 @@
                                 </td>
                                 <td class="py-3 px-6 justify-center flex" >
                                     <!-- <a href="{{ route('allowancerate.create','employee_id='.$e->id.'&personal_id='.$e->personal_id) }}" class="" title="Add"> -->
-                                    @forelse ($rates_count as $rc) 
-                                        @if($rc->personal_id!=$e->personal_id)
-                                        <a href="{{ route('allowancerate.create',['employee_id' => $e->id, 'personal_id' => $e->personal_id]) }}" class="" title="Add">
-                                            <div class="py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                                                </svg>
-                                            </div>
-                                        </a>
-                                        @endif
-                                
-                                        @if($rc->personal_id==$e->personal_id)
+                                    @if(in_array($e->personal_id,$personal_id))
                                         <a href="{{ route('allowancerate.edit', $e->id) }}" class="" title="Update">
                                             <div class="ml-1 py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
@@ -92,8 +87,7 @@
                                                 </svg>
                                             </div>
                                         </a> 
-                                        @endif
-                                    @empty
+                                    @else
                                         <a href="{{ route('allowancerate.create',['employee_id' => $e->id, 'personal_id' => $e->personal_id]) }}" class="" title="Add">
                                             <div class="py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
@@ -101,7 +95,7 @@
                                                 </svg>
                                             </div>
                                         </a>
-                                    @endforelse 
+                                    @endif
 
                                 </td>
                             </tr>

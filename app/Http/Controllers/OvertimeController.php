@@ -41,8 +41,15 @@ class OvertimeController extends Controller
             $month=date('m');
             $year=date('Y');
         }
-        $period=$_GET['period'];
-        $timekeeping = DB::table('db_hris.timekeeping')->join('db_payroll.employees', 'db_payroll.employees.personal_id', '=', 'db_hris.timekeeping.personal_id')->select('db_hris.timekeeping.id', 'db_hris.timekeeping.personal_id','db_payroll.employees.full_name', 'db_hris.timekeeping.recorded_time', DB::raw('GROUP_CONCAT(db_hris.timekeeping.recorded_time ORDER BY db_hris.timekeeping.recorded_time ASC) as in_out_time'))->where('supervisory','0')->where('is_active','1')->whereMonth('recorded_time',$month)->whereYear('recorded_time', $year)->groupBy('db_payroll.employees.personal_id')->get();
+        if(isset($_GET['period'])){
+            $period=$_GET['period'];
+            $exp_d=explode('-',$period);
+            $exp_date1=$year."-".$month."-".$exp_d[0];
+            $exp_date2=$year."-".$month."-".$exp_d[1];
+        }else{
+            $period='';
+        }
+        $timekeeping = DB::table('db_hris.timekeeping')->join('db_payroll.employees', 'db_payroll.employees.personal_id', '=', 'db_hris.timekeeping.personal_id')->select('db_hris.timekeeping.id', 'db_hris.timekeeping.personal_id','db_payroll.employees.full_name', 'db_hris.timekeeping.recorded_time', DB::raw('GROUP_CONCAT(db_hris.timekeeping.recorded_time ORDER BY db_hris.timekeeping.recorded_time ASC) as in_out_time'))->where('supervisory','0')->where('is_active','1')->whereMonth('recorded_time',$month)->whereYear('recorded_time', $year)->whereBetween('recorded_time', [$exp_date1, $exp_date2])->groupBy('db_payroll.employees.personal_id')->get();
         $timedate = DB::select("SELECT t.personal_id,recorded_time, GROUP_CONCAT(recorded_time) AS timer,time_in FROM db_hris.timekeeping t INNER JOIN schedule_head sh ON t.personal_id=sh.personal_id INNER JOIN schedule_code sc ON sh.schedule_code=sc.id WHERE MONTH(recorded_time)='10' AND YEAR(recorded_time)='2022' GROUP BY t.personal_id,recorded_time ORDER BY recorded_time ASC");
         $cutoff=CutOff::all();
         return view('overtime.index',compact('timekeeping','timedate','cutoff'));

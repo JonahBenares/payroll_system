@@ -48,6 +48,16 @@ class AllowanceRateController extends Controller
         $allowance = Allowance::find($allowance_id);
         return response()->json($allowance);
     }
+    
+    public function has_dupes($array) {
+        $dupe_array = array();
+        foreach ($array as $val) {
+            if (++$dupe_array[$val] > 1) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -58,7 +68,7 @@ class AllowanceRateController extends Controller
     public function store(Request $request)
     {
         foreach ($request->allowance_name as $key => $value) {
-            $res=AllowanceRate::create([
+            $res=AllowanceRate::updateOrCreate([
                 'employee_id'=> $request->employee_id,
                 'personal_id'=> $request->personal_id,
                 'allowance_id'=> $request->allowance_name[$key],
@@ -159,8 +169,9 @@ class AllowanceRateController extends Controller
      * @param  \App\Models\AllowanceRate  $allowanceRate
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AllowanceRate $allowanceRate)
+    public function destroy($id,$emp_id)
     {
-        //
+        AllowanceRate::find($id)->delete();
+        return redirect()->route('allowancerate.edit',$emp_id)->with('success',"Allowance Rate Deleted Successfully");
     }
 }

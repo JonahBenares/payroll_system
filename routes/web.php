@@ -68,6 +68,7 @@ Route::resource('allowance', AllowanceController::class);
 // AllowanceRate
 Route::resource('allowancerate', AllowanceRateController::class);
 Route::post('/allowancerate/fetchrate', [AllowanceRateController::class, 'fetchRate']);
+Route::get('/allowancerate/destroy/{id}/{emp_id}', [AllowanceRateController::class, 'destroy'])->name('destroy');
 //Route::get('/allowancerate/create/{employee_id}/{personal_id}', [AllowanceRateController::class, 'create'])->name('create');
 
 // AdjustmentRate
