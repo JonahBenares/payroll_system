@@ -35,7 +35,7 @@
                 <form method="GET">
                     <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900">
                         <div class="mx-2 text-left">
-                            <select name="month" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
+                            <select name="month" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60" required>
                                 <option value="" selected>Select Month</option>
                                 <option value="01">January</option>
                                 <option value="02">February</option>
@@ -52,7 +52,7 @@
                             </select>
                         </div>
                         <div class="mx-2 text-left">
-                            <select name="year" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
+                            <select name="year" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60" required>
                                 <option value="">Select Year</option>
                                 <?php
                                     $year=date('Y');
@@ -63,11 +63,11 @@
                             </select>
                         </div>
                         <div class="mx-2 text-left">
-                            <select name="period" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
+                            <select name="period" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60" required>
                                 <!-- <option value="" selected>Period</option> -->
                                 <option value="">--Select Period--</option>
                                 <?php $__currentLoopData = $cutoff; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ca): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <option value="<?php echo e($ca->cutoff_start."-".$ca->cutoff_end); ?>"><?php echo e($ca->cutoff_type); ?></option>
+                                <option value="<?php echo e($ca->cutoff_type."|".$ca->cutoff_start."-".$ca->cutoff_end); ?>"><?php echo e($ca->cutoff_type); ?></option>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </select>
                         </div>
@@ -123,9 +123,6 @@
                                         $exp_time = explode(',', $exp); 
                                         $date1 = new DateTime($logs['time_in']);
                                         $date2 = new DateTime($exp_time[1]);
-                                        $break='01:00';
-                                        $breakBits = explode(":", $break);
-                                        $date1->modify($breakBits[0]." hour ".$breakBits[1]." minutes");
                                         $interval = $date2->diff($date1);
                                         $hours   = $interval->format('%h'); 
                                         $minutes = $interval->format('%i');
@@ -136,13 +133,17 @@
                                     ?>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 <?php if(!empty($total_min)): ?>
+                                    <?php 
+                                        $exp_type=explode('|',$_GET['period']);
+                                        $exp_period=$exp_type[0];
+                                    ?>
                                     <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                         <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                             <?php echo e($e->full_name); ?>
 
                                         </td>
                                         <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                            <a href="<?php echo e(route('ot.create')); ?>"  class="my-1  py-2" title="Update">
+                                            <a href="<?php echo e(route('ot.create',['personal_id' => $e->personal_id,'month_year' => $_GET['month'], 'period' => $exp_period])); ?>"  class="my-1  py-2" title="Update">
                                                 <?php echo e(round(abs(array_sum($total_min)) / 60,2)." hrs."); ?>
 
                                             </a> 
