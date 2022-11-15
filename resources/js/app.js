@@ -15,3 +15,5 @@ document.getElementById('sched_type').addEventListener("change", function (e) {
         document.getElementById('shiftings').style.display = 'block'
     }
 });
+
+

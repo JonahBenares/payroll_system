@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Overtime;
 use App\Models\Employee;
+use App\Models\CutOff;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -33,22 +34,25 @@ class OvertimeController extends Controller
      */
     public function index()
     {
-        // $timekeeping = DB::select("SELECT MIN(recorded_time) AS time_in, MAX(recorded_time) AS time_out, full_name  FROM db_payroll.employees e INNER JOIN db_hris.timekeeping t ON t.personal_id=e.personal_id WHERE MONTH(t.recorded_time)='10' AND YEAR(t.recorded_time)='2022' GROUP BY e.personal_id ORDER BY e.full_name ASC");
-        // $employees=Employee::all()->sortBy('full_name');
-        // $timekeeping = DB::select("SELECT GROUP_CONCAT(recorded_time) AS time, e.full_name,t.recorded_time,e.personal_id FROM db_payroll.employees e INNER JOIN db_hris.timekeeping t ON t.personal_id=e.personal_id WHERE MONTH(t.recorded_time)='10' AND YEAR(t.recorded_time)='2022'  ORDER BY t.recorded_time,t.personal_id ASC");
-
-        $timekeeping = DB::table('db_hris.timekeeping')->join('db_payroll.employees', 'db_payroll.employees.personal_id', '=', 'db_hris.timekeeping.personal_id')->select('db_hris.timekeeping.id', 'db_hris.timekeeping.personal_id','db_payroll.employees.full_name', 'db_hris.timekeeping.recorded_time', DB::raw('GROUP_CONCAT(db_hris.timekeeping.recorded_time) as in_out_time'))->where('supervisory','0')->where('is_active','1')->whereMonth('recorded_time','10')->whereYear('recorded_time', '2022')->groupBy('personal_id')->get();
-        //$timekeeping = DB::select("SELECT * FROM db_hris.timekeeping WHERE MONTH(recorded_time)='10' AND YEAR(recorded_time)='2022' ORDER BY recorded_time ASC");
-        // $x=0;
-        // $time_in=array();
-        // $time_out=array();
-        // $overall_time=array();
-        // foreach($timekeeping AS $e){
-        //     $time_in[$x] = DB::table('db_hris.timekeeping')->where('personal_id', '=', $e->personal_id)->whereMonth('recorded_time','10')->whereYear('recorded_time', '2022')->min('recorded_time');
-        //     $time_out[$x] = DB::table('db_hris.timekeeping')->where('personal_id', '=', $e->personal_id)->whereMonth('recorded_time','10')->whereYear('recorded_time', '2022')->max('recorded_time');
-        //     $x++;
-        // }
-        return view('overtime.index',compact('timekeeping'));
+        if(isset($_GET['month']) && isset($_GET['year'])){
+            $month=$_GET['month'];
+            $year=$_GET['year'];
+        }else{
+            $month=date('m');
+            $year=date('Y');
+        }
+        if(isset($_GET['period'])){
+            $period=$_GET['period'];
+            $exp_d=explode('-',$period);
+            $exp_date1=$year."-".$month."-".$exp_d[0];
+            $exp_date2=$year."-".$month."-".$exp_d[1];
+        }else{
+            $period='';
+        }
+        $timekeeping = DB::table('db_hris.timekeeping')->join('db_payroll.employees', 'db_payroll.employees.personal_id', '=', 'db_hris.timekeeping.personal_id')->select('db_hris.timekeeping.id', 'db_hris.timekeeping.personal_id','db_payroll.employees.full_name', 'db_hris.timekeeping.recorded_time', DB::raw('GROUP_CONCAT(db_hris.timekeeping.recorded_time ORDER BY db_hris.timekeeping.recorded_time ASC) as in_out_time'))->where('supervisory','0')->where('is_active','1')->whereMonth('recorded_time',$month)->whereYear('recorded_time', $year)->whereBetween('recorded_time', [$exp_date1, $exp_date2])->groupBy('db_payroll.employees.personal_id')->get();
+        $timedate = DB::select("SELECT t.personal_id,recorded_time, GROUP_CONCAT(recorded_time) AS timer,time_in FROM db_hris.timekeeping t INNER JOIN schedule_head sh ON t.personal_id=sh.personal_id INNER JOIN schedule_code sc ON sh.schedule_code=sc.id WHERE MONTH(recorded_time)='10' AND YEAR(recorded_time)='2022' GROUP BY t.personal_id,recorded_time ORDER BY recorded_time ASC");
+        $cutoff=CutOff::all();
+        return view('overtime.index',compact('timekeeping','timedate','cutoff'));
     }
 
     /**

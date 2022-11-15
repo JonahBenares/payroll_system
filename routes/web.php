@@ -73,6 +73,7 @@ Route::resource('allowance', AllowanceController::class);
 // AllowanceRate
 Route::resource('allowancerate', AllowanceRateController::class);
 Route::post('/allowancerate/fetchrate', [AllowanceRateController::class, 'fetchRate']);
+Route::get('/allowancerate/destroy/{id}/{emp_id}', [AllowanceRateController::class, 'destroy'])->name('destroy');
 //Route::get('/allowancerate/create/{employee_id}/{personal_id}', [AllowanceRateController::class, 'create'])->name('create');
 
 // AdjustmentRate
@@ -126,3 +127,7 @@ Route::get('/upload_allowance', [UploadAllowController::class, 'uploadAllowance'
 
 // Route::get('/dash', [MasterfileController::class, 'dash'])->middleware(['auth'])->name("dash");
 // Route::get('/masterfile/employee_list', 'App\Http\Controllers\MasterfileController@index');
+
+Route::get('/toolkit', function () {
+    return view('uikit/components');
+});

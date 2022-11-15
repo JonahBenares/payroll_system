@@ -32,49 +32,52 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900">
-                    <div class="mx-2 text-left">
-                        <select class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
-                            <option value="" selected>Select Month</option>
-                            <option value="01">January</option>
-                            <option value="02">February</option>
-                            <option value="03">March</option>
-                            <option value="04">April</option>
-                            <option value="05">May</option>
-                            <option value="06">June</option>
-                            <option value="07">July</option>
-                            <option value="08">August</option>
-                            <option value="09">September</option>
-                            <option value="10">October</option>
-                            <option value="11">November</option>
-                            <option value="12">December</option>
-                        </select>
+                <form method="GET">
+                    <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900">
+                        <div class="mx-2 text-left">
+                            <select name="month" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
+                                <option value="" selected>Select Month</option>
+                                <option value="01">January</option>
+                                <option value="02">February</option>
+                                <option value="03">March</option>
+                                <option value="04">April</option>
+                                <option value="05">May</option>
+                                <option value="06">June</option>
+                                <option value="07">July</option>
+                                <option value="08">August</option>
+                                <option value="09">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                        </div>
+                        <div class="mx-2 text-left">
+                            <select name="year" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
+                                <option value="">Select Year</option>
+                                <?php
+                                    $year=date('Y');
+                                ?>
+                                <?php for($y=2015;$y<=$year;$y++): ?>
+                                    <option value="<?php echo e($y); ?>"><?php echo e($y); ?></option>
+                                <?php endfor; ?>
+                            </select>
+                        </div>
+                        <div class="mx-2 text-left">
+                            <select name="period" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
+                                <!-- <option value="" selected>Period</option> -->
+                                <option value="">--Select Period--</option>
+                                <?php $__currentLoopData = $cutoff; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ca): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <option value="<?php echo e($ca->cutoff_start."-".$ca->cutoff_end); ?>"><?php echo e($ca->cutoff_type); ?></option>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            </select>
+                        </div>
+                        <div class="mx-2 pt-3 text-left">
+                            <button type="submit" class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                                <span>Generate</span>
+                            </button>
+                        </div>
                     </div>
-                    <div class="mx-2 text-left">
-                        <select class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
-                            <option value="">Select Year</option>
-                            <?php
-                                $year=date('Y');
-                            ?>
-                            <?php for($y=2015;$y<=$year;$y++): ?>
-                                <option value="<?php echo e($y); ?>"><?php echo e($y); ?></option>
-                            <?php endfor; ?>
-                        </select>
-                    </div>
-                    <div class="mx-2 text-left">
-                        <select class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
-                            <!-- <option value="" selected>Period</option> -->
-                            <option value="">--Select Period--</option>
-                            <option value="MID">MID</option>
-                            <option value="EOM">EOM</option>
-                        </select>
-                    </div>
-                    <div class="mx-2 pt-3 text-left">
-                        <button class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                            <span>Generate</span>
-                        </button>
-                    </div>
-                </div>
+                </form>
                 <div class="overflow-x-auto overflow-y-hidden hover:overflow-y-auto h-100 relative max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 sm:rounded-2xl">
                     <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-10">
@@ -94,26 +97,53 @@
                             </tr>
                         </thead>
                         <tbody>
-
-                            <?php $x=0 ?>
-                                <?php $__currentLoopData = $timekeeping; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $e): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <?php
-                                        $in_out = explode(',', $e->in_out_time);
-                                        $time=0;
-                                        foreach ($in_out as $item) {
-                                            $recordtime[]=date("H:i",strtotime($item));
-                                            $time = App\Http\Controllers\OvertimeController::AddPlayTime($recordtime);
+                            <?php $__currentLoopData = $timekeeping; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $e): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <?php
+                                    $data2 = array();
+                                    foreach($timedate AS $value){
+                                        if($value->personal_id==$e->personal_id){
+                                            $key = date('Y-m-d',strtotime($value->recorded_time));
+                                            if(!isset($data2[$key])) {   
+                                                $data2[$key] = array(
+                                                    'personal_id'=>$value->personal_id,
+                                                    'time_in'=>$value->time_in,
+                                                    'recorded_time' => array(),
+                                                );
+                                            }        
+                                            $data2[$key]['recorded_time'][] = date('H:i',strtotime($value->recorded_time)).",";  
+                                        }
+                                    }
+                                    $total_hours=[];
+                                    $total_min=[];
+                                    $overall_time=[];
+                                ?>
+                                <?php $__currentLoopData = $data2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $logs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php 
+                                        $exp=implode("",$logs['recorded_time']);
+                                        $exp_time = explode(',', $exp); 
+                                        $date1 = new DateTime($logs['time_in']);
+                                        $date2 = new DateTime($exp_time[1]);
+                                        $break='01:00';
+                                        $breakBits = explode(":", $break);
+                                        $date1->modify($breakBits[0]." hour ".$breakBits[1]." minutes");
+                                        $interval = $date2->diff($date1);
+                                        $hours   = $interval->format('%h'); 
+                                        $minutes = $interval->format('%i');
+                                        if($hours>=8 && $minutes>=30){
+                                            $total_hours[]=$interval->format("%H:%I");
+                                            $total_min[]=$interval->format("%i");
                                         }
                                     ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php if(!empty($total_min)): ?>
                                     <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                         <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                             <?php echo e($e->full_name); ?>
 
                                         </td>
-                                        
                                         <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                             <a href="<?php echo e(route('ot.create')); ?>"  class="my-1  py-2" title="Update">
-                                                <?php echo e($time); ?>
+                                                <?php echo e(round(abs(array_sum($total_min)) / 60,2)." hrs."); ?>
 
                                             </a> 
                                         </td>
@@ -124,7 +154,7 @@
                                             150
                                         </td>
                                     </tr>
-                                <?php $x++ ?>
+                                <?php endif; ?>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
