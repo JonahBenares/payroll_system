@@ -17,21 +17,25 @@ class LeaveFailureController extends Controller
      */
     public function index()
     {   
-        // if(isset($_GET['month']) && isset($_GET['year'])){
-        //     $month=$_GET['month'];
-        //     $year=$_GET['year'];
-        // }else{
-        //     $month=date('m');
-        //     $year=date('Y');
-        // }
-        // $period=$_GET['period'];
+        if(isset($_GET['month']) && isset($_GET['year'])){
+            $month=$_GET['month'];
+            $year=$_GET['year'];
+        }else{
+            $month=date('m');
+            $year=date('Y');
+        }
+        if(isset($_GET['period']) && !empty($_GET['period'])){
+            $period=$_GET['period'];
+        }else{
+            $period='';
+        }
         $cutoff = CutOff::all();
         $leave = LeaveFailure::join('employees', 'employees.id', '=', 'leave_filing_head.employee_id')
         ->join('leave_filing_detail', 'leave_filing_head_id', '=', 'leave_filing_head.id')
         ->selectRaw('count(case when leave_filing_detail.leave_type = "Absent" then 1 end) as count_absent,employees.full_name,leave_filing_detail.leave_filing_head_id')
         ->selectRaw('count(case when leave_filing_detail.leave_type = "FTL" then 1 end) as count_ftl')
         ->selectRaw('count(case when leave_filing_detail.leave_type = "Undertime/Tardiness" then 1 end) as count_undertime')
-        ->where('is_active', '=', 1)->where('filed', '=', 0)->groupBy('leave_filing_head.personal_id')->get();
+        ->where('is_active', '=', 1)->where('filed', '=', 0)->where('month',$month)->where('year', $year)->where('pay_period', $period)->groupBy('leave_filing_head.personal_id')->get();
         return view('leave.index',compact('leave','cutoff'));
     }
 
