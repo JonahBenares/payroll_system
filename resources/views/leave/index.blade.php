@@ -46,11 +46,10 @@
                     <div class="mx-2 text-left">
                         <select name="year" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
                             <option value="" selected>Select Year</option>
-                            <option value="2018">2018</option>
-                            <option value="2018">2018</option>
-                            <option value="2020">2020</option>
-                            <option value="2021">2021</option>
-                            <option value="2022">2022</option>
+                            @php  $year= date('Y'); @endphp
+                            @for($y=2014;$y<=$year;$y++)
+                            <option value="{{$y}}">{{$y}}</option>
+                            @endfor
                         </select>
                     </div>
                     <div class="mx-2 text-left">

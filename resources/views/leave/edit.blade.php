@@ -40,8 +40,8 @@
                                     <th scope="col" class="py-3 px-3" width="10%">
                                         Date
                                     </th>
-                                    <th scope="col" class="py-3 px-3" width="15%">
-                                         Total Minutes
+                                    <th scope="col" class="py-3 px-3" width="20%">
+                                         Total Undertime Minutes
                                     </th>
                                     <th scope="col" class="py-3 px-3" width="25%">
                                         Date Filed
@@ -67,9 +67,14 @@
                                     <td class="py-3 px-3">
                                     {{ $l->date_absent }}
                                     </td>
+                                    @if($l->leave_type != 'Absent' && $l->leave_type != 'FTL')
                                     <td class="py-3 px-3">
                                         <input type="text" name="undertime_mins[]" value="{{ $l->undertime_mins }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 text-right">  
                                     </td>
+                                    @else
+                                    <td class="py-3 px-3">  
+                                    </td>
+                                    @endif
                                     <td class="py-3 px-3">
                                         <input type="date" name="date_filed[]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 text-right">  
                                     </td>
