@@ -21,7 +21,12 @@ class AllowanceRateController extends Controller
         $rates = AllowanceRate::join('employees', 'employees.id', '=', 'allowance_rates.employee_id')
         ->join('allowances', 'allowances.id', '=', 'allowance_rates.allowance_id')
         ->get(['allowance_rates.employee_id','allowance_rates.personal_id','allowances.allowance_name','allowances.allowance_rate']);
-        return view('all_rates.index',compact('employees','rates'));
+        $rates_count = AllowanceRate::join('employees', 'employees.id', '=', 'allowance_rates.employee_id')
+        ->join('allowances', 'allowances.id', '=', 'allowance_rates.allowance_id')->groupBy('allowance_rates.personal_id')
+        ->get(['allowance_rates.employee_id','allowance_rates.personal_id','allowances.allowance_name','allowances.allowance_rate']);
+        
+        $count=AllowanceRate::count();
+        return view('all_rates.index',compact('employees','rates','count','rates_count'));
         
     }
 
@@ -39,8 +44,19 @@ class AllowanceRateController extends Controller
     public function fetchRate(Request $request)
     {
         $allowance_id = $request->allowance_id;
-        $allowance = Allowance::where('id',$request->allowance_id)->get();
-        return response()->json(['allowance'=>$allowance]);
+        //$allowance = Allowance::where('id',$request->allowance_id)->get();
+        $allowance = Allowance::find($allowance_id);
+        return response()->json($allowance);
+    }
+    
+    public function has_dupes($array) {
+        $dupe_array = array();
+        foreach ($array as $val) {
+            if (++$dupe_array[$val] > 1) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -51,19 +67,18 @@ class AllowanceRateController extends Controller
      */
     public function store(Request $request)
     {
-        $allowancerate=new AllowanceRate();
-        $count_rates=count($request->allowance_name);
-        for($x=0;$x<$count_rates;$x++){
-            $allowancerate->employee_id=$request->employee_id;
-            $allowancerate->personal_id=$request->personal_id;
-            $allowancerate->allowance_id=$request->allowance_name[$x];
-            $allowancerate->allowance_rate=$request->allowance_rate[$x];
-            $res = $allowancerate->save();
+        foreach ($request->allowance_name as $key => $value) {
+            $res=AllowanceRate::updateOrCreate([
+                'employee_id'=> $request->employee_id,
+                'personal_id'=> $request->personal_id,
+                'allowance_id'=> $request->allowance_name[$key],
+                'allowance_rate'=> $request->allowance_rate[$key],
+            ]);
         }
         if($res){
-            return redirect()->route('allowance.create')->with('success',"Allowance Added Successfully");
+            return redirect()->route('allowancerate.index')->with('success',"Allowance Rate Added Successfully");
         }else{
-            return redirect()->route('allowance.create')->with('fail',"Error! Try Again!");
+            return redirect()->route('allowancerate.index')->with('fail',"Error! Try Again!");
         }
     }
 
@@ -86,7 +101,10 @@ class AllowanceRateController extends Controller
      */
     public function edit($id)
     {
-        return view('all_rates.edit');
+        $allowance=Allowance::all()->sortBy('allowance_name');
+        $allowancerate=AllowanceRate::join('allowances', 'allowances.id', '=', 'allowance_rates.allowance_id')->where('employee_id', $id)->get(['allowance_rates.id','allowance_rates.allowance_id','allowances.allowance_rate','allowance_rates.employee_id','allowance_rates.personal_id']);
+        $count = $allowancerate->count();
+        return view('all_rates.edit',compact('allowance','allowancerate','count'));
         
     }
 
@@ -97,9 +115,52 @@ class AllowanceRateController extends Controller
      * @param  \App\Models\AllowanceRate  $allowanceRate
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AllowanceRate $allowanceRate)
+    public function update(Request $request, $id)
     {
-        //
+        $url = $request->url();
+        if(!isset($request->counterX) || $request->counterX == ''){
+            if($request->count==0) $ctrx = 1;
+            else $ctrx = $request->count;
+        } 
+        else{
+            $ctrx = $request->counterX;
+        }
+        
+        if($ctrx==$request->count){
+            foreach ($request->allowance_name as $key => $value) {
+                $check = AllowanceRate::where('allowance_id',$request->allowance_name[$key])->where('employee_id',$id)->first();
+                $allowancerate = AllowanceRate::where("id",$request->allowance_rate_id[$key]);
+                if($check){}else{
+                    $allowancerate->update(
+                        [
+                            'allowance_id' => $request->allowance_name[$key],
+                            'allowance_rate' => $request->allowance_rate[$key],
+                        ]
+                    );
+                }
+            }
+            if($check){
+                return redirect()->route('allowancerate.edit',$id)->with('fail',"Allowance Already Exist, Please try again!");
+            }else{
+                return redirect()->route('allowancerate.edit',$id)->with('success',"Allowance Rate Updated Successfully");
+            }
+        }else if($ctrx>$request->count){
+            foreach ($request->allowance_name as $key => $value) {
+                $check = AllowanceRate::where('allowance_id',$request->allowance_name[$key])->where('employee_id',$id)->first();
+                $insert=AllowanceRate::updateOrCreate([
+                    'employee_id'=> $request->employee_id,
+                    'personal_id'=> $request->personal_id,
+                    'allowance_id'=> $request->allowance_name[$key],
+                    'allowance_rate'=> $request->allowance_rate[$key],
+                ]);
+            }
+            if($check){
+                return redirect()->route('allowancerate.edit',$id)->with('fail',"Allowance Already Exist, Please try again!");
+            }else{
+                return redirect()->route('allowancerate.edit',$id)->with('success',"Allowance Rate Updated Successfully");
+            }
+        }
+        
     }
 
     /**
@@ -108,8 +169,9 @@ class AllowanceRateController extends Controller
      * @param  \App\Models\AllowanceRate  $allowanceRate
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AllowanceRate $allowanceRate)
+    public function destroy($id,$emp_id)
     {
-        //
+        AllowanceRate::find($id)->delete();
+        return redirect()->route('allowancerate.edit',$emp_id)->with('success',"Allowance Rate Deleted Successfully");
     }
 }

@@ -1,17 +1,9 @@
 <?php if (isset($component)) { $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da = $component; } ?>
-<<<<<<< HEAD
-<?php $component = $__env->getContainer()->make(App\View\Components\AppLayout::class, [] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
-<?php $component->withName('app-layout'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $constructor = (new ReflectionClass(App\View\Components\AppLayout::class))->getConstructor()): ?>
-=======
 <?php $component = App\View\Components\AppLayout::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('app-layout'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(App\View\Components\AppLayout::class))->getConstructor()): ?>
->>>>>>> af1388992479bd516bfb86455a1e0f9596c40e65
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
@@ -40,6 +32,11 @@
                         </div>
                     </div>
                 </div>
+                <?php if(Session::has('success')): ?>
+                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline"><?php echo e(Session::get('success')); ?></span>
+                    </div>
+                <?php endif; ?>
                 <div class="overflow-x-auto hover:overflow-y-auto overflow-y-hidden h-100 relative  sm:rounded-2xl">
                     <table class="w-full text-sm text-left border border-gray-200 text-gray-500 white:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-10">
@@ -61,10 +58,6 @@
                             </tr>
                         </thead>
                         <tbody>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> af1388992479bd516bfb86455a1e0f9596c40e65
                             <?php $__currentLoopData = $employees; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $e): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <th scope="row" class="py-3 px-3 font-medium text-gray-900 whitespace-nowrap white:text-white border border-gray-200 align-top">
@@ -72,13 +65,20 @@
 
                                 </th>
                                 <td class="border border-gray-200 py-3 px-3 align-top">
+                                    <?php 
+                                        $personal_id=array(); 
+                                    ?>
                                     <?php $__currentLoopData = $rates; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $r): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <?php if($e->id==$r->employee_id): ?>
-                                    <div class="justify-between flex">
-                                        <span class="relative"><?php echo e($r->allowance_name); ?></span>
-                                        <span class="relative"><?php echo e(number_format($r->allowance_rate,2)); ?></span>
-                                    </div>
-                                    <?php endif; ?>
+                                        <?php if($e->id==$r->employee_id): ?>
+                                        <?php 
+                                            $personal_id[]=$r->personal_id;
+                                            $counter=$r->allowance_name; 
+                                        ?>
+                                        <div class="justify-between flex">
+                                            <span class="relative"><?php echo e($r->allowance_name); ?></span>
+                                            <span class="relative"><?php echo e(number_format($r->allowance_rate,2)); ?></span>
+                                        </div>
+                                        <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     <!-- <div class="justify-between flex">
                                         <span class="relative">Clothing Allowance</span>
@@ -86,184 +86,29 @@
                                     </div> -->
                                 </td>
                                 <td class="py-3 px-6 justify-center flex" >
-                                    <a href="<?php echo e(route('allowancerate.create','employee_id='.$e->id.'&personal_id='.$e->personal_id)); ?>" class="" title="Add">
-<<<<<<< HEAD
-=======
-                            <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                                <th scope="row" class="py-3 px-3 font-medium text-gray-900 whitespace-nowrap white:text-white border border-gray-200 align-top">
-                                    Jusheen Dimapaso
-                                </th>
-                                <td class="border border-gray-200 py-3 px-3 align-top">
-                                    <div class="justify-between flex">
-                                        <span class="relative">Meal and Transportation Allowance</span>
-                                        <span class="relative">1,000.00</span>
-                                    </div>
-                                    <div class="justify-between flex">
-                                        <span class="relative">Clothing Allowance</span>
-                                        <span class="relative">1,200.00</span>
-                                    </div>
-                                </td>
-                                <td class="py-3 px-6 justify-center flex" >
-                                    <a href="<?php echo e(route('allowancerate.create')); ?>" class="" title="Add">
-                                        <div class="py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                                              </svg>
-                                        </div>
-                                    </a>
-                                    <a href="<?php echo e(route('allowancerate.edit','1')); ?>" class="" title="Update">
-                                        <div class="ml-1 py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
-                                                <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
-                                                <path d="M5.25 5.25a3 3 0 00-3 3v10.5a3 3 0 003 3h10.5a3 3 0 003-3V13.5a.75.75 0 00-1.5 0v5.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V8.25a1.5 1.5 0 011.5-1.5h5.25a.75.75 0 000-1.5H5.25z" />
-                                            </svg>
-                                        </div>
-                                    </a>
+                                    <!-- <a href="<?php echo e(route('allowancerate.create','employee_id='.$e->id.'&personal_id='.$e->personal_id)); ?>" class="" title="Add"> -->
+                                    <?php if(in_array($e->personal_id,$personal_id)): ?>
+                                        <a href="<?php echo e(route('allowancerate.edit', $e->id)); ?>" class="" title="Update">
+                                            <div class="ml-1 py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                                    <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
+                                                    <path d="M5.25 5.25a3 3 0 00-3 3v10.5a3 3 0 003 3h10.5a3 3 0 003-3V13.5a.75.75 0 00-1.5 0v5.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V8.25a1.5 1.5 0 011.5-1.5h5.25a.75.75 0 000-1.5H5.25z" />
+                                                </svg>
+                                            </div>
+                                        </a> 
+                                    <?php else: ?>
+                                        <a href="<?php echo e(route('allowancerate.create',['employee_id' => $e->id, 'personal_id' => $e->personal_id])); ?>" class="" title="Add">
+                                            <div class="py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                                </svg>
+                                            </div>
+                                        </a>
+                                    <?php endif; ?>
+
                                 </td>
                             </tr>
-                            <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                                <th scope="row" class="py-3 px-3 font-medium text-gray-900 whitespace-nowrap white:text-white border border-gray-200 align-top">
-                                    Mary Jane Damaso
-                                </th>
-                                <td class="border border-gray-200 py-3 px-3 align-top">
-                                    <div class="justify-between flex">
-                                        <span class="relative">Meal and Transportation Allowance</span>
-                                        <span class="relative">900.00</span>
-                                    </div>
-                                </td>
-                                <td class="py-3 px-6 justify-center flex" >
-                                    <a href="<?php echo e(route('allowancerate.create')); ?>" class="" title="Add">
-                                        <div class="py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                                              </svg>
-                                        </div>
-                                    </a>
-                                    <a href="<?php echo e(route('allowancerate.edit','1')); ?>" class="" title="Update">
-                                        <div class="ml-1 py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
-                                                <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
-                                                <path d="M5.25 5.25a3 3 0 00-3 3v10.5a3 3 0 003 3h10.5a3 3 0 003-3V13.5a.75.75 0 00-1.5 0v5.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V8.25a1.5 1.5 0 011.5-1.5h5.25a.75.75 0 000-1.5H5.25z" />
-                                            </svg>
-                                        </div>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                                <th scope="row" class="py-3 px-3 font-medium text-gray-900 whitespace-nowrap white:text-white border border-gray-200 align-top">
-                                    Steven James Flores
-                                </th>
-                                <td class="border border-gray-200 py-3 px-3 align-top">
-                                    <div class="justify-between flex">
-                                        <span class="relative">Cash Allowance</span>
-                                        <span class="relative">1,000.00</span>
-                                    </div>
-                                    <div class="justify-between flex">
-                                        <span class="relative">House Rent Allowance</span>
-                                        <span class="relative">1,500.00</span>
-                                    </div>
-                                </td>
-                                <td class="py-3 px-6 justify-center flex" >
-                                    <a href="<?php echo e(route('allowancerate.create')); ?>" class="" title="Add">
-                                        <div class="py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                                              </svg>
-                                        </div>
-                                    </a>
-                                    <a href="<?php echo e(route('allowancerate.edit','1')); ?>" class="" title="Update">
-                                        <div class="ml-1 py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
-                                                <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
-                                                <path d="M5.25 5.25a3 3 0 00-3 3v10.5a3 3 0 003 3h10.5a3 3 0 003-3V13.5a.75.75 0 00-1.5 0v5.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V8.25a1.5 1.5 0 011.5-1.5h5.25a.75.75 0 000-1.5H5.25z" />
-                                            </svg>
-                                        </div>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                                <th scope="row" class="py-3 px-3 font-medium text-gray-900 whitespace-nowrap white:text-white border border-gray-200 align-top">
-                                    James Ganid
-                                </th>
-                                <td class="border border-gray-200 py-3 px-3 align-top">
-                                    <div class="justify-between flex">
-                                        <span class="relative">Meal and Transportation Allowance</span>
-                                        <span class="relative">900.00</span>
-                                    </div>
-                                    <div class="justify-between flex">
-                                        <span class="relative">Cash Allowance</span>
-                                        <span class="relative">2,000.00</span>
-                                    </div>
-                                </td>
-                                <td class="py-3 px-6 justify-center flex" >
-                                    <a href="<?php echo e(route('allowancerate.create')); ?>" class="" title="Add">
-                                        <div class="py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                                              </svg>
-                                        </div>
-                                    </a>
-                                    <a href="<?php echo e(route('allowancerate.edit','1')); ?>" class="" title="Update">
-                                        <div class="ml-1 py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
-                                                <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
-                                                <path d="M5.25 5.25a3 3 0 00-3 3v10.5a3 3 0 003 3h10.5a3 3 0 003-3V13.5a.75.75 0 00-1.5 0v5.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V8.25a1.5 1.5 0 011.5-1.5h5.25a.75.75 0 000-1.5H5.25z" />
-                                            </svg>
-                                        </div>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                                <th scope="row" class="py-3 px-3 font-medium text-gray-900 whitespace-nowrap white:text-white border border-gray-200 align-top">
-                                    Marcial Hipoclito
-                                </th>
-                                <td class="border border-gray-200 py-3 px-3 align-top">
-                                    <div class="justify-between flex">
-                                        <span class="relative">Meal and Transportation Allowance</span>
-                                        <span class="relative">1,300.00</span>
-                                    </div>
-                                    <div class="justify-between flex">
-                                        <span class="relative">Uniform Allowance</span>
-                                        <span class="relative">2,200.00</span>
-                                    </div>
-                                </td>
-                                <td class="py-3 px-6 justify-center flex" >
-                                    <a href="<?php echo e(route('allowancerate.create')); ?>" class="" title="Add">
->>>>>>> bec47f8f7c35b16bcc36d408b7d386b71344bdef
-=======
->>>>>>> af1388992479bd516bfb86455a1e0f9596c40e65
-                                        <div class="py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                                              </svg>
-                                        </div>
-                                    </a>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                                    <a href="<?php echo e(route('allowancerate.edit', $e->id)); ?>" class="" title="Update">
-=======
-                                    <a href="<?php echo e(route('allowancerate.edit','1')); ?>" class="" title="Update">
->>>>>>> bec47f8f7c35b16bcc36d408b7d386b71344bdef
-=======
-                                    <a href="<?php echo e(route('allowancerate.edit', $e->id)); ?>" class="" title="Update">
->>>>>>> af1388992479bd516bfb86455a1e0f9596c40e65
-                                        <div class="ml-1 py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
-                                                <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
-                                                <path d="M5.25 5.25a3 3 0 00-3 3v10.5a3 3 0 003 3h10.5a3 3 0 003-3V13.5a.75.75 0 00-1.5 0v5.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V8.25a1.5 1.5 0 011.5-1.5h5.25a.75.75 0 000-1.5H5.25z" />
-                                            </svg>
-                                        </div>
-                                    </a>
-                                </td>
-                            </tr>
-<<<<<<< HEAD
-<<<<<<< HEAD
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-=======
->>>>>>> bec47f8f7c35b16bcc36d408b7d386b71344bdef
-=======
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
->>>>>>> af1388992479bd516bfb86455a1e0f9596c40e65
                         </tbody>
                     </table>
                 </div>
