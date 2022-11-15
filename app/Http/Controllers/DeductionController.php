@@ -43,9 +43,15 @@ class DeductionController extends Controller
     public function store(Request $request)
     {
         $deduct=new Deduction();
+        $freq =  $request->deduction_frequency;
+        if($freq == '1'){
+            $period = $request->deduction_period;
+        }else{
+            $period = '';
+        }
         $deduct->payslip_info_id=$request->payslip_info_id;
         $deduct->deduction_frequency=$request->deduction_frequency;
-        $deduct->deduction_period=$request->deduction_period;
+        $deduct->deduction_period=$period;
         $res = $deduct->save();
         if($res){
             return redirect()->route('deductions.create')->with('success',"Deduction Added Successfully");
