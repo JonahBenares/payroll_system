@@ -41,7 +41,7 @@ class OvertimeController extends Controller
             $month=date('m');
             $year=date('Y');
         }
-        if(isset($_GET['period'])){
+        if(isset($_GET['period']) && !empty($_GET['period'])){
             $period=$_GET['period'];
             $exp_d=explode('-',$period);
             $exp_date1=$year."-".$month."-".$exp_d[0];
