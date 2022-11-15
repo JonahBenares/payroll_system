@@ -17,7 +17,7 @@ class DeductionController extends Controller
      */
     public function index()
     {
-        $deduct = Deduction::join('payslip_info', 'payslip_info.id', '=', 'deductions.payslip_info_id')->join('cutoff', 'cutoff.id', '=', 'deductions.deduction_period')
+        $deduct = Deduction::join('payslip_info', 'payslip_info.id', '=', 'deductions.payslip_info_id')->leftJoin('cutoff', 'cutoff.id', '=', 'deductions.deduction_period')
         ->get(['deductions.id','payslip_info.description','deductions.deduction_frequency','cutoff.cutoff_type']);
         return view ('deduct.index')->with('deduction', $deduct);
     }
@@ -90,8 +90,19 @@ class DeductionController extends Controller
     public function update(Request $request, $id)
     {
         $deduct = Deduction::find($id);
-        $input = $request->all();
-        $deduct->update($input);
+        //$input = $request->all();
+        $freq =  $request->deduction_frequency;
+        if($freq == '1'){
+            $period = $request->deduction_period;
+        }else{
+            $period = '';
+        }
+        $deduct->update([
+            'payslip_info_id'=>$request->payslip_info_id,
+            'deduction_frequency'=>$freq,
+            'deduction_period'=>$period,
+        ]);
+        //$deduct->update($input);
         return redirect()->route('deductions.edit',$id)->with('success',"Deduction Updated Successfully");
     }
 
