@@ -14,9 +14,7 @@
         <!-- Scripts -->
         <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
          <!-- Styles -->
-        <?php echo \Livewire\Livewire::styles(); ?>
-
-        <?php echo view('livewire-powergrid::assets.styles')->render(); ?>
+        
     </head>
     <body class="font-sans antialiased">
         <div class="p-20s"></div>
@@ -34,11 +32,23 @@
                         <div class="relative  flex flex-col justify-center h-full px-3 mx-auto flex-center">
                             <div class="relative items-center pl-1 flex w-full lg:max-w-68 sm:pr-2 sm:ml-0">
                                 <div class="container relative left-0  flex w-3/4 h-auto h-full">
-                                    <div class="relative">
-                                        <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                                            <svg class="w-5 h-5 text-gray-500 white:text-gray-400" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+                                    <div class="relative flex text-gray-700 text-sm">
+                                        <div class="relative flex mx-1 ">
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                            </span>
+                                            <span class="mx-1 py-1"> 10:30 pm</span>
                                         </div>
-                                        <input type="text" id="table-search-users" class="block p-2 pl-10 w-80 text-sm text-gray-900 bg-gray-50 rounded-2xl border border-gray-300 focus:ring-blue-500 focus:border-blue-500 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500" placeholder="Search">
+                                        <div class="relative flex mx-1">
+                                            <span class="mx-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+                                                </svg>
+                                            </span>
+                                            <span class="mx-1 py-1"> January 01, 2023</span>
+                                        </div>
                                     </div>
                                 </div>
                                 
@@ -231,8 +241,6 @@
                 $(this).parents('.appends').remove();
             });
         </script>
-        <?php echo \Livewire\Livewire::scripts(); ?>
-
-        <?php echo view('livewire-powergrid::assets.scripts')->render(); ?>
+        
     </body>
 </html><?php /**PATH C:\xampp\htdocs\payroll_system\resources\views/layouts/app.blade.php ENDPATH**/ ?>

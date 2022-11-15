@@ -132,7 +132,7 @@
                             </div>
                         </li>    
                         <li class="relative ">
-                            <a class="w-full font-thin uppercase text-gray-500 white:text-gray-200 flex items-center px-4 py-2 my-1  duration-200 justify-start hover:text-blue-500 " href="<?php echo e(route("upload_allowance")); ?>">
+                            <a  href="<?php echo e(route("uploadallowance.index")); ?>" class="w-full font-thin uppercase text-gray-500 white:text-gray-200 flex items-center px-4 py-2 my-1  duration-200 justify-start hover:text-blue-500 " >
                                 <span class="text-left">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 004.5 9.75v7.5a2.25 2.25 0 002.25 2.25h7.5a2.25 2.25 0 002.25-2.25v-7.5a2.25 2.25 0 00-2.25-2.25h-.75m0-3l-3-3m0 0l-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 012.25 2.25v7.5a2.25 2.25 0 01-2.25 2.25h-7.5a2.25 2.25 0 01-2.25-2.25v-.75" />
@@ -157,16 +157,16 @@
                             <div class="relative overflow-hidden transition-all max-h-0 duration-700" x-ref="container2" x-bind:style="selected == 2 ? 'max-height: ' + $refs.container2.scrollHeight + 'px' : ''">
                                 <ul>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('payroll_salary')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Salary</a>
+                                        <a href="<?php echo e(route("payrollsalary.index")); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Salary</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('payroll_allowance')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowance</a>
+                                        <a href="<?php echo e(route("payrollallowance.index")); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowance</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('payroll_overtime')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Overtime</a>
+                                        <a href="<?php echo e(route('payrollovertime.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Overtime</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('payroll_bonus')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Bonus</a>
+                                        <a href="<?php echo e(route('payrollbonus.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Bonus</a>
                                     </li>
                                 </ul>
                             </div>

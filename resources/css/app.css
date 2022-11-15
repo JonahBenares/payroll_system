@@ -1,3 +1,59 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+page {
+  background: #fff;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 0.5cm;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  border-radius: 20px;
+}
+page[size="A4"] {  
+  width: 8.3in;
+  height: 11.7in; 
+}
+page[size="A4"][layout="landscape"] {
+  width:  11.7in;
+  height:  8.3in;  
+}
+page[size="letter"] {  
+  width: 8.5in;
+  height: 11in; 
+}
+
+@media print {
+  body, page {
+    margin: 0;
+    box-shadow: 0 10px 15px -3px #fff;
+  /* box-shadow: 0; */
+  }
+  #print_buttons{
+    display: none;
+  }
+  .printOnly {
+    display: block !important;
+    page-break-after: always;
+  }
+
+  #div_print {
+      page-break-after: always;
+  }
+}
+/* @media screen {
+  .payslip{height: 5in;width:3in;background:rgba(190, 75, 75, 0.342)}
+  .payslip_table{line-height: 10px;font-size: 10px }
+}
+
+@media print {
+  .payslip{height: 5in;width:3in;background:rgba(158, 158, 158, 0.342)}
+  .payslip_table{line-height: 10px;font-size: 10px }
+} */
+.font-xxs{font-size:7px}
+@media screen, print {
+ .payslip{height: 5in;width:3in;}  /*  background:rgba(248, 248, 248, 0.342) */
+  .payslip_table{line-height: 9px;font-size: 10px }
+  .font-xxs{font-size:7px}
+}
