@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('pay_period');
             $table->integer('absences');
             $table->integer('ftl');
+            $table->integer('undertime');
             $table->float('total_undertime');
             $table->timestamps();
         });

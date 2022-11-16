@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('leave_filing_head_id')->contrained('leave_filing_head');
             $table->date('date_absent');
             $table->float('undertime_mins');
+            $table->integer('filed');
             $table->date('date_filed');
             $table->integer('with_pay');
             $table->float('pay_percentage');

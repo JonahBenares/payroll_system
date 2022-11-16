@@ -1,5 +1,5 @@
-<div class="h-screen hidden lg:block my-4 ml-4 shadow-lg relative w-72">
-    <div class="bg-white h-full rounded-2xl white:bg-gray-700">
+<div class="h-screen hidden lg:block m-2 shadow-lg w-2/12">
+    <div class="bg-white h-full rounded-lg white:bg-gray-700">
         <div class="flex items-center justify-center pt-6">
             <svg width="35" height="30" viewBox="0 0 256 366" version="1.1" preserveAspectRatio="xMidYMid">
                 <defs>
@@ -52,43 +52,43 @@
                             <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container" x-bind:style="selected == 1 ? 'max-height: ' + $refs.container.scrollHeight + 'px' : ''">
                                 <ul>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('entry.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Accounting Entry</a>
+                                        <a href="<?php echo e(route('entry.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Accounting Entry</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('emp.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Employee List</a>
+                                        <a href="<?php echo e(route('emp.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Employee List</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('schedules.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Schedule</a>
+                                        <a href="<?php echo e(route('schedules.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Schedule</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('holiday.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Holidays</a>
+                                        <a href="<?php echo e(route('holiday.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Holidays</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('payslip_info.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Payslip Info</a>
+                                        <a href="<?php echo e(route('payslip_info.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Payslip Info</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('allowance.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowances</a>
+                                        <a href="<?php echo e(route('allowance.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowances</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('allowancerate.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowance Rates</a>
+                                        <a href="<?php echo e(route('allowancerate.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowance Rates</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('adjustmentrate.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Adjustment Rates</a>
+                                        <a href="<?php echo e(route('adjustmentrate.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Adjustment Rates</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('hmorate.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >HMO Rates</a>
+                                        <a href="<?php echo e(route('hmorate.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >HMO Rates</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('deductions.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Deductions Schedule</a>
+                                        <a href="<?php echo e(route('deductions.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Deductions Schedule</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('statutorybracket.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Statutory Bracket</a>
+                                        <a href="<?php echo e(route('statutorybracket.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Statutory Bracket</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('tardinessrate.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Tardiness Rates</a>
+                                        <a href="<?php echo e(route('tardinessrate.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Tardiness Rates</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('cut_off.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Cut Off</a>
+                                        <a href="<?php echo e(route('cut_off.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Cut Off</a>
                                     </li>
                                     
                                 </ul>
@@ -117,22 +117,32 @@
                                     Filing
                                 </span>
                             </a>
-                            <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container1" x-bind:style="selected == 5 ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
+                            <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container3" x-bind:style="selected == 5 ? 'max-height: ' + $refs.container3.scrollHeight + 'px' : ''">
                                 <ul>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('leavefailure.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Leave/Failure to Log In/Out</a>
+                                        <a href="<?php echo e(route('leavefailure.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Leave/Failure to Log In/Out</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('ot.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Overtime</a>
+                                        <a href="<?php echo e(route('ot.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Overtime</a>
                                     </li>
+<<<<<<< HEAD
+<<<<<<< HEAD
                                     <li class="relative">
-                                        <a href="<?php echo e(route('swapsched.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Swap Schedule</a>
+                                        <a href="<?php echo e(route('swapschedule.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Swap Schedule</a>
+=======
+                                    <li class="relative ">
+                                        <a href="<?php echo e(route('swapsched.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Swap Schedule</a>
+>>>>>>> 83997104f1d02ba19c57d1185521b1a2c1499c37
+=======
+                                    <li class="relative ">
+                                        <a href="<?php echo e(route('swapsched.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Swap Schedule</a>
+>>>>>>> 83997104f1d02ba19c57d1185521b1a2c1499c37
                                     </li>
                                 </ul>
                             </div>
                         </li>    
                         <li class="relative ">
-                            <a class="w-full font-thin uppercase text-gray-500 white:text-gray-200 flex items-center px-4 py-2 my-1  duration-200 justify-start hover:text-blue-500 " href="<?php echo e(route("upload_allowance")); ?>">
+                            <a  href="<?php echo e(route("uploadallowance.index")); ?>" class="w-full font-thin uppercase text-gray-500 white:text-gray-200 flex items-center px-4 py-2 my-1  duration-200 justify-start hover:text-blue-500 " >
                                 <span class="text-left">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 004.5 9.75v7.5a2.25 2.25 0 002.25 2.25h7.5a2.25 2.25 0 002.25-2.25v-7.5a2.25 2.25 0 00-2.25-2.25h-.75m0-3l-3-3m0 0l-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 012.25 2.25v7.5a2.25 2.25 0 01-2.25 2.25h-7.5a2.25 2.25 0 01-2.25-2.25v-.75" />
@@ -157,16 +167,16 @@
                             <div class="relative overflow-hidden transition-all max-h-0 duration-700" x-ref="container2" x-bind:style="selected == 2 ? 'max-height: ' + $refs.container2.scrollHeight + 'px' : ''">
                                 <ul>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('payroll_salary')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Salary</a>
+                                        <a href="<?php echo e(route("payrollsalary.index")); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Salary</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('payroll_allowance')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowance</a>
+                                        <a href="<?php echo e(route("payrollallowance.index")); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowance</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('payroll_overtime')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Overtime</a>
+                                        <a href="<?php echo e(route('payrollovertime.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Overtime</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('payroll_bonus')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Bonus</a>
+                                        <a href="<?php echo e(route('payrollbonus.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Bonus</a>
                                     </li>
                                 </ul>
                             </div>
@@ -185,13 +195,13 @@
                             <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container1" x-bind:style="selected == 3 ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
                                 <ul>
                                     <li class="relative">
-                                        <a href="" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Sample 1</a>
+                                        <a href="" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Sample 1</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('schedules.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Sample 2</a>
+                                        <a href="<?php echo e(route('schedules.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Sample 2</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('holiday.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Sample 3</a>
+                                        <a href="<?php echo e(route('holiday.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Sample 3</a>
                                     </li>
                                 </ul>
                             </div>

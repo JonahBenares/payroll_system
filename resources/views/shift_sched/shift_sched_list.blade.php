@@ -1,12 +1,7 @@
 <x-app-layout>
-    <style>
-        [x-cloak] {
-        display: none;
-        }
-    </style>
     <div class="overflow-auto h-screen pb-28 pt-2 pr-2 pl-2 md:pt-0 md:pr-0 md:pl-0">
         <div class="flex flex-col flex-wrap sm:flex-row ">
-            <div class="p-4 relative h-full w-full text-center  bg-white rounded-2xl shadow-lg white:bg-gray-800 white:border-gray-700">
+            <div class="p-4 relative h-full w-full text-center  bg-white rounded-lg shadow-lg white:bg-gray-800 white:border-gray-700">
                 <div class="flex justify-between pb-4 bg-white white:bg-gray-900">
                     <div > 
                         <h2 class="uppercase font-semibold py-2">Schedule</h2>
@@ -278,8 +273,15 @@
                         </button>
                     </div>
                 </div>
-                <div class=" hover:overflow-x-auto overflow-x-hidden h-100 max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 border">
-                    <table class="text-sm text-left text-gray-500 white:text-gray-400 border border-gray-200 border-collapse">
+                <div class="w-full overflow-x-auto overflow-y-hidden hover:overflow-y-auto h-100 relative max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 sm:rounded-2xl ">
+                    <table>
+                        <tr>
+                            <td>Employee</td>
+                            <td>Position</td>
+                            <td>1</td>
+                        </tr>
+                    </table>
+                    <table class="text-sm text-left text-gray-500 white:text-gray-400 border border-gray-200 border-collapse" width="200%">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-10">
                             <tr>
                                 <th class="py-2 px-2 bg-gray-50 border border-gray-200 sticky left-0 bg-gray-50 " width="20%"  rowspan="2">Employee Name</th>

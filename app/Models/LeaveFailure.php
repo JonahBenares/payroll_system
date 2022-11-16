@@ -12,11 +12,3 @@ class LeaveFailure extends Model
     protected $primaryKey = 'id';
     //protected $fillable = ['date_filed', 'with_pay', 'pay_percentage'];
 }
-
-class LeaveFailureDetail extends Model
-{
-    use HasFactory;
-    protected $table = 'leave_filing_detail';
-    protected $primaryKey = 'id';
-    //protected $fillable = ['date_filed', 'with_pay', 'pay_percentage'];
-}

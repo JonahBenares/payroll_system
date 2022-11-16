@@ -41,33 +41,3 @@
     </div>
 </x-app-layout>
 
-<script>
-    const FORMSPARK_ACTION_URL = "https://submit-form.com/technotrampoline";
-    function createAccountingEntry() {
-        return {
-            data: {
-                entry: "",
-            },
-            buttonText: "Save",
-            loading: false,
-            submit() {
-                this.buttonText = "Submitting...";
-                this.loading = true;
-               alert(this.data);
-              
-                 /*fetch(FORMSPARK_ACTION_URL, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json",
-                },
-                body: JSON.stringify(this.data),
-            })*/
-
-            }
-
-           
-        };
-    
-    }
-</script>
