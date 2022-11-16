@@ -125,9 +125,9 @@
                                     <li class="relative">
                                         <a href="<?php echo e(route('ot.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Overtime</a>
                                     </li>
-                                    <li class="relative ">
-                                        <a href="<?php echo e(route('swapsched.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Swap Schedule</a>
-                                    </li>
+                                    <li class="relative">
+                                        <a href="<?php echo e(route('swapschedule.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Swap Schedule</a>
+</li>
                                 </ul>
                             </div>
                         </li>    
