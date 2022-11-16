@@ -57,23 +57,24 @@ page[size="letter"] {
 
 /* Works on Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-  width: 12px;
+  width: 5px;
+  height: 5px;
 }
 
 *::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0);
 }
 
-/* *::-webkit-scrollbar-thumb {
-  background-color: rgb(216, 216, 216);
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(247, 247, 247);
   border-radius: 20px;
-  border: 3px solid rgb(255, 255, 255);
-} */
+  border: 3px solid rgba(255, 255, 255, 0);
+}
 
 *::-webkit-scrollbar-thumb:hover {
   background-color: rgb(216, 216, 216);
   border-radius: 20px;
-  border: 3px solid rgb(255, 255, 255);
+  border: 3px solid rgba(255, 255, 255, 0);
 }
 
 [x-cloak] {
