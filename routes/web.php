@@ -24,6 +24,8 @@ use App\Http\Controllers\PayrollSalaryController;
 use App\Http\Controllers\PayrollAllowanceController;
 use App\Http\Controllers\PayrollOvertimeController;
 use App\Http\Controllers\PayrollBonusController;
+use App\Http\Controllers\ShiftScheduleController;
+use App\Http\Controllers\FiledLeaveController;
 
 
 use App\Http\Controllers\LeaveController;
@@ -95,7 +97,10 @@ Route::resource('tardinessrate', TardinessRateController::class);
 Route::resource('cut_off', CutOffController::class); 
 
 // Leave
-Route::resource('leavefailure', LeaveFailureController::class); 
+Route::resource('leavefailure', LeaveFailureController::class);
+
+//FiledLeave
+Route::resource('filedleave', FiledLeaveController::class);
 
 // Overtime
 Route::resource('ot', OvertimeController::class); 
@@ -131,13 +136,14 @@ Route::get('/payroll_overtime/bulkprinting', [PayrollOvertimeController::class, 
 Route::resource('payrollbonus', PayrollBonusController::class); 
 Route::get('/payroll_bonus/bulkprinting', [PayrollBonusController::class, 'printBulk'])->middleware(['auth'])->name('printBulkBonus');
 
+Route::resource('shiftschedule', ShiftScheduleController::class);
 
-Route::get('/shift_sched', [Shift_ScheduleController::class, 'shift_sched'])->middleware(['auth'])->name('shift_sched');
-Route::get('/payroll_salary', [PayrollController::class, 'payroll_salary'])->middleware(['auth'])->name('payroll_salary');
-Route::get('/payroll_allowance', [PayrollController::class, 'payroll_allowance'])->middleware(['auth'])->name('payroll_allowance');
-Route::get('/payroll_bonus', [PayrollController::class, 'payroll_bonus'])->middleware(['auth'])->name('payroll_bonus');
-Route::get('/payroll_overtime', [PayrollController::class, 'payroll_overtime'])->middleware(['auth'])->name('payroll_overtime');
-Route::get('/upload_allowance', [UploadAllowController::class, 'uploadAllowance'])->middleware(['auth'])->name('upload_allowance');
+// Route::get('/shift_sched', [Shift_ScheduleController::class, 'shift_sched'])->middleware(['auth'])->name('shift_sched');
+// Route::get('/payroll_salary', [PayrollController::class, 'payroll_salary'])->middleware(['auth'])->name('payroll_salary');
+// Route::get('/payroll_allowance', [PayrollController::class, 'payroll_allowance'])->middleware(['auth'])->name('payroll_allowance');
+// Route::get('/payroll_bonus', [PayrollController::class, 'payroll_bonus'])->middleware(['auth'])->name('payroll_bonus');
+// Route::get('/payroll_overtime', [PayrollController::class, 'payroll_overtime'])->middleware(['auth'])->name('payroll_overtime');
+// Route::get('/upload_allowance', [UploadAllowController::class, 'uploadAllowance'])->middleware(['auth'])->name('upload_allowance');
 
 // Route::get('/dash', [MasterfileController::class, 'dash'])->middleware(['auth'])->name("dash");
 // Route::get('/masterfile/employee_list', 'App\Http\Controllers\MasterfileController@index');
