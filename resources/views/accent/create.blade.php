@@ -19,7 +19,17 @@
                             <span>Show List</span>
                         </a>
                     </div>
-                </div> 
+                </div>   
+                @if(Session::has('success'))
+                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline">{{Session::get('success')}}</span>
+                    </div>
+                @endif
+                @if(Session::has('fail'))
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline">{{Session::get('fail')}}</span>
+                    </div>
+                @endif
                 <form class="mt-5" method="POST" action="{{ route('entry.store') }}">
                     @csrf
                     <div class="px-2">
@@ -38,33 +48,3 @@
     </div>
 </x-app-layout>
 
-<script>
-    const FORMSPARK_ACTION_URL = "https://submit-form.com/technotrampoline";
-    function createAccountingEntry() {
-        return {
-            data: {
-                entry: "",
-            },
-            buttonText: "Save",
-            loading: false,
-            submit() {
-                this.buttonText = "Submitting...";
-                this.loading = true;
-               alert(this.data);
-              
-                 /*fetch(FORMSPARK_ACTION_URL, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json",
-                },
-                body: JSON.stringify(this.data),
-            })*/
-
-            }
-
-           
-        };
-    
-    }
-</script>

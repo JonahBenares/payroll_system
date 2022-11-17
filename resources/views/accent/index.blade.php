@@ -97,16 +97,7 @@
             submit() {
                 this.buttonText = "Submitting...";
                 this.loading = true;
-               alert(this.data);
-              
-                 /*fetch(FORMSPARK_ACTION_URL, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json",
-                },
-                body: JSON.stringify(this.data),
-            })*/
+             
 
             }
 

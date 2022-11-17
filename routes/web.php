@@ -101,7 +101,21 @@ Route::resource('leavefailure', LeaveFailureController::class);
 Route::resource('ot', OvertimeController::class); 
 
 
-Route::resource('swapsched', SwapScheduleController::class); 
+Route::resource('swapschedule', SwapScheduleController::class); 
+
+Route::resource('uploadallowance', UploadAllowanceController::class); 
+
+Route::resource('payrollsalary', PayrollSalaryController::class); 
+Route::get('/payroll_salary/bulk', [PayrollSalaryController::class, 'printBulk'])->middleware(['auth'])->name('printBulkSalary');
+
+Route::resource('payrollallowance', PayrollAllowanceController::class); 
+Route::get('/payroll_allowance/bulk', [PayrollAllowanceController::class, 'printBulk'])->middleware(['auth'])->name('printBulkAllowance');
+
+Route::resource('payrollovertime', PayrollOvertimeController::class); 
+Route::get('/payroll_overtime/bulkprinting', [PayrollOvertimeController::class, 'printBulk'])->middleware(['auth'])->name('printBulkOvertime');
+
+Route::resource('payrollbonus', PayrollBonusController::class); 
+Route::get('/payroll_bonus/bulkprinting', [PayrollBonusController::class, 'printBulk'])->middleware(['auth'])->name('printBulkBonus');
 
 Route::resource('uploadallowance', UploadAllowanceController::class); 
 
