@@ -43,9 +43,9 @@ class AccountingEntryController extends Controller
             'description'=>$request->input('description')
         ]);
         if($save){
-            return redirect()->route('payslip_info.create')->with('success',"Accounting Entry added successfully!");
+            return redirect()->route('entry.create')->with('success',"Accounting Entry added successfully!");
         }else{
-            return redirect()->route('payslip_info.create')->with('fail',"Error! Try Again!");
+            return redirect()->route('entry.create')->with('fail',"Error! Try Again!");
         }
         
     }
