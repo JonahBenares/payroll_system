@@ -142,6 +142,11 @@ class SwapScheduleController extends Controller
      * @param  \App\Models\SwapSchedule  $swapSchedule
      * @return \Illuminate\Http\Response
      */
+    public function cancel(SwapSchedule $swapSchedule)
+    {
+        //
+    }
+
     public function destroy(SwapSchedule $swapSchedule)
     {
         //
