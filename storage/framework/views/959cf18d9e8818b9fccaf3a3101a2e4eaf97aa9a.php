@@ -949,4 +949,4 @@
 
 
 
-<?php /**PATH C:\xampp\htdocs\payroll_system\resources\views/shift_sched/shift_sched_list.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\xampp\htdocs\payroll_system\resources\views/shift_sched/index.blade.php ENDPATH**/ ?>

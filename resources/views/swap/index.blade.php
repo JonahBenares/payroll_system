@@ -170,10 +170,10 @@
                                                         </button>
                                                     </div>
                                                     <div class="">
-                                                        <form action="">
+                                                        <form action="{{ route('swapschedule.cancel', $sd }}">
                                                             <div class="mt-4 w-full px-2">
                                                                 <label class="block text-left text-sm text-gray-700 capitalize white:text-gray-200">Remarks</label>
-                                                                <textarea name="shift_from_rd" type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" rows="5"></textarea>
+                                                                <textarea name="cancel_reason" type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" rows="5"></textarea>
                                                             </div>
                                                             <div class="flex justify-end mt-6 px-2">
                                                                 <button type="submit" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 rounded-2xl w-full white:bg-red-600 white:hover:bg-red-700 white:focus:bg-red-700 hover:bg-red-600 focus:outline-none focus:bg-red-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
@@ -190,7 +190,7 @@
                             </tr>
                             @endforeach
                         </tbody>
-                    </table
+                    </table>
                     {{-- <table class=" text-sm text-left text-gray-500 white:text-gray-400" width="200%">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
                             <tr class="">

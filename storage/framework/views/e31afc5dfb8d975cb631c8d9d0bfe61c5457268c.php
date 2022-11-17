@@ -8,22 +8,14 @@
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
      <?php $__env->slot('header', null, []); ?>  <?php $__env->endSlot(); ?>
-    <!-- component -->
-    
     <div class="overflow-auto h-screen pb-28 pt-2 pr-2 pl-2 md:pt-0 md:pr-0 md:pl-0">
         <div class="flex flex-col flex-wrap sm:flex-row ">
-            <div class="p-4 relative h-full w-full text-center bg-white rounded-2xl shadow-lg white:bg-gray-800 white:border-gray-700">
+            <div class="p-4 relative h-full w-full text-center bg-white rounded-lg shadow-lg white:bg-gray-800 white:border-gray-700">
                 <div class="flex justify-between  pb-4 bg-white white:bg-gray-900">
                     <div > 
-                        <h2 class="uppercase font-semibold py-2">Swap Schedule List</h2>
+                        <h2 class="uppercase font-semibold py-2">Cancel Leave/Failure to Login List</h2>
                     </div>
                     <div class="flex">
-                        <a href="<?php echo e(route('swapschedule.create')); ?>"  class="flex items-center justify-center px-2 py-1 mx-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
-                            </svg>
-                            <span>Add New</span>
-                        </a>
                         <label for="table-search" class="sr-only">Search</label>
                         <div class="relative">
                             <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
@@ -33,77 +25,54 @@
                         </div>
                     </div>
                 </div>
-                <form method="GET">
+                <form method='GET'>
                 <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900">
                     <div class="mx-2 text-left">
-                        <select name="month" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
+                        <select name="period" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
+                            <option value="" selected>Employee</option>
+                        </select>
+                    </div>
+                    <div class="mx-2 text-left">
+                        <select name="month" class="text-sm block w-full px-2 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
                             <option value="" selected>Select Month</option>
-                            <option value="1">January</option>
-                            <option value="2">February</option>
-                            <option value="3">March</option>
-                            <option value="4">April</option>
-                            <option value="5">May</option>
-                            <option value="6">June</option>
-                            <option value="7">July</option>
-                            <option value="8">August</option>
-                            <option value="9">September</option>
+                            <option value="01">January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
                             <option value="10">October</option>
                             <option value="11">November</option>
                             <option value="12">December</option>
                         </select>
                     </div>
                     <div class="mx-2 text-left">
-                        <select name="year" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
+                        <select name="year" class="text-sm block w-full px-2 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
                             <option value="" selected>Select Year</option>
-                            <?php echo e($start_year = 2022); ?>
-
-                            <?php echo e($current_year = date("Y")); ?>
-
-                            
-                                <?php for($y=$start_year; $y<=$current_year; $y++): ?>
-                                <option value="<?php echo e($y); ?>"><?php echo e($y); ?></option>
-                                <?php endfor; ?>
-                            
-                            
                         </select>
                     </div>
-                    <div class="mx-2 text-left">
-                        <select name="period" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
-                            <option value="" selected>Period</option>
-                            <option value="MID">MID</option>
-                            <option value="EOM">EOM</option>
-                        </select>
-                    </div>
+                    
                     <div class="mx-2 pt-3 text-left">
-                        <button type="submit" class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                        <button type='submit' class="text-sm flex items-center justify-center px-2 py-2 mx-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                             <span>Generate</span>
                         </button>
                     </div>
                 </div>
                 </form>
                 <div class="overflow-x-auto overflow-y-hidden hover:overflow-y-auto h-100 relative max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 sm:rounded-2xl">
-                    <table class=" " width="110%">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
+                    <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-10">
                             <tr class="">
-                                <th class="text-left px-2 py-3 sticky left-0  bg-gray-50" width="8%">
-                                    Employee Name
+                                <th scope="col" class="py-3 px-6">
+                                    Date
                                 </th>
-                                <th class="text-left px-2 py-3" width="6%">
-                                    Filed Date
+                                <th scope="col" class="py-3 px-6">
+                                    Leave Type
                                 </th>
-                                <th class="text-left px-2 py-3" width="6%">
-                                    Shift From (RD)
-                                </th>
-                                <th class="text-left px-2 py-3" width="6%">
-                                    Shift To (Duty)
-                                </th>
-                                <th class="text-left px-2 py-3" width="6%">
-                                    Shift From (Duty)
-                                </th>
-                                <th class="text-left px-2 py-3" width="6%">
-                                    Shift To (RD)
-                                </th>
-                                <th scope="col" class="px-2 py-3 sticky right-0  bg-gray-50" width="1%" align="center">
+                                <th scope="col" class="py-3 px-6" width="5%" align="center">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                                     </svg>
@@ -111,38 +80,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $__currentLoopData = $swapdata; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sd): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <tr class=" border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                                <td class="text-sm text-left px-2 py-3 sticky left-0 bg-white">
-                                    <?php echo e($sd->full_name); ?>
-
+                            <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    asdas
                                 </td>
-                                <td class="text-sm text-left px-2 py-3">
-                                    <?php echo e($sd->file_date); ?>
-
+                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                
                                 </td>
-                                <td class="text-sm text-left px-2 py-3">
-                                    <?php echo e($sd->shift_from_rd); ?>
-
-                                </td>
-                                <td class="text-sm text-left px-2 py-3">
-                                    <?php echo e($sd->shift_to_duty); ?>
-
-                                </td>
-                                <td class="text-sm text-left px-2 py-3">
-                                    <?php echo e($sd->shift_from_duty); ?>
-
-                                </td>
-                                <td class="text-sm text-left px-2 py-3">
-                                    <?php echo e($sd->shift_to_rd); ?>
-
-                                </td>
-                                <td class="px-2 py-3 sticky right-0 bg-white justify-center flex space-x-2">
-                                    <a href="<?php echo e(route('swapschedule.edit',$sd)); ?>" class="" title="Update">
+                                <td class="py-3 px-6 justify-between flex space-x-1" align="center">
+                                    <a href="<?php echo e(route('leavefailure.edit', '1')); ?>" class="" title="View">
                                         <div class="py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
-                                                <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
-                                                <path d="M5.25 5.25a3 3 0 00-3 3v10.5a3 3 0 003 3h10.5a3 3 0 003-3V13.5a.75.75 0 00-1.5 0v5.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V8.25a1.5 1.5 0 011.5-1.5h5.25a.75.75 0 000-1.5H5.25z" />
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                             </svg>
                                         </div>
                                     </a>
@@ -177,7 +127,7 @@
                                                     class="inline-block w-full max-w-lg p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl lg:max-w-lg"
                                                 >
                                                     <div class="flex items-center justify-between space-x-4 px-2">
-                                                        <h1 class="text-xl font-medium text-gray-800 ">Cancel Swap Schedule</h1>
+                                                        <h1 class="text-xl font-medium text-gray-800 ">Cancel Leave</h1>
                                 
                                                         <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
                                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -186,10 +136,10 @@
                                                         </button>
                                                     </div>
                                                     <div class="">
-                                                        <form action="<?php echo e(route('swapschedule.cancel', $sd); ?>">
+                                                        <form action="">
                                                             <div class="mt-4 w-full px-2">
                                                                 <label class="block text-left text-sm text-gray-700 capitalize white:text-gray-200">Remarks</label>
-                                                                <textarea name="cancel_reason" type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" rows="5"></textarea>
+                                                                <textarea name="shift_from_rd" type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" rows="5"></textarea>
                                                             </div>
                                                             <div class="flex justify-end mt-6 px-2">
                                                                 <button type="submit" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 rounded-2xl w-full white:bg-red-600 white:hover:bg-red-700 white:focus:bg-red-700 hover:bg-red-600 focus:outline-none focus:bg-red-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
@@ -204,10 +154,8 @@
                                     </div>
                                 </td>
                             </tr>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
-                    
                 </div>
             </div>
             
@@ -222,4 +170,4 @@
 <?php $component = $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da; ?>
 <?php unset($__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da); ?>
 <?php endif; ?>
-<?php /**PATH C:\xampp\htdocs\payroll_system\resources\views/swap/index.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\xampp\htdocs\payroll_system\resources\views/leave/destroy.blade.php ENDPATH**/ ?>
