@@ -10,8 +10,7 @@
  $day = date('d', strtotime($current));
  $days=cal_days_in_month(CAL_GREGORIAN,$month,$year);
 
-    $newdate = date("Y-m-d", strtotime ( '+1 month' , strtotime ( $current ) )) ;
-    echo $newdate;
+
 //To get all active employees in payroll system and recorded time
     $mysqli_list=mysqli_query($con_local,"SELECT personal_id, id FROM employees where is_active='1'");
         while($row_list = mysqli_fetch_array($mysqli_list)){
