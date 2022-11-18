@@ -28,6 +28,16 @@
                         </a>
                     </div>
                 </div>
+                <?php if(Session::has('success')): ?>
+                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline"><?php echo e(Session::get('success')); ?></span>
+                    </div>
+                <?php endif; ?>
+                <?php if(Session::has('fail')): ?>
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline"><?php echo e(Session::get('fail')); ?></span>
+                    </div>
+                <?php endif; ?>
                 <form action="<?php echo e(route('ot.store')); ?>" method="POST">
                     <?php echo csrf_field(); ?>
                     <div class="flex justify-between pt-4">
@@ -35,65 +45,66 @@
                             <h6 class="font-semibold border-b ">No. of Days Worked</h6>
                             <div class="flex justify-between mt-2">
                                 <label for="reg_day" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">REG DAY:</label>
-                                <input type="text" onkeypress="return isNumberKey(this, event)" name="reg_day" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                <input type="text" max='1.53' onkeypress="return isNumberKey(this, event)" name="reg_day" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
                             </div>
                             <div class="flex justify-between mt-2">
                                 <label for="rd2" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RD 2:</label>
-                                <input type="text" name="rd2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                <input type="text" onkeypress="return isNumberKey(this, event)" name="rd2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
                             </div>
                             <div class="flex justify-between mt-2">
                                 <label for="sh" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">SH:</label>
-                                <input type="text" name="sh" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                <input type="text" onkeypress="return isNumberKey(this, event)" name="sh" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
                             </div>
                             <div class="flex justify-between mt-2">
                                 <label for="sh_rd" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">SH on RD:</label>
-                                <input type="text" name="sh_rd" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                <input type="text" onkeypress="return isNumberKey(this, event)" name="sh_rd" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
                             </div>
                             <div class="flex justify-between mt-2">
                                 <label for="reg_hol" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">Reg Hol:</label>
-                                <input type="text" name="reg_hol" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                <input type="text" onkeypress="return isNumberKey(this, event)" name="reg_hol" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
                             </div>
                             <div class="flex justify-between mt-2">
                                 <label for="rh_rd" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH on RD 2:</label>
-                                <input type="text" name="rh_rd" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
+                                <input type="text" onkeypress="return isNumberKey(this, event)" name="rh_rd" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-56 p-2">
                             </div>
                         </div>
                         <div class="w-1/2 px-2 border-l">
                             <h6 class="font-semibold border-b">Night Premium</h6>
                             <div class="flex justify-between mt-2">
                                 <label for="reg_np" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">REG NP:</label>
-                                <input type="text" name="reg_np" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                <input type="text" onkeypress="return isNumberKey(this, event)" name="reg_np" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
                             </div>
                             <div class="flex justify-between mt-2">
                                 <label for="regnp_ot" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">REG NP OT:</label>
-                                <input type="text" name="regnp_ot" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                <input type="text" onkeypress="return isNumberKey(this, event)" name="regnp_ot" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
                             </div>
                             <div class="flex justify-between mt-2">
                                 <label for="regsh_np" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RD2/SH NP:</label>
-                                <input type="text" name="regsh_np" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                <input type="text" onkeypress="return isNumberKey(this, event)" name="regsh_np" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
                             </div>
                             <div class="flex justify-between mt-2">
                                 <label for="rd2sh_ot" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RD2/SH NP OT:</label>
-                                <input type="text" name="rd2sh_ot" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                <input type="text" onkeypress="return isNumberKey(this, event)" name="rd2sh_ot" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
                             </div>
                             <div class="flex justify-between mt-2">
                                 <label for="rh_np" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH NP:</label>
-                                <input type="text" name="rh_np" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                <input type="text" onkeypress="return isNumberKey(this, event)" name="rh_np" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
                             </div>
                             <div class="flex justify-between mt-2">
                                 <label for="rhnp_ot" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH NP OT:</label>
-                                <input type="text" name="rhnp_ot" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                <input type="text" onkeypress="return isNumberKey(this, event)" name="rhnp_ot" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
                             </div>
                             <div class="flex justify-between mt-2">
                                 <label for="rhrd2_np" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH on RD2 NP:</label>
-                                <input type="text" name="rhrd_np" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                <input type="text" onkeypress="return isNumberKey(this, event)" name="rhrd_np" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
                             </div>
                             <div class="flex justify-between mt-2">
                                 <label for="rhrd2_ot" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH on RD2 NP OT:</label>
-                                <input type="text" name="rhrd2_ot" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                                <input type="text" onkeypress="return isNumberKey(this, event)" name="rhrd2_ot" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
                             </div>
                         </div>
                     </div>
+                    <input type="hidden" name="employee_id" value="<?php echo e($_GET['employee_id']); ?>">
                     <input type="hidden" name="personal_id" value="<?php echo e($_GET['personal_id']); ?>">
                     <input type="hidden" name="month_year" value="<?php echo e($_GET['month_year']); ?>">
                     <input type="hidden" name="period" value="<?php echo e($_GET['period']); ?>">

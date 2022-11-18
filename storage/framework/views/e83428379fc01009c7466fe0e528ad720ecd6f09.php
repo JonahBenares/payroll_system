@@ -139,6 +139,9 @@
                 }
                 return true;
             }
+
+            
+            
             function refreshTable(){
                 $(".appends").each(function(index, element){
                     var ind = index+1;
@@ -239,6 +242,23 @@
             $("body").on("click", ".remAllowance", function() {
                 $(this).parents('.appends').remove();
             });
+
+            function check_duplicate() {
+                var selects = document.getElementsByTagName('select');
+                var values = [];
+                for(i=0;i<selects.length;i++) {
+                    var select = selects[i];
+                    if(values.indexOf(select.value)>-1) {
+                        document.getElementById('show_alert').style.display = "block";
+                        document.getElementById('alerterror').innerHTML='Duplicate Allowance Entry';
+                        $('#save_button').hide();
+                    }else{ 
+                        document.getElementById('show_alert').style.display = "none";
+                        $('#save_button').show();
+                        values.push(select.value);
+                    }
+                }
+            }
         </script>
         
     </body>

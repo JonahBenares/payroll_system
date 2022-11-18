@@ -142,9 +142,22 @@ class SwapScheduleController extends Controller
      * @param  \App\Models\SwapSchedule  $swapSchedule
      * @return \Illuminate\Http\Response
      */
-    public function cancel(SwapSchedule $swapSchedule)
+    public function cancel(Request $request, $id)
     {
-        //
+        
+        $swapdata = SwapSchedule::find($id);
+        
+        $swapdata->update([
+            'cancelled'=>'1',
+            'cancel_remarks'=>$request->input('cancel_reason'),
+            'cancel_date'=>'2022-11-16',
+            'cancelled_by'=>'1'
+        ]);
+
+       
+        //return redirect()->route('swapschedule.index',$id)->with('success',"Swap schedule cancelled successfully!");
+       
+
     }
 
     public function destroy(SwapSchedule $swapSchedule)
