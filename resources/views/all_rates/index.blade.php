@@ -29,6 +29,11 @@
                         <span class="block sm:inline">{{Session::get('success')}}</span>
                     </div>
                 @endif
+                @if(Session::has('fail'))
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline">{{Session::get('fail')}}</span>
+                    </div>
+                @endif
                 <div class="overflow-x-auto hover:overflow-y-auto overflow-y-hidden h-100 relative  sm:rounded-2xl">
                     <table class="w-full text-sm text-left border border-gray-200 text-gray-500 white:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-10">

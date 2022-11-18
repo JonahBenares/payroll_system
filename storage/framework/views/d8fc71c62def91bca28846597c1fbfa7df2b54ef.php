@@ -29,6 +29,9 @@
                 
                     </div>
                 </div>
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" id='show_alert' role="alert" style="display:none">
+                    <span class="block sm:inline" id="alerterror"></span>
+                </div>
                 <form class="mt-5" action="<?php echo e(route('allowancerate.store')); ?>" method='POST'>
                     <?php echo csrf_field(); ?>
                     <div class="flex flex-row justify-between">
@@ -48,7 +51,7 @@
                     </div>
                     <div class="flex flex-row justify-between appends" id="appends0">
                         <div class="px-3 w-2/4">
-                            <select name="allowance_name[]" id="allowance_name1" class=" w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 allowance_name">
+                            <select name="allowance_name[]" id="allowance_name1" class=" w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 allowance_name" onchange='check_duplicate()'>
                                 <option value="">--Select Allowance Name--</option>
                                 <?php $__currentLoopData = $allowance; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <option value="<?php echo e($a->id); ?>"><?php echo e($a->allowance_name); ?></option>
@@ -64,7 +67,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                                   </svg>
                             </button> -->
-                            <button class="flex items-center justify-center px-2 py-2 mt-3 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50 addAllowance">
+                            <button class="flex items-center justify-center px-2 py-2 mt-3 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50 addAllowance disableadd">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                                   </svg>
@@ -74,7 +77,7 @@
                     <div class="flex justify-end mt-6 px-2">
                         <input type="hidden" name="personal_id" value="<?php echo e((isset($_GET['personal_id'])) ? $_GET['personal_id'] : '0'); ?>">
                         <input type="hidden" name="employee_id" value="<?php echo e((isset($_GET['employee_id'])) ? $_GET['employee_id'] : '0'); ?>">
-                        <button type="submit" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                        <button type="submit" id="save_button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                             Save
                         </button>
                     </div>
