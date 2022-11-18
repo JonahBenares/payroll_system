@@ -225,6 +225,18 @@ class OvertimeController extends Controller
             $ins_rdsh2ot=0;
         }
 
+        if(!empty($request->shonrd2_np)){
+            $ins_shrdnp=$shrd_np * $request->shonrd2_np;
+        }else{
+            $ins_shrdnp=0;
+        }
+
+        if(!empty($request->shonrd2_npot)){
+            $ins_shrdnpot=$shrd_np_ot * $request->shonrd2_npot;
+        }else{
+            $ins_shrdnpot=0;
+        }
+
         if(!empty($request->rh_np)){
             $ins_rhnpot=$rh_np * $request->rh_np;
         }else{
@@ -249,49 +261,53 @@ class OvertimeController extends Controller
             $ins_rhrd2ot=0;
         }
 
-        // $create=Overtime::create([
-        //     'month_year'=> $request->month_year,
-        //     'payroll_period'=> $request->period,
-        // ]);
-        // $lastInsertID = $create->id;
-        // $total_amount=$ins_regot+$ins_rd2ot+$ins_shrdot+$ins_rhot+$ins_rhrdot+$ins_regnpot+$ins_regnp2ot+$ins_rdshot+$ins_rdsh2ot+$ins_rhnpot+$ins_rhnp2ot+$ins_rhrdot+$ins_rhrd2ot;
-        // $res=OvertimeDetails::create([
-        //     'employee_id'=> $request->employee_id,
-        //     'personal_id'=> $request->personal_id,
-        //     'ot_head_id'=> $lastInsertID,
-        //     'hourly_rate'=> $get_data->hourly_rate,
-        //     'reg_day'=> $ins_regot,
-        //     'RD'=> $ins_rd2ot,
-        //     'SH'=> $ins_shot,
-        //     'SH_RD'=> $ins_shrdot,
-        //     'RH'=> $ins_rhot,
-        //     'RH_RD'=> $ins_rhrdot,
-        //     'reg_day_np'=> $ins_regnpot,
-        //     'reg_np_ot'=> $ins_regnp2ot,
-        //     'SH_RD_NP'=> $ins_rdshot,
-        //     'SH_RD_OT_NP'=> $ins_rdsh2ot,
-        //     'SH_OT_NP'=> 0,
-        //     'RH_NP'=> $ins_rhnpot,
-        //     'RH_OT_NP'=> $ins_rhnp2ot,
-        //     'RH_RD_NP'=> $ins_rhrdot,
-        //     'RH_RD_OT_NP'=> $ins_rhrd2ot,
-        //     'reg_day_hr'=> $request->reg_day,
-        //     'RD_HR'=> $request->rd2,
-        //     'SH_HR'=> $request->sh,
-        //     'SH_RD_HR'=> $request->sh_rd,
-        //     'RH_HR'=> $request->reg_hol,
-        //     'RH_RD_HR'=> $request->rh_rd,
-        //     'reg_day_np_hr'=> $request->reg_np,
-        //     'reg_np_ot_hr'=> $request->regnp_ot,
-        //     'SH_RD_NP_HR'=> $request->regsh_np,
-        //     'SH_RD_OT_NP_HR'=> $request->rd2sh_ot,
-        //     'SH_OT_NP_HR'=> 0,
-        //     'RH_NP_HR'=> $request->rh_np,
-        //     'RH_OT_NP_HR'=> $request->rhnp_ot,
-        //     'RH_RD_NP_HR'=> $request->rhrd2_np,
-        //     'RH_RD_OT_NP_HR'=> $request->rhrd2_ot,
-        //     'total_amount'=> $total_amount,
-        // ]);
+        $create=Overtime::create([
+            'month_year'=> $request->month_year,
+            'payroll_period'=> $request->period,
+        ]);
+        $lastInsertID = $create->id;
+        $total_amount=$ins_regot+$ins_rd2ot+$ins_shrdot+$ins_rhot+$ins_rhrdot+$ins_regnpot+$ins_regnp2ot+$ins_rdshot+$ins_rdsh2ot+$ins_rhnpot+$ins_shrdnp+$ins_shrdnpot+$ins_rhnp2ot+$ins_rhrdot+$ins_rhrd2ot;
+        $res=OvertimeDetails::create([
+            'employee_id'=> $request->employee_id,
+            'personal_id'=> $request->personal_id,
+            'ot_head_id'=> $lastInsertID,
+            'hourly_rate'=> $get_data->hourly_rate,
+            'reg_day'=> $ins_regot,
+            'RD'=> $ins_rd2ot,
+            'SH'=> $ins_shot,
+            'SH_RD'=> $ins_shrdot,
+            'RH'=> $ins_rhot,
+            'RH_RD'=> $ins_rhrdot,
+            'reg_day_np'=> $ins_regnpot,
+            'reg_np_ot'=> $ins_regnp2ot,
+            'SH_RD_NP'=> $ins_shrdnp,
+            'SH_RD_OT_NP'=> $ins_shrdnpot,
+            'RD_SH_NP'=> $ins_rdshot,
+            'RD_SH_OT_NP'=> $ins_rdsh2ot,
+            'SH_OT_NP'=> 0,
+            'RH_NP'=> $ins_rhnpot,
+            'RH_OT_NP'=> $ins_rhnp2ot,
+            'RH_RD_NP'=> $ins_rhrdot,
+            'RH_RD_OT_NP'=> $ins_rhrd2ot,
+            'reg_day_hr'=> $request->reg_day,
+            'RD_HR'=> $request->rd2,
+            'SH_HR'=> $request->sh,
+            'SH_RD_HR'=> $request->sh_rd,
+            'RH_HR'=> $request->reg_hol,
+            'RH_RD_HR'=> $request->rh_rd,
+            'reg_day_np_hr'=> $request->reg_np,
+            'reg_np_ot_hr'=> $request->regnp_ot,
+            'SH_RD_NP_HR'=> $request->shonrd2_np,
+            'SH_RD_OT_NP_HR'=> $request->shonrd2_npot,
+            'RD_SH_NP_HR'=> $request->regsh_np,
+            'RD_SH_OT_NP_HR'=> $request->rd2sh_ot,
+            'SH_OT_NP_HR'=> 0,
+            'RH_NP_HR'=> $request->rh_np,
+            'RH_OT_NP_HR'=> $request->rhnp_ot,
+            'RH_RD_NP_HR'=> $request->rhrd2_np,
+            'RH_RD_OT_NP_HR'=> $request->rhrd2_ot,
+            'total_amount'=> $total_amount,
+        ]);
         // if($res){
         //     return redirect()->route('ot.index')->with('success',"Overtime Added Successfully");
         // }else{

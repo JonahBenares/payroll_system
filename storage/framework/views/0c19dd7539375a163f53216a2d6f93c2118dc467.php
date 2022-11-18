@@ -87,6 +87,14 @@
                                 <input type="text" onkeypress="return isNumberKey(this, event)" name="rd2sh_ot" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
                             </div>
                             <div class="flex justify-between mt-2">
+                                <label for="shonrd2_np" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">SH on RD2 NP:</label>
+                                <input type="text" onkeypress="return isNumberKey(this, event)" name="shonrd2_np" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                            </div>
+                            <div class="flex justify-between mt-2">
+                                <label for="shonrd2_npot" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">SH on RD2 NP OT:</label>
+                                <input type="text" onkeypress="return isNumberKey(this, event)" name="shonrd2_npot" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
+                            </div>
+                            <div class="flex justify-between mt-2">
                                 <label for="rh_np" class="block py-3 pr-3 text-sm font-medium text-gray-700 ">RH NP:</label>
                                 <input type="text" onkeypress="return isNumberKey(this, event)" name="rh_np" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-48 p-2">
                             </div>
