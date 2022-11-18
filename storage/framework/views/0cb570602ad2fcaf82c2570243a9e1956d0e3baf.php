@@ -16,7 +16,7 @@
     
     <div class="overflow-auto h-screen pb-28 pt-2 pr-2 pl-2 md:pt-0 md:pr-0 md:pl-0">
 		<div class="flex flex-col flex-wrap sm:flex-row ">
-            <div class="p-4 relative h-full w-full bg-white rounded-2xl shadow-lg white:bg-gray-800 white:border-gray-700">
+            <div class="p-4 relative h-full w-full bg-white rounded-lg shadow-lg white:bg-gray-800 white:border-gray-700">
                 <div class="flex justify-between pb-4 bg-white white:bg-gray-900">
                     <div> 
                         <h2 class="uppercase font-semibold py-2">Employee List</h2>
@@ -34,9 +34,9 @@
                 <!-- component -->
                 <div class=""></div>
                 
-                <div class=" overflow-x-auto overflow-y-hidden hover:overflow-y-auto h-100 relative max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 sm:rounded-2xl ">
+                <div class="w-full overflow-x-auto overflow-y-hidden hover:overflow-y-auto h-100 relative max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 sm:rounded-2xl ">
                     
-                    <table class="w-screen text-sm text-left text-gray-500 white:text-gray-400 ">
+                    <table class=" text-sm text-left text-gray-500 white:text-gray-400 " width="130%">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0  z-1">
                             <tr>
                                 <th scope="col" width="12%" class="py-3 px-3">

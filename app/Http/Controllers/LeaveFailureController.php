@@ -127,4 +127,8 @@ class LeaveFailureController extends Controller
     {
         //
     }
+
+    // public function cancelLeave(){
+    //     return view('leave.cancelleave');
+    // }
 }

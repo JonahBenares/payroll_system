@@ -14,11 +14,9 @@ class Employee extends Model
         'hourly_rate',
         'daily_rate',
         'monthly_rate',
+        'salary_type',
         'accounting_entry_id'
     ];
-    public function employeeHMOs(){
-
-        return $this->belongsToMany(EmployeeHMO::class);
-    }
+   
     
 }

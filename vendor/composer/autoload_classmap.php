@@ -70,7 +70,10 @@ return array(
     'App\\Models\\LeaveFailure' => $baseDir . '/app/Models/LeaveFailure.php',
     'App\\Models\\LeaveFailureDetail' => $baseDir . '/app/Models/LeaveFailureDetail.php',
     'App\\Models\\Overtime' => $baseDir . '/app/Models/Overtime.php',
+<<<<<<< HEAD
     'App\\Models\\OvertimeDetails' => $baseDir . '/app/Models/OvertimeDetails.php',
+=======
+>>>>>>> 1c53121526b3815dd242e9856fec75b4f38d92c4
     'App\\Models\\PayrollAllowance' => $baseDir . '/app/Models/PayrollAllowance.php',
     'App\\Models\\PayrollBonus' => $baseDir . '/app/Models/PayrollBonus.php',
     'App\\Models\\PayrollOvertime' => $baseDir . '/app/Models/PayrollOvertime.php',

@@ -1,9 +1,9 @@
 <?php if (isset($component)) { $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da = $component; } ?>
-<?php $component = $__env->getContainer()->make(App\View\Components\AppLayout::class, [] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
+<?php $component = App\View\Components\AppLayout::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('app-layout'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $constructor = (new ReflectionClass(App\View\Components\AppLayout::class))->getConstructor()): ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(App\View\Components\AppLayout::class))->getConstructor()): ?>
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
@@ -28,22 +28,42 @@
                 
                     </div>
                 </div>
+                 <?php if(Session::has('success')): ?>
+                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline"><?php echo e(Session::get('success')); ?></span>
+                    </div>
+                <?php endif; ?>
+                <?php if(Session::has('fail')): ?>
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline"><?php echo e(Session::get('fail')); ?></span>
+                    </div>
+                <?php endif; ?>
                 
                 <!-- component -->
-                <form class="mt-2">
-                    <div class="px-2">
+                <?php $__currentLoopData = $employeedata; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $e): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>  
+                <form method="POST" class="mt-2" action ="<?php echo e(route('emp.update', $e)); ?>" >
+                    <?php echo method_field('PUT'); ?>
+                    <?php echo csrf_field(); ?>
+                   <div class="flex ">
+                        <div class="mt-4 w-full px-2">
                         <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Employee Name</label>
-                        <input type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                        <input type="text" name="full_name" value="<?php echo e($e->full_name); ?>" disabled class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                     </div>
+                    <div class="mt-4 w-full px-2">
+                        
+                        <input class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500" name="supervisory" id="supervisory"  type="checkbox" value="1" <?php echo e((( $e->supervisory==1 ) ? "checked" : "")); ?> >
+                        <label for="default-checkbox" class="block ml-2 text-sm text-gray-700 capitalize white:text-gray-200">Supervisor</label>
+                    </div>
+                </div>
                     
                     <div class="flex ">
                         <div class="mt-4 w-full px-2">
                             <label class="block text-sm text-gray-700 capitalize white:text-gray-200">Employee Number</label>
-                            <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                            <input type="text" name="emp_num" value="<?php echo e($e->emp_num); ?>" disabled class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                         </div>
                         <div class="mt-4 w-full px-2">
                             <label class="block text-sm text-gray-700 capitalize white:text-gray-200">Employee Type</label>
-                            <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                            <input  disabled  class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                         </div>
                     </div>
 
@@ -52,49 +72,24 @@
                             <label class="block text-sm text-gray-700 capitalize white:text-gray-200">
                                 Location
                             </label>
-                            <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                            <input name="location" value="<?php echo e($e->location_name); ?>" disabled class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                         </div>
                         <div class="mt-4 w-full px-2">
-                            <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">Department</label>
-                            <input type="email" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                            <label for="department" class="block text-sm text-gray-700 capitalize white:text-gray-200">Department</label>
+                            <input type="text" name="department" value="<?php echo e($e->dept_name); ?>" disabled class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                         </div>
                     </div>
-                    <div class="flex ">
-                        <div class="mt-4 w-full px-2">
-                            <label class="block text-sm text-gray-700 capitalize white:text-gray-200">
-                                HMO L1 Dependent
-                            </label>
-                            <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                        </div>
-                        <div class="mt-4 w-full px-2">
-                            <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">
-                                HMO L2 Dependent</label>
-                            <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                        </div>
-                    </div>
-                    <div class="flex ">
-                        <div class="mt-4 w-full px-2">
-                            <label class="block text-sm text-gray-700 capitalize white:text-gray-200">
-                                HMO L3 Dependent
-                            </label>
-                            <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                        </div>
-                        <div class="mt-4 w-full px-2">
-                            <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">
-                                Senior Dependent</label>
-                            <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                        </div>
-                    </div>
+                  
                     <div class="flex ">
                         <div class="mt-4 w-full px-2">
                             <label class="block text-sm text-gray-700 capitalize white:text-gray-200">
                                 Pag-Ibig Rate
                             </label>
-                            <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                            <input  type="text" name="pagibig_rate" value="<?php echo e($e->pagibig_rate); ?>" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                         </div>
                         <div class="mt-4 w-full px-2">
-                            <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">Hourly Rate</label>
-                            <input type="email" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                            <label for="hourly_rate" class="block text-sm text-gray-700 capitalize white:text-gray-200">Hourly Rate</label>
+                            <input type="text" name="hourly_rate" value="<?php echo e($e->hourly_rate); ?>" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                         </div>
                     </div>
                     <div class="flex ">
@@ -102,11 +97,11 @@
                             <label class="block text-sm text-gray-700 capitalize white:text-gray-200">
                                 Daily Rate
                             </label>
-                            <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                            <input type="text" name="daily_rate" value="<?php echo e($e->daily_rate); ?>" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                         </div>
                         <div class="mt-4 w-full px-2">
-                            <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">Monthly Rate</label>
-                            <input type="email" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                            <label for="monthly_rate" class="block text-sm text-gray-700 capitalize white:text-gray-200">Monthly Rate</label>
+                            <input type="text" name="monthly_rate" value="<?php echo e($e->monthly_rate); ?>" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                         </div>
                     </div>
 
@@ -115,26 +110,44 @@
                             <label class="block text-sm text-gray-700 capitalize white:text-gray-200">
                                 Salary Type
                             </label>
-                            <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                            <select name="salary_type" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                <option value="">--Select Salary Type--</option>
+                                <option value="Monthly" <?php echo e((($e->salary_type == 'Monthly') ? "selected" : "")); ?>>Monthly</option>
+                                <option value="Daily" <?php echo e((($e->salary_type == 'Daily') ? " selected" : "")); ?>>Daily</option>
+                            </select>
                         </div>
                         <div class="mt-4 w-full px-2">
                             <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">Accounting Entry</label>
-                            <select type="email" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                                <option value="">--Select Accounting Entry--</option>
+                            <select name="accounting_entry_id" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                <option value="" selected>--Select Accounting Entry--</option>
+                                <?php $__currentLoopData = $accent; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $acc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($acc->id); ?>" <?php echo e((($acc->id == $e->accounting_entry_id) ? "selected" : "")); ?>><?php echo e($acc->description); ?></option>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </select>
                         </div>
                     </div>
-                    <div class="flex items-right pl-2 mt-4">
-                        <input type="hidden" name="editable" value="0" />
-                        <input class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500" name="editable" id="editable"  type="checkbox" value="1">
-                        <label for="default-checkbox" class="block ml-2 text-sm text-gray-700 capitalize white:text-gray-200">Supervisor</label>
-                    </div>
+                 
+                 <?php for($c=0;$c < count($data); $c++): ?>
+                
+                        <div class="flex ">
+                            <div class="mt-4 w-full px-2">
+                                <label class="block text-sm text-gray-700 capitalize white:text-gray-200">
+                                
+                                </label>
+                                <input type="number" name="<?php echo e('dependent_'.$data[$c]['id']); ?>" value="<?php echo e($data[$c]['no_of_dependent']); ?>" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40"> 
+                            </div>
+                        </div>
+                          
+                <?php endfor; ?>
+                        
+                   
                     <div class="flex justify-end mt-6 px-2">
-                        <button type="button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                        <button type="submit" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                             Update
                         </button>
                     </div>
                 </form>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div> 
         </div>
     </div>

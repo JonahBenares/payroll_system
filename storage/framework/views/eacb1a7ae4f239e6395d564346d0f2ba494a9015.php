@@ -1,9 +1,9 @@
 <?php if (isset($component)) { $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da = $component; } ?>
-<?php $component = $__env->getContainer()->make(App\View\Components\AppLayout::class, [] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
+<?php $component = App\View\Components\AppLayout::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('app-layout'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $constructor = (new ReflectionClass(App\View\Components\AppLayout::class))->getConstructor()): ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(App\View\Components\AppLayout::class))->getConstructor()): ?>
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
@@ -27,7 +27,17 @@
                             <span>Show List</span>
                         </a>
                     </div>
-                </div> 
+                </div>   
+                <?php if(Session::has('success')): ?>
+                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline"><?php echo e(Session::get('success')); ?></span>
+                    </div>
+                <?php endif; ?>
+                <?php if(Session::has('fail')): ?>
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline"><?php echo e(Session::get('fail')); ?></span>
+                    </div>
+                <?php endif; ?>
                 <form class="mt-5" method="POST" action="<?php echo e(route('entry.store')); ?>">
                     <?php echo csrf_field(); ?>
                     <div class="px-2">
@@ -51,34 +61,4 @@
 <?php unset($__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da); ?>
 <?php endif; ?>
 
-<script>
-    const FORMSPARK_ACTION_URL = "https://submit-form.com/technotrampoline";
-    function createAccountingEntry() {
-        return {
-            data: {
-                entry: "",
-            },
-            buttonText: "Save",
-            loading: false,
-            submit() {
-                this.buttonText = "Submitting...";
-                this.loading = true;
-               alert(this.data);
-              
-                 /*fetch(FORMSPARK_ACTION_URL, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json",
-                },
-                body: JSON.stringify(this.data),
-            })*/
-
-            }
-
-           
-        };
-    
-    }
-</script>
 <?php /**PATH C:\xampp\htdocs\payroll_system\resources\views/accent/create.blade.php ENDPATH**/ ?>

@@ -42,18 +42,41 @@ page[size="letter"] {
       page-break-after: always;
   }
 }
-/* @media screen {
-  .payslip{height: 5in;width:3in;background:rgba(190, 75, 75, 0.342)}
-  .payslip_table{line-height: 10px;font-size: 10px }
-}
-
-@media print {
-  .payslip{height: 5in;width:3in;background:rgba(158, 158, 158, 0.342)}
-  .payslip_table{line-height: 10px;font-size: 10px }
-} */
 .font-xxs{font-size:7px}
 @media screen, print {
  .payslip{height: 5in;width:3in;}  /*  background:rgba(248, 248, 248, 0.342) */
   .payslip_table{line-height: 9px;font-size: 10px }
   .font-xxs{font-size:7px}
+}
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(182, 182, 182) rgb(255, 255, 255);
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(230, 230, 230);
+  border-radius: 20px;
+  border: 3px solid rgba(255, 255, 255, 0);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(190, 190, 190);
+  border-radius: 20px;
+  border: 3px solid rgba(255, 255, 255, 0);
+}
+
+[x-cloak] {
+  display: none;
 }

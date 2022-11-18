@@ -16,7 +16,7 @@
     </head>
     <body class="font-sans antialiased">
         <div class="">
-            <main class="bg-gray-100 white:bg-gray-800 rounded-2xl h-screen overflow-hidden relative">
+            <main class="bg-gray-100 white:bg-gray-800 rounded-2xl h-screen overflow-hidden relative p-2">
                 {{ $slot }}
             </main>
         </div>

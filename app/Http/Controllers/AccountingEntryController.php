@@ -39,11 +39,15 @@ class AccountingEntryController extends Controller
     public function store(Request $request)
     {
 
-        AccountingEntry::create([
+        $save = AccountingEntry::create([
             'description'=>$request->input('description')
         ]);
-
-        return redirect()->route('entry.index');
+        if($save){
+            return redirect()->route('entry.create')->with('success',"Accounting Entry added successfully!");
+        }else{
+            return redirect()->route('entry.create')->with('fail',"Error! Try Again!");
+        }
+        
     }
 
     /**
