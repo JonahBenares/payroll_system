@@ -33,6 +33,16 @@
                         </div>
                     </div>
                 </div>
+                <?php if(Session::has('success')): ?>
+                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline"><?php echo e(Session::get('success')); ?></span>
+                    </div>
+                <?php endif; ?>
+                <?php if(Session::has('fail')): ?>
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline"><?php echo e(Session::get('fail')); ?></span>
+                    </div>
+                <?php endif; ?>
                 <form method="GET">
                 <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900">
                     <div class="mx-2 text-left">
