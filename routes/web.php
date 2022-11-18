@@ -108,6 +108,7 @@ Route::post('/ot/filter_overtime', [OvertimeController::class, 'filter_overtime'
 
 
 Route::resource('swapschedule', SwapScheduleController::class); 
+Route::post('/swapschedule/cancel/{id}/', [SwapScheduleController::class, 'cancel'])->name('cancel');
 
 Route::resource('uploadallowance', UploadAllowanceController::class); 
 

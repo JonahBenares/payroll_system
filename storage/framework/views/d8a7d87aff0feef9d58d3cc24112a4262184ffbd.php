@@ -186,7 +186,9 @@
                                                         </button>
                                                     </div>
                                                     <div class="">
-                                                        <form action="<?php echo e(route('swapschedule.cancel', $sd); ?>">
+                                                        <form method="POST" action="<?php echo e(route('cancel', $sd->id)); ?>">
+                                                            
+                                                            <?php echo csrf_field(); ?>
                                                             <div class="mt-4 w-full px-2">
                                                                 <label class="block text-left text-sm text-gray-700 capitalize white:text-gray-200">Remarks</label>
                                                                 <textarea name="cancel_reason" type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" rows="5"></textarea>

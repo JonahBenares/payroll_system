@@ -156,6 +156,7 @@ class ComposerStaticInitb740f3480b3a58e90e3ea85b9f582af9
         'D' => 
         array (
             'Dotenv\\' => 7,
+            'Doctrine\\Persistence\\' => 21,
             'Doctrine\\Instantiator\\' => 22,
             'Doctrine\\Inflector\\' => 19,
             'Doctrine\\Deprecations\\' => 22,
@@ -479,6 +480,10 @@ class ComposerStaticInitb740f3480b3a58e90e3ea85b9f582af9
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
         ),
+        'Doctrine\\Persistence\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence',
+        ),
         'Doctrine\\Instantiator\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
@@ -505,7 +510,8 @@ class ComposerStaticInitb740f3480b3a58e90e3ea85b9f582af9
         ),
         'Doctrine\\Common\\' => 
         array (
-            0 => __DIR__ . '/..' . '/doctrine/event-manager/src',
+            0 => __DIR__ . '/..' . '/doctrine/common/src',
+            1 => __DIR__ . '/..' . '/doctrine/event-manager/src',
         ),
         'Dflydev\\DotAccessData\\' => 
         array (
@@ -621,7 +627,13 @@ class ComposerStaticInitb740f3480b3a58e90e3ea85b9f582af9
         'App\\Models\\LeaveFailure' => __DIR__ . '/../..' . '/app/Models/LeaveFailure.php',
         'App\\Models\\LeaveFailureDetail' => __DIR__ . '/../..' . '/app/Models/LeaveFailureDetail.php',
         'App\\Models\\Overtime' => __DIR__ . '/../..' . '/app/Models/Overtime.php',
+<<<<<<< HEAD
         'App\\Models\\OvertimeDetails' => __DIR__ . '/../..' . '/app/Models/OvertimeDetails.php',
+=======
+
+        'App\\Models\\OvertimeDetails' => __DIR__ . '/../..' . '/app/Models/OvertimeDetails.php',
+
+>>>>>>> 7fcd46bb0bb8f3e9238004e5c63de67a585ea990
         'App\\Models\\PayrollAllowance' => __DIR__ . '/../..' . '/app/Models/PayrollAllowance.php',
         'App\\Models\\PayrollBonus' => __DIR__ . '/../..' . '/app/Models/PayrollBonus.php',
         'App\\Models\\PayrollOvertime' => __DIR__ . '/../..' . '/app/Models/PayrollOvertime.php',
@@ -796,7 +808,21 @@ class ComposerStaticInitb740f3480b3a58e90e3ea85b9f582af9
         'Doctrine\\Common\\Cache\\Psr6\\DoctrineProvider' => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache/Psr6/DoctrineProvider.php',
         'Doctrine\\Common\\Cache\\Psr6\\InvalidArgument' => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache/Psr6/InvalidArgument.php',
         'Doctrine\\Common\\Cache\\Psr6\\TypedCacheItem' => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache/Psr6/TypedCacheItem.php',
+        'Doctrine\\Common\\ClassLoader' => __DIR__ . '/..' . '/doctrine/common/src/ClassLoader.php',
+        'Doctrine\\Common\\CommonException' => __DIR__ . '/..' . '/doctrine/common/src/CommonException.php',
+        'Doctrine\\Common\\Comparable' => __DIR__ . '/..' . '/doctrine/common/src/Comparable.php',
         'Doctrine\\Common\\Lexer\\AbstractLexer' => __DIR__ . '/..' . '/doctrine/lexer/lib/Doctrine/Common/Lexer/AbstractLexer.php',
+        'Doctrine\\Common\\Proxy\\AbstractProxyFactory' => __DIR__ . '/..' . '/doctrine/common/src/Proxy/AbstractProxyFactory.php',
+        'Doctrine\\Common\\Proxy\\Autoloader' => __DIR__ . '/..' . '/doctrine/common/src/Proxy/Autoloader.php',
+        'Doctrine\\Common\\Proxy\\Exception\\InvalidArgumentException' => __DIR__ . '/..' . '/doctrine/common/src/Proxy/Exception/InvalidArgumentException.php',
+        'Doctrine\\Common\\Proxy\\Exception\\OutOfBoundsException' => __DIR__ . '/..' . '/doctrine/common/src/Proxy/Exception/OutOfBoundsException.php',
+        'Doctrine\\Common\\Proxy\\Exception\\ProxyException' => __DIR__ . '/..' . '/doctrine/common/src/Proxy/Exception/ProxyException.php',
+        'Doctrine\\Common\\Proxy\\Exception\\UnexpectedValueException' => __DIR__ . '/..' . '/doctrine/common/src/Proxy/Exception/UnexpectedValueException.php',
+        'Doctrine\\Common\\Proxy\\Proxy' => __DIR__ . '/..' . '/doctrine/common/src/Proxy/Proxy.php',
+        'Doctrine\\Common\\Proxy\\ProxyDefinition' => __DIR__ . '/..' . '/doctrine/common/src/Proxy/ProxyDefinition.php',
+        'Doctrine\\Common\\Proxy\\ProxyGenerator' => __DIR__ . '/..' . '/doctrine/common/src/Proxy/ProxyGenerator.php',
+        'Doctrine\\Common\\Util\\ClassUtils' => __DIR__ . '/..' . '/doctrine/common/src/Util/ClassUtils.php',
+        'Doctrine\\Common\\Util\\Debug' => __DIR__ . '/..' . '/doctrine/common/src/Util/Debug.php',
         'Doctrine\\DBAL\\ArrayParameters\\Exception' => __DIR__ . '/..' . '/doctrine/dbal/src/ArrayParameters/Exception.php',
         'Doctrine\\DBAL\\ArrayParameters\\Exception\\MissingNamedParameter' => __DIR__ . '/..' . '/doctrine/dbal/src/ArrayParameters/Exception/MissingNamedParameter.php',
         'Doctrine\\DBAL\\ArrayParameters\\Exception\\MissingPositionalParameter' => __DIR__ . '/..' . '/doctrine/dbal/src/ArrayParameters/Exception/MissingPositionalParameter.php',
@@ -1133,6 +1159,42 @@ class ComposerStaticInitb740f3480b3a58e90e3ea85b9f582af9
         'Doctrine\\Instantiator\\Exception\\UnexpectedValueException' => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator/Exception/UnexpectedValueException.php',
         'Doctrine\\Instantiator\\Instantiator' => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator/Instantiator.php',
         'Doctrine\\Instantiator\\InstantiatorInterface' => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator/InstantiatorInterface.php',
+        'Doctrine\\Persistence\\AbstractManagerRegistry' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/AbstractManagerRegistry.php',
+        'Doctrine\\Persistence\\ConnectionRegistry' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/ConnectionRegistry.php',
+        'Doctrine\\Persistence\\Event\\LifecycleEventArgs' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/Event/LifecycleEventArgs.php',
+        'Doctrine\\Persistence\\Event\\LoadClassMetadataEventArgs' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/Event/LoadClassMetadataEventArgs.php',
+        'Doctrine\\Persistence\\Event\\ManagerEventArgs' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/Event/ManagerEventArgs.php',
+        'Doctrine\\Persistence\\Event\\OnClearEventArgs' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/Event/OnClearEventArgs.php',
+        'Doctrine\\Persistence\\Event\\PreUpdateEventArgs' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/Event/PreUpdateEventArgs.php',
+        'Doctrine\\Persistence\\ManagerRegistry' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/ManagerRegistry.php',
+        'Doctrine\\Persistence\\Mapping\\AbstractClassMetadataFactory' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/Mapping/AbstractClassMetadataFactory.php',
+        'Doctrine\\Persistence\\Mapping\\ClassMetadata' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/Mapping/ClassMetadata.php',
+        'Doctrine\\Persistence\\Mapping\\ClassMetadataFactory' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/Mapping/ClassMetadataFactory.php',
+        'Doctrine\\Persistence\\Mapping\\Driver\\ColocatedMappingDriver' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/Mapping/Driver/ColocatedMappingDriver.php',
+        'Doctrine\\Persistence\\Mapping\\Driver\\DefaultFileLocator' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/Mapping/Driver/DefaultFileLocator.php',
+        'Doctrine\\Persistence\\Mapping\\Driver\\FileDriver' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/Mapping/Driver/FileDriver.php',
+        'Doctrine\\Persistence\\Mapping\\Driver\\FileLocator' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/Mapping/Driver/FileLocator.php',
+        'Doctrine\\Persistence\\Mapping\\Driver\\MappingDriver' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/Mapping/Driver/MappingDriver.php',
+        'Doctrine\\Persistence\\Mapping\\Driver\\MappingDriverChain' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/Mapping/Driver/MappingDriverChain.php',
+        'Doctrine\\Persistence\\Mapping\\Driver\\PHPDriver' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/Mapping/Driver/PHPDriver.php',
+        'Doctrine\\Persistence\\Mapping\\Driver\\StaticPHPDriver' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/Mapping/Driver/StaticPHPDriver.php',
+        'Doctrine\\Persistence\\Mapping\\Driver\\SymfonyFileLocator' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/Mapping/Driver/SymfonyFileLocator.php',
+        'Doctrine\\Persistence\\Mapping\\MappingException' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/Mapping/MappingException.php',
+        'Doctrine\\Persistence\\Mapping\\ProxyClassNameResolver' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/Mapping/ProxyClassNameResolver.php',
+        'Doctrine\\Persistence\\Mapping\\ReflectionService' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/Mapping/ReflectionService.php',
+        'Doctrine\\Persistence\\Mapping\\RuntimeReflectionService' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/Mapping/RuntimeReflectionService.php',
+        'Doctrine\\Persistence\\Mapping\\StaticReflectionService' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/Mapping/StaticReflectionService.php',
+        'Doctrine\\Persistence\\NotifyPropertyChanged' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/NotifyPropertyChanged.php',
+        'Doctrine\\Persistence\\ObjectManager' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/ObjectManager.php',
+        'Doctrine\\Persistence\\ObjectManagerDecorator' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/ObjectManagerDecorator.php',
+        'Doctrine\\Persistence\\ObjectRepository' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/ObjectRepository.php',
+        'Doctrine\\Persistence\\PropertyChangedListener' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/PropertyChangedListener.php',
+        'Doctrine\\Persistence\\Proxy' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/Proxy.php',
+        'Doctrine\\Persistence\\Reflection\\EnumReflectionProperty' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/Reflection/EnumReflectionProperty.php',
+        'Doctrine\\Persistence\\Reflection\\RuntimePublicReflectionProperty' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/Reflection/RuntimePublicReflectionProperty.php',
+        'Doctrine\\Persistence\\Reflection\\TypedNoDefaultReflectionProperty' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/Reflection/TypedNoDefaultReflectionProperty.php',
+        'Doctrine\\Persistence\\Reflection\\TypedNoDefaultReflectionPropertyBase' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/Reflection/TypedNoDefaultReflectionPropertyBase.php',
+        'Doctrine\\Persistence\\Reflection\\TypedNoDefaultRuntimePublicReflectionProperty' => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence/Reflection/TypedNoDefaultRuntimePublicReflectionProperty.php',
         'Dotenv\\Dotenv' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Dotenv.php',
         'Dotenv\\Exception\\ExceptionInterface' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Exception/ExceptionInterface.php',
         'Dotenv\\Exception\\InvalidEncodingException' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Exception/InvalidEncodingException.php',
