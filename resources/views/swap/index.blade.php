@@ -25,6 +25,16 @@
                         </div>
                     </div>
                 </div>
+                @if(Session::has('success'))
+                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline">{{Session::get('success')}}</span>
+                    </div>
+                @endif
+                @if(Session::has('fail'))
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline">{{Session::get('fail')}}</span>
+                    </div>
+                @endif
                 <form method="GET">
                 <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900">
                     <div class="mx-2 text-left">
