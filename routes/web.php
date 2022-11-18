@@ -99,6 +99,7 @@ Route::resource('leavefailure', LeaveFailureController::class);
 
 // Overtime
 Route::resource('ot', OvertimeController::class); 
+Route::post('/ot/filter_overtime', [OvertimeController::class, 'filter_overtime'])->name('filter_overtime');
 
 
 Route::resource('swapsched', SwapScheduleController::class); 

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Allowance;
 use App\Models\AllowanceRate;
 use App\Models\Employee;
@@ -48,16 +47,6 @@ class AllowanceRateController extends Controller
         $allowance = Allowance::find($allowance_id);
         return response()->json($allowance);
     }
-    
-    public function has_dupes($array) {
-        $dupe_array = array();
-        foreach ($array as $val) {
-            if (++$dupe_array[$val] > 1) {
-                return true;
-            }
-        }
-        return false;
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -75,10 +64,11 @@ class AllowanceRateController extends Controller
                 'allowance_rate'=> $request->allowance_rate[$key],
             ]);
         }
-        if($res){
+        if($res) {  
             return redirect()->route('allowancerate.index')->with('success',"Allowance Rate Added Successfully");
         }else{
             return redirect()->route('allowancerate.index')->with('fail',"Error! Try Again!");
+            
         }
     }
 
