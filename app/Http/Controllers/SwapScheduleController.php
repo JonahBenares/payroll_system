@@ -7,8 +7,10 @@ use App\Models\SwapSchedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 
+
 class SwapScheduleController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -41,6 +43,7 @@ class SwapScheduleController extends Controller
 
             $swapdata = SwapSchedule::join('employees', 'employees.id', '=', 'swap.employee_id')
                     ->whereBetween('shift_from_rd', [$start, $end])
+                    ->where('cancelled','=','0')
                     ->get(['employees.full_name','swap.*']);
           
         
@@ -147,15 +150,15 @@ class SwapScheduleController extends Controller
         
         $swapdata = SwapSchedule::find($id);
         
-        $swapdata->update([
-            'cancelled'=>'1',
-            'cancel_remarks'=>$request->input('cancel_reason'),
-            'cancel_date'=>'2022-11-16',
-            'cancelled_by'=>'1'
-        ]);
+        $reason = $request->input('cancel_reason');
+        $date = date("Y-m-d H:i:s");
+         $swapdata->cancelled='1';
+         $swapdata->cancel_remarks = $reason;
+         $swapdata->cancel_date=$date;
+         $swapdata->cancelled_by='1';
+         $swapdata->save();
 
-       
-        //return redirect()->route('swapschedule.index',$id)->with('success',"Swap schedule cancelled successfully!");
+        return  redirect()->back()->with('success',"Swap schedule cancelled successfully!");
        
 
     }

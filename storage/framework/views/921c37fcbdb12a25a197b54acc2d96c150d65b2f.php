@@ -128,12 +128,18 @@
                                         $interval = $date2->diff($date1);
                                         $hours   = $interval->format('%h'); 
                                         $minutes = $interval->format('%i');
-                                        if($hours>=8 && $minutes>=30){
-                                            $total_hours[]=$interval->format("%H:%I");
+                                        if($hours>=9 && $minutes>=30){
+                                            $total_hours[]=$interval->format("%H")*60 - 540;
+                                            $total_min[]=$interval->format("%i");
+                                        }else if($hours>=10){
+                                            $total_hours[]=$interval->format("%H")*60 - 540;
                                             $total_min[]=$interval->format("%i");
                                         }
                                     ?>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php 
+                                    $total_calculation = array_sum($total_hours) + array_sum($total_min);
+                                ?>
                                 <?php if(!empty($total_min)): ?>
                                     <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                         <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
@@ -142,7 +148,7 @@
                                         </td>
                                         <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                             <a href="<?php echo e(route('ot.create',['employee_id' => $e->id,'personal_id' => $e->personal_id,'month_year' => $month."-".$year, 'period' => $exp_period])); ?>"  class="my-1  py-2" title="Update">
-                                                <?php echo e(round(abs(array_sum($total_min)) / 60,2)." hrs."); ?>
+                                                <?php echo e(round(abs($total_calculation) / 60,2)." hrs."); ?>
 
                                             </a> 
                                         </td>
