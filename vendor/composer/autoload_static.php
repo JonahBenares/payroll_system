@@ -627,9 +627,7 @@ class ComposerStaticInitb740f3480b3a58e90e3ea85b9f582af9
         'App\\Models\\LeaveFailure' => __DIR__ . '/../..' . '/app/Models/LeaveFailure.php',
         'App\\Models\\LeaveFailureDetail' => __DIR__ . '/../..' . '/app/Models/LeaveFailureDetail.php',
         'App\\Models\\Overtime' => __DIR__ . '/../..' . '/app/Models/Overtime.php',
-
         'App\\Models\\OvertimeDetails' => __DIR__ . '/../..' . '/app/Models/OvertimeDetails.php',
-
         'App\\Models\\PayrollAllowance' => __DIR__ . '/../..' . '/app/Models/PayrollAllowance.php',
         'App\\Models\\PayrollBonus' => __DIR__ . '/../..' . '/app/Models/PayrollBonus.php',
         'App\\Models\\PayrollOvertime' => __DIR__ . '/../..' . '/app/Models/PayrollOvertime.php',

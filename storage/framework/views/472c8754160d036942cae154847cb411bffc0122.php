@@ -50,10 +50,7 @@
                 <label for="email" class="block text-left text-sm text-gray-700 capitalize white:text-gray-200">Cut Off Start</label>
                 <select type="text" name="cutoff_start" id="cutoff_start" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                     <?php for($x=1;$x<=31;$x++): ?>
-                    <?php 
-                        $month1 = str_pad($x, 2, "0", STR_PAD_LEFT);
-                    ?>
-                    <option value="<?php echo e($month1); ?>"><?php echo e($month1); ?></option>
+                    <option value="<?php echo e($x); ?>"><?php echo e($x); ?></option>
                     <?php endfor; ?>
                 </select>
             </div>
@@ -62,10 +59,7 @@
                 <label for="email" class="block text-left text-sm text-gray-700 capitalize white:text-gray-200">Cut Off End</label>
                 <select type="text" name="cutoff_end" id="cutoff_end" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                     <?php for($x=1;$x<=31;$x++): ?>
-                    <?php 
-                        $month2 = str_pad($x, 2, "0", STR_PAD_LEFT);
-                    ?>
-                    <option value="<?php echo e($month2); ?>"><?php echo e($month2); ?></option>
+                    <option value="<?php echo e($x); ?>"><?php echo e($x); ?></option>
                     <?php endfor; ?>
                 </select>
             </div>

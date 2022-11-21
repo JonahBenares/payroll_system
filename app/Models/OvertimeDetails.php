@@ -45,6 +45,10 @@ class OvertimeDetails extends Model
         'RH_RD_NP_HR',
         'RH_RD_OT_NP_HR',
         'RH_OT_NP_HR',
+        'RD_SH_NP',
+        'RD_SH_NP_HR',
+        'RD_SH_NP_OT',
+        'RD_SH_NP_OT_HR',
         'total_amount'
     ];
 }
