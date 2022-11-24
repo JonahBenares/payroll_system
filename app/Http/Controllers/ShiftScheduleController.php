@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\ShiftSchedule;
+use App\Models\Schedule;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
 class ShiftScheduleController extends Controller
@@ -14,7 +16,9 @@ class ShiftScheduleController extends Controller
      */
     public function index()
     {
-        return view("shift_sched.index");
+        $schedule=Schedule::all();
+        $employees=Employee::all();
+        return view("shift_sched.index", compact('schedule','employees'));
     }
 
     /**
@@ -24,7 +28,9 @@ class ShiftScheduleController extends Controller
      */
     public function create()
     {
-        //
+        $schedule=Schedule::all();
+        $employees=Employee::all();
+        return view('shift_sched.create' , compact('schedule','employees'));
     }
 
     /**

@@ -15,12 +15,11 @@
                         <h2 class="uppercase font-semibold py-2">Schedule</h2>
                     </div>
                     <div class="flex">
-                        <div x-data="{ modelOpen: false }">
-                            <button @click="modelOpen =!modelOpen" class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
-                                </svg>
+                        <a href="<?php echo e(route('shiftschedule.create')); ?>" type="button" >
+                            <div class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                                 <span>Add Schedule</span>
+<<<<<<< HEAD
+=======
                             </button>
                     
                             <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -55,7 +54,42 @@
                                         </div>
                     
                                         <form class="mt-5">
-                                            <div class="px-2">
+
+                                      
+                                            <div class="flex ">
+                                                <div class="mt-4 w-full px-2">
+                                                    <label class="block text-sm text-gray-700 capitalize white:text-gray-200">
+                                                       Month
+                                                    </label>
+                                                    <select type="text" name="month" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                        <option value=""></option>
+                                                        <option value="1">January</option>
+                                                        <option value="2">February</option>
+                                                        <option value="3">March</option>
+                                                        <option value="4">April</option>
+                                                        <option value="5">May</option>
+                                                        <option value="6">June</option>
+                                                        <option value="7">July</option>
+                                                        <option value="8">August</option>
+                                                        <option value="9">September</option>
+                                                        <option value="10">October</option>
+                                                        <option value="11">November</option>
+                                                        <option value="12">December</option>
+                                                    </select>
+                                                </div>
+                                                <div class="mt-4 w-full px-2">
+                                                    <label for="year" class="block text-sm text-gray-700 capitalize white:text-gray-200">Year</label>
+                                                    <?php $current_year = date("Y") ?>
+                                                    <select type="text" name="year" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                        <option value=""></option>
+                                                        <?php for($x=2022;$x<=$current_year;$x++): ?>
+                                                            <option value="<?php echo e($x); ?>"><?php echo e($x); ?></option>
+                                                        <?php endfor; ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="mt-4 px-2">
                                                 <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Schedule Type</label>
                                                 <select type="text" id="sched_type" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                                     <option value="" selected>Select Type</option>
@@ -67,11 +101,11 @@
                                             <div class="flex ">
                                                 <div class="mt-4 w-full px-2">
                                                     <label class="block text-sm text-gray-700 capitalize white:text-gray-200">Schedule Name</label>
-                                                    <select type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                    <select type="text" name="schedule" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                                         <option value=""></option>
-                                                        <option>Sample Schedule 1 - 7:00-4:00</option>
-                                                        <option>Sample Schedule 2 - 7:30-5:30</option>
-                                                        <option>Sample Schedule 32 - 8:00-5:00</option>
+                                                        <?php $__currentLoopData = $schedule; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <option value="<?php echo e($sc->id); ?>"><?php echo e($sc->schedule_code . " - " . $sc->time_in . " to " . $sc->time_out); ?></option>
+                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                     </select>
                                                 </div>
                                             </div> 
@@ -81,11 +115,29 @@
                                                         <label class="block text-sm text-gray-700 capitalize white:text-gray-200">
                                                             Rest Day 1
                                                         </label>
-                                                        <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                        <select type="text" name="rest_day1" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                            <option value=""></option>
+                                                            <option value="Sunday">Sunday</option>
+                                                            <option value="Monday">Monday</option>
+                                                            <option value="Tuesday">Tuesday</option>
+                                                            <option value="Wednesday">Wednesday</option>
+                                                            <option value="Thursday">Thursday</option>
+                                                            <option value="Friday">Friday</option>
+                                                            <option value="Saturday">Saturday</option>
+                                                        </select>
                                                     </div>
                                                     <div class="mt-4 w-full px-2">
                                                         <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">Rest Day 2</label>
-                                                        <input type="email" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                        <select type="text" name="rest_day2" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                            <option value=""></option>
+                                                            <option value="Sunday">Sunday</option>
+                                                            <option value="Monday">Monday</option>
+                                                            <option value="Tuesday">Tuesday</option>
+                                                            <option value="Wednesday">Wednesday</option>
+                                                            <option value="Thursday">Thursday</option>
+                                                            <option value="Friday">Friday</option>
+                                                            <option value="Saturday">Saturday</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div x-data="{show: false}">
@@ -215,8 +267,9 @@
                                         </form>
                                     </div>
                                 </div>
+>>>>>>> b652b1b4b89b91cedc1c1618fac4aa85e0d47379
                             </div>
-                        </div>
+                        </a>
                         <label for="table-search" class="sr-only">Search</label>
                         <div class="relative">
                             <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
