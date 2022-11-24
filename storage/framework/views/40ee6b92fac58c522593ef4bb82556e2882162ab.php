@@ -28,7 +28,11 @@
                         </a>
                     </div>
                 </div>
+<<<<<<< HEAD
                 <form  method="POST" action="<?php echo e(route('shiftschedule.store')); ?>">    
+=======
+                <form class="mt-5" method="POST" action="<?php echo e(route('shiftschedule.store')); ?>">    
+>>>>>>> 8ed4d1da1369254d0d606b7804e24e514a206fb6
                     <?php echo csrf_field(); ?>   
                     <div class="flex ">
                         <div class="w-full px-2">
@@ -65,7 +69,11 @@
                 
                     <div class="mt-4 px-2">
                         <label for="" class="text-left block text-sm text-gray-700 capitalize white:text-gray-200">Schedule Type</label>
+<<<<<<< HEAD
                         <select type="text" name="sched_type" id="sched_type" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+=======
+                        <select type="text" name="sched_type" id="sched_type" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+>>>>>>> 8ed4d1da1369254d0d606b7804e24e514a206fb6
                             <option value="" selected>Select Type</option>
                             <option value="regular" >Regular</option>
                             <option value="shifting" >Shifting</option>
@@ -102,7 +110,11 @@
                             </div>
                             <div class="mt-4 w-full px-2">
                                 <label for="rest_day2" class="block text-sm text-gray-700 capitalize white:text-gray-200">Rest Day 2</label>
+<<<<<<< HEAD
                                 <select type="text" name="rest_day2" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+=======
+                                <select type="text" name="rest_day2" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+>>>>>>> 8ed4d1da1369254d0d606b7804e24e514a206fb6
                                     <option value=""></option>
                                     <option value="Sunday">Sunday</option>
                                     <option value="Monday">Monday</option>
@@ -144,17 +156,28 @@
                          <label class="text-left px-2 mt-4 block text-sm text-gray-700 capitalize white:text-gray-200">
                             Add Employee
                         </label>
+<<<<<<< HEAD
                         <div class="flex appends_emp" id="appends_emp0">
                             <div class="w-11/12 px-2">
                                     <select name="employee[]" id="employee1" class="text-sm employee block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+=======
+                        <div class="flex appends_emp" id="appends_emp0"">
+                            <div class="w-full px-2">
+                                    <select name="employee[]" id="employee1" class="employee block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+>>>>>>> 8ed4d1da1369254d0d606b7804e24e514a206fb6
                                         <option value=""></option>
                                         <?php $__currentLoopData = $employees; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $emp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <option value="<?php echo e($emp->id); ?>"><?php echo e($emp->full_name); ?></option>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                             </div>
+<<<<<<< HEAD
                             <div class="flex justify-center space-x-2 w-1/12 px-2 addmoreappend">
                                 <button type="button" class="addEmployee disableadd my-2 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50 " title="Add Employee"> 
+=======
+                            <div class="px-2 addmoreappend">
+                                <button type="button" class="addEmployee disableadd mt-3 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Add Employee"> 
+>>>>>>> 8ed4d1da1369254d0d606b7804e24e514a206fb6
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                                     </svg>      
@@ -197,10 +220,34 @@
                                 <label class="text-left block text-sm text-gray-700 capitalize white:text-gray-200">
                                     Rest Day 3
                                 </label>
+<<<<<<< HEAD
                                 <input type="date" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                             </div>
                         </div>
                         <div class="flex ">Add Employee
+=======
+                                <input type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                            </div>
+                        </div>
+                        <!-- <div class="flex ">
+                            <div class="mt-4 w-full px-2">
+                                <label class="text-left block text-sm text-gray-700 capitalize white:text-gray-200">
+                                    Employee
+                                </label>
+                                <select class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                    <option value="" selected>Select Employee</option>
+                                </select>
+                            </div>
+                            <div class="px-2 pt-9">
+                                <button type="button" class="mt-3 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Add Employee"> 
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>      
+                                </button>
+                            </div>
+                        </div> -->
+                        <div class="flex ">
+>>>>>>> 8ed4d1da1369254d0d606b7804e24e514a206fb6
                             <div class="mt-4 w-full px-2">
                                 <label class="text-left block text-sm text-gray-700 capitalize white:text-gray-200">
                                     Rest Day 1

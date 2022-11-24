@@ -316,7 +316,11 @@
                 nextHtml.attr('id', 'appends_emp' + ee);
                 var hasRmBtn = $('.remEmployee', nextHtml).length > 0;
                 if (!hasRmBtn) {
+<<<<<<< HEAD
                     var rms = "<button class='flex items-center justify-center px-2 py-2  my-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 rounded-2xl white:bg-red-600 white:hover:bg-red-700 white:focus:bg-red-700 hover:bg-red-600 focus:outline-none focus:bg-red-500 focus:ring focus:ring-red-300 focus:ring-opacity-50 remEmployee'><svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-4 h-4'><path stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12' /></svg></button>";
+=======
+                    var rms = "<button class='flex items-center justify-center px-2 py-2 mt-3 ml-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 rounded-lg white:bg-red-600 white:hover:bg-red-700 white:focus:bg-red-700 hover:bg-red-600 focus:outline-none focus:bg-red-500 focus:ring focus:ring-red-300 focus:ring-opacity-50 remAllowance'><svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-4 h-4'><path stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12' /></svg></button>";
+>>>>>>> 8ed4d1da1369254d0d606b7804e24e514a206fb6
                     $('.addmoreappend', nextHtml).append(rms);
                 }
                 if(host.indexOf('edit')==38){
