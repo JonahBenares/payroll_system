@@ -67,6 +67,11 @@ class ShiftScheduleController extends Controller
                 $this->get_restdays($rd1,$rd2,$mo_name,$request->year);
             
         }
+
+        foreach($request->employee AS $key=>$value){
+            echo $key . " " . $value."<br>";
+
+        }
      
       
     }
@@ -99,6 +104,7 @@ class ShiftScheduleController extends Controller
 
      public function alternate_RD($rest, $mo_name,$year,$restdays){
         //echo "**".$rest;
+        
         if($restdays == 'rd_option1'){  //if 1,3,5 alternate RD is chosen
             $firstRD =  new Carbon('first '.$rest. ' of '.$mo_name.' '. $year);
             $secondRD =  new Carbon('third '.$rest. ' of '.$mo_name.' '. $year);
@@ -477,6 +483,8 @@ class ShiftScheduleController extends Controller
             foreach($data AS $d){
                     echo $d . "<br>";
             }
+           
+          
      }
     public function check_holiday($rd,$year){
 
@@ -488,6 +496,14 @@ class ShiftScheduleController extends Controller
        
         return $holidaycount;
     }
+
+    public function fetchEmployees(Request $request)
+    {
+      
+        $employees = Employee::select('id','full_name')->get();
+        return response()->json($employees);
+    }
+
     public function show(ShiftSchedule $shiftSchedule)
     {
         //

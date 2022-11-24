@@ -136,17 +136,17 @@
                          <label class="text-left px-2 mt-4 block text-sm text-gray-700 capitalize white:text-gray-200">
                             Add Employee
                         </label>
-                        <div class="flex ">
+                        <div class="flex appends_emp" id="appends_emp0"">
                             <div class="w-full px-2">
-                                    <select name="employee" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                    <select name="employee[]" id="employee1" class="employee block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                         <option value=""></option>
                                         @foreach($employees AS $emp)
                                         <option value="{{ $emp->id }}">{{ $emp->full_name }}</option>
                                         @endforeach
                                     </select>
                             </div>
-                            <div class="px-2">
-                                <button type="button" class="mt-3 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Add Employee"> 
+                            <div class="px-2 addmoreappend">
+                                <button type="button" class="addEmployee disableadd mt-3 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Add Employee"> 
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                                     </svg>      
