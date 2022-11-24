@@ -33,9 +33,9 @@ class LeaveFailureController extends Controller
         $leave = LeaveFailure::join('employees', 'employees.id', '=', 'leave_filing_head.employee_id')
         ->join('leave_filing_detail', 'leave_filing_head_id', '=', 'leave_filing_head.id')
         ->selectRaw('count(case when leave_filing_detail.leave_type = "Absent" then 1 end) as count_absent,employees.full_name,leave_filing_detail.leave_filing_head_id')
-        ->selectRaw('count(case when leave_filing_detail.leave_type = "FTL" then 1 end) as count_ftl')
+        ->selectRaw('count(case when leave_filing_detail.leave_type = "Failure to login/logout" then 1 end) as count_ftl')
         ->selectRaw('count(case when leave_filing_detail.leave_type = "Undertime/Tardiness" then 1 end) as count_undertime')
-        ->where('is_active', '=', 1)->where('filed', '=', 0)->where('month',$month)->where('year', $year)->where('pay_period', $period)->groupBy('leave_filing_head.personal_id')->get();
+        ->where('is_active', '=', 1)->where('filed', '=', 0)->where('cancelled', '=', 0)->where('month',$month)->where('year', $year)->where('pay_period', $period)->groupBy('leave_filing_head.personal_id')->get();
         return view('leave.index',compact('leave','cutoff'));
     }
 
@@ -80,7 +80,7 @@ class LeaveFailureController extends Controller
     public function edit($leave_filing_head_id)
     {
         $employee = LeaveFailure::where('leave_filing_head.id',$leave_filing_head_id)->join('employees', 'employees.id', '=', 'leave_filing_head.employee_id')->first();
-        $leave = LeaveFailureDetail::where('leave_filing_head_id' ,$leave_filing_head_id)->where('filed', '=', 0)->get();
+        $leave = LeaveFailureDetail::where('leave_filing_head_id' ,$leave_filing_head_id)->where('filed', '=', 0)->where('cancelled', '=', 0)->get();
         //$id = LeaveFailureDetail::where('leave_filing_head_id' ,$leave_filing_head_id)->where('filed', '=', 0);
         return view('leave.edit',compact('leave','employee'));
 
@@ -106,12 +106,13 @@ class LeaveFailureController extends Controller
             $filed = !empty($request->filed[$x]) ? $request->filed[$x] : '0';
             $with_pay = !empty($request->with_pay[$x]) ? $request->with_pay[$x] : '0';
             $pay_percentage = !empty($request->pay_percentage[$x]) ? $request->pay_percentage[$x] : '0';
+            $percentage_dec = $pay_percentage / 100;
             $leave->update([
                 'undertime_mins'=>$undertime,
                 'date_filed'=>$date_filed,
                 'filed'=>$filed,
                 'with_pay'=>$with_pay,
-                'pay_percentage'=>$pay_percentage,
+                'pay_percentage'=>$percentage_dec,
             ]);
         }
         return redirect()->route('leavefailure.index')->with('popup', 'open');

@@ -28,7 +28,8 @@
                         </a>
                     </div>
                 </div>
-                <form class="mt-5">       
+                <form class="mt-5" method="POST" action="<?php echo e(route('shiftschedule.store')); ?>">    
+                    <?php echo csrf_field(); ?>   
                     <div class="flex ">
                         <div class="mt-4 w-full px-2">
                             <label class="text-left block text-sm text-gray-700 capitalize white:text-gray-200">
@@ -36,15 +37,15 @@
                             </label>
                             <select type="text" name="month" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                 <option value=""></option>
-                                <option value="1">January</option>
-                                <option value="2">February</option>
-                                <option value="3">March</option>
-                                <option value="4">April</option>
-                                <option value="5">May</option>
-                                <option value="6">June</option>
-                                <option value="7">July</option>
-                                <option value="8">August</option>
-                                <option value="9">September</option>
+                                <option value="01">January</option>
+                                <option value="02">February</option>
+                                <option value="03">March</option>
+                                <option value="04">April</option>
+                                <option value="05">May</option>
+                                <option value="06">June</option>
+                                <option value="07">July</option>
+                                <option value="08">August</option>
+                                <option value="09">September</option>
                                 <option value="10">October</option>
                                 <option value="11">November</option>
                                 <option value="12">December</option>
@@ -64,7 +65,7 @@
                 
                     <div class="mt-4 px-2">
                         <label for="" class="text-left block text-sm text-gray-700 capitalize white:text-gray-200">Schedule Type</label>
-                        <select type="text" id="sched_type" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                        <select type="text" name="sched_type" id="sched_type" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                             <option value="" selected>Select Type</option>
                             <option value="regular" >Regular</option>
                             <option value="shifting" >Shifting</option>
@@ -100,7 +101,7 @@
                                 </select>
                             </div>
                             <div class="mt-4 w-full px-2">
-                                <label for="email" class="block text-sm text-gray-700 capitalize white:text-gray-200">Rest Day 2</label>
+                                <label for="rest_day2" class="block text-sm text-gray-700 capitalize white:text-gray-200">Rest Day 2</label>
                                 <select type="text" name="rest_day2" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                     <option value=""></option>
                                     <option value="Sunday">Sunday</option>
@@ -117,7 +118,7 @@
                             <div class="flex ">
                                 <div class="mt-4 w-full px-2 flex">
                                     <div class="flex items-center">
-                                        <input name="alternate checked id="checked-checkbox" id="alternating" type="checkbox"  x-model="show" value="" class=" w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
+                                        <input name="alternate" checked id="checked-checkbox" id="alternating" type="checkbox"  x-model="show" value="1" class=" w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                                         <label for="checked-checkbox" class="ml-2 text-sm font-medium text-gray-900 white:text-gray-300">Alternate Schedule</label>
                                     </div>
                                 </div>
@@ -140,12 +141,17 @@
                                 </div>
                             </div>
                         </div>
-                        <label class="text-left px-2 mt-4 block text-sm text-gray-700 capitalize white:text-gray-200">
+                         <label class="text-left px-2 mt-4 block text-sm text-gray-700 capitalize white:text-gray-200">
                             Add Employee
                         </label>
                         <div class="flex ">
                             <div class="w-full px-2">
-                                <input class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                    <select name="employee" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                        <option value=""></option>
+                                        <?php $__currentLoopData = $employees; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $emp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($emp->id); ?>"><?php echo e($emp->full_name); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </select>
                             </div>
                             <div class="px-2">
                                 <button type="button" class="mt-3 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Add Employee"> 
@@ -154,7 +160,7 @@
                                     </svg>      
                                 </button>
                             </div>
-                        </div>
+                        </div> 
                     </div>
                     <div class="hidden" id="shiftings">
                         <div class="flex ">
@@ -166,7 +172,7 @@
                                     <option value="" selected>Select Employee</option>
                                 </select>
                             </div>
-                            <div class="px-2 pt-9">
+                            <div class="px-2 pt-9 " >
                                 <button type="button" class="mt-3 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Add Employee"> 
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -194,7 +200,7 @@
                                 <input type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                             </div>
                         </div>
-                        <div class="flex ">
+                        <!-- <div class="flex ">
                             <div class="mt-4 w-full px-2">
                                 <label class="text-left block text-sm text-gray-700 capitalize white:text-gray-200">
                                     Employee
@@ -210,7 +216,7 @@
                                     </svg>      
                                 </button>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="flex ">
                             <div class="mt-4 w-full px-2">
                                 <label class="text-left block text-sm text-gray-700 capitalize white:text-gray-200">
@@ -234,7 +240,7 @@
                         
                     </div>
                     <div class="flex justify-end mt-6 px-2">
-                        <button type="button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                        <button type="submit" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                             Save
                         </button>
                     </div>
