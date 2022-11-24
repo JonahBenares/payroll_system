@@ -8,13 +8,6 @@
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
      <?php $__env->slot('header', null, []); ?>  <?php $__env->endSlot(); ?>
-    <!-- component -->
-    <style>
-        [x-cloak] {
-        display: none;
-        }
-    </style>
-    
     <div class="overflow-auto h-screen pb-28 pt-2 pr-2 pl-2 md:pt-0 md:pr-0 md:pl-0">
         <div class="flex flex-col flex-wrap sm:flex-row ">
             <div class="p-4 relative h-full w-full text-center bg-white rounded-2xl shadow-lg white:bg-gray-800 white:border-gray-700">
@@ -68,7 +61,7 @@
                         <select name="period" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
                             <option value="" selected>Period</option>
                             <?php $__currentLoopData = $cutoff; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $c): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <option value="<?php echo e($c->id); ?>"><?php echo e($c->cutoff_type); ?></option>
+                            <option value="<?php echo e($c->cutoff_type); ?>"><?php echo e($c->cutoff_type); ?></option>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
                     </div>
