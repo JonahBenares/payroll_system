@@ -259,10 +259,39 @@
                     }
                 }
             }
+
+            function getRecordedtime(personal_id){
+                var employee_id=document.getElementById("employee_id").value; 
+                var personal_id=document.getElementById("personal_id").value; 
+                var month_year=document.getElementById("month_year").value; 
+                var period=document.getElementById("period").value; 
+                var overtime_date=document.getElementById("overtime_date").value; 
+                var overtimeurl=document.getElementById("overtimedate").value; 
+                var base_url = '<?php echo e(URL::to("/")); ?>';
+                $.ajax({
+                    type: 'POST',
+                    url: base_url+"/ot/fetchtime",
+                    data: {
+                        personal_id: personal_id,
+                        overtime_date: overtime_date,
+                        overtimeurl: overtimeurl,
+                        _token: '<?php echo e(csrf_token()); ?>'
+                    },
+                    cache: false,
+                    success: function(output){
+                        var replace_url=base_url+"/ot/create?employee_id="+employee_id+'&personal_id='+personal_id+'&month_year='+month_year+'&period='+period+'&overtimedate='+overtime_date;
+                        window.history.replaceState(null, null, replace_url);
+                        document.getElementById("showTime").innerHTML  = output;
+                        document.getElementById("overtimedate").value  = overtime_date;
+                        $('#loadpage').load(replace_url+" #loadpage");
+                        
+                    }
+                }); 
+            }
         </script>
         <script>
 
-        function refreshTable_schedule(){
+            function refreshTable_schedule(){
                 $(".appends_emp").each(function(index, element){
                 
                     var ind = index+1;
