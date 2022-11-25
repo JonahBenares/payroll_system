@@ -26,10 +26,15 @@
                     </div>
                 </div>
                 <form method='GET'>
+                <?php echo csrf_field(); ?>
+                <?php echo method_field('GET'); ?>
                 <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900">
                     <div class="mx-2 text-left">
-                        <select name="period" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
-                            <option value="" selected>Employee</option>
+                        <select name="id" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
+                            <option value="" selected>Select employee</option>
+                            <?php $__currentLoopData = $employees; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $e): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($e->id); ?>"><?php echo e($e->full_name); ?></option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
                     </div>
                     <div class="mx-2 text-left">
@@ -51,7 +56,15 @@
                     </div>
                     <div class="mx-2 text-left">
                         <select name="year" class="text-sm block w-full px-2 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
-                            <option value="" selected>Select Year</option>
+                        <option value="" selected>Select Year</option>
+                            <?php echo e($start_year = 2022); ?>
+
+                            <?php echo e($current_year = date("Y")); ?>
+
+                            
+                                <?php for($y=$start_year; $y<=$current_year; $y++): ?>
+                                <option value="<?php echo e($y); ?>"><?php echo e($y); ?></option>
+                                <?php endfor; ?>
                         </select>
                     </div>
                     
@@ -80,12 +93,15 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <?php $__currentLoopData = $filed; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $f): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    asdas
+                                <?php echo e($f->date_absent); ?>
+
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                
+                                <?php echo e($f->leave_type); ?>
+
                                 </td>
                                 <td class="py-3 px-6 justify-between flex space-x-1" align="center">
                                     <div x-data="{ modelOpen: false }">
@@ -120,7 +136,7 @@
                                                     class="inline-block w-full max-w-lg p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl lg:max-w-lg"
                                                 >
                                                     <div class="flex items-center justify-between space-x-4 px-2">
-                                                        <h1 class="text-xl font-medium text-gray-800 ">Jonah May Benares</h1>
+                                                        <h1 class="text-xl font-medium text-gray-800 "><?php echo e($employee_name->full_name); ?></h1>
                                 
                                                         <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
                                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -132,25 +148,32 @@
                                                     <div class="">
                                                         <div class="flex justify-between px-2 my-2">
                                                             <div class="w-2/4">Date:</div>
-                                                            <div class="w-2/4">January 10, 2022</div>
+                                                            <div class="w-2/4"><?php echo e($f->date_absent); ?></div>
                                                         </div>
                                                         <div class="flex justify-between px-2 my-2">
                                                             <div class="w-2/4">Total Undertime Min:</div>
-                                                            <div class="w-2/4">Sample</div>
+                                                            <div class="w-2/4"><?php echo e($f->undertime_mins); ?></div>
                                                         </div>
                                                         <div class="flex justify-between px-2 my-2">
                                                             <div class="w-2/4">Date Filed:</div>
-                                                            <div class="w-2/4">NOvember 10, 2022</div>
+                                                            <div class="w-2/4"><?php echo e($f->date_filed); ?></div>
                                                         </div>
                                                         <div class="flex justify-between px-2 my-2">
                                                             <div class="w-2/4">With Pay:</div>
                                                             <div class="w-2/4">
-                                                                
+                                                                <?php if($f->with_pay == '0'): ?>
+                                                                <span class="text-red-700">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                                    </svg>
+                                                                </span>
+                                                                <?php else: ?>
                                                                 <span class="text-green-700">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                                                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                                     </svg>
                                                                 </span>
+                                                                <?php endif; ?>
                                                             </div>
                                                         </div>
                                                         <div class="flex justify-between px-2 my-2">
@@ -159,7 +182,7 @@
                                                         </div>
                                                         <div class="flex justify-between px-2 my-2">
                                                             <div class="w-2/4">Type:</div>
-                                                            <div class="w-2/4">Absent</div>
+                                                            <div class="w-2/4"><?php echo e($f->leave_type); ?></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -167,6 +190,7 @@
                                         </div>
                                     </div>
                                     <div x-data="{ modelOpen: false }">
+                                    <?php if($f->cancelled == '0'): ?>
                                         <a href="#" @click="modelOpen =!modelOpen" class="" title="Cancel">
                                             <div class="py-2 px-2 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
@@ -174,6 +198,7 @@
                                                 </svg> 
                                             </div>
                                         </a>
+                                        <?php endif; ?>
                                 
                                         <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
                                             <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
@@ -206,13 +231,15 @@
                                                         </button>
                                                     </div>
                                                     <div class="">
-                                                        <form action="">
+                                                        <form action="<?php echo e(route('filedleave.update',$f->id)); ?>" method='POST'>
+                                                            <?php echo csrf_field(); ?>
+                                                            <?php echo method_field('PUT'); ?>
                                                             <div class="mt-4 w-full px-2">
                                                                 <label class="block text-left text-sm text-gray-700 capitalize white:text-gray-200">Remarks</label>
-                                                                <textarea name="shift_from_rd" type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" rows="5"></textarea>
+                                                                <textarea name="cancel_remarks" type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" rows="5"></textarea>
                                                             </div>
                                                             <div class="flex justify-end mt-6 px-2">
-                                                                <button type="submit" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 rounded-2xl w-full white:bg-red-600 white:hover:bg-red-700 white:focus:bg-red-700 hover:bg-red-600 focus:outline-none focus:bg-red-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                                                                <button type="submit" value="Save" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 rounded-2xl w-full white:bg-red-600 white:hover:bg-red-700 white:focus:bg-red-700 hover:bg-red-600 focus:outline-none focus:bg-red-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                                                                     Cancel
                                                                 </button>
                                                             </div>
@@ -224,6 +251,7 @@
                                     </div>
                                 </td>
                             </tr>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
                 </div>
