@@ -80,3 +80,7 @@ page[size="letter"] {
 [x-cloak] {
   display: none;
 }
+
+.h-110{
+  height: 28rem;
+}
