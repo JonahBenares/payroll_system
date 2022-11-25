@@ -20,7 +20,15 @@
             <div class="p-4 relative h-full w-full text-center bg-white rounded-2xl shadow-lg white:bg-gray-800 white:border-gray-700">
                 <div class="flex justify-between  pb-4 bg-white white:bg-gray-900">
                     <div > 
-                        <h2 class="uppercase font-semibold py-2">ot List</h2>
+                        <h2 class="uppercase font-semibold py-2">
+                            ot List
+                            <?php if(!empty($month)): ?>
+                                <?php 
+                                    $monthName = date('F', mktime(0, 0, 0, $month, 10));
+                                ?>
+                                (<?php echo e(date('F',strtotime($monthName))." ".$year." | ".$exp_period); ?>)
+                            <?php endif; ?>
+                        </h2>
                     </div>
                     <div class="flex">
                         <label for="table-search" class="sr-only">Search</label>
@@ -99,6 +107,9 @@
                         </thead>
                         <tbody>
                             <?php if(!empty($timekeeping)): ?>
+                            <?php 
+                                $x=0;
+                            ?>
                             <?php $__currentLoopData = $timekeeping; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $e): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <?php
                                     $data2 = array();
@@ -125,6 +136,7 @@
                                         $exp_time = explode(',', $exp); 
                                         $date1 = new DateTime($logs['time_in']);
                                         $date2 = new DateTime($exp_time[1]);
+                                        
                                         $interval = $date2->diff($date1);
                                         $hours   = $interval->format('%h'); 
                                         $minutes = $interval->format('%i');
@@ -147,19 +159,26 @@
 
                                         </td>
                                         <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                            <a href="<?php echo e(route('ot.create',['employee_id' => $e->id,'personal_id' => $e->personal_id,'month_year' => $month."-".$year, 'period' => $exp_period])); ?>"  class="my-1  py-2" title="Update">
-                                                <?php echo e(round(abs($total_calculation) / 60,2)." hrs."); ?>
+                                            <a target='_blank' href="<?php echo e(route('ot.create',['employee_id' => $e->id,'personal_id' => $e->personal_id,'month_year' => $year."-".$month, 'period' => $exp_period])); ?>"  class="my-1  py-2" title="Update">
+                                                <?php echo e(number_format(round(abs($total_calculation) / 60,2),2)." hrs."); ?>
 
                                             </a> 
                                         </td>
                                         <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                            150
+                                            <?php echo e(number_format($overtime_sum[$x],2)." hrs."); ?>
+
                                         </td>
                                         <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                            150
+                                            <?php if($overtime_amount[$x]!=null): ?>
+                                                <?php echo e(number_format($overtime_amount[$x]->total_amount,2)); ?>
+
+                                            <?php endif; ?>
                                         </td>
                                     </tr>
                                 <?php endif; ?>
+                                <?php 
+                                    $x++;
+                                ?>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             <?php endif; ?>
                         </tbody>
