@@ -80,6 +80,7 @@ return array(
     'App\\Models\\PayslipInfo' => $baseDir . '/app/Models/PayslipInfo.php',
     'App\\Models\\Schedule' => $baseDir . '/app/Models/Schedule.php',
     'App\\Models\\ShiftSchedule' => $baseDir . '/app/Models/ShiftSchedule.php',
+    'App\\Models\\ShiftScheduleDetail' => $baseDir . '/app/Models/ShiftScheduleDetail.php',
     'App\\Models\\StatutoryBracket' => $baseDir . '/app/Models/StatutoryBracket.php',
     'App\\Models\\SwapSchedule' => $baseDir . '/app/Models/SwapSchedule.php',
     'App\\Models\\TardinessRate' => $baseDir . '/app/Models/TardinessRate.php',

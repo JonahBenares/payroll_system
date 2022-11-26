@@ -9,8 +9,8 @@
     
     <div class="overflow-auto h-screen pb-28 pt-2 pr-2 pl-2 md:pt-0 md:pr-0 md:pl-0">
         <div class="flex flex-col flex-wrap sm:flex-row ">
-            <div class="p-4 relative h-full w-full text-center bg-white rounded-2xl shadow-lg white:bg-gray-800 white:border-gray-700">
-                <div class="flex justify-between  pb-4 bg-white white:bg-gray-900">
+            <div class="p-4 relative h-full w-full text-center bg-white rounded-lg shadow-lg white:bg-gray-800 white:border-gray-700">
+                <div class="flex justify-between pb-2 bg-white white:bg-gray-900">
                     <div > 
                         <h2 class="uppercase font-semibold py-2 flex">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -20,13 +20,15 @@
                         </h2>
                     </div>
                     <div class="flex">
-                        <a href="{{ route('leavefailure.index') }}"  class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                            <span>Show List</span>
+                        <a href="{{ route('leavefailure.index') }}"   type="button">
+                            <div class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white transition-colors duration-200 transform bg-indigo-500 rounded-3xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                                <span>Show List</span>
+                            </div>
                         </a>
                     </div>
                 </div>
                 @php  $id=Request::segment(2) @endphp
-                <form action="{{ route('leavefailure.update',$id) }}" method='POST' class="mt-5">
+                <form action="{{ route('leavefailure.update',$id) }}" method='POST'>
                 @method("PATCH")
                     @csrf
                     <div class="overflow-x-auto relative">

@@ -67,7 +67,7 @@
                     <div class="flex ">
                         <div class="mt-4 w-full px-2">
                             <label class="text-left block text-sm text-gray-700 capitalize white:text-gray-200">Schedule Name</label>
-                            <select type="text" name="schedule" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                            <select type="text" name="schedule_code" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                 <option value=""></option>
                                 @foreach($schedule AS $sc)
                                 <option value="{{ $sc->id }}">{{ $sc->schedule_code . " - " . $sc->time_in . " to " . $sc->time_out }}</option>

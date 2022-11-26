@@ -641,6 +641,7 @@ class ComposerStaticInitb740f3480b3a58e90e3ea85b9f582af9
         'App\\Models\\PayslipInfo' => __DIR__ . '/../..' . '/app/Models/PayslipInfo.php',
         'App\\Models\\Schedule' => __DIR__ . '/../..' . '/app/Models/Schedule.php',
         'App\\Models\\ShiftSchedule' => __DIR__ . '/../..' . '/app/Models/ShiftSchedule.php',
+        'App\\Models\\ShiftScheduleDetail' => __DIR__ . '/../..' . '/app/Models/ShiftScheduleDetail.php',
         'App\\Models\\StatutoryBracket' => __DIR__ . '/../..' . '/app/Models/StatutoryBracket.php',
         'App\\Models\\SwapSchedule' => __DIR__ . '/../..' . '/app/Models/SwapSchedule.php',
         'App\\Models\\TardinessRate' => __DIR__ . '/../..' . '/app/Models/TardinessRate.php',

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ShiftSchedule;
+use App\Models\ShiftScheduleDetail;
 use App\Models\Schedule;
 use App\Models\Holiday;
 use App\Models\Employee;
@@ -49,32 +50,54 @@ class ShiftScheduleController extends Controller
     public function store(Request $request)
     {
         $monthName=Carbon::createFromDate($request->year, $request->month);
-      
+        
         $mo_name= $monthName->format('F');
         
         $rd1 = $request->rest_day1;
         $rd2 = $request->rest_day2;
-    
-        if($request->alternate == '1'){
+        foreach($request->employee AS $emp_id){
            
-            if($request->alternate_RD == 'rd1'){ //Rest day1 is chosen for alternate option
-                $this->alternate_RD($rd1,$mo_name,$request->year,$request->restdays);
-            } else if($request->alternate_RD == 'rd2'){ //Rest day2 is chosen for alternate option
-                $this->alternate_RD($rd2,$mo_name,$request->year,$request->restdays);
-            }
-        
-        } else { // NO ALTERNATE RESTDAYS
-                $this->get_restdays($rd1,$rd2,$mo_name,$request->year);
+            if($request->alternate == '1'){
             
-        }
+                if($request->alternate_RD == 'rd1'){ //Rest day1 is chosen for alternate option
+                    $rest_days = $this->alternate_RD($rd1,$mo_name,$request->year,$request->restdays);
+                } else if($request->alternate_RD == 'rd2'){ //Rest day2 is chosen for alternate option
+                    $rest_days = $this->alternate_RD($rd2,$mo_name,$request->year,$request->restdays);
+                }
+            
+            } else { // NO ALTERNATE RESTDAYS
+                $rest_days = $this->get_restdays($rd1,$rd2,$mo_name,$request->year);
+                
+            }
 
-        foreach($request->employee AS $key=>$value){
-            echo $key . " " . $value."<br>";
-
-        }
+            $personal_id = Employee::find($emp_id)->personal_id;
+            $month_year = $request->year."-".$request->month;
+                $shift_id = ShiftSchedule::insertGetId([
+                    'employee_id'=>$emp_id,
+                    'personal_id'=>$personal_id,
+                    'schedule_code'=>$request->schedule_code,
+                    'month_year'=>$month_year,
+                    'schedule_type'=>$request->sched_type,
+                    'alternate'=>$request->alternate,
+                    'alternate_week'=>$request->restdays,
+                    'alternate_rd'=>$request->alternate_RD,
+                    'rd1_day'=>$request->rest_day1,
+                    'rd2_day'=>$request->rest_day2,
+                ]);
+                
+               
+                foreach($rest_days AS $rdd){
+                  if(!empty($rdd)){
+                     ShiftScheduleDetail::create([
+                         'schedule_head_id'=>$shift_id,
+                         'rest_day'=>$rdd
+                     ]);
+                    }
+                }
+            }
      
       
-    }
+         }
 
     /**
      * Display the specified resource.
@@ -137,7 +160,7 @@ class ShiftScheduleController extends Controller
         $fifth_weekend=$this->check_holiday(date("Y-m-d",strtotime($fifth)),$year);
 
           /************ if holiday is on the first weekend************/
-        echo  $first_weekend . " - " . $second_weekend. " - " . $third_weekend. " - " . $fourth_weekend. " - " . $fifth_weekend ."<br>";
+        //echo  $first_weekend . " - " . $second_weekend. " - " . $third_weekend. " - " . $fourth_weekend. " - " . $fifth_weekend ."<br>";
         if($first_weekend == 0 && $second_weekend == 0 && $third_weekend == 0 && $fourth_weekend ==0 && $fifth_weekend ==0){
            
             $rd = array($firstRD, $secondRD, $lastRD);
@@ -479,11 +502,7 @@ class ShiftScheduleController extends Controller
           
          $data  = array_unique($rd);
          
-
-            foreach($data AS $d){
-                    echo $d . "<br>";
-            }
-           
+         return $data;  
           
      }
     public function check_holiday($rd,$year){

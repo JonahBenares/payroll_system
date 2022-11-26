@@ -16,13 +16,14 @@ class ShiftSchedule extends Model
         'schedule_code',
         'month_year',
         'schedule_type',
+        'alternate',
         'alternate_week',
+        'alternate_rd',
+        'rd1_day',
+        'rd2_day'
         
     ];
 
-    public function scheudule_detail()
-    {
-        return $this->hasMany(scheudule_detail::class);
-    }
+ 
 
 }
