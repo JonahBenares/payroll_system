@@ -156,7 +156,7 @@
                     </div>
                     <div class="hidden appends_emp_shift" id="shiftings">
                         <div class="flex ">
-                            <div class="mt-4 w-full px-2">
+                            <div class="mt-4 w-full  px-2">
                                 <label class="text-left block text-sm text-gray-700 capitalize white:text-gray-200">
                                     Employee
                                 </label>
@@ -167,8 +167,8 @@
                                         @endforeach
                                 </select>
                             </div>
-                            <div class="px-2 pt-9 addmoreappendShift" >
-                                <button type="button" class="addEmployeeShift mt-3 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Add Employee"> 
+                            <div class="flex justify-center px-2 pt-9 space-x-1 addmoreappendShift" >
+                                <button type="button" class="addEmployeeShift my-2 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Add Employee"> 
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                                     </svg>      
@@ -176,19 +176,19 @@
                             </div>
                         </div>
                         <div class="flex ">
-                            <div class="mt-4 w-full px-2">
+                            <div class="mt-2 w-full px-2">
                                 <label class="text-left block text-sm text-gray-700 capitalize white:text-gray-200">
                                     Rest Day 1
                                 </label>
                                 <input type="date" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                             </div>
-                            <div class="mt-4 w-full px-2">
+                            <div class="mt-2 w-full px-2">
                                 <label class="text-left block text-sm text-gray-700 capitalize white:text-gray-200">
                                     Rest Day 2
                                 </label>
                                 <input type="date" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                             </div>
-                            <div class="mt-4 w-full px-2">
+                            <div class="mt-2 w-full px-2">
                                 <label class="text-left block text-sm text-gray-700 capitalize white:text-gray-200">
                                     Rest Day 3
                                 </label>
