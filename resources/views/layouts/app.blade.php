@@ -9,6 +9,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+        <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!-- Scripts -->
@@ -408,13 +409,18 @@
             }else{
                 var ee = 1;
             }
+           
+            var x=1;
             $("body").on("click", ".addEmployeeShift", function(e) {
                 e.preventDefault();
                 ee++;
+              
                 var $append = $(this).parents('.appends_emp_shift');
                 var nextHtml = $append.clone().find("input:text").val('').end();
                 nextHtml.find('select').val('');
                 nextHtml.attr('id', 'appends_emp_shift' + ee);
+             
+               
                 var hasRmBtn = $('.remEmployee', nextHtml).length > 0;
                 if (!hasRmBtn) {
                     var rms = "<button class='flex items-center justify-center px-2 py-2  my-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 rounded-2xl white:bg-red-600 white:hover:bg-red-700 white:focus:bg-red-700 hover:bg-red-600 focus:outline-none focus:bg-red-500 focus:ring focus:ring-red-300 focus:ring-opacity-50 remEmployee'><svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-4 h-4'><path stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12' /></svg></button>";
@@ -425,20 +431,24 @@
                 }
                 
                 $append.after(nextHtml);
+              
                 refresh_shifting();
                 if(host.indexOf('edit')==38){
                     document.getElementById("delete_func"+ee).style.display = "none";
                 }
-              
+                 
             });
-
+          
             $( document ).ready(function() {
                 refresh_shifting();
                 $(".employee_shift").each(function(index, element){
                     var add=index+1;
+                  
                     $("body").on("change", "#employee_shift"+add, function(e) {
                         e.preventDefault();
                         var employee_id = document.getElementById("employee_shift1").value;
+                    
+                   
                         var base_url = '{{URL::to("/")}}';
                         $.ajax({
                             type: 'POST',
@@ -462,6 +472,10 @@
             });
 
         </script>
+       
+        {{-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script> --}}
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/dubrox/Multiple-Dates-Picker-for-jQuery-UI@master/jquery-ui.multidatespicker.js"></script>
         {{-- @livewireScripts
         @powerGridScripts --}}
     </body>

@@ -7,6 +7,7 @@ use App\Models\ShiftScheduleDetail;
 use App\Models\Schedule;
 use App\Models\Holiday;
 use App\Models\Employee;
+use App\Models\Department;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -24,8 +25,9 @@ class ShiftScheduleController extends Controller
 
     public function index()
     {
-        
-        return view("shift_sched.index");
+        $departments=Department::all();
+        $employees=Employee::all();
+        return view("shift_sched.index", compact('departments', 'employees'));
     }
 
     /**
@@ -519,7 +521,7 @@ class ShiftScheduleController extends Controller
     public function fetchEmployees(Request $request)
     {
       
-        $employees = Employee::select('id','full_name')->get();
+        $employees = Employee::select('id','full_name')->orderBy('full_name', 'ASC')->get();
         return response()->json($employees);
     }
 
