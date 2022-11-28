@@ -179,7 +179,11 @@
                                 <label class="text-left block text-sm text-gray-700 capitalize white:text-gray-200">
                                     Select Rest Day
                                 </label>
+<<<<<<< HEAD
                                 <input type="text" name='restdays[]' class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+=======
+                                <input type="text" id="datePick" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+>>>>>>> 6d961dead2535cc41f08f4b11ce5ac642d957928
                             </div>
                             
                             
