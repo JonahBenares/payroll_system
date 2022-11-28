@@ -167,7 +167,7 @@
                                         @endforeach
                                 </select>
                             </div>
-                            <div class="mt-4 w-5/12 px-2">
+                            <div class="mt-4 w-5/12 px-2" id="">
                                 <label class="text-left block text-sm text-gray-700 capitalize white:text-gray-200">
                                     Select Rest Day
                                 </label>
