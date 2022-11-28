@@ -176,8 +176,20 @@
                                         @endforeach
                                 </select>
                             </div>
+<<<<<<< HEAD
                             <div class="w-7/12 px-2" id="">
                                 <input type="text" name='restdays[]' class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" placeholder="Ex:2022-06-06,2022-06-07,2022-06-08,2022-06-09,2022-06-10 ">
+=======
+                            <div class="mt-4 w-5/12 px-2" id="">
+                                <label class="text-left block text-sm text-gray-700 capitalize white:text-gray-200">
+                                    Select Rest Day
+                                </label>
+<<<<<<< HEAD
+                                <input type="text" name='restdays[]' class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+=======
+                                <input type="text" id="datePick" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+>>>>>>> 6d961dead2535cc41f08f4b11ce5ac642d957928
+>>>>>>> dd6b38927be26e1ed0963b611cfdab9cc6264869
                             </div>
                             {{-- <input type="text" class=" text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" /> --}}
                             {{-- <div class="mt-4 w-2/12 px-2">

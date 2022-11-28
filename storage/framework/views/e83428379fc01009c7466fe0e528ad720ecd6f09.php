@@ -498,7 +498,22 @@
             });
 
         </script>
+<<<<<<< HEAD
        
+=======
+<<<<<<< HEAD
+       
+=======
+        <script>
+            $(document).ready(function () {
+              $('#datePick').multiDatesPicker();
+            });
+          </script>
+>>>>>>> 6d961dead2535cc41f08f4b11ce5ac642d957928
+        
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/dubrox/Multiple-Dates-Picker-for-jQuery-UI@master/jquery-ui.multidatespicker.js"></script>
+>>>>>>> dd6b38927be26e1ed0963b611cfdab9cc6264869
         
     </body>
 </html><?php /**PATH C:\xampp\htdocs\payroll_system\resources\views/layouts/app.blade.php ENDPATH**/ ?>
