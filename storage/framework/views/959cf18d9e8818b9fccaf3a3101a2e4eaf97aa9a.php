@@ -156,7 +156,7 @@
                                     <?php if($dept->id == $emp->department): ?>
                                     <tr>
                                         <td class="py-1 px-1 border border-gray-200 bg-white sticky left-0 z-10" ><?php echo e($emp->full_name); ?></td>
-                                        <td class="py-1 px-1 border border-gray-200 bg-white sticky left-0">System Implementer</td>
+                                        <td class="py-1 px-1 border border-gray-200 bg-white sticky left-0"><?php echo e($emp->position); ?></td>
                                         <td class="py-1 px-1 border border-gray-200 text-center">1</td>
                                         <td class="py-1 px-1 border border-gray-200 text-center">2</td>
                                         <td class="py-1 px-1 border border-gray-200 text-center">3</td>

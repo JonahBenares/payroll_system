@@ -64,6 +64,7 @@ return array(
     'App\\Models\\AllowanceRate' => $baseDir . '/app/Models/AllowanceRate.php',
     'App\\Models\\CutOff' => $baseDir . '/app/Models/CutOff.php',
     'App\\Models\\Deduction' => $baseDir . '/app/Models/Deduction.php',
+    'App\\Models\\Department' => $baseDir . '/app/Models/Department.php',
     'App\\Models\\Employee' => $baseDir . '/app/Models/Employee.php',
     'App\\Models\\EmployeeHMO' => $baseDir . '/app/Models/EmployeeHMO.php',
     'App\\Models\\FiledLeave' => $baseDir . '/app/Models/FiledLeave.php',
