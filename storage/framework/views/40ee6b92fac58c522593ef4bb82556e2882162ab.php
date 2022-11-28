@@ -185,11 +185,16 @@
                                 </select>
                             </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
                             <div class="mt-4 w-5/12 px-2" id="">
                                 <label class="text-left block text-sm text-gray-700 capitalize white:text-gray-200">
                                     Select Rest Day
                                 </label>
                                 <input type="text" name='restdays[]' class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+=======
+                            <div class="w-7/12 px-2" id="">
+                                <input type="text" name='restdays[]' class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" placeholder="Ex:2022-06-06,2022-06-07,2022-06-08,2022-06-09,2022-06-10 ">
+>>>>>>> e14157ecad3a3a6aab01c9bc5c485d63a2ddad27
 =======
                             <div class="w-7/12 px-2" id="">
                                 <input type="text" name='restdays[]' class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" placeholder="Ex:2022-06-06,2022-06-07,2022-06-08,2022-06-09,2022-06-10 ">
