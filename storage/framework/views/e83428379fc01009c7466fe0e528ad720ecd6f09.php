@@ -357,10 +357,7 @@
                 if(host.indexOf('edit')==38){
                     document.getElementById("delete_func"+ee).style.display = "none";
                 }
-                //$(".addAllowance").hide();
-                //document.getElementsByClassName("remover").style.display = "block";
-                // var btn_allowance = document.getElementById("btn_allowance");
-                // btn_allowance.style.display = "block";
+              
             });
 
             $( document ).ready(function() {
@@ -392,22 +389,105 @@
                 $(this).parents('.appends_emp').remove();
             });
 
-            function check_duplicate() {
-                var selects = document.getElementsByTagName('select');
-                var values = [];
-                for(i=0;i<selects.length;i++) {
-                    var select = selects[i];
-                    if(values.indexOf(select.value)>-1) {
-                        document.getElementById('show_alert').style.display = "block";
-                        document.getElementById('alerterror').innerHTML='Duplicate Allowance Entry';
-                        $('#save_button').hide();
-                    }else{ 
-                        document.getElementById('show_alert').style.display = "none";
-                        $('#save_button').show();
-                        values.push(select.value);
+            /*************** SHIFTING JS  *****************/
+            function refresh_shifting(){
+                $(".appends_emp_shift").each(function(index, element){
+                
+                    var ind = index+1;
+                    
+                    $(this).find("select.employee_shift").attr('id', 'employee_shift' + ind);
+                    if(host.indexOf('edit')==38){
+                        $(this).find("a.delete_func").attr('id', 'delete_func' + ind);
+                        var employee_name = document.getElementById("employee_shift"+ind).value;
+                        if(employee_name!=''){
+                            document.getElementById("delete_func"+ind).style.display = "block";
+                        }else{
+                            document.getElementById("delete_func"+ind).style.display = "none";
+                        }
                     }
-                }
+                    $("body").on("change", "#employee_shift"+ind, function(e) {
+                        e.preventDefault();
+                        var employee_id = document.getElementById("employee_shift"+ind).value;
+                        var base_url = '<?php echo e(URL::to("/")); ?>';
+                        $.ajax({
+                            type: 'POST',
+                            url: base_url+"/shiftschedule/fetchEmployees",
+                            data: {
+                                employee_id: employee_id,
+                                _token: '<?php echo e(csrf_token()); ?>'
+                            },
+                            dataType: 'json',
+                            cache: false,
+                            success: function(response){
+                                document.getElementById("employee_shift"+ind).value  = response.full_name;
+                            }
+                        }); 
+                    }); 
+                });
             }
+            //var ee = 1;
+            var host = window.location.href;
+            
+            if(host.indexOf('create')==36){
+                var ee = 1;
+            }else if(host.indexOf('edit')==38){
+                var ee = document.getElementById('count').value;
+            }else{
+                var ee = 1;
+            }
+            $("body").on("click", ".addEmployeeShift", function(e) {
+                e.preventDefault();
+                ee++;
+                var $append = $(this).parents('.appends_emp_shift');
+                var nextHtml = $append.clone().find("input:text").val('').end();
+                nextHtml.find('select').val('');
+                nextHtml.attr('id', 'appends_emp_shift' + ee);
+                var hasRmBtn = $('.remEmployee', nextHtml).length > 0;
+                if (!hasRmBtn) {
+                    var rms = "<button class='flex items-center justify-center px-2 py-2  my-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 rounded-2xl white:bg-red-600 white:hover:bg-red-700 white:focus:bg-red-700 hover:bg-red-600 focus:outline-none focus:bg-red-500 focus:ring focus:ring-red-300 focus:ring-opacity-50 remEmployee'><svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-4 h-4'><path stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12' /></svg></button>";
+                    $('.addmoreappendShift', nextHtml).append(rms);
+                }
+                if(host.indexOf('edit')==38){
+                    document.getElementById("counterX").value = ee;
+                }
+                
+                $append.after(nextHtml);
+                refresh_shifting();
+                if(host.indexOf('edit')==38){
+                    document.getElementById("delete_func"+ee).style.display = "none";
+                }
+              
+            });
+
+            $( document ).ready(function() {
+                refresh_shifting();
+                $(".employee_shift").each(function(index, element){
+                    var add=index+1;
+                    $("body").on("change", "#employee_shift"+add, function(e) {
+                        e.preventDefault();
+                        var employee_id = document.getElementById("employee_shift1").value;
+                        var base_url = '<?php echo e(URL::to("/")); ?>';
+                        $.ajax({
+                            type: 'POST',
+                            url: base_url+"shiftschedule/fetchEmployees",
+                            data: {
+                                employee_id: employee_id,
+                                _token: '<?php echo e(csrf_token()); ?>'
+                            },
+                            dataType: 'json',
+                            cache: false,
+                            success: function(response){
+                                document.getElementById("employee_shift1").value  = response.full_name;
+                            }
+                        }); 
+                    });
+                });
+            });
+
+            $("body").on("click", ".remEmployee", function() {
+                $(this).parents('.appends_emp_shift').remove();
+            });
+
         </script>
         
     </body>
