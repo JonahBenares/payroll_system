@@ -105,6 +105,7 @@ Route::resource('filedleave', FiledLeaveController::class);
 // Overtime
 Route::resource('ot', OvertimeController::class); 
 Route::post('/ot/filter_overtime', [OvertimeController::class, 'filter_overtime'])->name('filter_overtime');
+Route::post('/ot/fetchtime', [OvertimeController::class, 'fetchTime']);
 
 
 Route::resource('swapschedule', SwapScheduleController::class); 

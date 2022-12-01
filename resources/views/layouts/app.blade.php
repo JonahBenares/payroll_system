@@ -169,7 +169,7 @@
                 nextHtml.attr('id', 'appends' + ee);
                 var hasRmBtn = $('.remAllowance', nextHtml).length > 0;
                 if (!hasRmBtn) {
-                    var rms = "<button class='flex items-center justify-center px-2 py-2 mt-3 ml-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 rounded-lg white:bg-red-600 white:hover:bg-red-700 white:focus:bg-red-700 hover:bg-red-600 focus:outline-none focus:bg-red-500 focus:ring focus:ring-red-300 focus:ring-opacity-50 remAllowance'><svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-4 h-4'><path stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12' /></svg></button>";
+                    var rms = "<button class='flex items-center justify-center px-2 py-2  my-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 rounded-2xl white:bg-red-600 white:hover:bg-red-700 white:focus:bg-red-700 hover:bg-red-600 focus:outline-none focus:bg-red-500 focus:ring focus:ring-red-300 focus:ring-opacity-50  remAllowance'><svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-4 h-4'><path stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12' /></svg></button>";
                     $('.addmoreappend', nextHtml).append(rms);
                 }
                 if(host.indexOf('edit')==38){
@@ -232,6 +232,244 @@
                     }
                 }
             }
+
+            function getRecordedtime(personal_id){
+                var employee_id=document.getElementById("employee_id").value; 
+                var personal_id=document.getElementById("personal_id").value; 
+                var month_year=document.getElementById("month_year").value; 
+                var period=document.getElementById("period").value; 
+                var overtime_date=document.getElementById("overtime_date").value; 
+                var overtimeurl=document.getElementById("overtimedate").value; 
+                var base_url = '{{URL::to("/")}}';
+                $.ajax({
+                    type: 'POST',
+                    url: base_url+"/ot/fetchtime",
+                    data: {
+                        personal_id: personal_id,
+                        overtime_date: overtime_date,
+                        overtimeurl: overtimeurl,
+                        _token: '{{csrf_token()}}'
+                    },
+                    cache: false,
+                    success: function(output){
+                        var replace_url=base_url+"/ot/create?employee_id="+employee_id+'&personal_id='+personal_id+'&month_year='+month_year+'&period='+period+'&overtimedate='+overtime_date;
+                        window.history.replaceState(null, null, replace_url);
+                        document.getElementById("showTime").innerHTML  = output;
+                        document.getElementById("overtimedate").value  = overtime_date;
+                        $('#loadpage').load(replace_url+" #loadpage");
+                        
+                    }
+                }); 
+            }
+        </script>
+        <script>
+
+            function refreshTable_schedule(){
+                $(".appends_emp").each(function(index, element){
+                
+                    var ind = index+1;
+                    
+                    $(this).find("select.employee").attr('id', 'employee' + ind);
+                    if(host.indexOf('edit')==38){
+                        $(this).find("a.delete_func").attr('id', 'delete_func' + ind);
+                        var employee_name = document.getElementById("employee"+ind).value;
+                        if(employee_name!=''){
+                            document.getElementById("delete_func"+ind).style.display = "block";
+                        }else{
+                            document.getElementById("delete_func"+ind).style.display = "none";
+                        }
+                    }
+                    $("body").on("change", "#employee"+ind, function(e) {
+                        e.preventDefault();
+                        var employee_id = document.getElementById("employee"+ind).value;
+                        var base_url = '{{URL::to("/")}}';
+                        $.ajax({
+                            type: 'POST',
+                            url: base_url+"/shiftschedule/fetchEmployees",
+                            data: {
+                                employee_id: employee_id,
+                                _token: '{{csrf_token()}}'
+                            },
+                            dataType: 'json',
+                            cache: false,
+                            success: function(response){
+                                document.getElementById("employee"+ind).value  = response.full_name;
+                            }
+                        }); 
+                    }); 
+                });
+            }
+            //var ee = 1;
+            var host = window.location.href;
+            
+            if(host.indexOf('create')==36){
+                var ee = 1;
+            }else if(host.indexOf('edit')==38){
+                var ee = document.getElementById('count').value;
+            }else{
+                var ee = 1;
+            }
+            $("body").on("click", ".addEmployee", function(e) {
+                e.preventDefault();
+                ee++;
+                var $append = $(this).parents('.appends_emp');
+                var nextHtml = $append.clone().find("input:text").val('').end();
+                nextHtml.find('select').val('');
+                nextHtml.attr('id', 'appends_emp' + ee);
+                var hasRmBtn = $('.remEmployee', nextHtml).length > 0;
+                if (!hasRmBtn) {
+                    var rms = "<button class='flex items-center justify-center px-2 py-2  my-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 rounded-2xl white:bg-red-600 white:hover:bg-red-700 white:focus:bg-red-700 hover:bg-red-600 focus:outline-none focus:bg-red-500 focus:ring focus:ring-red-300 focus:ring-opacity-50 remEmployee'><svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-4 h-4'><path stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12' /></svg></button>";
+                    $('.addmoreappend', nextHtml).append(rms);
+                }
+                if(host.indexOf('edit')==38){
+                    document.getElementById("counterX").value = ee;
+                }
+                
+                $append.after(nextHtml);
+                refreshTable_schedule();
+                if(host.indexOf('edit')==38){
+                    document.getElementById("delete_func"+ee).style.display = "none";
+                }
+              
+            });
+
+            $( document ).ready(function() {
+                refreshTable_schedule();
+                $(".employee").each(function(index, element){
+                    var add=index+1;
+                    $("body").on("change", "#employee"+add, function(e) {
+                        e.preventDefault();
+                        var employee_id = document.getElementById("employee1").value;
+                        var base_url = '{{URL::to("/")}}';
+                        $.ajax({
+                            type: 'POST',
+                            url: base_url+"shiftschedule/fetchEmployees",
+                            data: {
+                                employee_id: employee_id,
+                                _token: '{{csrf_token()}}'
+                            },
+                            dataType: 'json',
+                            cache: false,
+                            success: function(response){
+                                document.getElementById("employee1").value  = response.full_name;
+                            }
+                        }); 
+                    });
+                });
+            });
+
+            $("body").on("click", ".remEmployee", function() {
+                $(this).parents('.appends_emp').remove();
+            });
+
+            /*************** SHIFTING JS  *****************/
+            function refresh_shifting(){
+                $(".appends_emp_shift").each(function(index, element){
+                
+                    var ind = index+1;
+                    
+                    $(this).find("select.employee_shift").attr('id', 'employee_shift' + ind);
+                    if(host.indexOf('edit')==38){
+                        $(this).find("a.delete_func").attr('id', 'delete_func' + ind);
+                        var employee_name = document.getElementById("employee_shift"+ind).value;
+                        if(employee_name!=''){
+                            document.getElementById("delete_func"+ind).style.display = "block";
+                        }else{
+                            document.getElementById("delete_func"+ind).style.display = "none";
+                        }
+                    }
+                    $("body").on("change", "#employee_shift"+ind, function(e) {
+                        e.preventDefault();
+                        var employee_id = document.getElementById("employee_shift"+ind).value;
+                        var base_url = '{{URL::to("/")}}';
+                        $.ajax({
+                            type: 'POST',
+                            url: base_url+"/shiftschedule/fetchEmployees",
+                            data: {
+                                employee_id: employee_id,
+                                _token: '{{csrf_token()}}'
+                            },
+                            dataType: 'json',
+                            cache: false,
+                            success: function(response){
+                                document.getElementById("employee_shift"+ind).value  = response.full_name;
+                            }
+                        }); 
+                    }); 
+                });
+            }
+            //var ee = 1;
+            var host = window.location.href;
+            
+            if(host.indexOf('create')==36){
+                var ee = 1;
+            }else if(host.indexOf('edit')==38){
+                var ee = document.getElementById('count').value;
+            }else{
+                var ee = 1;
+            }
+           
+            var x=1;
+            $("body").on("click", ".addEmployeeShift", function(e) {
+                e.preventDefault();
+                ee++;
+              
+                var $append = $(this).parents('.appends_emp_shift');
+                var nextHtml = $append.clone().find("input:text").val('').end();
+                nextHtml.find('select').val('');
+                nextHtml.attr('id', 'appends_emp_shift' + ee);
+             
+               
+                var hasRmBtn = $('.remEmployee', nextHtml).length > 0;
+                if (!hasRmBtn) {
+                    var rms = "<button class='flex items-center justify-center px-2 py-2  my-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 rounded-2xl white:bg-red-600 white:hover:bg-red-700 white:focus:bg-red-700 hover:bg-red-600 focus:outline-none focus:bg-red-500 focus:ring focus:ring-red-300 focus:ring-opacity-50 remEmployee'><svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-4 h-4'><path stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12' /></svg></button>";
+                    $('.addmoreappendShift', nextHtml).append(rms);
+                }
+                if(host.indexOf('edit')==38){
+                    document.getElementById("counterX").value = ee;
+                }
+                
+                $append.after(nextHtml);
+              
+                refresh_shifting();
+                if(host.indexOf('edit')==38){
+                    document.getElementById("delete_func"+ee).style.display = "none";
+                }
+                 
+            });
+          
+            $( document ).ready(function() {
+                refresh_shifting();
+                $(".employee_shift").each(function(index, element){
+                    var add=index+1;
+                  
+                    $("body").on("change", "#employee_shift"+add, function(e) {
+                        e.preventDefault();
+                        var employee_id = document.getElementById("employee_shift1").value;
+                    
+                   
+                        var base_url = '{{URL::to("/")}}';
+                        $.ajax({
+                            type: 'POST',
+                            url: base_url+"shiftschedule/fetchEmployees",
+                            data: {
+                                employee_id: employee_id,
+                                _token: '{{csrf_token()}}'
+                            },
+                            dataType: 'json',
+                            cache: false,
+                            success: function(response){
+                                document.getElementById("employee_shift1").value  = response.full_name;
+                            }
+                        }); 
+                    });
+                });
+            });
+
+            $("body").on("click", ".remEmployee", function() {
+                $(this).parents('.appends_emp_shift').remove();
+            });
+
         </script>
         {{-- @livewireScripts
         @powerGridScripts --}}

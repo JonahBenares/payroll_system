@@ -9,8 +9,8 @@
     
     <div class="overflow-auto h-screen pb-28 pt-2 pr-2 pl-2 md:pt-0 md:pr-0 md:pl-0">
         <div class="flex flex-col flex-wrap sm:flex-row ">
-            <div class="p-4 relative h-full w-full text-center bg-white rounded-2xl shadow-lg white:bg-gray-800 white:border-gray-700">
-                <div class="flex justify-between  pb-4 bg-white white:bg-gray-900">
+            <div class="p-4 relative h-full w-full text-center bg-white rounded-lg shadow-lg white:bg-gray-800 white:border-gray-700">
+                <div class="flex justify-between pb-4 bg-white white:bg-gray-900">
                     <div > 
                         <h2 class="uppercase font-semibold py-2">Allowance Rates</h2>
                     </div>
@@ -25,12 +25,12 @@
                     </div>
                 </div>
                 @if(Session::has('success'))
-                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                    <div class="mb-5 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
                         <span class="block sm:inline">{{Session::get('success')}}</span>
                     </div>
                 @endif
                 @if(Session::has('fail'))
-                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                    <div class="mb-5 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
                         <span class="block sm:inline">{{Session::get('fail')}}</span>
                     </div>
                 @endif
@@ -38,16 +38,16 @@
                     <table class="w-full text-sm text-left border border-gray-200 text-gray-500 white:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-10">
                             <tr class="">
-                                <th scope="col" class="py-3 px-3 border border-gray-200" width="35%">
+                                <th scope="col" class="py-3 px-3 border border-gray-200" width="49%">
                                     Employee Name
                                 </th>
-                                <th scope="col" class="py-3 px-3 border border-gray-200" width="30%">
+                                <th scope="col" class="py-3 px-3 border border-gray-200" width="50%">
                                     <div class="justify-between flex">
                                         <span class="relative">Allowance Name</span>
                                         <span class="relative">Rate</span>
                                     </div>
                                 </th>
-                                <th scope="col" class="py-3 px-3 border border-gray-200" width="11%" align="center">
+                                <th scope="col" class="py-3 px-3 border border-gray-200" width="1%" align="center">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                                     </svg>

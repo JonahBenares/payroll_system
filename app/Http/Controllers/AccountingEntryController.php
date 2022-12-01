@@ -88,7 +88,7 @@ class AccountingEntryController extends Controller
         $input = $request->all();
         $accountingentries->update($input);
 
-        return redirect()->route('entry.index');
+        return redirect()->route('entry.edit',$id)->with('success',"Schedule Updated Successfully");
     }
 
     /**

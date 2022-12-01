@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Overtime;
 use App\Models\OvertimeDetails;
 use App\Models\Employee;
+use App\Models\Holiday;
 use App\Models\CutOff;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -64,12 +65,14 @@ class OvertimeController extends Controller
                 $padded_day2 = str_pad($exp_d[1], 2, "0", STR_PAD_LEFT);
                 $exp_date1=$year."-".$month."-".$padded_day1;
                 $exp_date2=$inc_year."-".$inc_month."-".$padded_day2;
+                $added_month=date('m',strtotime($exp_date2));
             }else if($exp_period=='EOM'){
                 $exp_d=explode('-',$exp_type[1]);
                 $padded_day1 = str_pad($exp_d[0], 2, "0", STR_PAD_LEFT);
                 $padded_day2 = str_pad($exp_d[1], 2, "0", STR_PAD_LEFT);
                 $exp_date1=$year."-".$month."-".$padded_day1;
                 $exp_date2=$year."-".$month."-".$padded_day2;
+                $added_month=date('m',strtotime($exp_date2));
             }
         }else{
             $period='';
@@ -79,9 +82,18 @@ class OvertimeController extends Controller
         }
        
         $timekeeping = DB::table('db_hris.timekeeping')->join('db_payroll.employees', 'db_payroll.employees.personal_id', '=', 'db_hris.timekeeping.personal_id')->select('db_payroll.employees.id', 'db_payroll.employees.personal_id','db_payroll.employees.full_name', 'db_hris.timekeeping.recorded_time', DB::raw('GROUP_CONCAT(db_hris.timekeeping.recorded_time ORDER BY db_hris.timekeeping.recorded_time ASC) as in_out_time'))->where('supervisory','0')->where('is_active','1')->whereMonth('recorded_time',$month)->whereYear('recorded_time', $year)->whereBetween('recorded_time', [$exp_date1, $exp_date2])->groupBy('db_payroll.employees.personal_id')->get();
-        $timedate = DB::select("SELECT t.personal_id,recorded_time, GROUP_CONCAT(recorded_time) AS timer,time_in FROM db_hris.timekeeping t INNER JOIN schedule_head sh ON t.personal_id=sh.personal_id INNER JOIN schedule_code sc ON sh.schedule_code=sc.id WHERE MONTH(recorded_time)='$month' AND YEAR(recorded_time)='$year' AND recorded_time BETWEEN '$exp_date1' AND '$exp_date2' GROUP BY t.personal_id,recorded_time ORDER BY recorded_time ASC");
+        $timedate = DB::select("SELECT t.personal_id,recorded_time, GROUP_CONCAT(recorded_time) AS timer,time_in FROM db_hris.timekeeping t INNER JOIN schedule_head sh ON t.personal_id=sh.personal_id INNER JOIN schedule_code sc ON sh.schedule_code=sc.id WHERE (MONTH(recorded_time)='$month' OR MONTH(recorded_time)='$added_month') AND YEAR(recorded_time)='$year' AND recorded_time BETWEEN '$exp_date1' AND '$exp_date2' GROUP BY t.personal_id,recorded_time ORDER BY recorded_time ASC");
+        
+        $x=0;
+        $overtime_sum=[];
+        $overtime_amount=[];
+        foreach($timekeeping AS $t){
+            $overtime_sum[$x]=OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where('personal_id',$t->personal_id)->where('month_year','LIKE','%'.$year."-".$month.'%')->sum(\DB::raw('IFNULL(reg_day_hr,0) + IFNULL(RD_HR,0) + IFNULL(SH_RD_HR,0) + IFNULL(SH_HR,0) + IFNULL(RH_HR,0) + IFNULL(RH_RD_HR,0) + IFNULL(reg_day_np_hr,0) + IFNULL(reg_np_ot_hr,0) + IFNULL(SH_RD_NP_HR,0) + IFNULL(SH_OT_NP_HR,0) + IFNULL(SH_RD_OT_NP_HR,0) + IFNULL(RH_NP_HR,0) + IFNULL(RH_RD_NP_HR,0) + IFNULL(RH_RD_OT_NP_HR,0) + IFNULL(RH_OT_NP_HR,0) + IFNULL(RD_SH_NP_HR,0) + IFNULL(RD_SH_NP_OT_HR,0)'));
+            $overtime_amount[$x]=OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where('personal_id',$t->personal_id)->where('month_year','LIKE','%'.$year."-".$month.'%')->first('total_amount');
+            $x++;
+        }
         $cutoff=CutOff::all();
-        return view('overtime.index',compact('timekeeping','timedate','cutoff','exp_period','month','year'));
+        return view('overtime.index',compact('timekeeping','timedate','cutoff','exp_period','month','year','overtime_sum','overtime_amount'));
     }
 
     /**
@@ -89,9 +101,10 @@ class OvertimeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('overtime.create');
+        $get_data=OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where('employee_id',$request->employee_id)->where('personal_id',$request->personal_id)->where('month_year','LIKE','%'.$request->month_year.'%')->where('overtime_date',$request->overtimedate)->first();
+        return view('overtime.create',compact('get_data'));
     }
 
     /**
@@ -113,6 +126,7 @@ class OvertimeController extends Controller
             $salary=0;  
             $daily_rate=0;
         }
+        
         //Calculation For Rates
         //Daily Rate
         //$daily_rate=$salary*12/313;
@@ -130,16 +144,18 @@ class OvertimeController extends Controller
         //Calculation Overtime
         //Regular OT
         $reg_otcalc=($daily_rate / 8) * 1.25;
+        //Restday 2
+        $rd_otcalc=($daily_rate / 8 * 1.3);
         //Restday / Special Holiday
         $rdsh_otcalc=($daily_rate / 8 * 1.3) * 1.3;
         //Special Holiday
         $sh_otcalc=($daily_rate + $special_holiday) / 8 * 1.3;
         //Special Holiday on Restday
         $shrd_otcalc=($special_holiday_restday / 8) * 1.3;
-        //Regular Holiday on Restday
-        $rhrd_otcalc=($reg_holiday_rd / 8) * 1.3;
         //Regular Holiday
         $rh_otcalc=($daily_rate / 8) * 2.60;
+        //Regular Holiday on Restday
+        $rhrd_otcalc=($reg_holiday_rd / 8) * 1.3;
 
         //Calculation Night Premium
         //Regular NP
@@ -171,7 +187,7 @@ class OvertimeController extends Controller
         }
 
         if(!empty($request->rd2)){
-            $ins_rd2ot=$rdsh_otcalc * $request->rd2;
+            $ins_rd2ot=$rd_otcalc * $request->rd2;
         }else{
             $ins_rd2ot=0;
         }
@@ -195,7 +211,7 @@ class OvertimeController extends Controller
         }
 
         if(!empty($request->rh_rd)){
-            $ins_rhrdot=$rdsh_np * $request->rh_rd;
+            $ins_rhrdot=$rhrd_otcalc * $request->rh_rd;
         }else{
             $ins_rhrdot=0;
         }
@@ -250,9 +266,9 @@ class OvertimeController extends Controller
         }
 
         if(!empty($request->rhrd_np)){
-            $ins_rhrdot=$rhrd_np * $request->rhrd_np;
+            $ins_rhrdotnp=$rhrd_np * $request->rhrd_np;
         }else{
-            $ins_rhrdot=0;
+            $ins_rhrdotnp=0;
         }
 
         if(!empty($request->rhrd2_ot)){
@@ -261,58 +277,165 @@ class OvertimeController extends Controller
             $ins_rhrd2ot=0;
         }
 
-        $create=Overtime::create([
-            'month_year'=> $request->month_year,
-            'payroll_period'=> $request->period,
-        ]);
-        $lastInsertID = $create->id;
-        $total_amount=$ins_regot+$ins_rd2ot+$ins_shrdot+$ins_rhot+$ins_rhrdot+$ins_regnpot+$ins_regnp2ot+$ins_rdshot+$ins_rdsh2ot+$ins_rhnpot+$ins_shrdnp+$ins_shrdnpot+$ins_rhnp2ot+$ins_rhrdot+$ins_rhrd2ot;
-        $res=OvertimeDetails::create([
-            'employee_id'=> $request->employee_id,
-            'personal_id'=> $request->personal_id,
-            'ot_head_id'=> $lastInsertID,
-            'hourly_rate'=> $get_data->hourly_rate,
-            'reg_day'=> $ins_regot,
-            'RD'=> $ins_rd2ot,
-            'SH'=> $ins_shot,
-            'SH_RD'=> $ins_shrdot,
-            'RH'=> $ins_rhot,
-            'RH_RD'=> $ins_rhrdot,
-            'reg_day_np'=> $ins_regnpot,
-            'reg_np_ot'=> $ins_regnp2ot,
-            'SH_RD_NP'=> $ins_shrdnp,
-            'SH_RD_OT_NP'=> $ins_shrdnpot,
-            'RD_SH_NP'=> $ins_rdshot,
-            'RD_SH_NP_OT'=> $ins_rdsh2ot,
-            'SH_OT_NP'=> 0,
-            'RH_NP'=> $ins_rhnpot,
-            'RH_OT_NP'=> $ins_rhnp2ot,
-            'RH_RD_NP'=> $ins_rhrdot,
-            'RH_RD_OT_NP'=> $ins_rhrd2ot,
-            'reg_day_hr'=> $request->reg_day,
-            'RD_HR'=> $request->rd2,
-            'SH_HR'=> $request->sh,
-            'SH_RD_HR'=> $request->sh_rd,
-            'RH_HR'=> $request->reg_hol,
-            'RH_RD_HR'=> $request->rh_rd,
-            'reg_day_np_hr'=> $request->reg_np,
-            'reg_np_ot_hr'=> $request->regnp_ot,
-            'SH_RD_NP_HR'=> $request->shonrd2_np,
-            'SH_RD_OT_NP_HR'=> $request->shonrd2_npot,
-            'RD_SH_NP_HR'=> $request->regsh_np,
-            'RD_SH_NP_OT_HR'=> $request->rd2sh_ot,
-            'SH_OT_NP_HR'=> 0,
-            'RH_NP_HR'=> $request->rh_np,
-            'RH_OT_NP_HR'=> $request->rhnp_ot,
-            'RH_RD_NP_HR'=> $request->rhrd2_np,
-            'RH_RD_OT_NP_HR'=> $request->rhrd2_ot,
-            'total_amount'=> $total_amount,
-        ]);
-        // if($res){
-        //     return redirect()->route('ot.index')->with('success',"Overtime Added Successfully");
-        // }else{
-        //     return redirect()->route('ot.index')->with('fail',"Error! Try Again!");
-        // }
+        $count_rows=OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where('employee_id',$request->employee_id)->where('personal_id',$request->personal_id)->where('month_year','LIKE','%'.$request->month_year.'%')->where('overtime_date',$request->overtime_date)->count();
+        $total_amount=$ins_regot+$ins_rd2ot+$ins_shrdot+$ins_rhot+$ins_rhrdot+$ins_regnpot+$ins_regnp2ot+$ins_rdshot+$ins_rdsh2ot+$ins_rhnpot+$ins_shrdnp+$ins_shrdnpot+$ins_rhnp2ot+$ins_rhrdotnp+$ins_rhrd2ot + $ins_shot;
+        $res='';
+        $res_update='';
+
+        if($count_rows==0){
+            $create=Overtime::create([
+                'month_year'=> $request->month_year,
+                'payroll_period'=> $request->period,
+            ]);
+            $lastInsertID = $create->id;
+            $res=OvertimeDetails::create([
+                'employee_id'=> $request->employee_id,
+                'personal_id'=> $request->personal_id,
+                'overtime_date'=> $request->overtime_date,
+                'ot_head_id'=> $lastInsertID,
+                'hourly_rate'=> $get_data->hourly_rate,
+                'reg_day'=> $ins_regot,
+                'RD'=> $ins_rd2ot,
+                'SH'=> $ins_shot,
+                'SH_RD'=> $ins_shrdot,
+                'RH'=> $ins_rhot,
+                'RH_RD'=> $ins_rhrdot,
+                'reg_day_np'=> $ins_regnpot,
+                'reg_np_ot'=> $ins_regnp2ot,
+                'SH_RD_NP'=> $ins_shrdnp,
+                'SH_RD_OT_NP'=> $ins_shrdnpot,
+                'RD_SH_NP'=> $ins_rdshot,
+                'RD_SH_NP_OT'=> $ins_rdsh2ot,
+                'SH_OT_NP'=> 0,
+                'RH_NP'=> $ins_rhnpot,
+                'RH_OT_NP'=> $ins_rhnp2ot,
+                'RH_RD_NP'=> $ins_rhrdotnp,
+                'RH_RD_OT_NP'=> $ins_rhrd2ot,
+                'reg_day_hr'=> $request->reg_day,
+                'RD_HR'=> $request->rd2,
+                'SH_HR'=> $request->sh,
+                'SH_RD_HR'=> $request->sh_rd,
+                'RH_HR'=> $request->reg_hol,
+                'RH_RD_HR'=> $request->rh_rd,
+                'reg_day_np_hr'=> $request->reg_np,
+                'reg_np_ot_hr'=> $request->regnp_ot,
+                'SH_RD_NP_HR'=> $request->shonrd2_np,
+                'SH_RD_OT_NP_HR'=> $request->shonrd2_npot,
+                'RD_SH_NP_HR'=> $request->regsh_np,
+                'RD_SH_NP_OT_HR'=> $request->rd2sh_ot,
+                'SH_OT_NP_HR'=> 0,
+                'RH_NP_HR'=> $request->rh_np,
+                'RH_OT_NP_HR'=> $request->rhnp_ot,
+                'RH_RD_NP_HR'=> $request->rhrd_np,
+                'RH_RD_OT_NP_HR'=> $request->rhrd2_ot,
+                'total_amount'=> $total_amount,
+            ]);
+        }else{
+            $overtimedet = OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where('employee_id',$request->employee_id)->where('personal_id',$request->personal_id)->where('month_year','LIKE','%'.$request->month_year.'%');
+            $res_update=$overtimedet->update([
+                'overtime_date'=> $request->overtime_date,
+                'hourly_rate'=> $get_data->hourly_rate,
+                'reg_day'=> $ins_regot,
+                'RD'=> $ins_rd2ot,
+                'SH'=> $ins_shot,
+                'SH_RD'=> $ins_shrdot,
+                'RH'=> $ins_rhot,
+                'RH_RD'=> $ins_rhrdot,
+                'reg_day_np'=> $ins_regnpot,
+                'reg_np_ot'=> $ins_regnp2ot,
+                'SH_RD_NP'=> $ins_shrdnp,
+                'SH_RD_OT_NP'=> $ins_shrdnpot,
+                'RD_SH_NP'=> $ins_rdshot,
+                'RD_SH_NP_OT'=> $ins_rdsh2ot,
+                'SH_OT_NP'=> 0,
+                'RH_NP'=> $ins_rhnpot,
+                'RH_OT_NP'=> $ins_rhnp2ot,
+                'RH_RD_NP'=> $ins_rhrdotnp,
+                'RH_RD_OT_NP'=> $ins_rhrd2ot,
+                'reg_day_hr'=> $request->reg_day,
+                'RD_HR'=> $request->rd2,
+                'SH_HR'=> $request->sh,
+                'SH_RD_HR'=> $request->sh_rd,
+                'RH_HR'=> $request->reg_hol,
+                'RH_RD_HR'=> $request->rh_rd,
+                'reg_day_np_hr'=> $request->reg_np,
+                'reg_np_ot_hr'=> $request->regnp_ot,
+                'SH_RD_NP_HR'=> $request->shonrd2_np,
+                'SH_RD_OT_NP_HR'=> $request->shonrd2_npot,
+                'RD_SH_NP_HR'=> $request->regsh_np,
+                'RD_SH_NP_OT_HR'=> $request->rd2sh_ot,
+                'SH_OT_NP_HR'=> 0,
+                'RH_NP_HR'=> $request->rh_np,
+                'RH_OT_NP_HR'=> $request->rhnp_ot,
+                'RH_RD_NP_HR'=> $request->rhrd_np,
+                'RH_RD_OT_NP_HR'=> $request->rhrd2_ot,
+                'total_amount'=> $total_amount,
+            ]);
+        }
+        if($res){
+            return redirect()->route('ot.create',['employee_id'=>$request->employee_id,'personal_id'=>$request->personal_id, 'month_year'=>$request->month_year,'period'=>$request->period,'overtimedate'=>$request->overtime_date])->with('success',"Overtime Added Successfully");
+        }else if($res_update){
+            return redirect()->route('ot.create',['employee_id'=>$request->employee_id,'personal_id'=>$request->personal_id, 'month_year'=>$request->month_year,'period'=>$request->period,'overtimedate'=>$request->overtime_date])->with('success',"Overtime Updated Successfully");
+        }else{
+            return redirect()->route('ot.create',['employee_id'=>$request->employee_id,'personal_id'=>$request->personal_id, 'month_year'=>$request->month_year,'period'=>$request->period,'overtimedate'=>$request->overtime_date])->with('fail',"Error! Try Again!");
+        }
+    }
+
+    public function fetchTime(Request $request)
+    {
+        $personal_id = $request->personal_id;
+        $overtime_date = $request->overtime_date;
+        $timedate = DB::select("SELECT t.personal_id,recorded_time, GROUP_CONCAT(recorded_time) AS timer,time_in FROM db_hris.timekeeping t INNER JOIN schedule_head sh ON t.personal_id=sh.personal_id INNER JOIN schedule_code sc ON sh.schedule_code=sc.id WHERE t.personal_id='$personal_id' AND recorded_time LIKE '%$overtime_date%' GROUP BY t.personal_id,recorded_time ORDER BY recorded_time ASC");
+        $data2 = array();
+        foreach($timedate AS $value){
+            $key = date('Y-m-d',strtotime($value->recorded_time));
+            if(!isset($data2[$key])) {   
+                $data2[$key] = array(
+                    'personal_id'=>$value->personal_id,
+                    'time_in'=>$value->time_in,
+                    'recorded_time' => array(),
+                );
+            }        
+            $data2[$key]['recorded_time'][] = date('H:i',strtotime($value->recorded_time)).",";  
+        }
+        $total_hours=[];
+        $total_min=[];
+        $total_mins=[];
+        $overall_time=[];
+        foreach($data2 AS $logs){
+            $exp=implode("",$logs['recorded_time']);
+            $exp_time = explode(',', $exp); 
+            $date1 = new \DateTime($logs['time_in']);
+            $date2 = new \DateTime($exp_time[1]);
+            $interval = $date2->diff($date1);
+            $hours   = $interval->format('%h'); 
+            $minutes = $interval->format('%i');
+            if($hours>=9 && $minutes>=30){
+                $total_hours[]=$interval->format("%H")*60 - 540;
+                $total_min[]=$interval->format("%i");
+                $total_mins[]=$interval->format("%H:%i");
+            }else if($hours>=10){
+                $total_hours[]=$interval->format("%H")*60 - 540;
+                $total_min[]=$interval->format("%i");
+                $total_mins[]=$interval->format("%H:%i");
+            }
+        }
+        $total_timehour = array_sum($total_hours);
+        $total_timemins = array_sum($total_min);
+        $total_sumhour=$total_timehour / 60;
+        // echo $exp_time[1]." - ".$total_sumhour." hrs. & ".$total_timemins ." mins.";
+
+        $holiday=Holiday::where('holiday_date',$overtime_date)->first();
+        $employees=Employee::where('personal_id',$personal_id)->first();
+        if(!empty($total_min)){
+            // echo 'Time In:'.$exp_time[0]." <br>Time Out:".$exp_time[1]." <br>Number of Hours: ".number_format(round(abs($total_sum),2),2)." hrs.";
+            echo ($total_sumhour!=0) ? "Employee Name: ".$employees->fullname.'<br>Time In:'.$exp_time[0]." <br>Time Out:".$exp_time[1]." <br>Number of Hours: ".$total_sumhour." hr/s. & ".$total_timemins ." min/s." : "Employee Name: ".$employees->full_name.'<br>Time In:'.$exp_time[0]." <br>Time Out:".$exp_time[1]." <br>Number of Hours: ".$total_timemins ." min/s.";
+            if(!empty($holiday)){
+                echo "<br>Holiday: ".$holiday->holiday_name." | ".$holiday->holiday_type;
+            }
+        }else{
+            echo 'No OT Hours';
+        }
     }
 
     /**

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('personal_id')->unique();
             $table->string('full_name')->nullable();
             $table->string('emp_num')->nullable();
+            $table->string('position')->nullable();
 		    $table->integer('department')->nullable();
             $table->integer('business_unit')->comment('1=CENPRI, 3=PROGEN')->nullable();
             $table->boolean('supervisory')->default(false)->nullable();
