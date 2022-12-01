@@ -144,7 +144,7 @@
                                                     <div class="flex ">
                                                         <div class="mt-4 w-full px-2 flex">
                                                             <div class="flex items-center">
-                                                                <input checked id="checked-checkbox" id="alternating" type="checkbox"  x-model="show" value="" class=" w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
+                                                                <input name="alternate checked id="checked-checkbox" id="alternating" type="checkbox"  x-model="show" value="" class=" w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                                                                 <label for="checked-checkbox" class="ml-2 text-sm font-medium text-gray-900 white:text-gray-300">Alternate Schedule</label>
                                                             </div>
                                                         </div>
@@ -153,15 +153,16 @@
                                                     <div class="" x-show="show">
                                                         <div class="mt-4 px-2">
                                                             <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Which Rest Day</label>
-                                                            <select class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                                                                <option value="">Rest Day 1</option>
+                                                            <select name="alternate_RD" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                                <option value="rd1">Rest Day 1</option>
+                                                                <option value="rd2">Rest Day 2</option>
                                                             </select>   
                                                         </div>
                                                         <div class="mt-4 px-2">
-                                                            <label for="" class="block text-sm text-gray-700 capitalize white:text-gray-200">Alternate Week</label>
-                                                            <select class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                                                                <option value="">1,3,5</option>
-                                                                <option value="">2,4</option>
+                                                            <label for="restdays" class="block text-sm text-gray-700 capitalize white:text-gray-200">Alternate Week</label>
+                                                            <select name="restdays" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                                                <option value="rd_option1">1,3,5</option>
+                                                                <option value="rd_option2">2,4</option>
                                                             </select>
                                                         </div>
                                                     </div>

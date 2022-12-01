@@ -99,7 +99,11 @@
                                 {{ $l->count_ftl }}
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                @if($l->supervisory != '1' && $l->count_undertime != '0') 
                                 {{ $l->count_undertime }}
+                                @else
+                                1
+                                @endif
                                 </td>
                                 <td class="py-3 px-6 justify-between flex" align="center">
                                     <a href="{{ route('leavefailure.edit',$l->leave_filing_head_id) }}" class="" title="View">

@@ -6,6 +6,7 @@
  $today = date("Y-m-d h:i:sa");
  $current = date("Y-m-d");
  $current1=date('Y-m-d', strtotime($current));
+ $previous=date('Y-m-d', strtotime('-1 day', strtotime($current)));
 //$current1 = date('Y-m-d', strtotime("12/15/2022"));
  $month = date('m', strtotime($current));
  $year = date('Y', strtotime($current));
@@ -40,11 +41,10 @@
     }else{
         $pay_period = 'EOM';
     }
-//To get all active employees in payroll system and recorded time
-    $mysqli_list=mysqli_query($con_local,"SELECT personal_id, id FROM employees where is_active='1'");
-    //$row_list = mysqli_fetch_array($mysqli_list);
-        while($row_list = mysqli_fetch_array($mysqli_list)){
 
+    $mysqli_list=mysqli_query($con_local,"SELECT personal_id, id FROM employees where is_active='1'");
+        while($row_list = mysqli_fetch_array($mysqli_list)){
+                
                 $get_earliest = mysqli_query($con_online,"SELECT MIN(recorded_time) as earliest FROM timekeeping WHERE personal_id = '$row_list[personal_id]' AND dump_p != '1'");
                 $fetch_earliest = mysqli_fetch_array($get_earliest);
                 $earliest = date('H:i:s', strtotime($fetch_earliest['earliest']));
@@ -61,7 +61,6 @@
                 $minsdiff = round(abs($l_minutes - $e_minutes)/60, 2);
                 $total_mins = ($hourdiff * 60) + $minsdiff;
 
-//To get latest time from online timekeeping
     $holiday = mysqli_query($con_local,"SELECT holiday_date FROM holidays where holiday_date='$current'");
     $count_holiday=mysqli_num_rows($holiday);
     $swap = mysqli_query($con_local,"SELECT shift_from_rd FROM swap where personal_id='$row_list[personal_id]'");
@@ -73,18 +72,11 @@
     $count_rows_online=mysqli_num_rows($mysqli_count_online);
     $row_online = mysqli_fetch_array($mysqli_count_online);
 
-    //echo $count_rows_online."<br>";
-
-        //while($row_online = mysqli_fetch_array($mysqli_count_online)){
-        // $mysqli_count_local=mysqli_query($con_local,"SELECT leave_filing_head.personal_id, leave_filing_detail.date_absent FROM leave_filing_head INNER JOIN leave_filing_detail ON leave_filing_head.id = leave_filing_detail.leave_filing_head_id where leave_filing_head.personal_id='$row_online[personal_id]' AND date_absent = '$current'");
         // $count_rows_local=mysqli_num_rows($mysqli_count_local);
 
-        // $total_count = $count_rows_online + $count_rows_local;
+             //$total_count = $count_rows_online + $count_rows_local;
 
-
-    //$row_list1 = mysqli_fetch_array($mysqli_list);
-
-    //while($row_online = mysqli_fetch_array($mysqli_count_online)){
+    $mysqli_count_ftl=mysqli_query($con_local,"SELECT * FROM leave_filing_head INNER JOIN leave_filing_detail ON leave_filing_head.id = leave_filing_detail.leave_filing_head_id where date_absent = '$previous' AND leave_type='Failure to login/logout'");
         $total_absences = "0";
         $total_ftl = "0";
         $total_undertime = "0";
@@ -97,7 +89,7 @@
                     $leave_type = "Absent";
                 
             }else if($count_rows_online % 2 != 0){
-                    $date_absent = $current;
+                    $date_absent = $row_online['recorded_time'];
                     $ftl = "1";
                     $total_ftl += $ftl;
                     $leave_type = "Failure to login/logout";
@@ -109,6 +101,8 @@
                     $total_under_min = 540 - $total_mins;
                     $leave_type = "Undertime/Tardiness";
             }
+
+            //echo $row_online['recorded_time'];
             echo $count_rows_online."-".$row_list['personal_id']."-".$leave_type."-".$total_under_min."-".$total_mins."<br>";
 
         
@@ -145,9 +139,5 @@
 // while($row_online2 = mysqli_fetch_array($mysqli_count_online1)){
 //     $update_local =$con_online->query("UPDATE timekeeping SET dump_p='1' WHERE personal_id='$row_online2[personal_id]'");
 // }
-
-//UPDATE `timekeeping` SET `dump_p` = '1';
-
-
-     }
+}
  ?>

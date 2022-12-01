@@ -112,8 +112,12 @@
 
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                <?php if($l->supervisory != '1' && $l->count_undertime != '0'): ?> 
                                 <?php echo e($l->count_undertime); ?>
 
+                                <?php else: ?>
+                                1
+                                <?php endif; ?>
                                 </td>
                                 <td class="py-3 px-6 justify-between flex" align="center">
                                     <a href="<?php echo e(route('leavefailure.edit',$l->leave_filing_head_id)); ?>" class="" title="View">
