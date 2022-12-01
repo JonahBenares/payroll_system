@@ -166,7 +166,7 @@
                             </label>
                         </div>
                     </div>
-                    <div class=" appends_emp_shift" id="shiftings">
+                    <div class="hidden appends_emp_shift" id="shiftings">
                         <div class="flex ">
                             <div class=" w-4/12  px-2">
                                 <select name="employee_shift[]" id="employee_shift1"  class="text-sm employee_shift block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
@@ -176,21 +176,10 @@
                                         @endforeach
                                 </select>
                             </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                            <div class="mt-4 w-5/12 px-2" id="">
-                                <label class="text-left block text-sm text-gray-700 capitalize white:text-gray-200">
-                                    Select Rest Day
-                                </label>
-                                <input type="text" name='restdays[]' class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-=======
+                          
                             <div class="w-7/12 px-2" id="">
-                                <input type="text" name='restdays[]' class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" placeholder="Ex:2022-06-06,2022-06-07,2022-06-08,2022-06-09,2022-06-10 ">
->>>>>>> e14157ecad3a3a6aab01c9bc5c485d63a2ddad27
-=======
-                            <div class="w-7/12 px-2" id="">
-                                <input type="text" name='restdays[]' class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" placeholder="Ex:2022-06-06,2022-06-07,2022-06-08,2022-06-09,2022-06-10 ">
->>>>>>> e14157ecad3a3a6aab01c9bc5c485d63a2ddad27
+                                <input type="text" name='restdays_shift[]' class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" placeholder="Ex:2022-06-06,2022-06-07,2022-06-08,2022-06-09,2022-06-10 ">
+
                             </div>
                             <div class="w-1/12 flex justify-center px-2 pt-1 space-x-1 addmoreappendShift" >
                                 <button type="button" class="addEmployeeShift my-2 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Add Employee"> 
