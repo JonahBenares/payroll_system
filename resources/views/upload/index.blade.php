@@ -15,6 +15,62 @@
                         <h2 class="uppercase font-semibold py-2">Upload Allowance</h2>
                     </div>
                     <div class="flex">
+                        <div x-data="{ modelOpen: false }">
+                            <a href="#" @click="modelOpen =!modelOpen" type="button" >
+                                <div class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white transition-colors duration-200 transform bg-emerald-500 rounded-3xl white:bg-emerald-600 white:hover:bg-emerald-700 white:focus:bg-emerald-700 hover:bg-emerald-600 focus:outline-none focus:bg-emerald-500 focus:ring focus:ring-emerald-300 focus:ring-opacity-50">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 8.25H7.5a2.25 2.25 0 00-2.25 2.25v9a2.25 2.25 0 002.25 2.25h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25H15M9 12l3 3m0 0l3-3m-3 3V2.25" />
+                                    </svg>                                      
+                                    <span>Download</span>
+                                </div>
+                            </a>
+                    
+                            <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                                <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
+                                    <div x-cloak @click="modelOpen = false"  
+                                        x-transition:enter="transition ease-out duration-300 transform"
+                                        x-transition:enter-start="opacity-0" 
+                                        x-transition:enter-end="opacity-100"
+                                        x-transition:leave="transition ease-in duration-200 transform"
+                                        x-transition:leave-start="opacity-100" 
+                                        x-transition:leave-end="opacity-0"
+                                        class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40" aria-hidden="true"
+                                    ></div>
+                    
+                                    <div x-cloak
+                                        x-transition:enter="transition ease-out duration-300 transform"
+                                        x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
+                                        x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                                        x-transition:leave="transition ease-in duration-200 transform"
+                                        x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
+                                        x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                                        class="inline-block w-full max-w-lg p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl lg:max-w-lg"
+                                    >
+                                        <div class="flex items-center justify-between space-x-4">
+                                            <h1 class="text-xl font-medium text-gray-800 ">Download Allowance Format</h1>
+                                            <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <div class="flex justify-between space-x-2 my-5">
+                                            <div class="w-1/2">
+                                                <label for="" class="text-sm">Date From:</label>
+                                                <input type="date" class="text-left text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-3xl focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                            </div>
+                                            <div class="w-1/2">
+                                                <label for="" class="text-sm">Date To:</label>
+                                                <input type="date" class="text-left text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-3xl focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                            </div>
+                                        </div>
+                                        <div class="my-2">
+                                            <button type="submit" class="flex items-center justify-center px-3 py-2 text-sm tracking-wide text-white transition-colors duration-200 transform bg-emerald-500 rounded-3xl white:bg-emerald-600 white:hover:bg-emerald-700 white:focus:bg-emerald-700 hover:bg-emerald-600 focus:outline-none focus:bg-emerald-500 focus:ring focus:ring-emerald-300 focus:ring-opacity-50 w-full" >Download</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <label for="table-search" class="sr-only">Search</label>
                         <form class="flex items-center">   
                             <label for="simple-search" class="sr-only">Search</label>
