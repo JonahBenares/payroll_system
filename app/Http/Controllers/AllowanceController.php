@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Allowance;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -95,4 +94,6 @@ class AllowanceController extends Controller
         Allowance::find($id)->delete();
         return redirect()->route('allowance.index' )->with('success',"Allowance Deleted Successfully");
     }
+
+  
 }

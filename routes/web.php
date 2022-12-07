@@ -111,7 +111,9 @@ Route::post('/ot/fetchtime', [OvertimeController::class, 'fetchTime']);
 Route::resource('swapschedule', SwapScheduleController::class); 
 Route::post('/swapschedule/cancel/{id}/', [SwapScheduleController::class, 'cancel'])->name('cancel');
 
-Route::resource('uploadallowance', UploadAllowanceController::class); 
+Route::resource('uploadallowance', UploadAllowanceController::class);
+Route::post('/export-allowance',[UploadAllowanceController::class,'exportAllowance'])->name('export-allowance');
+Route::post('/import',[UploadAllowanceController::class,'import'])->name('import');
 
 Route::resource('payrollsalary', PayrollSalaryController::class); 
 Route::get('/payroll_salary/bulk', [PayrollSalaryController::class, 'printBulk'])->middleware(['auth'])->name('printBulkSalary');
@@ -125,7 +127,6 @@ Route::get('/payroll_overtime/bulkprinting', [PayrollOvertimeController::class, 
 Route::resource('payrollbonus', PayrollBonusController::class); 
 Route::get('/payroll_bonus/bulkprinting', [PayrollBonusController::class, 'printBulk'])->middleware(['auth'])->name('printBulkBonus');
 
-Route::resource('uploadallowance', UploadAllowanceController::class); 
 
 Route::resource('payrollsalary', PayrollSalaryController::class); 
 Route::get('/payroll_salary/bulk', [PayrollSalaryController::class, 'printBulk'])->middleware(['auth'])->name('printBulkSalary');

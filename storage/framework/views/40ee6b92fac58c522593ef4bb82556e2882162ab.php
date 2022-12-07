@@ -75,7 +75,7 @@
                     <div class="flex ">
                         <div class="mt-4 w-full px-2">
                             <label class="text-left block text-sm text-gray-700 capitalize white:text-gray-200">Schedule Name</label>
-                            <select type="text" name="schedule" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                            <select type="text" name="schedule_code" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                 <option value=""></option>
                                 <?php $__currentLoopData = $schedule; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <option value="<?php echo e($sc->id); ?>"><?php echo e($sc->schedule_code . " - " . $sc->time_in . " to " . $sc->time_out); ?></option>
@@ -147,7 +147,7 @@
                         <div class="flex appends_emp" id="appends_emp0">
                             <div class="w-11/12 px-2">
                                     <select name="employee[]" id="employee1" class="text-sm employee block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                                        <option value=""></option>
+                                        <option value="">Select Employee</option>
                                         <?php $__currentLoopData = $employees; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $emp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <option value="<?php echo e($emp->id); ?>"><?php echo e($emp->full_name); ?></option>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -162,64 +162,43 @@
                             </div>
                         </div> 
                     </div>
-                    <div class="hidden" id="shiftings">
+                    <div class="flex">
+                        <div class="mt-4 w-4/12  px-2">
+                            <label class="text-left block text-sm text-gray-700 capitalize white:text-gray-200">
+                                Employee
+                            </label>
+                        </div>
+                        <div class="mt-4 w-7/12  px-2">
+                            <label class="text-left block text-sm text-gray-700 white:text-gray-200">
+                                Insert multiple dates below and use comma to separate dates. Format: YY-MM-DD
+                            </label>
+                        </div>
+                    </div>
+                    <div class="hidden appends_emp_shift" id="shiftings">
                         <div class="flex ">
-                            <div class="mt-4 w-full px-2">
-                                <label class="text-left block text-sm text-gray-700 capitalize white:text-gray-200">
-                                    Employee
-                                </label>
-                                <select class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                            <div class=" w-4/12  px-2">
+                                <select name="employee_shift[]" id="employee_shift1"  class="text-sm employee_shift block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                     <option value="" selected>Select Employee</option>
+                                        <?php $__currentLoopData = $employees; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $emp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($emp->id); ?>"><?php echo e($emp->full_name); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                             </div>
-                            <div class="px-2 pt-9 " >
-                                <button type="button" class="mt-3 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Add Employee"> 
+                          
+                            <div class="w-7/12 px-2" id="">
+                                <input type="text" name='restdays_shift[]' class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" placeholder="Ex:2022-06-06,2022-06-07,2022-06-08,2022-06-09,2022-06-10 ">
+
+                            </div>
+                            <div class="w-1/12 flex justify-center px-2 pt-1 space-x-1 addmoreappendShift" >
+                                <button type="button" class="addEmployeeShift my-2 py-2 px-2 text-xs font-medium text-center text-white transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" title="Add Employee"> 
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                                     </svg>      
                                 </button>
                             </div>
                         </div>
-                        <div class="flex ">
-                            <div class="mt-4 w-full px-2">
-                                <label class="text-left block text-sm text-gray-700 capitalize white:text-gray-200">
-                                    Rest Day 1
-                                </label>
-                                <input type="date" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                            </div>
-                            <div class="mt-4 w-full px-2">
-                                <label class="text-left block text-sm text-gray-700 capitalize white:text-gray-200">
-                                    Rest Day 2
-                                </label>
-                                <input type="date" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                            </div>
-                            <div class="mt-4 w-full px-2">
-                                <label class="text-left block text-sm text-gray-700 capitalize white:text-gray-200">
-                                    Rest Day 3
-                                </label>
-                                <input type="date" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                            </div>
-                        </div>
-                        <div class="flex ">Add Employee
-                            <div class="mt-4 w-full px-2">
-                                <label class="text-left block text-sm text-gray-700 capitalize white:text-gray-200">
-                                    Rest Day 1
-                                </label>
-                                <input type="date" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                            </div>
-                            <div class="mt-4 w-full px-2">
-                                <label class="text-left block text-sm text-gray-700 capitalize white:text-gray-200">
-                                    Rest Day 2
-                                </label>
-                                <input type="date" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                            </div>
-                            <div class="mt-4 w-full px-2">
-                                <label class="text-left block text-sm text-gray-700 capitalize white:text-gray-200">
-                                    Rest Day 3
-                                </label>
-                                <input type="date" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                            </div>
-                        </div>
+                        
+                       
                     </div>
                     <div class="flex justify-end mt-6 px-2">
                         <button type="submit" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
