@@ -76,13 +76,9 @@
                                     {{ $l->date_absent }}
                                     </td>
                                     @endif
-                                    @if($employee->supervisory == '0')
+                                    @if($l->leave_type == 'Undertime/Tardiness')
                                     <td class="py-3 px-3">
                                         <input type="text" name="undertime_mins[]" value="{{ $l->undertime_mins }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 text-right">  
-                                    </td>
-                                    @elseif($employee->supervisory == '1')
-                                    <td class="py-3 px-3">
-                                        <input type="text" name="total_undertime[]" value="{{ $l->total_undertime }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 text-right">  
                                     </td>
                                     @else
                                     <td class="py-3 px-3">  
