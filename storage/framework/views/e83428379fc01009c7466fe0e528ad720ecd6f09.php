@@ -277,11 +277,22 @@
                         overtimeurl: overtimeurl,
                         _token: '<?php echo e(csrf_token()); ?>'
                     },
+                    dataType: 'json',
                     cache: false,
-                    success: function(output){
+                    success: function(response){
+                       // alert(response);
                         var replace_url=base_url+"/ot/create?employee_id="+employee_id+'&personal_id='+personal_id+'&month_year='+month_year+'&period='+period+'&overtimedate='+overtime_date;
                         window.history.replaceState(null, null, replace_url);
-                        document.getElementById("showTime").innerHTML  = output;
+                        //document.getElementById("showTime").innerHTML  = output;
+                        document.getElementById("timein").innerHTML  = response.time_in;
+                        document.getElementById("timeout").innerHTML  = response.time_out;
+                        document.getElementById("name").innerHTML  = response.fullname;
+                        if(response.total_sumhour==0){
+                            document.getElementById("no_hrs").innerHTML  = response.total_timemins+' min/s';
+                        }else{
+                            document.getElementById("no_hrs").innerHTML  = response.total_sumhour+' hr/s. & '+response.total_timemins+' min/s.';
+                        }
+                        document.getElementById("holidays").innerHTML  = response.holiday;
                         document.getElementById("overtimedate").value  = overtime_date;
                         $('#loadpage').load(replace_url+" #loadpage");
                         

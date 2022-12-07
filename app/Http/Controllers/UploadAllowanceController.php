@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\UploadAllowance;
 use App\Exports\ExportEmployee;
 use App\Models\Employee;
+use App\Models\Allowance;
+use App\Models\AllowanceRate;
 use Illuminate\Http\Request;
 use App\Imports\AllowanceImport;
 use Maatwebsite\Excel\Excel as ExcelExcel;
@@ -20,8 +22,9 @@ class UploadAllowanceController extends Controller
      */
     public function index()
     {
-        $data_allowance=array();
-        return view('upload.index',compact('data_allowance'));
+        $data=array();
+        $allowances=Allowance::all();
+        return view('upload.index',compact('data','allowances'));
     }
 
     /**
@@ -94,7 +97,7 @@ class UploadAllowanceController extends Controller
         return Excel::download(new ExportEmployee($request->from, $request->to), 'allowance.xlsx');
     }
 
-    public function import(){
+    public function import(Request $request){
         
        $array= Excel::toArray(new AllowanceImport, request()->file('allowance'), ExcelExcel::XLSX);
        $x=1;
@@ -122,6 +125,9 @@ class UploadAllowanceController extends Controller
 
                     if($col==0){
                         $data_allowance['emp_id'] = $val;
+                        echo $request->allowance_id . "<br>";
+                        echo $this->get_allowance_rate($val, $request->allowance_id);
+                        $data_allowance['rate'] = $this->get_allowance_rate($val, $request->allowance_id);
                     } if($col==1){
                         $data_allowance['personal_id']= $val;
                     } if($col==2){
@@ -167,17 +173,25 @@ class UploadAllowanceController extends Controller
             }
         }
 
-       
-        return view('upload.index',compact('data'));
+        $post_data = array(
+            "from"=>$request->from,
+            "to"=>$request->from,
+            "allowance_id"=>$request->allowance_id
+        );
+        $allowances=Allowance::all();
+        
+        //return view('upload.index',compact('data','post_data','allowances'));
         //return redirect('/')->with('success', 'All good!');
     }
 
-    public function getTimeDiff($starttime,$endtime){
+   public function get_allowance_rate($emp_id, $allowance_id){
 
-        $t1=strtotime($starttime); 
-        $t2=strtotime($endtime); 
-        $hours = floor((($t2- $t1)/60)/60);  
-        return $hours;
-    }
+    echo $emp_id. " - " . $allowance_id . '<br>';
+        $rate=AllowanceRate::where("employee_id", "=", $emp_id)
+                    ->where("allowance_id","=",$allowance_id)
+                    ->get(['allowance_rate']);
+
+      //  return $rate;
+   }
    
 }

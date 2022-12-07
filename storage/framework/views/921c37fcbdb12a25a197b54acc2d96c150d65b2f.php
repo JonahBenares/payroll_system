@@ -127,6 +127,8 @@
                                                 $data2[$key] = array(
                                                     'personal_id'=>$value->personal_id,
                                                     'time_in'=>$value->time_in,
+                                                    'rec_time'=>$value->recorded_time,
+                                                    'schedule_type'=>$value->schedule_type,
                                                     'recorded_time' => array(),
                                                 );
                                             }        
@@ -138,21 +140,41 @@
                                     $overall_time=[];
                                 ?>
                                 <?php $__currentLoopData = $data2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $logs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <?php 
-                                        $exp=implode("",$logs['recorded_time']);
-                                        $exp_time = explode(',', $exp); 
-                                        $date1 = new DateTime($logs['time_in']);
-                                        $date2 = new DateTime($exp_time[1]);
-                                        
-                                        $interval = $date2->diff($date1);
-                                        $hours   = $interval->format('%h'); 
-                                        $minutes = $interval->format('%i');
-                                        if($hours>=9 && $minutes>=30){
-                                            $total_hours[]=$interval->format("%H")*60 - 540;
-                                            $total_min[]=$interval->format("%i");
-                                        }else if($hours>=10){
-                                            $total_hours[]=$interval->format("%H")*60 - 540;
-                                            $total_min[]=$interval->format("%i");
+                                    <?php
+                                        if($logs['schedule_type']=='Regular'){
+                                            $exp=implode("",$logs['recorded_time']);
+                                            $exp_time = explode(',', $exp); 
+                                            $date1 = new DateTime($logs['time_in']);
+                                            $date2 = new DateTime($exp_time[1]);
+                                            $interval = $date2->diff($date1);
+                                            $hours   = $interval->format('%h'); 
+                                            $minutes = $interval->format('%i');
+                                            if($hours>=9 && $minutes>=30){
+                                                $total_hours[]=$interval->format("%H")*60 - 540;
+                                                $total_min[]=$interval->format("%i");
+                                            }else if($hours>=10){
+                                                $total_hours[]=$interval->format("%H")*60 - 540;
+                                                $total_min[]=$interval->format("%i");
+                                            }
+                                        }else if($logs['schedule_type']=='Shifting'){
+                                            
+                                            $timein_shift = getMintimein($logs['schedule_type'],$logs['rec_time'],$logs['personal_id']);
+                                            $timeout_shift = getMintimeout($logs['schedule_type'],$logs['rec_time'],$logs['personal_id']);
+                                            echo $timein_shift."<br>";
+                                            $exp=implode("",$logs['recorded_time']);
+                                            $exp_time = explode(',', $exp); 
+                                            $date1 = new DateTime($exp_time[0]);
+                                            $date2 = new DateTime($exp_time[1]);
+                                            $interval = $date2->diff($date1);
+                                            $hours   = $interval->format('%h'); 
+                                            $minutes = $interval->format('%i');
+                                            if($hours>=9 && $minutes>=30){
+                                                $total_hours[]=$interval->format("%H")*60 - 540;
+                                                $total_min[]=$interval->format("%i");
+                                            }else if($hours>=10){
+                                                $total_hours[]=$interval->format("%H")*60 - 540;
+                                                $total_min[]=$interval->format("%i");
+                                            }
                                         }
                                     ?>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -167,12 +189,12 @@
                                         </td>
                                         <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                             <a target='_blank' href="<?php echo e(route('ot.create',['employee_id' => $e->id,'personal_id' => $e->personal_id,'month_year' => $year."-".$month, 'period' => $exp_period])); ?>"  class="my-1  py-2" title="Update">
-                                                <?php echo e(number_format(round(abs($total_calculation) / 60,2),2)." hrs."); ?>
+                                                <?php echo e(number_format(round(abs($total_calculation) / 60,2),2)." hr/s."); ?>
 
                                             </a> 
                                         </td>
                                         <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                            <?php echo e(number_format($overtime_sum[$x],2)." hrs."); ?>
+                                            <?php echo e($overtime_sum[$x]." hr/s."); ?>
 
                                         </td>
                                         <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">

@@ -62,7 +62,6 @@
                                                 </svg>
                                             </button>
                                         </div>
-<<<<<<< HEAD
                                         <form method="POST" action="<?php echo e(route('export-allowance')); ?>">
                                             <?php echo csrf_field(); ?>
                                         <div class="flex justify-between space-x-2 my-5">
@@ -73,26 +72,13 @@
                                             <div class="w-1/2">
                                                 <label for="" class="text-sm">Date To:</label>
                                                 <input type="date" name="to" class="text-left text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-3xl focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-=======
-                                        <div class="flex justify-between space-x-2 my-5">
-                                            <div class="w-1/2">
-                                                <label for="" class="text-sm">Date From:</label>
-                                                <input type="date" class="text-left text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-3xl focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                                            </div>
-                                            <div class="w-1/2">
-                                                <label for="" class="text-sm">Date To:</label>
-                                                <input type="date" class="text-left text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-3xl focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
->>>>>>> 641eb7c0ccf89017c94901aa366ab270d2506def
                                             </div>
                                         </div>
                                         <div class="my-2">
                                             <button type="submit" class="flex items-center justify-center px-3 py-2 text-sm tracking-wide text-white transition-colors duration-200 transform bg-emerald-500 rounded-3xl white:bg-emerald-600 white:hover:bg-emerald-700 white:focus:bg-emerald-700 hover:bg-emerald-600 focus:outline-none focus:bg-emerald-500 focus:ring focus:ring-emerald-300 focus:ring-opacity-50 w-full" >Download</button>
                                         </div>
                                     </div>
-<<<<<<< HEAD
                                     </form>
-=======
->>>>>>> 641eb7c0ccf89017c94901aa366ab270d2506def
                                 </div>
                             </div>
                         </div>
@@ -117,19 +103,17 @@
                 <div class="flex justify-between mb-5"> 
                     <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900">
                         <div class="mx-2 text-left">
-                            <input type="date" class="text-sm block  px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
+                            <input type="date" name="from" class="text-sm block  px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
                         </div>
                         <div class="mx-2 text-left">
-                            <input type="date" class="text-sm block px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
+                            <input type="date" name="to" class="text-sm block px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
                         </div>
                         <div class="mx-2 text-left">
-                        <select class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
-                            <option value="" selected>Allowance Description</option>
-                            <option value="">Cash Allowance</option>
-                            <option value="">Clothing Allowance</option>
-                            <option value="">House Rent Allowance</option>
-                            <option value="">Meal and Transportation Allowance</option>
-                            <option value="">Uniform Allowance</option>
+                        <select name="allowance_id" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
+                            <option value="" selected>Allowance</option>
+                            <?php $__currentLoopData = $allowances; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($a->id); ?>"><?php echo e($a->allowance_name); ?></option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
                         </div>
                     </div>
@@ -186,8 +170,32 @@
                             </tr>
                         </thead>
                         <tbody>
-                           
+                           <?php $total_days=0 ?>
                             <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $all): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <?php $d1 = getTimeDiff($all['d1_in'],$all['d1_out']) ?>
+                                <?php $d2 = getTimeDiff($all['d2_in'],$all['d2_out']) ?>
+                                <?php $d3 = getTimeDiff($all['d3_in'],$all['d3_out']) ?>
+                                <?php $d4 = getTimeDiff($all['d4_in'],$all['d4_out']) ?>
+                                <?php $d5 = getTimeDiff($all['d5_in'],$all['d5_out']) ?>
+                                <?php $d6 = getTimeDiff($all['d6_in'],$all['d6_out']) ?>
+                                <?php $d7 = getTimeDiff($all['d7_in'],$all['d7_out']) ?>
+
+                                <?php if($d1!=0){
+                                    $total_days++;
+                                    } if($d2!=0){
+                                    $total_days++;
+                                    }if($d3!=0){
+                                    $total_days++;
+                                    }if($d4!=0){
+                                    $total_days++;
+                                    }if($d5!=0){
+                                    $total_days++;
+                                    }if($d6!=0){
+                                    $total_days++;
+                                    }if($d7!=0){
+                                    $total_days++;
+                                    }
+                                ?>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                  <?php echo e($all['fullname']); ?>
@@ -196,11 +204,13 @@
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
                                     <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
                                         <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
-                                            5 
+                                            <?php echo e($d1); ?>
+
                                         </div>
                                         <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
                                             <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
-                                            14:00 - 14:05
+                                           <?php echo e($all['d1_in'] . " - " . $all['d1_out']); ?>
+
                                             </div>
                                             <svg class="absolute z-10 w-6 h-6 text-white transform -translate-x-12 -translate-y-3 fill-current stroke-current" width="8" height="8">
                                             <rect x="12" y="-10" width="8" height="8" transform="rotate(45)" />
@@ -211,11 +221,13 @@
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
                                     <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
                                         <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
-                                            5 
+                                        <?php echo e(getTimeDiff($all['d2_in'],$all['d2_out'])); ?>
+
                                         </div>
                                         <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
                                             <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
-                                            14:00 - 14:05
+                                            <?php echo e($all['d2_in'] . " - " . $all['d2_out']); ?>
+
                                             </div>
                                             <svg class="absolute z-10 w-6 h-6 text-white transform -translate-x-12 -translate-y-3 fill-current stroke-current" width="8" height="8">
                                             <rect x="12" y="-10" width="8" height="8" transform="rotate(45)" />
@@ -226,11 +238,12 @@
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
                                     <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
                                         <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
-                                            5 
+                                        <?php echo e(getTimeDiff($all['d3_in'],$all['d3_out'])); ?> 
                                         </div>
                                         <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
                                             <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
-                                            14:00 - 14:05
+                                            <?php echo e($all['d3_in'] . " - " . $all['d3_out']); ?>
+
                                             </div>
                                             <svg class="absolute z-10 w-6 h-6 text-white transform -translate-x-12 -translate-y-3 fill-current stroke-current" width="8" height="8">
                                             <rect x="12" y="-10" width="8" height="8" transform="rotate(45)" />
@@ -241,11 +254,12 @@
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
                                     <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
                                         <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
-                                            5 
+                                        <?php echo e(getTimeDiff($all['d4_in'],$all['d4_out'])); ?>  
                                         </div>
                                         <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
                                             <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
-                                            14:00 - 14:05
+                                            <?php echo e($all['d4_in'] . " - " . $all['d4_out']); ?>
+
                                             </div>
                                             <svg class="absolute z-10 w-6 h-6 text-white transform -translate-x-12 -translate-y-3 fill-current stroke-current" width="8" height="8">
                                             <rect x="12" y="-10" width="8" height="8" transform="rotate(45)" />
@@ -256,11 +270,12 @@
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
                                     <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
                                         <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
-                                            5 
+                                        <?php echo e(getTimeDiff($all['d5_in'],$all['d5_out'])); ?>   
                                         </div>
                                         <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
                                             <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
-                                            14:00 - 14:05
+                                            <?php echo e($all['d5_in'] . " - " . $all['d5_out']); ?>
+
                                             </div>
                                             <svg class="absolute z-10 w-6 h-6 text-white transform -translate-x-12 -translate-y-3 fill-current stroke-current" width="8" height="8">
                                             <rect x="12" y="-10" width="8" height="8" transform="rotate(45)" />
@@ -271,11 +286,12 @@
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
                                     <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
                                         <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
-                                            5 
+                                        <?php echo e(getTimeDiff($all['d6_in'],$all['d6_out'])); ?>  
                                         </div>
                                         <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
                                             <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
-                                            14:00 - 14:05
+                                            <?php echo e($all['d6_in'] . " - " . $all['d6_out']); ?>
+
                                             </div>
                                             <svg class="absolute z-10 w-6 h-6 text-white transform -translate-x-12 -translate-y-3 fill-current stroke-current" width="8" height="8">
                                             <rect x="12" y="-10" width="8" height="8" transform="rotate(45)" />
@@ -286,11 +302,13 @@
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
                                     <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
                                         <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
-                                            5 
+                                        <?php echo e(getTimeDiff($all['d7_in'],$all['d7_out'])); ?>
+
                                         </div>
                                         <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
                                             <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
-                                            14:00 - 14:05
+                                            <?php echo e($all['d7_in'] . " - " . $all['d7_out']); ?>
+
                                             </div>
                                             <svg class="absolute z-10 w-6 h-6 text-white transform -translate-x-12 -translate-y-3 fill-current stroke-current" width="8" height="8">
                                             <rect x="12" y="-10" width="8" height="8" transform="rotate(45)" />
@@ -299,10 +317,10 @@
                                     </div>
                                 </td>
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                    <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
+                                    <input type="text" name="total_days" value="<?php echo e($total_days); ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
                                 </td>
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                    <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
+                                    <input type="text"  name="rate" value="<?php echo e($all['rate']); ?>"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
                                 </td>
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
                                     <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
@@ -311,6 +329,7 @@
                                     <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
                                 </td>
                             </tr>
+                            <?php $total_days=0 ?>
                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
