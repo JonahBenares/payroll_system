@@ -16,7 +16,9 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.10",
-        "power-components/livewire-powergrid": "^3.4"
+        "maatwebsite/excel": "^3.1",
+        "power-components/livewire-powergrid": "^3.4",
+        "psr/simple-cache": "2.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -32,7 +34,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/Helpers/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

@@ -13,12 +13,13 @@ use App\Http\Controllers\ShiftScheduleController;
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
+     <?php $__env->slot('header', null, []); ?>  <?php $__env->endSlot(); ?>     
     <div class="overflow-auto h-screen pb-28 pt-2 pr-2 pl-2 md:pt-0 md:pr-0 md:pl-0">
         <div class="flex flex-col flex-wrap sm:flex-row ">
             <div class="p-4 relative h-full w-full text-center bg-white rounded-lg shadow-lg white:bg-gray-800 white:border-gray-700">
-                <div class="flex justify-between pb-4 bg-white white:bg-gray-900">
+                <div class="flex justify-between  pb-4 bg-white white:bg-gray-900">
                     <div > 
-                        <h2 class="uppercase font-semibold py-2">Schedule</h2>
+                        <h2 class="uppercase font-semibold py-2">Shift Schedule</h2>
                     </div>
                     <div class="flex">
                         <a href="<?php echo e(route('shiftschedule.create')); ?>" type="button" >
@@ -30,7 +31,7 @@ use App\Http\Controllers\ShiftScheduleController;
                             </div>
                         </a>
                         <label for="table-search" class="sr-only">Search</label>
-                       
+                        <form class="flex items-center">   
                             <label for="simple-search" class="sr-only">Search</label>
                             <div class="relative w-full">
                                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -42,51 +43,49 @@ use App\Http\Controllers\ShiftScheduleController;
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                                 <span class="sr-only">Search</span>
                             </button>
-                       
+                        </form>
                     </div>
                 </div>
                 <hr>    
-                <form class="flex items-center" method="GET">   
-                <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900">
-                    <div class="mx-2 text-left">
-                        <select name="month" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
-                            <option value="" selected>Select Month</option>
-                            <option value="01">January</option>
-                            <option value="02">February</option>
-                            <option value="03">March</option>
-                            <option value="04">April</option>
-                            <option value="05">May</option>
-                            <option value="06">June</option>
-                            <option value="07">July</option>
-                            <option value="08">August</option>
-                            <option value="09">September</option>
-                            <option value="10">October</option>
-                            <option value="11">November</option>
-                            <option value="12">December</option>
-                        </select>
+                <form class="" method="GET">   
+                    <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900">
+                        <div class="mx-2 text-left">
+                            <select name="month" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
+                                <option value="" selected>Select Month</option>
+                                <option value="01">January</option>
+                                <option value="02">February</option>
+                                <option value="03">March</option>
+                                <option value="04">April</option>
+                                <option value="05">May</option>
+                                <option value="06">June</option>
+                                <option value="07">July</option>
+                                <option value="08">August</option>
+                                <option value="09">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                        </div>
+                        <?php $current_year = date("Y"); ?>
+                    
+                        <div class="mx-2 text-left">
+                            <select name="year" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
+                                <option value="" selected>Select Year</option>
+                                <?php for($x=2022;$x<=$current_year;$x++): ?>
+                                <option value="<?php echo e($x); ?>"><?php echo e($x); ?></option>
+                                <?php endfor; ?>
+                            </select>
+                        </div>
+                        <div class="mx-2 pt-3 text-left">
+                            <button type="submit" class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                                <span>Generate</span>
+                            </button>
+                        </div>
                     </div>
-                    <?php $current_year = date("Y"); ?>
-                  
-                    <div class="mx-2 text-left">
-                        <select name="year" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
-                            <option value="" selected>Select Year</option>
-                            <?php for($x=2022;$x<=$current_year;$x++): ?>
-                            <option value="<?php echo e($x); ?>"><?php echo e($x); ?></option>
-                            <?php endfor; ?>
-                        </select>
-                    </div>
-                    <div class="mx-2 pt-3 text-left">
-                        <button type="submit" class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                            <span>Generate</span>
-                        </button>
-                    </div>
-                </div>
-                 </form>
+                </form>
                 <div class="w-full overflow-x-auto overflow-y-hidden hover:overflow-y-auto  relative  pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 h-96 ">
                     <table class="text-sm text-left text-gray-500 white:text-gray-400 border border-gray-200 border-collapse" width="200%">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-20">
-                       
-                       
                             <tr>
                                 <td class="py-1 px-1 bg-gray-50 border border-gray-200 bg-gray-50 sticky left-0 z-10" rowspan="2" width="6%">Employee</td>
                                 <td class="py-1 px-1 bg-gray-50 border border-gray-200  bg-gray-50 " rowspan="2" width="5%">Position</td>
@@ -94,18 +93,16 @@ use App\Http\Controllers\ShiftScheduleController;
                                 <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center"><?php echo e($day['number']); ?></td>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tr>
-                       
                             <tr>
                             <?php $__currentLoopData = $no_of_days; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $day): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" ><?php echo e($day['days']); ?></td>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
                             </tr>
                         </thead>
-                        
                         <tbody>
                             <?php $__currentLoopData = $departments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dept): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
-                                <td colspan='<?php echo e($nodays); ?>'><?php echo e($dept->dept_name); ?></td>
+                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 bg-gray-50 sticky left-0 z-10 font-semibold" colspan='<?php echo e($nodays); ?>'><?php echo e($dept->dept_name); ?></td>
                             </tr>
                                 <?php $__currentLoopData = $employees; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $emp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <?php if($dept->id == $emp->department): ?>
@@ -136,8 +133,7 @@ use App\Http\Controllers\ShiftScheduleController;
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
-                    </table>      
-                       
+                    </table>
                 </div>
             </div> 
         </div>
