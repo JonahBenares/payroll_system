@@ -46,10 +46,15 @@
                 <?php endif; ?>
                 <form action="<?php echo e(route('ot.store')); ?>" method="POST" >
                     <?php echo csrf_field(); ?>
+<<<<<<< HEAD
+=======
+                        
+>>>>>>> 5d26f530fc1553696d72d4dba581682cd445006c
                         <div class="flex justify-center">
                             <div class="w-6/12">
                                 <label for="" class="block text-left text-sm text-gray-700 capitalize white:text-gray-200 px-2   w-60">Overtime Date: </label>
                                 <div class="px-2 flex justify-between">
+<<<<<<< HEAD
                                     <select id="overtime_date" name="overtime_date" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" onchange="getRecordedtime('<?php echo e($_GET['personal_id']); ?>')">
                                         <?php $x=0; ?>
                                         <option value=''>--Select Overtime Date--</option>
@@ -62,12 +67,30 @@
                                             <?php $x++; ?>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
+=======
+                                    <input type="date" id="overtime_date" name="overtime_date" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" onchange="getRecordedtime('<?php echo e($_GET['personal_id']); ?>')" value='<?php echo e((isset($_GET['overtimedate'])) ? $_GET['overtimedate'] : ''); ?>'>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between pb-2 px-2 mt-4 bg-amber-50 rounded-2xl">
+                            <div class="w-6/12 text-left px-2 mt-2">
+                               <p class="text-base uppercase ">Jason Flor</p>
+                               <div class="flex justify-between">
+                                    <div class="w-1/2">Time In:</div>
+                                    <div class="w-1/2">Time Out:</div>
+                               </div>
+                            </div>
+                            <div class="w-6/12 text-left px-2 mt-2">
+                                <div class="pt-6">
+                                    Number of Hours: 1 hr/s. & 34 min/s.
+>>>>>>> 5d26f530fc1553696d72d4dba581682cd445006c
                                 </div>
                             </div>
                         </div>
                         <div class="flex justify-left px-4 mt-6 text-sm"> 
                             <p class="text-base uppercase name" id="name"></p>
                         </div>
+<<<<<<< HEAD
                         <div class="flex justify-between pb-2 px-2 bg-amber-50 rounded-2xl text-sm">
                             <div class="w-6/12 text-left px-2 mt-2">
                                <div class="flex justify-between">
@@ -90,6 +113,8 @@
                         <!-- <div class="px-2 flex justify-between">
                             <span id="showTime"></span>
                         </div> -->
+=======
+>>>>>>> 5d26f530fc1553696d72d4dba581682cd445006c
                         <div id="loadpage">
                             <div class="flex justify-between pt-4 space-x-5">
                                 <div class="w-1/2 px-2 bg-amber-50 px-5 pb-5 rounded-2xl">

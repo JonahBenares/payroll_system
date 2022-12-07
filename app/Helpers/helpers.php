@@ -43,6 +43,5 @@ if (!function_exists('getTimeDiff')) {
             return $getmintimeout;
         }  
     }
-
 }
 ?>
