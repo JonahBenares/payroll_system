@@ -54,6 +54,7 @@
                                                 </svg>
                                             </button>
                                         </div>
+<<<<<<< HEAD
                                         <form method="POST" action="{{ route('export-allowance') }}">
                                             @csrf
                                         <div class="flex justify-between space-x-2 my-5">
@@ -64,13 +65,26 @@
                                             <div class="w-1/2">
                                                 <label for="" class="text-sm">Date To:</label>
                                                 <input type="date" name="to" class="text-left text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-3xl focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+=======
+                                        <div class="flex justify-between space-x-2 my-5">
+                                            <div class="w-1/2">
+                                                <label for="" class="text-sm">Date From:</label>
+                                                <input type="date" class="text-left text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-3xl focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                            </div>
+                                            <div class="w-1/2">
+                                                <label for="" class="text-sm">Date To:</label>
+                                                <input type="date" class="text-left text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-3xl focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+>>>>>>> 641eb7c0ccf89017c94901aa366ab270d2506def
                                             </div>
                                         </div>
                                         <div class="my-2">
                                             <button type="submit" class="flex items-center justify-center px-3 py-2 text-sm tracking-wide text-white transition-colors duration-200 transform bg-emerald-500 rounded-3xl white:bg-emerald-600 white:hover:bg-emerald-700 white:focus:bg-emerald-700 hover:bg-emerald-600 focus:outline-none focus:bg-emerald-500 focus:ring focus:ring-emerald-300 focus:ring-opacity-50 w-full" >Download</button>
                                         </div>
                                     </div>
+<<<<<<< HEAD
                                     </form>
+=======
+>>>>>>> 641eb7c0ccf89017c94901aa366ab270d2506def
                                 </div>
                             </div>
                         </div>
