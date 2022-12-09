@@ -127,6 +127,9 @@
                     </div>
                 </div>
                 </form>
+
+                <form method="POST" action="<?php echo e(route('uploadallowance.store')); ?>">
+                    <?php echo csrf_field(); ?>
                 <div class=" hover:overflow-x-auto overflow-x-hidden h-100 max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 border">
                     <table class="text-sm text-left text-gray-500 white:text-gray-400 border border-gray-200 border-collapse">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400">
@@ -170,7 +173,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                           <?php $total_days=0 ?>
+                           <?php $total_days=0;
+                           $ot_amount=0;
+                           $counter = 1; ?>
                             <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $all): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <?php $d1 = getTimeDiff($all['d1_in'],$all['d1_out']) ?>
                                 <?php $d2 = getTimeDiff($all['d2_in'],$all['d2_out']) ?>
@@ -180,7 +185,9 @@
                                 <?php $d6 = getTimeDiff($all['d6_in'],$all['d6_out']) ?>
                                 <?php $d7 = getTimeDiff($all['d7_in'],$all['d7_out']) ?>
 
-                                <?php if($d1!=0){
+                                <?php 
+                                 
+                                if($d1!=0){
                                     $total_days++;
                                     } if($d2!=0){
                                     $total_days++;
@@ -195,6 +202,24 @@
                                     }if($d7!=0){
                                     $total_days++;
                                     }
+
+                                    if($d1 >= 14){
+                                    $ot_amount+=50;
+                                    } if($d2>=14){
+                                    $ot_amount+=50;
+                                    }if($d3>=14){
+                                    $ot_amount+=50;
+                                    }if($d4>=14){
+                                    $ot_amount+=50;
+                                    }if($d5>=14){
+                                    $ot_amount+=50;
+                                    }if($d6>=14){
+                                    $ot_amount+=50;
+                                    }if($d7>=14){
+                                    $ot_amount+=50;
+                                    }
+
+                                    $total_amount = ($total_days * $all['rate'])+$ot_amount;
                                 ?>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white">
@@ -221,7 +246,7 @@
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
                                     <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
                                         <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
-                                        <?php echo e(getTimeDiff($all['d2_in'],$all['d2_out'])); ?>
+                                        <?php echo e($d2); ?>
 
                                         </div>
                                         <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
@@ -238,7 +263,7 @@
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
                                     <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
                                         <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
-                                        <?php echo e(getTimeDiff($all['d3_in'],$all['d3_out'])); ?> 
+                                        <?php echo e($d3); ?> 
                                         </div>
                                         <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
                                             <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
@@ -254,7 +279,7 @@
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
                                     <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
                                         <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
-                                        <?php echo e(getTimeDiff($all['d4_in'],$all['d4_out'])); ?>  
+                                        <?php echo e($d4); ?>  
                                         </div>
                                         <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
                                             <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
@@ -270,7 +295,7 @@
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
                                     <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
                                         <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
-                                        <?php echo e(getTimeDiff($all['d5_in'],$all['d5_out'])); ?>   
+                                        <?php echo e($d5); ?>   
                                         </div>
                                         <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
                                             <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
@@ -286,7 +311,7 @@
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
                                     <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
                                         <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
-                                        <?php echo e(getTimeDiff($all['d6_in'],$all['d6_out'])); ?>  
+                                        <?php echo e($d6); ?>  
                                         </div>
                                         <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
                                             <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
@@ -302,7 +327,7 @@
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
                                     <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
                                         <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
-                                        <?php echo e(getTimeDiff($all['d7_in'],$all['d7_out'])); ?>
+                                        <?php echo e($d7); ?>
 
                                         </div>
                                         <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
@@ -317,35 +342,71 @@
                                     </div>
                                 </td>
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                    <input type="text" name="total_days" value="<?php echo e($total_days); ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
+                                    <input type="text" id="total_days_<?php echo e($counter); ?>" name="total_days[]" onblur="autocalculate(<?php echo e($counter); ?>)" value="<?php echo e($total_days); ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
                                 </td>
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                    <input type="text"  name="rate" value="<?php echo e($all['rate']); ?>"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
+                                    <input type="text" id="rate_<?php echo e($counter); ?>" name="rate[]" value="<?php echo e($all['rate']); ?>" onblur="autocalculate(<?php echo e($counter); ?>)" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
                                 </td>
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                    <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
+                                    <input type="text" id="ot_amount_<?php echo e($counter); ?>" name="ot_amount[]" value="<?php echo e($ot_amount); ?>" onblur="autocalculate(<?php echo e($counter); ?>)" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
                                 </td>
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                    <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
+                                    <input type="text" id="total_amount_<?php echo e($counter); ?>" name="total_amount[]" value="<?php echo e($total_amount); ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
                                 </td>
                             </tr>
-                            <?php $total_days=0 ?>
+                            <input type="hidden" name="employee_id[]" value="<?php echo e($all['emp_id']); ?>">
+                            <input type="hidden" name="personal_id[]" value="<?php echo e($all['personal_id']); ?>">
+                            <input type="hidden" name="day1[]" value="<?php echo e($all['d1_in'] . '-' . $all['d1_out']); ?>">
+                            <input type="hidden" name="day2[]" value="<?php echo e($all['d2_in'] . '-' . $all['d2_out']); ?>">
+                            <input type="hidden" name="day3[]" value="<?php echo e($all['d3_in'] . '-' . $all['d3_out']); ?>">
+                            <input type="hidden" name="day4[]" value="<?php echo e($all['d4_in'] . '-' . $all['d4_out']); ?>">
+                            <input type="hidden" name="day5[]" value="<?php echo e($all['d5_in'] . '-' . $all['d5_out']); ?>">
+                            <input type="hidden" name="day6[]" value="<?php echo e($all['d6_in'] . '-' . $all['d6_out']); ?>">
+                            <input type="hidden" name="day7[]" value="<?php echo e($all['d7_in'] . '-' . $all['d7_out']); ?>">
+                            <input type="hidden" name="d1[]" value="<?php echo e($d1); ?>">
+                            <input type="hidden" name="d2[]" value="<?php echo e($d2); ?>">
+                            <input type="hidden" name="d3[]" value="<?php echo e($d3); ?>">
+                            <input type="hidden" name="d4[]" value="<?php echo e($d4); ?>">
+                            <input type="hidden" name="d5[]" value="<?php echo e($d5); ?>">
+                            <input type="hidden" name="d6[]" value="<?php echo e($d6); ?>">
+                            <input type="hidden" name="d7[]" value="<?php echo e($d7); ?>">
+                            <?php $total_days=0; $ot_amount=0; $counter++; ?>
                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
+                   
+                       <input type="hidden" id="counter" name="counter" value="<?php echo e($counter); ?>">          
+                        <input type="hidden" name="date_from" value="<?php echo e($post_data['from']); ?>">
+                        <input type="hidden" name="date_to" value="<?php echo e($post_data['to']); ?>">
+                        <input type="hidden" name="allowance_name" value="<?php echo e($post_data['allowance_id']); ?>">
+                  
                 </div>
                 <button class="flex items-center w-full justify-center px-3 py-2 mx-2 mt-3 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">Save</button>
             </div>
-            
+             </form>
         </div>
     </div>
-
-    
-        
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da)): ?>
 <?php $component = $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da; ?>
 <?php unset($__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da); ?>
 <?php endif; ?>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
+<script>  
+  
+    function autocalculate(counter){
+   
+         var total_days= document.getElementById('total_days_'+counter).value;
+     
+        var rate= document.getElementById('rate_'+counter).value
+        var ot_amount= document.getElementById('ot_amount_'+counter).value
+
+        var total_amount = (parseInt(total_days) * parseFloat(rate)) + parseFloat(ot_amount);
+      
+        document.getElementById('total_amount_'+counter).value = total_amount;
+
+}
+
+</script>  
 <?php /**PATH C:\xampp\htdocs\payroll_system\resources\views/upload/index.blade.php ENDPATH**/ ?>

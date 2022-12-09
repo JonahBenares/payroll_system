@@ -119,6 +119,9 @@
                     </div>
                 </div>
                 </form>
+
+                <form method="POST" action="{{ route('uploadallowance.store') }}">
+                    @csrf
                 <div class=" hover:overflow-x-auto overflow-x-hidden h-100 max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 border">
                     <table class="text-sm text-left text-gray-500 white:text-gray-400 border border-gray-200 border-collapse">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400">
@@ -162,7 +165,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                           @php $total_days=0 @endphp
+                           @php $total_days=0;
+                           $ot_amount=0;
+                           $counter = 1; @endphp
                             @foreach($data AS $all)
                                 @php $d1 = getTimeDiff($all['d1_in'],$all['d1_out']) @endphp
                                 @php $d2 = getTimeDiff($all['d2_in'],$all['d2_out']) @endphp
@@ -172,7 +177,9 @@
                                 @php $d6 = getTimeDiff($all['d6_in'],$all['d6_out']) @endphp
                                 @php $d7 = getTimeDiff($all['d7_in'],$all['d7_out']) @endphp
 
-                                @php if($d1!=0){
+                                @php 
+                                 
+                                if($d1!=0){
                                     $total_days++;
                                     } if($d2!=0){
                                     $total_days++;
@@ -187,6 +194,24 @@
                                     }if($d7!=0){
                                     $total_days++;
                                     }
+
+                                    if($d1 >= 14){
+                                    $ot_amount+=50;
+                                    } if($d2>=14){
+                                    $ot_amount+=50;
+                                    }if($d3>=14){
+                                    $ot_amount+=50;
+                                    }if($d4>=14){
+                                    $ot_amount+=50;
+                                    }if($d5>=14){
+                                    $ot_amount+=50;
+                                    }if($d6>=14){
+                                    $ot_amount+=50;
+                                    }if($d7>=14){
+                                    $ot_amount+=50;
+                                    }
+
+                                    $total_amount = ($total_days * $all['rate'])+$ot_amount;
                                 @endphp
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white">
@@ -210,7 +235,7 @@
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
                                     <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
                                         <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
-                                        {{ getTimeDiff($all['d2_in'],$all['d2_out']) }}
+                                        {{ $d2 }}
                                         </div>
                                         <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
                                             <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
@@ -225,7 +250,7 @@
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
                                     <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
                                         <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
-                                        {{ getTimeDiff($all['d3_in'],$all['d3_out']) }} 
+                                        {{ $d3 }} 
                                         </div>
                                         <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
                                             <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
@@ -240,7 +265,7 @@
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
                                     <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
                                         <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
-                                        {{ getTimeDiff($all['d4_in'],$all['d4_out']) }}  
+                                        {{ $d4 }}  
                                         </div>
                                         <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
                                             <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
@@ -255,7 +280,7 @@
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
                                     <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
                                         <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
-                                        {{ getTimeDiff($all['d5_in'],$all['d5_out']) }}   
+                                        {{ $d5 }}   
                                         </div>
                                         <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
                                             <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
@@ -270,7 +295,7 @@
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
                                     <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
                                         <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
-                                        {{ getTimeDiff($all['d6_in'],$all['d6_out']) }}  
+                                        {{ $d6 }}  
                                         </div>
                                         <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
                                             <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
@@ -285,7 +310,7 @@
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
                                     <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
                                         <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
-                                        {{ getTimeDiff($all['d7_in'],$all['d7_out']) }}
+                                        {{ $d7 }}
                                         </div>
                                         <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
                                             <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
@@ -298,29 +323,65 @@
                                     </div>
                                 </td>
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                    <input type="text" name="total_days" value="{{ $total_days }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
+                                    <input type="text" id="total_days_{{ $counter }}" name="total_days[]" onblur="autocalculate({{ $counter }})" value="{{ $total_days }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
                                 </td>
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                    <input type="text"  name="rate" value="{{ $all['rate'] }}"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
+                                    <input type="text" id="rate_{{ $counter }}" name="rate[]" value="{{ $all['rate'] }}" onblur="autocalculate({{ $counter }})" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
                                 </td>
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                    <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
+                                    <input type="text" id="ot_amount_{{ $counter }}" name="ot_amount[]" value="{{ $ot_amount }}" onblur="autocalculate({{ $counter }})" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
                                 </td>
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                    <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
+                                    <input type="text" id="total_amount_{{ $counter }}" name="total_amount[]" value="{{ $total_amount }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
                                 </td>
                             </tr>
-                            @php $total_days=0 @endphp
+                            <input type="hidden" name="employee_id[]" value="{{ $all['emp_id'] }}">
+                            <input type="hidden" name="personal_id[]" value="{{ $all['personal_id'] }}">
+                            <input type="hidden" name="day1[]" value="{{ $all['d1_in'] . '-' . $all['d1_out'] }}">
+                            <input type="hidden" name="day2[]" value="{{ $all['d2_in'] . '-' . $all['d2_out'] }}">
+                            <input type="hidden" name="day3[]" value="{{ $all['d3_in'] . '-' . $all['d3_out'] }}">
+                            <input type="hidden" name="day4[]" value="{{ $all['d4_in'] . '-' . $all['d4_out'] }}">
+                            <input type="hidden" name="day5[]" value="{{ $all['d5_in'] . '-' . $all['d5_out'] }}">
+                            <input type="hidden" name="day6[]" value="{{ $all['d6_in'] . '-' . $all['d6_out'] }}">
+                            <input type="hidden" name="day7[]" value="{{ $all['d7_in'] . '-' . $all['d7_out'] }}">
+                            <input type="hidden" name="d1[]" value="{{ $d1 }}">
+                            <input type="hidden" name="d2[]" value="{{ $d2 }}">
+                            <input type="hidden" name="d3[]" value="{{ $d3 }}">
+                            <input type="hidden" name="d4[]" value="{{ $d4 }}">
+                            <input type="hidden" name="d5[]" value="{{ $d5 }}">
+                            <input type="hidden" name="d6[]" value="{{ $d6 }}">
+                            <input type="hidden" name="d7[]" value="{{ $d7 }}">
+                            @php $total_days=0; $ot_amount=0; $counter++; @endphp
                            @endforeach
                         </tbody>
                     </table>
+                   
+                       <input type="hidden" id="counter" name="counter" value="{{ $counter }}">          
+                        <input type="hidden" name="date_from" value="{{ $post_data['from'] }}">
+                        <input type="hidden" name="date_to" value="{{ $post_data['to'] }}">
+                        <input type="hidden" name="allowance_name" value="{{ $post_data['allowance_id'] }}">
+                  
                 </div>
                 <button class="flex items-center w-full justify-center px-3 py-2 mx-2 mt-3 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">Save</button>
             </div>
-            
+             </form>
         </div>
     </div>
-
-    
-        
 </x-app-layout>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
+<script>  
+  
+    function autocalculate(counter){
+   
+         var total_days= document.getElementById('total_days_'+counter).value;
+     
+        var rate= document.getElementById('rate_'+counter).value
+        var ot_amount= document.getElementById('ot_amount_'+counter).value
+
+        var total_amount = (parseInt(total_days) * parseFloat(rate)) + parseFloat(ot_amount);
+      
+        document.getElementById('total_amount_'+counter).value = total_amount;
+
+}
+
+</script>  

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\UploadAllowance;
+use App\Models\UploadAllowanceDetail;
+use App\Models\UploadAllowanceTime;
 use App\Exports\ExportEmployee;
 use App\Models\Employee;
 use App\Models\Allowance;
@@ -12,6 +14,8 @@ use App\Imports\AllowanceImport;
 use Maatwebsite\Excel\Excel as ExcelExcel;
 use Maatwebsite\Excel\Facades\Excel;
 use DateTime;
+use DateInterval;
+use DatePeriod;
 
 class UploadAllowanceController extends Controller
 {
@@ -24,7 +28,12 @@ class UploadAllowanceController extends Controller
     {
         $data=array();
         $allowances=Allowance::all();
-        return view('upload.index',compact('data','allowances'));
+        $post_data = array(
+            "from"=>"",
+            "to"=>"",
+            "allowance_id"=>""
+        );
+        return view('upload.index',compact('data','allowances','post_data'));
     }
 
     /**
@@ -45,7 +54,57 @@ class UploadAllowanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $emp = $request->input('employee_id');
+        $id = UploadAllowance::insertGetId([
+            'from_date' => $request->date_from, 
+            'to_date' => $request->date_to, 
+            'allowance_id' =>  $request->allowance_name
+            ]);
+        $date_to = date('Y-m-d', strtotime($request->date_to . ' +1 day'));
+        $begin = new DateTime($request->date_from);
+        $end = new DateTime($date_to);
+
+        $interval = DateInterval::createFromDateString('1 day');
+        $period = new DatePeriod($begin, $interval, $end);
+
+       
+          
+        $counter = $request->counter;
+        $x=0;
+        foreach($emp AS $key=>$value){
+
+            $detailid=UploadAllowanceDetail::insertGetId([
+                'allowance_head_id' => $id,
+                'employee_id' => $value,
+                'personal_id' => $request->input('personal_id.'.$x),
+                'total_days' => $request->input('total_days.'.$x),
+                'allowance_amount' => $request->input('rate.'.$x),
+                'OT_allowance_amount' => $request->input('ot_amount.'.$x),
+                'total_allowance' => $request->input('total_amount.'.$x),
+            ]);
+
+            $days=1;
+            foreach ($period as $dt) {
+            // echo $value . " -  " .  . " - " . ."<br>";
+             
+             $time_explode = explode('-',$request->input('day'.$days.'.'.$x));
+             $time_in = $time_explode[0];
+             $time_out = $time_explode[1];
+                
+             UploadAllowanceTime::insert([
+                'allowance_head_id' => $id,
+                'allowance_detail_id' => $detailid,
+                'duty_date' => $dt->format("Y-m-d"),
+                'time_in' => $time_in,
+                'time_out' => $time_out,
+            ]);
+
+            $days++;
+            }
+        
+            
+            $x++;
+        }
     }
 
     /**
@@ -99,6 +158,7 @@ class UploadAllowanceController extends Controller
 
     public function import(Request $request){
         
+       
        $array= Excel::toArray(new AllowanceImport, request()->file('allowance'), ExcelExcel::XLSX);
        $x=1;
        $data_allowance=array();
@@ -125,9 +185,7 @@ class UploadAllowanceController extends Controller
 
                     if($col==0){
                         $data_allowance['emp_id'] = $val;
-                        echo $request->allowance_id . "<br>";
-                        echo $this->get_allowance_rate($val, $request->allowance_id);
-                        $data_allowance['rate'] = $this->get_allowance_rate($val, $request->allowance_id);
+                        $data_allowance['rate']=$this->get_allowance_rate($val,$request->allowance_id);
                     } if($col==1){
                         $data_allowance['personal_id']= $val;
                     } if($col==2){
@@ -175,23 +233,25 @@ class UploadAllowanceController extends Controller
 
         $post_data = array(
             "from"=>$request->from,
-            "to"=>$request->from,
+            "to"=>$request->to,
             "allowance_id"=>$request->allowance_id
         );
         $allowances=Allowance::all();
         
-        //return view('upload.index',compact('data','post_data','allowances'));
+        return view('upload.index',compact('data','allowances','post_data'));
         //return redirect('/')->with('success', 'All good!');
     }
 
    public function get_allowance_rate($emp_id, $allowance_id){
 
-    echo $emp_id. " - " . $allowance_id . '<br>';
-        $rate=AllowanceRate::where("employee_id", "=", $emp_id)
+   // echo $emp_id. " - " . $allowance_id . '<br>';
+        $rate=AllowanceRate::select('allowance_rate',)
+                    ->where("employee_id", "=", $emp_id)
                     ->where("allowance_id","=",$allowance_id)
-                    ->get(['allowance_rate']);
-
-      //  return $rate;
+                    ->get();
+        foreach($rate AS $r){
+            return $r->allowance_rate;
+        }
    }
    
 }
