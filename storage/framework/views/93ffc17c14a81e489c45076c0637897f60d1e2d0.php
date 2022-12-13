@@ -55,6 +55,9 @@
                                         <a href="<?php echo e(route('entry.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Accounting Entry</a>
                                     </li>
                                     <li class="relative">
+                                        <a href="<?php echo e(route('hmorate.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >HMO Rates</a>
+                                    </li>
+                                    <li class="relative">
                                         <a href="<?php echo e(route('emp.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Employee List</a>
                                     </li>
                                     <li class="relative">
@@ -75,9 +78,7 @@
                                     <li class="relative">
                                         <a href="<?php echo e(route('adjustmentrate.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Adjustment Rates</a>
                                     </li>
-                                    <li class="relative">
-                                        <a href="<?php echo e(route('hmorate.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >HMO Rates</a>
-                                    </li>
+                                   
                                     <li class="relative">
                                         <a href="<?php echo e(route('deductions.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Deductions Schedule</a>
                                     </li>
@@ -163,7 +164,7 @@
                                         <a href="<?php echo e(route("payrollsalary.index")); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Salary</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="<?php echo e(route("payrollallowance.index")); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowance</a>
+                                        <a href="<?php echo e(route("payroll_allowance.index")); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowance</a>
                                     </li>
                                     <li class="relative">
                                         <a href="<?php echo e(route('payrollovertime.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Overtime</a>

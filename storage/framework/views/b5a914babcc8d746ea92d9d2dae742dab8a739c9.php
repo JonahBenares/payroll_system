@@ -32,8 +32,8 @@
                                     <span>Download</span>
                                 </div>
                             </a>
-                    
-                            <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                          
+                                <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
                                 <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
                                     <div x-cloak @click="modelOpen = false"  
                                         x-transition:enter="transition ease-out duration-300 transform"
@@ -62,6 +62,7 @@
                                                 </svg>
                                             </button>
                                         </div>
+                                    
                                         <form method="POST" action="<?php echo e(route('export-allowance')); ?>">
                                             <?php echo csrf_field(); ?>
                                         <div class="flex justify-between space-x-2 my-5">
@@ -97,9 +98,20 @@
                             </button>
                        
                     </div>
+                   
                 </div>
-                <form class="flex items-center" method="POST" action="<?php echo e(route('import')); ?>" enctype="multipart/form-data">   
+                <form class="items-center" method="POST" action="<?php echo e(route('import')); ?>" enctype="multipart/form-data">   
                         <?php echo csrf_field(); ?>    
+                        <?php if(Session::has('success')): ?>
+                    <div class="mb-5 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline"><?php echo e(Session::get('success')); ?></span>
+                    </div>
+                    <?php endif; ?>
+                    <?php if(Session::has('fail')): ?>
+                        <div class="mb-5 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                            <span class="block sm:inline"><?php echo e(Session::get('fail')); ?></span>
+                        </div>
+                    <?php endif; ?>
                 <div class="flex justify-between mb-5"> 
                     <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900">
                         <div class="mx-2 text-left">

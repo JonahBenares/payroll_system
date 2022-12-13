@@ -118,7 +118,9 @@ Route::post('/import',[UploadAllowanceController::class,'import'])->name('import
 Route::resource('payrollsalary', PayrollSalaryController::class); 
 Route::get('/payroll_salary/bulk', [PayrollSalaryController::class, 'printBulk'])->middleware(['auth'])->name('printBulkSalary');
 
-Route::resource('payrollallowance', PayrollAllowanceController::class); 
+Route::resource('payroll_allowance', PayrollAllowanceController::class); 
+Route::post('/generate',[PayrollAllowanceController::class,'generate'])->name('generate');
+Route::get('/show/{id}/{head_id}', [PayrollAllowanceController::class, 'show'])->name('show');
 Route::get('/payroll_allowance/bulk', [PayrollAllowanceController::class, 'printBulk'])->middleware(['auth'])->name('printBulkAllowance');
 
 Route::resource('payrollovertime', PayrollOvertimeController::class); 
@@ -130,9 +132,6 @@ Route::get('/payroll_bonus/bulkprinting', [PayrollBonusController::class, 'print
 
 Route::resource('payrollsalary', PayrollSalaryController::class); 
 Route::get('/payroll_salary/bulk', [PayrollSalaryController::class, 'printBulk'])->middleware(['auth'])->name('printBulkSalary');
-
-Route::resource('payrollallowance', PayrollAllowanceController::class); 
-Route::get('/payroll_allowance/bulk', [PayrollAllowanceController::class, 'printBulk'])->middleware(['auth'])->name('printBulkAllowance');
 
 Route::resource('payrollovertime', PayrollOvertimeController::class); 
 Route::get('/payroll_overtime/bulkprinting', [PayrollOvertimeController::class, 'printBulk'])->middleware(['auth'])->name('printBulkOvertime');

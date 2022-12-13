@@ -97,14 +97,15 @@ class UploadAllowanceController extends Controller
                 'duty_date' => $dt->format("Y-m-d"),
                 'time_in' => $time_in,
                 'time_out' => $time_out,
+                'time_hours'=>$request->input('d'.$days.'.'.$x)
             ]);
 
             $days++;
             }
-        
-            
             $x++;
         }
+
+        return redirect()->route('uploadallowance.index')->with('success',"Allowance successfully uploaded!");
     }
 
     /**
@@ -219,10 +220,6 @@ class UploadAllowanceController extends Controller
                     } if($col==16){
                         $data_allowance['d7_out']=$val;
                     }
-
-                 
-                  
-
                 $col++;
                     
                 }
