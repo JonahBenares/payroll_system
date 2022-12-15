@@ -26,11 +26,16 @@ use App\Http\Controllers\PayrollOvertimeController;
 use App\Http\Controllers\PayrollBonusController;
 use App\Http\Controllers\ShiftScheduleController;
 use App\Http\Controllers\FiledLeaveController;
+use App\Http\Controllers\AllowanceSummaryController;
+use App\Http\Controllers\RfdReportController;
+use App\Http\Controllers\PayrollComputationController;
+
 
 
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\UploadAllowController;
+use App\Models\UploadAllowance;
 
 /*
 |--------------------------------------------------------------------------
@@ -140,6 +145,14 @@ Route::resource('payrollbonus', PayrollBonusController::class);
 Route::get('/payroll_bonus/bulkprinting', [PayrollBonusController::class, 'printBulk'])->middleware(['auth'])->name('printBulkBonus');
 
 Route::resource('shiftschedule', ShiftScheduleController::class);
+
+Route::resource('summaryAllowance', AllowanceSummaryController::class);
+Route::resource('rfdReport', RfdReportController::class);
+Route::get('/report_rfd/print', [RfdReportController::class, 'print'])->middleware(['auth'])->name('printRFD');
+
+Route::get('/upload/receive', [UploadAllowanceController::class, 'receive'])->middleware(['auth'])->name('receiveForm');
+Route::resource('payrollComp', PayrollComputationController::class);
+
 
 // Route::get('/shift_sched', [Shift_ScheduleController::class, 'shift_sched'])->middleware(['auth'])->name('shift_sched');
 // Route::get('/payroll_salary', [PayrollController::class, 'payroll_salary'])->middleware(['auth'])->name('payroll_salary');

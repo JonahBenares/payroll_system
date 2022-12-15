@@ -239,9 +239,9 @@ class UploadAllowanceController extends Controller
         //return redirect('/')->with('success', 'All good!');
     }
 
-   public function get_allowance_rate($emp_id, $allowance_id){
+    public function get_allowance_rate($emp_id, $allowance_id){
 
-   // echo $emp_id. " - " . $allowance_id . '<br>';
+        // echo $emp_id. " - " . $allowance_id . '<br>';
         $rate=AllowanceRate::select('allowance_rate',)
                     ->where("employee_id", "=", $emp_id)
                     ->where("allowance_id","=",$allowance_id)
@@ -249,6 +249,10 @@ class UploadAllowanceController extends Controller
         foreach($rate AS $r){
             return $r->allowance_rate;
         }
-   }
+    }
    
+
+    public function receive(){
+        return view('upload.receive');
+    }
 }
