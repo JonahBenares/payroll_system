@@ -67,15 +67,9 @@
                                         <input type="hidden" name="detailid[]" id="id" value="{{$l->id}}" id="id" />
                                         <input type="checkbox" value="1" name="filed[]" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600 check">
                                     </td>
-                                    @if($employee->supervisory == '1')
-                                    <td class="py-3 px-3">
-                                    Pay Period
-                                    </td>
-                                    @else
                                     <td class="py-3 px-3">
                                     {{ $l->date_absent }}
                                     </td>
-                                    @endif
                                     @if($l->leave_type == 'Undertime/Tardiness')
                                     <td class="py-3 px-3">
                                         <input type="text" name="undertime_mins[]" value="{{ $l->undertime_mins }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 text-right">  
