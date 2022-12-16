@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Employee extends Model
 {
     use HasFactory;
-    protected $table = 'employees';
+    protected $table = 'db_payroll.employees';
     protected $fillable = [
         'supervisory',
         'hourly_rate',
@@ -17,6 +17,10 @@ class Employee extends Model
         'salary_type',
         'accounting_entry_id'
     ];
-   
+    public function timekeeping()
+    {
+        $_this = new self;
+        return $_this->belongsToMany(Timekeeping::class, 'employees', 'personal_id', 'personal_id');
+    }
     
 }

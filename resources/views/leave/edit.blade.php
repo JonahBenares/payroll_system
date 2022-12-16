@@ -9,8 +9,8 @@
     
     <div class="overflow-auto h-screen pb-28 pt-2 pr-2 pl-2 md:pt-0 md:pr-0 md:pl-0">
         <div class="flex flex-col flex-wrap sm:flex-row ">
-            <div class="p-4 relative h-full w-full text-center bg-white rounded-2xl shadow-lg white:bg-gray-800 white:border-gray-700">
-                <div class="flex justify-between  pb-4 bg-white white:bg-gray-900">
+            <div class="p-4 relative h-full w-full text-center bg-white rounded-lg shadow-lg white:bg-gray-800 white:border-gray-700">
+                <div class="flex justify-between pb-2 bg-white white:bg-gray-900">
                     <div > 
                         <h2 class="uppercase font-semibold py-2 flex">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -20,13 +20,15 @@
                         </h2>
                     </div>
                     <div class="flex">
-                        <a href="{{ route('leavefailure.index') }}"  class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                            <span>Show List</span>
+                        <a href="{{ route('leavefailure.index') }}"   type="button">
+                            <div class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white transition-colors duration-200 transform bg-indigo-500 rounded-3xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                                <span>Show List</span>
+                            </div>
                         </a>
                     </div>
                 </div>
                 @php  $id=Request::segment(2) @endphp
-                <form action="{{ route('leavefailure.update',$id) }}" method='POST' class="mt-5">
+                <form action="{{ route('leavefailure.update',$id) }}" method='POST'>
                 @method("PATCH")
                     @csrf
                     <div class="overflow-x-auto relative">
@@ -58,16 +60,23 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            @if(!empty($leave))
                                 @foreach($leave as $l)
                                 <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
                                     <td class="py-3 px-3">
                                         <input type="hidden" name="detailid[]" id="id" value="{{$l->id}}" id="id" />
                                         <input type="checkbox" value="1" name="filed[]" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600 check">
                                     </td>
+                                    @if($employee->supervisory == '1')
+                                    <td class="py-3 px-3">
+                                    Pay Period
+                                    </td>
+                                    @else
                                     <td class="py-3 px-3">
                                     {{ $l->date_absent }}
                                     </td>
-                                    @if($l->leave_type != 'Absent' && $l->leave_type != 'FTL')
+                                    @endif
+                                    @if($l->leave_type == 'Undertime/Tardiness')
                                     <td class="py-3 px-3">
                                         <input type="text" name="undertime_mins[]" value="{{ $l->undertime_mins }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 text-right">  
                                     </td>
@@ -88,8 +97,8 @@
                                     {{ $l->leave_type }}
                                     </td>
                                 </tr>
-                                
                                 @endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>

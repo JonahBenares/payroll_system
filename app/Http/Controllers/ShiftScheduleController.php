@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\ShiftSchedule;
+use App\Models\ShiftScheduleDetail;
 use App\Models\Schedule;
 use App\Models\Holiday;
 use App\Models\Employee;
+use App\Models\Department;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -21,10 +23,35 @@ class ShiftScheduleController extends Controller
      
 
 
-    public function index()
+    public function index(Request $request)
     {
-        
-        return view("shift_sched.index");
+        $departments=Department::all();
+        $employees=Employee::all();
+
+        $req = count($request->all());
+       
+        if($req>0){
+            $mo_yr = $request->year."-".$request->month;
+            $nodays= Carbon::now()->month($request->month)->daysInMonth;
+        } else {
+            $mo_yr = date("Y-m");
+            $month = date("m");
+           
+            $nodays= Carbon::now()->month($month)->daysInMonth;
+        }
+
+        for($x=1;$x<=$nodays;$x++){
+            $date = $mo_yr."-".$x;
+            $date = Carbon::createFromFormat('Y-m-d', $date)->format('Y-m-d');
+            $day = Carbon::createFromFormat('Y-m-d', $date)->format('D');
+            $firstletter = mb_substr($day,0,1);
+            $no_of_days[] = array(
+                "number"=>$x,
+                "days"=>$firstletter,
+                "date_shift"=>$date
+            );
+        }
+        return view("shift_sched.index", compact('departments', 'employees','no_of_days','nodays'));
     }
 
     /**
@@ -32,6 +59,55 @@ class ShiftScheduleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public static function get_employee_sched($employee_id, $date){
+        $year = date("Y",strtotime($date));
+        $year_mo = date("Y-m",strtotime($date));
+       
+        $holiday = Holiday::where('holiday_date','=',$date)
+        ->where('calendar_year','=',$year)
+        ->get();
+
+        $holidaycount = count($holiday); 
+        //return $holidaycount;
+        if($holidaycount>0){
+            $type = Holiday::select('holiday_type')->where('holiday_date', $date)->get();
+            if($type = "Regular"){
+                $shift = "RH";
+            } else if($type = "Special"){
+                $shift = "SH";
+            } else {
+                $shift = "H";
+            }
+        } else {
+            $get_rd = ShiftSchedule::select('schedule_head.employee_id','schedule_head.schedule_code')
+                        ->join('schedule_detail','schedule_detail.schedule_head_id','=','schedule_head.id')
+                        ->where('schedule_head.employee_id','=',$employee_id)
+                        ->where('schedule_detail.rest_day','=',$date)
+                        ->get();
+
+            $count_rd = count($get_rd);
+            if($count_rd>0){
+                $shift = "RD";
+            } else{
+
+                $get_code = ShiftSchedule::select('schedule_code')
+                        ->where('employee_id','=',$employee_id)
+                        ->where('month_year','=',$year_mo)
+                        ->get();
+                $code_count=count($get_code);
+                if($code_count>0){
+                    $shift=$get_code[0]['schedule_code'];
+                } else {
+                    $shift="";
+                }
+                
+            }
+        }
+        return $shift;
+
+    }
+
     public function create()
     {
         $schedule=Schedule::all();
@@ -49,32 +125,99 @@ class ShiftScheduleController extends Controller
     public function store(Request $request)
     {
         $monthName=Carbon::createFromDate($request->year, $request->month);
-      
+        
         $mo_name= $monthName->format('F');
         
-        $rd1 = $request->rest_day1;
-        $rd2 = $request->rest_day2;
-    
-        if($request->alternate == '1'){
-           
-            if($request->alternate_RD == 'rd1'){ //Rest day1 is chosen for alternate option
-                $this->alternate_RD($rd1,$mo_name,$request->year,$request->restdays);
-            } else if($request->alternate_RD == 'rd2'){ //Rest day2 is chosen for alternate option
-                $this->alternate_RD($rd2,$mo_name,$request->year,$request->restdays);
-            }
-        
-        } else { // NO ALTERNATE RESTDAYS
-                $this->get_restdays($rd1,$rd2,$mo_name,$request->year);
+        if($request->sched_type == 'regular'){
+            $rd1 = $request->rest_day1;
+            $rd2 = $request->rest_day2;
+            foreach($request->employee AS $emp_id){
             
-        }
+                if($request->alternate == '1'){
+                
+                    if($request->alternate_RD == 'rd1'){ //Rest day1 is chosen for alternate option
+                        $rest_days = $this->alternate_RD($rd1,$mo_name,$request->year,$request->restdays);
+                        $rest_days2= $this->get_restdays("",$rd2,$mo_name,$request->year);
+                    } else if($request->alternate_RD == 'rd2'){ //Rest day2 is chosen for alternate option
+                        $rest_days = $this->alternate_RD($rd2,$mo_name,$request->year,$request->restdays);
+                        $rest_days2= $this->get_restdays($rd1,"",$mo_name,$request->year);
+                    }
+                
+                } else { // NO ALTERNATE RESTDAYS
+                    $rest_days = $this->get_restdays($rd1,$rd2,$mo_name,$request->year);
+                    
+                }
 
-        foreach($request->employee AS $key=>$value){
-            echo $key . " " . $value."<br>";
+                $personal_id = Employee::find($emp_id)->personal_id;
+                $month_year = $request->year."-".$request->month;
+                    $shift_id = ShiftSchedule::insertGetId([
+                        'employee_id'=>$emp_id,
+                        'personal_id'=>$personal_id,
+                        'schedule_code'=>$request->schedule_code,
+                        'month_year'=>$month_year,
+                        'schedule_type'=>$request->sched_type,
+                        'alternate'=>$request->alternate,
+                        'alternate_week'=>$request->restdays,
+                        'alternate_rd'=>$request->alternate_RD,
+                        'rd1_day'=>$request->rest_day1,
+                        'rd2_day'=>$request->rest_day2,
+                    ]);
+                    
+                
+                    foreach($rest_days AS $rdd){
+                        if(!empty($rdd)){
+                            ShiftScheduleDetail::create([
+                                'schedule_head_id'=>$shift_id,
+                                'rest_day'=>$rdd
+                            ]);
+                        }
+                    }
 
-        }
+                    if(!empty($rest_days2)){
+                        foreach($rest_days2 AS $rdd2){
+                            if(!empty($rdd2)){
+                                ShiftScheduleDetail::create([
+                                    'schedule_head_id'=>$shift_id,
+                                    'rest_day'=>$rdd2
+                                ]);
+                            }
+                        }
+                    }
+                }
+            } else if($request->sched_type == 'shifting'){
+                $e=0;
+                foreach($request->employee_shift AS $empshift_id){
+
+                    $personal_id = Employee::find($empshift_id)->personal_id;
+                    $month_year = $request->year."-".$request->month;
+                        $shift_id = ShiftSchedule::insertGetId([
+                            'employee_id'=>$empshift_id,
+                            'personal_id'=>$personal_id,
+                            'schedule_code'=>$request->schedule_code,
+                            'month_year'=>$month_year,
+                            'schedule_type'=>$request->sched_type,
+                        ]);
+                        
+                      
+                    
+                      
+                            $rds = explode(",",$request->restdays_shift[$e]);
+                            foreach($rds AS $rd){
+                                ShiftScheduleDetail::create([
+                                        'schedule_head_id'=>$shift_id,
+                                         'rest_day'=>$rd
+                                        ]);
+                            }
+                            // 
+                        $e++;
+                    }
+                }
+
+                return redirect()->route('shiftschedule.index')->with('success',"Shift Schedule added successfully!");
+     }
      
       
-    }
+         
 
     /**
      * Display the specified resource.
@@ -87,8 +230,12 @@ class ShiftScheduleController extends Controller
      public function get_restdays($rd1,$rd2,$mo_name,$year){
         for($x=1;$x<=5;$x++){
             $ordinal = $this->get_ordinal($x);
-            $restdays[] = new Carbon($ordinal .' ' .$rd1. ' of '.$mo_name.' '. $year);
-            $restdays[] = new Carbon($ordinal .' ' .$rd2. ' of '.$mo_name.' '. $year);
+            if(!empty($rd1)){
+                $restdays[] = new Carbon($ordinal .' ' .$rd1. ' of '.$mo_name.' '. $year);
+            }
+            if(!empty($rd2)){
+                $restdays[] = new Carbon($ordinal .' ' .$rd2. ' of '.$mo_name.' '. $year);
+            }
         }
 
         foreach($restdays AS $d){
@@ -141,6 +288,7 @@ class ShiftScheduleController extends Controller
         if($first_weekend == 0 && $second_weekend == 0 && $third_weekend == 0 && $fourth_weekend ==0 && $fifth_weekend ==0){
            
             $rd = array($firstRD, $secondRD, $lastRD);
+
         } else if($first_weekend > 0 && $second_weekend == 0 && $third_weekend == 0 && $fourth_weekend ==0 && $fifth_weekend ==0){
             // first weekend holiday only
             //echo 'hi';
@@ -479,11 +627,7 @@ class ShiftScheduleController extends Controller
           
          $data  = array_unique($rd);
          
-
-            foreach($data AS $d){
-                    echo $d . "<br>";
-            }
-           
+         return $data;  
           
      }
     public function check_holiday($rd,$year){
@@ -500,7 +644,7 @@ class ShiftScheduleController extends Controller
     public function fetchEmployees(Request $request)
     {
       
-        $employees = Employee::select('id','full_name')->get();
+        $employees = Employee::select('id','full_name')->orderBy('full_name', 'ASC')->get();
         return response()->json($employees);
     }
 

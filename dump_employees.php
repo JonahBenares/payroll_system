@@ -21,8 +21,10 @@
         $check_fetch=mysqli_fetch_array($check_local);
         if($check_fetch['ct'] == 0){
 
-             $con_local->query("INSERT INTO employees (personal_id, full_name, emp_num, business_unit, department, supervisory, emp_location, is_active) 
-                        VALUES ('$row_online[personal_id]', '$fullname','$row_online[emp_num]','$row_online[current_bu]','$row_online[current_dept]','$row_online[supervisor]','$row_online[current_location]','1')"); 
+            $get_position = mysqli_query($con_online,"SELECT j_position FROM `job_history` where personal_id = '$row_online[personal_id]' ORDER BY effective_date DESC LIMIT 1"); 
+            $fetch_position = mysqli_fetch_array($get_position);
+             $con_local->query("INSERT INTO employees (personal_id, full_name, emp_num, position, business_unit, department, supervisory, emp_location, is_active) 
+                        VALUES ('$row_online[personal_id]', '$fullname','$row_online[emp_num]','$fetch_position[j_position]', '$row_online[current_bu]','$row_online[current_dept]','$row_online[supervisor]','$row_online[current_location]','1')"); 
         }
     }
  } else {
@@ -36,7 +38,9 @@
             } else {
                 $is_active=0;
             }
-                $con_local->query("UPDATE employees SET business_unit = '$fetch_online2[current_bu]', department='$fetch_online2[current_dept]', emp_location='$fetch_online2[current_location]', is_active='$is_active' 
+            $get_position = mysqli_query($con_online,"SELECT j_position FROM `job_history` where personal_id = '$fetch_local2[personal_id]' ORDER BY effective_date DESC LIMIT 1"); 
+            $fetch_position = mysqli_fetch_array($get_position);
+                $con_local->query("UPDATE employees SET position = '$fetch_position[j_position]', business_unit = '$fetch_online2[current_bu]', department='$fetch_online2[current_dept]', emp_location='$fetch_online2[current_location]', is_active='$is_active' 
                                 WHERE personal_id = '$fetch_local2[personal_id]'");
             
         }
