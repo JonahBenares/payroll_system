@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\UploadAllowance;
+use App\Models\UploadAllowanceDetail;
+use App\Models\UploadAllowanceTime;
 use App\Models\PayrollAllowance;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,8 @@ class PayrollAllowanceController extends Controller
      */
     public function index()
     {
-        return view('payroll_allowance.index');
+        $allowance_details=array();
+        return view('payroll_allowance.index',compact('allowance_details'));
     }
 
     /**
@@ -44,11 +47,34 @@ class PayrollAllowanceController extends Controller
      * @param  \App\Models\PayrollAllowance  $payrollAllowance
      * @return \Illuminate\Http\Response
      */
-    public function show(PayrollAllowance $payrollAllowance)
-    {
-        return view('payroll_allowance.print');
+    public function show($id, $head_id)
+    {   
+       
+         $allowance_head= UploadAllowance::where("id","=",$head_id)->get();
+         $allowance_details = UploadAllowanceDetail::where("allowance_head_id","=",$head_id)
+                             ->where("id","=",$id)
+                             ->get();
+        $allowance_time = UploadAllowanceTime::where("allowance_head_id","=",$head_id)
+                            ->where("allowance_detail_id","=",$id)
+                            ->get();
+        return view('payroll_allowance.print', compact('id','head_id','allowance_head','allowance_details','allowance_time'));
     }
 
+    public function generate(Request $request){
+        $from= $request->input('from');
+        $to= $request->input('to');
+        $allowance= UploadAllowance::select('id')
+                    ->where("from_date","=",$from)
+                    ->where("to_date", "=",$to)
+                    ->get();
+
+        $id= $allowance[0]['id'];
+        
+        $allowance_details = UploadAllowanceDetail::where("allowance_head_id","=",$id)
+                            ->get();
+       
+        return view('payroll_allowance.index',compact('allowance_details'));
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -93,4 +119,6 @@ class PayrollAllowanceController extends Controller
     {
         return view('payroll_allowance.bulk');
     }
+ 
+   
 }

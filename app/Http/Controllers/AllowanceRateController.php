@@ -19,7 +19,7 @@ class AllowanceRateController extends Controller
         $employees = Employee::all();
         $rates = AllowanceRate::join('employees', 'employees.id', '=', 'allowance_rates.employee_id')
         ->join('allowances', 'allowances.id', '=', 'allowance_rates.allowance_id')
-        ->get(['allowance_rates.employee_id','allowance_rates.personal_id','allowances.allowance_name','allowances.allowance_rate']);
+        ->get(['allowance_rates.employee_id','allowance_rates.personal_id','allowances.allowance_name','allowance_rates.allowance_rate']);
         $rates_count = AllowanceRate::join('employees', 'employees.id', '=', 'allowance_rates.employee_id')
         ->join('allowances', 'allowances.id', '=', 'allowance_rates.allowance_id')->groupBy('allowance_rates.personal_id')
         ->get(['allowance_rates.employee_id','allowance_rates.personal_id','allowances.allowance_name','allowances.allowance_rate']);

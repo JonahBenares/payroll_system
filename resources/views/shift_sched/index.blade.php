@@ -94,7 +94,9 @@ use App\Http\Controllers\ShiftScheduleController;
                         <tbody>
                             @foreach($departments AS $dept)
                             <tr>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 bg-gray-50 sticky left-0 z-10 font-semibold" colspan='{{ $nodays }}'>{{ $dept->dept_name }}</td>
+                                <td class="bg-yellow-50 uppercase bg-gray-50  font-bold text-sm" colspan='{{ $nodays + 2 }}'>
+                                    <span class="py-1 px-1 sticky left-0 z-10">{{ $dept->dept_name }}</span>
+                                </td>
                             </tr>
                                 @foreach($employees AS $emp)
                                     @if($dept->id == $emp->department)

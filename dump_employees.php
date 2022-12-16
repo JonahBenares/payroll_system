@@ -3,8 +3,8 @@
  //$con_online=mysqli_connect("localhost","root","","db_hris_new");
  $con_local=mysqli_connect("localhost","root","","db_payroll");
 
- $mysqli_online=mysqli_query($con_online,"SELECT personal_id, lname, fname, emp_num, current_bu, current_dept, current_location, supervisor FROM personal_data WHERE emp_status = 'Regular' OR emp_status = 'Trainee'
-                        OR emp_status = 'Probationary' OR emp_status = 'Project Based'");
+ $mysqli_online=mysqli_query($con_online,"SELECT personal_id, lname, fname, emp_num, current_bu, current_dept, current_location, supervisor FROM personal_data WHERE (emp_status = 'Regular' OR emp_status = 'Trainee'
+                        OR emp_status = 'Probationary' OR emp_status = 'Project Based') AND personal_data.status = 'Active'");
  $count_rows_online=mysqli_num_rows($mysqli_online);
 
 
