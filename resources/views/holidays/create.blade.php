@@ -44,7 +44,12 @@
                     </div>
                     <div class=" mt-4 px-2">
                         <label for="" class="block text-left text-sm text-gray-700 capitalize white:text-gray-200">Holiday Type</label>
-                        <input type="text" name="holiday_type" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                        <select name="holiday_type" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                        <option value="" selected>-Select Type-</option>
+                        <option value="Regular">Regular</option>
+                        <option value="Special">Special</option>
+                        <option value="Double">Double</option>
+                        </select>
                     </div>
                     
                     <div class="flex ">

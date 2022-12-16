@@ -55,6 +55,9 @@
                                         <a href="{{ route('entry.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Accounting Entry</a>
                                     </li>
                                     <li class="relative">
+                                        <a href="{{ route('hmorate.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >HMO Rates</a>
+                                    </li>
+                                    <li class="relative">
                                         <a href="{{ route('emp.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Employee List</a>
                                     </li>
                                     <li class="relative">
@@ -75,9 +78,7 @@
                                     <li class="relative">
                                         <a href="{{ route('adjustmentrate.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Adjustment Rates</a>
                                     </li>
-                                    <li class="relative">
-                                        <a href="{{ route('hmorate.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >HMO Rates</a>
-                                    </li>
+                                   
                                     <li class="relative">
                                         <a href="{{ route('deductions.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Deductions Schedule</a>
                                     </li>
@@ -163,7 +164,7 @@
                                         <a href="{{ route("payrollsalary.index") }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Salary</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="{{ route("payrollallowance.index") }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowance</a>
+                                        <a href="{{ route("payroll_allowance.index") }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowance</a>
                                     </li>
                                     <li class="relative">
                                         <a href="{{ route('payrollovertime.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Overtime</a>
@@ -188,13 +189,13 @@
                             <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container1" x-bind:style="selected == 3 ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
                                 <ul>
                                     <li class="relative">
-                                        <a href="" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Sample 1</a>
+                                        <a href="{{ route('summaryAllowance.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowance Summary</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="{{ route('schedules.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Sample 2</a>
+                                        <a href="{{ route('rfdReport.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >RFD</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="{{ route('holiday.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Sample 3</a>
+                                        <a href="{{ route('payrollComp.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Payroll Computation</a>
                                     </li>
                                 </ul>
                             </div>

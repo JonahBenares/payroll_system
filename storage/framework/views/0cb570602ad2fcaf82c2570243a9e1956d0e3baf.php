@@ -47,20 +47,35 @@
                             <td class="px-3 py-3 sticky left-0 bg-gray-50 z-10" width="20%">Employee Name</td>
                             <td class="px-3 py-3">Location</td>
 
-                            <?php $__currentLoopData = $hmo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $h): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <td class="px-3 py-3"><?php echo e($h->level_description); ?></td>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
+<<<<<<< HEAD
+=======
+                          
                             <td class="px-3 py-3">Pag-Ibig Rate</td>
                             <td class="px-3 py-3">Hourly Rate</td>
                             <td class="px-3 py-3">Daily Rate</td>
                             <td class="px-3 py-3">Monthly Rate</td>
+>>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
+                            <?php $__currentLoopData = $hmo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $h): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <td class="px-3 py-3"><?php echo e($h->level_description); ?></td>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+<<<<<<< HEAD
+                            <td class="px-3 py-3">Pag-Ibig Rate</td>
+                            <td class="px-3 py-3">Hourly Rate</td>
+                            <td class="px-3 py-3">Daily Rate</td>
+                            <td class="px-3 py-3">Monthly Rate</td>
+=======
+>>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
                             <td class="px-3 py-3">Salary Type</td>
                             <td class="px-3 py-3 sticky right-0  bg-gray-50 " width="1%">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                                 </svg>
                             </td>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
                         </tr>
                         <?php $__currentLoopData = $employeelist; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $el): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr class="border-b">
@@ -74,6 +89,7 @@
                                 </div>
                             </td>
                             <td class="px-3 py-3"><?php echo e($el->location_name); ?></td>
+<<<<<<< HEAD
                             <?php $__currentLoopData = $hmo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $h): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <td class="px-3 py-3"><?php echo e($h->level_description); ?></td>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -82,6 +98,17 @@
                             <td class="px-3 py-3"></td>
                             <td class="px-3 py-3"></td>
                             <td class="px-3 py-3"></td>
+=======
+                          
+                            <td class="px-3 py-3"><?php echo e($el->pagibig_rate); ?></td>
+                            <td class="px-3 py-3"><?php echo e($el->hourly_rate); ?></td>
+                            <td class="px-3 py-3"><?php echo e($el->daily_rate); ?></td>
+                            <td class="px-3 py-3"><?php echo e($el->monthly_rate); ?></td>
+                            <?php $__currentLoopData = $hmo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $h): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <td class="px-3 py-3"><?php echo e(getHMODependent($el->id, $h->id)); ?></td>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <td class="px-3 py-3"><?php echo e($el->salary_type); ?></td>
+>>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
                             <td class="px-3 py-3 sticky right-0 bg-white">
                                 <a href="<?php echo e(route('emp.edit', $el->id)); ?>" class="" title="Update">
                                     <div class="py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">

@@ -7,12 +7,7 @@
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-     <?php $__env->slot('header', null, []); ?>  <?php $__env->endSlot(); ?>
-    <style>
-        [x-cloak] {
-        display: none;
-        }
-    </style>        
+     <?php $__env->slot('header', null, []); ?>  <?php $__env->endSlot(); ?>     
     <div class="overflow-auto h-screen pb-28 pt-2 pr-2 pl-2 md:pt-0 md:pr-0 md:pl-0">
         <div class="flex flex-col flex-wrap sm:flex-row">
             <div class="p-4 relative h-full w-full text-center  bg-white rounded-lg shadow-lg white:bg-gray-800 white:border-gray-700">

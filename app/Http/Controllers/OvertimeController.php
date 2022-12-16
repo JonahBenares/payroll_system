@@ -180,7 +180,7 @@ class OvertimeController extends Controller
         }
 
         $get_data=OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where('employee_id',$request->employee_id)->where('personal_id',$request->personal_id)->where('month_year','LIKE','%'.$request->month_year.'%')->where('overtime_date',$request->overtimedate)->first();
-        
+      
         $timedate = DB::select("SELECT t.personal_id,recorded_time, GROUP_CONCAT(recorded_time) AS timer,time_in,schedule_type FROM db_hris.timekeeping t INNER JOIN schedule_head sh ON t.personal_id=sh.personal_id INNER JOIN schedule_code sc ON sh.schedule_code=sc.id WHERE t.personal_id='$personal_id' AND (MONTH(recorded_time)='$exp_date[1]' OR MONTH(recorded_time)='$add_month]') AND (YEAR(recorded_time)='$exp_date[0]' OR YEAR(recorded_time)='$add_year') $query GROUP BY t.personal_id,recorded_time ORDER BY recorded_time ASC");
         $data2 = array();
         foreach($timedate AS $value){
@@ -284,7 +284,6 @@ class OvertimeController extends Controller
                 $date[$x]=$exp_date[0];
                 $x++;   
             }
-            
         }
         return view('overtime.create',compact('get_data','data2','hours','minutes','date'));
     }
