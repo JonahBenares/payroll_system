@@ -193,7 +193,7 @@
                                                         <?php  $percentage= $f->pay_percentage * 100 ?>
                                                         <div class="flex justify-between px-2 my-2">
                                                             <div class="w-2/4">Percentage:</div>
-                                                            <div class="w-2/4"><?php echo e($percentage); ?></div>
+                                                            <div class="w-2/4"><?php echo e($percentage); ?>%</div>
                                                         </div>
                                                         <?php endif; ?>
                                                         <div class="flex justify-between px-2 my-2">

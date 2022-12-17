@@ -1,5 +1,13 @@
-<x-app-layout>
-    <x-slot name="header"></x-slot>
+<?php if (isset($component)) { $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da = $component; } ?>
+<?php $component = App\View\Components\AppLayout::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('app-layout'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(App\View\Components\AppLayout::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+     <?php $__env->slot('header', null, []); ?>  <?php $__env->endSlot(); ?>
     <!-- component -->
     <style>
         [x-cloak] {
@@ -14,12 +22,12 @@
                     <div > 
                         <h2 class="uppercase font-semibold py-2">
                             ot List
-                            @if(!empty($month))
-                                @php 
+                            <?php if(!empty($month)): ?>
+                                <?php 
                                     $monthName = date('F', mktime(0, 0, 0, $month, 10));
-                                @endphp
-                                ({{ date('F',strtotime($monthName))." ".$year." | ".$exp_period }})
-                            @endif
+                                ?>
+                                (<?php echo e(date('F',strtotime($monthName))." ".$year." | ".$exp_period); ?>)
+                            <?php endif; ?>
                         </h2>
                     </div>
                     <div class="flex">
@@ -39,8 +47,8 @@
                         </form>
                     </div>
                 </div>
-                <form action="{{ route('filter_overtime') }}" method="POST">
-                    @csrf
+                <form action="<?php echo e(route('filter_overtime')); ?>" method="POST">
+                    <?php echo csrf_field(); ?>
                     <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900">
                         <div class="mx-2 text-left">
                             <select name="month" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60" required>
@@ -62,21 +70,21 @@
                         <div class="mx-2 text-left">
                             <select name="year" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60" required>
                                 <option value="">Select Year</option>
-                                @php
+                                <?php
                                     $year=date('Y');
-                                @endphp
-                                @for($y=2015;$y<=$year;$y++)
-                                    <option value="{{ $y }}">{{ $y }}</option>
-                                @endfor
+                                ?>
+                                <?php for($y=2015;$y<=$year;$y++): ?>
+                                    <option value="<?php echo e($y); ?>"><?php echo e($y); ?></option>
+                                <?php endfor; ?>
                             </select>
                         </div>
                         <div class="mx-2 text-left">
                             <select name="period" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60" required>
                                 <!-- <option value="" selected>Period</option> -->
                                 <option value="">--Select Period--</option>
-                                @foreach($cutoff AS $ca)
-                                <option value="{{$ca->cutoff_type."|".$ca->cutoff_start."-".$ca->cutoff_end}}">{{$ca->cutoff_type}}</option>
-                                @endforeach
+                                <?php $__currentLoopData = $cutoff; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ca): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <option value="<?php echo e($ca->cutoff_type."|".$ca->cutoff_start."-".$ca->cutoff_end); ?>"><?php echo e($ca->cutoff_type); ?></option>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </select>
                         </div>
                         <div class="mx-2 pt-2 text-left">
@@ -105,12 +113,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if(!empty($timekeeping))
-                            @php 
+                            <?php if(!empty($timekeeping)): ?>
+                            <?php 
                                 $x=0;
-                            @endphp
-                            @foreach($timekeeping AS $e)
-                                @php
+                            ?>
+                            <?php $__currentLoopData = $timekeeping; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $e): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <?php
                                     $data2 = array();
                                     foreach($timedate AS $value){
                                         if($value->personal_id==$e->personal_id){
@@ -131,9 +139,9 @@
                                     $total_min=[];
                                     $overall_time=[];
                                     $y=0;
-                                @endphp
-                                @foreach($data2 AS $logs)
-                                    @php
+                                ?>
+                                <?php $__currentLoopData = $data2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $logs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php
                                         if($logs['schedule_type']=='Regular'){
                                             $exp=implode("",$logs['recorded_time']);
                                             $exp_time = explode(',', $exp); 
@@ -219,36 +227,40 @@
                                             echo $hours."-".$timein."-".$timeout."<br>";
                                         }
                                         $y++;
-                                    @endphp
-                                @endforeach
-                                @php 
+                                    ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php 
                                     $total_calculation = array_sum($total_hours) + array_sum($total_min);
-                                @endphp
-                                @if(!empty($total_min))
+                                ?>
+                                <?php if(!empty($total_min)): ?>
                                     <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                         <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                            {{ $e->full_name }}
+                                            <?php echo e($e->full_name); ?>
+
                                         </td>
                                         <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                            <a target='_blank' href="{{ route('ot.create',['employee_id' => $e->id,'personal_id' => $e->personal_id,'month_year' => $year."-".$month, 'period' => $exp_period]) }}"  class="my-1  py-2" title="Update">
-                                                {{ number_format(round(abs($total_calculation) / 60,2),2)." hr/s." }}
+                                            <a target='_blank' href="<?php echo e(route('ot.create',['employee_id' => $e->id,'personal_id' => $e->personal_id,'month_year' => $year."-".$month, 'period' => $exp_period])); ?>"  class="my-1  py-2" title="Update">
+                                                <?php echo e(number_format(round(abs($total_calculation) / 60,2),2)." hr/s."); ?>
+
                                             </a> 
                                         </td>
                                         <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                            {{$overtime_sum[$x]." hr/s."}}
+                                            <?php echo e($overtime_sum[$x]." hr/s."); ?>
+
                                         </td>
                                         <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                            @if($overtime_amount[$x]!=null)
-                                                {{ number_format($overtime_amount[$x]->total_amount,2) }}
-                                            @endif
+                                            <?php if($overtime_amount[$x]!=null): ?>
+                                                <?php echo e(number_format($overtime_amount[$x]->total_amount,2)); ?>
+
+                                            <?php endif; ?>
                                         </td>
                                     </tr>
-                                @endif
-                                @php 
+                                <?php endif; ?>
+                                <?php 
                                     $x++;
-                                @endphp
-                            @endforeach
-                            @endif
+                                ?>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php endif; ?>
                         </tbody>
                     </table>
                 </div>
@@ -259,4 +271,10 @@
 
     
         
-</x-app-layout>
+ <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da)): ?>
+<?php $component = $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da; ?>
+<?php unset($__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da); ?>
+<?php endif; ?>
+<?php /**PATH C:\xampp\htdocs\payroll_system\resources\views/overtime/index.blade.php ENDPATH**/ ?>

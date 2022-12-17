@@ -181,7 +181,7 @@
                                                         @php  $percentage= $f->pay_percentage * 100 @endphp
                                                         <div class="flex justify-between px-2 my-2">
                                                             <div class="w-2/4">Percentage:</div>
-                                                            <div class="w-2/4">{{ $percentage }}</div>
+                                                            <div class="w-2/4">{{ $percentage }}%</div>
                                                         </div>
                                                         @endif
                                                         <div class="flex justify-between px-2 my-2">
