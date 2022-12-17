@@ -7,9 +7,9 @@
         }
     </style>
     
-    <div class="overflow-auto h-screen pb-28 pt-2 pr-2 pl-2 md:pt-0 md:pr-0 md:pl-0">
+    <div class=" h-screen pb-28 pt-2 pr-2 pl-2 md:pt-0 md:pr-0 md:pl-0">
         <div class="flex flex-col flex-wrap sm:flex-row ">
-            <div class="p-4 relative h-full w-full text-center bg-white rounded-lg shadow-lg white:bg-gray-800 white:border-gray-700">
+            <div class="p-4 relative h-screen w-full text-center bg-white rounded-lg shadow-lg white:bg-gray-800 white:border-gray-700">
                 <div class="flex justify-between  pb-4 bg-white white:bg-gray-900">
                     <div > 
                         <h2 class="uppercase font-semibold py-2">PAYROLL COMPUTATION</h2>
@@ -31,190 +31,769 @@
                         </form>
                     </div>                   
                 </div>
-                <form class="items-center"> 
-                    <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900 space-x-1">
-                        <div class="mx-2 text-left">
-                            <select name="month" class="text-sm block w-full px-2 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
-                                <option value="" selected>Select Month</option>
-                                <option value="01">January</option>
-                                <option value="02">February</option>
-                                <option value="03">March</option>
-                                <option value="04">April</option>
-                                <option value="05">May</option>
-                                <option value="06">June</option>
-                                <option value="07">July</option>
-                                <option value="08">August</option>
-                                <option value="09">September</option>
-                                <option value="10">October</option>
-                                <option value="11">November</option>
-                                <option value="12">December</option>
-                            </select>
-                        </div>
-                        <div class="mx-2 text-left">
-                            <select name="year" class="text-sm block w-full px-2 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
-                            <option value="" selected>Select Year</option>
-                                {{  $start_year = 2022 }}
-                                {{   $current_year = date("Y")  }}
-                                
-                                    @for($y=$start_year; $y<=$current_year; $y++)
-                                    <option value="{{ $y }}">{{ $y }}</option>
-                                    @endfor
-                            </select>
-                        </div>
-                        <div class="">
-                            <select name="" class="text-sm block w-52 px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
-                                <option value="" selected> Salary Period </option>
-                                <option></option>
-                            </select>
-                        </div>
-                        <div>
-                            <button type="submit" class="flex items-center justify-center px-3 py-2 mt-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">Filter</button>
-                        </div>
+                <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900 space-x-1">
+                    <div class="mx-2 text-left">
+                        <select name="month" class="text-sm block w-full px-2 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
+                            <option value="" selected>Select Month</option>
+                            <option value="01">January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
                     </div>
-                    <div class=" hover:overflow-x-auto overflow-x-hidden h-100 max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 ">
-                        <table class="text-sm text-left text-gray-500 white:text-gray-400 border border-gray-200 border-collapse w-full">
-                            <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400">
-                                <tr class="">
-                                    <th scope="col" class="py-2 px-2 text-center" width="3%">
-                                        #
-                                    </th>
-                                    <th scope="col" class="py-2 px-2" width="27%">
-                                        Particular 
-                                    </th>
-                                    <th scope="col" class="py-2 px-2" width="26%">
+                    <div class="mx-2 text-left">
+                        <select name="year" class="text-sm block w-full px-2 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
+                        <option value="" selected>Select Year</option>
+                            {{  $start_year = 2022 }}
+                            {{   $current_year = date("Y")  }}
+                            
+                                @for($y=$start_year; $y<=$current_year; $y++)
+                                <option value="{{ $y }}">{{ $y }}</option>
+                                @endfor
+                        </select>
+                    </div>
+                    <div class="">
+                        <select name="" class="text-sm block w-52 px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
+                            <option value="" selected> Salary Period </option>
+                            <option></option>
+                        </select>
+                    </div>
+                    <div>
+                        <button type="submit" class="flex items-center justify-center px-3 py-2 mt-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">Filter</button>
+                    </div>
+                </div>
+                <div class="text-left w-full mt-3">
+                    <span class="text-sm font-semibold">Sept 15, 2022 (Aug 21-Sept 5, 2022)</span>
+                </div>
+                <div class="relative">
+                    <div class="w-full overflow-x-auto overflow-y-hidden hover:overflow-y-auto absolute pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 h-96 bg-white text-left">
+                        <table class="relative text-sm text-left text-gray-500 white:text-gray-400 border border-gray-200 border-collapse" width="400%">
+                            <thead class="text-xs font-bold text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-40">
+                                <tr>
+                                    <td rowspan="2" class="py-1 px-1 text-center border sticky left-0 bg-gray-50 z-20" width="5%">
                                         Name
-                                    </th>
-                                    <th scope="col" class="py-2 px-2 text-center" width="10%">
-                                        Rate/Day
-                                    </th>
-                                    <th scope="col" class="py-2 px-2" width="20%"> 
-                                        Remarks
-                                    </th>
-                                    <th scope="col" class="py-2 px-2 text-center" width="14%">
-                                        Amount
-                                    </th>
+                                    </td>
+                                    <td rowspan="2" class="py-1 px-1 text-center border sticky left-[297px] bg-gray-50 z-20" width="2%">
+                                        Monthly Basic Pay 
+                                    </td>
+                                    <td rowspan="2" class="py-1 px-1 text-center border sticky left-[416px] bg-gray-50 z-20" width="2%">
+                                        June 12, 2022
+                                    </td>
+                                    <td colspan="9" class="py-1 px-1 text-center border" >
+                                        TAXABLE EARNINGS	
+                                    </td>
+                                    <td colspan="16" class="py-1 px-1 text-center border" >
+                                    </td>
+                                    <td colspan="5" class="py-1 px-1 text-center border" >
+                                        TAXABLE EARNINGS	
+                                    </td>
+                                    <td rowspan="2" class="py-1 px-1 text-center border" width="3%">
+                                        Net take home pay
+                                    </td>
+                                </tr>
+                                <tr class="">
+                                    <td scope="col" class="py-1 px-1 text-center border" width="2%">
+                                        Basic Salary	
+                                    </td>
+                                    <td scope="col" class="py-1 px-1 text-center border" width="2%"> 
+                                        Adjustment	
+                                    </td>
+                                    <td scope="col" class="py-1 px-1 text-center border" width="2%">
+                                        Absences/ Tardiness/ Undertime	
+                                    </td>
+                                    <td scope="col" class="py-1 px-1 text-center border" width="2%">
+                                        RH/ SH	
+                                    </td>
+                                    <td scope="col" class="py-1 px-1 text-center border" width="2%">
+                                        RD 	 
+                                    </td>
+                                    <td scope="col" class="py-1 px-1 text-center border" width="2%" >
+                                        OT/NDP	
+                                    </td>
+                                    <td scope="col" class="py-1 px-1 text-center border" width="2%">
+                                        BASIC- DAILY	
+                                    </td>
+                                    <td scope="col" class="py-1 px-1 text-center border" width="2%"> 
+                                        Consultancy/ Honorarium	
+                                    </td>
+                                    <td scope="col" class="py-1 px-1 text-center border" width="2%">
+                                        Gross Salary
+                                    </td>
+                                    <td scope="col" class="py-1 px-1 text-center border bg-orange-50" width="2%">
+                                        Philhealth 1% (April 2022)	
+                                    </td>
+                                    <td scope="col" class="py-1 px-1 text-center border bg-orange-50" width="2%">
+                                        Philhealth 4%	
+                                    </td>
+                                    <td scope="col" class="py-1 px-1 text-center border bg-orange-50" width="2%" >
+                                        HDMF	
+                                    </td>
+                                    <td scope="col" class="py-1 px-1 text-center border bg-orange-50" width="2%">
+                                        W/TAX	
+                                    </td>
+                                    <td scope="col" class="py-1 px-1 text-center border bg-orange-50" width="2%"> 
+                                        SSS Salary Loan	
+                                    </td>
+                                    <td scope="col" class="py-1 px-1 text-center border bg-orange-50" width="2%">
+                                        Calamity Loan	
+                                    </td>
+                                    <td scope="col" class="py-1 px-1 text-center border bg-orange-50" width="2%">
+                                        HDMF Salary Loan	
+                                    </td>
+                                    <td scope="col" class="py-1 px-1 text-center border bg-orange-50" width="2%">
+                                        Pag-ibig MP2	
+                                    </td>
+                                    <td scope="col" class="py-1 px-1 text-center border bg-orange-50" width="2%" >
+                                        Canteen	
+                                    </td>
+                                    <td scope="col" class="py-1 px-1 text-center border bg-orange-50" width="2%">
+                                        HMO	
+                                    </td>
+                                    <td scope="col" class="py-1 px-1 text-center border bg-orange-50" width="2%"> 
+                                        AUB Loan	
+                                    </td>
+                                    <td scope="col" class="py-1 px-1 text-center border bg-orange-50" width="2%">
+                                        Coop-Loan	
+                                    </td>
+                                    <td scope="col" class="py-1 px-1 text-center border bg-orange-50" width="2%">
+                                        Coop-Investment
+                                    </td>
+                                    <td scope="col" class="py-1 px-1 text-center border bg-orange-50" width="2%">
+                                        Cash Advance 	
+                                    </td>
+                                    <td scope="col" class="py-1 px-1 text-center border bg-orange-50" width="2%" >
+                                        Others (donation & Financial Assistance) 	
+                                    </td>
+                                    <td scope="col" class="py-1 px-1 text-center border bg-orange-50" width="2%">
+                                        Total
+                                    </td>
+                                    <td scope="col" class="py-1 px-1 text-center border" width="2%"> 
+                                        Basic	
+                                    </td>
+                                    <td scope="col" class="py-1 px-1 text-center border" width="2%">
+                                        Representation	
+                                    </td>
+                                    <td scope="col" class="py-1 px-1 text-center border" width="2%">
+                                        Others
+                                    </td>
+                                    <td scope="col" class="py-1 px-1 text-center border" width="2%">
+                                        Other Benefits-Adjustment 	
+                                    </td>
+                                    <td scope="col" class="py-1 px-1 text-center border" width="2%">
+                                        Total
+                                    </td>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white text-center">
-                                        999
-                                    </td>
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <input type="text" class="px-0 w-full text-sm bg-transparent border-0 text-left" value="Meal & Transportation Allow.">
-                                    </td>
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <input type="text" class="px-0 w-full text-sm bg-transparent border-0 text-left" value="Mira Rana">
-                                    </td>
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <input type="text" class="w-full text-sm bg-transparent border-0 text-center" value="300">
-                                    </td>
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <input type="text" class="w-full text-sm bg-transparent border-0 text-left">
-                                    </td>
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <input type="text" class="w-full text-sm bg-transparent border-0 text-right">
-                                    </td>
+                                <tr>
+                                    <td class="border px-1 sticky left-0 bg-gray-100 z-20 font-bold text-sm" colspan="3">Department</td>
+                                    <td class="border px-1 text-right text-sm" colspan="31"></td>
                                 </tr>
-                                <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white text-center">
-                                        999
-                                    </td>
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <input type="text" class="px-0 w-full text-sm bg-transparent border-0 text-left" value="Meal & Transportation Allow.">
-                                    </td>
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <input type="text" class="px-0 w-full text-sm bg-transparent border-0 text-left" value="Mira Rana">
-                                    </td>
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <input type="text" class="w-full text-sm bg-transparent border-0 text-center" value="300">
-                                    </td>
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <input type="text" class="w-full text-sm bg-transparent border-0 text-left">
-                                    </td>
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <input type="text" class="w-full text-sm bg-transparent border-0 text-right">
-                                    </td>
+                                <tr>
+                                    <td class="border px-1 sticky left-0 text-sm bg-white z-20">Employee 1</td>
+                                    <td class="border px-1 sticky left-[297px] text-sm text-right bg-yellow-100 z-20">999,999.00</td>
+                                    <td class="border px-1 sticky left-[416px] text-sm text-right bg-white z-20">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm bg-orange-100">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
                                 </tr>
-                                <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white text-center">
-                                        999
-                                    </td>
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <input type="text" class="px-0 w-full text-sm bg-transparent border-0 text-left" value="Meal & Transportation Allow.">
-                                    </td>
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <input type="text" class="px-0 w-full text-sm bg-transparent border-0 text-left" value="Mira Rana">
-                                    </td>
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <input type="text" class="w-full text-sm bg-transparent border-0 text-center" value="300">
-                                    </td>
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <input type="text" class="w-full text-sm bg-transparent border-0 text-left">
-                                    </td>
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <input type="text" class="w-full text-sm bg-transparent border-0 text-right">
-                                    </td>
+                                <tr>
+                                    <td class="border px-1 sticky left-0 text-sm bg-white z-20">Employee 2</td>
+                                    <td class="border px-1 sticky left-[297px] text-sm text-right bg-yellow-100 z-20">999,999.00</td>
+                                    <td class="border px-1 sticky left-[416px] text-sm text-right bg-white z-20">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm bg-orange-100">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
                                 </tr>
-                                <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white text-center">
-                                        999
-                                    </td>
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <input type="text" class="px-0 w-full text-sm bg-transparent border-0 text-left" value="Meal & Transportation Allow.">
-                                    </td>
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <input type="text" class="px-0 w-full text-sm bg-transparent border-0 text-left" value="Mira Rana">
-                                    </td>
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <input type="text" class="w-full text-sm bg-transparent border-0 text-center" value="300">
-                                    </td>
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <input type="text" class="w-full text-sm bg-transparent border-0 text-left">
-                                    </td>
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <input type="text" class="w-full text-sm bg-transparent border-0 text-right">
-                                    </td>
+                                <tr>
+                                    <td class="border px-1 sticky left-0 text-sm bg-white z-20">Employee 3</td>
+                                    <td class="border px-1 sticky left-[297px] text-sm text-right bg-yellow-100 z-20">999,999.00</td>
+                                    <td class="border px-1 sticky left-[416px] text-sm text-right bg-white z-20">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm bg-orange-100">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
                                 </tr>
-                                <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white text-center">
-                                        999
-                                    </td>
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <input type="text" class="px-0 w-full text-sm bg-transparent border-0 text-left" value="Meal & Transportation Allow.">
-                                    </td>
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <input type="text" class="px-0 w-full text-sm bg-transparent border-0 text-left" value="Mira Rana">
-                                    </td>
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <input type="text" class="w-full text-sm bg-transparent border-0 text-center" value="300">
-                                    </td>
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <input type="text" class="w-full text-sm bg-transparent border-0 text-left">
-                                    </td>
-                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <input type="text" class="w-full text-sm bg-transparent border-0 text-right">
-                                    </td>
+                                <tr class="bg-indigo-100 font-bold">
+                                    <td class="border px-1 sticky left-0 text-sm bg-indigo-100 z-20">Total</td>
+                                    <td class="border px-1 sticky left-[297px] text-sm text-right bg-indigo-100 z-20">999,999.00</td>
+                                    <td class="border px-1 sticky left-[416px] text-sm text-right bg-indigo-100 z-20">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
                                 </tr>
-                                <tr class="bg-yellow-50 border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                                    <td class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white text-center"></td>
-                                    <td class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center"></td>
-                                    <td class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center"></td>
-                                    <td class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center"></td>
-                                    <td colspan="2" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <div class="flex justify-between w-full space-x-5">
-                                            <p class="font-base text-base">Total: </p>
-                                            <input type="text" class="bg-transparent border-0 w-full font-bold text-base bg-transparent border-0 text-right p-0" value="999,999.00">
-                                        </div>
-                                    </td>
+                                <tr>
+                                    <td class="border px-1 sticky left-0 bg-gray-100 z-20 font-bold text-sm" colspan="3">Department</td>
+                                    <td class="border px-1 text-right text-sm" colspan="31"></td>
+                                </tr>
+                                <tr>
+                                    <td class="border px-1 sticky left-0 text-sm bg-white z-20">Employee 1</td>
+                                    <td class="border px-1 sticky left-[297px] text-sm text-right bg-yellow-100 z-20">999,999.00</td>
+                                    <td class="border px-1 sticky left-[416px] text-sm text-right bg-white z-20">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm bg-orange-100">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                </tr>
+                                <tr>
+                                    <td class="border px-1 sticky left-0 text-sm bg-white z-20">Employee 2</td>
+                                    <td class="border px-1 sticky left-[297px] text-sm text-right bg-yellow-100 z-20">999,999.00</td>
+                                    <td class="border px-1 sticky left-[416px] text-sm text-right bg-white z-20">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm bg-orange-100">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                </tr>
+                                <tr>
+                                    <td class="border px-1 sticky left-0 text-sm bg-white z-20">Employee 3</td>
+                                    <td class="border px-1 sticky left-[297px] text-sm text-right bg-yellow-100 z-20">999,999.00</td>
+                                    <td class="border px-1 sticky left-[416px] text-sm text-right bg-white z-20">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm bg-orange-100">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                </tr>
+                                <tr class="bg-indigo-100 font-bold">
+                                    <td class="border px-1 sticky left-0 text-sm bg-indigo-100 z-20">Total</td>
+                                    <td class="border px-1 sticky left-[297px] text-sm text-right bg-indigo-100 z-20">999,999.00</td>
+                                    <td class="border px-1 sticky left-[416px] text-sm text-right bg-indigo-100 z-20">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                </tr>
+                                <tr>
+                                    <td class="border px-1 sticky left-0 bg-gray-100 z-20 font-bold text-sm" colspan="3">Department</td>
+                                    <td class="border px-1 text-right text-sm" colspan="31"></td>
+                                </tr>
+                                <tr>
+                                    <td class="border px-1 sticky left-0 text-sm bg-white z-20">Employee 1</td>
+                                    <td class="border px-1 sticky left-[297px] text-sm text-right bg-yellow-100 z-20">999,999.00</td>
+                                    <td class="border px-1 sticky left-[416px] text-sm text-right bg-white z-20">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm bg-orange-100">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                </tr>
+                                <tr>
+                                    <td class="border px-1 sticky left-0 text-sm bg-white z-20">Employee 2</td>
+                                    <td class="border px-1 sticky left-[297px] text-sm text-right bg-yellow-100 z-20">999,999.00</td>
+                                    <td class="border px-1 sticky left-[416px] text-sm text-right bg-white z-20">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm bg-orange-100">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                </tr>
+                                <tr>
+                                    <td class="border px-1 sticky left-0 text-sm bg-white z-20">Employee 3</td>
+                                    <td class="border px-1 sticky left-[297px] text-sm text-right bg-yellow-100 z-20">999,999.00</td>
+                                    <td class="border px-1 sticky left-[416px] text-sm text-right bg-white z-20">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm bg-orange-100">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                </tr>
+                                <tr class="bg-indigo-100 font-bold">
+                                    <td class="border px-1 sticky left-0 text-sm bg-indigo-100 z-20">Total</td>
+                                    <td class="border px-1 sticky left-[297px] text-sm text-right bg-indigo-100 z-20">999,999.00</td>
+                                    <td class="border px-1 sticky left-[416px] text-sm text-right bg-indigo-100 z-20">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                </tr>
+                                <tr class="bg-red-100 font-bold">
+                                    <td class="border px-1 sticky left-0 text-sm bg-red-100 z-20" colspan="3"></td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                </tr>
+                                <tr class="bg-white font-bold">
+                                    <td class="border px-1 sticky left-0 text-sm bg-white z-20" colspan="3">COOP COLLECTIONS</td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm"></td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                </tr>
+                                <tr class="bg-emerald-100 font-bold">
+                                    <td class="border px-1 sticky left-0 text-sm bg-emerald-100 z-20 italic">Grand Total</td>
+                                    <td class="border px-1 sticky left-[297px] text-sm text-right bg-emerald-100 z-20">999,999.00</td>
+                                    <td class="border px-1 sticky left-[416px] text-sm text-right bg-emerald-100 z-20">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
+                                    <td class="border px-1 text-right text-sm">999,999.00</td>
                                 </tr>
                             </tbody>
+                            {{-- <thead>
+                                <tr style="background-color: #5b8969;">
+                                    <td rowspan="2" style="background-color: #F8C293; color: black;">Spray 4</td>
+                                    <td>Pollinate</td>
+                                    <td>7-10 days later</td>
+                                    <td>BENOMYL WP 25KG </td>
+                                    <td>benomyl 500g/kg</td>
+                                    <td>&nbsp;</td>
+                                    <td>1000</td>
+                                    <td>2.00</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Full bloom</td>
+                                    <td>Black Spot</td>
+                                    <td>WETCIT DUO 20L </td>
+                                    <td>borax 10g/orange oil 50g/l</td>
+                                    <td>&nbsp;</td>
+                                    <td>1000</td>
+                                    <td>25.00</td>
+                                    <td>100.0000</td>
+                                    <td>120.0000L</td>
+                                    <td>2500.0000</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="13" style="background-color: #9fb5d3;" class="h3 font-weight-bold">ANOTHER ONE</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="7" style="background-color: #F8C293; color: black;">Spray 7</td>
+                                    <td>20 cm</td>
+                                    <td>African Armyworm</td>
+                                    <td>CERATO 250 EC 5L </td>
+                                    <td>pyraclostrobin 250g/l</td>
+                                    <td>&nbsp;</td>
+                                    <td>1000</td>
+                                    <td>2.00</td>
+                                    <td>10.0000</td>
+                                    <td></td>
+                                    <td>20.0000</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </thead> --}}
                         </table>
-                        <a href="{{ route('printRFD') }}" type="button" class="w-full">
-                            <div class="flex items-center w-full justify-center px-3 py-2 mt-3 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">Print</div>
-                        </a>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
