@@ -246,31 +246,44 @@ class OvertimeController extends Controller
                         // $sched_time='22:00';
                         $timein=$exp_time[0];
                         $timeout=$timeout_shift;
-                        if(date('Hi',strtotime($timein))<='0600' || date('Hi',strtotime($timein))<='0659'){
-                            $sched_time='06:00';
+                        if($timeout!='00:00'){
+                            if(date('Hi',strtotime($timein))<='0600' || date('Hi',strtotime($timein))<='0659'){
+                                $sched_time='06:00';
+                            }else{
+                                $sched_time='22:00';
+                            }
+                            
+                            $nightHoursPerDay = date('H',strtotime($timeout)) + ( 24 - date('H',strtotime($sched_time)));
                         }else{
-                            $sched_time='22:00';
+                            $sched_time='00:00';
                         }
-                        $nightHoursPerDay = date('H',strtotime($timeout)) + ( 24 - date('H',strtotime($sched_time)));
-                    }else if($exp_time[0]!='' && $exp_time[1]!='' && $intimemax>='06' && $outtimemax>='2200'){
+                    }else if($exp_time[0]!='' && $exp_time[1]!='' && $intimemax>='06' && $outtimemax>='1400'){
                         // $sched_time='06:00';
                         $timein=$exp_time[0];
                         $timeout=$exp_time[1];
-                        if(date('Hi',strtotime($timein))<='0600' || date('Hi',strtotime($timein))<='0659'){
-                            $sched_time='06:00';
+                        if($timeout!='00:00'){
+                            if(date('Hi',strtotime($timein))<='0600' || date('Hi',strtotime($timein))<='0659'){
+                                $sched_time='06:00';
+                            }else{
+                                $sched_time='14:00';
+                            }
                         }else{
-                            $sched_time='14:00';
+                            $sched_time='00:00';
                         }
                     }else{
                         // $sched_time='22:00';
                         $timein=$exp_time[1];
                         $timeout=$timeout_shift;
-                        if(date('Hi',strtotime($timein))<='1359' || date('Hi',strtotime($timein))<='1459'){
-                            $sched_time='14:00';
+                        if($timeout!='00:00'){
+                            if(date('Hi',strtotime($timein))<='1359' || date('Hi',strtotime($timein))<='1459'){
+                                $sched_time='14:00';
+                            }else{
+                                $sched_time='22:00';
+                            }
+                            $nightHoursPerDay = date('H',strtotime($timeout)) + ( 24 - date('H',strtotime($sched_time)));
                         }else{
-                            $sched_time='22:00';
+                            $sched_time='00:00';
                         }
-                        $nightHoursPerDay = date('H',strtotime($timeout)) + ( 24 - date('H',strtotime($sched_time)));
                     }
                 }
                 
@@ -630,31 +643,43 @@ class OvertimeController extends Controller
                     if($exp_time[0]!='' && $exp_time[1]==''){
                         $timein=$exp_time[0];
                         $timeout=$timeout_shift;
-                        if(date('Hi',strtotime($timein))<='0600' || date('Hi',strtotime($timein))<='0659'){
-                            $sched_time='06:00';
+                        if($timeout!='00:00'){
+                            if(date('Hi',strtotime($timein))<='0600' || date('Hi',strtotime($timein))<='0659'){
+                                $sched_time='06:00';
+                            }else{
+                                $sched_time='22:00';
+                            }
+                            $nightHoursPerDay = date('H',strtotime($timeout)) + ( 24 - date('H',strtotime($sched_time)));
                         }else{
-                            $sched_time='22:00';
+                            $sched_time='00:00';
                         }
-                        $nightHoursPerDay = date('H',strtotime($timeout)) + ( 24 - date('H',strtotime($sched_time)));
-                    }else if($exp_time[0]!='' && $exp_time[1]!='' && $intimemax>='06' && $outtimemax>='2200'){
+                    }else if($exp_time[0]!='' && $exp_time[1]!='' && $intimemax>='06' && $outtimemax>='1400'){
                         // $sched_time='06:00';
                         $timein=$exp_time[0];
                         $timeout=$exp_time[1];
-                        if(date('Hi',strtotime($timein))<='0600' || date('Hi',strtotime($timein))<='0659'){
-                            $sched_time='06:00';
+                        if($timeout!='00:00'){
+                            if(date('Hi',strtotime($timein))<='0600' || date('Hi',strtotime($timein))<='0659'){
+                                $sched_time='06:00';
+                            }else{
+                                $sched_time='14:00';
+                            }
                         }else{
-                            $sched_time='14:00';
+                            $sched_time='00:00';
                         }
                     }else{
                         // $sched_time='22:00';
                         $timein=$exp_time[1];
                         $timeout=$timeout_shift;
-                        if(date('Hi',strtotime($timein))<='1359' || date('Hi',strtotime($timein))<='1459'){
-                            $sched_time='14:00';
+                        if($timeout!='00:00'){
+                            if(date('Hi',strtotime($timein))<='1359' || date('Hi',strtotime($timein))<='1459'){
+                                $sched_time='14:00';
+                            }else{
+                                $sched_time='22:00';
+                            }
+                            $nightHoursPerDay = date('H',strtotime($timeout)) + ( 24 - date('H',strtotime($sched_time)));
                         }else{
-                            $sched_time='22:00';
+                            $sched_time='00:00';
                         }
-                        $nightHoursPerDay = date('H',strtotime($timeout)) + ( 24 - date('H',strtotime($sched_time)));
                     }
                 }
                 
