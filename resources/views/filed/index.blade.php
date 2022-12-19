@@ -71,6 +71,26 @@
                         </button>
                     </div>
                 </div>
+
+                @if($emp_id != '')
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-10">
+                            <tr class="">
+                                <th scope="col" class="py-3 px-6">
+                                    Name: {{ $employee_name->full_name }}
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Month: {{ $monthName }}
+                                    Year: {{ $year_disp }}
+                                </th>
+                                <th scope="col" class="py-3 px-6" width="5%" align="center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                                    </svg>
+                                </th>
+                            </tr>
+                </thead>
+                @endif
+
                 </form>
                 <div class="overflow-x-auto overflow-y-hidden hover:overflow-y-auto h-100 relative max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 sm:rounded-2xl">
                     <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">

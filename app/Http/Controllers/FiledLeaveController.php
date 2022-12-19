@@ -25,6 +25,7 @@ class FiledLeaveController extends Controller
         if(isset($_GET['month']) && isset($_GET['year'])){
             $month=$_GET['month'];
             $year=$_GET['year'];
+            
         }else{
             $month=date('m');
             $year=date('Y');
@@ -32,10 +33,13 @@ class FiledLeaveController extends Controller
         $employees = Employee::all()->where('is_active', '=', 1);
         $employee_name = Employee::where('id',$employee_id)->first();
         $cancelled = LeaveFailureDetail::join('users', 'users.id', '=', 'leave_filing_detail.cancelled_by')->first();
+        $monthName = date('F', mktime(0, 0, 0, $month, 10));
+        $year_disp = $year;
+        $emp_id = $employee_id;
         $filed = LeaveFailure::join('employees', 'employees.id', '=', 'leave_filing_head.employee_id')
         ->join('leave_filing_detail', 'leave_filing_head_id', '=', 'leave_filing_head.id')
         ->where('filed', '=', 1)->where('month',$month)->where('month',$month)->where('year', $year)->where('employee_id', $employee_id)->groupBy('leave_filing_head.personal_id')->get();
-        return view('filed.index',compact('filed','employees','employee_name','cancelled'));
+        return view('filed.index',compact('filed','employees','employee_name','cancelled','monthName','year_disp','emp_id'));
     }
 
     /**
