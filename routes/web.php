@@ -29,6 +29,10 @@ use App\Http\Controllers\FiledLeaveController;
 use App\Http\Controllers\AllowanceSummaryController;
 use App\Http\Controllers\RfdReportController;
 use App\Http\Controllers\PayrollComputationController;
+use App\Http\Controllers\DTRofficeController;
+use App\Http\Controllers\DTRsiteController;
+use App\Http\Controllers\OTofficeController;
+use App\Http\Controllers\OTsiteController;
 
 
 
@@ -152,6 +156,10 @@ Route::get('/report_rfd/print', [RfdReportController::class, 'print'])->middlewa
 
 Route::get('/upload/receive', [UploadAllowanceController::class, 'receive'])->middleware(['auth'])->name('receiveForm');
 Route::resource('payrollComp', PayrollComputationController::class);
+Route::resource('dtrOffice', DTRofficeController::class);
+Route::resource('dtrSite', DTRsiteController::class);
+Route::resource('otOffice', OTofficeController::class);
+Route::resource('otSite', OTsiteController::class);
 
 
 // Route::get('/shift_sched', [Shift_ScheduleController::class, 'shift_sched'])->middleware(['auth'])->name('shift_sched');

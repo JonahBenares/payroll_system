@@ -58,7 +58,7 @@
                             </div>
                         </div>
                         <div class="flex justify-left px-4 mt-6 text-sm"> 
-                            <p class="text-base uppercase name" id="name"></p>
+                            <p class="text-base uppercase name font-bold" id="name"></p>
                         </div>
                         <div class="flex justify-between pb-2 px-2 bg-amber-50 rounded-2xl text-sm">
                             <div class="w-6/12 text-left px-2 mt-2">
