@@ -83,12 +83,34 @@
                 </div>
 
                 <?php if($emp_id != ''): ?>
+<<<<<<< HEAD
                 <div class="flex mt-5 uppercase">
                     <p class="font-semibold text-lg leading-none "><?php echo e($employee_name->full_name); ?> </p>
                 </div>
                 <div class="flex space-x-1 uppercase">
                     <p class="text-sm"><?php echo e($monthName); ?> </p>
                     <p class="text-sm"><?php echo e($year_disp); ?> </p></div>
+=======
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-10">
+                            <tr class="">
+                                <th scope="col" class="py-3 px-6">
+                                    Name: <?php echo e($employee_name->full_name); ?>
+
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Month: <?php echo e($monthName); ?>
+
+                                    Year: <?php echo e($year_disp); ?>
+
+                                </th>
+                                <th scope="col" class="py-3 px-6" width="5%" align="center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                                    </svg>
+                                </th>
+                            </tr>
+                </thead>
+>>>>>>> a55b49ddb58881118c2730d86e5f988d4fc5f320
                 <?php endif; ?>
 
                 </form>
