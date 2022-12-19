@@ -47,24 +47,25 @@
                         <td></td>
                         <td width="5%"></td>
                         <td width="10%">APV:</td>
-                        <td width="20%"class="border-b">September</td>
+                        <td width="20%"class="border-b"></td>
                     </tr>
+                  
                     <tr>
                         <td>Company</td>
-                        <td class="border-b">CENPRI - SITE</td>
+                        <td class="border-b"><?php echo e(getBUName($emp_id)); ?></td>
                         <td ></td>
                         <td>Date:</td>
-                        <td class="border-b">September</td>
+                        <td class="border-b"></td>
                     </tr>
-                    <?php $__currentLoopData = $allowance_details; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $details): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                   
                     <tr>
                         <td>Pay To:</td>
-                        <td class="border-b"><?php echo e(getEmployeeName($details->employee_id)); ?></td>
+                        <td class="border-b"><?php echo e(getEmployeeName($emp_id)); ?></td>
                         <td></td>
                         <td>Due Date:</td>
-                        <td class="border-b">September</td>
+                        <td class="border-b"></td>
                     </tr>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                   
                     <tr>
                         <td colspan="5" class="pt-2"></td>
                     </tr>
@@ -166,10 +167,10 @@
                                     <td class=""><br></td>
                                 </tr>
                                 <tr>
-                                    <td class="border-r text-center font-bold">Sample Employee</td>
-                                    <td class="border-r text-center font-bold">Sample Employee</td>
-                                    <td class="border-r text-center font-bold">Sample Employee</td>
-                                    <td class=" text-center font-bold">Sample Employee</td>
+                                    <td class="border-r text-center font-bold"><?php echo e($session_name); ?></td>
+                                    <td class="border-r text-center font-bold">Cristy Cesar</td>
+                                    <td class="border-r text-center font-bold">Marianita Tabilla</td>
+                                    <td class=" text-center font-bold"><?php echo e(getEmployeeName($emp_id)); ?></td>
                                 </tr>
                             </table>
                         </td>
@@ -206,24 +207,25 @@
                         <td></td>
                         <td width="5%"></td>
                         <td width="10%">APV:</td>
-                        <td width="20%"class="border-b">September</td>
+                        <td width="20%"class="border-b"></td>
                     </tr>
+                  
                     <tr>
                         <td>Company</td>
-                        <td class="border-b">CENPRI</td>
+                        <td class="border-b"><?php echo e(getBUName($emp_id)); ?></td>
                         <td ></td>
                         <td>Date:</td>
-                        <td class="border-b">September</td>
+                        <td class="border-b"></td>
                     </tr>
-                    <?php $__currentLoopData = $allowance_details; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $details): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                   
                     <tr>
                         <td>Pay To:</td>
-                        <td class="border-b"><?php echo e(getEmployeeName($details->employee_id)); ?></td>
+                        <td class="border-b"><?php echo e(getEmployeeName($emp_id)); ?></td>
                         <td></td>
                         <td>Due Date:</td>
-                        <td class="border-b">September</td>
+                        <td class="border-b"></td>
                     </tr>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    
                     <tr>
                         <td colspan="5" class="pt-2"></td>
                     </tr>
@@ -325,10 +327,10 @@
                                     <td class=""><br></td>
                                 </tr>
                                 <tr>
-                                    <td class="border-r text-center font-bold">Sample Employee</td>
-                                    <td class="border-r text-center font-bold">Sample Employee</td>
-                                    <td class="border-r text-center font-bold">Sample Employee</td>
-                                    <td class=" text-center font-bold">Sample Employee</td>
+                                    <td class="border-r text-center font-bold"><?php echo e($session_name); ?></td>
+                                    <td class="border-r text-center font-bold">Cristy Cesar</td>
+                                    <td class="border-r text-center font-bold">Marianita Tabilla</td>
+                                    <td class=" text-center font-bold"><?php echo e(getEmployeeName($emp_id)); ?></td>
                                 </tr>
                             </table>
                         </td>

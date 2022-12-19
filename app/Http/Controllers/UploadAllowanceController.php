@@ -235,7 +235,8 @@ class UploadAllowanceController extends Controller
         );
         $allowances=Allowance::all();
         
-        return view('upload.index',compact('data','allowances','post_data'));
+
+        return view('upload.index',compact('data','post_data','allowances'));
         //return redirect('/')->with('success', 'All good!');
     }
 
@@ -255,4 +256,5 @@ class UploadAllowanceController extends Controller
     public function receive(){
         return view('upload.receive');
     }
+
 }
