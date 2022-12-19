@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\UploadAllowance;
+<<<<<<< HEAD
+=======
 use App\Models\UploadAllowanceDetail;
 use App\Models\UploadAllowanceTime;
+>>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
 use App\Exports\ExportEmployee;
 use App\Models\Employee;
 use App\Models\Allowance;
@@ -14,8 +17,11 @@ use App\Imports\AllowanceImport;
 use Maatwebsite\Excel\Excel as ExcelExcel;
 use Maatwebsite\Excel\Facades\Excel;
 use DateTime;
+<<<<<<< HEAD
+=======
 use DateInterval;
 use DatePeriod;
+>>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
 
 class UploadAllowanceController extends Controller
 {
@@ -28,12 +34,16 @@ class UploadAllowanceController extends Controller
     {
         $data=array();
         $allowances=Allowance::all();
+<<<<<<< HEAD
+        return view('upload.index',compact('data','allowances'));
+=======
         $post_data = array(
             "from"=>"",
             "to"=>"",
             "allowance_id"=>""
         );
         return view('upload.index',compact('data','allowances','post_data'));
+>>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
     }
 
     /**
@@ -159,7 +169,10 @@ class UploadAllowanceController extends Controller
 
     public function import(Request $request){
         
+<<<<<<< HEAD
+=======
        
+>>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
        $array= Excel::toArray(new AllowanceImport, request()->file('allowance'), ExcelExcel::XLSX);
        $x=1;
        $data_allowance=array();
@@ -186,7 +199,13 @@ class UploadAllowanceController extends Controller
 
                     if($col==0){
                         $data_allowance['emp_id'] = $val;
+<<<<<<< HEAD
+                        echo $request->allowance_id . "<br>";
+                        echo $this->get_allowance_rate($val, $request->allowance_id);
+                        $data_allowance['rate'] = $this->get_allowance_rate($val, $request->allowance_id);
+=======
                         $data_allowance['rate']=$this->get_allowance_rate($val,$request->allowance_id);
+>>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
                     } if($col==1){
                         $data_allowance['personal_id']= $val;
                     } if($col==2){
@@ -220,6 +239,13 @@ class UploadAllowanceController extends Controller
                     } if($col==16){
                         $data_allowance['d7_out']=$val;
                     }
+<<<<<<< HEAD
+
+                 
+                  
+
+=======
+>>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
                 $col++;
                     
                 }
@@ -230,17 +256,40 @@ class UploadAllowanceController extends Controller
 
         $post_data = array(
             "from"=>$request->from,
+<<<<<<< HEAD
+            "to"=>$request->from,
+=======
             "to"=>$request->to,
+>>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
             "allowance_id"=>$request->allowance_id
         );
         $allowances=Allowance::all();
         
+<<<<<<< HEAD
+        //return view('upload.index',compact('data','post_data','allowances'));
+        //return redirect('/')->with('success', 'All good!');
+    }
+
+    public function get_allowance_rate($emp_id, $allowance_id){
+
+<<<<<<< HEAD
+=======
+    echo $emp_id. " - " . $allowance_id . '<br>';
+        $rate=AllowanceRate::where("employee_id", "=", $emp_id)
+                    ->where("allowance_id","=",$allowance_id)
+                    ->get(['allowance_rate']);
+
+      //  return $rate;
+   }
+   
+=======
         return view('upload.index',compact('data','allowances','post_data'));
         //return redirect('/')->with('success', 'All good!');
     }
 
     public function get_allowance_rate($emp_id, $allowance_id){
 
+>>>>>>> d70a7c8ec4bc9e6a7b0c7c7276d5f94475f75ca7
         // echo $emp_id. " - " . $allowance_id . '<br>';
         $rate=AllowanceRate::select('allowance_rate',)
                     ->where("employee_id", "=", $emp_id)
@@ -255,4 +304,8 @@ class UploadAllowanceController extends Controller
     public function receive(){
         return view('upload.receive');
     }
+<<<<<<< HEAD
+=======
+>>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
+>>>>>>> d70a7c8ec4bc9e6a7b0c7c7276d5f94475f75ca7
 }
