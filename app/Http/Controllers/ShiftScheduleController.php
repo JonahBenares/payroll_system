@@ -284,7 +284,7 @@ class ShiftScheduleController extends Controller
         $fifth_weekend=$this->check_holiday(date("Y-m-d",strtotime($fifth)),$year);
 
           /************ if holiday is on the first weekend************/
-        echo  $first_weekend . " - " . $second_weekend. " - " . $third_weekend. " - " . $fourth_weekend. " - " . $fifth_weekend ."<br>";
+        //echo  $first_weekend . " - " . $second_weekend. " - " . $third_weekend. " - " . $fourth_weekend. " - " . $fifth_weekend ."<br>";
         if($first_weekend == 0 && $second_weekend == 0 && $third_weekend == 0 && $fourth_weekend ==0 && $fifth_weekend ==0){
            
             $rd = array($firstRD, $secondRD, $lastRD);
@@ -478,8 +478,8 @@ class ShiftScheduleController extends Controller
                     $lastRD="";
                 }
             } else { //if 2,4 alternate RD is chosen
-                $firstRD="";
-                $secondRD =  new Carbon('fourth '.$rest. ' of '.$mo_name.' '. $year);
+                $firstRD= new Carbon('third '.$rest. ' of '.$mo_name.' '. $year);
+                $secondRD = "";
                 $lastRD="";
             }
 
