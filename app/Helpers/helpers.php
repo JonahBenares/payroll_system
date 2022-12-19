@@ -1,13 +1,10 @@
 <?php
 use App\Models\Timekeeping;
-<<<<<<< HEAD
 use App\Models\Employee;
 use App\Models\Allowance;
 use App\Models\EmployeeHMO;
 use App\Models\BusinessUnit;
 use App\Models\UploadAllowanceDetail;
-=======
->>>>>>> d70a7c8ec4bc9e6a7b0c7c7276d5f94475f75ca7
 
 /**
 
@@ -28,7 +25,6 @@ if (!function_exists('getTimeDiff')) {
         $hours = floor((($t2- $t1)/60)/60);  
         return abs($hours);
     }
-<<<<<<< HEAD
 }
 
 function getMintimein($schedule_type,$recorded_time,$personal_id){
@@ -138,39 +134,6 @@ if (!function_exists('getHMODependent')) {
             $dependent = "";
         }
         return $dependent;
-=======
-
-    function getMintimein($schedule_type,$recorded_time,$personal_id){
-        if($schedule_type=='Shifting'){
-            $date=date('Y-m-d',strtotime($recorded_time));
-            $getmintimein=Timekeeping::where('personal_id',$personal_id)->where(DB::raw("(STR_TO_DATE(recorded_time,'%Y-%m-%d'))"),$date)->min('recorded_time');
-            return $getmintimein;
-        }  
-    }
-
-    function getMaxtimein($schedule_type,$recorded_time,$personal_id){
-        if($schedule_type=='Shifting'){
-            $date=date('Y-m-d',strtotime($recorded_time));
-            $getmintimein=Timekeeping::where('personal_id',$personal_id)->where(DB::raw("(STR_TO_DATE(recorded_time,'%Y-%m-%d'))"),$date)->max('recorded_time');
-            return $getmintimein;
-        }  
-    }
-
-    function getMintimeout($schedule_type,$recorded_time,$personal_id){
-        if($schedule_type=='Shifting'){
-            $date2=date('Y-m-d',strtotime($recorded_time." + 1 day"));
-            $getmintimeout=Timekeeping::where('personal_id',$personal_id)->where(DB::raw("(STR_TO_DATE(recorded_time,'%Y-%m-%d'))"),$date2)->min('recorded_time');
-            return $getmintimeout;
-        }  
-    }
-
-    function getMaxtimeout($schedule_type,$recorded_time,$personal_id){
-        if($schedule_type=='Shifting'){
-            $date2=date('Y-m-d',strtotime($recorded_time." + 1 day"));
-            $getmintimeout=Timekeeping::where('personal_id',$personal_id)->where(DB::raw("(STR_TO_DATE(recorded_time,'%Y-%m-%d'))"),$date2)->max('recorded_time');
-            return $getmintimeout;
-        }  
->>>>>>> d70a7c8ec4bc9e6a7b0c7c7276d5f94475f75ca7
     }
  }
 
