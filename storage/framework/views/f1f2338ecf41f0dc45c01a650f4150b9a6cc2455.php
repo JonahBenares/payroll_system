@@ -23,9 +23,11 @@
                         <h2 class="uppercase font-semibold py-2">Generate Payslip (Allowance)</h2>
                     </div>
                     <div class="flex">
-                        <a href="<?php echo e(route('printBulkAllowance')); ?>" class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-lime-500 rounded-2xl white:bg-lime-600 white:hover:bg-lime-700 white:focus:bg-lime-700 hover:bg-lime-600 focus:outline-none focus:bg-lime-500 focus:ring focus:ring-lime-300 focus:ring-opacity-50">
+                        <?php if($id!=0): ?>
+                        <a href="<?php echo e(route('printBulkAllowance',['id'=>$id])); ?>" target="_blank" class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-lime-500 rounded-2xl white:bg-lime-600 white:hover:bg-lime-700 white:focus:bg-lime-700 hover:bg-lime-600 focus:outline-none focus:bg-lime-500 focus:ring focus:ring-lime-300 focus:ring-opacity-50">
                             <span>Print Bulk</span>
                         </a>
+                        <?php endif; ?>
                         <label for="table-search" class="sr-only">Search</label>
                         <div class="relative">
                             <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">

@@ -17,7 +17,7 @@
     
     <div class="overflow-auto h-screen pb-28 pt-2 pr-2 pl-2 md:pt-0 md:pr-0 md:pl-0">
         <div class="flex flex-col flex-wrap sm:flex-row ">
-            <div class="p-4 relative h-full w-full text-center bg-white rounded-2xl shadow-lg white:bg-gray-800 white:border-gray-700">
+            <div class="p-4 relative h-full w-full text-center bg-white rounded-lg shadow-lg white:bg-gray-800 white:border-gray-700">
                 <div class="flex justify-between  pb-4 bg-white white:bg-gray-900">
                     <div > 
                         <h2 class="uppercase font-semibold py-2">Upload Allowance</h2>
@@ -84,8 +84,8 @@
                             </div>
                         </div>
                         <label for="table-search" class="sr-only">Search</label>
-                       
-                        <label for="simple-search" class="sr-only">Search</label>
+                        <form class="flex items-center">   
+                            <label for="simple-search" class="sr-only">Search</label>
                             <div class="relative w-full">
                                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                     <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
@@ -96,13 +96,13 @@
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                                 <span class="sr-only">Search</span>
                             </button>
-                       
+                        </form>
                     </div>
                    
                 </div>
                 <form class="items-center" method="POST" action="<?php echo e(route('import')); ?>" enctype="multipart/form-data">   
-                        <?php echo csrf_field(); ?>    
-                        <?php if(Session::has('success')): ?>
+                    <?php echo csrf_field(); ?>    
+                    <?php if(Session::has('success')): ?>
                     <div class="mb-5 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
                         <span class="block sm:inline"><?php echo e(Session::get('success')); ?></span>
                     </div>
@@ -113,15 +113,15 @@
                         </div>
                     <?php endif; ?>
                 <div class="flex justify-between mb-5"> 
-                    <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900">
-                        <div class="mx-2 text-left">
+                    <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900 space-x-2">
+                        <div class="">
                             <input type="date" name="from" class="text-sm block  px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
                         </div>
-                        <div class="mx-2 text-left">
+                        <div class="">
                             <input type="date" name="to" class="text-sm block px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
                         </div>
-                        <div class="mx-2 text-left">
-                        <select name="allowance_id" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
+                        <div class="">
+                        <select name="allowance_id" class="text-sm block w-52 px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
                             <option value="" selected>Allowance</option>
                             <?php $__currentLoopData = $allowances; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <option value="<?php echo e($a->id); ?>"><?php echo e($a->allowance_name); ?></option>
@@ -129,21 +129,21 @@
                         </select>
                         </div>
                     </div>
-                    <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900">
-                        <div class="mx-2 text-left">
+                    <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900 space-x-1">
+                        <div class="text-left">
                             <input type="file" name="allowance" class="text-sm block w-full px-1 py-1 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
                         </div>
-                        <div class="mx-2 text-left">
-                            <button type="submit" class="flex items-center justify-center px-3 py-2 mx-2 mt-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">Upload</button>
+                        <div class=" text-left">
+                            <button type="submit" class="flex items-center justify-center px-3 py-2 mt-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">Upload</button>
                         </div>
                     </div>
                 </div>
                 </form>
 
                 <form method="POST" action="<?php echo e(route('uploadallowance.store')); ?>">
-                    <?php echo csrf_field(); ?>
+                <?php echo csrf_field(); ?>
                 <div class=" hover:overflow-x-auto overflow-x-hidden h-100 max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 border">
-                    <table class="text-sm text-left text-gray-500 white:text-gray-400 border border-gray-200 border-collapse">
+                    <table class="text-sm text-left text-gray-500 white:text-gray-400 border-collapse">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400">
                             <tr class="">
                                 <th scope="col" class="py-2 px-2 w-1/4">
@@ -170,16 +170,16 @@
                                 <th scope="col" class="py-2 px-2" align="center">
                                     D7
                                 </th>
-                                <th scope="col" class="py-2 px-2" width="15%">
+                                <th scope="col" class="py-2 px-2" align="center" width="10%">
                                     Total Days
                                 </th>
-                                <th scope="col" class="py-2 px-2" width="15%">
+                                <th scope="col" class="py-2 px-2" align="center" width="20%">
                                     Allowance Amount
                                 </th>
-                                <th scope="col" class="py-2 px-2" width="15%">
-                                    OT
+                                <th scope="col" class="py-2 px-2" align="center" width="15%">
+                                    Overtime
                                 </th>
-                                <th scope="col" class="py-2 px-2" width="15%">
+                                <th scope="col" class="py-2 px-2" align="center" width="15%">
                                     Total Amount
                                 </th>
                             </tr>
@@ -357,13 +357,13 @@
                                     <input type="text" id="total_days_<?php echo e($counter); ?>" name="total_days[]" onblur="autocalculate(<?php echo e($counter); ?>)" value="<?php echo e($total_days); ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
                                 </td>
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                    <input type="text" id="rate_<?php echo e($counter); ?>" name="rate[]" value="<?php echo e($all['rate']); ?>" onblur="autocalculate(<?php echo e($counter); ?>)" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
+                                    <input type="text" id="rate_<?php echo e($counter); ?>" name="rate[]" value="<?php echo e($all['rate']); ?>" onblur="autocalculate(<?php echo e($counter); ?>)" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 text-right">
                                 </td>
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                    <input type="text" id="ot_amount_<?php echo e($counter); ?>" name="ot_amount[]" value="<?php echo e($ot_amount); ?>" onblur="autocalculate(<?php echo e($counter); ?>)" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
+                                    <input type="text" id="ot_amount_<?php echo e($counter); ?>" name="ot_amount[]" value="<?php echo e($ot_amount); ?>" onblur="autocalculate(<?php echo e($counter); ?>)" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 text-right">
                                 </td>
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                    <input type="text" id="total_amount_<?php echo e($counter); ?>" name="total_amount[]" value="<?php echo e($total_amount); ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
+                                    <input type="text" id="total_amount_<?php echo e($counter); ?>" name="total_amount[]" value="<?php echo e($total_amount); ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 text-right">
                                 </td>
                             </tr>
                             <input type="hidden" name="employee_id[]" value="<?php echo e($all['emp_id']); ?>">
@@ -386,15 +386,12 @@
                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
-                   
-                       <input type="hidden" id="counter" name="counter" value="<?php echo e($counter); ?>">          
-                        <input type="hidden" name="date_from" value="<?php echo e($post_data['from']); ?>">
-                        <input type="hidden" name="date_to" value="<?php echo e($post_data['to']); ?>">
-                        <input type="hidden" name="allowance_name" value="<?php echo e($post_data['allowance_id']); ?>">
-                  
+                    <input type="hidden" id="counter" name="counter" value="<?php echo e($counter); ?>">          
+                    <input type="hidden" name="date_from" value="<?php echo e($post_data['from']); ?>">
+                    <input type="hidden" name="date_to" value="<?php echo e($post_data['to']); ?>">
+                    <input type="hidden" name="allowance_name" value="<?php echo e($post_data['allowance_id']); ?>">
                 </div>
-                <button class="flex items-center w-full justify-center px-3 py-2 mx-2 mt-3 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">Save</button>
-            </div>
+                <button class="flex items-center w-full justify-center px-3 py-2 mt-3 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">Save</button>
              </form>
         </div>
     </div>

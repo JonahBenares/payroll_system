@@ -130,6 +130,7 @@
                                     $total_hours=[];
                                     $total_min=[];
                                     $overall_time=[];
+                                    $y=0;
                                 @endphp
                                 @foreach($data2 AS $logs)
                                     @php
@@ -149,16 +150,70 @@
                                                 $total_min[]=$interval->format("%i");
                                             }
                                         }else if($logs['schedule_type']=='Shifting'){
-                                            
-                                            $timein_shift = getMintimein($logs['schedule_type'],$logs['rec_time'],$logs['personal_id']);
-                                            $timeout_shift = getMintimeout($logs['schedule_type'],$logs['rec_time'],$logs['personal_id']);
-                                            echo $timein_shift."<br>";
+                                            $timein_shift = date('H:i',strtotime(getMintimein($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
+                                            $intime = date('Hi',strtotime(getMintimein($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
+                                            $intimemax = date('H',strtotime(getMaxtimein($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
+
+                                            $timeout_shift = date('H:i',strtotime(getMintimeout($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
+                                            $outtime = date('Hi',strtotime(getMintimeout($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
+                                            $outtimemax = date('Hi',strtotime(getMaxtimeout($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
+
                                             $exp=implode("",$logs['recorded_time']);
-                                            $exp_time = explode(',', $exp); 
-                                            $date1 = new DateTime($exp_time[0]);
-                                            $date2 = new DateTime($exp_time[1]);
+                                            $exp_time = explode(',', $exp);
+                                            $nightHoursPerDay=0;
+                                            if($intime<='0600' && $intime<='1400') { 
+                                                $sched_time='6:00';
+                                                $timein=$exp_time[0];
+                                                $timeout=$exp_time[1];
+                                            }else if($intime>='1400' && $intime<='2200' && $exp_time[1]!='') { 
+                                                $sched_time='14:00';
+                                                $timein=$exp_time[0];
+                                                $timeout=$exp_time[1];
+                                            }else if($intimemax<='22' || $intime<='0600') { 
+                                                if($exp_time[0]!='' && $exp_time[1]==''){
+                                                    $timein=$exp_time[0];
+                                                    $timeout=$timeout_shift;
+                                                    if($timeout!='00:00'){
+                                                        if(date('Hi',strtotime($timein))<='0600' || date('Hi',strtotime($timein))<='0659'){
+                                                            $sched_time='06:00';
+                                                        }else{
+                                                            $sched_time='22:00';
+                                                        }
+                                                        $nightHoursPerDay = date('H',strtotime($timeout)) + ( 24 - date('H',strtotime($sched_time)));
+                                                    }else{
+                                                        $sched_time='00:00';
+                                                    }
+                                                }else if($exp_time[0]!='' && $exp_time[1]!='' && $intimemax>='06' && $outtimemax>='1400'){
+                                                    $timein=$exp_time[0];
+                                                    $timeout=$exp_time[1];
+                                                    if($timeout!='00:00'){
+                                                        if(date('Hi',strtotime($timein))<='0600' || date('Hi',strtotime($timein))<='0659'){
+                                                            $sched_time='06:00';
+                                                        }else{
+                                                            $sched_time='14:00';
+                                                        }
+                                                    }else{
+                                                        $sched_time='00:00';
+                                                    }
+                                                }else{
+                                                    $timein=$exp_time[1];
+                                                    $timeout=$timeout_shift;
+                                                    if($timeout!='00:00'){
+                                                        if(date('Hi',strtotime($timein))<='1359' || date('Hi',strtotime($timein))<='1459'){
+                                                            $sched_time='14:00';
+                                                        }else{
+                                                            $sched_time='22:00';
+                                                        }
+                                                        $nightHoursPerDay = date('H',strtotime($timeout)) + ( 24 - date('H',strtotime($sched_time)));
+                                                    }else{
+                                                        $sched_time='00:00';
+                                                    }
+                                                }
+                                            }
+                                            $date1 = new DateTime($sched_time);
+                                            $date2 = new DateTime($timeout);
                                             $interval = $date2->diff($date1);
-                                            $hours   = $interval->format('%h'); 
+                                            $hours   = ($nightHoursPerDay==0) ? $interval->format('%h') : $nightHoursPerDay; 
                                             $minutes = $interval->format('%i');
                                             if($hours>=9 && $minutes>=30){
                                                 $total_hours[]=$interval->format("%H")*60 - 540;
@@ -167,7 +222,9 @@
                                                 $total_hours[]=$interval->format("%H")*60 - 540;
                                                 $total_min[]=$interval->format("%i");
                                             }
+                                            echo $hours."-".$timein."-".$timeout."<br>";
                                         }
+                                        $y++;
                                     @endphp
                                 @endforeach
                                 @php 

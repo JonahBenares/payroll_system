@@ -102,7 +102,13 @@ use App\Http\Controllers\ShiftScheduleController;
                         <tbody>
                             <?php $__currentLoopData = $departments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dept): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
+<<<<<<< HEAD
                                 <td class="py-1 px-1 bg-gray-50 border border-gray-200 bg-gray-50 sticky left-0 z-10 font-semibold" colspan='<?php echo e($nodays); ?>'><?php echo e($dept->dept_name); ?></td>
+=======
+                                <td class="bg-yellow-50 uppercase bg-gray-50  font-bold text-sm" colspan='<?php echo e($nodays + 2); ?>'>
+                                    <span class="py-1 px-1 sticky left-0 z-10"><?php echo e($dept->dept_name); ?></span>
+                                </td>
+>>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
                             </tr>
                                 <?php $__currentLoopData = $employees; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $emp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <?php if($dept->id == $emp->department): ?>

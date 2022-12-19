@@ -3,7 +3,9 @@ use App\Models\Timekeeping;
 use App\Models\Employee;
 use App\Models\Allowance;
 use App\Models\EmployeeHMO;
+use App\Models\BusinessUnit;
 use App\Models\UploadAllowanceDetail;
+
 /**
 
  * Write code on Method
@@ -23,30 +25,32 @@ if (!function_exists('getTimeDiff')) {
         $hours = floor((($t2- $t1)/60)/60);  
         return abs($hours);
     }
-
-    function getMintimein($schedule_type,$recorded_time,$personal_id){
-        if($schedule_type=='Shifting'){
-            $date=date('Y-m-d',strtotime($recorded_time));
-            $getmintimein[]=Timekeeping::where('personal_id',$personal_id)->where(DB::raw("(STR_TO_DATE(recorded_time,'%Y-%m-%d'))"),$date)->min('recorded_time');
-            $getmintimein_disp=Timekeeping::where('personal_id',$personal_id)->where(DB::raw("(STR_TO_DATE(recorded_time,'%Y-%m-%d'))"),$date)->min('recorded_time');
-            $result = max(array_count_values($getmintimein));
-            if($result>1){
-                return 'duplicate';
-            }else{
-                return $getmintimein_disp;
-            }
-            
-        }  
-    }
-
-    function getMintimeout($schedule_type,$recorded_time,$personal_id){
-        if($schedule_type=='Shifting'){
-            $date2=date('Y-m-d',strtotime($recorded_time." + 1 day"));
-            $getmintimeout=Timekeeping::where('personal_id',$personal_id)->where(DB::raw("(STR_TO_DATE(recorded_time,'%Y-%m-%d'))"),$date2)->min('recorded_time');
-            return $getmintimeout;
-        }  
-    }
 }
+
+function getMintimein($schedule_type,$recorded_time,$personal_id){
+    if($schedule_type=='Shifting'){
+        $date=date('Y-m-d',strtotime($recorded_time));
+        $getmintimein=Timekeeping::where('personal_id',$personal_id)->where(DB::raw("(STR_TO_DATE(recorded_time,'%Y-%m-%d'))"),$date)->min('recorded_time');
+        return $getmintimein;
+    }  
+}
+
+function getMaxtimein($schedule_type,$recorded_time,$personal_id){
+    if($schedule_type=='Shifting'){
+        $date=date('Y-m-d',strtotime($recorded_time));
+        $getmintimein=Timekeeping::where('personal_id',$personal_id)->where(DB::raw("(STR_TO_DATE(recorded_time,'%Y-%m-%d'))"),$date)->max('recorded_time');
+        return $getmintimein;
+    }  
+}
+
+function getMintimeout($schedule_type,$recorded_time,$personal_id){
+    if($schedule_type=='Shifting'){
+        $date2=date('Y-m-d',strtotime($recorded_time." + 1 day"));
+        $getmintimeout=Timekeeping::where('personal_id',$personal_id)->where(DB::raw("(STR_TO_DATE(recorded_time,'%Y-%m-%d'))"),$date2)->min('recorded_time');
+        return $getmintimeout;
+    }  
+}
+
 
 if (!function_exists('getEmployeeName')) {
     
@@ -74,6 +78,26 @@ if (!function_exists('getAllowanceName')) {
     }
 }
 
+if (!function_exists('getBUName')) {
+    
+    function getBUName($employee_id){
+
+        $get_bu= Employee::select('business_unit')
+        ->where("id","=",$employee_id)
+        ->get();
+
+        $bu= $get_bu[0]['business_unit'];
+
+        $bu_name= BusinessUnit::select('bu_name')
+        ->where("id","=",$bu)
+        ->get();
+
+        $name= $bu_name[0]['bu_name'];
+
+        return $name;
+    }
+}
+
 if (!function_exists('getAllowance')) {
     
     function getAllowance($id, $head_id, $type){
@@ -93,8 +117,7 @@ if (!function_exists('getAllowance')) {
 }
 
 if (!function_exists('getHMODependent')) {
-    
-    
+
     function getHMODependent($emp_id, $type){
         $count= EmployeeHMO::select('no_of_dependent')
         ->where("employee_id","=",$emp_id)
@@ -110,9 +133,17 @@ if (!function_exists('getHMODependent')) {
         } else {
             $dependent = "";
         }
-    
-        
         return $dependent;
     }
+ }
+
+function getMaxtimeout($schedule_type,$recorded_time,$personal_id){
+    if($schedule_type=='Shifting'){
+        $date2=date('Y-m-d',strtotime($recorded_time." + 1 day"));
+        $getmintimeout=Timekeeping::where('personal_id',$personal_id)->where(DB::raw("(STR_TO_DATE(recorded_time,'%Y-%m-%d'))"),$date2)->max('recorded_time');
+        return $getmintimeout;
+    }  
+
 }
+
 ?>
