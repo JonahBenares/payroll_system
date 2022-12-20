@@ -22,7 +22,12 @@ if (!function_exists('getTimeDiff')) {
 
         $t1=strtotime($starttime); 
         $t2=strtotime($endtime); 
+      
         $hours = floor((($t2- $t1)/60)/60);  
+        //$hours= round(abs($t1-$t2)/60,2);
+    
+
+      
         return abs($hours);
     }
 }

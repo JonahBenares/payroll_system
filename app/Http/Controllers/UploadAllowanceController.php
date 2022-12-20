@@ -158,8 +158,7 @@ class UploadAllowanceController extends Controller
     }
 
     public function import(Request $request){
-        
-       
+         
        $array= Excel::toArray(new AllowanceImport, request()->file('allowance'), ExcelExcel::XLSX);
        $x=1;
        $data_allowance=array();
@@ -168,7 +167,6 @@ class UploadAllowanceController extends Controller
             if($key>=1){
                 foreach($value AS $val){
 
-                    
                     if($col>=3){
                             if($val != 'A'){
                                 $total = $val * 24; 
@@ -182,7 +180,6 @@ class UploadAllowanceController extends Controller
                                 $val = 'A';
                             }    
                     }
-              
 
                     if($col==0){
                         $data_allowance['emp_id'] = $val;
@@ -235,7 +232,6 @@ class UploadAllowanceController extends Controller
         );
         $allowances=Allowance::all();
         
-
         return view('upload.index',compact('data','post_data','allowances'));
         //return redirect('/')->with('success', 'All good!');
     }
