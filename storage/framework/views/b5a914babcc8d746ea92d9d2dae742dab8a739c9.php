@@ -185,60 +185,20 @@
                             </tr>
                         </thead>
                         <tbody>
+
+                          
                            <?php $total_days=0;
                            $ot_amount=0;
                            $counter = 1; ?>
                             <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $all): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <?php if((int)$all['d1_in'] >= 18): ?>
-                                 <?php  $out = (int)24 + (double)$all['d1_out'];
-                                 $d1 = (double)$out - (double)$all['d1_in'] ?>
-                                <?php else: ?>
+                              
                                    <?php $d1 = getTimeDiff($all['d1_in'], $all['d1_out']) ?>
-                                <?php endif; ?>
-
-                                <?php if((int)$all['d2_in'] >= 18): ?>
-                                 <?php  $out = (int)24 + (double)$all['d2_out'];
-                                 $d2 = (double)$out - (double)$all['d2_in'] ?>
-                                <?php else: ?>
                                    <?php $d2 = getTimeDiff($all['d2_in'], $all['d2_out']) ?>
-                                <?php endif; ?>
-
-                                <?php if((int)$all['d3_in'] >= 18): ?>
-                                 <?php  $out = (int)24 + (double)$all['d3_out'];
-                                 $d3 = (double)$out - (double)$all['d3_in'] ?>
-                                <?php else: ?>
                                    <?php $d3 = getTimeDiff($all['d3_in'], $all['d3_out']) ?>
-                                <?php endif; ?>
-
-                                <?php if((int)$all['d4_in'] >= 18): ?>
-                                 <?php  $out = (int)24 + (double)$all['d4_out'];
-                                 $d4 = (double)$out - (double)$all['d4_in'] ?>
-                                <?php else: ?>
                                    <?php $d4 = getTimeDiff($all['d4_in'], $all['d4_out']) ?>
-                                <?php endif; ?>
-
-                                <?php if((int)$all['d5_in'] >= 18): ?>
-                                 <?php  $out = (int)24 + (double)$all['d5_out'];
-                                 $d5 = (double)$out - (double)$all['d5_in'] ?>
-                                <?php else: ?>
                                    <?php $d5 = getTimeDiff($all['d5_in'], $all['d5_out']) ?>
-                                <?php endif; ?>
-
-                                <?php if((int)$all['d6_in'] >= 18): ?>
-                                 <?php  $out = (int)24 + (double)$all['d6_out'];
-                                 $d6 = (double)$out - (double)$all['d6_in'] ?>
-                                <?php else: ?>
                                    <?php $d6 = getTimeDiff($all['d6_in'], $all['d6_out']) ?>
-                                <?php endif; ?>
-
-                                <?php if((int)$all['d7_in'] >= 18): ?>
-                                 <?php  $out = (int)24 + (double)$all['d7_out'];
-                                 $d7 = (double)$out - (double)$all['d7_in'] ?>
-                                <?php else: ?>
                                    <?php $d7 = getTimeDiff($all['d7_in'], $all['d7_out']) ?>
-                                <?php endif; ?>
-                             
-
                                 <?php 
                                  
                                 if($d1!=0){

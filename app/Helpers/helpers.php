@@ -20,8 +20,15 @@ if (!function_exists('getTimeDiff')) {
 
      function getTimeDiff($starttime,$endtime){
 
-        $t1=strtotime($starttime); 
-        $t2=strtotime($endtime); 
+        if($starttime>=14 && $endtime <=10){
+            $start = date("Y-m-d")." " . $starttime;
+            $end =  date('Y-m-d', strtotime($start . ' +1 day')) . " ".$endtime;
+        } else {
+            $start = $starttime;
+            $end = $endtime;
+        }
+        $t1=strtotime($start); 
+        $t2=strtotime($end); 
       
         $hours = floor((($t2- $t1)/60)/60);  
         //$hours= round(abs($t1-$t2)/60,2);

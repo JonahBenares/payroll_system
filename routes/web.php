@@ -33,6 +33,7 @@ use App\Http\Controllers\DTRofficeController;
 use App\Http\Controllers\DTRsiteController;
 use App\Http\Controllers\OTofficeController;
 use App\Http\Controllers\OTsiteController;
+use App\Http\Controllers\overallOTController;
 
 
 
@@ -160,6 +161,7 @@ Route::resource('dtrOffice', DTRofficeController::class);
 Route::resource('dtrSite', DTRsiteController::class);
 Route::resource('otOffice', OTofficeController::class);
 Route::resource('otSite', OTsiteController::class);
+Route::resource('overall_OT', overallOTController::class);
 
 
 // Route::get('/shift_sched', [Shift_ScheduleController::class, 'shift_sched'])->middleware(['auth'])->name('shift_sched');

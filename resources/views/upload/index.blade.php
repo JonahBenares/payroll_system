@@ -177,60 +177,20 @@
                             </tr>
                         </thead>
                         <tbody>
+
+                          
                            @php $total_days=0;
                            $ot_amount=0;
                            $counter = 1; @endphp
                             @foreach($data AS $all)
-                                @if((int)$all['d1_in'] >= 18)
-                                 @php  $out = (int)24 + (double)$all['d1_out'];
-                                 $d1 = (double)$out - (double)$all['d1_in'] @endphp
-                                @else
+                              
                                    @php $d1 = getTimeDiff($all['d1_in'], $all['d1_out']) @endphp
-                                @endif
-
-                                @if((int)$all['d2_in'] >= 18)
-                                 @php  $out = (int)24 + (double)$all['d2_out'];
-                                 $d2 = (double)$out - (double)$all['d2_in'] @endphp
-                                @else
                                    @php $d2 = getTimeDiff($all['d2_in'], $all['d2_out']) @endphp
-                                @endif
-
-                                @if((int)$all['d3_in'] >= 18)
-                                 @php  $out = (int)24 + (double)$all['d3_out'];
-                                 $d3 = (double)$out - (double)$all['d3_in'] @endphp
-                                @else
                                    @php $d3 = getTimeDiff($all['d3_in'], $all['d3_out']) @endphp
-                                @endif
-
-                                @if((int)$all['d4_in'] >= 18)
-                                 @php  $out = (int)24 + (double)$all['d4_out'];
-                                 $d4 = (double)$out - (double)$all['d4_in'] @endphp
-                                @else
                                    @php $d4 = getTimeDiff($all['d4_in'], $all['d4_out']) @endphp
-                                @endif
-
-                                @if((int)$all['d5_in'] >= 18)
-                                 @php  $out = (int)24 + (double)$all['d5_out'];
-                                 $d5 = (double)$out - (double)$all['d5_in'] @endphp
-                                @else
                                    @php $d5 = getTimeDiff($all['d5_in'], $all['d5_out']) @endphp
-                                @endif
-
-                                @if((int)$all['d6_in'] >= 18)
-                                 @php  $out = (int)24 + (double)$all['d6_out'];
-                                 $d6 = (double)$out - (double)$all['d6_in'] @endphp
-                                @else
                                    @php $d6 = getTimeDiff($all['d6_in'], $all['d6_out']) @endphp
-                                @endif
-
-                                @if((int)$all['d7_in'] >= 18)
-                                 @php  $out = (int)24 + (double)$all['d7_out'];
-                                 $d7 = (double)$out - (double)$all['d7_in'] @endphp
-                                @else
                                    @php $d7 = getTimeDiff($all['d7_in'], $all['d7_out']) @endphp
-                                @endif
-                             
-
                                 @php 
                                  
                                 if($d1!=0){
