@@ -1,3 +1,4 @@
+<?php $attributes ??= new \Illuminate\View\ComponentAttributeBag; ?>
 <?php foreach($attributes->onlyProps(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-1 bg-white']) as $__key => $__value) {
     $$__key = $$__key ?? $__value;
 } ?>

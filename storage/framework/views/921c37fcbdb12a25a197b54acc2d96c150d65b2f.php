@@ -127,6 +127,8 @@
                                                 $data2[$key] = array(
                                                     'personal_id'=>$value->personal_id,
                                                     'time_in'=>$value->time_in,
+                                                    'rec_time'=>$value->recorded_time,
+                                                    'schedule_type'=>$value->schedule_type,
                                                     'recorded_time' => array(),
                                                 );
                                             }        
@@ -136,24 +138,118 @@
                                     $total_hours=[];
                                     $total_min=[];
                                     $overall_time=[];
+                                    $y=0;
                                 ?>
                                 <?php $__currentLoopData = $data2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $logs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <?php 
-                                        $exp=implode("",$logs['recorded_time']);
-                                        $exp_time = explode(',', $exp); 
-                                        $date1 = new DateTime($logs['time_in']);
-                                        $date2 = new DateTime($exp_time[1]);
-                                        
-                                        $interval = $date2->diff($date1);
-                                        $hours   = $interval->format('%h'); 
-                                        $minutes = $interval->format('%i');
-                                        if($hours>=9 && $minutes>=30){
-                                            $total_hours[]=$interval->format("%H")*60 - 540;
-                                            $total_min[]=$interval->format("%i");
-                                        }else if($hours>=10){
-                                            $total_hours[]=$interval->format("%H")*60 - 540;
-                                            $total_min[]=$interval->format("%i");
+                                    <?php
+                                        if($logs['schedule_type']=='Regular'){
+                                            $exp=implode("",$logs['recorded_time']);
+                                            $exp_time = explode(',', $exp); 
+                                            if(date("Hi",strtotime($logs['time_in'])) <= date("Hi",strtotime($exp_time[0]))){
+                                                $ot_start=$exp_time[0]; 
+                                            }else{
+                                                $ot_start=$logs['time_in'];
+                                            }
+                                            $date1 = new DateTime($ot_start);
+                                            $date2 = new DateTime($exp_time[1]);
+                                            $interval = $date2->diff($date1);
+                                            $hours   = $interval->format('%h'); 
+                                            $minutes = $interval->format('%i');
+                                            if($hours>=9 && $minutes>=30){
+                                                $total_hours[]=$interval->format("%H")*60 - 540;
+                                                $total_min[]=$interval->format("%i");
+                                            }else if($hours>=10){
+                                                $total_hours[]=$interval->format("%H")*60 - 540;
+                                                $total_min[]=$interval->format("%i");
+                                            }
+                                            
+                                        }else if($logs['schedule_type']=='Shifting'){
+                                            $timein_shift = date('H:i',strtotime(getMintimein($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
+                                            $intime = date('Hi',strtotime(getMintimein($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
+                                            $intimemax = date('H',strtotime(getMaxtimein($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
+
+                                            $timeout_shift = date('H:i',strtotime(getMintimeout($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
+                                            $outtime = date('Hi',strtotime(getMintimeout($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
+                                            $outtimemax = date('Hi',strtotime(getMaxtimeout($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
+
+                                            $exp=implode("",$logs['recorded_time']);
+                                            $exp_time = explode(',', $exp);
+                                            $nightHoursPerDay=0;
+                                            if($intime<='0600' && ($intime<='1359' || $intime<='1459')) { 
+                                                $sched_time='6:00';
+                                                $timein=$exp_time[0];
+                                                $timeout=$exp_time[1];
+                                            }else if(($intime>='1359' || $intime>='1459') && $intime<='2200' && $exp_time[1]!='') { 
+                                                $sched_time='14:00';
+                                                $timein=$exp_time[0];
+                                                $timeout=$exp_time[1];
+                                            }else if($intimemax<='22' || $intime<='0600') { 
+                                                if($exp_time[0]!='' && $exp_time[1]==''){
+                                                    $timein=$exp_time[0];
+                                                    $timeout=$timeout_shift;
+                                                    if($timeout!='00:00'){
+                                                        if(date('Hi',strtotime($timein))<='0600' || date('Hi',strtotime($timein))<='0659'){
+                                                            $sched_time='06:00';
+                                                        }else{
+                                                            $sched_time='22:00';
+                                                        }
+                                                        $nightHoursPerDay = date('H',strtotime($timeout)) + ( 24 - date('H',strtotime($sched_time)));
+                                                    }else{
+                                                        $sched_time='00:00';
+                                                    }
+                                                }else if($exp_time[0]!='' && $exp_time[1]!='' && $intimemax>='06' && $outtimemax>='2200'){
+                                                    $timein=$exp_time[0];
+                                                    $timeout=$exp_time[1];
+                                                    if($timeout!='00:00'){
+                                                        if(date('Hi',strtotime($timein))<='0600' || date('Hi',strtotime($timein))<='0659'){
+                                                            $sched_time='06:00';
+                                                        }else{
+                                                            $sched_time='14:00';
+                                                        }
+                                                    }else{
+                                                        $sched_time='00:00';
+                                                    }
+                                                }else{
+                                                    if((date('Hi',strtotime($exp_time[1]))<='1359' || date('Hi',strtotime($exp_time[1]))<='1459')){
+                                                        $timein=$exp_time[0];
+                                                        $timeout=$exp_time[1];
+                                                    }else{
+                                                        $timein=$exp_time[1];
+                                                        $timeout=$timeout_shift;
+                                                    }
+                                                    if($timeout!='00:00'){
+                                                        if(date('Hi',strtotime($timein))<='1359' || date('Hi',strtotime($timein))<='1459'){
+                                                            $sched_time='14:00';
+                                                        }else{
+                                                            $sched_time='22:00';
+                                                        }
+                                                        $nightHoursPerDay = date('H',strtotime($timeout)) + ( 24 - date('H',strtotime($sched_time)));
+                                                    }else{
+                                                        $sched_time='00:00';
+                                                    }
+                                                }
+                                            }
+                                            
+                                            if(date("Hi",strtotime($sched_time)) >= date("Hi",strtotime($timein))){
+                                                $ot_start=$sched_time; 
+                                            }else{
+                                                $ot_start=$timein;
+                                            }
+                                            $date1 = new DateTime($ot_start);
+                                            $date2 = new DateTime($timeout);
+                                            $interval = $date2->diff($date1);
+                                            $hours   = ($nightHoursPerDay==0) ? $interval->format('%h') : $nightHoursPerDay; 
+                                            echo $timein."-".$timeout."-".$hours."<br>";
+                                            $minutes = $interval->format('%i');
+                                            if($hours>=9 && $minutes>=30){
+                                                $total_hours[]=$interval->format("%H")*60 - 540;
+                                                $total_min[]=$interval->format("%i");
+                                            }else if($hours>=10){
+                                                $total_hours[]=$interval->format("%H")*60 - 540;
+                                                $total_min[]=$interval->format("%i");
+                                            }
                                         }
+                                        $y++;
                                     ?>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 <?php 
@@ -167,17 +263,17 @@
                                         </td>
                                         <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                             <a target='_blank' href="<?php echo e(route('ot.create',['employee_id' => $e->id,'personal_id' => $e->personal_id,'month_year' => $year."-".$month, 'period' => $exp_period])); ?>"  class="my-1  py-2" title="Update">
-                                                <?php echo e(number_format(round(abs($total_calculation) / 60,2),2)." hrs."); ?>
+                                                <?php echo e(number_format(round(abs($total_calculation) / 60,2),2)." hr/s."); ?>
 
                                             </a> 
                                         </td>
                                         <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                            <?php echo e(number_format($overtime_sum[$x],2)." hrs."); ?>
+                                            <?php echo e($overtime_sum[$x]." hr/s."); ?>
 
                                         </td>
                                         <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                             <?php if($overtime_amount[$x]!=null): ?>
-                                                <?php echo e(number_format($overtime_amount[$x]->total_amount,2)); ?>
+                                                <?php echo e(number_format($overtime_amount[$x],2)); ?>
 
                                             <?php endif; ?>
                                         </td>

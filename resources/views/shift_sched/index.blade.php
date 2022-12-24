@@ -1,10 +1,17 @@
+@php 
+
+use App\Http\Controllers\ShiftScheduleController; 
+
+
+@endphp
 <x-app-layout>
+    <x-slot name="header"></x-slot>     
     <div class="overflow-auto h-screen pb-28 pt-2 pr-2 pl-2 md:pt-0 md:pr-0 md:pl-0">
         <div class="flex flex-col flex-wrap sm:flex-row ">
             <div class="p-4 relative h-full w-full text-center bg-white rounded-lg shadow-lg white:bg-gray-800 white:border-gray-700">
-                <div class="flex justify-between pb-4 bg-white white:bg-gray-900">
+                <div class="flex justify-between  pb-4 bg-white white:bg-gray-900">
                     <div > 
-                        <h2 class="uppercase font-semibold py-2">Schedule</h2>
+                        <h2 class="uppercase font-semibold py-2">Shift Schedule</h2>
                     </div>
                     <div class="flex">
                         <a href="{{ route('shiftschedule.create'); }}" type="button" >
@@ -32,160 +39,99 @@
                     </div>
                 </div>
                 <hr>    
-                <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900">
-                    <div class="mx-2 text-left">
-                        <select class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
-                            <option value="" selected>Select Month</option>
-                            <option value="01">January</option>
-                            <option value="02">February</option>
-                            <option value="03">March</option>
-                            <option value="04">April</option>
-                            <option value="05">May</option>
-                            <option value="06">June</option>
-                            <option value="07">July</option>
-                            <option value="08">August</option>
-                            <option value="09">September</option>
-                            <option value="10">October</option>
-                            <option value="11">November</option>
-                            <option value="12">December</option>
-                        </select>
+                <form class="" method="GET">   
+                    <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900">
+                        <div class="mx-2 text-left">
+                            <select name="month" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
+                                <option value="" selected>Select Month</option>
+                                <option value="01">January</option>
+                                <option value="02">February</option>
+                                <option value="03">March</option>
+                                <option value="04">April</option>
+                                <option value="05">May</option>
+                                <option value="06">June</option>
+                                <option value="07">July</option>
+                                <option value="08">August</option>
+                                <option value="09">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                        </div>
+                        @php $current_year = date("Y"); @endphp
+                    
+                        <div class="mx-2 text-left">
+                            <select name="year" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
+                                <option value="" selected>Select Year</option>
+                                @for($x=2022;$x<=$current_year;$x++)
+                                <option value="{{ $x }}">{{ $x }}</option>
+                                @endfor
+                            </select>
+                        </div>
+                        <div class="mx-2 pt-3 text-left">
+                            <button type="submit" class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                                <span>Generate</span>
+                            </button>
+                        </div>
                     </div>
-                    @php $current_year = date("Y"); @endphp
-                    <div class="mx-2 text-left">
-                        <select class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
-                            <option value="" selected>Select Year</option>
-                            @for($x=2022;$x<=$current_year;$x++)
-                            <option value="{{ $x }}">{{ $x }}</option>
-                            @endfor
-                        </select>
-                    </div>
-                    <div class="mx-2 pt-3 text-left">
-                        <button type="submit" class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                            <span>Generate</span>
-                        </button>
-                    </div>
-                </div>
+                </form>
                 <div class="w-full overflow-x-auto overflow-y-hidden hover:overflow-y-auto  relative  pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 h-96 ">
                     <table class="text-sm text-left text-gray-500 white:text-gray-400 border border-gray-200 border-collapse" width="200%">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-20">
-                          
                             <tr>
                                 <td class="py-1 px-1 bg-gray-50 border border-gray-200 bg-gray-50 sticky left-0 z-10" rowspan="2" width="6%">Employee</td>
                                 <td class="py-1 px-1 bg-gray-50 border border-gray-200  bg-gray-50 " rowspan="2" width="5%">Position</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">1</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">2</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">3</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">4</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">5</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">6</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">7</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">8</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">9</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">10</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">11</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">12</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">13</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">14</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">15</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">16</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">17</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">18</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">19</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">20</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">21</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">22</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">23</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">24</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">25</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">26</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">27</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">28</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">29</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">30</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">31</td>
+                            @foreach($no_of_days AS $day)
+                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center">{{ $day['number'] }}</td>
+                            @endforeach
                             </tr>
-                          
                             <tr>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >M</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >T</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >W</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >T</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >F</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >S</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >S</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >M</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >T</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >W</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >T</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >F</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >S</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >S</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >M</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >T</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >W</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >T</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >F</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >S</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >S</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >M</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >T</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >W</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >T</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >F</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >S</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >S</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >F</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >S</td>
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >S</td>
+                            @foreach($no_of_days AS $day)
+                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 text-center" width="1%" >{{ $day['days'] }}</td>
+                            @endforeach 
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($departments AS $dept)
                             <tr>
-                                <td colspan='31'>{{ $dept->dept_name }}</td>
+<<<<<<< HEAD
+                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 bg-gray-50 sticky left-0 z-10 font-semibold" colspan='{{ $nodays }}'>{{ $dept->dept_name }}</td>
+=======
+                                <td class="bg-yellow-50 uppercase bg-gray-50  font-bold text-sm" colspan='{{ $nodays + 2 }}'>
+                                    <span class="py-1 px-1 sticky left-0 z-10">{{ $dept->dept_name }}</span>
+                                </td>
+>>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
                             </tr>
                                 @foreach($employees AS $emp)
                                     @if($dept->id == $emp->department)
+                                   
+                                       @php 
+                                        $rd2= "bg-yellow-300"; @endphp
                                     <tr>
                                         <td class="py-1 px-1 border border-gray-200 bg-white sticky left-0 z-10" >{{ $emp->full_name }}</td>
                                         <td class="py-1 px-1 border border-gray-200 bg-white sticky left-0">{{ $emp->position }}</td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center">1</td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center">2</td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center">3</td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center">4</td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center">5</td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center bg-blue-300"></td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center bg-yellow-300"></td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center">8</td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center">9</td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center">10</td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center">11</td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center">12</td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center">13</td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center">14</td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center">15</td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center">16</td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center">17</td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center">18</td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center">19</td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center">20</td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center">21</td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center">22</td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center">23</td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center">24</td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center">25</td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center">26</td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center">27</td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center">28</td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center">29</td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center">30</td>
-                                        <td class="py-1 px-1 border border-gray-200 text-center">31</td>
+                                        @foreach($no_of_days AS $d)
+
+                                             @php 
+                                                $shift = ShiftScheduleController::get_employee_sched($emp->id, $d['date_shift']);   
+                                            @endphp
+                                          
+                                            @if($shift == "RD")
+                                                @php $class= "bg-blue-300";  @endphp
+                                            @elseif($shift == "RH" || $shift == "SH" || $shift == "H")
+                                                @php $class= "bg-yellow-300"; @endphp
+                                            @else
+                                                @php $class=""; @endphp
+                                            @endif
+
+                                            <td class="py-1 px-1 border border-gray-200 text-center {{ $class }}">{{ $shift }}</td>
+                                        @endforeach 
                                     </tr>
                                     @endif
                                 @endforeach
                             @endforeach
                         </tbody>
-                    </table>                    
+                    </table>
                 </div>
             </div> 
         </div>

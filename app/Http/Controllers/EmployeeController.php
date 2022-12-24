@@ -23,6 +23,7 @@ class EmployeeController extends Controller
         $employeelist = Employee::join('departments', 'departments.dept_id', '=', 'employees.department')
                 ->join('business_units', 'business_units.bu_id', '=', 'employees.business_unit')
                 ->join('locations', 'locations.loc_id', '=', 'employees.emp_location')
+                ->orderBy('full_name', 'ASC')
                 ->get(['departments.dept_name','business_units.bu_name','locations.location_name','employees.*']);
         return view('employees.index',compact('hmo','employeelist'));
     }
@@ -71,7 +72,7 @@ class EmployeeController extends Controller
         $hmo = HmoRate::all();
         $accent = AccountingEntry::all();
         $emp_hmo = EmployeeHMO::all();
-        
+        $data=array();
          foreach($hmo AS $h){
            
             $no = EmployeeHMO::where([

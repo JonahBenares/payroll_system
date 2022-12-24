@@ -5,7 +5,7 @@
         }
     </style>
     <div class="justify-center flex my-5" id="print_buttons">
-        <a href="{{ route("payrollallowance.index") }}" class="flex items-center justify-center px-3 py-2 mx-1 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-green-500 rounded-2xl white:bg-green-600 white:hover:bg-green-700 white:focus:bg-green-700 hover:bg-green-600 focus:outline-none focus:bg-green-500 focus:ring focus:ring-green-300 focus:ring-opacity-50" >Back</a>
+        <a href="{{ route("payroll_allowance.index") }}" class="flex items-center justify-center px-3 py-2 mx-1 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-green-500 rounded-2xl white:bg-green-600 white:hover:bg-green-700 white:focus:bg-green-700 hover:bg-green-600 focus:outline-none focus:bg-green-500 focus:ring focus:ring-green-300 focus:ring-opacity-50" >Back</a>
         {{-- <input name="b_print" type="button" class="flex items-center justify-center px-3 py-2 mx-1 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" onClick="printdiv('div_print');" value="Print"> --}}
         <button class="flex items-center justify-center px-3 py-2 mx-1 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" onclick="window.print();">Print</button>
     </div>
@@ -29,18 +29,20 @@
                     </tr>
                     <tr>
                         <td>Company</td>
-                        <td class="border-b">CENPRI</td>
+                        <td class="border-b">CENPRI - SITE</td>
                         <td ></td>
                         <td>Date:</td>
                         <td class="border-b">September</td>
                     </tr>
+                    @foreach($allowance_details AS $details)
                     <tr>
                         <td>Pay To:</td>
-                        <td class="border-b">Jonah May Benares</td>
+                        <td class="border-b">{{ getEmployeeName($details->employee_id) }}</td>
                         <td></td>
                         <td>Due Date:</td>
                         <td class="border-b">September</td>
                     </tr>
+                    @endforeach
                     <tr>
                         <td colspan="5" class="pt-2"></td>
                     </tr>
@@ -79,41 +81,41 @@
                                     <td colspan="" ><br></td>
                                     <td colspan="" ><br></td>
                                 </tr>
+                              
+                                @foreach($allowance_head AS $head)
                                 <tr>
-                                    <td colspan="3" class="border-r pl-20"><b>Meal and Transportation Allowance for Period Sept 4-10, 2022 @ Php 150.00</b></td>
+                                    <td colspan="3" class="border-r pl-20"><b>{{ getAllowanceName($head->allowance_id) }} for Period {{ date("M j, Y",strtotime($head->from_date)) }} to {{ date("M j, Y", strtotime($head->to_date)) }} @ Php {{ getAllowance($id, $head->id, 'amount') }}</b></td>
                                     <td class=" text-center">Php</td>
-                                    <td class=" text-right">1001.22</td>
+                                    <td class=" text-right"> {{ number_format(getAllowance($id, $head->id, 'total'),2) }}</td>
                                 </tr>
+                                @endforeach
                                 <tr>
                                     <td colspan="3" class="border-r pl-20"><small>Actual Duty</small></td>
                                     <td class=" text-center"></td>
                                     <td class=" text-center"></td>
                                 </tr>
+                                @foreach($allowance_time AS $time)
                                 <tr>
-                                    <td colspan="3" class="border-r pl-20">September 10, 2022</td>
+                                    <td colspan="3" class="border-r pl-20">{{ date("F j, Y",strtotime($time->duty_date)) }}
+                                       <span class="pl-10">
+                                        @if($time->time_hours >= 14)
+                                               {{ $time->time_in . " - " . $time->time_out . " ADD 50" }}
+                                        @endif
+                                        </span>
+                                    </td>
                                     <td class=" text-center">Php</td>
-                                    <td class=" text-right">1001.22</td>
+                                    <td class=" text-right">
+
+                                        @if($time->time_hours >= 14)
+                                            {{ $amount = getAllowance($id, $head_id, 'amount') + 50 }}
+                                             
+                                        @else
+                                            {{ $amount = getAllowance($id, $head_id, 'amount') }}
+                                          
+                                        @endif
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td colspan="3" class="border-r pl-20">September 11, 2022</td>
-                                    <td class=" text-center">Php</td>
-                                    <td class=" text-right">1001.22</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3" class="border-r pl-20">September 12, 2022</td>
-                                    <td class=" text-center">Php</td>
-                                    <td class=" text-right">1001.22</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3" class="border-r pl-20">September 13, 2022</td>
-                                    <td class=" text-center">Php</td>
-                                    <td class=" text-right">1001.22</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3" class="border-r pl-20">September 14, 2022</td>
-                                    <td class=" text-center">Php</td>
-                                    <td class=" text-right">1001.22</td>
-                                </tr>
+                                @endforeach
                                 <tr>
                                     <td colspan="3" class="border-r border-b"><br><br><br><br><br></td>
                                     <td colspan=""  class="border-b"><br></td>
@@ -173,13 +175,15 @@
                         <td>Date:</td>
                         <td class="border-b">September</td>
                     </tr>
+                    @foreach($allowance_details AS $details)
                     <tr>
                         <td>Pay To:</td>
-                        <td class="border-b">Jonah May Benares</td>
+                        <td class="border-b">{{ getEmployeeName($details->employee_id) }}</td>
                         <td></td>
                         <td>Due Date:</td>
                         <td class="border-b">September</td>
                     </tr>
+                    @endforeach
                     <tr>
                         <td colspan="5" class="pt-2"></td>
                     </tr>
@@ -218,41 +222,41 @@
                                     <td colspan="" ><br></td>
                                     <td colspan="" ><br></td>
                                 </tr>
+                                @foreach($allowance_head AS $head)
                                 <tr>
-                                    <td colspan="3" class="border-r pl-20"><b>Meal and Transportation Allowance for Period Sept 4-10, 2022 @ Php 150.00</b></td>
+                                    <td colspan="3" class="border-r pl-20"><b>{{ getAllowanceName($head->allowance_id) }} for Period {{ date("M j, Y",strtotime($head->from_date)) }} to {{ date("M j, Y", strtotime($head->to_date)) }} @ Php {{ getAllowance($id, $head->id, 'amount') }}</b></td>
                                     <td class=" text-center">Php</td>
-                                    <td class=" text-right">1001.22</td>
+                                    <td class=" text-right"> {{ number_format(getAllowance($id, $head->id, 'total'),2) }}</td>
                                 </tr>
+                                @endforeach
                                 <tr>
                                     <td colspan="3" class="border-r pl-20"><small>Actual Duty</small></td>
                                     <td class=" text-center"></td>
                                     <td class=" text-center"></td>
                                 </tr>
+                                @foreach($allowance_time AS $time)
                                 <tr>
-                                    <td colspan="3" class="border-r pl-20">September 10, 2022</td>
+                                    <td colspan="3" class="border-r pl-20">{{ date("F j, Y",strtotime($time->duty_date)) }}
+                                       <span class="pl-10">
+                                        @if($time->time_hours >= 14)
+                                               {{ $time->time_in . " - " . $time->time_out . " ADD 50" }}
+                                        @endif
+                                        </span>
+                                    </td>
                                     <td class=" text-center">Php</td>
-                                    <td class=" text-right">1001.22</td>
+                                    <td class=" text-right">
+
+                                        @if($time->time_hours >= 14)
+                                            {{ $amount = getAllowance($id, $head_id, 'amount') + 50 }}
+                                             
+                                        @else
+                                            {{ $amount = getAllowance($id, $head_id, 'amount') }}
+                                          
+                                        @endif
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td colspan="3" class="border-r pl-20">September 11, 2022</td>
-                                    <td class=" text-center">Php</td>
-                                    <td class=" text-right">1001.22</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3" class="border-r pl-20">September 12, 2022</td>
-                                    <td class=" text-center">Php</td>
-                                    <td class=" text-right">1001.22</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3" class="border-r pl-20">September 13, 2022</td>
-                                    <td class=" text-center">Php</td>
-                                    <td class=" text-right">1001.22</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3" class="border-r pl-20">September 14, 2022</td>
-                                    <td class=" text-center">Php</td>
-                                    <td class=" text-right">1001.22</td>
-                                </tr>
+                                @endforeach
+                                
                                 <tr>
                                     <td colspan="3" class="border-r border-b"><br><br><br><br><br></td>
                                     <td colspan=""  class="border-b"><br></td>

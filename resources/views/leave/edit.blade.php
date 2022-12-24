@@ -60,6 +60,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            @if(!empty($leave))
                                 @foreach($leave as $l)
                                 <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
                                     <td class="py-3 px-3">
@@ -69,7 +70,7 @@
                                     <td class="py-3 px-3">
                                     {{ $l->date_absent }}
                                     </td>
-                                    @if($l->leave_type != 'Absent' && $l->leave_type != 'FTL')
+                                    @if($l->leave_type == 'Undertime/Tardiness')
                                     <td class="py-3 px-3">
                                         <input type="text" name="undertime_mins[]" value="{{ $l->undertime_mins }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 text-right">  
                                     </td>
@@ -90,8 +91,8 @@
                                     {{ $l->leave_type }}
                                     </td>
                                 </tr>
-                                
                                 @endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>
