@@ -29,6 +29,11 @@ use App\Http\Controllers\FiledLeaveController;
 use App\Http\Controllers\AllowanceSummaryController;
 use App\Http\Controllers\RfdReportController;
 use App\Http\Controllers\PayrollComputationController;
+use App\Http\Controllers\DTRofficeController;
+use App\Http\Controllers\DTRsiteController;
+use App\Http\Controllers\OTofficeController;
+use App\Http\Controllers\OTsiteController;
+use App\Http\Controllers\overallOTController;
 
 
 
@@ -126,7 +131,7 @@ Route::get('/payroll_salary/bulk', [PayrollSalaryController::class, 'printBulk']
 Route::resource('payroll_allowance', PayrollAllowanceController::class); 
 Route::post('/generate',[PayrollAllowanceController::class,'generate'])->name('generate');
 Route::get('/show/{id}/{head_id}', [PayrollAllowanceController::class, 'show'])->name('show');
-Route::get('/payroll_allowance/bulk', [PayrollAllowanceController::class, 'printBulk'])->middleware(['auth'])->name('printBulkAllowance');
+Route::get('/bulk/{id}', [PayrollAllowanceController::class, 'printBulk'])->middleware(['auth'])->name('printBulkAllowance');
 
 Route::resource('payrollovertime', PayrollOvertimeController::class); 
 Route::get('/payroll_overtime/bulkprinting', [PayrollOvertimeController::class, 'printBulk'])->middleware(['auth'])->name('printBulkOvertime');
@@ -152,6 +157,11 @@ Route::get('/report_rfd/print', [RfdReportController::class, 'print'])->middlewa
 
 Route::get('/upload/receive', [UploadAllowanceController::class, 'receive'])->middleware(['auth'])->name('receiveForm');
 Route::resource('payrollComp', PayrollComputationController::class);
+Route::resource('dtrOffice', DTRofficeController::class);
+Route::resource('dtrSite', DTRsiteController::class);
+Route::resource('otOffice', OTofficeController::class);
+Route::resource('otSite', OTsiteController::class);
+Route::resource('overall_OT', overallOTController::class);
 
 
 // Route::get('/shift_sched', [Shift_ScheduleController::class, 'shift_sched'])->middleware(['auth'])->name('shift_sched');

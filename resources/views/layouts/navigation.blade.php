@@ -189,6 +189,7 @@
                             <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container1" x-bind:style="selected == 3 ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
                                 <ul>
                                     <li class="relative">
+<<<<<<< HEAD
                                         <a href="{{ route('summaryAllowance.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowance Summary</a>
                                     </li>
                                     <li class="relative">
@@ -196,6 +197,30 @@
                                     </li>
                                     <li class="relative">
                                         <a href="{{ route('payrollComp.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Payroll Computation</a>
+=======
+                                        <a href="{{ route('rfdReport.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >RFD</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a href="{{ route('summaryAllowance.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowance Summary</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a href="{{ route('payrollComp.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Payroll Computation</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a href="{{ route('dtrOffice.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >DTR Office</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a href="{{ route('dtrSite.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >DTR Site</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a href="{{ route('otOffice.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >OT Office</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a href="{{ route('otSite.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >OT Site</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a href="{{ route('overall_OT.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Overall OT</a>
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                                     </li>
                                 </ul>
                             </div>

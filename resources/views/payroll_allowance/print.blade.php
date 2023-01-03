@@ -25,24 +25,40 @@
                         <td></td>
                         <td width="5%"></td>
                         <td width="10%">APV:</td>
-                        <td width="20%"class="border-b">September</td>
+                        <td width="20%"class="border-b"></td>
                     </tr>
+                  
                     <tr>
                         <td>Company</td>
+<<<<<<< HEAD
                         <td class="border-b">CENPRI - SITE</td>
+=======
+                        <td class="border-b">{{ getBUName($emp_id) }}</td>
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                         <td ></td>
                         <td>Date:</td>
-                        <td class="border-b">September</td>
+                        <td class="border-b"></td>
                     </tr>
+<<<<<<< HEAD
                     @foreach($allowance_details AS $details)
                     <tr>
                         <td>Pay To:</td>
                         <td class="border-b">{{ getEmployeeName($details->employee_id) }}</td>
+=======
+                   
+                    <tr>
+                        <td>Pay To:</td>
+                        <td class="border-b">{{ getEmployeeName($emp_id) }}</td>
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                         <td></td>
                         <td>Due Date:</td>
-                        <td class="border-b">September</td>
+                        <td class="border-b"></td>
                     </tr>
+<<<<<<< HEAD
                     @endforeach
+=======
+                   
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                     <tr>
                         <td colspan="5" class="pt-2"></td>
                     </tr>
@@ -140,10 +156,10 @@
                                     <td class=""><br></td>
                                 </tr>
                                 <tr>
-                                    <td class="border-r text-center font-bold">Sample Employee</td>
-                                    <td class="border-r text-center font-bold">Sample Employee</td>
-                                    <td class="border-r text-center font-bold">Sample Employee</td>
-                                    <td class=" text-center font-bold">Sample Employee</td>
+                                    <td class="border-r text-center font-bold">{{ $session_name }}</td>
+                                    <td class="border-r text-center font-bold">Cristy Cesar</td>
+                                    <td class="border-r text-center font-bold">Marianita Tabilla</td>
+                                    <td class=" text-center font-bold">{{ getEmployeeName($emp_id) }}</td>
                                 </tr>
                             </table>
                         </td>
@@ -166,24 +182,36 @@
                         <td></td>
                         <td width="5%"></td>
                         <td width="10%">APV:</td>
-                        <td width="20%"class="border-b">September</td>
+                        <td width="20%"class="border-b"></td>
                     </tr>
+                  
                     <tr>
                         <td>Company</td>
-                        <td class="border-b">CENPRI</td>
+                        <td class="border-b">{{ getBUName($emp_id) }}</td>
                         <td ></td>
                         <td>Date:</td>
-                        <td class="border-b">September</td>
+                        <td class="border-b"></td>
                     </tr>
+<<<<<<< HEAD
                     @foreach($allowance_details AS $details)
                     <tr>
                         <td>Pay To:</td>
                         <td class="border-b">{{ getEmployeeName($details->employee_id) }}</td>
+=======
+                   
+                    <tr>
+                        <td>Pay To:</td>
+                        <td class="border-b">{{ getEmployeeName($emp_id) }}</td>
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                         <td></td>
                         <td>Due Date:</td>
-                        <td class="border-b">September</td>
+                        <td class="border-b"></td>
                     </tr>
+<<<<<<< HEAD
                     @endforeach
+=======
+                    
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                     <tr>
                         <td colspan="5" class="pt-2"></td>
                     </tr>
@@ -281,10 +309,10 @@
                                     <td class=""><br></td>
                                 </tr>
                                 <tr>
-                                    <td class="border-r text-center font-bold">Sample Employee</td>
-                                    <td class="border-r text-center font-bold">Sample Employee</td>
-                                    <td class="border-r text-center font-bold">Sample Employee</td>
-                                    <td class=" text-center font-bold">Sample Employee</td>
+                                    <td class="border-r text-center font-bold">{{ $session_name }}</td>
+                                    <td class="border-r text-center font-bold">Cristy Cesar</td>
+                                    <td class="border-r text-center font-bold">Marianita Tabilla</td>
+                                    <td class=" text-center font-bold">{{ getEmployeeName($emp_id) }}</td>
                                 </tr>
                             </table>
                         </td>

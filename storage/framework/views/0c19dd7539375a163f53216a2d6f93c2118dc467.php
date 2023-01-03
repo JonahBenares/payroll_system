@@ -54,10 +54,18 @@
                                         <?php $x=0; ?>
                                         <option value=''>--Select Overtime Date--</option>
                                         <?php $__currentLoopData = $data2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $d): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <?php if($hours[$x]>=9 && $minutes[$x]>=30): ?>
-                                            <option value='<?php echo e($date[$x]); ?>'><?php echo e(date('F d,Y',strtotime($date[$x]))); ?></option>
-                                            <?php elseif($hours[$x]>=10): ?>
-                                            <option value='<?php echo e($date[$x]); ?>'><?php echo e(date('F d,Y',strtotime($date[$x]))); ?></option>
+                                            <?php if($d['schedule_type']=='Regular'): ?>{
+                                                <?php if($hours[$x]>=9 && $minutes[$x]>=30): ?>
+                                                <option value='<?php echo e($date[$x]); ?>'><?php echo e(date('F d,Y',strtotime($date[$x]))); ?></option>
+                                                <?php elseif($hours[$x]>=10): ?>
+                                                <option value='<?php echo e($date[$x]); ?>'><?php echo e(date('F d,Y',strtotime($date[$x]))); ?></option>
+                                                <?php endif; ?>
+                                            <?php else: ?> if($d['schedule_type']=='Shifting')
+                                                <?php if($hours[$x]>=8 && $minutes[$x]>=30): ?>
+                                                <option value='<?php echo e($date[$x]); ?>'><?php echo e(date('F d,Y',strtotime($date[$x]))); ?></option>
+                                                <?php elseif($hours[$x]>=10): ?>
+                                                <option value='<?php echo e($date[$x]); ?>'><?php echo e(date('F d,Y',strtotime($date[$x]))); ?></option>
+                                                <?php endif; ?>
                                             <?php endif; ?>
                                             <?php $x++; ?>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -66,7 +74,7 @@
                             </div>
                         </div>
                         <div class="flex justify-left px-4 mt-6 text-sm"> 
-                            <p class="text-base uppercase name" id="name"></p>
+                            <p class="text-base uppercase name font-bold" id="name"></p>
                         </div>
                         <div class="flex justify-between pb-2 px-2 bg-amber-50 rounded-2xl text-sm">
                             <div class="w-6/12 text-left px-2 mt-2">

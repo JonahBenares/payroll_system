@@ -478,8 +478,8 @@ class ShiftScheduleController extends Controller
                     $lastRD="";
                 }
             } else { //if 2,4 alternate RD is chosen
-                $firstRD="";
-                $secondRD =  new Carbon('fourth '.$rest. ' of '.$mo_name.' '. $year);
+                $firstRD= new Carbon('third '.$rest. ' of '.$mo_name.' '. $year);
+                $secondRD = "";
                 $lastRD="";
             }
 

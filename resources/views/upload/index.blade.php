@@ -25,12 +25,17 @@
                                 </div>
                             </a>
 <<<<<<< HEAD
+<<<<<<< HEAD
                     
                             <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
 =======
                           
                                 <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
 >>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
+=======
+                          
+                                <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                                 <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
                                     <div x-cloak @click="modelOpen = false"  
                                         x-transition:enter="transition ease-out duration-300 transform"
@@ -60,9 +65,13 @@
                                             </button>
                                         </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
                                     
 >>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
+=======
+                                    
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                                         <form method="POST" action="{{ route('export-allowance') }}">
                                             @csrf
                                         <div class="flex justify-between space-x-2 my-5">
@@ -110,6 +119,7 @@
                    
                 </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <form class="flex items-center" method="POST" action="{{ route('import') }}" enctype="multipart/form-data">   
                         @csrf    
                 <div class="flex justify-between mb-5"> 
@@ -146,6 +156,30 @@
                         <div class="">
                         <select name="allowance_id" class="text-sm block w-52 px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
 >>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
+=======
+                <form class="items-center" method="POST" action="{{ route('import') }}" enctype="multipart/form-data">   
+                    @csrf    
+                    @if(Session::has('success'))
+                    <div class="mb-5 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline">{{Session::get('success')}}</span>
+                    </div>
+                    @endif
+                    @if(Session::has('fail'))
+                        <div class="mb-5 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                            <span class="block sm:inline">{{Session::get('fail')}}</span>
+                        </div>
+                    @endif
+                <div class="flex justify-between mb-5"> 
+                    <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900 space-x-2">
+                        <div class="">
+                            <input type="date" name="from" class="text-sm block  px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
+                        </div>
+                        <div class="">
+                            <input type="date" name="to" class="text-sm block px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
+                        </div>
+                        <div class="">
+                        <select name="allowance_id" class="text-sm block w-52 px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                             <option value="" selected>Allowance</option>
                             @foreach($allowances AS $a)
                             <option value="{{ $a->id }}">{{ $a->allowance_name }}</option>
@@ -153,6 +187,7 @@
                         </select>
                         </div>
                     </div>
+<<<<<<< HEAD
 <<<<<<< HEAD
                     <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900">
                         <div class="mx-2 text-left">
@@ -168,16 +203,30 @@
                         <div class=" text-left">
                             <button type="submit" class="flex items-center justify-center px-3 py-2 mt-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">Upload</button>
 >>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
+=======
+                    <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900 space-x-1">
+                        <div class="text-left">
+                            <input type="file" name="allowance" class="text-sm block w-full px-1 py-1 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
+                        </div>
+                        <div class=" text-left">
+                            <button type="submit" class="flex items-center justify-center px-3 py-2 mt-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">Upload</button>
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                         </div>
                     </div>
                 </div>
                 </form>
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
                 <form method="POST" action="{{ route('uploadallowance.store') }}">
                 @csrf
 >>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
+=======
+
+                <form method="POST" action="{{ route('uploadallowance.store') }}">
+                @csrf
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                 <div class=" hover:overflow-x-auto overflow-x-hidden h-100 max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 border">
                     <table class="text-sm text-left text-gray-500 white:text-gray-400 border-collapse">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400">
@@ -222,6 +271,7 @@
                         </thead>
                         <tbody>
 <<<<<<< HEAD
+<<<<<<< HEAD
                            @php $total_days=0 @endphp
 =======
                            @php $total_days=0;
@@ -244,6 +294,25 @@
                                  
                                 if($d1!=0){
 >>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
+=======
+
+                          
+                           @php $total_days=0;
+                           $ot_amount=0;
+                           $counter = 1; @endphp
+                            @foreach($data AS $all)
+                              
+                                   @php $d1 = getTimeDiff($all['d1_in'], $all['d1_out']) @endphp
+                                   @php $d2 = getTimeDiff($all['d2_in'], $all['d2_out']) @endphp
+                                   @php $d3 = getTimeDiff($all['d3_in'], $all['d3_out']) @endphp
+                                   @php $d4 = getTimeDiff($all['d4_in'], $all['d4_out']) @endphp
+                                   @php $d5 = getTimeDiff($all['d5_in'], $all['d5_out']) @endphp
+                                   @php $d6 = getTimeDiff($all['d6_in'], $all['d6_out']) @endphp
+                                   @php $d7 = getTimeDiff($all['d7_in'], $all['d7_out']) @endphp
+                                @php 
+                                 
+                                if($d1!=0){
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                                     $total_days++;
                                     } if($d2!=0){
                                     $total_days++;
@@ -259,7 +328,10 @@
                                     $total_days++;
                                     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
 
                                     if($d1 >= 14){
                                     $ot_amount+=50;
@@ -278,11 +350,15 @@
                                     }
 
                                     $total_amount = ($total_days * $all['rate'])+$ot_amount;
+<<<<<<< HEAD
 >>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
+=======
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                                 @endphp
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                  {{ $all['fullname'] }}
+<<<<<<< HEAD
                                 </td>
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
                                     <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
@@ -436,6 +512,127 @@
 <<<<<<< HEAD
                             @php $total_days=0 @endphp
 =======
+=======
+                                </td>
+                                <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
+                                    <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
+                                        <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
+                                            {{ $d1 }}
+                                        </div>
+                                        <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
+                                            <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
+                                           {{ $all['d1_in'] . " - " . $all['d1_out']}}
+                                            </div>
+                                            <svg class="absolute z-10 w-6 h-6 text-white transform -translate-x-12 -translate-y-3 fill-current stroke-current" width="8" height="8">
+                                            <rect x="12" y="-10" width="8" height="8" transform="rotate(45)" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
+                                    <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
+                                        <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
+                                        {{ $d2 }}
+                                        </div>
+                                        <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
+                                            <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
+                                            {{ $all['d2_in'] . " - " . $all['d2_out']}}
+                                            </div>
+                                            <svg class="absolute z-10 w-6 h-6 text-white transform -translate-x-12 -translate-y-3 fill-current stroke-current" width="8" height="8">
+                                            <rect x="12" y="-10" width="8" height="8" transform="rotate(45)" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
+                                    <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
+                                        <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
+                                        {{ $d3 }} 
+                                        </div>
+                                        <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
+                                            <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
+                                            {{ $all['d3_in'] . " - " . $all['d3_out']}}
+                                            </div>
+                                            <svg class="absolute z-10 w-6 h-6 text-white transform -translate-x-12 -translate-y-3 fill-current stroke-current" width="8" height="8">
+                                            <rect x="12" y="-10" width="8" height="8" transform="rotate(45)" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
+                                    <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
+                                        <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
+                                        {{ $d4 }}  
+                                        </div>
+                                        <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
+                                            <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
+                                            {{ $all['d4_in'] . " - " . $all['d4_out'] }}
+                                            </div>
+                                            <svg class="absolute z-10 w-6 h-6 text-white transform -translate-x-12 -translate-y-3 fill-current stroke-current" width="8" height="8">
+                                            <rect x="12" y="-10" width="8" height="8" transform="rotate(45)" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
+                                    <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
+                                        <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
+                                        {{ $d5 }}   
+                                        </div>
+                                        <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
+                                            <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
+                                            {{ $all['d5_in'] . " - " . $all['d5_out'] }}
+                                            </div>
+                                            <svg class="absolute z-10 w-6 h-6 text-white transform -translate-x-12 -translate-y-3 fill-current stroke-current" width="8" height="8">
+                                            <rect x="12" y="-10" width="8" height="8" transform="rotate(45)" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
+                                    <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
+                                        <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
+                                        {{ $d6 }}  
+                                        </div>
+                                        <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
+                                            <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
+                                            {{ $all['d6_in'] . " - " . $all['d6_out'] }}
+                                            </div>
+                                            <svg class="absolute z-10 w-6 h-6 text-white transform -translate-x-12 -translate-y-3 fill-current stroke-current" width="8" height="8">
+                                            <rect x="12" y="-10" width="8" height="8" transform="rotate(45)" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
+                                    <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
+                                        <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
+                                        {{ $d7 }}
+                                        </div>
+                                        <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
+                                            <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
+                                            {{ $all['d7_in'] . " - " . $all['d7_out'] }}
+                                            </div>
+                                            <svg class="absolute z-10 w-6 h-6 text-white transform -translate-x-12 -translate-y-3 fill-current stroke-current" width="8" height="8">
+                                            <rect x="12" y="-10" width="8" height="8" transform="rotate(45)" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
+                                    <input type="text" id="total_days_{{ $counter }}" name="total_days[]" onblur="autocalculate({{ $counter }})" value="{{ $total_days }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
+                                </td>
+                                <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
+                                    <input type="text" id="rate_{{ $counter }}" name="rate[]" value="{{ $all['rate'] }}" onblur="autocalculate({{ $counter }})" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 text-right">
+                                </td>
+                                <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
+                                    <input type="text" id="ot_amount_{{ $counter }}" name="ot_amount[]" value="{{ $ot_amount }}" onblur="autocalculate({{ $counter }})" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 text-right">
+                                </td>
+                                <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
+                                    <input type="text" id="total_amount_{{ $counter }}" name="total_amount[]" value="{{ $total_amount }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 text-right">
+                                </td>
+                            </tr>
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                             <input type="hidden" name="employee_id[]" value="{{ $all['emp_id'] }}">
                             <input type="hidden" name="personal_id[]" value="{{ $all['personal_id'] }}">
                             <input type="hidden" name="day1[]" value="{{ $all['d1_in'] . '-' . $all['d1_out'] }}">
@@ -453,7 +650,10 @@
                             <input type="hidden" name="d6[]" value="{{ $d6 }}">
                             <input type="hidden" name="d7[]" value="{{ $d7 }}">
                             @php $total_days=0; $ot_amount=0; $counter++; @endphp
+<<<<<<< HEAD
 >>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
+=======
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                            @endforeach
                         </tbody>
                     </table>

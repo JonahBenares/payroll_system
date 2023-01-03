@@ -46,10 +46,18 @@
                                         @php $x=0; @endphp
                                         <option value=''>--Select Overtime Date--</option>
                                         @foreach($data2 AS $d)
-                                            @if($hours[$x]>=9 && $minutes[$x]>=30)
-                                            <option value='{{ $date[$x]}}'>{{ date('F d,Y',strtotime($date[$x]))}}</option>
-                                            @elseif($hours[$x]>=10)
-                                            <option value='{{ $date[$x]}}'>{{ date('F d,Y',strtotime($date[$x]))}}</option>
+                                            @if($d['schedule_type']=='Regular'){
+                                                @if($hours[$x]>=9 && $minutes[$x]>=30)
+                                                <option value='{{ $date[$x]}}'>{{ date('F d,Y',strtotime($date[$x]))}}</option>
+                                                @elseif($hours[$x]>=10)
+                                                <option value='{{ $date[$x]}}'>{{ date('F d,Y',strtotime($date[$x]))}}</option>
+                                                @endif
+                                            @else if($d['schedule_type']=='Shifting')
+                                                @if($hours[$x]>=8 && $minutes[$x]>=30)
+                                                <option value='{{ $date[$x]}}'>{{ date('F d,Y',strtotime($date[$x]))}}</option>
+                                                @elseif($hours[$x]>=10)
+                                                <option value='{{ $date[$x]}}'>{{ date('F d,Y',strtotime($date[$x]))}}</option>
+                                                @endif
                                             @endif
                                             @php $x++; @endphp
                                         @endforeach
@@ -58,7 +66,7 @@
                             </div>
                         </div>
                         <div class="flex justify-left px-4 mt-6 text-sm"> 
-                            <p class="text-base uppercase name" id="name"></p>
+                            <p class="text-base uppercase name font-bold" id="name"></p>
                         </div>
                         <div class="flex justify-between pb-2 px-2 bg-amber-50 rounded-2xl text-sm">
                             <div class="w-6/12 text-left px-2 mt-2">

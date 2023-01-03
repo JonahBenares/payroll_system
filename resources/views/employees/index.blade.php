@@ -38,6 +38,7 @@
                             <td class="px-3 py-3 text-center" width="7%">Employee No.</td>
                             <td class="px-3 py-3 sticky left-0 bg-gray-50 z-10" width="20%">Employee Name</td>
                             <td class="px-3 py-3">Location</td>
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 =======
@@ -52,12 +53,20 @@
                             @endforeach
 
 <<<<<<< HEAD
+=======
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                             <td class="px-3 py-3">Pag-Ibig Rate</td>
                             <td class="px-3 py-3">Hourly Rate</td>
                             <td class="px-3 py-3">Daily Rate</td>
                             <td class="px-3 py-3">Monthly Rate</td>
+<<<<<<< HEAD
 =======
 >>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
+=======
+                            @foreach($hmo AS $h)
+                            <td class="px-3 py-3">{{ $h->level_description}}</td>
+                            @endforeach
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                             <td class="px-3 py-3">Salary Type</td>
                             <td class="px-3 py-3 sticky right-0  bg-gray-50 " width="1%">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -82,9 +91,18 @@
                             </td>
                             <td class="px-3 py-3">{{ $el->location_name }}</td>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+                          
+                            <td class="px-3 py-3">{{ $el->pagibig_rate }}</td>
+                            <td class="px-3 py-3">{{ $el->hourly_rate }}</td>
+                            <td class="px-3 py-3">{{ $el->daily_rate }}</td>
+                            <td class="px-3 py-3">{{ $el->monthly_rate }}</td>
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                             @foreach($hmo AS $h)
-                            <td class="px-3 py-3">{{ $h->level_description}}</td>
+                            <td class="px-3 py-3">{{ getHMODependent($el->id, $h->id) }}</td>
                             @endforeach
+<<<<<<< HEAD
                             <td class="px-3 py-3"></td>
                             <td class="px-3 py-3"></td>
                             <td class="px-3 py-3"></td>
@@ -101,6 +119,9 @@
                             @endforeach
                             <td class="px-3 py-3">{{ $el->salary_type }}</td>
 >>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
+=======
+                            <td class="px-3 py-3">{{ $el->salary_type }}</td>
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                             <td class="px-3 py-3 sticky right-0 bg-white">
                                 <a href="{{ route('emp.edit', $el->id) }}" class="" title="Update">
                                     <div class="py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">

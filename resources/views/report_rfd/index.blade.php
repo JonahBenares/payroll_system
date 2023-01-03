@@ -59,6 +59,7 @@
                         <div class="space-y-1 w-8/12">
                             <div class="flex justify-between space-x-2">
                                 <p class="text-sm text-sm w-24 text-left">Company:</p>
+<<<<<<< HEAD
                                 <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b w-full">
                             </div>
                             <div class="flex justify-between space-x-2">
@@ -68,11 +69,23 @@
                             <div class="flex justify-between space-x-2">
                                 <p class="text-sm text-sm w-40 text-left">Period Covered:</p>
                                 <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b w-full">
+=======
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+                            </div>
+                            <div class="flex justify-between space-x-2">
+                                <p class="text-sm text-sm w-24 text-left">Pay To:</p>
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+                            </div>
+                            <div class="flex justify-between space-x-2">
+                                <p class="text-sm text-sm w-40 text-left">Period Covered:</p>
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                             </div>
                         </div>
                         <div class="space-y-1 w-4/12">
                             <div class="flex justify-between space-x-2">
                                 <p class="text-sm text-sm w-24 text-right">APV:</p>
+<<<<<<< HEAD
                                 <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b w-full">
                             </div>
                             <div class="flex justify-between space-x-2">
@@ -82,6 +95,17 @@
                             <div class="flex justify-between space-x-2">
                                 <p class="text-sm text-sm w-24 text-right">Due Date:</p>
                                 <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b w-full">
+=======
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+                            </div>
+                            <div class="flex justify-between space-x-2">
+                                <p class="text-sm text-sm w-24 text-right">Date:</p>
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+                            </div>
+                            <div class="flex justify-between space-x-2">
+                                <p class="text-sm text-sm w-24 text-right">Due Date:</p>
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                             </div>
                         </div>
                     </div>

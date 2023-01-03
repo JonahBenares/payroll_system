@@ -4,10 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\UploadAllowance;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use App\Models\UploadAllowanceDetail;
 use App\Models\UploadAllowanceTime;
 >>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
+=======
+use App\Models\UploadAllowanceDetail;
+use App\Models\UploadAllowanceTime;
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
 use App\Exports\ExportEmployee;
 use App\Models\Employee;
 use App\Models\Allowance;
@@ -18,10 +23,15 @@ use Maatwebsite\Excel\Excel as ExcelExcel;
 use Maatwebsite\Excel\Facades\Excel;
 use DateTime;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use DateInterval;
 use DatePeriod;
 >>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
+=======
+use DateInterval;
+use DatePeriod;
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
 
 class UploadAllowanceController extends Controller
 {
@@ -35,15 +45,21 @@ class UploadAllowanceController extends Controller
         $data=array();
         $allowances=Allowance::all();
 <<<<<<< HEAD
+<<<<<<< HEAD
         return view('upload.index',compact('data','allowances'));
 =======
+=======
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
         $post_data = array(
             "from"=>"",
             "to"=>"",
             "allowance_id"=>""
         );
         return view('upload.index',compact('data','allowances','post_data'));
+<<<<<<< HEAD
 >>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
+=======
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
     }
 
     /**
@@ -168,11 +184,15 @@ class UploadAllowanceController extends Controller
     }
 
     public function import(Request $request){
+<<<<<<< HEAD
         
 <<<<<<< HEAD
 =======
        
 >>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
+=======
+         
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
        $array= Excel::toArray(new AllowanceImport, request()->file('allowance'), ExcelExcel::XLSX);
        $x=1;
        $data_allowance=array();
@@ -181,7 +201,10 @@ class UploadAllowanceController extends Controller
             if($key>=1){
                 foreach($value AS $val){
 
+<<<<<<< HEAD
                     
+=======
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                     if($col>=3){
                             if($val != 'A'){
                                 $total = $val * 24; 
@@ -195,6 +218,7 @@ class UploadAllowanceController extends Controller
                                 $val = 'A';
                             }    
                     }
+<<<<<<< HEAD
               
 
                     if($col==0){
@@ -206,6 +230,12 @@ class UploadAllowanceController extends Controller
 =======
                         $data_allowance['rate']=$this->get_allowance_rate($val,$request->allowance_id);
 >>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
+=======
+
+                    if($col==0){
+                        $data_allowance['emp_id'] = $val;
+                        $data_allowance['rate']=$this->get_allowance_rate($val,$request->allowance_id);
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                     } if($col==1){
                         $data_allowance['personal_id']= $val;
                     } if($col==2){
@@ -240,12 +270,15 @@ class UploadAllowanceController extends Controller
                         $data_allowance['d7_out']=$val;
                     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
                  
                   
 
 =======
 >>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
+=======
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                 $col++;
                     
                 }
@@ -257,14 +290,19 @@ class UploadAllowanceController extends Controller
         $post_data = array(
             "from"=>$request->from,
 <<<<<<< HEAD
+<<<<<<< HEAD
             "to"=>$request->from,
 =======
             "to"=>$request->to,
 >>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
+=======
+            "to"=>$request->to,
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
             "allowance_id"=>$request->allowance_id
         );
         $allowances=Allowance::all();
         
+<<<<<<< HEAD
 <<<<<<< HEAD
         //return view('upload.index',compact('data','post_data','allowances'));
         //return redirect('/')->with('success', 'All good!');
@@ -282,6 +320,9 @@ class UploadAllowanceController extends Controller
    
 =======
         return view('upload.index',compact('data','allowances','post_data'));
+=======
+        return view('upload.index',compact('data','post_data','allowances'));
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
         //return redirect('/')->with('success', 'All good!');
     }
 
@@ -301,5 +342,9 @@ class UploadAllowanceController extends Controller
     public function receive(){
         return view('upload.receive');
     }
+<<<<<<< HEAD
 >>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
+=======
+
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
 }
