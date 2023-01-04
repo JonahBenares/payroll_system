@@ -19,7 +19,6 @@ use App\Models\UploadAllowanceDetail;
 if (!function_exists('getTimeDiff')) {
 
      function getTimeDiff($starttime,$endtime){
-
         if($starttime>=14 && $endtime <=10){
             $start = date("Y-m-d")." " . $starttime;
             $end =  date('Y-m-d', strtotime($start . ' +1 day')) . " ".$endtime;

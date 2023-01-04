@@ -52,20 +52,35 @@
                   
                     <tr>
                         <td>Company</td>
+<<<<<<< HEAD
+                        <td class="border-b">CENPRI - SITE</td>
+=======
                         <td class="border-b"><?php echo e(getBUName($emp_id)); ?></td>
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                         <td ></td>
                         <td>Date:</td>
                         <td class="border-b"></td>
                     </tr>
+<<<<<<< HEAD
+                    <?php $__currentLoopData = $allowance_details; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $details): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <tr>
+                        <td>Pay To:</td>
+                        <td class="border-b"><?php echo e(getEmployeeName($details->employee_id)); ?></td>
+=======
                    
                     <tr>
                         <td>Pay To:</td>
                         <td class="border-b"><?php echo e(getEmployeeName($emp_id)); ?></td>
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                         <td></td>
                         <td>Due Date:</td>
                         <td class="border-b"></td>
                     </tr>
+<<<<<<< HEAD
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+=======
                    
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                     <tr>
                         <td colspan="5" class="pt-2"></td>
                     </tr>
@@ -217,15 +232,26 @@
                         <td>Date:</td>
                         <td class="border-b"></td>
                     </tr>
+<<<<<<< HEAD
+                    <?php $__currentLoopData = $allowance_details; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $details): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <tr>
+                        <td>Pay To:</td>
+                        <td class="border-b"><?php echo e(getEmployeeName($details->employee_id)); ?></td>
+=======
                    
                     <tr>
                         <td>Pay To:</td>
                         <td class="border-b"><?php echo e(getEmployeeName($emp_id)); ?></td>
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                         <td></td>
                         <td>Due Date:</td>
                         <td class="border-b"></td>
                     </tr>
+<<<<<<< HEAD
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+=======
                     
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                     <tr>
                         <td colspan="5" class="pt-2"></td>
                     </tr>

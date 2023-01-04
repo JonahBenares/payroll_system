@@ -287,6 +287,7 @@
                         document.getElementById("timein").innerHTML  = response.time_in;
                         document.getElementById("timeout").innerHTML  = response.time_out;
                         document.getElementById("name").innerHTML  = response.fullname;
+                        document.getElementById("ot_head_id").value  = response.ot_head_id;
                         if(response.total_sumhour==0){
                             document.getElementById("no_hrs").innerHTML  = response.total_timemins+' min/s';
                         }else{

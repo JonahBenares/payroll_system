@@ -46,10 +46,18 @@
                                         @php $x=0; @endphp
                                         <option value=''>--Select Overtime Date--</option>
                                         @foreach($data2 AS $d)
-                                            @if($hours[$x]>=9 && $minutes[$x]>=30)
-                                            <option value='{{ $date[$x]}}'>{{ date('F d,Y',strtotime($date[$x]))}}</option>
-                                            @elseif($hours[$x]>=10)
-                                            <option value='{{ $date[$x]}}'>{{ date('F d,Y',strtotime($date[$x]))}}</option>
+                                            @if($d['schedule_type']=='Regular'){
+                                                @if($hours[$x]>=9 && $minutes[$x]>=30)
+                                                <option value='{{ $date[$x]}}'>{{ date('F d,Y',strtotime($date[$x]))}}</option>
+                                                @elseif($hours[$x]>=10)
+                                                <option value='{{ $date[$x]}}'>{{ date('F d,Y',strtotime($date[$x]))}}</option>
+                                                @endif
+                                            @else if($d['schedule_type']=='Shifting')
+                                                @if($hours[$x]>=8 && $minutes[$x]>=30)
+                                                <option value='{{ $date[$x]}}'>{{ date('F d,Y',strtotime($date[$x]))}}</option>
+                                                @elseif($hours[$x]>=10)
+                                                <option value='{{ $date[$x]}}'>{{ date('F d,Y',strtotime($date[$x]))}}</option>
+                                                @endif
                                             @endif
                                             @php $x++; @endphp
                                         @endforeach
@@ -85,7 +93,7 @@
                         <div id="loadpage">
                             <div class="flex justify-between pt-4 space-x-5">
                                 <div class="w-1/2 px-2 bg-amber-50 px-5 pb-5 rounded-2xl">
-                                    <h6 class="font-semibold border-b py-2">No. of Days Worked</h6>
+                                    <h6 class="font-semibold border-b py-2">No. of Hours Worked</h6>
                                     <div class="flex justify-between mt-2">
                                         <label for="reg_day" class="block py-1 pt-2 pr-3 text-sm font-medium text-gray-700 ">REG DAY:</label>
                                         <input type="text" onkeypress="return isNumberKey(this, event)" name="reg_day" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-56 h-9 text-right" value='{{ (!empty($get_data->reg_day_hr)) ? $get_data->reg_day_hr : '0' }}'>
@@ -156,6 +164,7 @@
                                 </div>
                             </div>
                         </div>
+                    <input type="hidden" name="ot_head_id" id="ot_head_id">
                     <input type="hidden" name="employee_id" id="employee_id" value="{{$_GET['employee_id']}}">
                     <input type="hidden" name="personal_id" id="personal_id" value="{{$_GET['personal_id']}}">
                     <input type="hidden" name="month_year" id="month_year" value="{{$_GET['month_year']}}">

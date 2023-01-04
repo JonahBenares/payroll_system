@@ -65,6 +65,9 @@
                                 <th scope="col" class="py-3 px-6" width="10%" align="center"> 
                                     Editable
                                 </th>
+                                <th scope="col" class="py-3 px-6" width="10%" align="center"> 
+                                    Visible
+                                </th>
                                 <th scope="col" class="py-3 px-6" width="11%" align="center">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
@@ -89,19 +92,26 @@
                                 <?php endif; ?>
                                 </th>
                                 <td align="center" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                <?php if($pay->editable==0): ?>
-                                    <span class="text-red-700">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                    </svg>
-                                    </span>
-                                <?php else: ?>
-                                <span class="text-green-700">
+                                    <?php if($pay->editable==0): ?>
+                                        <span class="text-red-700">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                        </span>
+                                    <?php else: ?>
+                                        <span class="text-green-700">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /> 
+                                            </svg> 
+                                        </span>
+                                    <?php endif; ?> 
+                                </td>
+                                <td align="center" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                                    <span class="text-green-700">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /> 
                                         </svg> 
                                     </span>
-                                    <?php endif; ?> 
                                 </td>
                                 <td class="py-3 px-6 justify-center flex" align="center">
                                     <a href="<?php echo e(route('payslip_info.edit',$pay->id)); ?>" class="" title="Update">
