@@ -198,16 +198,12 @@
                                         <a href="<?php echo e(route('payrollComp.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Payroll Computation</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('dtrOffice.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >DTR Office</a>
+                                        <a href="<?php echo e(route('dtrOffice.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >DTR Report</a>
                                     </li>
+                                    
+                                    
                                     <li class="relative">
-                                        <a href="<?php echo e(route('dtrSite.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >DTR Site</a>
-                                    </li>
-                                    <li class="relative">
-                                        <a href="<?php echo e(route('otOffice.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >OT Office</a>
-                                    </li>
-                                    <li class="relative">
-                                        <a href="<?php echo e(route('otSite.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >OT Site</a>
+                                        <a href="<?php echo e(route('otSite.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >OT Report</a>
                                     </li>
                                     <li class="relative">
                                         <a href="<?php echo e(route('overall_OT.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Overall OT</a>

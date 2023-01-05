@@ -30,20 +30,35 @@
                   
                     <tr>
                         <td>Company</td>
+<<<<<<< HEAD
+                        <td class="border-b">CENPRI - SITE</td>
+=======
                         <td class="border-b">{{ getBUName($emp_id) }}</td>
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                         <td ></td>
                         <td>Date:</td>
                         <td class="border-b"></td>
                     </tr>
+<<<<<<< HEAD
+                    @foreach($allowance_details AS $details)
+                    <tr>
+                        <td>Pay To:</td>
+                        <td class="border-b">{{ getEmployeeName($details->employee_id) }}</td>
+=======
                    
                     <tr>
                         <td>Pay To:</td>
                         <td class="border-b">{{ getEmployeeName($emp_id) }}</td>
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                         <td></td>
                         <td>Due Date:</td>
                         <td class="border-b"></td>
                     </tr>
+<<<<<<< HEAD
+                    @endforeach
+=======
                    
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                     <tr>
                         <td colspan="5" class="pt-2"></td>
                     </tr>
@@ -177,15 +192,26 @@
                         <td>Date:</td>
                         <td class="border-b"></td>
                     </tr>
+<<<<<<< HEAD
+                    @foreach($allowance_details AS $details)
+                    <tr>
+                        <td>Pay To:</td>
+                        <td class="border-b">{{ getEmployeeName($details->employee_id) }}</td>
+=======
                    
                     <tr>
                         <td>Pay To:</td>
                         <td class="border-b">{{ getEmployeeName($emp_id) }}</td>
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                         <td></td>
                         <td>Due Date:</td>
                         <td class="border-b"></td>
                     </tr>
+<<<<<<< HEAD
+                    @endforeach
+=======
                     
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                     <tr>
                         <td colspan="5" class="pt-2"></td>
                     </tr>

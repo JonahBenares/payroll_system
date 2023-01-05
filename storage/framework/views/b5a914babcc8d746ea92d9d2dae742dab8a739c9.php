@@ -476,5 +476,4 @@
 
 }
 
-</script>  
-<?php /**PATH C:\xampp\htdocs\payroll_system\resources\views/upload/index.blade.php ENDPATH**/ ?>
+</script>  <?php /**PATH C:\xampp\htdocs\payroll_system\resources\views/upload/index.blade.php ENDPATH**/ ?>
