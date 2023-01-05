@@ -32,18 +32,8 @@
                                     <span>Download</span>
                                 </div>
                             </a>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    
-                            <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-=======
                           
                                 <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
->>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
-=======
-                          
-                                <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
->>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                                 <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
                                     <div x-cloak @click="modelOpen = false"  
                                         x-transition:enter="transition ease-out duration-300 transform"
@@ -72,14 +62,7 @@
                                                 </svg>
                                             </button>
                                         </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
                                     
->>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
-=======
-                                    
->>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                                         <form method="POST" action="<?php echo e(route('export-allowance')); ?>">
                                             <?php echo csrf_field(); ?>
                                         <div class="flex justify-between space-x-2 my-5">
@@ -101,13 +84,8 @@
                             </div>
                         </div>
                         <label for="table-search" class="sr-only">Search</label>
-<<<<<<< HEAD
-                       
-                        <label for="simple-search" class="sr-only">Search</label>
-=======
                         <form class="flex items-center">   
                             <label for="simple-search" class="sr-only">Search</label>
->>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
                             <div class="relative w-full">
                                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                     <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
@@ -118,29 +96,10 @@
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                                 <span class="sr-only">Search</span>
                             </button>
-<<<<<<< HEAD
-                       
-=======
                         </form>
->>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
                     </div>
                    
                 </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                <form class="flex items-center" method="POST" action="<?php echo e(route('import')); ?>" enctype="multipart/form-data">   
-                        <?php echo csrf_field(); ?>    
-                <div class="flex justify-between mb-5"> 
-                    <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900">
-                        <div class="mx-2 text-left">
-                            <input type="date" name="from" class="text-sm block  px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
-                        </div>
-                        <div class="mx-2 text-left">
-                            <input type="date" name="to" class="text-sm block px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
-                        </div>
-                        <div class="mx-2 text-left">
-                        <select name="allowance_id" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
-=======
                 <form class="items-center" method="POST" action="<?php echo e(route('import')); ?>" enctype="multipart/form-data">   
                     <?php echo csrf_field(); ?>    
                     <?php if(Session::has('success')): ?>
@@ -163,31 +122,6 @@
                         </div>
                         <div class="">
                         <select name="allowance_id" class="text-sm block w-52 px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
->>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
-=======
-                <form class="items-center" method="POST" action="<?php echo e(route('import')); ?>" enctype="multipart/form-data">   
-                    <?php echo csrf_field(); ?>    
-                    <?php if(Session::has('success')): ?>
-                    <div class="mb-5 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
-                        <span class="block sm:inline"><?php echo e(Session::get('success')); ?></span>
-                    </div>
-                    <?php endif; ?>
-                    <?php if(Session::has('fail')): ?>
-                        <div class="mb-5 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                            <span class="block sm:inline"><?php echo e(Session::get('fail')); ?></span>
-                        </div>
-                    <?php endif; ?>
-                <div class="flex justify-between mb-5"> 
-                    <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900 space-x-2">
-                        <div class="">
-                            <input type="date" name="from" class="text-sm block  px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
-                        </div>
-                        <div class="">
-                            <input type="date" name="to" class="text-sm block px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
-                        </div>
-                        <div class="">
-                        <select name="allowance_id" class="text-sm block w-52 px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
->>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                             <option value="" selected>Allowance</option>
                             <?php $__currentLoopData = $allowances; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <option value="<?php echo e($a->id); ?>"><?php echo e($a->allowance_name); ?></option>
@@ -195,46 +129,19 @@
                         </select>
                         </div>
                     </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900">
-                        <div class="mx-2 text-left">
-                            <input type="file" name="allowance" class="text-sm block w-full px-1 py-1 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
-                        </div>
-                        <div class="mx-2 text-left">
-                            <button type="submit" class="flex items-center justify-center px-3 py-2 mx-2 mt-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">Upload</button>
-=======
                     <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900 space-x-1">
                         <div class="text-left">
                             <input type="file" name="allowance" class="text-sm block w-full px-1 py-1 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
                         </div>
                         <div class=" text-left">
                             <button type="submit" class="flex items-center justify-center px-3 py-2 mt-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">Upload</button>
->>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
-=======
-                    <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900 space-x-1">
-                        <div class="text-left">
-                            <input type="file" name="allowance" class="text-sm block w-full px-1 py-1 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
-                        </div>
-                        <div class=" text-left">
-                            <button type="submit" class="flex items-center justify-center px-3 py-2 mt-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">Upload</button>
->>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                         </div>
                     </div>
                 </div>
                 </form>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
                 <form method="POST" action="<?php echo e(route('uploadallowance.store')); ?>">
                 <?php echo csrf_field(); ?>
->>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
-=======
-
-                <form method="POST" action="<?php echo e(route('uploadallowance.store')); ?>">
-                <?php echo csrf_field(); ?>
->>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                 <div class=" hover:overflow-x-auto overflow-x-hidden h-100 max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 border">
                     <table class="text-sm text-left text-gray-500 white:text-gray-400 border-collapse">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400">
@@ -278,31 +185,6 @@
                             </tr>
                         </thead>
                         <tbody>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                           <?php $total_days=0 ?>
-=======
-                           <?php $total_days=0;
-                           $ot_amount=0;
-                           $counter = 1; ?>
->>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
-                            <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $all): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <?php $d1 = getTimeDiff($all['d1_in'],$all['d1_out']) ?>
-                                <?php $d2 = getTimeDiff($all['d2_in'],$all['d2_out']) ?>
-                                <?php $d3 = getTimeDiff($all['d3_in'],$all['d3_out']) ?>
-                                <?php $d4 = getTimeDiff($all['d4_in'],$all['d4_out']) ?>
-                                <?php $d5 = getTimeDiff($all['d5_in'],$all['d5_out']) ?>
-                                <?php $d6 = getTimeDiff($all['d6_in'],$all['d6_out']) ?>
-                                <?php $d7 = getTimeDiff($all['d7_in'],$all['d7_out']) ?>
-
-<<<<<<< HEAD
-                                <?php if($d1!=0){
-=======
-                                <?php 
-                                 
-                                if($d1!=0){
->>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
-=======
 
                           
                            <?php $total_days=0;
@@ -320,7 +202,6 @@
                                 <?php 
                                  
                                 if($d1!=0){
->>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                                     $total_days++;
                                     } if($d2!=0){
                                     $total_days++;
@@ -335,11 +216,6 @@
                                     }if($d7!=0){
                                     $total_days++;
                                     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
 
                                     if($d1 >= 14){
                                     $ot_amount+=50;
@@ -358,10 +234,6 @@
                                     }
 
                                     $total_amount = ($total_days * $all['rate'])+$ot_amount;
-<<<<<<< HEAD
->>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
-=======
->>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                                 ?>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white">
@@ -373,7 +245,6 @@
                                         <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
                                             <?php echo e($d1); ?>
 
-<<<<<<< HEAD
                                         </div>
                                         <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
                                             <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
@@ -389,51 +260,12 @@
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
                                     <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
                                         <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
-<<<<<<< HEAD
-                                        <?php echo e(getTimeDiff($all['d2_in'],$all['d2_out'])); ?>
-=======
-                                        <?php echo e($d2); ?>
->>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
-
-                                        </div>
-                                        <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
-                                            <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
-                                            <?php echo e($all['d2_in'] . " - " . $all['d2_out']); ?>
-=======
-                                        </div>
-                                        <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
-                                            <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
-                                           <?php echo e($all['d1_in'] . " - " . $all['d1_out']); ?>
->>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
-
-                                            </div>
-                                            <svg class="absolute z-10 w-6 h-6 text-white transform -translate-x-12 -translate-y-3 fill-current stroke-current" width="8" height="8">
-                                            <rect x="12" y="-10" width="8" height="8" transform="rotate(45)" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                    <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
-                                        <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                                        <?php echo e(getTimeDiff($all['d3_in'],$all['d3_out'])); ?> 
-=======
-                                        <?php echo e($d3); ?> 
->>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
-                                        </div>
-                                        <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
-                                            <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
-                                            <?php echo e($all['d3_in'] . " - " . $all['d3_out']); ?>
-=======
                                         <?php echo e($d2); ?>
 
                                         </div>
                                         <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
                                             <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
                                             <?php echo e($all['d2_in'] . " - " . $all['d2_out']); ?>
->>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
 
                                             </div>
                                             <svg class="absolute z-10 w-6 h-6 text-white transform -translate-x-12 -translate-y-3 fill-current stroke-current" width="8" height="8">
@@ -445,23 +277,11 @@
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
                                     <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
                                         <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                                        <?php echo e(getTimeDiff($all['d4_in'],$all['d4_out'])); ?>  
-=======
-                                        <?php echo e($d4); ?>  
->>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
-                                        </div>
-                                        <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
-                                            <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
-                                            <?php echo e($all['d4_in'] . " - " . $all['d4_out']); ?>
-=======
                                         <?php echo e($d3); ?> 
                                         </div>
                                         <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
                                             <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
                                             <?php echo e($all['d3_in'] . " - " . $all['d3_out']); ?>
->>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
 
                                             </div>
                                             <svg class="absolute z-10 w-6 h-6 text-white transform -translate-x-12 -translate-y-3 fill-current stroke-current" width="8" height="8">
@@ -473,23 +293,11 @@
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
                                     <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
                                         <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                                        <?php echo e(getTimeDiff($all['d5_in'],$all['d5_out'])); ?>   
-=======
-                                        <?php echo e($d5); ?>   
->>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
-                                        </div>
-                                        <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
-                                            <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
-                                            <?php echo e($all['d5_in'] . " - " . $all['d5_out']); ?>
-=======
                                         <?php echo e($d4); ?>  
                                         </div>
                                         <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
                                             <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
                                             <?php echo e($all['d4_in'] . " - " . $all['d4_out']); ?>
->>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
 
                                             </div>
                                             <svg class="absolute z-10 w-6 h-6 text-white transform -translate-x-12 -translate-y-3 fill-current stroke-current" width="8" height="8">
@@ -501,23 +309,11 @@
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
                                     <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
                                         <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                                        <?php echo e(getTimeDiff($all['d6_in'],$all['d6_out'])); ?>  
-=======
-                                        <?php echo e($d6); ?>  
->>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
-                                        </div>
-                                        <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
-                                            <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
-                                            <?php echo e($all['d6_in'] . " - " . $all['d6_out']); ?>
-=======
                                         <?php echo e($d5); ?>   
                                         </div>
                                         <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
                                             <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
                                             <?php echo e($all['d5_in'] . " - " . $all['d5_out']); ?>
->>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
 
                                             </div>
                                             <svg class="absolute z-10 w-6 h-6 text-white transform -translate-x-12 -translate-y-3 fill-current stroke-current" width="8" height="8">
@@ -529,24 +325,11 @@
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
                                     <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
                                         <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                                        <?php echo e(getTimeDiff($all['d7_in'],$all['d7_out'])); ?>
-=======
-                                        <?php echo e($d7); ?>
->>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
-
-                                        </div>
-                                        <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
-                                            <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
-                                            <?php echo e($all['d7_in'] . " - " . $all['d7_out']); ?>
-=======
                                         <?php echo e($d6); ?>  
                                         </div>
                                         <div class="relative" x-cloak x-show.transition.origin.top="tooltip" style="left:25px;bottom:10px">
                                             <div class="absolute top-0 z-10 w-32 p-2 -mt-1 text-sm leading-tight text-gray transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-lg">
                                             <?php echo e($all['d6_in'] . " - " . $all['d6_out']); ?>
->>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
 
                                             </div>
                                             <svg class="absolute z-10 w-6 h-6 text-white transform -translate-x-12 -translate-y-3 fill-current stroke-current" width="8" height="8">
@@ -556,14 +339,6 @@
                                     </div>
                                 </td>
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                                    <input type="text" name="total_days" value="<?php echo e($total_days); ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
-                                </td>
-                                <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                    <input type="text"  name="rate" value="<?php echo e($all['rate']); ?>"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
-=======
-=======
                                     <div x-data="{ tooltip: false }" class=" z-30 inline-flex">
                                         <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="cursor-pointer">
                                         <?php echo e($d7); ?>
@@ -581,15 +356,10 @@
                                     </div>
                                 </td>
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
->>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                                     <input type="text" id="total_days_<?php echo e($counter); ?>" name="total_days[]" onblur="autocalculate(<?php echo e($counter); ?>)" value="<?php echo e($total_days); ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 ">
                                 </td>
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
                                     <input type="text" id="rate_<?php echo e($counter); ?>" name="rate[]" value="<?php echo e($all['rate']); ?>" onblur="autocalculate(<?php echo e($counter); ?>)" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 text-right">
-<<<<<<< HEAD
->>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
-=======
->>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                                 </td>
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white" align="center">
                                     <input type="text" id="ot_amount_<?php echo e($counter); ?>" name="ot_amount[]" value="<?php echo e($ot_amount); ?>" onblur="autocalculate(<?php echo e($counter); ?>)" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 text-right">
@@ -598,12 +368,6 @@
                                     <input type="text" id="total_amount_<?php echo e($counter); ?>" name="total_amount[]" value="<?php echo e($total_amount); ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 text-right">
                                 </td>
                             </tr>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                            <?php $total_days=0 ?>
-=======
-=======
->>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                             <input type="hidden" name="employee_id[]" value="<?php echo e($all['emp_id']); ?>">
                             <input type="hidden" name="personal_id[]" value="<?php echo e($all['personal_id']); ?>">
                             <input type="hidden" name="day1[]" value="<?php echo e($all['d1_in'] . '-' . $all['d1_out']); ?>">
@@ -621,10 +385,6 @@
                             <input type="hidden" name="d6[]" value="<?php echo e($d6); ?>">
                             <input type="hidden" name="d7[]" value="<?php echo e($d7); ?>">
                             <?php $total_days=0; $ot_amount=0; $counter++; ?>
-<<<<<<< HEAD
->>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
-=======
->>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
@@ -659,5 +419,4 @@
 
 }
 
-</script>  
-<?php /**PATH C:\xampp\htdocs\payroll_system\resources\views/upload/index.blade.php ENDPATH**/ ?>
+</script>  <?php /**PATH C:\xampp\htdocs\payroll_system\resources\views/upload/index.blade.php ENDPATH**/ ?>
