@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\UploadAllowance;
 use App\Models\UploadAllowanceDetail;
 use App\Models\UploadAllowanceTime;
+use App\Models\BusinessUnit;
 use App\Exports\ExportEmployee;
 use App\Models\Employee;
 use App\Models\Allowance;
@@ -28,12 +29,14 @@ class UploadAllowanceController extends Controller
     {
         $data=array();
         $allowances=Allowance::all();
+        $businessunit=BusinessUnit::all();
         $post_data = array(
             "from"=>"",
             "to"=>"",
-            "allowance_id"=>""
+            "allowance_id"=>"",
+            "bu_id"=>""
         );
-        return view('upload.index',compact('data','allowances','post_data'));
+        return view('upload.index',compact('data','allowances','post_data','businessunit'));
     }
 
     /**
@@ -58,7 +61,8 @@ class UploadAllowanceController extends Controller
         $id = UploadAllowance::insertGetId([
             'from_date' => $request->date_from, 
             'to_date' => $request->date_to, 
-            'allowance_id' =>  $request->allowance_name
+            'allowance_id' =>  $request->allowance_name,
+            'bu_id'=>$request->business_unit,
             ]);
         $date_to = date('Y-m-d', strtotime($request->date_to . ' +1 day'));
         $begin = new DateTime($request->date_from);
@@ -228,7 +232,8 @@ class UploadAllowanceController extends Controller
         $post_data = array(
             "from"=>$request->from,
             "to"=>$request->to,
-            "allowance_id"=>$request->allowance_id
+            "allowance_id"=>$request->allowance_id,
+            "bu_id"=>$request->bu_id
         );
         $allowances=Allowance::all();
         

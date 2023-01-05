@@ -5,7 +5,7 @@ use App\Models\Allowance;
 use App\Models\EmployeeHMO;
 use App\Models\BusinessUnit;
 use App\Models\UploadAllowanceDetail;
-
+use App\Models\UploadAllowanceTime;
 /**
 
  * Write code on Method
@@ -157,5 +157,17 @@ function getMaxtimeout($schedule_type,$recorded_time,$personal_id){
     }  
 
 }
+
+if (!function_exists('getAllowanceTime')) {
+
+    function getAllowanceTime($allowance_head_id, $allowance_detail_id){
+        $time= UploadAllowanceTime::where("allowance_head_id","=",$allowance_head_id)
+        ->where("allowance_detail_id","=",$allowance_detail_id)
+        ->get();
+        
+       
+        return $time;
+    }
+ }
 
 ?>

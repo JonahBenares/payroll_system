@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Allowance;
 use App\Models\AllowanceSummary;
+use App\Models\BusinessUnit;
+use App\Models\UploadAllowance;
+use App\Models\UploadAllowanceDetail;
 use Illuminate\Http\Request;
 
 class AllowanceSummaryController extends Controller
@@ -12,9 +15,16 @@ class AllowanceSummaryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('summary_allowance.index');
+        $allowance = Allowance::all();
+        $businessunit = BusinessUnit::all();
+        $details=array();
+        if($request->has('allowance_id')){
+            $details = UploadAllowanceDetail::where("allowance_head_id", $request->allowance_id)->get();
+        }
+
+        return view('allowance_summary.index', compact('allowance', 'details','businessunit'));
     }
 
     /**
@@ -22,6 +32,13 @@ class AllowanceSummaryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function fetchPeriod(Request $request)
+    {
+        $data['period'] = UploadAllowance::where("allowance_id", $request->allowanceid)->get();
+        return response()->json($data);
+    }
+
     public function create()
     {
         //

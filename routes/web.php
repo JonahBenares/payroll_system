@@ -151,7 +151,9 @@ Route::get('/payroll_bonus/bulkprinting', [PayrollBonusController::class, 'print
 
 Route::resource('shiftschedule', ShiftScheduleController::class);
 
-Route::resource('summaryAllowance', AllowanceSummaryController::class);
+Route::resource('allowancesummary', AllowanceSummaryController::class);
+Route::post('api/fetch-period', [AllowanceSummaryController::class, 'fetchPeriod']);
+
 Route::resource('rfdReport', RfdReportController::class);
 Route::get('/report_rfd/print', [RfdReportController::class, 'print'])->middleware(['auth'])->name('printRFD');
 

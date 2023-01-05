@@ -192,7 +192,7 @@
                                         <a href="<?php echo e(route('rfdReport.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >RFD</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="<?php echo e(route('summaryAllowance.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowance Summary</a>
+                                        <a href="<?php echo e(route('allowancesummary.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowance Summary</a>
                                     </li>
                                     <li class="relative">
                                         <a href="<?php echo e(route('payrollComp.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Payroll Computation</a>

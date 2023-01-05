@@ -128,6 +128,14 @@
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
                         </div>
+                        <div class="">
+                        <select name="bu_id" class="text-sm block w-52 px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
+                            <option value="" selected>Business Unit</option>
+                            <?php $__currentLoopData = $businessunit; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($bu->bu_id); ?>"><?php echo e($bu->bu_name); ?></option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </select>
+                        </div>
                     </div>
                     <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900 space-x-1">
                         <div class="text-left">
@@ -189,6 +197,13 @@
                           
                            <?php $total_days=0;
                            $ot_amount=0;
+                           $d1_amount=0;
+                           $d2_amount=0;
+                           $d3_amount=0;
+                           $d4_amount=0;
+                           $d5_amount=0;
+                           $d6_amount=0;
+                           $d7_amount=0;
                            $counter = 1; ?>
                             <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $all): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                               
@@ -201,20 +216,44 @@
                                    <?php $d7 = getTimeDiff($all['d7_in'], $all['d7_out']) ?>
                                 <?php 
                                  
-                                if($d1!=0){
+                                     if($d1>=8){
+                                        $total_days++;
+                                    } else {
+                                        $d1_amount = ($d1/8)* $all['rate'];
+                                    } 
+                                    
+                                    if($d2>=8){
                                     $total_days++;
-                                    } if($d2!=0){
+                                    } else {
+                                        $d2_amount = ($d2/8)* $all['rate'];
+                                    } 
+
+                                    if($d3>=8){
+                                        $total_days++;
+                                    } else {
+                                        $d3_amount = ($d3/8)* $all['rate'];
+                                    } 
+                                    
+                                    if($d4>=8){
+                                        $total_days++;
+                                    }else {
+                                        $d4_amount = ($d4/8)* $all['rate'];
+                                    } 
+                                    
+                                    if($d5>=8){
+                                        $total_days++;
+                                    } else {
+                                        $d5_amount = ($d5/8)* $all['rate'];
+                                    }
+                                    if($d6>=8){
                                     $total_days++;
-                                    }if($d3!=0){
-                                    $total_days++;
-                                    }if($d4!=0){
-                                    $total_days++;
-                                    }if($d5!=0){
-                                    $total_days++;
-                                    }if($d6!=0){
-                                    $total_days++;
-                                    }if($d7!=0){
-                                    $total_days++;
+                                    }else {
+                                        $d6_amount = ($d6/8)* $all['rate'];
+                                    }
+                                    if($d7>=8){
+                                         $total_days++;
+                                    }else {
+                                        $d7_amount = ($d7/8)* $all['rate'];
                                     }
 
                                     if($d1 >= 14){
@@ -234,6 +273,8 @@
                                     }
 
                                     $total_amount = ($total_days * $all['rate'])+$ot_amount;
+                                    $total_inc = $d1_amount + $d2_amount + $d3_amount + $d4_amount + $d5_amount + $d6_amount + $d7_amount; 
+                                    $total_amount += $total_inc;
                                 ?>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap white:text-white">
@@ -384,6 +425,13 @@
                             <input type="hidden" name="d5[]" value="<?php echo e($d5); ?>">
                             <input type="hidden" name="d6[]" value="<?php echo e($d6); ?>">
                             <input type="hidden" name="d7[]" value="<?php echo e($d7); ?>">
+                            <input type="hidden" id="d1_amount_<?php echo e($counter); ?>" value="<?php echo e($d1_amount); ?>">
+                            <input type="hidden" id="d2_amount_<?php echo e($counter); ?>" value="<?php echo e($d2_amount); ?>">
+                            <input type="hidden" id="d3_amount_<?php echo e($counter); ?>" value="<?php echo e($d3_amount); ?>">
+                            <input type="hidden" id="d4_amount_<?php echo e($counter); ?>" value="<?php echo e($d4_amount); ?>">
+                            <input type="hidden" id="d5_amount_<?php echo e($counter); ?>" value="<?php echo e($d5_amount); ?>">
+                            <input type="hidden" id="d6_amount_<?php echo e($counter); ?>" value="<?php echo e($d6_amount); ?>">
+                            <input type="hidden" id="d7_amount_<?php echo e($counter); ?>" value="<?php echo e($d7_amount); ?>">
                             <?php $total_days=0; $ot_amount=0; $counter++; ?>
                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
@@ -392,6 +440,7 @@
                     <input type="hidden" name="date_from" value="<?php echo e($post_data['from']); ?>">
                     <input type="hidden" name="date_to" value="<?php echo e($post_data['to']); ?>">
                     <input type="hidden" name="allowance_name" value="<?php echo e($post_data['allowance_id']); ?>">
+                    <input type="hidden" name="business_unit" value="<?php echo e($post_data['bu_id']); ?>">
                 </div>
                 <button class="flex items-center w-full justify-center px-3 py-2 mt-3 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">Save</button>
              </form>
@@ -411,9 +460,17 @@
          var total_days= document.getElementById('total_days_'+counter).value;
      
         var rate= document.getElementById('rate_'+counter).value
+        var d1_amount= document.getElementById('d1_amount_'+counter).value
+        var d2_amount= document.getElementById('d2_amount_'+counter).value
+        var d3_amount= document.getElementById('d3_amount_'+counter).value
+        var d4_amount= document.getElementById('d4_amount_'+counter).value
+        var d5_amount= document.getElementById('d5_amount_'+counter).value
+        var d6_amount= document.getElementById('d6_amount_'+counter).value
+        var d7_amount= document.getElementById('d7_amount_'+counter).value
         var ot_amount= document.getElementById('ot_amount_'+counter).value
 
         var total_amount = (parseInt(total_days) * parseFloat(rate)) + parseFloat(ot_amount);
+        var total_amount = parseFloat(total_amount) + parseFloat(d1_amount)+ parseFloat(d2_amount) + parseFloat(d3_amount) + parseFloat(d4_amount) + parseFloat(d5_amount) + parseFloat(d6_amount) + parseFloat(d7_amount);
       
         document.getElementById('total_amount_'+counter).value = total_amount;
 
