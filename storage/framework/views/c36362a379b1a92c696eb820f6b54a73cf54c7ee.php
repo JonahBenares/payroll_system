@@ -65,7 +65,11 @@
                         </div>
                     </div>
                     <div class="flex mt-3 uppercase text-gray-600">
+<<<<<<< HEAD
                         <p class="font-semibold text-md leading-none ">June 12, 2022 - June 20, 2022 </p>
+=======
+                        <p class="font-semibold text-lg leading-none ">June 12, 2022 - June 20, 2022 </p>
+>>>>>>> a9f2844884e2821de5487472f481d7147185291f
                     </div>
                     <div class="flex space-x-1 uppercase text-gray-600">
                         <p class="text-xs">Allowance |</p>
