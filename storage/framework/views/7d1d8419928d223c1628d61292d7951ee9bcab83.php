@@ -53,6 +53,9 @@
                             <button type="submit" class="flex items-center justify-center px-3 py-2 mt-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">Filter</button>
                         </div>
                     </div>
+                    <div class="flex mt-5 uppercase">
+                        <p class="text-left text-lg uppercase text-gray-600 pt-2 leading-none"><span class="font-semibold pr-1">June 12, 2022 - June 20, 2022</span></p>
+                    </div>
                     <div class=" hover:overflow-x-auto overflow-x-hidden h-100 max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 border">
                         <table class="text-sm text-left text-gray-500 white:text-gray-400 border-collapse w-full">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400">

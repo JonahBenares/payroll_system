@@ -112,7 +112,7 @@
                             <span class="block sm:inline"><?php echo e(Session::get('fail')); ?></span>
                         </div>
                     <?php endif; ?>
-                <div class="flex justify-between mb-5"> 
+                <div class="flex justify-between mb-3"> 
                     <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900 space-x-2">
                         <div class="">
                             <input type="date" name="from" class="text-sm block  px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
@@ -147,7 +147,13 @@
                     </div>
                 </div>
                 </form>
-
+                <div class="flex mt-3 uppercase text-gray-600">
+                    <p class="font-semibold text-md leading-none ">June 12, 2022 - June 20, 2022 </p>
+                </div>
+                <div class="flex space-x-1 uppercase text-gray-600">
+                    <p class="text-xs">Allowance |</p>
+                    <p class="text-xs">Business Unit </p>
+                </div>
                 <form method="POST" action="<?php echo e(route('uploadallowance.store')); ?>">
                 <?php echo csrf_field(); ?>
                 <div class=" hover:overflow-x-auto overflow-x-hidden h-100 max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 border">
