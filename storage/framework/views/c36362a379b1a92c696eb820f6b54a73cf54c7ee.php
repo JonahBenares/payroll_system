@@ -39,6 +39,7 @@
                         </form>
                     </div>                   
                 </div>
+                
                 <form class="items-center"> 
                     <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900 space-x-1">
                         <div class="">
@@ -62,6 +63,13 @@
                         <div>
                             <button type="submit" class="flex items-center justify-center px-3 py-2 mt-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">Filter</button>
                         </div>
+                    </div>
+                    <div class="flex mt-3 uppercase text-gray-600">
+                        <p class="font-semibold text-md leading-none ">June 12, 2022 - June 20, 2022 </p>
+                    </div>
+                    <div class="flex space-x-1 uppercase text-gray-600">
+                        <p class="text-xs">Allowance |</p>
+                        <p class="text-xs">Business Unit </p>
                     </div>
                     <div class="flex justify-between space-x-40 w-full my-5">
                         <div class="space-y-1 w-8/12">
