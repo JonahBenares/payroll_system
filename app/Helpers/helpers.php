@@ -89,6 +89,32 @@ if (!function_exists('getAllowanceName')) {
     }
 }
 
+if (!function_exists('getCompanyName')) {
+    
+    function getCompanyName($id){
+        $bu= BusinessUnit::select('bu_name')
+        ->where("bu_id","=",$id)
+        ->get();
+
+        $name= $bu[0]['bu_name'];
+
+        return $name;
+    }
+}
+
+if (!function_exists('getCompanyLongName')) {
+    
+    function getCompanyLongName($id){
+        $bu= BusinessUnit::select('long_name')
+        ->where("bu_id","=",$id)
+        ->get();
+
+        $name= $bu[0]['long_name'];
+
+        return $name;
+    }
+}
+
 if (!function_exists('getBUName')) {
     
     function getBUName($employee_id){

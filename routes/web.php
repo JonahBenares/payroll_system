@@ -153,9 +153,10 @@ Route::resource('shiftschedule', ShiftScheduleController::class);
 
 Route::resource('allowancesummary', AllowanceSummaryController::class);
 Route::post('api/fetch-period', [AllowanceSummaryController::class, 'fetchPeriod']);
+//Route::resource('api/fetch-period', [AllowanceSummaryController::class]);
 
-Route::resource('rfdReport', RfdReportController::class);
-Route::get('/report_rfd/print', [RfdReportController::class, 'print'])->middleware(['auth'])->name('printRFD');
+Route::resource('rfdreport', RfdReportController::class);
+Route::get('rfd_report/print/{head_id}', [RfdReportController::class, 'print'])->name('printRFD');
 
 Route::get('/upload/receive', [UploadAllowanceController::class, 'receive'])->middleware(['auth'])->name('receiveForm');
 Route::resource('payrollComp', PayrollComputationController::class);
