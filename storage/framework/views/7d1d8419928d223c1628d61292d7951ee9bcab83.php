@@ -20,11 +20,7 @@
             <div class="p-4 relative h-full w-full text-center bg-white rounded-lg shadow-lg white:bg-gray-800 white:border-gray-700">
                 <div class="flex justify-between  pb-4 bg-white white:bg-gray-900">
                     <div > 
-                        <h2 class="uppercase font-semibold py-2">Overall Overtime
-                            <?php if(!empty($date_from) && !empty($date_to)): ?>
-                                (<?php echo e("Date From: ".date('F d,Y',strtotime($date_from))." - Date To: ".date('F d,Y',strtotime($date_to))); ?>)
-                            <?php endif; ?>
-                        </h2>
+                        <h2 class="uppercase font-semibold py-2">Overall Overtime</h2>
                     </div>
                     <div class="flex">
                         <label for="table-search" class="sr-only">Search</label>
@@ -59,6 +55,11 @@
                         </div>
                     </div>
                 </form>
+                <div class="flex mt-5 uppercase">
+                    <div class="flex mt-5 uppercase">
+                        <p class="text-left text-md uppercase text-gray-600 pt-2 leading-none"><span class="font-semibold pr-1"><?php echo e((isset($date_from)) ? date('F d,Y',strtotime($date_from)) : ''); ?> - <?php echo e((isset($date_to)) ? date('F d,Y',strtotime($date_to)) : ''); ?></span></p>
+                    </div>
+                </div>
                 <div class=" hover:overflow-x-auto overflow-x-hidden h-100 max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 border">
                     <table class="text-sm text-left text-gray-500 white:text-gray-400 border-collapse w-full">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400">

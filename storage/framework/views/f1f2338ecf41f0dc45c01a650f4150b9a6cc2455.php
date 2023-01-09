@@ -51,11 +51,7 @@
                     </div>
                 </form>
                 <div class="flex mt-5 uppercase">
-<<<<<<< HEAD
                     <p class="text-left text-md uppercase text-gray-600 pt-2 leading-none"><span class="font-semibold pr-1">June 12, 2022 - June 20, 2022</span></p>
-=======
-                    <p class="text-left text-lg uppercase text-gray-600 pt-2 leading-none"><span class="font-semibold pr-1">June 12, 2022 - June 20, 2022</span></p>
->>>>>>> a9f2844884e2821de5487472f481d7147185291f
                 </div>
                 <div class="overflow-x-auto overflow-y-hidden hover:overflow-y-auto h-100 relative max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 sm:rounded-2xl">
                     <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
