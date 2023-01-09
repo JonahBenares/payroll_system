@@ -58,7 +58,6 @@
                             <button type="submit" class="flex items-center justify-center px-3 py-2 mt-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">Filter</button>
                         </div>
                     </div>
-<<<<<<< HEAD
                 </form>
                 <div class=" hover:overflow-x-auto overflow-x-hidden h-100 max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 border">
                     <table class="text-sm text-left text-gray-500 white:text-gray-400 border-collapse w-full">
@@ -183,80 +182,6 @@
                     </table>
                 </div>
             </div>
-=======
-                    <div class="flex mt-5 uppercase">
-                        <p class="text-left text-lg uppercase text-gray-600 pt-2 leading-none"><span class="font-semibold pr-1">June 12, 2022 - June 20, 2022</span></p>
-                    </div>
-                    <div class=" hover:overflow-x-auto overflow-x-hidden h-100 max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 border">
-                        <table class="text-sm text-left text-gray-500 white:text-gray-400 border-collapse w-full">
-                            <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400">
-                                <tr class="">
-                                    <th scope="col" class="border-gray-200 border py-2 px-2 " width="25%">
-                                        Employee Name
-                                    </th>
-                                    <th scope="col" class="border-gray-200 border py-2 px-2" align="center" width="15%">
-                                        Overtime Date
-                                    </th>
-                                    <th scope="col" class="border-gray-200 border py-2 px-2" align="center" width="15%">
-                                        Overtime Type
-                                    </th>
-                                    <th scope="col" class="border-gray-200 border py-2 px-2" align="center" width="15%">
-                                        No HRS
-                                    </th>
-                                    <th scope="col" class="border-gray-200 border py-2 px-2" align="right" width="15%">
-                                        Amount
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                                    <td scope="row" class="border border-gray-200 align-top text-sm text-left py-2 px-2 text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        Stephine Severino
-                                    </td>
-                                    <td scope="row" class="align-top border border-gray-200 py-2 px-2 text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <p>2022-01-23</p>
-                                        <p>2022-01-23</p>
-                                        <p>2022-01-23</p>
-                                    </td>
-                                    <td scope="row" class="align-top border border-gray-200  py-2 px-2 text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <p>Regular Holiday</p>
-                                        <p>Special Holiday</p>
-                                        <p>RH - RO</p>
-                                    </td>
-                                    <td scope="row" class="align-top border border-gray-200 py-2 px-2 text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <p>1</p>
-                                        <p>1</p>
-                                        <p>2</p>
-                                    </td>
-                                    <td scope="row" class="text-right  align-top border border-gray-200 py-2 px-2 text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <p>200</p>
-                                        <p>300</p>
-                                        <p>800</p>
-                                    </td>
-                                </tr>
-                                <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                                    <td scope="row" class="align-top border border-gray-200 align-top text-sm text-left py-2 px-2 text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        Jason Flor
-                                    </td>
-                                    <td scope="row" class="align-top border border-gray-200  py-2 px-2 text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <p>2022-01-23</p>
-                                    </td>
-                                    <td scope="row" class="align-top border border-gray-200 py-2 px-2 text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <p>Regular Holiday</p>
-                                    </td>
-                                    <td scope="row" class="align-top border border-gray-200 py-2 px-2 text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <p>1</p>
-                                    </td>
-                                    <td scope="row" class="text-right  align-top border border-gray-200 py-2 px-2 text-gray-900 whitespace-nowrap white:text-white" align="center">
-                                        <p>200</p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    </div>
-            </form>
->>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
         </div>
     </div>
  <?php echo $__env->renderComponent(); ?>
