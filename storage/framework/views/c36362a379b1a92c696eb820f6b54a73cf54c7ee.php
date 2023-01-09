@@ -81,7 +81,11 @@
                                 <p class="text-sm text-sm w-24 text-left">Company:</p>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b w-full">
+=======
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+>>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
 =======
                                 <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
 >>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
@@ -92,6 +96,7 @@
                             </div>
                             <div class="flex justify-between space-x-2">
                                 <p class="text-sm text-sm w-40 text-left">Period Covered:</p>
+<<<<<<< HEAD
 <<<<<<< HEAD
                                 <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b w-full">
 =======
@@ -105,6 +110,9 @@
                                 <p class="text-sm text-sm w-40 text-left">Period Covered:</p>
                                 <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
 >>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
+=======
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+>>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
 =======
                                 <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
 >>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
@@ -115,7 +123,11 @@
                                 <p class="text-sm text-sm w-24 text-right">APV:</p>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b w-full">
+=======
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+>>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
 =======
                                 <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
 >>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
@@ -126,6 +138,7 @@
                             </div>
                             <div class="flex justify-between space-x-2">
                                 <p class="text-sm text-sm w-24 text-right">Due Date:</p>
+<<<<<<< HEAD
 <<<<<<< HEAD
                                 <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b w-full">
 =======
@@ -139,6 +152,9 @@
                                 <p class="text-sm text-sm w-24 text-right">Due Date:</p>
                                 <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
 >>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
+=======
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+>>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
 =======
                                 <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
 >>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
