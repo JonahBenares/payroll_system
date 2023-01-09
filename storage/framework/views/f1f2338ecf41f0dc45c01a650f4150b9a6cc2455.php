@@ -9,11 +9,6 @@
 <?php $component->withAttributes([]); ?>
      <?php $__env->slot('header', null, []); ?>  <?php $__env->endSlot(); ?>
     <!-- component -->
-    <style>
-        [x-cloak] {
-        display: none;
-        }
-    </style>
     
     <div class="overflow-auto h-screen pb-28 pt-2 pr-2 pl-2 md:pt-0 md:pr-0 md:pl-0">
         <div class="flex flex-col flex-wrap sm:flex-row ">
@@ -39,22 +34,29 @@
                 </div>
                 <form method="POST" action="<?php echo e(route('generate')); ?>">
                     <?php echo csrf_field(); ?>
-                    <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900">
-                        <div class="mx-2 text-left">
-                            Date From
-                            <input type="date" name="from" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60" >
+                    <div class="flex justify-center pb-1 pt-2 space-x-5 bg-white white:bg-gray-900">
+                        <div class="space-x-1">
+                            <span>  Date From</span>  
+                            <input type="date" name="from" class=" px-3 py-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" >
                         </div>
-                        <div class="mx-2 text-left">
-                            Date to
-                            <input type="date" name="to" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60" >
+                        <div class="space-x-1">
+                            <span>    Date to</span>
+                            <input type="date" name="to" class=" px-3 py-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" >
                         </div>
-                        <div class="mx-2 mt-6 pt-3 text-left">
+                        <div class="">
                             <button type="submit" class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                                 <span>Generate</span>
                             </button>
                         </div>
                     </div>
                 </form>
+                <div class="flex mt-5 uppercase">
+<<<<<<< HEAD
+                    <p class="text-left text-md uppercase text-gray-600 pt-2 leading-none"><span class="font-semibold pr-1">June 12, 2022 - June 20, 2022</span></p>
+=======
+                    <p class="text-left text-lg uppercase text-gray-600 pt-2 leading-none"><span class="font-semibold pr-1">June 12, 2022 - June 20, 2022</span></p>
+>>>>>>> a9f2844884e2821de5487472f481d7147185291f
+                </div>
                 <div class="overflow-x-auto overflow-y-hidden hover:overflow-y-auto h-100 relative max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 sm:rounded-2xl">
                     <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-10">

@@ -75,6 +75,7 @@ use App\Http\Controllers\ShiftScheduleController;
                         </div>
                     </div>
                 </form>
+                <p class="text-left text-md uppercase text-gray-600"><span class="font-bold pr-1">March</span>2022</p>
                 <div class="w-full overflow-x-auto overflow-y-hidden hover:overflow-y-auto  relative  pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 h-96 ">
                     <table class="text-sm text-left text-gray-500 white:text-gray-400 border border-gray-200 border-collapse" width="200%">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-20">
@@ -94,19 +95,9 @@ use App\Http\Controllers\ShiftScheduleController;
                         <tbody>
                             @foreach($departments AS $dept)
                             <tr>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                                <td class="py-1 px-1 bg-gray-50 border border-gray-200 bg-gray-50 sticky left-0 z-10 font-semibold" colspan='{{ $nodays }}'>{{ $dept->dept_name }}</td>
-=======
                                 <td class="bg-yellow-50 uppercase bg-gray-50  font-bold text-sm" colspan='{{ $nodays + 2 }}'>
                                     <span class="py-1 px-1 sticky left-0 z-10">{{ $dept->dept_name }}</span>
                                 </td>
->>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
-=======
-                                <td class="bg-yellow-50 uppercase bg-gray-50  font-bold text-sm" colspan='{{ $nodays + 2 }}'>
-                                    <span class="py-1 px-1 sticky left-0 z-10">{{ $dept->dept_name }}</span>
-                                </td>
->>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
                             </tr>
                                 @foreach($employees AS $emp)
                                     @if($dept->id == $emp->department)

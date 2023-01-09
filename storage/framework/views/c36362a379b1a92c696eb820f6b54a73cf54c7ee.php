@@ -39,6 +39,7 @@
                         </form>
                     </div>                   
                 </div>
+                
                 <form class="items-center"> 
                     <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900 space-x-1">
                         <div class="">
@@ -63,33 +64,84 @@
                             <button type="submit" class="flex items-center justify-center px-3 py-2 mt-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">Filter</button>
                         </div>
                     </div>
+                    <div class="flex mt-3 uppercase text-gray-600">
+<<<<<<< HEAD
+                        <p class="font-semibold text-md leading-none ">June 12, 2022 - June 20, 2022 </p>
+=======
+                        <p class="font-semibold text-lg leading-none ">June 12, 2022 - June 20, 2022 </p>
+>>>>>>> a9f2844884e2821de5487472f481d7147185291f
+                    </div>
+                    <div class="flex space-x-1 uppercase text-gray-600">
+                        <p class="text-xs">Allowance |</p>
+                        <p class="text-xs">Business Unit </p>
+                    </div>
                     <div class="flex justify-between space-x-40 w-full my-5">
                         <div class="space-y-1 w-8/12">
                             <div class="flex justify-between space-x-2">
                                 <p class="text-sm text-sm w-24 text-left">Company:</p>
+<<<<<<< HEAD
+<<<<<<< HEAD
                                 <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b w-full">
+=======
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+>>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
                             </div>
                             <div class="flex justify-between space-x-2">
                                 <p class="text-sm text-sm w-24 text-left">Pay To:</p>
-                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b w-full">
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
                             </div>
                             <div class="flex justify-between space-x-2">
                                 <p class="text-sm text-sm w-40 text-left">Period Covered:</p>
+<<<<<<< HEAD
                                 <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b w-full">
+=======
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+                            </div>
+                            <div class="flex justify-between space-x-2">
+                                <p class="text-sm text-sm w-24 text-left">Pay To:</p>
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+                            </div>
+                            <div class="flex justify-between space-x-2">
+                                <p class="text-sm text-sm w-40 text-left">Period Covered:</p>
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
+=======
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+>>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
                             </div>
                         </div>
                         <div class="space-y-1 w-4/12">
                             <div class="flex justify-between space-x-2">
                                 <p class="text-sm text-sm w-24 text-right">APV:</p>
+<<<<<<< HEAD
+<<<<<<< HEAD
                                 <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b w-full">
+=======
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+>>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
                             </div>
                             <div class="flex justify-between space-x-2">
                                 <p class="text-sm text-sm w-24 text-right">Date:</p>
-                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b w-full">
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
                             </div>
                             <div class="flex justify-between space-x-2">
                                 <p class="text-sm text-sm w-24 text-right">Due Date:</p>
+<<<<<<< HEAD
                                 <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b w-full">
+=======
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+                            </div>
+                            <div class="flex justify-between space-x-2">
+                                <p class="text-sm text-sm w-24 text-right">Date:</p>
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+                            </div>
+                            <div class="flex justify-between space-x-2">
+                                <p class="text-sm text-sm w-24 text-right">Due Date:</p>
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
+=======
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+>>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
                             </div>
                         </div>
                     </div>

@@ -29,10 +29,36 @@
                             <td class="px-1 text-center" colspan="2"><small>  Corner Rizal-Mabini Sts., Bacolod City </small></td>
                         </tr>
                         <tr>
-                            <td class="px-1 pt-1 border-b border-gray-600 uppercase  leading-none" colspan="2">Name: <span class="font-bold text-xs">Jonah May Benares</span></td>
+                            <td class="px-1 pt-1 border-b border-gray-600 uppercase  leading-none" colspan="2">Name: <span class="font-bold text-xs"><?php echo e($name->full_name); ?></span></td>
                         </tr>
+                        <?php 
+                            $date_start=$month_year."-".$cutoff->cutoff_start;
+                            $date_end=$month_year."-".$cutoff->cutoff_end;
+                            if($period=='MID'){
+                                $checkyear=date('m',strtotime($date_start));
+                                if($checkyear=='12'){
+                                    $start=date('M d,Y',strtotime($date_start));
+                                    $end=date('M d',strtotime($date_end." +1 Months")).",".date('Y',strtotime($date_end." +1 year"));;
+                                }else{
+                                    $start=date('M d',strtotime($date_start));
+                                    $end=date('M d,Y',strtotime($date_end." +1 Months"));
+                                }
+                            }else if($period=='EOM'){
+                                $start=date('M d',strtotime($date_start));
+                                $end=date('d,Y',strtotime($date_end));
+                            }
+                        ?>
                         <tr>
-                            <td class="px-1 pt-1 border-b border-gray-600" colspan="2">Period: (Sept 21-Oct 5, 2022) Oct 15, 2022 </td>
+                            <td class="px-1 pt-1 border-b border-gray-600" colspan="2">
+                                Period: (<?php echo e($start); ?>-<?php echo e($end); ?>) 
+                                <?php 
+                                    if($period=='MID'){
+                                        echo date('M',strtotime($end))." 15,".date('Y',strtotime($end));  
+                                    }else if($period=='EOM'){
+                                        echo date('M',strtotime($end))." ".date('t',strtotime($end)).",".date('Y',strtotime($date_end));  
+                                    }
+                                ?>
+                            </td>
                         </tr>
                         <tr>
                             <td class="px-1" colspan="2">Gross Pay:</td>
@@ -40,49 +66,51 @@
                         <tr>
                             <td width="60%" class="px-5">Basic Salary</td>
                             <td width="40%" class="px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">Rest Day</td>
                             <td class="px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
-                            <td class="px-5">Holiday</td>
+                            <td class="px-5">Holiday Pay</td>
                             <td class="px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">Overtime Pay</td>
                             <td class="px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                                <?php echo e($overtime_amount); ?>
+
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">Night Premium</td>
                             <td class="px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">Adjustments</td>
                             <td class="px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">20% COMECQ Allowance</td>
                             <td class="px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">Total</td>
                             <td class="px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                                <?php echo e($overtime_amount); ?>
+
                             </td>
                         </tr>
                         <tr>
@@ -92,18 +120,21 @@
                         <tr>
                             <td class="px-5">Absences/Undertime</td>
                             <td class="px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">Tardiness</td>
                             <td class="px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="pl-10">Gross Pay</td>
-                            <td class="px-1 border-b-2 border-gray-600 text-right">5,588</td>
+                            <td class="px-1 border-b-2 border-gray-600 text-right">
+                                <?php echo e($overtime_amount); ?>
+
+                            </td>
                         </tr>
                         <tr>
                             <td class="px-1 pt-2">Deductions:</td>
@@ -112,73 +143,73 @@
                         <tr>
                             <td class="px-5">SSS Premium</td>
                             <td class="px-1 px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">SSS Loan</td>
                             <td class="px-1 px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">Withholding Tax</td>
                             <td class="px-1 px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">Phil Health</td>
                             <td class="px-1 px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">Pag-Ibig Fund</td>
                             <td class="px-1 px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">Pag-Ibig Loan</td>
                             <td class="px-1 px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">Pag-Ibig MP2</td>
                             <td class="px-1 px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">Coop Investment</td>
                             <td class="px-1 px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">Coop Loan</td>
                             <td class="px-1 px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">AUB Loan</td>
                             <td class="px-1 px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">Others</td>
                             <td class="px-1 px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="pl-10">Total Deductions</td>
                             <td class="px-1 px-1 border-b-2 border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
@@ -187,18 +218,27 @@
                         <tr>
                             <td class="px-1">Net Pay</td>
                             <td class="px-1 border-y-2 border-l-2 border-gray-600 font-bold align-bottom text-right">
-                            5,588
+                                <?php echo e($overtime_amount); ?>
+
                             </td>
                         </tr>
                         
                         <tr>
-                            <td class="px-1 pt-1 border-b border-gray-600" colspan="2">Period: (Sept 21-Oct 5, 2022) Oct 15, 2022 </td>
+                            <td class="px-1 pt-1 border-b border-gray-600" colspan="2">Period: (<?php echo e($start); ?>-<?php echo e($end); ?>) 
+                                <?php 
+                                    if($period=='MID'){
+                                        echo date('M',strtotime($end))." 15,".date('Y',strtotime($end));  
+                                    }else if($period=='EOM'){
+                                        echo date('M',strtotime($end))." ".date('t',strtotime($end)).",".date('Y',strtotime($date_end));  
+                                    }
+                                ?> 
+                            </td>
                         </tr>
                         <tr>
-                            <td class="px-1 pt-2">Net pay receive</td>
+                            <td class="px-1 pt-2">Net pay received:</td>
                             <td class="px-1 pt-2 border-b border-gray-600 align-bottom flex justify-between">
                             <span class="font-bold">Php</span>
-                            <span class="font-bold">10,011</span>
+                            <span class="font-bold"><?php echo e($overtime_amount); ?></span>
                             </td>
                         </tr>
                         <tr>
@@ -227,10 +267,18 @@
                             <td class="px-1 text-center" colspan="2"><small>  Corner Rizal-Mabini Sts., Bacolod City </small></td>
                         </tr>
                         <tr>
-                            <td class="px-1 pt-1 border-b border-gray-600 uppercase  leading-none" colspan="2">Name: <span class="font-bold text-xs">Jonah May Benares</span></td>
+                            <td class="px-1 pt-1 border-b border-gray-600 uppercase  leading-none" colspan="2">Name: <span class="font-bold text-xs"><?php echo e($name->full_name); ?></span></td>
                         </tr>
                         <tr>
-                            <td class="px-1 pt-1 border-b border-gray-600" colspan="2">Period: (Sept 21-Oct 5, 2022) Oct 15, 2022 </td>
+                            <td class="px-1 pt-1 border-b border-gray-600" colspan="2">Period: (<?php echo e($start); ?>-<?php echo e($end); ?>) 
+                                <?php 
+                                    if($period=='MID'){
+                                        echo date('M',strtotime($end))." 15,".date('Y',strtotime($end));  
+                                    }else if($period=='EOM'){
+                                        echo date('M',strtotime($end))." ".date('t',strtotime($end)).",".date('Y',strtotime($date_end));  
+                                    }
+                                ?>  
+                            </td>
                         </tr>
                         <tr>
                             <td class="px-1" colspan="2">Gross Pay:</td>
@@ -238,49 +286,51 @@
                         <tr>
                             <td width="60%" class="px-5">Basic Salary</td>
                             <td width="40%" class="px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">Rest Day</td>
                             <td class="px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
-                            <td class="px-5">Holiday</td>
+                            <td class="px-5">Holiday Pay</td>
                             <td class="px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">Overtime Pay</td>
                             <td class="px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                                <?php echo e($overtime_amount); ?>
+
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">Night Premium</td>
                             <td class="px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">Adjustments</td>
                             <td class="px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">20% COMECQ Allowance</td>
                             <td class="px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">Total</td>
                             <td class="px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                                <?php echo e($overtime_amount); ?>
+
                             </td>
                         </tr>
                         <tr>
@@ -290,18 +340,21 @@
                         <tr>
                             <td class="px-5">Absences/Undertime</td>
                             <td class="px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">Tardiness</td>
                             <td class="px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="pl-10">Gross Pay</td>
-                            <td class="px-1 border-b-2 border-gray-600 text-right">5,588</td>
+                            <td class="px-1 border-b-2 border-gray-600 text-right">
+                                <?php echo e($overtime_amount); ?>
+
+                            </td>
                         </tr>
                         <tr>
                             <td class="px-1 pt-2">Deductions:</td>
@@ -310,73 +363,73 @@
                         <tr>
                             <td class="px-5">SSS Premium</td>
                             <td class="px-1 px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">SSS Loan</td>
                             <td class="px-1 px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">Withholding Tax</td>
                             <td class="px-1 px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">Phil Health</td>
                             <td class="px-1 px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">Pag-Ibig Fund</td>
                             <td class="px-1 px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">Pag-Ibig Loan</td>
                             <td class="px-1 px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">Pag-Ibig MP2</td>
                             <td class="px-1 px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">Coop Investment</td>
                             <td class="px-1 px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">Coop Loan</td>
                             <td class="px-1 px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">AUB Loan</td>
                             <td class="px-1 px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="px-5">Others</td>
                             <td class="px-1 px-1 border-b border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
                             <td class="pl-10">Total Deductions</td>
                             <td class="px-1 px-1 border-b-2 border-gray-600 align-bottom text-right">
-                            5,588
+                            
                             </td>
                         </tr>
                         <tr>
@@ -385,18 +438,27 @@
                         <tr>
                             <td class="px-1">Net Pay</td>
                             <td class="px-1 border-y-2 border-l-2 border-gray-600 font-bold align-bottom text-right">
-                            5,588
+                                <?php echo e($overtime_amount); ?>
+
                             </td>
                         </tr>
                         
                         <tr>
-                            <td class="px-1 pt-1 border-b border-gray-600" colspan="2">Period: (Sept 21-Oct 5, 2022) Oct 15, 2022 </td>
+                            <td class="px-1 pt-1 border-b border-gray-600" colspan="2">Period: (<?php echo e($start); ?>-<?php echo e($end); ?>) 
+                                <?php 
+                                    if($period=='MID'){
+                                        echo date('M',strtotime($end))." 15,".date('Y',strtotime($end));  
+                                    }else if($period=='EOM'){
+                                        echo date('M',strtotime($end))." ".date('t',strtotime($end)).",".date('Y',strtotime($date_end));  
+                                    }
+                                ?>  
+                            </td>
                         </tr>
                         <tr>
-                            <td class="px-1 pt-2">Net pay receive</td>
+                            <td class="px-1 pt-2">Net pay received:</td>
                             <td class="px-1 pt-2 border-b border-gray-600 align-bottom flex justify-between">
                             <span class="font-bold">Php</span>
-                            <span class="font-bold">10,011</span>
+                            <span class="font-bold"><?php echo e($overtime_amount); ?></span>
                             </td>
                         </tr>
                         <tr>
@@ -416,7 +478,6 @@
                     </table>
                 </div>
             </div>
-            
         </div>
     </page>
 

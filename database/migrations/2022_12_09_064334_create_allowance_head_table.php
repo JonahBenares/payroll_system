@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('from_date',50)->nullable();
             $table->date('to_date',50)->nullable();
             $table->foreignId('allowance_id')->constrained;
+            $table->foreignId('bu_id')->constrained('business_unit');
             $table->timestamps();
         });
     }

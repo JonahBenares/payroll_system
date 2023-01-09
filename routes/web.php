@@ -134,7 +134,9 @@ Route::get('/show/{id}/{head_id}', [PayrollAllowanceController::class, 'show'])-
 Route::get('/bulk/{id}', [PayrollAllowanceController::class, 'printBulk'])->middleware(['auth'])->name('printBulkAllowance');
 
 Route::resource('payrollovertime', PayrollOvertimeController::class); 
+Route::post('/payrollovertime/filter_payroll_ot', [PayrollOvertimeController::class, 'filter_payroll_ot'])->name('filter_payroll_ot');
 Route::get('/payroll_overtime/bulkprinting', [PayrollOvertimeController::class, 'printBulk'])->middleware(['auth'])->name('printBulkOvertime');
+Route::get('/payrollovertime/show/{personal_id}/{month_year}/{period}', [PayrollOvertimeController::class, 'show'])->name('show');
 
 Route::resource('payrollbonus', PayrollBonusController::class); 
 Route::get('/payroll_bonus/bulkprinting', [PayrollBonusController::class, 'printBulk'])->middleware(['auth'])->name('printBulkBonus');
@@ -143,15 +145,14 @@ Route::get('/payroll_bonus/bulkprinting', [PayrollBonusController::class, 'print
 Route::resource('payrollsalary', PayrollSalaryController::class); 
 Route::get('/payroll_salary/bulk', [PayrollSalaryController::class, 'printBulk'])->middleware(['auth'])->name('printBulkSalary');
 
-Route::resource('payrollovertime', PayrollOvertimeController::class); 
-Route::get('/payroll_overtime/bulkprinting', [PayrollOvertimeController::class, 'printBulk'])->middleware(['auth'])->name('printBulkOvertime');
-
 Route::resource('payrollbonus', PayrollBonusController::class); 
 Route::get('/payroll_bonus/bulkprinting', [PayrollBonusController::class, 'printBulk'])->middleware(['auth'])->name('printBulkBonus');
 
 Route::resource('shiftschedule', ShiftScheduleController::class);
 
-Route::resource('summaryAllowance', AllowanceSummaryController::class);
+Route::resource('allowancesummary', AllowanceSummaryController::class);
+Route::post('api/fetch-period', [AllowanceSummaryController::class, 'fetchPeriod']);
+
 Route::resource('rfdReport', RfdReportController::class);
 Route::get('/report_rfd/print', [RfdReportController::class, 'print'])->middleware(['auth'])->name('printRFD');
 
@@ -162,6 +163,7 @@ Route::resource('dtrSite', DTRsiteController::class);
 Route::resource('otOffice', OTofficeController::class);
 Route::resource('otSite', OTsiteController::class);
 Route::resource('overall_OT', overallOTController::class);
+Route::post('/overallOT/filter_overallot', [overallOTController::class, 'filter_overallot'])->name('filter_overallot');
 
 
 // Route::get('/shift_sched', [Shift_ScheduleController::class, 'shift_sched'])->middleware(['auth'])->name('shift_sched');
