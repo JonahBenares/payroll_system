@@ -80,8 +80,8 @@
                         <button type="submit" class="flex items-center justify-center px-3 py-2 mt-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">Filter</button>
                     </div>
                 </div>
-                <div class="text-left w-full mt-3">
-                    <span class="text-sm font-semibold">Sept 15, 2022 (Aug 21-Sept 5, 2022)</span>
+                <div class="flex mt-5 uppercase">
+                    <p class="text-left text-md uppercase text-gray-600 pt-2 leading-none"><span class="font-bold pr-1">March</span>2022 <span class="text-xs">- Period </span></p>
                 </div>
                 <div class="relative">
                     <div class="w-full overflow-x-auto overflow-y-hidden hover:overflow-y-auto absolute pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 h-96 bg-white text-left">

@@ -1,13 +1,5 @@
-<?php if (isset($component)) { $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da = $component; } ?>
-<?php $component = App\View\Components\AppLayout::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
-<?php $component->withName('app-layout'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(App\View\Components\AppLayout::class))->getConstructor()): ?>
-<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
-<?php endif; ?>
-<?php $component->withAttributes([]); ?>
-     <?php $__env->slot('header', null, []); ?>  <?php $__env->endSlot(); ?>
+<x-app-layout>
+    <x-slot name="header"></x-slot>
     <!-- component -->
     <style>
         [x-cloak] {
@@ -65,11 +57,7 @@
                         </div>
                     </div>
                     <div class="flex mt-3 uppercase text-gray-600">
-<<<<<<< HEAD
                         <p class="font-semibold text-md leading-none ">June 12, 2022 - June 20, 2022 </p>
-=======
-                        <p class="font-semibold text-lg leading-none ">June 12, 2022 - June 20, 2022 </p>
->>>>>>> a9f2844884e2821de5487472f481d7147185291f
                     </div>
                     <div class="flex space-x-1 uppercase text-gray-600">
                         <p class="text-xs">Allowance |</p>
@@ -79,27 +67,6 @@
                         <div class="space-y-1 w-8/12">
                             <div class="flex justify-between space-x-2">
                                 <p class="text-sm text-sm w-24 text-left">Company:</p>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b w-full">
-=======
-                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
->>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
-=======
-                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
->>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
-                            </div>
-                            <div class="flex justify-between space-x-2">
-                                <p class="text-sm text-sm w-24 text-left">Pay To:</p>
-                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
-                            </div>
-                            <div class="flex justify-between space-x-2">
-                                <p class="text-sm text-sm w-40 text-left">Period Covered:</p>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b w-full">
-=======
                                 <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
                             </div>
                             <div class="flex justify-between space-x-2">
@@ -109,39 +76,11 @@
                             <div class="flex justify-between space-x-2">
                                 <p class="text-sm text-sm w-40 text-left">Period Covered:</p>
                                 <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
->>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
-=======
-                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
->>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
-=======
-                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
->>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
                             </div>
                         </div>
                         <div class="space-y-1 w-4/12">
                             <div class="flex justify-between space-x-2">
                                 <p class="text-sm text-sm w-24 text-right">APV:</p>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b w-full">
-=======
-                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
->>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
-=======
-                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
->>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
-                            </div>
-                            <div class="flex justify-between space-x-2">
-                                <p class="text-sm text-sm w-24 text-right">Date:</p>
-                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
-                            </div>
-                            <div class="flex justify-between space-x-2">
-                                <p class="text-sm text-sm w-24 text-right">Due Date:</p>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b w-full">
-=======
                                 <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
                             </div>
                             <div class="flex justify-between space-x-2">
@@ -151,13 +90,6 @@
                             <div class="flex justify-between space-x-2">
                                 <p class="text-sm text-sm w-24 text-right">Due Date:</p>
                                 <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
->>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
-=======
-                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
->>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
-=======
-                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
->>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
                             </div>
                         </div>
                     </div>
@@ -300,7 +232,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <a href="<?php echo e(route('printRFD')); ?>" type="button" class="w-full">
+                        <a href="{{ route('printRFD') }}" type="button" class="w-full">
                             <div class="flex items-center w-full justify-center px-3 py-2 mt-3 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">Print</div>
                         </a>
                     </div>
@@ -308,10 +240,4 @@
             </div>
         </div>
     </div>
- <?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da)): ?>
-<?php $component = $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da; ?>
-<?php unset($__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da); ?>
-<?php endif; ?>
-<?php /**PATH C:\xampp\htdocs\payroll_system\resources\views/report_rfd/index.blade.php ENDPATH**/ ?>
+</x-app-layout>

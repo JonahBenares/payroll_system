@@ -71,9 +71,9 @@
                             <select name="year" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60" required>
                                 <option value="">Select Year</option>
                                 <?php
-                                    $year=date('Y');
+                                    $years=date('Y');
                                 ?>
-                                <?php for($y=2015;$y<=$year;$y++): ?>
+                                <?php for($y=2015;$y<=$years;$y++): ?>
                                     <option value="<?php echo e($y); ?>"><?php echo e($y); ?></option>
                                 <?php endfor; ?>
                             </select>
@@ -94,6 +94,12 @@
                         </div>
                     </div>
                 </form>
+                <div class="flex mt-5 uppercase">
+                    <p class="text-left text-lg uppercase text-gray-600 pt-2 leading-none"><span class="font-bold pr-1">March</span>2022</p>
+                </div>
+                <div class="flex space-x-1 uppercase">
+                    <p class="text-sm">Period </p>
+                </div>
                 <div class="overflow-x-auto overflow-y-hidden hover:overflow-y-auto h-100 relative max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 sm:rounded-2xl">
                     <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-10">

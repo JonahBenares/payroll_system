@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\PayrollOvertime;
+use App\Models\Overtime;
+use App\Models\OvertimeDetails;
+use App\Models\Employee;
+use App\Models\CutOff;
 use Illuminate\Http\Request;
 
 class PayrollOvertimeController extends Controller
@@ -15,6 +19,26 @@ class PayrollOvertimeController extends Controller
     public function index()
     {
         return view('payroll_overtime.index');
+    }
+
+    public function filter_payroll_ot(Request $request){
+        if(isset($request->month) && isset($request->year)){
+            $month=$request->month;
+            $year=$request->year;
+        }else{
+            $month=date('m');
+            $year=date('Y');
+        }
+        $overtime_report=OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->join('employees','employees.id','=','ot_detail.employee_id')->where('payroll_period',$request->period)->where('month_year','LIKE','%'.$year."-".$month.'%')->groupBy('ot_detail.employee_id')->get();
+        $x=0;
+        $overtime_sum=[];
+        $overtime_amount=[];
+        foreach($overtime_report AS $t){
+            $overtime_sum[$x]=OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where('employee_id',$t->employee_id)->where('payroll_period',$t->payroll_period)->where('month_year','LIKE','%'.$year."-".$month.'%')->sum(\DB::raw('IFNULL(reg_day_hr,0) + IFNULL(RD_HR,0) + IFNULL(SH_RD_HR,0) + IFNULL(SH_HR,0) + IFNULL(RH_HR,0) + IFNULL(RH_RD_HR,0) + IFNULL(reg_day_np_hr,0) + IFNULL(reg_np_ot_hr,0) + IFNULL(SH_RD_NP_HR,0) + IFNULL(SH_OT_NP_HR,0) + IFNULL(SH_RD_OT_NP_HR,0) + IFNULL(RH_NP_HR,0) + IFNULL(RH_RD_NP_HR,0) + IFNULL(RH_RD_OT_NP_HR,0) + IFNULL(RH_OT_NP_HR,0) + IFNULL(RD_SH_NP_HR,0) + IFNULL(RD_SH_NP_OT_HR,0)'));
+            $overtime_amount[$x]=OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where('employee_id',$t->employee_id)->where('payroll_period',$t->payroll_period)->where('month_year','LIKE','%'.$year."-".$month.'%')->sum('total_amount');
+            $x++;
+        }
+        return view('payroll_overtime.index',compact('overtime_report','overtime_sum','overtime_amount'));
     }
 
     /**
@@ -44,9 +68,13 @@ class PayrollOvertimeController extends Controller
      * @param  \App\Models\PayrollOvertime  $payrollOvertime
      * @return \Illuminate\Http\Response
      */
-    public function show(PayrollOvertime $payrollOvertime)
+    public function show($personal_id,$month_year,$period)
     {
-        return view('payroll_overtime.print');
+        $print = OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where("personal_id",$personal_id)->where("payroll_period",$period)->where('month_year',$month_year);
+        $name = Employee::where('personal_id',$personal_id)->first();
+        $cutoff = CutOff::where('cutoff_type',$period)->first();
+        $overtime_amount=OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where('personal_id',$personal_id)->where('payroll_period',$period)->where('month_year',$month_year)->sum('total_amount');
+        return view('payroll_overtime.print',compact('print','name','month_year','period','cutoff','overtime_amount'));
     }
 
     /**
