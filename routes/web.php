@@ -16,6 +16,7 @@ use App\Http\Controllers\DeductionController;
 use App\Http\Controllers\StatutoryBracketController;
 use App\Http\Controllers\TardinessRateController;
 use App\Http\Controllers\CutOffController;
+use App\Http\Controllers\BusUnitController;
 use App\Http\Controllers\LeaveFailureController;
 use App\Http\Controllers\OvertimeController;
 use App\Http\Controllers\SwapScheduleController;
@@ -105,6 +106,9 @@ Route::resource('tardinessrate', TardinessRateController::class);
 
 // CutOff
 Route::resource('cut_off', CutOffController::class); 
+
+// Business Unit
+Route::resource('busUnit', BusUnitController::class); 
 
 // Leave
 Route::resource('leavefailure', LeaveFailureController::class);

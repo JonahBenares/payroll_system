@@ -65,11 +65,7 @@
                         </div>
                     </div>
                     <div class="flex mt-3 uppercase text-gray-600">
-<<<<<<< HEAD
                         <p class="font-semibold text-md leading-none ">June 12, 2022 - June 20, 2022 </p>
-=======
-                        <p class="font-semibold text-lg leading-none ">June 12, 2022 - June 20, 2022 </p>
->>>>>>> a9f2844884e2821de5487472f481d7147185291f
                     </div>
                     <div class="flex space-x-1 uppercase text-gray-600">
                         <p class="text-xs">Allowance |</p>
@@ -87,6 +83,22 @@
                                 <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
 >>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
 =======
+<<<<<<< HEAD
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+>>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
+                            </div>
+                            <div class="flex justify-between space-x-2">
+                                <p class="text-sm text-sm w-24 text-left">Pay To:</p>
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+                            </div>
+                            <div class="flex justify-between space-x-2">
+                                <p class="text-sm text-sm w-40 text-left">Period Covered:</p>
+<<<<<<< HEAD
+<<<<<<< HEAD
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b w-full">
+=======
+=======
+>>>>>>> 0f3de0000257508e3ebfe890e6f29e8a0e2d3f4f
                                 <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
 >>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
                             </div>
@@ -115,6 +127,15 @@
 >>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
 =======
                                 <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+<<<<<<< HEAD
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
+=======
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+>>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
+=======
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+=======
+>>>>>>> 0f3de0000257508e3ebfe890e6f29e8a0e2d3f4f
 >>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
                             </div>
                         </div>
@@ -129,6 +150,22 @@
                                 <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
 >>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
 =======
+<<<<<<< HEAD
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+>>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
+                            </div>
+                            <div class="flex justify-between space-x-2">
+                                <p class="text-sm text-sm w-24 text-right">Date:</p>
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+                            </div>
+                            <div class="flex justify-between space-x-2">
+                                <p class="text-sm text-sm w-24 text-right">Due Date:</p>
+<<<<<<< HEAD
+<<<<<<< HEAD
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b w-full">
+=======
+=======
+>>>>>>> 0f3de0000257508e3ebfe890e6f29e8a0e2d3f4f
                                 <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
 >>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
                             </div>
@@ -157,6 +194,15 @@
 >>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
 =======
                                 <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+<<<<<<< HEAD
+>>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
+=======
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+>>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
+=======
+                                <input type="text" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+=======
+>>>>>>> 0f3de0000257508e3ebfe890e6f29e8a0e2d3f4f
 >>>>>>> 3e753acb0025d61adc50a2b09c5fc216b33281fc
                             </div>
                         </div>

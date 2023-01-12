@@ -90,7 +90,7 @@ if (!function_exists('getAllowanceName')) {
 }
 
 if (!function_exists('getCompanyName')) {
-    
+
     function getCompanyName($id){
         $bu= BusinessUnit::select('bu_name')
         ->where("bu_id","=",$id)
@@ -184,14 +184,28 @@ function getMaxtimeout($schedule_type,$recorded_time,$personal_id){
 }
 
 if (!function_exists('getAllowanceTime')) {
-
     function getAllowanceTime($allowance_head_id, $allowance_detail_id){
         $time= UploadAllowanceTime::where("allowance_head_id","=",$allowance_head_id)
         ->where("allowance_detail_id","=",$allowance_detail_id)
         ->get();
         
-       
         return $time;
+    }
+ }
+
+ if (!function_exists('getSalary')) {
+    function getSalary($type, $employee_id){
+
+        if($type=='Monthly'){
+            $emp_rate= Employee::select('monthly_rate')
+                ->where("id","=",$employee_id)->get();
+            $rate=$emp_rate[0]['monthly_rate'];
+
+        }
+
+        return $rate;
+        
+       
     }
  }
 

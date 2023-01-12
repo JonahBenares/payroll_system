@@ -41,20 +41,8 @@
                 </div>
                 <form class="items-center" method="GET"> 
                 <?php echo csrf_field(); ?>
-<<<<<<< HEAD
                     <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900 space-x-1">
                        
-=======
-                    <div class="flex justify-center pb-1 my-3 bg-white white:bg-gray-900 space-x-1">
-                        <div>
-                            <select name="bu_id" class="text-sm block w-52 px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
-                                <option value="" selected>-Select Business Unit-</option>
-                                <?php $__currentLoopData = $businessunit; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <option value="<?php echo e($bu->bu_id); ?>"><?php echo e($bu->bu_name); ?></option>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                            </select>
-                        </div>
->>>>>>> 043048c552fc66e9b972492794e7ab523e0d3fca
                         <div>
                             <select name="allowance_id" id="allowance_dropdown" class="text-sm block w-52 px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
                                 <option value="" selected>-Select Allowance-</option>
