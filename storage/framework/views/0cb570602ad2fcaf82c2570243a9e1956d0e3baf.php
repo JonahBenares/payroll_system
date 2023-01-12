@@ -51,15 +51,21 @@
                             <td class="px-3 py-3">Daily Rate</td>
                             <td class="px-3 py-3">Monthly Rate</td>
 <<<<<<< HEAD
+<<<<<<< HEAD
                             <?php $__currentLoopData = $hmo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $h): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <td class="px-3 py-3"><?php echo e($h->level_description); ?></td>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 =======
+=======
+>>>>>>> 0f3de0000257508e3ebfe890e6f29e8a0e2d3f4f
 
                             <?php $__currentLoopData = $hmo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $h): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <td class="px-3 py-3"><?php echo e($h->level_description); ?></td>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
+<<<<<<< HEAD
+>>>>>>> 0f3de0000257508e3ebfe890e6f29e8a0e2d3f4f
+=======
 >>>>>>> 0f3de0000257508e3ebfe890e6f29e8a0e2d3f4f
                             <td class="px-3 py-3">Salary Type</td>
                             <td class="px-3 py-3 sticky right-0  bg-gray-50 " width="1%">
@@ -89,6 +95,10 @@
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             <td class="px-3 py-3"><?php echo e($el->salary_type); ?></td>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0f3de0000257508e3ebfe890e6f29e8a0e2d3f4f
 =======
 
 >>>>>>> 0f3de0000257508e3ebfe890e6f29e8a0e2d3f4f
