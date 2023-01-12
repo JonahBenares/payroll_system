@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->integer('bu_id')->unsigned()->nullable();
             $table->string('bu_name')->nullable();
+            $table->string('long_name')->nullable();
+            $table->string('logo')->nullable();
             $table->timestamps();
         });
     }

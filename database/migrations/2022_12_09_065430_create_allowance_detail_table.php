@@ -22,6 +22,7 @@ return new class extends Migration
             $table->float('allowance_amount', 10, 2)->nullable();
             $table->float('OT_allowance_amount', 10, 2)->nullable();
             $table->float('total_allowance', 10, 2)->nullable();
+            $table->string('remarks')->nullable();
             $table->timestamps();
         });
     }

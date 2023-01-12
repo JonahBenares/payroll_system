@@ -41,6 +41,10 @@
                 </div>
                 <form class="items-center" method="GET"> 
                 <?php echo csrf_field(); ?>
+<<<<<<< HEAD
+                    <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900 space-x-1">
+                       
+=======
                     <div class="flex justify-center pb-1 my-3 bg-white white:bg-gray-900 space-x-1">
                         <div>
                             <select name="bu_id" class="text-sm block w-52 px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
@@ -50,6 +54,7 @@
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </select>
                         </div>
+>>>>>>> 043048c552fc66e9b972492794e7ab523e0d3fca
                         <div>
                             <select name="allowance_id" id="allowance_dropdown" class="text-sm block w-52 px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
                                 <option value="" selected>-Select Allowance-</option>
@@ -64,13 +69,7 @@
                                 <option value="">-Period-</option>
                             </select>
                         </div>
-                        <!-- <div>
-                            <input type="date" name="from" class="text-sm block px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
-                        </div>
-                        <div>
-                            <input type="date" name="to" class="text-sm block px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">
-                        </div>
-                         -->
+                       
                         <div>
                             <button type="submit" class="flex items-center justify-center px-3 py-2 mt-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">Filter</button>
                         </div>
@@ -193,7 +192,7 @@
                     $('#period_dropdown').html('<option value="">-- Select Period --</option>');
                     $.each(result.period, function (key, value) {
                         $("#period_dropdown").append('<option value="' + value
-                            .id + '">' + value.from_date + ' to ' + value.to_date+ '</option>');
+                            .id + '">'+ value.from_date + ' to ' + value.to_date + ' (' + value.bu_name + ') </option>');
                     });
                    
                 }

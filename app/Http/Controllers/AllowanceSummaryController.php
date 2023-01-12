@@ -21,9 +21,8 @@ class AllowanceSummaryController extends Controller
         $businessunit = BusinessUnit::all();
         $details=array();
         if($request->has('allowance_id')){
-            $details = UploadAllowanceDetail::where("allowance_head_id", $request->allowance_id)->get();
+            $details = UploadAllowanceDetail::where("allowance_head_id", $request->period)->get();
         }
-
         return view('allowance_summary.index', compact('allowance', 'details','businessunit'));
     }
 
@@ -33,10 +32,23 @@ class AllowanceSummaryController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function fetchPeriod(Request $request)
-    {
-        $data['period'] = UploadAllowance::where("allowance_id", $request->allowanceid)->get();
+     public function fetchPeriod(Request $request) {
+        $allowance = UploadAllowance::where("allowance_id", $request->allowanceid)->get();
+        foreach($allowance as $all){
+            $data['period'][] = array(
+                'id'=>$all->id,
+                'bu_name'=>$this->getBUName($all->bu_id),
+                'from_date'=>$all->from_date,
+                'to_date'=>$all->to_date
+            );
+        }
         return response()->json($data);
+    }
+
+    public function getBUName($id){
+        $details = BusinessUnit::where("bu_id", $id)->get();
+        $bu_name = $details[0]['bu_name'];
+        return $bu_name;
     }
 
     public function create()

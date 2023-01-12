@@ -19,6 +19,11 @@ return new class extends Migration
             $table->date('to_date',50)->nullable();
             $table->foreignId('allowance_id')->constrained;
             $table->foreignId('bu_id')->constrained('business_unit');
+            $table->string('company')->nullable();
+            $table->string('pay_to')->nullable();
+            $table->string('apv_no')->nullable();
+            $table->date('rfd_date')->nullable();
+            $table->date('due_date')->nullable();
             $table->timestamps();
         });
     }

@@ -23,6 +23,9 @@
                     <a href="<?php echo e(route('otSite.index')); ?>" class="hover:bg-emerald-200 hover:text-white  bg-gray-100  text-sm px-6 py-1 rounded-2xl text-gray-300 font-bold">DTR Site</a>
                 </div>
                 <form action="">
+                    <div class="flex justify-left px-4 mt-6 text-sm"> 
+                        <p class="text-base uppercase name font-bold" id="name">asdad</p>
+                    </div>
                     <div class="flex justify-between space-x-4 w-full my-1">
                         
                         <div class="space-y-1 w-7/12">

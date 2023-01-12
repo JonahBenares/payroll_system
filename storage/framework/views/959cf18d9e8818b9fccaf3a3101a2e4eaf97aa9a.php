@@ -83,7 +83,7 @@ use App\Http\Controllers\ShiftScheduleController;
                         </div>
                     </div>
                 </form>
-                <p class="text-left text-lg uppercase text-gray-600"><span class="font-bold pr-1">March</span>2022</p>
+                <p class="text-left text-md uppercase text-gray-600"><span class="font-bold pr-1">March</span>2022</p>
                 <div class="w-full overflow-x-auto overflow-y-hidden hover:overflow-y-auto  relative  pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 h-96 ">
                     <table class="text-sm text-left text-gray-500 white:text-gray-400 border border-gray-200 border-collapse" width="200%">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-20">

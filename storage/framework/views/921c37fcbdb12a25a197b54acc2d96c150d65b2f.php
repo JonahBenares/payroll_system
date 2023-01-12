@@ -71,9 +71,9 @@
                             <select name="year" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60" required>
                                 <option value="">Select Year</option>
                                 <?php
-                                    $year=date('Y');
+                                    $years=date('Y');
                                 ?>
-                                <?php for($y=2015;$y<=$year;$y++): ?>
+                                <?php for($y=2015;$y<=$years;$y++): ?>
                                     <option value="<?php echo e($y); ?>"><?php echo e($y); ?></option>
                                 <?php endfor; ?>
                             </select>
