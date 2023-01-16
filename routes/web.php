@@ -8,6 +8,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\HolidayController;
 use App\Http\Controllers\PayslipInfoController;
+use App\Http\Controllers\EmployeeDeductionController;
 use App\Http\Controllers\AllowanceController;
 use App\Http\Controllers\AllowanceRateController;
 use App\Http\Controllers\AdjustmentRateController;
@@ -77,8 +78,10 @@ Route::resource('schedules', ScheduleController::class);
 Route::resource('holiday', HolidayController::class);
 
 // PayslipInfo
-
 Route::resource('payslip_info', PayslipInfoController::class);
+
+// Employee Deduction
+Route::resource('empDeduction', EmployeeDeductionController::class);
 
 // Allowance
 Route::resource('allowance', AllowanceController::class);
