@@ -31,34 +31,48 @@
                     <tr>
                         <td>Company</td>
 <<<<<<< HEAD
+<<<<<<< HEAD
                         <td class="border-b">CENPRI - SITE</td>
 =======
                         <td class="border-b">{{ getBUName($emp_id) }}</td>
 >>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
+=======
+                        <td class="border-b">{{ getBUName($emp_id) }}</td>
+>>>>>>> e1fdbac5381f34b2772d369b2089ea74ca4cf791
                         <td ></td>
                         <td>Date:</td>
                         <td class="border-b"></td>
                     </tr>
+<<<<<<< HEAD
 <<<<<<< HEAD
                     @foreach($allowance_details AS $details)
                     <tr>
                         <td>Pay To:</td>
                         <td class="border-b">{{ getEmployeeName($details->employee_id) }}</td>
 =======
+=======
+>>>>>>> e1fdbac5381f34b2772d369b2089ea74ca4cf791
                    
                     <tr>
                         <td>Pay To:</td>
                         <td class="border-b">{{ getEmployeeName($emp_id) }}</td>
+<<<<<<< HEAD
 >>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
+=======
+>>>>>>> e1fdbac5381f34b2772d369b2089ea74ca4cf791
                         <td></td>
                         <td>Due Date:</td>
                         <td class="border-b"></td>
                     </tr>
 <<<<<<< HEAD
+<<<<<<< HEAD
                     @endforeach
 =======
                    
 >>>>>>> c2de9ee859a43a437ab4ee328a972ea34b9d1611
+=======
+                   
+>>>>>>> e1fdbac5381f34b2772d369b2089ea74ca4cf791
                     <tr>
                         <td colspan="5" class="pt-2"></td>
                     </tr>

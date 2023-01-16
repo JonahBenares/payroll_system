@@ -8,6 +8,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\HolidayController;
 use App\Http\Controllers\PayslipInfoController;
+use App\Http\Controllers\EmployeeDeductionController;
 use App\Http\Controllers\AllowanceController;
 use App\Http\Controllers\AllowanceRateController;
 use App\Http\Controllers\AdjustmentRateController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\DeductionController;
 use App\Http\Controllers\StatutoryBracketController;
 use App\Http\Controllers\TardinessRateController;
 use App\Http\Controllers\CutOffController;
+use App\Http\Controllers\BusUnitController;
 use App\Http\Controllers\LeaveFailureController;
 use App\Http\Controllers\OvertimeController;
 use App\Http\Controllers\SwapScheduleController;
@@ -76,8 +78,10 @@ Route::resource('schedules', ScheduleController::class);
 Route::resource('holiday', HolidayController::class);
 
 // PayslipInfo
-
 Route::resource('payslip_info', PayslipInfoController::class);
+
+// Employee Deduction
+Route::resource('empDeduction', EmployeeDeductionController::class);
 
 // Allowance
 Route::resource('allowance', AllowanceController::class);
@@ -105,6 +109,9 @@ Route::resource('tardinessrate', TardinessRateController::class);
 
 // CutOff
 Route::resource('cut_off', CutOffController::class); 
+
+// Business Unit
+Route::resource('busUnit', BusUnitController::class); 
 
 // Leave
 Route::resource('leavefailure', LeaveFailureController::class);
@@ -152,9 +159,10 @@ Route::resource('shiftschedule', ShiftScheduleController::class);
 
 Route::resource('allowancesummary', AllowanceSummaryController::class);
 Route::post('api/fetch-period', [AllowanceSummaryController::class, 'fetchPeriod']);
+//Route::resource('api/fetch-period', [AllowanceSummaryController::class]);
 
-Route::resource('rfdReport', RfdReportController::class);
-Route::get('/report_rfd/print', [RfdReportController::class, 'print'])->middleware(['auth'])->name('printRFD');
+Route::resource('rfdreport', RfdReportController::class);
+Route::get('rfd_report/print/{head_id}', [RfdReportController::class, 'print'])->name('printRFD');
 
 Route::get('/upload/receive', [UploadAllowanceController::class, 'receive'])->middleware(['auth'])->name('receiveForm');
 Route::resource('payrollComp', PayrollComputationController::class);

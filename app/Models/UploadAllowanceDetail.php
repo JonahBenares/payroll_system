@@ -18,5 +18,6 @@ class UploadAllowanceDetail extends Model
         'allowance_amount',
         'OT_allowance_amount',
         'total_allowance',
+        'remarks',
     ];
 }

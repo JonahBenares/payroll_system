@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\PayrollSalary;
+use App\Models\CutOff;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
 class PayrollSalaryController extends Controller
@@ -12,9 +14,32 @@ class PayrollSalaryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('payroll_salary.index');
+        $cutoff = CutOff::all();
+        $filters = array(
+            'month'=>'',
+            'year'=>'',
+            'cutoff'=>''
+        );
+        $employee_list=array();
+        if($request->has('month')){
+            $filters = array(
+                'month'=>$request->month,
+                'year'=>$request->year,
+                'cutoff'=>$request->cutoff
+            );
+
+            $employees = Employee::all();
+            foreach($employees AS $emp){
+                $employee_list[] = array(
+                    'id'=>$emp->id,
+                    'name'=>getEmployeeName($emp->id)
+                );
+            }
+            $employee_list = collect($employee_list)->sortBy('name')->toArray();
+        }
+        return view('payroll_salary.index',compact('cutoff','filters','employee_list'));
     }
 
     /**
@@ -22,6 +47,8 @@ class PayrollSalaryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function create()
     {
         //

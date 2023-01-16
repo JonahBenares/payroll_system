@@ -24,6 +24,11 @@ page[size="letter"] {
   height: 11in; 
 }
 
+page[size="letterHalf"] {  
+  width: 8.5in;
+  height: 5.5in; 
+}
+
 @media print {
   body, page {
     margin: 0;

@@ -70,6 +70,9 @@
                                         <a href="{{ route('payslip_info.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Payslip Info</a>
                                     </li>
                                     <li class="relative">
+                                        <a href="{{ route('empDeduction.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Employee Deduction</a>
+                                    </li>
+                                    <li class="relative">
                                         <a href="{{ route('allowance.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowances</a>
                                     </li>
                                     <li class="relative">
@@ -91,7 +94,9 @@
                                     <li class="relative">
                                         <a href="{{ route('cut_off.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Cut Off</a>
                                     </li>
-                                    
+                                    <li class="relative">
+                                        <a href="{{ route('busUnit.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Business Unit</a>
+                                    </li>
                                 </ul>
                             </div>
                         </li> 
@@ -155,7 +160,7 @@
                                       </svg>
                                 </span>
                                 <span class="mx-4 text-xs font-bold">
-                                    Payroll
+                                    Payslip
                                 </span>
                             </a>
                             <div class="relative overflow-hidden transition-all max-h-0 duration-700" x-ref="container2" x-bind:style="selected == 2 ? 'max-height: ' + $refs.container2.scrollHeight + 'px' : ''">
@@ -189,7 +194,7 @@
                             <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container1" x-bind:style="selected == 3 ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
                                 <ul>
                                     <li class="relative">
-                                        <a href="{{ route('rfdReport.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >RFD</a>
+                                        <a href="{{ route('rfdreport.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >RFD</a>
                                     </li>
                                     <li class="relative">
                                         <a href="{{ route('allowancesummary.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowance Summary</a>
