@@ -59,10 +59,17 @@
                             </select>
                         </div>
                         <div class="px-2 mt-2 w-1/4">
-                            <div class="flex items-right pl-4 mt-10">
-                            <input type="hidden" name="editable" value="0" />
-                                <input class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500" name="editable" id="editable"  type="checkbox" value="1" <?php echo e(($payslip->editable  == 1) ? 'checked' : ''); ?>>
-                                <label for="default-checkbox" class="block ml-2 text-sm text-gray-700 capitalize white:text-gray-200">Editable</label>
+                            <div class="flex justify-center space-x-10">
+                                <div class="flex items-right pl-4 mt-10">
+                                <input type="hidden" name="editable" value="0" />
+                                    <input class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500" name="editable" id="editable"  type="checkbox" value="1" <?php echo e(($payslip->editable  == 1) ? 'checked' : ''); ?>>
+                                    <label for="default-checkbox" class="block ml-2 text-sm text-gray-700 capitalize white:text-gray-200">Editable</label>
+                                </div>
+                                <div class="flex items-right mt-10">
+                                    <input type="hidden" name="visible" value="0" />
+                                    <input name="visible" id="visible"  type="checkbox" value="1" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 ">
+                                    <label for="default-checkbox" class="block ml-2 text-sm text-gray-700 capitalize white:text-gray-200">Visible</label>
+                                </div>
                             </div>
                         </div>
                     </div>

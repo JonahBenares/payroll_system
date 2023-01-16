@@ -81,6 +81,16 @@
                         </button>
                     </div>
                 </div>
+
+                <?php if($emp_id != ''): ?>
+                <div class="flex mt-5 uppercase">
+                    <p class="font-semibold text-lg leading-none "><?php echo e($employee_name->full_name); ?> </p>
+                </div>
+                <div class="flex space-x-1 uppercase">
+                    <p class="text-sm"><?php echo e($monthName); ?> </p>
+                    <p class="text-sm"><?php echo e($year_disp); ?> </p></div>
+                <?php endif; ?>
+
                 </form>
                 <div class="overflow-x-auto overflow-y-hidden hover:overflow-y-auto h-100 relative max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 sm:rounded-2xl">
                     <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
@@ -101,7 +111,11 @@
                         </thead>
                         <tbody>
                         <?php $__currentLoopData = $filed; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $f): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
+                        <?php if($f->cancelled == '0'): ?>
+                            <tr class="bg-white border-b ">
+                        <?php else: ?>
+                            <tr class="bg-red-100 border-b ">
+                        <?php endif; ?>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                 <?php echo e($f->date_absent); ?>
 
@@ -157,10 +171,12 @@
                                                             <div class="w-2/4">Date:</div>
                                                             <div class="w-2/4"><?php echo e($f->date_absent); ?></div>
                                                         </div>
+                                                        <?php if($f->leave_type == 'Undertime/Tardiness'): ?>
                                                         <div class="flex justify-between px-2 my-2">
                                                             <div class="w-2/4">Total Undertime Min:</div>
                                                             <div class="w-2/4"><?php echo e($f->undertime_mins); ?></div>
                                                         </div>
+                                                        <?php endif; ?>
                                                         <div class="flex justify-between px-2 my-2">
                                                             <div class="w-2/4">Date Filed:</div>
                                                             <div class="w-2/4"><?php echo e($f->date_filed); ?></div>
@@ -183,14 +199,31 @@
                                                                 <?php endif; ?>
                                                             </div>
                                                         </div>
+                                                        <?php if($f->with_pay == '1'): ?>
+                                                        <?php  $percentage= $f->pay_percentage * 100 ?>
                                                         <div class="flex justify-between px-2 my-2">
                                                             <div class="w-2/4">Percentage:</div>
-                                                            <div class="w-2/4">100%</div>
+                                                            <div class="w-2/4"><?php echo e($percentage); ?>%</div>
                                                         </div>
+                                                        <?php endif; ?>
                                                         <div class="flex justify-between px-2 my-2">
                                                             <div class="w-2/4">Type:</div>
                                                             <div class="w-2/4"><?php echo e($f->leave_type); ?></div>
                                                         </div>
+                                                        <?php if($f->cancelled == '1'): ?>
+                                                        <div class="flex justify-between px-2 my-2">
+                                                            <div class="w-2/4">CANCELLED:</div>
+                                                            <div class="w-2/4"><?php echo e($f->cancel_date); ?></div>
+                                                        </div>
+                                                        <div class="flex justify-between px-2 my-2">
+                                                            <div class="w-2/4"></div>
+                                                            <div class="w-2/4"><?php echo e($f->cancel_remarks); ?></div>
+                                                        </div>
+                                                        <div class="flex justify-between px-2 my-2">
+                                                            <div class="w-2/4"></div>
+                                                            <div class="w-2/4"><?php echo e($cancelled->name); ?></div>
+                                                        </div>
+                                                        <?php endif; ?>
                                                     </div>
                                                 </div>
                                             </div>

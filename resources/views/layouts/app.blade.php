@@ -250,11 +250,23 @@
                         overtimeurl: overtimeurl,
                         _token: '{{csrf_token()}}'
                     },
+                    dataType: 'json',
                     cache: false,
-                    success: function(output){
+                    success: function(response){
+                       // alert(response);
                         var replace_url=base_url+"/ot/create?employee_id="+employee_id+'&personal_id='+personal_id+'&month_year='+month_year+'&period='+period+'&overtimedate='+overtime_date;
                         window.history.replaceState(null, null, replace_url);
-                        document.getElementById("showTime").innerHTML  = output;
+                        //document.getElementById("showTime").innerHTML  = output;
+                        document.getElementById("timein").innerHTML  = response.time_in;
+                        document.getElementById("timeout").innerHTML  = response.time_out;
+                        document.getElementById("name").innerHTML  = response.fullname;
+                        document.getElementById("ot_head_id").value  = response.ot_head_id;
+                        if(response.total_sumhour==0){
+                            document.getElementById("no_hrs").innerHTML  = response.total_timemins+' min/s';
+                        }else{
+                            document.getElementById("no_hrs").innerHTML  = response.total_sumhour+' hr/s. & '+response.total_timemins+' min/s.';
+                        }
+                        document.getElementById("holidays").innerHTML  = response.holiday;
                         document.getElementById("overtimedate").value  = overtime_date;
                         $('#loadpage').load(replace_url+" #loadpage");
                         
@@ -408,13 +420,18 @@
             }else{
                 var ee = 1;
             }
+           
+            var x=1;
             $("body").on("click", ".addEmployeeShift", function(e) {
                 e.preventDefault();
                 ee++;
+              
                 var $append = $(this).parents('.appends_emp_shift');
                 var nextHtml = $append.clone().find("input:text").val('').end();
                 nextHtml.find('select').val('');
                 nextHtml.attr('id', 'appends_emp_shift' + ee);
+             
+               
                 var hasRmBtn = $('.remEmployee', nextHtml).length > 0;
                 if (!hasRmBtn) {
                     var rms = "<button class='flex items-center justify-center px-2 py-2  my-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 rounded-2xl white:bg-red-600 white:hover:bg-red-700 white:focus:bg-red-700 hover:bg-red-600 focus:outline-none focus:bg-red-500 focus:ring focus:ring-red-300 focus:ring-opacity-50 remEmployee'><svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-4 h-4'><path stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12' /></svg></button>";
@@ -425,20 +442,24 @@
                 }
                 
                 $append.after(nextHtml);
+              
                 refresh_shifting();
                 if(host.indexOf('edit')==38){
                     document.getElementById("delete_func"+ee).style.display = "none";
                 }
-              
+                 
             });
-
+          
             $( document ).ready(function() {
                 refresh_shifting();
                 $(".employee_shift").each(function(index, element){
                     var add=index+1;
+                  
                     $("body").on("change", "#employee_shift"+add, function(e) {
                         e.preventDefault();
                         var employee_id = document.getElementById("employee_shift1").value;
+                    
+                   
                         var base_url = '{{URL::to("/")}}';
                         $.ajax({
                             type: 'POST',

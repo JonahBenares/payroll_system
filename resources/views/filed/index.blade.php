@@ -71,6 +71,16 @@
                         </button>
                     </div>
                 </div>
+
+                @if($emp_id != '')
+                <div class="flex mt-5 uppercase">
+                    <p class="font-semibold text-lg leading-none ">{{ $employee_name->full_name }} </p>
+                </div>
+                <div class="flex space-x-1 uppercase">
+                    <p class="text-sm">{{ $monthName }} </p>
+                    <p class="text-sm">{{ $year_disp }} </p></div>
+                @endif
+
                 </form>
                 <div class="overflow-x-auto overflow-y-hidden hover:overflow-y-auto h-100 relative max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 sm:rounded-2xl">
                     <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
@@ -91,7 +101,11 @@
                         </thead>
                         <tbody>
                         @foreach($filed as $f)
-                            <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
+                        @if($f->cancelled == '0')
+                            <tr class="bg-white border-b ">
+                        @else
+                            <tr class="bg-red-100 border-b ">
+                        @endif
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                 {{ $f->date_absent }}
                                 </td>
@@ -145,10 +159,12 @@
                                                             <div class="w-2/4">Date:</div>
                                                             <div class="w-2/4">{{ $f->date_absent }}</div>
                                                         </div>
+                                                        @if($f->leave_type == 'Undertime/Tardiness')
                                                         <div class="flex justify-between px-2 my-2">
                                                             <div class="w-2/4">Total Undertime Min:</div>
                                                             <div class="w-2/4">{{ $f->undertime_mins }}</div>
                                                         </div>
+                                                        @endif
                                                         <div class="flex justify-between px-2 my-2">
                                                             <div class="w-2/4">Date Filed:</div>
                                                             <div class="w-2/4">{{ $f->date_filed }}</div>
@@ -171,14 +187,31 @@
                                                                 @endif
                                                             </div>
                                                         </div>
+                                                        @if($f->with_pay == '1')
+                                                        @php  $percentage= $f->pay_percentage * 100 @endphp
                                                         <div class="flex justify-between px-2 my-2">
                                                             <div class="w-2/4">Percentage:</div>
-                                                            <div class="w-2/4">100%</div>
+                                                            <div class="w-2/4">{{ $percentage }}%</div>
                                                         </div>
+                                                        @endif
                                                         <div class="flex justify-between px-2 my-2">
                                                             <div class="w-2/4">Type:</div>
                                                             <div class="w-2/4">{{ $f->leave_type }}</div>
                                                         </div>
+                                                        @if($f->cancelled == '1')
+                                                        <div class="flex justify-between px-2 my-2">
+                                                            <div class="w-2/4">CANCELLED:</div>
+                                                            <div class="w-2/4">{{ $f->cancel_date }}</div>
+                                                        </div>
+                                                        <div class="flex justify-between px-2 my-2">
+                                                            <div class="w-2/4"></div>
+                                                            <div class="w-2/4">{{ $f->cancel_remarks }}</div>
+                                                        </div>
+                                                        <div class="flex justify-between px-2 my-2">
+                                                            <div class="w-2/4"></div>
+                                                            <div class="w-2/4">{{ $cancelled->name }}</div>
+                                                        </div>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>

@@ -38,36 +38,62 @@
                 @endif
                 <form action="{{ route('ot.store') }}" method="POST" >
                     @csrf
-                        
                         <div class="flex justify-center">
                             <div class="w-6/12">
                                 <label for="" class="block text-left text-sm text-gray-700 capitalize white:text-gray-200 px-2   w-60">Overtime Date: </label>
                                 <div class="px-2 flex justify-between">
-                                    <input type="date" id="overtime_date" name="overtime_date" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" onchange="getRecordedtime('{{$_GET['personal_id']}}')" value='{{ (isset($_GET['overtimedate'])) ? $_GET['overtimedate'] : '' }}'>
+                                    <select id="overtime_date" name="overtime_date" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" onchange="getRecordedtime('{{$_GET['personal_id']}}')">
+                                        @php $x=0; @endphp
+                                        <option value=''>--Select Overtime Date--</option>
+                                        @foreach($data2 AS $d)
+                                            @if($d['schedule_type']=='Regular'){
+                                                @if($hours[$x]>=9 && $minutes[$x]>=30)
+                                                <option value='{{ $date[$x]}}'>{{ date('F d,Y',strtotime($date[$x]))}}</option>
+                                                @elseif($hours[$x]>=10)
+                                                <option value='{{ $date[$x]}}'>{{ date('F d,Y',strtotime($date[$x]))}}</option>
+                                                @endif
+                                            @else if($d['schedule_type']=='Shifting')
+                                                @if($hours[$x]>=8 && $minutes[$x]>=30)
+                                                <option value='{{ $date[$x]}}'>{{ date('F d,Y',strtotime($date[$x]))}}</option>
+                                                @elseif($hours[$x]>=10)
+                                                <option value='{{ $date[$x]}}'>{{ date('F d,Y',strtotime($date[$x]))}}</option>
+                                                @endif
+                                            @endif
+                                            @php $x++; @endphp
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="flex justify-between pb-2 px-2 mt-4 bg-amber-50 rounded-2xl">
+                        <div class="flex justify-left px-4 mt-6 text-sm"> 
+                            <p class="text-base uppercase name font-bold" id="name"></p>
+                        </div>
+                        <div class="flex justify-between pb-2 px-2 bg-amber-50 rounded-2xl text-sm">
                             <div class="w-6/12 text-left px-2 mt-2">
-                               <p class="text-base uppercase ">Jason Flor</p>
                                <div class="flex justify-between">
-                                    <div class="w-1/2">Time In:</div>
-                                    <div class="w-1/2">Time Out:</div>
+                                    <div class="w-1/2">Time In: <span id='timein'></span></div>
+                                    <div class="w-1/2">Time Out: <span id='timeout'></span></div>
                                </div>
                             </div>
                             <div class="w-6/12 text-left px-2 mt-2">
-                                <div class="pt-6">
-                                    Number of Hours: 1 hr/s. & 34 min/s.
+                                <div class="">
+                                    Number of Hours: <span id="no_hrs"></span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="px-2 flex justify-between">
+                            <div class="w-6/12 text-left px-2 mt-2">
+                                <div class="">
+                                    Holiday: <span id="holidays"></span>
+                                </div>
+                            </div>
                             <span id="showTime"></span>
                         </div>
+                        <!-- <div class="px-2 flex justify-between">
+                            <span id="showTime"></span>
+                        </div> -->
                         <div id="loadpage">
                             <div class="flex justify-between pt-4 space-x-5">
                                 <div class="w-1/2 px-2 bg-amber-50 px-5 pb-5 rounded-2xl">
-                                    <h6 class="font-semibold border-b py-2">No. of Days Worked</h6>
+                                    <h6 class="font-semibold border-b py-2">No. of Hours Worked</h6>
                                     <div class="flex justify-between mt-2">
                                         <label for="reg_day" class="block py-1 pt-2 pr-3 text-sm font-medium text-gray-700 ">REG DAY:</label>
                                         <input type="text" onkeypress="return isNumberKey(this, event)" name="reg_day" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-56 h-9 text-right" value='{{ (!empty($get_data->reg_day_hr)) ? $get_data->reg_day_hr : '0' }}'>
@@ -138,6 +164,7 @@
                                 </div>
                             </div>
                         </div>
+                    <input type="hidden" name="ot_head_id" id="ot_head_id">
                     <input type="hidden" name="employee_id" id="employee_id" value="{{$_GET['employee_id']}}">
                     <input type="hidden" name="personal_id" id="personal_id" value="{{$_GET['personal_id']}}">
                     <input type="hidden" name="month_year" id="month_year" value="{{$_GET['month_year']}}">

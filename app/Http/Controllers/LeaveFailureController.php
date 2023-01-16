@@ -32,7 +32,7 @@ class LeaveFailureController extends Controller
         $cutoff = CutOff::all();
         $leave = LeaveFailure::join('employees', 'employees.id', '=', 'leave_filing_head.employee_id')
         ->join('leave_filing_detail', 'leave_filing_head_id', '=', 'leave_filing_head.id')
-        ->selectRaw('count(case when leave_filing_detail.leave_type = "Absent" then 1 end) as count_absent,employees.full_name,leave_filing_detail.leave_filing_head_id')
+        ->selectRaw('count(case when leave_filing_detail.leave_type = "Absent" then 1 end) as count_absent,employees.full_name,employees.supervisory,leave_filing_detail.leave_filing_head_id')
         ->selectRaw('count(case when leave_filing_detail.leave_type = "Failure to login/logout" then 1 end) as count_ftl')
         ->selectRaw('count(case when leave_filing_detail.leave_type = "Undertime/Tardiness" then 1 end) as count_undertime')
         ->where('is_active', '=', 1)->where('filed', '=', 0)->where('cancelled', '=', 0)->where('month',$month)->where('year', $year)->where('pay_period', $period)->groupBy('leave_filing_head.personal_id')->get();
@@ -81,6 +81,7 @@ class LeaveFailureController extends Controller
     {
         $employee = LeaveFailure::where('leave_filing_head.id',$leave_filing_head_id)->join('employees', 'employees.id', '=', 'leave_filing_head.employee_id')->first();
         $leave = LeaveFailureDetail::where('leave_filing_head_id' ,$leave_filing_head_id)->where('filed', '=', 0)->where('cancelled', '=', 0)->get();
+        //$leave = LeaveFailure::where('leave_filing_head.id',$leave_filing_head_id)->join('employees', 'employees.id', '=', 'leave_filing_head.employee_id')->where('supervisory', '=', 1)->groupBy('leave_filing_head.personal_id')->get();
         //$id = LeaveFailureDetail::where('leave_filing_head_id' ,$leave_filing_head_id)->where('filed', '=', 0);
         return view('leave.edit',compact('leave','employee'));
 
