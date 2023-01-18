@@ -17,7 +17,7 @@ class EmployeeDeductionController extends Controller
      */
     public function index()
     {
-        $employees = Employee::all();
+        $employees = Employee::all()->sortBy('full_name');
         $deductions = EmployeeDeduction::join('employees', 'employees.id', '=', 'employee_deduction_rate.employee_id')
         ->join('payslip_info', 'payslip_info.id', '=', 'employee_deduction_rate.payslip_info_id')
         ->get();

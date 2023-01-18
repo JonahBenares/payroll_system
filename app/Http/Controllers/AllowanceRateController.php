@@ -16,7 +16,7 @@ class AllowanceRateController extends Controller
      */
     public function index()
     {
-        $employees = Employee::all();
+        $employees = Employee::all()->sortBy('full_name');
         $rates = AllowanceRate::join('employees', 'employees.id', '=', 'allowance_rates.employee_id')
         ->join('allowances', 'allowances.id', '=', 'allowance_rates.allowance_id')
         ->get(['allowance_rates.employee_id','allowance_rates.personal_id','allowances.allowance_name','allowance_rates.allowance_rate']);
