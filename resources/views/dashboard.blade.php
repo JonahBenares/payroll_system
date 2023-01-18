@@ -77,7 +77,7 @@
                         </div>
                         <div class="flex -space-x-2">
                             <a href="#" class="">
-                                <img class="inline-block h-10 w-10 rounded-full object-cover ring-2 ring-white" src="/images/person/1.jpg" alt="Guy"/>
+                                <img class="inline-block h-10 w-10 rounded-full object-cover ring-2 ring-white" src="../images/profile-picture-1.jpg" alt="Guy"/>
                             </a>
                             <a href="#" class="">
                                 <img class="inline-block h-10 w-10 rounded-full object-cover ring-2 ring-white" src="/images/person/2.jpeg" alt="Max"/>

@@ -8,20 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Employee extends Model
 {
     use HasFactory;
-
+    protected $table = 'db_payroll.employees';
     protected $fillable = [
-        'full_name',
-        'emp_num',
-        'business_unit',
         'supervisory',
         'hourly_rate',
         'daily_rate',
-        'bi_monthly_rate',
         'monthly_rate',
-        'hmo_dependents',
-        'emp_category',
-        'business_unit',
-        'emp_location'
-        
+        'salary_type',
+        'accounting_entry_id'
     ];
+    public function timekeeping()
+    {
+        $_this = new self;
+        return $_this->belongsToMany(Timekeeping::class, 'employees', 'personal_id', 'personal_id');
+    }
+    
 }

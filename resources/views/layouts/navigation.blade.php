@@ -1,5 +1,5 @@
-<div class="h-screen hidden lg:block my-4 ml-4 shadow-lg relative w-72">
-    <div class="bg-white h-full rounded-2xl white:bg-gray-700">
+<div class="h-screen hidden lg:block m-2 shadow-lg w-2/12">
+    <div class="bg-white h-full rounded-lg white:bg-gray-700">
         <div class="flex items-center justify-center pt-6">
             <svg width="35" height="30" viewBox="0 0 256 366" version="1.1" preserveAspectRatio="xMidYMid">
                 <defs>
@@ -52,50 +52,60 @@
                             <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container" x-bind:style="selected == 1 ? 'max-height: ' + $refs.container.scrollHeight + 'px' : ''">
                                 <ul>
                                     <li class="relative">
-                                        <a href="{{ route('employee_list') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Employee List</a>
+                                        <a href="{{ route('entry.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Accounting Entry</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="{{ route('schedule_list') }}" class="w-full font-thin text-sm text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Schedule</a>
+                                        <a href="{{ route('hmorate.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >HMO Rates</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="{{ route('calendar_list') }}" class="w-full font-thin text-gray-500 text-sm white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Holidays</a>
+                                        <a href="{{ route('emp.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Employee List</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="{{ route('payslip_info') }}" class="w-full font-thin text-gray-500 text-sm white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Payslip Info</a>
+                                        <a href="{{ route('schedules.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Schedule</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="{{ route('allowance_list') }}" class="w-full font-thin text-gray-500 text-sm white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowances</a>
+                                        <a href="{{ route('holiday.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Holidays</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="{{ route('allowance_rate_list') }}" class="w-full font-thin text-gray-500 text-sm white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowance Rates</a>
+                                        <a href="{{ route('payslip_info.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Payslip Info</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="{{ route('rates_list') }}" class="w-full font-thin text-sm text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Adjustment Rates</a>
+                                        <a href="{{ route('empDeduction.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Employee Deduction</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="{{ route('deduction_list') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Deductions Schedule</a>
+                                        <a href="{{ route('allowance.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowances</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a href="{{ route('allowancerate.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowance Rates</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a href="{{ route('adjustmentrate.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Adjustment Rates</a>
                                     </li>
                                    
                                     <li class="relative">
-                                        <a href="{{ route('statutory_bracket') }}" class="w-full font-thin text-sm text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Statutory Bracket</a>
+                                        <a href="{{ route('deductions.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Deductions Schedule</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="{{ route('tardiness_rate_list') }}" class="w-full font-thin text-sm text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Tardiness Rates</a>
+                                        <a href="{{ route('statutorybracket.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Statutory Bracket</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="{{ route('cut_off_list') }}" class="w-full font-thin text-gray-500 text-sm white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Cut Off</a>
+                                        <a href="{{ route('tardinessrate.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Tardiness Rates</a>
                                     </li>
-                                    
+                                    <li class="relative">
+                                        <a href="{{ route('cut_off.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Cut Off</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a href="{{ route('busUnit.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Business Unit</a>
+                                    </li>
                                 </ul>
                             </div>
                         </li> 
                         <li class="relative ">
-                            <a class="w-full font-thin uppercase text-gray-500 white:text-gray-200 flex items-center px-4 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500 bg-gradient-to-r white:from-gray-700 white:to-gray-800" href="{{  route("shift_sched") }}">
+                            <a href="{{  route("shiftschedule.index") }}" class="w-full font-thin uppercase text-gray-500 white:text-gray-200 flex items-center px-4 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500 bg-gradient-to-r white:from-gray-700 white:to-gray-800" >
                                 <span class="text-left">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
-                                    </svg>                                         
-                                      
+                                    </svg>      
                                 </span>
                                 <span class="mx-4 text-xs font-bold">
                                     Shift Schedule
@@ -113,19 +123,25 @@
                                     Filing
                                 </span>
                             </a>
-                            <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container1" x-bind:style="selected == 5 ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
+                            <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container3" x-bind:style="selected == 5 ? 'max-height: ' + $refs.container3.scrollHeight + 'px' : ''">
                                 <ul>
                                     <li class="relative">
-                                        <a href="{{ route('leave_list') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Leave/Failure to Log In/Out</a>
+                                        <a href="{{ route('leavefailure.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Leave/Failure to Log In/Out</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="{{ route('ot_list') }}" class="w-full font-thin text-sm text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Overtime</a>
+                                        <a href="{{ route('filedleave.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Filed Leave</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a href="{{ route('ot.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Overtime</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a href="{{ route('swapschedule.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Swap Schedule</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>    
                         <li class="relative ">
-                            <a class="w-full font-thin uppercase text-gray-500 white:text-gray-200 flex items-center px-4 py-2 my-1  duration-200 justify-start hover:text-blue-500 " href="{{  route("upload_allowance") }}">
+                            <a  href="{{  route("uploadallowance.index") }}" class="w-full font-thin uppercase text-gray-500 white:text-gray-200 flex items-center px-4 py-2 my-1  duration-200 justify-start hover:text-blue-500 " >
                                 <span class="text-left">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 004.5 9.75v7.5a2.25 2.25 0 002.25 2.25h7.5a2.25 2.25 0 002.25-2.25v-7.5a2.25 2.25 0 00-2.25-2.25h-.75m0-3l-3-3m0 0l-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 012.25 2.25v7.5a2.25 2.25 0 01-2.25 2.25h-7.5a2.25 2.25 0 01-2.25-2.25v-.75" />
@@ -144,22 +160,22 @@
                                       </svg>
                                 </span>
                                 <span class="mx-4 text-xs font-bold">
-                                    Payroll
+                                    Payslip
                                 </span>
                             </a>
                             <div class="relative overflow-hidden transition-all max-h-0 duration-700" x-ref="container2" x-bind:style="selected == 2 ? 'max-height: ' + $refs.container2.scrollHeight + 'px' : ''">
                                 <ul>
                                     <li class="relative">
-                                        <a href="{{ route('payroll_salary') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Salary</a>
+                                        <a href="{{ route("payrollsalary.index") }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Salary</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="{{ route('payroll_allowance') }}" class="w-full font-thin text-sm text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowance</a>
+                                        <a href="{{ route("payroll_allowance.index") }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowance</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="{{ route('payroll_overtime') }}" class="w-full font-thin text-gray-500 text-sm white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Overtime</a>
+                                        <a href="{{ route('payrollovertime.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Overtime</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="{{ route('payroll_bonus') }}" class="w-full font-thin text-gray-500 text-sm white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Bonus</a>
+                                        <a href="{{ route('payrollbonus.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Bonus</a>
                                     </li>
                                 </ul>
                             </div>
@@ -178,13 +194,28 @@
                             <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container1" x-bind:style="selected == 3 ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
                                 <ul>
                                     <li class="relative">
-                                        <a href="{{ route('employee_list') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Sample 1</a>
+                                        <a href="{{ route('rfdreport.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >RFD</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="{{ route('schedule_list') }}" class="w-full font-thin text-sm text-gray-500 white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Sample 2</a>
+                                        <a href="{{ route('allowancesummary.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Allowance Summary</a>
                                     </li>
                                     <li class="relative">
-                                        <a href="{{ route('calendar_list') }}" class="w-full font-thin text-gray-500 text-sm white:text-gray-200 flex items-center px-14 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Sample 3</a>
+                                        <a href="{{ route('payrollComp.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Payroll Computation</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a href="{{ route('dtrOffice.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >DTR Report</a>
+                                    </li>
+                                    {{-- <li class="relative">
+                                        <a href="{{ route('dtrSite.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >DTR Site</a>
+                                    </li> --}}
+                                    {{-- <li class="relative">
+                                        <a href="{{ route('otOffice.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >OT Office</a>
+                                    </li> --}}
+                                    <li class="relative">
+                                        <a href="{{ route('otSite.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >OT Report</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a href="{{ route('overall_OT.index') }}" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Overall OT</a>
                                     </li>
                                 </ul>
                             </div>
@@ -195,5 +226,3 @@
         </nav>
     </div>
 </div>
-        
-    
