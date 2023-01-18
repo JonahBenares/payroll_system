@@ -82,7 +82,8 @@ Route::resource('payslip_info', PayslipInfoController::class);
 
 // Employee Deduction
 Route::resource('empDeduction', EmployeeDeductionController::class);
-
+Route::post('/empDeduction/fetch', [EmployeeDeductionController::class, 'fetchRate']);
+Route::get('/empDeduction/destroy/{id}/{emp_id}', [EmployeeDeductionController::class, 'destroy'])->name('delete_info');
 // Allowance
 Route::resource('allowance', AllowanceController::class);
 

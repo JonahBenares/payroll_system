@@ -676,10 +676,7 @@ class ComposerStaticInitb740f3480b3a58e90e3ea85b9f582af9
         'App\\Models\\Allowance' => __DIR__ . '/../..' . '/app/Models/Allowance.php',
         'App\\Models\\AllowanceRate' => __DIR__ . '/../..' . '/app/Models/AllowanceRate.php',
         'App\\Models\\AllowanceSummary' => __DIR__ . '/../..' . '/app/Models/AllowanceSummary.php',
-<<<<<<< HEAD
-=======
         'App\\Models\\BusinessUnit' => __DIR__ . '/../..' . '/app/Models/BusinessUnit.php',
->>>>>>> e1fdbac5381f34b2772d369b2089ea74ca4cf791
         'App\\Models\\CutOff' => __DIR__ . '/../..' . '/app/Models/CutOff.php',
         'App\\Models\\DTRoffice' => __DIR__ . '/../..' . '/app/Models/DTRoffice.php',
         'App\\Models\\DTRsite' => __DIR__ . '/../..' . '/app/Models/DTRsite.php',

@@ -148,7 +148,7 @@
                     
                     $(this).find("select.allowance_name").attr('id', 'allowance_name' + ind);
                     $(this).find("input.allowance_rate").attr('id', 'allowance_rate' + ind);
-                    if(host.indexOf('edit')==38){
+                    if(host.indexOf('edit')==49){
                         $(this).find("a.delete_func").attr('id', 'delete_func' + ind);
                         var allowance_name = document.getElementById("allowance_name"+ind).value;
                         if(allowance_name!=''){
@@ -181,32 +181,32 @@
             var host = window.location.href;
             
             if(host.indexOf('create')==36){
-                var ee = 1;
-            }else if(host.indexOf('edit')==38){
-                var ee = document.getElementById('count').value;
+                var zz = 1;
+            }else if(host.indexOf('edit')==49){
+                var zz = document.getElementById('count').value;
             }else{
-                var ee = 1;
+                var zz = 1;
             }
             $("body").on("click", ".addAllowance", function(e) {
                 e.preventDefault();
-                ee++;
+                zz++;
                 var $append = $(this).parents('.appends');
                 var nextHtml = $append.clone().find("input:text").val('').end();
                 nextHtml.find('select').val('');
-                nextHtml.attr('id', 'appends' + ee);
+                nextHtml.attr('id', 'appends' + zz);
                 var hasRmBtn = $('.remAllowance', nextHtml).length > 0;
                 if (!hasRmBtn) {
                     var rms = "<button class='flex items-center justify-center px-2 py-2  my-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 rounded-2xl white:bg-red-600 white:hover:bg-red-700 white:focus:bg-red-700 hover:bg-red-600 focus:outline-none focus:bg-red-500 focus:ring focus:ring-red-300 focus:ring-opacity-50  remAllowance'><svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-4 h-4'><path stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12' /></svg></button>";
                     $('.addmoreappend', nextHtml).append(rms);
                 }
-                if(host.indexOf('edit')==38){
-                    document.getElementById("counterX").value = ee;
+                if(host.indexOf('edit')==49){
+                    document.getElementById("counterX").value = zz;
                 }
                 
                 $append.after(nextHtml);
                 refreshTable();
-                if(host.indexOf('edit')==38){
-                    document.getElementById("delete_func"+ee).style.display = "none";
+                if(host.indexOf('edit')==49){
+                    document.getElementById("delete_func"+zz).style.display = "none";
                 }
                 //$(".addAllowance").hide();
                 //document.getElementsByClassName("remover").style.display = "block";
@@ -215,7 +215,7 @@
             });
 
             $( document ).ready(function() {
-                refreshTable();
+                //refreshTable();
                 $(".allowance_name").each(function(index, element){
                     var add=index+1;
                     $("body").on("change", "#allowance_name"+add, function(e) {
@@ -251,6 +251,86 @@
                     if(values.indexOf(select.value)>-1) {
                         document.getElementById('show_alert').style.display = "block";
                         document.getElementById('alerterror').innerHTML='Duplicate Allowance Entry';
+                        $('#save_button').hide();
+                    }else{ 
+                        document.getElementById('show_alert').style.display = "none";
+                        $('#save_button').show();
+                        values.push(select.value);
+                    }
+                }
+            }
+
+            function refreshTable_payslip(){
+                $(".appends").each(function(index, element){
+                    var ind = index+1;
+                    
+                    $(this).find("select.description").attr('id', 'description' + ind);
+                    $(this).find("input.employee_rate").attr('id', 'employee_rate' + ind);
+                    if(host.indexOf('edit')==48){
+                        $(this).find("a.delete_func").attr('id', 'delete_func' + ind);
+                        var description = document.getElementById("description"+ind).value;
+                        if(description!=''){
+                            document.getElementById("delete_func"+ind).style.display = "block";
+                        }else{
+                            document.getElementById("delete_func"+ind).style.display = "none";
+                        }
+                    }
+                });
+            }
+            
+            //var ee = 1;
+            var host = window.location.href;
+            
+            if(host.indexOf('create')==36){
+                var ii = 1;
+            }else if(host.indexOf('edit')==48){
+                var ii = document.getElementById('count').value;
+            }else{
+                var ii = 1;
+            }
+            $("body").on("click", ".addInfo", function(e) {
+                e.preventDefault();
+                ii++;
+                var $append = $(this).parents('.appends');
+                var nextHtml = $append.clone().find("input:text").val('').end();
+                nextHtml.find('select').val('');
+                nextHtml.attr('id', 'appends' + ii);
+                var hasRmBtn = $('.remInfo', nextHtml).length > 0;
+                if (!hasRmBtn) {
+                    var rms = "<button class='flex items-center justify-center px-2 py-2  my-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 rounded-2xl white:bg-red-600 white:hover:bg-red-700 white:focus:bg-red-700 hover:bg-red-600 focus:outline-none focus:bg-red-500 focus:ring focus:ring-red-300 focus:ring-opacity-50  remInfo'><svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-4 h-4'><path stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12' /></svg></button>";
+                    $('.addmoreappend', nextHtml).append(rms);
+                }
+                if(host.indexOf('edit')==48){
+                    document.getElementById("counterX").value = ii;
+                }
+                $append.after(nextHtml);
+                refreshTable_payslip();
+                if(host.indexOf('edit')==48){
+                    document.getElementById("delete_func"+ii).style.display = "none";
+                }
+                
+                //$(".addAllowance").hide();
+                //document.getElementsByClassName("remover").style.display = "block";
+                // var btn_allowance = document.getElementById("btn_allowance");
+                // btn_allowance.style.display = "block";
+            });
+
+            // $( document ).ready(function() {
+            //     refreshTable_payslip();
+            // });
+
+            $("body").on("click", ".remInfo", function() {
+                $(this).parents('.appends').remove();
+            });
+
+            function check_duplicate_info() {
+                var selects = document.getElementsByTagName('select');
+                var values = [];
+                for(i=0;i<selects.length;i++) {
+                    var select = selects[i];
+                    if(values.indexOf(select.value)>-1) {
+                        document.getElementById('show_alert').style.display = "block";
+                        document.getElementById('alerterror').innerHTML='Duplicate Deduction Entry';
                         $('#save_button').hide();
                     }else{ 
                         document.getElementById('show_alert').style.display = "none";
