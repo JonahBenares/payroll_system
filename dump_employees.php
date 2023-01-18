@@ -1,6 +1,11 @@
 <?php
+<<<<<<< HEAD
+//  $con_online=mysqli_connect("cenpripower.com","admin_hris","1t@dm1N_cenpri","db_humanresource");
+ $con_online=mysqli_connect("localhost","root","","db_hris_new");
+=======
  $con_online=mysqli_connect("cenpripower.com","admin_hris","1t@dm1N_cenpri","db_humanresource");
  //$con_online=mysqli_connect("localhost","root","","db_hris_new");
+>>>>>>> 3a589f7af7cf98a0937fefce0e08a86ae4efdfea
  $con_local=mysqli_connect("localhost","root","","db_payroll");
 
  $mysqli_online=mysqli_query($con_online,"SELECT personal_id, lname, fname, emp_num, current_bu, current_dept, current_location, supervisor FROM personal_data WHERE (emp_status = 'Regular' OR emp_status = 'Trainee'
