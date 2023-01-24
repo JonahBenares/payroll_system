@@ -37,8 +37,9 @@
                 </div>
                 <?php  $id=Request::segment(2) ?>
                 <form action="<?php echo e(route('leavefailure.update',$id)); ?>" method='POST'>
-                <?php echo method_field("PATCH"); ?>
-                    <?php echo csrf_field(); ?>
+                <?php echo csrf_field(); ?>
+                <?php echo method_field("PUT"); ?>
+                    
                     <div class="overflow-x-auto relative">
                         <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400">
@@ -75,8 +76,8 @@
                                 <?php $__currentLoopData = $leave; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $l): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
                                     <td class="py-3 px-3">
-                                        <input type="hidden" name="detailid[]" id="id" value="<?php echo e($l->id); ?>" id="id" />
-                                        <input type="checkbox" value="1" name="filed[]" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600 check">
+                                        <input type="hidden" name="detailid[]" id="id" value="<?php echo e($l->id); ?>"/>
+                                        <input type="checkbox" value="<?php echo e('1-'.$l->id); ?>" name="filed[]" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600 check">
                                     </td>
                                     <td class="py-3 px-3">
                                     <?php echo e($l->date_absent); ?>
@@ -137,6 +138,9 @@
                                                             
                                                         </div>
                                                         <div class="">
+                                                        <form action="<?php echo e(route('unfiled',$l->id)); ?>" method="POST">
+                                                            <?php echo csrf_field(); ?>
+                                                            <?php echo method_field('PUT'); ?>
                                                             <div class="flex justify-between">
                                                                 <div class="w-3/12 ">
                                                                     <span class="text-red-500 ">
@@ -147,7 +151,7 @@
                                                                 </div>
                                                                 <div class="w-9/12">
                                                                     <p class="text-red-500 text-2xl font-bold mb-2">Warning</p>
-                                                                    <span class="text-lg leading-none">Are you sure you dont want to file this (Type of Leave/Failure) (Date)?</span>
+                                                                    <span class="text-lg leading-none">Are you sure you dont want to file this <?php echo e($l->leave_type); ?>  (<?php echo e($l->date_absent); ?>)?</span>
                                                                 </div>
                                                             </div>
                                                             <div class="flex justify-end px-2 space-x-1">
@@ -158,6 +162,7 @@
                                                                     Confirm
                                                                 </button>
                                                             </div>
+                                                        </form>
                                                         </div>
                                                     </div>
                                                 </div>

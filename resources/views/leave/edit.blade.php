@@ -29,8 +29,9 @@
                 </div>
                 @php  $id=Request::segment(2) @endphp
                 <form action="{{ route('leavefailure.update',$id) }}" method='POST'>
-                @method("PATCH")
-                    @csrf
+                @csrf
+                @method("PUT")
+                    
                     <div class="overflow-x-auto relative">
                         <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400">
@@ -67,8 +68,8 @@
                                 @foreach($leave as $l)
                                 <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
                                     <td class="py-3 px-3">
-                                        <input type="hidden" name="detailid[]" id="id" value="{{$l->id}}" id="id" />
-                                        <input type="checkbox" value="1" name="filed[]" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600 check">
+                                        <input type="hidden" name="detailid[]" id="id" value="{{$l->id}}"/>
+                                        <input type="checkbox" value="{{'1-'.$l->id}}" name="filed[]" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600 check">
                                     </td>
                                     <td class="py-3 px-3">
                                     {{ $l->date_absent }}
@@ -127,6 +128,9 @@
                                                             
                                                         </div>
                                                         <div class="">
+                                                        <form action="{{ route('unfiled',$l->id) }}" method="POST">
+                                                            @csrf
+                                                            @method('PUT')
                                                             <div class="flex justify-between">
                                                                 <div class="w-3/12 ">
                                                                     <span class="text-red-500 ">
@@ -137,7 +141,7 @@
                                                                 </div>
                                                                 <div class="w-9/12">
                                                                     <p class="text-red-500 text-2xl font-bold mb-2">Warning</p>
-                                                                    <span class="text-lg leading-none">Are you sure you dont want to file this (Type of Leave/Failure) (Date)?</span>
+                                                                    <span class="text-lg leading-none">Are you sure you dont want to file this {{ $l->leave_type }}  ({{$l->date_absent}})?</span>
                                                                 </div>
                                                             </div>
                                                             <div class="flex justify-end px-2 space-x-1">
@@ -148,6 +152,7 @@
                                                                     Confirm
                                                                 </button>
                                                             </div>
+                                                        </form>
                                                         </div>
                                                     </div>
                                                 </div>
