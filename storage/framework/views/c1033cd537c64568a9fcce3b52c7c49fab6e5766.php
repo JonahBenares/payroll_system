@@ -19,20 +19,10 @@
         <div class="flex flex-col flex-wrap sm:flex-row ">
             <div class="p-4 relative h-full w-full text-center bg-white rounded-lg shadow-lg white:bg-gray-800 white:border-gray-700">
                 <div class="flex space-x-2 pb-5">
-<<<<<<< HEAD
                     <a href="<?php echo e(route('otOffice.index')); ?>" class="hover:bg-blue-300 bg-blue-500 text-sm px-5 py-1 rounded-2xl text-white font-bold">OT Office</a>
                     <a href="<?php echo e(route('otSite.index')); ?>" class="hover:bg-emerald-200 hover:text-white  bg-gray-100  text-sm px-6 py-1 rounded-2xl text-gray-300 font-bold">OT Site</a>
                 </div>
                 <form action="">
-=======
-                    <a href="<?php echo e(route('otOffice.index')); ?>" class="hover:bg-blue-300 bg-blue-500 text-sm px-5 py-1 rounded-2xl text-white font-bold">DTR Office</a>
-                    <a href="<?php echo e(route('otSite.index')); ?>" class="hover:bg-emerald-200 hover:text-white  bg-gray-100  text-sm px-6 py-1 rounded-2xl text-gray-300 font-bold">DTR Site</a>
-                </div>
-                <form action="">
-                    <div class="flex justify-left px-4 mt-6 text-sm"> 
-                        <p class="text-base uppercase name font-bold" id="name">asdad</p>
-                    </div>
->>>>>>> e1fdbac5381f34b2772d369b2089ea74ca4cf791
                     <div class="flex justify-between space-x-4 w-full my-1">
                         
                         <div class="space-y-1 w-7/12">

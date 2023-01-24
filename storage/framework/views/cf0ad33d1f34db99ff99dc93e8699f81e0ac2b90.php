@@ -15,6 +15,39 @@
         }
     </style>
     
+      
+    <!-- Main modal -->
+    <div id="unfiledModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+        <div class="inline-block w-full max-w-lg p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl lg:max-w-lg">
+            <!-- Modal content -->
+            <div class="relative ">
+                <div class="">
+                    <div class="flex justify-between">
+                        <div class="w-3/12 ">
+                            <span class="text-red-500 ">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-24 h-24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                                </svg>
+                            </span>
+                        </div>
+                        <div class="w-9/12">
+                            <p class="text-red-500 text-2xl font-bold mb-2">Warning</p>
+                            <span class="text-lg leading-none">Are you sure you dont want to file this (Type of Leave/Failure) (Date)?</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-end px-2 space-x-1 mt-1">
+                        <button type="button" data-modal-hide="unfiledModal" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-gray-300 rounded-2xl white:bg-gray-400 white:hover:bg-gray-500 white:focus:bg-gray-500 hover:bg-gray-400 focus:outline-none focus:bg-gray-300 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                            Cancel
+                        </button>
+                        <button type="submit" data-modal-hide="unfiledModal" value="Save" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 rounded-2xl white:bg-red-600 white:hover:bg-red-700 white:focus:bg-red-700 hover:bg-red-600 focus:outline-none focus:bg-red-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                            Confirm
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="overflow-auto h-screen pb-28 pt-2 pr-2 pl-2 md:pt-0 md:pr-0 md:pl-0">
         <div class="flex flex-col flex-wrap sm:flex-row ">
             <div class="p-4 relative h-full w-full text-center bg-white rounded-lg shadow-lg white:bg-gray-800 white:border-gray-700">
@@ -37,8 +70,9 @@
                 </div>
                 <?php  $id=Request::segment(2) ?>
                 <form action="<?php echo e(route('leavefailure.update',$id)); ?>" method='POST'>
-                <?php echo method_field("PATCH"); ?>
-                    <?php echo csrf_field(); ?>
+                <?php echo csrf_field(); ?>
+                <?php echo method_field("PUT"); ?>
+                    
                     <div class="overflow-x-auto relative">
                         <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400">
@@ -75,8 +109,8 @@
                                 <?php $__currentLoopData = $leave; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $l): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700">
                                     <td class="py-3 px-3">
-                                        <input type="hidden" name="detailid[]" id="id" value="<?php echo e($l->id); ?>" id="id" />
-                                        <input type="checkbox" value="1" name="filed[]" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600 check">
+                                        <input type="hidden" name="detailid[]" id="id" value="<?php echo e($l->id); ?>"/>
+                                        <input type="checkbox" value="<?php echo e('1-'.$l->id); ?>" name="filed[]" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600 check">
                                     </td>
                                     <td class="py-3 px-3">
                                     <?php echo e($l->date_absent); ?>
@@ -104,6 +138,12 @@
 
                                     </td>
                                     <td class="py-3 px-3 flex justify-center">
+<<<<<<< HEAD
+                                        <button data-modal-target="unfiledModal" data-modal-toggle="unfiledModal" class="py-2 px-2 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" type="button">
+                                            Unfiled
+                                          </button>
+                                        
+=======
                                         <div x-data="{ modelOpen: false }">
                                             <a href="#" @click="modelOpen =!modelOpen" class="" title="Cancel">
                                                 <div class="py-2 px-2 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800">
@@ -137,6 +177,9 @@
                                                             
                                                         </div>
                                                         <div class="">
+                                                        <form action="<?php echo e(route('unfiled',$l->id)); ?>" method="POST">
+                                                            <?php echo csrf_field(); ?>
+                                                            <?php echo method_field('PUT'); ?>
                                                             <div class="flex justify-between">
                                                                 <div class="w-3/12 ">
                                                                     <span class="text-red-500 ">
@@ -147,7 +190,7 @@
                                                                 </div>
                                                                 <div class="w-9/12">
                                                                     <p class="text-red-500 text-2xl font-bold mb-2">Warning</p>
-                                                                    <span class="text-lg leading-none">Are you sure you dont want to file this (Type of Leave/Failure) (Date)?</span>
+                                                                    <span class="text-lg leading-none">Are you sure you dont want to file this <?php echo e($l->leave_type); ?>  (<?php echo e($l->date_absent); ?>)?</span>
                                                                 </div>
                                                             </div>
                                                             <div class="flex justify-end px-2 space-x-1">
@@ -158,11 +201,13 @@
                                                                     Confirm
                                                                 </button>
                                                             </div>
+                                                        </form>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+>>>>>>> 355654ff214cde93301cc7e650791fd965b3e52e
                                     </td>
                                 </tr>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

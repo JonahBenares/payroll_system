@@ -89,7 +89,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                                         </svg>
                                         </span>
-                                    @else ($pay->pay_type==1)
+                                    @else ($pay->editable==1)
                                         <span class="text-green-700">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /> 
@@ -98,11 +98,19 @@
                                     @endif 
                                 </td>
                                 <td align="center" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    <span class="text-green-700">
+                                    @if ($pay->visible==0)
+                                        <span class="text-red-700">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /> 
-                                        </svg> 
-                                    </span>
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                        </span>
+                                    @else ($pay->visible==1)
+                                        <span class="text-green-700">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /> 
+                                            </svg> 
+                                        </span>
+                                    @endif 
                                 </td>
                                 <td class="py-3 px-6 justify-center flex" align="center">
                                     <a href="{{ route('payslip_info.edit',$pay->id) }}" class="" title="Update">

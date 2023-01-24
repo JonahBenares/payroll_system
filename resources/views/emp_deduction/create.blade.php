@@ -25,7 +25,8 @@
                 <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" id='show_alert' role="alert" style="display:none">
                     <span class="block sm:inline" id="alerterror"></span>
                 </div>
-                <form action="" method='POST'>
+                <form action="{{ route('empDeduction.store') }}" method='POST'>
+                    @csrf
                     <div class="flex flex-row justify-between">
                         <div class="px-1 w-6/12">
                             <span class="block w-full text-left">Deduction Name</span>
@@ -39,15 +40,18 @@
                     </div>
                     <div class="flex flex-row justify-between appends" id="appends0">
                         <div class="px-1 w-6/12">
-                            <select name="[]" id="1" class="text-sm w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 " onchange='check_duplicate()'>
+                            <select name="description[]" id="description1" class="text-sm w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 " onchange='check_duplicate_info()'>
                                 <option value="">--Select Deduction Name--</option>
+                                @foreach($info AS $i)
+                                <option value="{{ $i->id }}">{{ $i->description }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="px-1 w-5/12">
-                            <input type="text" onkeypress="return isNumberKey(this, event)" name="allowance_rate[]" id="allowance_rate1" class="text-sm w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 allowance_rate">
+                            <input type="text" onkeypress="return isNumberKey(this, event)" name="employee_rate[]" id="employee_rate1" class="text-sm w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 employee_rate">
                         </div>
                         <div class="px-1 w-1/12 addmoreappend flex justify-center space-x-1">
-                            <button class="flex items-center justify-center my-2 py-2 px-2 text-xs tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50 addAllowance disableadd">
+                            <button class="flex items-center justify-center my-2 py-2 px-2 text-xs tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50 addInfo disableadd">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                                   </svg>
@@ -55,6 +59,8 @@
                         </div>
                     </div>
                     <div class="flex justify-end mt-6 px-2">
+                        <input type="hidden" name="personal_id" value="{{ (isset($_GET['personal_id'])) ? $_GET['personal_id'] : '0'; }}">
+                        <input type="hidden" name="employee_id" value="{{ (isset($_GET['employee_id'])) ? $_GET['employee_id'] : '0'; }}">
                         <button type="submit" id="save_button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                             Save
                         </button>
