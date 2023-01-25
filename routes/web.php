@@ -169,7 +169,11 @@ Route::get('/upload/receive', [UploadAllowanceController::class, 'receive'])->mi
 Route::resource('payrollComp', PayrollComputationController::class);
 Route::resource('dtrOffice', DTRofficeController::class);
 Route::resource('dtrSite', DTRsiteController::class);
+//OT Office
 Route::resource('otOffice', OTofficeController::class);
+Route::post('/otOffice/filter_otoffice', [OTofficeController::class, 'filter_otoffice'])->name('filter_otoffice');
+Route::post('/otOffice/fetchEmployee', [OTofficeController::class, 'fetchEmployee']);
+//OT Site
 Route::resource('otSite', OTsiteController::class);
 Route::resource('overall_OT', overallOTController::class);
 Route::post('/overallOT/filter_overallot', [overallOTController::class, 'filter_overallot'])->name('filter_overallot');
