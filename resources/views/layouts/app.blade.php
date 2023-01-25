@@ -9,10 +9,13 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
-        <link rel="stylesheet" href="../../css/flowbite.min.css">
-        <script defer src="../../js/flowbite.min.js"></script>
-        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cd:\Program Files\Microsoft VS Code\resources\app\out\vs\code\electron-sandbox\workbench\workbench.htmldn.min.js"></script>
+        {{-- <link rel="stylesheet" href="../../css/flowbite.min.css"> --}}
+        {{-- <script defer src="../../js/flowbite.min.js"></script> --}}
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cd:\Program Files\Microsoft VS Code\resources\app\out\vs\code\electron-sandbox\workbench\workbench.htmldn.min.js"></script>
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
          <!-- Styles -->
@@ -563,6 +566,72 @@
             $("body").on("click", ".remEmployee", function() {
                 $(this).parents('.appends_emp_shift').remove();
             });
+
+            //OT Office Report
+            $("body").on("change", "#employee", function(e) {
+                e.preventDefault();
+                var base_url = '{{URL::to("/")}}';
+                var employee_id = document.getElementById("employee").value;
+                $.ajax({
+                    type: 'POST',
+                    url: base_url+"/otOffice/fetchEmployee",
+                    data: {
+                        employee_id: employee_id,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataType: 'json',
+                    cache: false,
+                    success: function(response){
+                        document.getElementById("designation").value  = response.designation;
+                    }
+                }); 
+            });
+
+            var yy=1;
+            $("body").on("click", ".addAdjustment", function(e) {
+                e.preventDefault();
+                yy++;
+                var $appendadj = $(this).parents('.appendsadj');
+                var nextHtmladj = $appendadj.clone().find("input:text").val('').end();
+                nextHtmladj.attr('id', 'appendsadj' + yy);
+                var hasRmBtn = $('.remAdjustment', nextHtmladj).length > 0;
+                if (!hasRmBtn) {
+                    var rmsadj = "<button class='flex items-center justify-center px-1 py-1 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 white:bg-red-600 white:hover:bg-1red-700 white:focus:bg-red-700 hover:bg-red-600 focus:outline-none focus:bg-red-500 focus:ring focus:ring-red-300 focus:ring-opacity-50  remAdjustment'><svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-5 h-5'><path stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12' /></svg></button>";
+                    $('.addmoreappendadj', nextHtmladj).append(rmsadj);
+                }
+                $appendadj.after(nextHtmladj);
+            });
+
+            $("body").on("click", ".remAdjustment", function() {
+                $(this).parents('.appendsadj').remove();
+            });
+
+            function calculateAdjustment(){
+                $(".appendsadj").each(function(index, element){
+                    var ind = index+1;
+                    var amount = document.getElementById("amount"+ind).value;
+                    var days_hr = document.getElementById("days_hr"+ind).value;
+                    var total_amnt = document.getElementById("total_amount"+ind).value;
+                    if(amount==0){
+                        var amnt=0;
+                    }else{
+                        var amnt=amount;
+                    }
+
+                    if(days_hr==0){
+                        var dh=0;
+                    }else{
+                        var dh=days_hr;
+                    }
+                    //var total = (parseFloat(amnt)*parseFloat(dh));
+                    var arr = [1, 2, 3, 4];
+                    var total = 0;
+                    for (var i in arr) {
+                    total += arr[i];
+                    }
+                    document.getElementById("total_amount"+ind).value = parseFloat(total).toFixed(2);
+                });
+            }
 
         </script>
         {{-- @livewireScripts

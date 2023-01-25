@@ -1,10 +1,6 @@
 <?php
  //$con_online=mysqli_connect("cenpripower.com","admin_hris","1t@dm1N_cenpri","db_humanresource");
-<<<<<<< HEAD
  $con_online=mysqli_connect("localhost","root","","db_hris_new");
-=======
- $con_online=mysqli_connect("localhost","root","","db_hris");
->>>>>>> 3a589f7af7cf98a0937fefce0e08a86ae4efdfea
  $con_local=mysqli_connect("localhost","root","","db_payroll");
 
  $today = date("Y-m-d h:i:sa");
