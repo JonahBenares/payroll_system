@@ -43,6 +43,7 @@ class PayslipInfoController extends Controller
         $payslip->description=$request->description;
         $payslip->pay_type=$request->pay_type;
         $payslip->editable=$request->editable;
+        $payslip->visible=$request->visible;
         $res = $payslip->save();
         if($res){
             return redirect()->route('payslip_info.create')->with('success',"Payslip Information Added Successfully");

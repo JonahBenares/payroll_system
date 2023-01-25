@@ -29,6 +29,7 @@ class LeaveFailureController extends Controller
         }else{
             $period='';
         }
+        
         $cutoff = CutOff::all();
         $leave = LeaveFailure::join('employees', 'employees.id', '=', 'leave_filing_head.employee_id')
         ->join('leave_filing_detail', 'leave_filing_head_id', '=', 'leave_filing_head.id')
@@ -36,7 +37,7 @@ class LeaveFailureController extends Controller
         ->selectRaw('count(case when leave_filing_detail.leave_type = "Failure to login/logout" then 1 end) as count_ftl')
         ->selectRaw('count(case when leave_filing_detail.leave_type = "Undertime/Tardiness" then 1 end) as count_undertime')
         ->where('is_active', '=', 1)->where('filed', '=', 0)->where('cancelled', '=', 0)->where('month',$month)->where('year', $year)->where('pay_period', $period)->groupBy('leave_filing_head.personal_id')->get();
-        return view('leave.index',compact('leave','cutoff'));
+        return view('leave.index',compact('leave','cutoff', 'month', 'year', 'period'));
     }
 
     /**
@@ -97,27 +98,59 @@ class LeaveFailureController extends Controller
     public function update(Request $request, $id)
     {
         
-        $count=count($request->filed);
-        for($x=0;$x<$count;$x++){
-            $detail_id =  $request->detailid[$x];
-            $leave = LeaveFailureDetail::find($detail_id);
-            //$input = $request->all();
-            $undertime = !empty($request->undertime_mins[$x]) ? $request->undertime_mins[$x] : '';
-            $date_filed = !empty($request->date_filed[$x]) ? $request->date_filed[$x] : '';
-            $filed = !empty($request->filed[$x]) ? $request->filed[$x] : '0';
-            $with_pay = !empty($request->with_pay[$x]) ? $request->with_pay[$x] : '0';
-            $pay_percentage = !empty($request->pay_percentage[$x]) ? $request->pay_percentage[$x] : '0';
+        // $count=count($request->filed);
+        // for($x=0;$x<$count;$x++){
+        //     $detail_id =  $request->detailid[$x];
+        //     $leave = LeaveFailureDetail::find($detail_id);
+        //     //$input = $request->all();
+        //     $undertime = !empty($request->undertime_mins[$x]) ? $request->undertime_mins[$x] : '';
+        //     $date_filed = !empty($request->date_filed[$x]) ? $request->date_filed[$x] : '';
+        //     $filed = !empty($request->filed[$x]) ? $request->filed[$x] : '0';
+        //     $with_pay = !empty($request->with_pay[$x]) ? $request->with_pay[$x] : '0';
+        //     $pay_percentage = !empty($request->pay_percentage[$x]) ? $request->pay_percentage[$x] : '0';
+        //     $percentage_dec = $pay_percentage / 100;
+        //     $leave->update([
+        //         'undertime_mins'=>$undertime,
+        //         'date_filed'=>$date_filed,
+        //         'filed'=>$filed,
+        //         'with_pay'=>$with_pay,
+        //         'pay_percentage'=>$percentage_dec,
+        //     ]);
+        // }
+
+        foreach ($request->filed as $key => $value) {
+            $detail_id = explode("-", $request->filed[$key]);
+            $filed = $detail_id[0];
+            $detailid = $detail_id[1];
+
+            $leave = LeaveFailureDetail::find($detailid);
+            //$undertime = !empty($request->undertime_mins[$key]) ? $request->undertime_mins[$key] : '';
+            //$date_filed = !empty($request->date_filed[$key]) ? $request->date_filed[$key] : '';
+            //$filed = !empty($request->filed[$key]) ? $request->filed[$key] : '0';
+            //$with_pay = !empty($request->with_pay[$key]) ? $request->with_pay[$key] : '0';
+            $pay_percentage = !empty($request->pay_percentage[$key]) ? $request->pay_percentage[$key] : '0';
             $percentage_dec = $pay_percentage / 100;
             $leave->update([
-                'undertime_mins'=>$undertime,
-                'date_filed'=>$date_filed,
+                'undertime_mins'=>$request->undertime_mins[$key],
+                'date_filed'=>$request->date_filed[$key],
                 'filed'=>$filed,
-                'with_pay'=>$with_pay,
+                'with_pay'=>$request->with_pay[$key],
                 'pay_percentage'=>$percentage_dec,
             ]);
         }
-        return redirect()->route('leavefailure.index')->with('popup', 'open');
+
+
+       return redirect()->route('leavefailure.index')->with('popup', 'open');
     }
+
+    // public function unfiled(Request $request, $id)
+    // {
+    //     $filed = LeaveFailureDetail::find($id);
+    //     $filed->update([
+    //         'filed'=>2,
+    //     ]);
+    //     return redirect()->route('leavefailure.index')->with('popup', 'open');
+    // }
 
     /**
      * Remove the specified resource from storage.

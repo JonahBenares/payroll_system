@@ -116,9 +116,11 @@ Route::resource('busUnit', BusUnitController::class);
 
 // Leave
 Route::resource('leavefailure', LeaveFailureController::class);
+Route::post('/leavefailure/unfiled', [LeaveFailureController::class, 'unfiled'])->name('unfiled');
 
 //FiledLeave
 Route::resource('filedleave', FiledLeaveController::class);
+
 
 // Overtime
 Route::resource('ot', OvertimeController::class); 
@@ -147,7 +149,9 @@ Route::get('/payroll_overtime/bulkprinting/{month_year}/{period}', [PayrollOvert
 Route::get('/payrollovertime/show/{personal_id}/{month_year}/{period}', [PayrollOvertimeController::class, 'show'])->name('show');
 
 Route::resource('payrollbonus', PayrollBonusController::class); 
-Route::get('/payroll_bonus/bulkprinting', [PayrollBonusController::class, 'printBulk'])->middleware(['auth'])->name('printBulkBonus');
+//Route::post('/payrollbonus/filter_payroll_bonus', [PayrollBonusController::class, 'filter_payroll_bonus'])->name('filter_payroll_bonus');
+Route::get('/payroll_bonus/bulkprinting/{type}/{year}', [PayrollBonusController::class, 'printBulk'])->middleware(['auth'])->name('printBulkBonus');
+Route::get('/payrollbonus/show/{personal_id}/{type}/{year}', [PayrollBonusController::class, 'show'])->name('show');
 
 
 Route::resource('payrollsalary', PayrollSalaryController::class); 
