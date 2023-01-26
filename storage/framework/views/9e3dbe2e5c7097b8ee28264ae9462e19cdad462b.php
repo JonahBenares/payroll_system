@@ -64,15 +64,7 @@
                 </div>
                 </form>
                 <div class="flex mt-5 uppercase">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    <p class="text-left text-md uppercase text-gray-600 pt-2 leading-none"><span class="font-bold pr-1">March</span>2022 <span class="text-xs"></span></p>
-=======
-                    <p class="text-left text-md uppercase text-gray-600 pt-2 leading-none"><span class="font-bold pr-1"><?php echo e($bonus_type); ?></span><?php echo e($year); ?> <span class="text-xs"></span></p>
->>>>>>> 33c23391486d36c67f5b448d0a20f8dd49cedec9
-=======
-                    <p class="text-left text-md uppercase text-gray-600 pt-2 leading-none"><span class="font-bold pr-1"><?php echo e($bonus_type); ?></span><?php echo e($year); ?> <span class="text-xs"></span></p>
->>>>>>> 33c23391486d36c67f5b448d0a20f8dd49cedec9
+                    <p class="text-left text-lg uppercase text-gray-600 pt-2 leading-none"><span class="font-bold pr-1">March</span>2022 <span class="text-xs"></span></p>
                 </div>
                 <div class="overflow-x-auto overflow-y-hidden hover:overflow-y-auto h-100 relative max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 sm:rounded-2xl">
                     <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">

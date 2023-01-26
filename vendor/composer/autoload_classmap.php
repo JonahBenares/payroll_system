@@ -75,6 +75,8 @@ return array(
     'App\\Models\\Allowance' => $baseDir . '/app/Models/Allowance.php',
     'App\\Models\\AllowanceRate' => $baseDir . '/app/Models/AllowanceRate.php',
     'App\\Models\\AllowanceSummary' => $baseDir . '/app/Models/AllowanceSummary.php',
+<<<<<<< HEAD
+=======
     'App\\Models\\BusinessUnit' => $baseDir . '/app/Models/BusinessUnit.php',
 >>>>>>> e1fdbac5381f34b2772d369b2089ea74ca4cf791
     'App\\Models\\CutOff' => $baseDir . '/app/Models/CutOff.php',
