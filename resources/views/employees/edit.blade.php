@@ -71,32 +71,6 @@
                             <input type="text" name="department" value="{{ $e->dept_name }}" disabled class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                         </div>
                     </div>
-                  
-                    <div class="flex ">
-                        <div class="mt-4 w-full px-2">
-                            <label class="block text-sm text-gray-700 capitalize white:text-gray-200">
-                                Pag-Ibig Rate
-                            </label>
-                            <input  type="text" name="pagibig_rate" value="{{ $e->pagibig_rate }}" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                        </div>
-                        <div class="mt-4 w-full px-2">
-                            <label for="hourly_rate" class="block text-sm text-gray-700 capitalize white:text-gray-200">Hourly Rate</label>
-                            <input type="text" name="hourly_rate" value="{{ $e->hourly_rate }}" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                        </div>
-                    </div>
-                    <div class="flex ">
-                        <div class="mt-4 w-full px-2">
-                            <label class="block text-sm text-gray-700 capitalize white:text-gray-200">
-                                Daily Rate
-                            </label>
-                            <input type="text" name="daily_rate" value="{{ $e->daily_rate }}" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                        </div>
-                        <div class="mt-4 w-full px-2">
-                            <label for="monthly_rate" class="block text-sm text-gray-700 capitalize white:text-gray-200">Monthly Rate</label>
-                            <input type="text" name="monthly_rate" value="{{ $e->monthly_rate }}" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                        </div>
-                    </div>
-
                     <div class="flex ">
                         <div class="mt-4 w-full px-2">
                             <label class="block text-sm text-gray-700 capitalize white:text-gray-200">
@@ -118,13 +92,33 @@
                             </select>
                         </div>
                     </div>
+                    <div class="flex justify-between space-x-2 px-2">
+                        <div class="mt-4 w-full">
+                            <label for="hourly_rate" class="block text-sm text-gray-700 capitalize white:text-gray-200">Hourly Rate</label>
+                            <input type="text" name="hourly_rate" value="{{ $e->hourly_rate }}" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                        </div>
+                        <div class="mt-4 w-full">
+                            <label class="block text-sm text-gray-700 capitalize white:text-gray-200">
+                                Daily Rate
+                            </label>
+                            <input type="text" name="daily_rate" value="{{ $e->daily_rate }}" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                        </div>
+                        <div class="mt-4 w-full">
+                            <label for="monthly_rate" class="block text-sm text-gray-700 capitalize white:text-gray-200">Monthly Rate</label>
+                            <input type="text" name="monthly_rate" value="{{ $e->monthly_rate }}" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                        </div>
+                    </div>
+
+                    
                     <div class="mt-4 w-full px-2">
                         <label class="block text-sm text-gray-700 capitalize white:text-gray-200">
                             HMO Dependents
                         </label>
-                        @for($c=0;$c < count($data); $c++)
-                            <input type="number" name="{{ 'dependent_'.$data[$c]['id']}}" value="{{ $data[$c]['no_of_dependent'] }}" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40"> 
-                        @endfor
+                        <div class="flex justify-between space-x-2">
+                            @for($c=0;$c < count($data); $c++)
+                                <input type="number" name="{{ 'dependent_'.$data[$c]['id']}}" value="{{ $data[$c]['no_of_dependent'] }}" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40"> 
+                            @endfor
+                        </div>
                     </div>
                         
                    

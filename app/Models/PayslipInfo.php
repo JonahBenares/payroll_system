@@ -10,5 +10,5 @@ class PayslipInfo extends Model
     use HasFactory;
     protected $table = 'payslip_info';
     protected $primaryKey = 'id';
-    protected $fillable = ['description', 'pay_type', 'editable'];
+    protected $fillable = ['description', 'pay_type', 'editable', 'visible'];
 }

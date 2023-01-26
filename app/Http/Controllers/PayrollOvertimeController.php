@@ -18,7 +18,8 @@ class PayrollOvertimeController extends Controller
      */
     public function index()
     {
-        return view('payroll_overtime.index');
+        $cutoff=CutOff::all();
+        return view('payroll_overtime.index',compact('cutoff'));
     }
 
     public function filter_payroll_ot(Request $request){
@@ -38,7 +39,8 @@ class PayrollOvertimeController extends Controller
             $overtime_amount[$x]=OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where('employee_id',$t->employee_id)->where('payroll_period',$t->payroll_period)->where('month_year','LIKE','%'.$year."-".$month.'%')->sum('total_amount');
             $x++;
         }
-        return view('payroll_overtime.index',compact('overtime_report','overtime_sum','overtime_amount'));
+        $cutoff=CutOff::all();
+        return view('payroll_overtime.index',compact('overtime_report','overtime_sum','overtime_amount','cutoff'));
     }
 
     /**
@@ -70,11 +72,25 @@ class PayrollOvertimeController extends Controller
      */
     public function show($personal_id,$month_year,$period)
     {
-        $print = OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where("personal_id",$personal_id)->where("payroll_period",$period)->where('month_year',$month_year);
-        $name = Employee::where('personal_id',$personal_id)->first();
         $cutoff = CutOff::where('cutoff_type',$period)->first();
-        $overtime_amount=OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where('personal_id',$personal_id)->where('payroll_period',$period)->where('month_year',$month_year)->sum('total_amount');
-        return view('payroll_overtime.print',compact('print','name','month_year','period','cutoff','overtime_amount'));
+        $date_start=$month_year."-".$cutoff->cutoff_start;
+        $date_end=$month_year."-".$cutoff->cutoff_end;
+        if($period=='MID'){
+            $checkyear=date('m',strtotime($date_start));
+            if($checkyear=='12'){
+                $start=date('Y-m-d',strtotime($date_start));
+                $end=date('Y-m-d',strtotime($date_end." +1 Months")).",".date('Y',strtotime($date_end." +1 year"));;
+            }else{
+                $start=date('Y-m-d',strtotime($date_start));
+                $end=date('Y-m-d',strtotime($date_end." +1 Months"));
+            }
+        }else if($period=='EOM'){
+            $start=date('Y-m-d',strtotime($date_start));
+            $end=date('Y-m-d',strtotime($date_end));
+        }
+        $name = Employee::where('personal_id',$personal_id)->first();
+        $overtime_amount=OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where('personal_id',$personal_id)->where('payroll_period',$period)->where('month_year',$month_year)->whereBetween('overtime_date', [$start, $end])->sum('total_amount');
+        return view('payroll_overtime.print',compact('name','month_year','period','cutoff','overtime_amount'));
     }
 
     /**
@@ -111,8 +127,32 @@ class PayrollOvertimeController extends Controller
         //
     }
 
-    public function printBulk(PayrollOvertime $payrollOvertime)
+    public function printBulk($month_year,$period)
     {
-        return view('payroll_overtime.bulk');
+        $cutoff = CutOff::where('cutoff_type',$period)->first();
+        $date_start=$month_year."-".$cutoff->cutoff_start;
+        $date_end=$month_year."-".$cutoff->cutoff_end;
+        if($period=='MID'){
+            $checkyear=date('m',strtotime($date_start));
+            if($checkyear=='12'){
+                $start=date('Y-m-d',strtotime($date_start));
+                $end=date('Y-m-d',strtotime($date_end." +1 Months")).",".date('Y',strtotime($date_end." +1 year"));;
+            }else{
+                $start=date('Y-m-d',strtotime($date_start));
+                $end=date('Y-m-d',strtotime($date_end." +1 Months"));
+            }
+        }else if($period=='EOM'){
+            $start=date('Y-m-d',strtotime($date_start));
+            $end=date('Y-m-d',strtotime($date_end));
+        }
+        $printed = OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where("payroll_period",$period)->where('month_year',$month_year)->whereBetween('overtime_date', [$start, $end])->groupBy('ot_detail.employee_id')->get();
+        $x=0;
+        $name=array();
+        foreach($printed AS $p){
+            $name[$x]= Employee::where('personal_id',$p->personal_id)->first();
+            $overtime_amount[$x]=OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where('personal_id',$p->personal_id)->where('payroll_period',$period)->where('month_year',$month_year)->whereBetween('overtime_date', [$start, $end])->sum('total_amount');
+            $x++;
+        }
+        return view('payroll_overtime.bulk',compact('printed','month_year','period','cutoff','name','overtime_amount'));
     }
 }

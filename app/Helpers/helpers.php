@@ -3,9 +3,23 @@ use App\Models\Timekeeping;
 use App\Models\Employee;
 use App\Models\Allowance;
 use App\Models\EmployeeHMO;
+use App\Models\CutOff;
 use App\Models\BusinessUnit;
 use App\Models\UploadAllowanceDetail;
 use App\Models\UploadAllowanceTime;
+use App\Models\ShiftScheduleDetail;
+use App\Models\ShiftSchedule;
+use App\Models\PayslipInfo;
+use App\Models\AllowanceRate;
+use App\Models\AdjustmentRate;
+use App\Models\Holiday;
+
+define('START_NIGHT_HOUR','22');
+define('START_NIGHT_MINUTE','00');
+define('START_NIGHT_SECOND','00');
+define('END_NIGHT_HOUR','06');
+define('END_NIGHT_MINUTE','00');
+define('END_NIGHT_SECOND','00');
 /**
 
  * Write code on Method
@@ -76,8 +90,68 @@ if (!function_exists('getEmployeeName')) {
     }
 }
 
-if (!function_exists('getAllowanceName')) {
+if (!function_exists('getEmployeeDetails')) {
     
+    function getEmployeeDetails($id,$column){
+        $emp= Employee::select($column)
+        ->where("id","=",$id)
+        ->get();
+
+        $name= $emp[0][$column];
+
+        return $name;
+    }
+}
+
+if (!function_exists('getPayslipInfo')) {
+    
+    function getPayslipInfo($wherecol, $whereval, $column){
+        $ps= PayslipInfo::select($column)
+        ->where($wherecol,"=",$whereval)
+        ->get();
+
+        $col= $ps[0][$column];
+
+        return $col;
+    }
+}
+
+if (!function_exists('getRates')) {
+    
+    function getRates($ps_id){
+        $ps= AdjustmentRate::select('deduction_type', 'rate_amount')
+        ->where("payslip_info_id","=",$ps_id)
+        ->get();
+
+        $deduction_type= $ps[0]['deduction_type'];
+        $rate_amount= $ps[0]['rate_amount'];
+
+        $return_val = $deduction_type."_".$rate_amount;
+
+        return $return_val;
+    }
+}
+
+if (!function_exists('checkHoliday')) {
+    function checkHoliday($date){
+        $count= Holiday::select('holiday_type')
+        ->where("holiday_date","=",$date)
+        ->count();
+
+        if($count>0){
+            $hol= Holiday::select('holiday_type')
+            ->where("holiday_date","=",$date)
+            ->get();
+            $holiday_type= $hol[0]['holiday_type'];
+        } else {
+            $holiday_type=0;
+        }
+       
+        return $holiday_type;
+    }
+}
+
+if (!function_exists('getAllowanceName')) {
     function getAllowanceName($id){
         $emp= Allowance::select('allowance_name')
         ->where("id","=",$id)
@@ -200,13 +274,51 @@ if (!function_exists('getAllowanceTime')) {
             $emp_rate= Employee::select('monthly_rate')
                 ->where("id","=",$employee_id)->get();
             $rate=$emp_rate[0]['monthly_rate'];
-
         }
-
         return $rate;
-        
        
     }
  }
+
+
+if (!function_exists('night_difference')) {
+    function night_difference($start_work,$end_work)
+    {
+        $start_night = mktime(START_NIGHT_HOUR,START_NIGHT_MINUTE,START_NIGHT_SECOND,date('m',$start_work),date('d',$start_work),date('Y',$start_work));
+        $end_night   = mktime(END_NIGHT_HOUR,END_NIGHT_MINUTE,END_NIGHT_SECOND,date('m',$start_work),date('d',$start_work) + 1,date('Y',$start_work));
+
+        if($start_work >= $start_night && $start_work <= $end_night)
+        {
+            if($end_work >= $end_night)
+            {
+                return ($end_night - $start_work) / 3600;
+            }
+            else
+            {
+                return ($end_work - $start_work) / 3600;
+            }
+        }
+        elseif($end_work >= $start_night && $end_work <= $end_night)
+        {
+            if($start_work <= $start_night)
+            {
+                return ($end_work - $start_night) / 3600;
+            }
+            else
+            {
+                return ($end_work - $start_work) / 3600;
+            }
+        }
+        else
+        {
+            if($start_work < $start_night && $end_work > $end_night)
+            {
+                return ($end_night - $start_night) / 3600;
+            }
+            return 0;
+        }
+    }
+
+}
 
 ?>

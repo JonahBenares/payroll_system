@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PayrollBonus;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
 class PayrollBonusController extends Controller
@@ -14,7 +15,19 @@ class PayrollBonusController extends Controller
      */
     public function index()
     {
-        return view('payroll_bonus.index');
+        if(isset($_GET['year'])){
+            $year=$_GET['year'];
+        }else{
+            $year=date('Y');
+        }
+
+        if(isset($_GET['bonus_type']) && !empty($_GET['bonus_type'])){
+            $bonus_type=$_GET['bonus_type'];
+        }else{
+            $bonus_type='';
+        }
+        $bonus_report = Employee::all();
+        return view('payroll_bonus.index',compact('bonus_report', 'year', 'bonus_type'));
     }
 
     /**

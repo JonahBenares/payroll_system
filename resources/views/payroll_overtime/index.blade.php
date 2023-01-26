@@ -15,9 +15,11 @@
                         <h2 class="uppercase font-semibold py-2">Generate Payslip (Overtime)</h2>
                     </div>
                     <div class="flex">
-                        <a href="{{ route('printBulkOvertime') }}" class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-lime-500 rounded-2xl white:bg-lime-600 white:hover:bg-lime-700 white:focus:bg-lime-700 hover:bg-lime-600 focus:outline-none focus:bg-lime-500 focus:ring focus:ring-lime-300 focus:ring-opacity-50">
+                        @if(isset($_POST['year']))
+                        <a href="{{ route('printBulkOvertime',['month_year'=>$_POST['year']."-".$_POST['month'],'period' => $_POST['period']]) }}" class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-lime-500 rounded-2xl white:bg-lime-600 white:hover:bg-lime-700 white:focus:bg-lime-700 hover:bg-lime-600 focus:outline-none focus:bg-lime-500 focus:ring focus:ring-lime-300 focus:ring-opacity-50">
                             <span>Print Bulk</span>
                         </a>
+                        @endif
                         <label for="table-search" class="sr-only">Search</label>
                         <div class="relative">
                             <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
@@ -51,9 +53,9 @@
                             <select name="year" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
                                 <option value="" selected>Select Year</option>
                                 @php
-                                    $year=date('Y');
+                                    $years=date('Y');
                                 @endphp
-                                @for($y=2015;$y<=$year;$y++)
+                                @for($y=2015;$y<=$years;$y++)
                                     <option value="{{ $y }}">{{ $y }}</option>
                                 @endfor
                             </select>
@@ -61,8 +63,9 @@
                         <div class="mx-2 text-left">
                             <select name='period' class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
                                 <option value="" selected>Period</option>
-                                <option value="MID">MID</option>
-                                <option value="EOM">EOM</option>
+                                @foreach($cutoff AS $c)
+                                <option value="{{ $c->cutoff_type }}">{{ $c->cutoff_type }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="mx-2 pt-3 text-left">

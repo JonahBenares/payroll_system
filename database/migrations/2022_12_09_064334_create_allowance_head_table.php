@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->date('from_date',50)->nullable();
             $table->date('to_date',50)->nullable();
-            $table->foreignId('allowance_id')->constrained;
-            $table->foreignId('bu_id')->constrained('business_unit');
+            $table->foreignId('allowance_id')->constrained('allowances');
+            $table->foreignId('bu_id')->constrained('business_units');
             $table->string('company')->nullable();
             $table->string('pay_to')->nullable();
             $table->string('apv_no')->nullable();
