@@ -28,53 +28,48 @@
                     </div>
                 </div>
                 <form method='GET'>
-                    <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900">
-                        <div class="mx-2 text-left">
-                            <select name="month" required class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
-                                <option value="" selected>Select Month</option>
-                                <option value="01">January</option>
-                                <option value="02">February</option>
-                                <option value="03">March</option>
-                                <option value="04">April</option>
-                                <option value="05">May</option>
-                                <option value="06">June</option>
-                                <option value="07">July</option>
-                                <option value="08">August</option>
-                                <option value="09">September</option>
-                                <option value="10">October</option>
-                                <option value="11">November</option>
-                                <option value="12">December</option>
-                            </select>
-                        </div>
-<<<<<<< HEAD
-                        
-=======
->>>>>>> cd42ea6e9ee6c5ae455608558455ec8c0d22456e
-                        @php $curr_year = date("Y"); @endphp
-                        <div class="mx-2 text-left">
-                            <select name="year" required class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
-                                <option value="" selected>Select Year</option>
-                                @for($x=2023; $x<=$curr_year;$x++)
-                                <option value="{{ $x }}">{{ $x }}</option>
-                                @endfor
-                            </select>
-                        </div>
-                        <div class="mx-2 text-left">
-                            <select name="cutoff" required class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
-                                <option value="" selected>Period</option>
-                                @foreach($cutoff AS $co)
-                                <option value="{{ $co->cutoff_type }}">{{ $co->cutoff_type }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="mx-2 pt-3 text-left">
-                            <button type="submit" class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                <span>Generate</span>
-                            </button>
-                        </div>
+                <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900">
+                    <div class="mx-2 text-left">
+                        <select name="month" required class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
+                            <option value="" selected>Select Month</option>
+                            <option value="01">January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
                     </div>
-                </form>
-                
+                    @php $curr_year = date("Y"); @endphp
+                    <div class="mx-2 text-left">
+                        <select name="year" required class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
+                            <option value="" selected>Select Year</option>
+                            @for($x=2023; $x<=$curr_year;$x++)
+                            <option value="{{ $x }}">{{ $x }}</option>
+                            @endfor
+                        </select>
+                    </div>
+                    <div class="mx-2 text-left">
+                        <select name="cutoff" required class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
+                            <option value="" selected>Period</option>
+                            @foreach($cutoff AS $co)
+                            <option value="{{ $co->cutoff_type }}">{{ $co->cutoff_type }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mx-2 pt-3 text-left">
+                        <button type="submit" class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                            <span>Generate</span>
+                        </button>
+                    </div>
+                </div>
+                 </form>
                 @php $month_year = $filters['year']."-".$filters['month']; @endphp
                 @if(!empty($filters['month']))
                 <div class="flex justify-center space-x-2">

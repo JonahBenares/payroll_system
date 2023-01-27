@@ -92,20 +92,12 @@ class PayrollSalaryController extends Controller
                 $year_month = $year."-".$month;
             
 
-<<<<<<< HEAD
                 $save_head_id = RDHead::insertGetId([
                     'salary_year'=>$year,
                     'salary_month'=>$month,
                     'cutoff'=>$cutoff,
                     'created_at'=>date("Y-m-d H:i:s")
                 ]);
-=======
-                // $save_head_id = RDHead::insertGetId([
-                //     'salary_year'=>$year,
-                //     'salary_month'=>$month,
-                //     'cutoff'=>$cutoff
-                // ]);
->>>>>>> cd42ea6e9ee6c5ae455608558455ec8c0d22456e
             foreach($employees AS $emp){
 
                      ///////////// get RD within the period of a specific employee////////////////
@@ -124,11 +116,6 @@ class PayrollSalaryController extends Controller
                         ->join('schedule_detail', 'schedule_head.id', '=', 'schedule_detail.schedule_head_id')
                         ->count();
 
-<<<<<<< HEAD
-=======
-                     
-                        
->>>>>>> cd42ea6e9ee6c5ae455608558455ec8c0d22456e
                         if($shiftcount == 0){ ///// if no RD in the given period, then no deduction
                             $rd_deduction = 0;
                         } else {
@@ -138,10 +125,7 @@ class PayrollSalaryController extends Controller
                             ->whereBetween('rest_day',[$start_date,$end_date])
                             ->join('schedule_detail', 'schedule_head.id', '=', 'schedule_detail.schedule_head_id')
                             ->get();
-<<<<<<< HEAD
                         }
-=======
->>>>>>> cd42ea6e9ee6c5ae455608558455ec8c0d22456e
 
                             foreach($shiftdetails AS $sd){
                                 $getRDs[] =  $sd->rest_day;
@@ -154,21 +138,12 @@ class PayrollSalaryController extends Controller
                                     'rest_days'=>$sdet->rest_day
                                 );
                             }
-<<<<<<< HEAD
                             // $duty_count = Timekeeping::select('recorded_time')
                             // ->wherein(Timekeeping::raw("(STR_TO_DATE(recorded_time,'%Y-%m-%d'))"), $getRDs)
                             // ->where('personal_id',$emp->personal_id)
                             // ->count();
                     }
                 }
-=======
-
-                            $duty_count = Timekeeping::select('recorded_time')
-                            ->wherein(Timekeeping::raw("(STR_TO_DATE(recorded_time,'%Y-%m-%d'))"), $getRDs)
-                            ->where('personal_id',$emp->personal_id)
-                            ->count();
-
->>>>>>> cd42ea6e9ee6c5ae455608558455ec8c0d22456e
                          
                         foreach($getRDsEmp AS $rdemp){
 
@@ -176,23 +151,44 @@ class PayrollSalaryController extends Controller
                             ->whereDate('recorded_time',$rdemp['rest_days'])
                             ->where('personal_id',$rdemp['personal_id'])
                             ->count();
-<<<<<<< HEAD
 
                        
-=======
->>>>>>> cd42ea6e9ee6c5ae455608558455ec8c0d22456e
                         
                             if($time_count%2==0){ ///// if equal or divisible by 2 ang timekeeping //////////
                                 $time = Timekeeping::selectraw('min(recorded_time) as starttime, max(recorded_time) as endtime, personal_id')
                                 ->whereDate('recorded_time',$rdemp['rest_days'])
                                 ->where('personal_id',$rdemp['personal_id'])
                                 ->get();
-                                if(!empty($time[0]['personal_id'])){
-                              
+                               // if(!empty($time[0]['personal_id'])){
                                     $start_time = $time[0]['starttime'];
                                     $end_time = $time[0]['endtime'];
                                   
+                               // }
+                            } else {
+
+                                $stime = Timekeeping::selectraw('min(recorded_time) as starttime, personal_id')
+                                ->whereDate('recorded_time',$rdemp['rest_days'])
+                                ->where('personal_id',$rdemp['personal_id'])
+                                ->get();
+
+                                $next_day = date('Y-m-d', strtotime($rdemp['rest_days'] . ' +1 day'));
+                               
+                                $etime = Timekeeping::selectraw('min(recorded_time) as endtime, personal_id')
+                                ->whereDate('recorded_time',$next_day)
+                                ->where('personal_id',$rdemp['personal_id'])
+                                ->get();
+
+                                $start_time = $stime[0]['starttime'];
+                                $end_time = $etime[0]['endtime'];
+
+                              
+                            }
+
+                            if(!empty($end_time)){
+                          
+                                
                                     $nightdiff = night_difference(strtotime($start_time),strtotime($end_time));
+                                    
                                     $ps_id = getPayslipInfo('description', 'Rest Day', 'id');
                                     $nd_id = getPayslipInfo('description', 'Night Premium', 'id');
                                     $rates = getRates($ps_id);
@@ -209,7 +205,6 @@ class PayrollSalaryController extends Controller
                                     $hourly_rate = getEmployeeDetails($rdemp['employee_id'], 'hourly_rate');
 
                                     $holiday = checkHoliday($rdemp['rest_days']);
-<<<<<<< HEAD
 
                                   
                                     ////////////////////////// CHECK IF HOLIDAY ////////////////////////////////
@@ -226,26 +221,12 @@ class PayrollSalaryController extends Controller
                                     } 
                                     
                                     else if($holiday=='Regular'){
-=======
-                                    //echo $holiday . ", ". $nightdiff . "<br>";
-                                    ////////////////////////// CHECK IF HOLIDAY ////////////////////////////////
-                                    if($holiday == 0){
-                                        if($deduction_type==1){  //// if percentage
-                                            if($hours>=8){
-                                                $total = ((8/8) * $adjustment_rate) * $hourly_rate;
-                                            } else {
-                                                $total = (($hours/8) * $adjustment_rate) * $hourly_rate;
-                                            }
-                                        }
-                                    } else if($holiday=='Regular'){
->>>>>>> cd42ea6e9ee6c5ae455608558455ec8c0d22456e
                                       
                                         if($deduction_type==1){  //// if percentage
 
                                             if($nightdiff==0){
                                             
                                                 if($hours>=8){
-<<<<<<< HEAD
                                                     $total_daily_rate = (8 * PERCENT_RD_RH) * $hourly_rate;
                                                 } else {
                                                     $total_daily_rate = ($hours * PERCENT_RD_RH) * $hourly_rate;
@@ -282,27 +263,11 @@ class PayrollSalaryController extends Controller
 
                                         $holiday_rate = PERCENT_RD_RH;
                                    
-=======
-                                                    $total = ((8/8) * PERCENT_RD_RH) * $hourly_rate;
-                                                } else {
-                                                    $total = (($hours/8) * PERCENT_RD_RH) * $hourly_rate;
-                                                }
-                                            } else if($nightdiff>0){
-                                                
-                                                if($hours>=8){
-                                                    $total = (((8/8) * $hourly_rate) * PERCENT_RD_RH) * $np_rate;
-                                                } else {
-                                                    $total = ((($hours/8) * $hourly_rate) * PERCENT_RD_RH) * $np_rate;
-                                                }
-                                            }
-                                        }
->>>>>>> cd42ea6e9ee6c5ae455608558455ec8c0d22456e
                                     } else if($holiday=='Special'){
                                         if($deduction_type==1){  //// if percentage
 
                                             if($nightdiff==0){
                                                 if($hours>=8){
-<<<<<<< HEAD
                                                     $total_daily_rate = (8 * PERCENT_RD_SH) * $hourly_rate;
                                                 } else {
                                                     $total_daily_rate = ($hours * PERCENT_RD_SH) * $hourly_rate;
@@ -340,7 +305,7 @@ class PayrollSalaryController extends Controller
 
                                         $holiday_rate = PERCENT_RD_SH;
                                     } 
-                                }
+                                
                                   
                                       //////////////////////////  CHECK IF NIGHT DIFFERENTIAL ////////////////////////////////
                                 if($holiday==0 && $nightdiff>0){
@@ -381,49 +346,10 @@ class PayrollSalaryController extends Controller
                                 // "nightdiff = ". $nightdiff . "<br>";
                                 // echo "**".$total_daily_rate. "<br><br>";
                                
-=======
-                                                    $total = ((8/8) * PERCENT_RD_SH) * $hourly_rate;
-                                                } else {
-                                                    $total = (($hours/8) * PERCENT_RD_SH) * $hourly_rate;
-                                                }
-                                            } else if($nightdiff>0){
-                                                if($hours>=8){
-                                                    $total = (((8/8) * $hourly_rate) * PERCENT_RD_SH) * $np_rate;
-                                                } else {
-                                                    $total = ((($hours/8) * $hourly_rate) * PERCENT_RD_SH) * $np_rate;
-                                                }
-                                            }
-                                        }
-                                    } else {
-                                        if($deduction_type==1){  //// if percentage
-                                            if($hours>=8){
-                                                $total = ((8/8) * 3.6) * $hourly_rate;
-                                            } else {
-                                                $total = (($hours/8) * 3.6) * $hourly_rate;
-                                            }
-                                        }
-                                    }
-
-                                      //////////////////////////  CHECK IF NIGHT DIFFERENTIAL ////////////////////////////////
-                                if($holiday==0 && $nightdiff>0){
-                                    if($deduction_type==1){  //// if percentage
-                                        if($hours>=8){
-                                            $rdrate = ((8/8) * $adjustment_rate) * $hourly_rate;
-                                            $total = $rdrate*$np_rate;
-                                        } else {
-                                            $rdrate = (($hours/8) * $adjustment_rate) * $hourly_rate;
-                                            $total = $rdrate*$np_rate;
-                                        }
-                                    }
-                                }
-
-                                echo $rdemp['personal_id'] . " - " . $hours . ", ". $hourly_rate .", " .$holiday.",", $nightdiff." = ". $total . "<br>";
->>>>>>> cd42ea6e9ee6c5ae455608558455ec8c0d22456e
                                 //////////////////////////  END CHECK IF NIGHT DIFFERENTIAL ////////////////////////////////
                                 
                                      ////////////////////////// END CHECK IF HOLIDAY ////////////////////////////////
     
-<<<<<<< HEAD
                                 
                                     $save = RDDetail::create([
                                         'rd_head_id'=>$save_head_id,
@@ -448,156 +374,6 @@ class PayrollSalaryController extends Controller
                   
                    
             
-=======
-                                   // echo $rdemp['rest_days'] . " " . $holiday .", ".$hours." * " . $hourly_rate. " = " . $total. "<br>";
-                                    // $save = RDDetail::create([
-                                    //     'rd_head_id'=>$save_head_id,
-                                    //     'employee_id'=>$rdemp['employee_id'],
-                                    //     'personal_id'=>$rdemp['personal_id'],
-                                    //     'rd_date'=>$rdemp['rest_days'],
-                                    //     'rd_hours'=>$hours,
-                                    //     'hourly_rate'=>$hourly_rate,
-                                    //     'rd_rate'=>$deduction_rate,
-                                    //     'total_rd_amount'=>$total
-                                    // ]);
-
-                                }
-                             } else { ///// if not equal or divisible by 2 ang timekeeping, get the next day //////////
-                                
-
-                                $stime = Timekeeping::selectraw('min(recorded_time) as starttime, personal_id')
-                                ->whereDate('recorded_time',$rdemp['rest_days'])
-                                ->where('personal_id',$rdemp['personal_id'])
-                                ->get();
-
-                                $next_day = date('Y-m-d', strtotime($rdemp['rest_days'] . ' +1 day'));
-
-                                $etime = Timekeeping::selectraw('min(recorded_time) as endtime, personal_id')
-                                ->whereDate('recorded_time',$next_day)
-                                ->where('personal_id',$rdemp['personal_id'])
-                                ->get();
-
-                                $start_time = $stime[0]['starttime'];
-                                $end_time = $etime[0]['endtime'];
-
-                                $nightdiff= night_difference(strtotime($start_time),strtotime($end_time));
-                                $ps_id = getPayslipInfo('description', 'Rest Day', 'id');
-                                $nd_id = getPayslipInfo('description', 'Night Premium', 'id');
-                                $rates = getRates($ps_id);
-                                $nd_rate = getRates($nd_id);
-
-                                $rate_array = explode("_",$rates);
-                                $deduction_type = $rate_array[0];
-                                $adjustment_rate = $rate_array[1];
-
-                                $nd_array =  explode("_",$nd_rate);
-                                $np_rate = $nd_array[1];
-
-                                $hours = getTimeDiff($start_time, $end_time);
-                                $hourly_rate = getEmployeeDetails($rdemp['employee_id'], 'hourly_rate');
-                                $holiday = checkHoliday($rdemp['rest_days']);
-                               // echo $holiday . "<br>";
-                                 ////////////////////////// CHECK IF HOLIDAY ////////////////////////////////
-
-                                if($holiday == 0){
-                                    if($deduction_type==1){  //// if percentage
-                                        if($hours>=8){
-                                            $total = ((8/8) * $adjustment_rate) * $hourly_rate;
-                                        } else {
-                                            $total = (($hours/8) * $adjustment_rate) * $hourly_rate;
-                                        }
-                                    }
-                                } else if($holiday=='Regular'){
-                                    
-                                    if($deduction_type==1){  //// if percentage
-                                        if($nightdiff==0){
-                                            if($hours>=8){
-                                                $total = ((8/8) * PERCENT_RD_RH) * $hourly_rate;
-                                            } else {
-                                                $total = (($hours/8) * PERCENT_RD_RH) * $hourly_rate;
-                                            }
-                                        } else if($nightdiff>0){
-                                            
-                                            if($hours>=8){
-                                                
-                                                $total = (((8/8) * $hourly_rate) * PERCENT_RD_RH) * $np_rate;
-                                            } else {
-                                             
-                                                $total = ((($hours/8) * $hourly_rate) * PERCENT_RD_RH) * $np_rate;
-                                            }
-                                        }
-                                    }
-                                } else if($holiday=='Special'){
-                                    if($deduction_type==1){  //// if percentage
-                                        if($nightdiff==0){
-                                            if($hours>8){
-                                                $total = ((8/8) * PERCENT_RD_SH) * $hourly_rate;
-                                            } else {
-                                                $total = (($hours/8) * PERCENT_RD_SH) * $hourly_rate;
-                                            }
-                                        } else if($nightdiff>0){
-                                            if($hours>8){
-                                                $total = (((8/8) * $hourly_rate) * PERCENT_RD_SH) * $np_rate;
-                                            } else {
-                                                $total = ((($hours/8) * $hourly_rate) * PERCENT_RD_SH) * $np_rate;
-                                            }
-                                        }
-                                    }
-                                } else {
-                                    if($deduction_type==1){  //// if percentage
-                                        if($hours>8){
-                                            $total = ((8/8) * 3.6) * $hourly_rate;
-                                        } else {
-                                            $total = (($hours/8) * 3.6) * $hourly_rate;
-                                        }
-                                    }
-                                }
-
-                                 ////////////////////////// END CHECK IF HOLIDAY ////////////////////////////////
-
-                                //////////////////////////  CHECK IF NIGHT DIFFERENTIAL ////////////////////////////////
-                                if($holiday==0 && $nightdiff>0){
-                                 
-                                    if($deduction_type==1){  //// if percentage
-                                        if($hours>8){
-                                            $rdrate = ((8/8) * $adjustment_rate) * $hourly_rate;
-                                            $total = $rdrate*$np_rate;
-                                        } else {
-                                            $rdrate = (($hours/8) * $adjustment_rate) * $hourly_rate;
-                                            $total = $rdrate*$np_rate;
-                                        }
-                                    }
-                                }
-
-                                echo  $rdemp['personal_id'] . " - " .$hours . ", ". $hourly_rate .", " .$holiday.",", $nightdiff." = ". $total . "<br>";
-                                //////////////////////////  END CHECK IF NIGHT DIFFERENTIAL ////////////////////////////////
-
-                               // echo $rdemp['rest_days'] . " " . $holiday . " = " . $total. "<br>";
-                                // $save = RDDetail::create([
-                                //     'rd_head_id'=>$save_head_id,
-                                //     'employee_id'=>$rdemp['employee_id'],
-                                //     'personal_id'=>$rdemp['personal_id'],
-                                //     'rd_date'=>$rdemp['rest_days'],
-                                //     'rd_hours'=>$hours,
-                                //     'hourly_rate'=>$hourly_rate,
-                                //     'rd_rate'=>$deduction_rate,
-                                //     'total_rd_amount'=>$total
-                                // ]);
-
-                               
-                             }
-
-                           
-                        }
-                         
-                          
-                        }   
-                        $getRDsEmp=array();
-                      
-                    }
-                   
-            }
->>>>>>> cd42ea6e9ee6c5ae455608558455ec8c0d22456e
 
             
             //$employee_list = collect($employee_list)->sortBy('name')->toArray();
