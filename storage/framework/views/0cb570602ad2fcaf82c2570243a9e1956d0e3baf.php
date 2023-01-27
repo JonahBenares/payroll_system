@@ -50,23 +50,18 @@
                             <td class="px-3 py-3">Hourly Rate</td>
                             <td class="px-3 py-3">Daily Rate</td>
                             <td class="px-3 py-3">Monthly Rate</td>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                            <?php $__currentLoopData = $hmo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $h): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <td class="px-3 py-3"><?php echo e($h->level_description); ?></td>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-=======
-=======
->>>>>>> 0f3de0000257508e3ebfe890e6f29e8a0e2d3f4f
 
                             <?php $__currentLoopData = $hmo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $h): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <td class="px-3 py-3"><?php echo e($h->level_description); ?></td>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-<<<<<<< HEAD
->>>>>>> 0f3de0000257508e3ebfe890e6f29e8a0e2d3f4f
-=======
->>>>>>> 0f3de0000257508e3ebfe890e6f29e8a0e2d3f4f
+
+
+                            <?php $__currentLoopData = $hmo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $h): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <td class="px-3 py-3"><?php echo e($h->level_description); ?></td>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+
                             <td class="px-3 py-3">Salary Type</td>
                             <td class="px-3 py-3 sticky right-0  bg-gray-50 " width="1%">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -94,14 +89,7 @@
                             <td class="px-3 py-3"><?php echo e(getHMODependent($el->id, $h->id)); ?></td>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             <td class="px-3 py-3"><?php echo e($el->salary_type); ?></td>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
->>>>>>> 0f3de0000257508e3ebfe890e6f29e8a0e2d3f4f
-=======
-
->>>>>>> 0f3de0000257508e3ebfe890e6f29e8a0e2d3f4f
                             <td class="px-3 py-3 sticky right-0 bg-white">
                                 <a href="<?php echo e(route('emp.edit', $el->id)); ?>" class="" title="Update">
                                     <div class="py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
@@ -124,4 +112,5 @@
 <?php if (isset($__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da)): ?>
 <?php $component = $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da; ?>
 <?php unset($__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da); ?>
-<?php endif; ?><?php /**PATH C:\xampp\htdocs\payroll_system\resources\views/employees/index.blade.php ENDPATH**/ ?>
+<?php endif; ?>
+<?php /**PATH C:\xampp\htdocs\payroll_system\resources\views/employees/index.blade.php ENDPATH**/ ?>

@@ -37,8 +37,16 @@ class HolidayController extends Controller
      */
     public function store(Request $request)
     {
-        $input=$request->all();
-        $res=Holiday::create($input);
+        // $input=$request->all();
+        // $res=Holiday::create($input);
+        $holiday_rate=$request->holiday_rate / 100;
+        $holiday=new Holiday();
+        $holiday->holiday_date=$request->holiday_date;
+        $holiday->calendar_year=$request->calendar_year;
+        $holiday->holiday_name=$request->holiday_name;
+        $holiday->holiday_type=$request->holiday_type;
+        $holiday->holiday_rate=$holiday_rate;
+        $res = $holiday->save();
         if($res){
             return redirect()->route('holiday.create')->with('success',"Holiday Added Successfully");
         }else{
@@ -78,9 +86,19 @@ class HolidayController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $holiday_rate=$request->holiday_rate / 100;
         $holiday = Holiday::find($id);
-        $input = $request->all();
-        $holiday->update($input);
+        $holiday->update(
+            [
+                'holiday_date' => $request->holiday_date,
+                'calendar_year' => $request->calendar_year,
+                'holiday_name' => $request->holiday_name,
+                'holiday_type' => $request->holiday_type,
+                'holiday_rate' => $holiday_rate,
+            ]
+        );
+        // $input = $request->all();
+        // $holiday->update($input);
         return redirect()->route('holiday.edit',$id)->with('success',"Holiday Updated Successfully");
     }
 

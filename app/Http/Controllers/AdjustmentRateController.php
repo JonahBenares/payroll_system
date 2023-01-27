@@ -28,7 +28,8 @@ class AdjustmentRateController extends Controller
      */
     public function create()
     {
-        $payslipinfo = PayslipInfo::all()->sortBy('description');
+        //$payslipinfo = PayslipInfo::all()->sortBy('description');
+        $payslipinfo = PayslipInfo::where('pay_type','1')->get();
         return view('adjustments.create',compact('payslipinfo'));
     }
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\HolidayController;
 use App\Http\Controllers\PayslipInfoController;
+use App\Http\Controllers\EmployeeDeductionController;
 use App\Http\Controllers\AllowanceController;
 use App\Http\Controllers\AllowanceRateController;
 use App\Http\Controllers\AdjustmentRateController;
@@ -77,9 +78,12 @@ Route::resource('schedules', ScheduleController::class);
 Route::resource('holiday', HolidayController::class);
 
 // PayslipInfo
-
 Route::resource('payslip_info', PayslipInfoController::class);
 
+// Employee Deduction
+Route::resource('empDeduction', EmployeeDeductionController::class);
+Route::post('/empDeduction/fetch', [EmployeeDeductionController::class, 'fetchRate']);
+Route::get('/empDeduction/destroy/{id}/{emp_id}', [EmployeeDeductionController::class, 'destroy'])->name('delete_info');
 // Allowance
 Route::resource('allowance', AllowanceController::class);
 
@@ -112,9 +116,11 @@ Route::resource('busUnit', BusUnitController::class);
 
 // Leave
 Route::resource('leavefailure', LeaveFailureController::class);
+Route::post('/leavefailure/unfiled', [LeaveFailureController::class, 'unfiled'])->name('unfiled');
 
 //FiledLeave
 Route::resource('filedleave', FiledLeaveController::class);
+
 
 // Overtime
 Route::resource('ot', OvertimeController::class); 
@@ -139,15 +145,18 @@ Route::get('/bulk/{id}', [PayrollAllowanceController::class, 'printBulk'])->midd
 
 Route::resource('payrollovertime', PayrollOvertimeController::class); 
 Route::post('/payrollovertime/filter_payroll_ot', [PayrollOvertimeController::class, 'filter_payroll_ot'])->name('filter_payroll_ot');
-Route::get('/payroll_overtime/bulkprinting', [PayrollOvertimeController::class, 'printBulk'])->middleware(['auth'])->name('printBulkOvertime');
+Route::get('/payroll_overtime/bulkprinting/{month_year}/{period}', [PayrollOvertimeController::class, 'printBulk'])->middleware(['auth'])->name('printBulkOvertime');
 Route::get('/payrollovertime/show/{personal_id}/{month_year}/{period}', [PayrollOvertimeController::class, 'show'])->name('show');
 
 Route::resource('payrollbonus', PayrollBonusController::class); 
-Route::get('/payroll_bonus/bulkprinting', [PayrollBonusController::class, 'printBulk'])->middleware(['auth'])->name('printBulkBonus');
+//Route::post('/payrollbonus/filter_payroll_bonus', [PayrollBonusController::class, 'filter_payroll_bonus'])->name('filter_payroll_bonus');
+Route::get('/payroll_bonus/bulkprinting/{type}/{year}', [PayrollBonusController::class, 'printBulk'])->middleware(['auth'])->name('printBulkBonus');
+Route::get('/payrollbonus/show/{personal_id}/{type}/{year}', [PayrollBonusController::class, 'show'])->name('show');
 
 
 Route::resource('payrollsalary', PayrollSalaryController::class); 
 Route::get('/payroll_salary/bulk', [PayrollSalaryController::class, 'printBulk'])->middleware(['auth'])->name('printBulkSalary');
+Route::get('/rd_computation/{month}/{year}/{cutoff}', [PayrollSalaryController::class, 'rd_computation'])->name('rd_computation');
 
 Route::resource('payrollbonus', PayrollBonusController::class); 
 Route::get('/payroll_bonus/bulkprinting', [PayrollBonusController::class, 'printBulk'])->middleware(['auth'])->name('printBulkBonus');
@@ -165,7 +174,11 @@ Route::get('/upload/receive', [UploadAllowanceController::class, 'receive'])->mi
 Route::resource('payrollComp', PayrollComputationController::class);
 Route::resource('dtrOffice', DTRofficeController::class);
 Route::resource('dtrSite', DTRsiteController::class);
+//OT Office
 Route::resource('otOffice', OTofficeController::class);
+Route::post('/otOffice/filter_otoffice', [OTofficeController::class, 'filter_otoffice'])->name('filter_otoffice');
+Route::post('/otOffice/fetchEmployee', [OTofficeController::class, 'fetchEmployee']);
+//OT Site
 Route::resource('otSite', OTsiteController::class);
 Route::resource('overall_OT', overallOTController::class);
 Route::post('/overallOT/filter_overallot', [overallOTController::class, 'filter_overallot'])->name('filter_overallot');
