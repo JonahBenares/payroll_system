@@ -96,7 +96,7 @@ class PayrollSalaryController extends Controller
                             ->where('cutoff', $cutoff)
                             ->count();
                 
-                if($count==0){
+                if($counthead==0){
 
                     $save_head_id = AdjCalcHead::insertGetId([
                         'salary_year'=>$year,
@@ -162,42 +162,47 @@ class PayrollSalaryController extends Controller
                          
                         foreach($getRDsEmp AS $rdemp){
 
-                            $time_count = Timekeeping::selectraw('min(recorded_time) as starttime, max(recorded_time) as endtime, personal_id')
-                            ->whereDate('recorded_time',$rdemp['rest_days'])
-                            ->where('personal_id',$rdemp['personal_id'])
-                            ->count();
+                            // $time_count = Timekeeping::selectraw('min(recorded_time) as starttime, max(recorded_time) as endtime, personal_id')
+                            // ->whereDate('recorded_time',$rdemp['rest_days'])
+                            // ->where('personal_id',$rdemp['personal_id'])
+                            // ->count();
 
                        
                         
-                            if($time_count%2==0){ ///// if equal or divisible by 2 ang timekeeping //////////
-                                $time = Timekeeping::selectraw('min(recorded_time) as starttime, max(recorded_time) as endtime, personal_id')
-                                ->whereDate('recorded_time',$rdemp['rest_days'])
-                                ->where('personal_id',$rdemp['personal_id'])
-                                ->get();
-                               // if(!empty($time[0]['personal_id'])){
-                                    $start_time = $time[0]['starttime'];
-                                    $end_time = $time[0]['endtime'];
+                            // if($time_count%2==0){ ///// if equal or divisible by 2 ang timekeeping //////////
+                            //     $time = Timekeeping::selectraw('min(recorded_time) as starttime, max(recorded_time) as endtime, personal_id')
+                            //     ->whereDate('recorded_time',$rdemp['rest_days'])
+                            //     ->where('personal_id',$rdemp['personal_id'])
+                            //     ->get();
+                            //    // if(!empty($time[0]['personal_id'])){
+                            //         $start_time = $time[0]['starttime'];
+                            //         $end_time = $time[0]['endtime'];
                                   
-                               // }
-                            } else {
+                            //    // }
+                            // } else {
 
-                                $stime = Timekeeping::selectraw('min(recorded_time) as starttime, personal_id')
-                                ->whereDate('recorded_time',$rdemp['rest_days'])
-                                ->where('personal_id',$rdemp['personal_id'])
-                                ->get();
+                            //     $stime = Timekeeping::selectraw('min(recorded_time) as starttime, personal_id')
+                            //     ->whereDate('recorded_time',$rdemp['rest_days'])
+                            //     ->where('personal_id',$rdemp['personal_id'])
+                            //     ->get();
 
-                                $next_day = date('Y-m-d', strtotime($rdemp['rest_days'] . ' +1 day'));
+                            //     $next_day = date('Y-m-d', strtotime($rdemp['rest_days'] . ' +1 day'));
                                
-                                $etime = Timekeeping::selectraw('min(recorded_time) as endtime, personal_id')
-                                ->whereDate('recorded_time',$next_day)
-                                ->where('personal_id',$rdemp['personal_id'])
-                                ->get();
+                            //     $etime = Timekeeping::selectraw('min(recorded_time) as endtime, personal_id')
+                            //     ->whereDate('recorded_time',$next_day)
+                            //     ->where('personal_id',$rdemp['personal_id'])
+                            //     ->get();
 
-                                $start_time = $stime[0]['starttime'];
-                                $end_time = $etime[0]['endtime'];
+                            //     $start_time = $stime[0]['starttime'];
+                            //     $end_time = $etime[0]['endtime'];
 
                               
-                            }
+                            // }
+
+                            $time = getEmployeeTime($rdemp['rest_days'],$rdemp['personal_id']);
+                            $t=explode("_",$time);
+                            $start_time=$t[0];
+                            $end_time=$t[1];
 
                             if(!empty($end_time)){
                           
@@ -463,10 +468,12 @@ class PayrollSalaryController extends Controller
                                 //////////////////////////  END CHECK IF NIGHT DIFFERENTIAL ////////////////////////////////
                                 
                                      ////////////////////////// END CHECK IF HOLIDAY ////////////////////////////////
-                            $counthead= AdjCalcHead::where('salary_month', $month)
-                            ->where('salary_year', $year)
-                            ->where('cutoff', $cutoff)
+                            $countdetail= AdjCalcDetail::where('personal_id', $rdemp['personal_id'])
+                            ->where('rd_date',$rdemp['rest_days'])
                             ->count();
+                            
+                            if($countdetail == 0){
+
                                     $save = AdjCalcDetail::create([
                                         'adj_calc_head_id'=>$save_head_id,
                                         'employee_id'=>$rdemp['employee_id'],
@@ -484,6 +491,7 @@ class PayrollSalaryController extends Controller
                                         'rd_rate'=>$adjustment_rate,
                                         'total_amount'=>$total_daily_rate
                                     ]);
+                            }
 
                             }
                              
@@ -492,11 +500,6 @@ class PayrollSalaryController extends Controller
                      }
                         $getRDsEmp=array();
                       
-                  
-                   
-            
-
-            
             //$employee_list = collect($employee_list)->sortBy('name')->toArray();
            // $payslipinfo = PayslipInfo::all();
          
@@ -512,6 +515,113 @@ class PayrollSalaryController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+
+    public function holiday_computation($month, $year, $cutoff){
+
+            if( $cutoff== 'EOM'){
+                $cut = CutOff::select('cutoff_start','cutoff_end')
+                    ->where("cutoff_type","=",$cutoff)->get();
+                
+                $start=$cut[0]['cutoff_start'];
+                $end=$cut[0]['cutoff_end'];
+
+                $start_date = $year."-".$month."-".$start;
+                $end_date = $year."-".$month."-".$end;
+            } else {
+                $cut = CutOff::select('cutoff_start','cutoff_end')
+                ->where("cutoff_type","=",$cutoff)->get();
+            
+                $start=$cut[0]['cutoff_start'];
+                $end=$cut[0]['cutoff_end'];
+
+                $start_d = $year."-".$month."-".$start;
+                $end_date = $year."-".$month."-".$end;
+
+                $start_date = date("Y-m-d", strtotime ('-1 month',strtotime ($start_d)));
+            }
+            $year_month = $year."-".$month;
+        
+            // $counthead= AdjCalcHead::where('salary_month', $month)
+            //             ->where('salary_year', $year)
+            //             ->where('cutoff', $cutoff)
+            //             ->count();
+            
+            // if($counthead==0){
+
+            //     $save_head_id = AdjCalcHead::insertGetId([
+            //         'salary_year'=>$year,
+            //         'salary_month'=>$month,
+            //         'cutoff'=>$cutoff,
+            //         'created_at'=>date("Y-m-d H:i:s")
+            //     ]);
+            // } else {
+            //     $getheadid= AdjCalcHead::select('id')
+            //             ->where('salary_month', $month)
+            //             ->where('salary_year', $year)
+            //             ->where('cutoff', $cutoff)
+            //             ->get();
+            //     $save_head_id=$getheadid[0]['id'];
+                
+            // }
+
+
+            $count_holidays_this_month = Holiday::whereBetween('holiday_date',[$start_date,$end_date])
+                                        ->count();
+
+            if($count_holidays_this_month!=0){
+
+                $getholidays =  Holiday::whereBetween('holiday_date',[$start_date,$end_date])
+                                ->get();
+
+                foreach($getholidays AS $hol){
+
+                    $getemployees = Timekeeping::whereDate('recorded_time',$hol->holiday_date)->get();
+
+                    $time = getEmployeeTime($hol->holiday_date,$getemployees[0]['personal_id']);
+                   
+                    $t=explode("_",$time);
+
+                    $start_time=$t[0];
+                    $end_time=$t[1];
+                    //echo $getemployees[0]['personal_id'] . " =  " . $start_time . " to " . $end_time . "<br>";
+                    $hours = getTimeDiff($start_time, $end_time);
+                    $hourly_rate = getEmployeeDetails($getemployees[0]['personal_id'], 'hourly_rate');
+
+                    if($hours>=8){
+                        $total_amount = (8 * $hourly_rate) * $hol->holiday_rate;  
+                    } else {
+                        $total_amount = ($np_hours * $hourly_rate) * $hol->holiday_rate;  
+                    }
+
+                    //echo $getemployees[0]['personal_id'] . ",  " . $hol->holiday_date. ", " .  $hours . " , " . $hourly_rate . " = " . $total_amount ."<br>";
+                    $countdetail= AdjCalcDetail::where('personal_id', $getemployees[0]['personal_id'])
+                    ->where('rd_date',$hol->holiday_date)
+                    ->count();
+                    
+                    if($countdetail == 0){
+
+                            $save = AdjCalcDetail::create([
+                                'adj_calc_head_id'=>$save_head_id,
+                                'employee_id'=>$getemployees[0]['employee_id'],
+                                'personal_id'=>$getemployees[0]['personal_id'],
+                                'rd_date'=>$hol->holiday_date,
+                                'rd_hours'=>$hours,
+                                'normal_hours'=>$hours,
+                                'np_hours'=>0,
+                                'hourly_rate'=>$hourly_rate,
+                                'rd_amount'=>0,
+                                'np_rate'=>0,
+                                'np_amount'=>0,
+                                'holiday_rate'=>$hol->holiday_rate,
+                                'holiday_amount'=>$total_amount,
+                                'rd_rate'=>0,
+                                'total_amount'=>$total_amount
+                            ]);
+                    }
+                }
+            }
+
+    }
     public function create()
     {
         //

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('change_schedule', function (Blueprint $table) {
             $table->id();
             $table->date('date_applied')->nullable();
-            $table->foreignId('employee_id')->contrained('employees');
+            $table->foreignId('employee_id')->constrained('employees');
             $table->integer('personal_id');
             $table->string('schedule_code')->nullable();
             $table->string('month_year')->nullable();
