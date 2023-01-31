@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ChangeSchedule;
+use App\Models\Employee;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,8 +15,9 @@ class ChangeScheduleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('change_sched.index');
+    {   
+        $employees=Employee::where('is_active','1')->orderBy('full_name','ASC')->get();
+        return view('change_sched.index',compact('employees'));
     }
 
     /**
@@ -58,7 +60,7 @@ class ChangeScheduleController extends Controller
      */
     public function edit($id)
     {
-        return view('changeSched.edit');
+        return view('change_sched.edit');
     }
 
     /**

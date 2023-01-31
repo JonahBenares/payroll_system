@@ -35,19 +35,43 @@
                 </div>
                 <div class="mt-4 w-6/12">
                     <label for="email" class="block text-left text-sm text-gray-700 capitalize white:text-gray-200">Employee</label>
-                    <select type="text" name="cutoff_start" id="cutoff_start" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                    <select name="employee" id="employee" class="px-0 text-sm bg-transparent border-0 text-left py-0 border-b border-gray-300 w-full">
+                        <option value="">--Select Name--</option>
+                        <?php $__currentLoopData = $employees; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $e): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($e->id); ?>" <?php echo e((!empty($employee_id)) ? (($e->id==$employee_id) ? 'selected' : '') : ''); ?>><?php echo e($e->full_name); ?></option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
                 </div>
             </div>
             <div class="flex justify-between space-x-2">
                 <div class="mt-4 w-3/12">
                     <label for="email" class="block text-left text-sm text-gray-700 capitalize white:text-gray-200">Month</label>
-                    <select type="text" name="cutoff_start" id="cutoff_start" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                    <select name="month" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60" required>
+                        <option value="" selected>Select Month</option>
+                        <option value="01">January</option>
+                        <option value="02">February</option>
+                        <option value="03">March</option>
+                        <option value="04">April</option>
+                        <option value="05">May</option>
+                        <option value="06">June</option>
+                        <option value="07">July</option>
+                        <option value="08">August</option>
+                        <option value="09">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
                     </select>
                 </div>
                 <div class="mt-4 w-3/12">
                     <label for="email" class="block text-left text-sm text-gray-700 capitalize white:text-gray-200">Year</label>
-                    <select type="text" name="cutoff_start" id="cutoff_start" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                    <select name="year" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60" required>
+                        <option value="">Select Year</option>
+                        <?php
+                            $year=date('Y');
+                        ?>
+                        <?php for($y=2015;$y<=$year;$y++): ?>
+                            <option value="<?php echo e($y); ?>"><?php echo e($y); ?></option>
+                        <?php endfor; ?>
                     </select>
                 </div>
                 <div class="mt-4 w-6/12">
