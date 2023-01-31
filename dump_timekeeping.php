@@ -4,7 +4,8 @@
  $con_local=mysqli_connect("localhost","root","","db_payroll");
 
  $today = date("Y-m-d h:i:sa");
- $current = date("Y-m-d");
+ //$current = date("Y-m-d");
+ $current = '2023-01-07';
  $current1=date('Y-m-d', strtotime($current));
  $previous=date('Y-m-d', strtotime('-1 day', strtotime($current)));
  $next=date('Y-m-d', strtotime('+1 day', strtotime($current)));

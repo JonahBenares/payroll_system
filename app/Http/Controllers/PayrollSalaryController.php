@@ -11,8 +11,8 @@ use App\Models\ShiftScheduleDetail;
 use App\Models\ShiftSchedule;
 use App\Models\Timekeeping;
 use App\Models\Holiday;
-use App\Models\RDHead;
-use App\Models\RDDetail;
+use App\Models\AdjCalcHead;
+use App\Models\AdjCalcDetail;
 
 
 define('PERCENT_RD_RH','2.6');
@@ -91,13 +91,28 @@ class PayrollSalaryController extends Controller
                 }
                 $year_month = $year."-".$month;
             
+                $counthead= AdjCalcHead::where('salary_month', $month)
+                            ->where('salary_year', $year)
+                            ->where('cutoff', $cutoff)
+                            ->count();
+                
+                if($count==0){
 
-                $save_head_id = RDHead::insertGetId([
-                    'salary_year'=>$year,
-                    'salary_month'=>$month,
-                    'cutoff'=>$cutoff,
-                    'created_at'=>date("Y-m-d H:i:s")
-                ]);
+                    $save_head_id = AdjCalcHead::insertGetId([
+                        'salary_year'=>$year,
+                        'salary_month'=>$month,
+                        'cutoff'=>$cutoff,
+                        'created_at'=>date("Y-m-d H:i:s")
+                    ]);
+                } else {
+                    $getheadid= AdjCalcHead::select('id')
+                            ->where('salary_month', $month)
+                            ->where('salary_year', $year)
+                            ->where('cutoff', $cutoff)
+                            ->get();
+                    $save_head_id=$getheadid[0]['id'];
+                    
+                }
             foreach($employees AS $emp){
 
                      ///////////// get RD within the period of a specific employee////////////////
@@ -213,8 +228,18 @@ class PayrollSalaryController extends Controller
                                         if($deduction_type==1){  //// if percentage
                                             if($hours>=8){
                                                 $total_daily_rate =  (8 * $adjustment_rate) * $hourly_rate;
+                                                $rd_amount = (8 * $adjustment_rate) * $hourly_rate;
+                                                $holiday_amount=0;
+                                                $np_amount=0;
+                                                $normal_hours=8;
+                                                $np_hours=0;
                                             } else {
                                                 $total_daily_rate = ($hours * $adjustment_rate) * $hourly_rate;
+                                                $rd_amount = ($hours * $adjustment_rate) * $hourly_rate;
+                                                $holiday_amount=0;
+                                                $np_amount=0;
+                                                $normal_hours=$hours;
+                                                $np_hours=0;
                                             }
                                         }
                                         $holiday_rate = 0;
@@ -228,8 +253,18 @@ class PayrollSalaryController extends Controller
                                             
                                                 if($hours>=8){
                                                     $total_daily_rate = (8 * PERCENT_RD_RH) * $hourly_rate;
+                                                    $rd_amount = 0;
+                                                    $holiday_amount =(8 * PERCENT_RD_RH) * $hourly_rate;
+                                                    $np_amount=0;
+                                                    $normal_hours=8;
+                                                    $np_hours=0;
                                                 } else {
                                                     $total_daily_rate = ($hours * PERCENT_RD_RH) * $hourly_rate;
+                                                    $rd_amount = 0;
+                                                    $holiday_amount =($hours * PERCENT_RD_RH) * $hourly_rate;
+                                                    $np_amount=0;
+                                                    $normal_hours=$hours;
+                                                    $np_hours=0;
                                                 }
 
                                                 
@@ -238,16 +273,34 @@ class PayrollSalaryController extends Controller
                                                 if($nightdiff == $hours){ /// if all hours are with Night Premium
                                                     if($hours>=8){
                                                         $total_daily_rate = ((8 * $hourly_rate) * PERCENT_RD_RH) * $np_rate;
+                                                        $rd_amount = 0;
+                                                        $holiday_amount = ((8 * $hourly_rate) * PERCENT_RD_RH);
+                                                        $np_amount = ((8 * $hourly_rate) * PERCENT_RD_RH) * ($np_rate-1);
+                                                        $normal_hours=8;
+                                                        $np_hours=0;
                                                     } else {
                                                         $total_daily_rate = (($hours * $hourly_rate) * PERCENT_RD_RH) * $np_rate;
+                                                        $rd_amount = 0;
+                                                        $holiday_amount = ((8 * $hourly_rate) * PERCENT_RD_RH);
+                                                        $np_amount = (($hours * $hourly_rate) * PERCENT_RD_RH) * ($np_rate-1);
+                                                        $normal_hours=$hours;
+                                                        $np_hours=0;
                                                     }
                                                 } else {  ///// if all hours are not night premium
-                                                    if($hours<=8){
+                                                    if($hours<8){
                                                         $normal = $hours - $nightdiff;
                                                         $normal_calc = ($normal * $hourly_rate) * PERCENT_RD_RH;
                                                         $nd_calc = (($nightdiff * $hourly_rate) * PERCENT_RD_RH) * $np_rate;
 
                                                         $total_daily_rate = $normal_calc + $nd_calc;
+
+                                                        $rd_amount = 0;
+                                                        $holiday_amount = (8 * $hourly_rate) * PERCENT_RD_RH;
+                                                        $np_amount = (($nightdiff * $hourly_rate) * PERCENT_RD_RH) * ($np_rate-1);
+
+                                                        $normal_hours=$normal;
+                                                        $np_hours=$nightdiff;
+
                                                     } else { 
                                                         $normal = $hours - $nightdiff;
                                                         $normal_no_ot = 8 - $nightdiff;
@@ -255,6 +308,13 @@ class PayrollSalaryController extends Controller
                                                         $nd_calc = (($nightdiff * $hourly_rate) * PERCENT_RD_RH) * $np_rate;
 
                                                         $total_daily_rate = $normal_calc + $nd_calc; 
+
+                                                        $rd_amount = 0;
+                                                        $holiday_amount = ((8 * $hourly_rate) * PERCENT_RD_RH);
+                                                        $np_amount = (($nightdiff * $hourly_rate) * PERCENT_RD_RH) * ($np_rate-1);
+
+                                                        $normal_hours=$normal_no_ot;
+                                                        $np_hours=$nightdiff;
                                                     }
 
                                                 }
@@ -269,8 +329,22 @@ class PayrollSalaryController extends Controller
                                             if($nightdiff==0){
                                                 if($hours>=8){
                                                     $total_daily_rate = (8 * PERCENT_RD_SH) * $hourly_rate;
+
+                                                    $rd_amount = 0;
+                                                    $holiday_amount = (8 * PERCENT_RD_SH) * $hourly_rate;
+                                                    $np_amount = 0;
+
+                                                    $normal_hours=8;
+                                                    $np_hours=0;
+
                                                 } else {
                                                     $total_daily_rate = ($hours * PERCENT_RD_SH) * $hourly_rate;
+                                                    $rd_amount = 0;
+                                                    $holiday_amount = ($hours * PERCENT_RD_SH) * $hourly_rate;
+                                                    $np_amount = 0;
+
+                                                    $normal_hours=$hours;
+                                                    $np_hours=0;
                                                 }
                                             } else if($nightdiff>0){
                                               
@@ -278,8 +352,21 @@ class PayrollSalaryController extends Controller
                                                 if($nightdiff == $hours){ /// if all hours are with Night Premium
                                                     if($hours>=8){
                                                         $total_daily_rate = ((8 * $hourly_rate) * PERCENT_RD_SH) * $np_rate;
+                                                        $rd_amount = 0;
+                                                        $holiday_amount =((8 * $hourly_rate) * PERCENT_RD_SH);
+                                                        $np_amount = ((8 * $hourly_rate) * PERCENT_RD_SH) * ($np_rate-1);
+
+                                                        $normal_hours=0;
+                                                        $np_hours=8;
+
+
                                                     } else {
                                                         $total_daily_rate = (($hours * $hourly_rate) * PERCENT_RD_SH) * $np_rate;
+                                                        $rd_amount = 0;
+                                                        $holiday_amount =(($hours * $hourly_rate) * PERCENT_RD_SH);
+                                                        $np_amount = (($hours * $hourly_rate) * PERCENT_RD_SH) * ($np_rate-1);
+                                                        $normal_hours=0;
+                                                        $np_hours=$hours;
                                                     }
                                                 } else {  ///// if all hours are not night premium
                                                  
@@ -289,6 +376,14 @@ class PayrollSalaryController extends Controller
                                                         $nd_calc = (($nightdiff * $hourly_rate) * PERCENT_RD_SH) * $np_rate;
 
                                                         $total_daily_rate = $normal_calc + $nd_calc;
+
+                                                        $rd_amount = 0;
+                                                        $holiday_amount =(($hours * $hourly_rate) * PERCENT_RD_SH);
+                                                        $np_amount = (($nightdiff * $hourly_rate) * PERCENT_RD_SH) * ($np_rate-1);
+                                                        $normal_hours=$normal;
+                                                        $np_hours=$nightdiff;
+
+
                                                     } else { 
                                                         $normal = $hours - $nightdiff;
                                                         $normal_no_ot = 8 - $nightdiff;
@@ -296,6 +391,12 @@ class PayrollSalaryController extends Controller
                                                         $nd_calc = (($nightdiff * $hourly_rate) * PERCENT_RD_SH) * $np_rate;
 
                                                         $total_daily_rate = $normal_calc + $nd_calc; 
+
+                                                        $rd_amount = 0;
+                                                        $holiday_amount =((8 * $hourly_rate) * PERCENT_RD_SH);
+                                                        $np_amount = (($nightdiff * $hourly_rate) * PERCENT_RD_SH) * ($np_rate-1);
+                                                        $normal_hours=$normal_no_ot;
+                                                        $np_hours=$nightdiff;
                                                     }
 
                                                 }
@@ -311,11 +412,11 @@ class PayrollSalaryController extends Controller
                                 if($holiday==0 && $nightdiff>0){
                                     if($deduction_type==1){  
                                       
-                                        $normal = $hours - $nightdiff;
-                                        $normal_calc = ($normal * $adjustment_rate) * $hourly_rate;
-                                        $nd_calc = (($nightdiff * $adjustment_rate) * $hourly_rate) * $np_rate;
+                                        // $normal = $hours - $nightdiff;
+                                        // $normal_calc = ($normal * $adjustment_rate) * $hourly_rate;
+                                        // $nd_calc = (($nightdiff * $adjustment_rate) * $hourly_rate) * $np_rate;
 
-                                        $total_daily_rate = $normal_calc + $nd_calc;
+                                        // $total_daily_rate = $normal_calc + $nd_calc;
 
                                         if($hours<8){
                                             $normal = $hours - $nightdiff;
@@ -323,6 +424,13 @@ class PayrollSalaryController extends Controller
                                             $nd_calc = (($nightdiff * $adjustment_rate) * $hourly_rate) * $np_rate;
 
                                             $total_daily_rate = $normal_calc + $nd_calc;
+                                            $rd_amount =(($hours * $adjustment_rate) * $hourly_rate);
+                                            $holiday_amount =0;
+                                            $np_amount = (($nightdiff * $adjustment_rate) * $hourly_rate) * ($np_rate-1);
+
+                                            $normal_hours=$normal;
+                                            $np_hours=$nightdiff;
+
                                         } else { 
                                             $normal = $hours - $nightdiff;
                                             $normal_no_ot = 8 - $nightdiff;
@@ -331,6 +439,12 @@ class PayrollSalaryController extends Controller
                                             $nd_calc = (($nightdiff * $adjustment_rate) * $hourly_rate) * $np_rate;
 
                                             $total_daily_rate = $normal_calc + $nd_calc; 
+
+                                            $rd_amount =((8 * $adjustment_rate) * $hourly_rate);
+                                            $holiday_amount =0;
+                                            $np_amount = (($nightdiff * $adjustment_rate) * $hourly_rate) * ($np_rate-1);
+                                            $normal_hours=$normal_no_ot;
+                                            $np_hours=$nightdiff;
                                         }
 
                                     }
@@ -349,19 +463,26 @@ class PayrollSalaryController extends Controller
                                 //////////////////////////  END CHECK IF NIGHT DIFFERENTIAL ////////////////////////////////
                                 
                                      ////////////////////////// END CHECK IF HOLIDAY ////////////////////////////////
-    
-                                
-                                    $save = RDDetail::create([
-                                        'rd_head_id'=>$save_head_id,
+                            $counthead= AdjCalcHead::where('salary_month', $month)
+                            ->where('salary_year', $year)
+                            ->where('cutoff', $cutoff)
+                            ->count();
+                                    $save = AdjCalcDetail::create([
+                                        'adj_calc_head_id'=>$save_head_id,
                                         'employee_id'=>$rdemp['employee_id'],
                                         'personal_id'=>$rdemp['personal_id'],
                                         'rd_date'=>$rdemp['rest_days'],
                                         'rd_hours'=>$hours,
+                                        'normal_hours'=>$normal_hours,
+                                        'np_hours'=>$np_hours,
                                         'hourly_rate'=>$hourly_rate,
+                                        'rd_amount'=>$rd_amount,
                                         'np_rate'=>$np_rate,
+                                        'np_amount'=>$np_amount,
                                         'holiday_rate'=>$holiday_rate,
+                                        'holiday_amount'=>$holiday_amount,
                                         'rd_rate'=>$adjustment_rate,
-                                        'total_rd_amount'=>$total_daily_rate
+                                        'total_amount'=>$total_daily_rate
                                     ]);
 
                             }
