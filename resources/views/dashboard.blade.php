@@ -5,24 +5,39 @@
         <div class="flex flex-col flex-wrap sm:flex-row ">
             <div class="w-7/12">
                 <div class="mb-2 mx-0 xl:mr-2">
-                    <div class="shadow-md rounded-lg bg-white white:bg-gray-700 w-full">
-                        <p class="font-bold text-md p-4 text-black white:text-white">
-                            Current Cut Off
-                            <span class="text-sm text-gray-500 white:text-gray-300 white:text-white ml-2">
-                                December 20, 2022 - January 5, 2023
-                            </span>
-                        </p>
+                    <div class="shadow-md rounded-lg w-full bg-gradient-to-r from-blue-500 to-blue-300">
+                        <div class="flex justify-between ">
+                            <div class="px-5 py-6">
+                                <p class="font-bold text-lg text-white uppercase">
+                                    December 20, 2022 - January 5, 2023
+                                </p>
+                                <p class="text-sm text-white"> 
+                                    Current Cut Off
+                                </p>
+                            </div>
+                            <div class="px-5 py-2">
+                                <img class="w-20" src="../images/calendar.png" alt="Calendar">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="mb-2 mx-0 xl:mr-2">
                     <div class="flex justify-between space-x-2">
                         <div class="shadow-md rounded-lg bg-white white:bg-gray-700 w-full">
-                            <p class="font-bold text-md p-4 text-black white:text-white">
-                                Unfiled Leave
-                                <span class="text-sm text-gray-500 white:text-gray-300 white:text-white ml-2">
-                                    (05)
-                                </span>
-                            </p>
+                            <div class="flex justify-between">
+                                <div>
+                                    <p class="font-bold text-md p-4 text-black white:text-white">
+                                        Unfiled Leave
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-md p-4 text-black white:text-white">
+                                        (05)
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            
                         </div>
                         <div class="shadow-md rounded-lg bg-white white:bg-gray-700 w-full">
                             <p class="font-bold text-md p-4 text-black white:text-white">

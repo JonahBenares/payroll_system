@@ -80,6 +80,18 @@
                  </form>
                 <?php $month_year = $filters['year']."-".$filters['month']; ?>
                 <?php if(!empty($filters['month'])): ?>
+                <div class="flex justify-center space-x-2">
+                    <a href="<?php echo e(route('rd_computation',['month'=>$filters['month'],'year'=>$filters['year'],'cutoff'=>$filters['cutoff']])); ?>" class="flex items-center justify-center px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                        <span>Rest Day</span>
+                    </a>
+                    <a href="" class="flex items-center justify-center px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                        <span>Holiday</span>
+                    </a>
+                    <a href="" class="flex items-center justify-center px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                        <span>Night Premium</span>
+                    </a>
+                </div>
+
                 <div class="flex mt-5 uppercase">
                     <p class="text-left text-md uppercase text-gray-600 pt-2 leading-none"><span class="font-bold pr-1"></span><?php echo e(date("F Y",strtotime($month_year))); ?> <span class="text-xs">- <?php echo e($filters['cutoff']); ?> </span></p>
                 </div>
@@ -162,35 +174,33 @@
                                                             </svg>
                                                         </button>
                                                     </div>
+                                                
                                                     <table class="w-full text-sm text-left">
                                                         <tr class="bg-white border-b">
                                                             <td colspan="2" class="py-2 px-2 font-medium text-base text-gray-500 whitespace-nowrap ">Adjustments</td>
                                                         </tr>
+                                                        <?php $__currentLoopData = $payslipinfo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <?php if($pi->pay_type == 1): ?>
                                                         <tr class="bg-white border-b">
-                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Rest Day</td>
-                                                            <td align="right">0</td>
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap "><?php echo e($pi->description); ?></td>
+                                                                <?php if($pi->editable == 1): ?>
+                                                                <td align="right"><input type="text" name="adjustment_<?php echo e($pi->id); ?>" class="text-right bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="00" required></td>
+                                                                <?php else: ?>
+                                                                <td align="right">
+                                                                    <input type="text" name="adjustment_<?php echo e($pi->id); ?>" class="border-0 text-right" disabled value="0">
+                                                                    <input type="hidden" name="payslip_id_<?php echo e($pi->id); ?>" value="<?php echo e($pi->id); ?>">
+                                                                </td>
+                                                                <?php endif; ?>
                                                         </tr>
-                                                        <tr class="bg-white border-b">
-                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Holiday Pay</td>
-                                                            <td align="right">0</td>
-                                                        </tr>
-                                                        <tr class="bg-white border-b">
-                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Overtime Pay</td>
-                                                            <td align="right">0</td>
-                                                        </tr>
-                                                        <tr class="bg-white border-b">
-                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Night Premium</td>
-                                                            <td align="right">0</td>
-                                                        </tr>
-                                                        <tr class="bg-white border-b">
-                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Adjustments</td>
-                                                            <td align="right"><input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="00" required></td>
-                                                        </tr>
+                                                            <?php endif; ?>
+                                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                      
                                                         <tr class="bg-white border-b text-lg bg-yellow-200">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Total</td>
                                                             <td align="right"><b>550</b></td>
                                                         </tr>
                                                     </table>
+                                                   
                                                 </div>
                                             </div>
                                         </div>
@@ -236,14 +246,20 @@
                                                         <tr class="bg-white border-b">
                                                             <td colspan="2" class="py-2 px-2 font-medium text-base text-gray-500 whitespace-nowrap ">Less</td>
                                                         </tr>
+                                                        <?php $__currentLoopData = $payslipinfo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <?php if($pi->pay_type == 2): ?>
                                                         <tr class="bg-white border-b">
-                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Absences/Undertime</td>
-                                                            <td align="right">150</td>
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap "><?php echo e($pi->description); ?></td>
+                                                                <?php if($pi->editable == 1): ?>
+                                                                <td align="right"><input type="text" name="less_gp_<?php echo e($pi->id); ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="00" required></td>
+                                                                <?php else: ?>
+                                                                <td><input type="text" name="less_gp_<?php echo e($pi->id); ?>" class="border-0 text-right" disabled value="0"></td>
+                                                                <input type="hidden" name="payslip_id_<?php echo e($pi->id); ?>" value="<?php echo e($pi->id); ?>">
+                                                                <?php endif; ?>
                                                         </tr>
-                                                        <tr class="bg-white border-b">
-                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Tardiness</td>
-                                                            <td align="right">92</td>
-                                                        </tr>
+                                                            <?php endif; ?>
+                                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                      
                                                         <tr class="bg-white border-b text-lg bg-yellow-200">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Total</td>
                                                             <td align="right"><b>242</b></td>
@@ -297,50 +313,19 @@
                                                         <tr class="bg-white border-b">
                                                             <td colspan="2" class="py-2 px-2 font-medium text-base text-gray-500 whitespace-nowrap ">Deductions</td>
                                                         </tr>
+                                                        <?php $__currentLoopData = $payslipinfo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <?php if($pi->pay_type == 3): ?>
                                                         <tr class="bg-white border-b">
-                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">SSS Premium</td>
-                                                            <td align="right">1,900</td>
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap "><?php echo e($pi->description); ?></td>
+                                                                <?php if($pi->editable == 1): ?>
+                                                                <td align="right"><input type="text" name="deductions_<?php echo e($pi->id); ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="00" required></td>
+                                                                <?php else: ?>
+                                                                <td><input type="text" name="deductions_<?php echo e($pi->id); ?>"  class="border-0 text-right" disabled value="0"></td>
+                                                                <input type="hidden" name="payslip_id_<?php echo e($pi->id); ?>" value="<?php echo e($pi->id); ?>">
+                                                                <?php endif; ?>
                                                         </tr>
-                                                        <tr class="bg-white border-b">
-                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">SSS Loan</td>
-                                                            <td align="right">4,000</td>
-                                                        </tr>
-                                                        <tr class="bg-white border-b">
-                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Withholding TAX</td>
-                                                            <td align="right">0</td>
-                                                        </tr>
-                                                        <tr class="bg-white border-b">
-                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">PHILHEALTH</td>
-                                                            <td align="right">500</td>
-                                                        </tr>
-                                                        <tr class="bg-white border-b">
-                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">PAG-IBIG FUND</td>
-                                                            <td align="right">500</td>
-                                                        </tr>
-                                                        <tr class="bg-white border-b">
-                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">PAG-IBIG MP2</td>
-                                                            <td align="right">1,500</td>
-                                                        </tr>
-                                                        <tr class="bg-white border-b">
-                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">COOP INVESTMENT</td>
-                                                            <td align="right">2,000</td>
-                                                        </tr>
-                                                        <tr class="bg-white border-b">
-                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">COOP LOAN</td>
-                                                            <td align="right">0</td>
-                                                        </tr>
-                                                        <tr class="bg-white border-b">
-                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">AUB LOAN</td>
-                                                            <td align="right">0</td>
-                                                        </tr>
-                                                        <tr class="bg-white border-b">
-                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Others</td>
-                                                            <td align="right"><input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="00" required></td>
-                                                        </tr>
-                                                        <tr class="bg-white border-b text-lg bg-yellow-200">
-                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Total</td>
-                                                            <td align="right"><b>10,400</b></td>
-                                                        </tr>
+                                                            <?php endif; ?>
+                                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                     </table>
                                                 </div>
                                             </div>
@@ -375,12 +360,11 @@
         </div>
     </div>
 
-    
-        
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da)): ?>
 <?php $component = $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da; ?>
 <?php unset($__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da); ?>
 <?php endif; ?>
+
 <?php /**PATH C:\xampp\htdocs\payroll_system\resources\views/payroll_salary/index.blade.php ENDPATH**/ ?>
