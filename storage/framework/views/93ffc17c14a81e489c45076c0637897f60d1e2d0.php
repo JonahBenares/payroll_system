@@ -137,6 +137,9 @@
                                     <li class="relative">
                                         <a href="<?php echo e(route('swapschedule.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Swap Schedule</a>
                                     </li>
+                                    <li class="relative">
+                                        <a href="<?php echo e(route('changeSched.index')); ?>" class="w-full text-sm font-thin text-gray-500 white:text-gray-200 flex items-center px-7 py-2 my-1 transition-colors duration-200 justify-start hover:text-blue-500" >Change chedule</a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>    

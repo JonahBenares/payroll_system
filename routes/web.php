@@ -36,6 +36,7 @@ use App\Http\Controllers\DTRsiteController;
 use App\Http\Controllers\OTofficeController;
 use App\Http\Controllers\OTsiteController;
 use App\Http\Controllers\overallOTController;
+use App\Http\Controllers\ChangeScheduleController;
 
 
 
@@ -121,15 +122,15 @@ Route::post('/leavefailure/unfiled', [LeaveFailureController::class, 'unfiled'])
 //FiledLeave
 Route::resource('filedleave', FiledLeaveController::class);
 
-
 // Overtime
 Route::resource('ot', OvertimeController::class); 
 Route::post('/ot/filter_overtime', [OvertimeController::class, 'filter_overtime'])->name('filter_overtime');
 Route::post('/ot/fetchtime', [OvertimeController::class, 'fetchTime']);
 
-
 Route::resource('swapschedule', SwapScheduleController::class); 
 Route::post('/swapschedule/cancel/{id}/', [SwapScheduleController::class, 'cancel'])->name('cancel');
+
+Route::resource('changeSched', ChangeScheduleController::class);
 
 Route::resource('uploadallowance', UploadAllowanceController::class);
 Route::post('/export-allowance',[UploadAllowanceController::class,'exportAllowance'])->name('export-allowance');

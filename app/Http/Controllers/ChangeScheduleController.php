@@ -15,7 +15,7 @@ class ChangeScheduleController extends Controller
      */
     public function index()
     {
-        return view();git
+        return view('change_sched.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class ChangeScheduleController extends Controller
      */
     public function create()
     {
-        //
+        return view('change_sched.create');
     }
 
     /**
@@ -56,9 +56,9 @@ class ChangeScheduleController extends Controller
      * @param  \App\Models\ChangeSchedule  $changeSchedule
      * @return \Illuminate\Http\Response
      */
-    public function edit(ChangeSchedule $changeSchedule)
+    public function edit($id)
     {
-        //
+        return view('changeSched.edit');
     }
 
     /**
