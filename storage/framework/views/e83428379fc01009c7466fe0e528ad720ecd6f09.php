@@ -575,7 +575,7 @@
                         var base_url = '<?php echo e(URL::to("/")); ?>';
                         $.ajax({
                             type: 'POST',
-                            url: base_url+"shiftschedule/fetchEmployees",
+                            url: base_url+"/shiftschedule/fetchEmployees",
                             data: {
                                 employee_id: employee_id,
                                 _token: '<?php echo e(csrf_token()); ?>'
@@ -614,49 +614,117 @@
                 }); 
             });
 
-            var yy=1;
+            
+            //OT Office
+            var counter = document.getElementById("counter").value;
+            if(counter=='0'){
+                var yy=1;
+            }else{
+                var yy = counter;
+            }
             $("body").on("click", ".addAdjustment", function(e) {
                 e.preventDefault();
                 yy++;
                 var $appendadj = $(this).parents('.appendsadj');
-                var nextHtmladj = $appendadj.clone().find("input:text").val('').end();
+                var nextHtmladj = $appendadj.clone().find("input").val('').end();
                 nextHtmladj.attr('id', 'appendsadj' + yy);
                 var hasRmBtn = $('.remAdjustment', nextHtmladj).length > 0;
                 if (!hasRmBtn) {
                     var rmsadj = "<button class='flex items-center justify-center px-1 py-1 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 white:bg-red-600 white:hover:bg-1red-700 white:focus:bg-red-700 hover:bg-red-600 focus:outline-none focus:bg-red-500 focus:ring focus:ring-red-300 focus:ring-opacity-50  remAdjustment'><svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-5 h-5'><path stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12' /></svg></button>";
                     $('.addmoreappendadj', nextHtmladj).append(rmsadj);
                 }
+                document.getElementById("counterY").value = yy;
                 $appendadj.after(nextHtmladj);
+                refreshAdjust();
             });
 
+            function refreshAdjust(){
+                var base_url = '<?php echo e(URL::to("/")); ?>';
+                $(".appendsadj").each(function(index, element){
+                    var ind = index+1;
+                    $(this).find("a.delete_func").attr('id', 'delete_func' + ind);
+                    var total_amount_check = document.getElementsByClassName("total_amount")[index].value;
+                    if(total_amount_check!=''){
+                        document.getElementById("delete_func"+ind).style.display = "block";
+                    }else{
+                        document.getElementById("delete_func"+ind).style.display = "none";
+                        document.getElementsByClassName("total_amount")[index].style.background="#fff";
+                    }
+                });
+            }
+
+            $( document ).ready(function() {
+                refreshAdjust();
+            });
+            
             $("body").on("click", ".remAdjustment", function() {
                 $(this).parents('.appendsadj').remove();
             });
 
             function calculateAdjustment(){
-                $(".appendsadj").each(function(index, element){
-                    var ind = index+1;
-                    var amount = document.getElementById("amount"+ind).value;
-                    var days_hr = document.getElementById("days_hr"+ind).value;
-                    var total_amnt = document.getElementById("total_amount"+ind).value;
-                    if(amount==0){
+                var amount = document.getElementsByClassName("amount");
+                var overall_total =0;
+                var index=0;
+                $('.total_amount').each(function(){
+                    var amnt_disp = document.getElementsByClassName("amount")[index].value;
+                    var dh_disp = document.getElementsByClassName("days_hr")[index].value;
+                    var total_amount = document.getElementsByClassName("total_amount")[index].value;
+                    if(amnt_disp==''){
                         var amnt=0;
                     }else{
-                        var amnt=amount;
+                        var amnt=amnt_disp;
                     }
 
-                    if(days_hr==0){
+                    if(dh_disp==''){
                         var dh=0;
                     }else{
-                        var dh=days_hr;
+                        var dh=dh_disp;
                     }
-                    //var total = (parseFloat(amnt)*parseFloat(dh));
-                    var arr = [1, 2, 3, 4];
-                    var total = 0;
-                    for (var i in arr) {
-                    total += arr[i];
+
+                    if(total_amount==''){
+                        var total=0;
+                    }else{
+                        var total=total_amount;
                     }
-                    document.getElementById("total_amount"+ind).value = parseFloat(total).toFixed(2);
+
+                    // var total_disp = parseFloat(amnt) * parseFloat(dh);
+                    // document.getElementsByClassName("total_amount")[index].value = parseFloat(total_disp);
+
+                    if(amnt=='0' && dh=='0'){
+                        overall_total += parseFloat(total);
+                    }
+
+                    index++;
+                });   
+                document.getElementById("overall_adjustment").innerHTML = parseFloat(overall_total).toFixed(2);
+            }
+
+            function saveOtreport(){
+                var base_url = '<?php echo e(URL::to("/")); ?>';
+                // var amount = [];
+                // $('input[name="amount[]"]').each( function() {
+                //     amount.push(this.value);
+                // });
+                // var days_hr = [];
+                // $('input[name="days_hr[]"]').each( function() {
+                //     days_hr.push(this.value);
+                // });
+                // var total_amount = [];
+                // $('input[name="total_amount[]"]').each( function() {
+                //     total_amount.push(this.value);
+                // });
+                var form_data = $("#formOT").serialize();
+                $.ajax({
+                    url: base_url+"/otOffice/store",
+                    type: 'POST',
+                    data: {
+                        form_data:form_data,
+                        _token: '<?php echo e(csrf_token()); ?>'
+                    },
+                    success: function(data){
+                        alert(data);
+                        //$('#nav')[0].reset();
+                    }
                 });
             }
 

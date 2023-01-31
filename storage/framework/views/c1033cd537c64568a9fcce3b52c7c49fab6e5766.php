@@ -154,16 +154,31 @@
                                 <td class="border border-gray-300 px-2 text-right text-xs"><?php echo e((!empty($daily_rate)) ? number_format($daily_rate*($undertime_disp / 8),2) : ''); ?></td>
                             </tr>
                             <tr>
+                                <?php 
+                                    if(!empty($daily_rate)){ 
+                                        $tardiness_rate=$daily_rate/8;
+                                    }
+                                ?>
                                 <td class="border border-gray-300 px-2 text-left">Tardiness</td>
                                 <td class="border border-gray-300 px-2 text-right text-xs"><?php echo e((!empty($daily_rate)) ? number_format($daily_rate/8,2) : '0.00'); ?></td>
-                                <td class="border border-gray-300 px-2 text-right text-xs">1,000.00</td>
-                                <td class="border border-gray-300 px-2 text-right text-xs">19,000.00</td>
+                                <td class="border border-gray-300 px-2 text-right text-xs"><?php echo e((!empty($daily_rate)) ? number_format($tardy_disp,2) : '0.00'); ?></td>
+                                <td class="border border-gray-300 px-2 text-right text-xs"><?php echo e((!empty($daily_rate)) ? number_format($tardiness_rate*$tardy_disp,2) : '0.00'); ?></td>
                             </tr>
                             <tr class="bg-gray-200">
                                 <td class="border border-gray-300 px-2 text-left font-bold">Total</td>
                                 <td class="border border-gray-300 px-2 text-right text-xs"> </td>
                                 <td class="border border-gray-300 px-2 text-right text-xs"></td>
-                                <td class="border border-gray-300 px-2 text-right font-bold">23,387.00</td>
+                                <td class="border border-gray-300 px-2 text-right font-bold">
+                                    <?php 
+                                        if(!empty($daily_rate)){ 
+                                            $total_absent=$daily_rate * $absence_count;
+                                            $total_undertime=$daily_rate*($undertime_disp / 8);
+                                            $total_tardiness=$tardiness_rate*$tardy_disp;
+                                            $total_aut=$total_absent + $total_undertime + $total_tardiness;
+                                            echo number_format($total_aut,2);
+                                        }
+                                    ?>
+                                </td>
                             </tr>
                             <tr>
                                 <td class="border border-gray-300 px-2 text-left">Adjustments</td>
@@ -173,36 +188,72 @@
                                     
                                 </td>
                             </tr>
-                            <?php if(!empty($adjustment)): ?>
-                                <?php $x=1; ?>
+                            <?php 
+                                $total_amnt=array(); 
+                            ?>
+                            <?php if(!empty($adjustment_count) && $adjustment_count!=0): ?>
+                                <?php 
+                                    $x=1;        
+                                ?>
                                 <?php $__currentLoopData = $adjustment; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $adj): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php 
+                                        if($adj->amount=='0' && $adj->days_hr=='0'){
+                                            $total_amnt[]=$adj->total_amount; 
+                                        }
+                                    ?>
                                     <tr class="appendsadj" id="appendsadj0">
                                         <td class="border border-gray-300 text-left">
+                                            <div id='loader<?php echo e($x); ?>'>
+                                                <input type="hidden" name="adjustment_det_id[]" id='adjustment_det_id<?php echo e($x); ?>' class="text-sm p-0 w-full border-0 px-2 adjustment_det_id" value="<?php echo e((!empty($adj->id)) ? $adj->id : '0'); ?>">
+                                            </div>
                                             <input type="text" name="description[]" class="text-sm p-0 w-full border-0 px-2" value="<?php echo e((!empty($adj->description)) ? $adj->description : ''); ?>">
                                         </td>
                                         <td class="border border-gray-300  text-right ">
-                                            <input type="text" name="amount[]" id="amount<?php echo e($x); ?>" class="text-xs p-0 w-full border-0 px-2 text-right" value="<?php echo e(($adj->amount!='0') ? ((!empty($adj->amount)) ? $adj->amount : '') : ''); ?>" onkeyup='calculateAdjustment()'>
+                                            <input type="text" name="amount[]" id="amount" class="text-xs p-0 w-full border-0 px-2 text-right amount" value="<?php echo e(($adj->amount!='0') ? ((!empty($adj->amount)) ? $adj->amount : '') : ''); ?>" onchange="calculateAdjustment()">
                                         </td>
                                         <td class="border border-gray-300 px-2 text-right text-xs">
-                                            <input type="text" name="days_hr[]" id="days_hr<?php echo e($x); ?>" class="text-xs p-0 w-full border-0 px-2 text-right" value="<?php echo e(($adj->days_hr!='0') ? ((!empty($adj->days_hr)) ? $adj->days_hr : '') : ''); ?>" onkeyup='calculateAdjustment()'>
+                                            <input type="text" name="days_hr[]" id="days_hr" class="text-xs p-0 w-full border-0 px-2 text-right days_hr" value="<?php echo e(($adj->days_hr!='0') ? ((!empty($adj->days_hr)) ? $adj->days_hr : '') : ''); ?>" onchange="calculateAdjustment()">
                                         </td>
                                         <td class="border border-gray-300 px-2 text-right text-xs flex justify-between space-x-1 addmoreappendadj">
-                                            <input type="text" name="total_amount[]" id="total_amount<?php echo e($x); ?>" class="text-xs p-0 w-full border-0 px-2 text-right" value="<?php echo e($adj->total_amount); ?>">
+                                            <input type="text" name="total_amount[]" id="total_amount" class="text-xs p-0 w-full border-0 px-2 text-right total_amount" value="<?php echo e($adj->total_amount); ?>" onkeyup="calculateAdjustment()" <?php echo e(($adj->amount=='0' && $adj->days_hr=='0' && $adj->total_amount!='0') ? 'style=background:#17f3f3;' : ''); ?>>
                                             <button class="text-sm bg-blue-600 text-white round-md p-1 addAdjustment">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                                                     <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
                                                 </svg>
                                             </button>
+                                            <a id="delete_func<?php echo e($x); ?>" href="<?php echo e(route('destroyed',['id'=>$adj->id,'emp_id'=>$adj->employee_id])); ?>" class="flex items-center justify-center px-1 py-1 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 white:bg-red-600 white:hover:bg-1red-700 white:focus:bg-red-700 hover:bg-red-600 focus:outline-none focus:bg-red-500 focus:ring focus:ring-red-300 focus:ring-opacity-50 delete_func" title="Delete" onclick="return confirm('Are you sure you want to delete this record?');">
+                                                <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-5 h-5'><path stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12' /></svg>   
+                                            </a>
                                         </td>
                                     </tr>
                                 <?php $x++; ?>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php else: ?>
+                                <tr class="appendsadj" id="appendsadj0">
+                                    <td class="border border-gray-300 text-left">
+                                        <input type="text" name="description[]" class="text-sm p-0 w-full border-0 px-2">
+                                    </td>
+                                    <td class="border border-gray-300  text-right ">
+                                        <input type="text" name="amount[]" id="amount" class="text-xs p-0 w-full border-0 px-2 text-right amount" onchange="calculateAdjustment()">
+                                    </td>
+                                    <td class="border border-gray-300 px-2 text-right text-xs">
+                                        <input type="text" name="days_hr[]" id="days_hr" class="text-xs p-0 w-full border-0 px-2 text-right days_hr" onchange="calculateAdjustment()">
+                                    </td>
+                                    <td class="border border-gray-300 px-2 text-right text-xs flex justify-between space-x-1 addmoreappendadj">
+                                        <input type="text" name="total_amount[]" id="total_amount" class="text-xs p-0 w-full border-0 px-2 text-right total_amount" onkeyup="calculateAdjustment()">
+                                        <button class="text-sm bg-blue-600 text-white round-md p-1 addAdjustment">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
                             <?php endif; ?>
                             <tr class="bg-gray-200">
                                 <td class="border border-gray-300 px-2 text-left font-bold">TOTAL Adjustment</td>
                                 <td class="border border-gray-300 px-2 text-right text-xs"> </td>
                                 <td class="border border-gray-300 px-2 text-right text-xs"></td>
-                                <td class="border border-gray-300 px-2 text-right font-bold">23,387.00</td>
+                                <td class="border border-gray-300 px-2 text-right font-bold" id="overall_adjustment"><?php echo e((!empty($adjustment_count) && $adjustment_count!=0) ? number_format(array_sum($total_amnt),2) : '0.00'); ?></td>
                             </tr>
                             <tr>
                                 <td class="border border-gray-300 px-2 text-left text-xs font-bold" colspan="4">OVERTIME</td>
@@ -366,14 +417,17 @@
                                 <td class="border border-gray-300 px-2 text-left font-bold">TOTAL COMPUTATION</td>
                                 <td class="border border-gray-300 px-2 text-right text-xs"> </td>   
                                 <td class="border border-gray-300 px-2 text-right text-xs"></td>
-                                <td class="border border-gray-300 px-2 text-right text-base font-bold">23,387.00</td>
+                                <td class="border border-gray-300 px-2 text-right text-base font-bold"><?php echo e((!empty($daily_rate)) ? number_format($total_sum + $total_overtime + $total_nightpremium + array_sum($total_amnt) + $total_aut,2) : '0.00'); ?></td>
                             </tr>
                         </table>
+                        <input type="hidden" id="counterY" name="counterY">
+                        <input type='hidden' id="counter" name="counter" value="<?php echo e((!empty($adjustment_count)) ? $adjustment_count : '0'); ?>">
+                        <input type="hidden" name="location_id" value="<?php echo e((!empty($location_id)) ? $location_id : ''); ?>">
                         <input type="hidden" name="personal_id" value="<?php echo e((!empty($personal_id)) ? $personal_id : ''); ?>">
                         <input type="hidden" name="employee_id" value="<?php echo e((!empty($_POST['employee'])) ? $_POST['employee'] : ''); ?>">
                         <input type="hidden" name="period_type" value="<?php echo e((!empty($_POST['period'])) ? $_POST['period'] : ''); ?>">
                         <input type="hidden" name="month_year" value="<?php echo e((!empty($_POST['month']) && !empty($_POST['year'])) ? $_POST['year']."-".$_POST['month'] : ''); ?>">
-                        <input type="submit" class="flex items-center justify-center px-2 py-2 mt-5 text-base tracking-wide text-white transition-colors duration-200 transform bg-indigo-500 rounded-3xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50 w-full" value="submit">
+                        <input type="submit" class="flex items-center justify-center px-2 py-2 mt-5 text-base tracking-wide text-white transition-colors duration-200 transform bg-indigo-500 rounded-3xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50 w-full" value="Save">
                     </div>
                     
                 </form>
