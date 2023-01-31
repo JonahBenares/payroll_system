@@ -176,9 +176,14 @@ Route::resource('dtrSite', DTRsiteController::class);
 //OT Office
 Route::resource('otOffice', OTofficeController::class);
 Route::post('/otOffice/filter_otoffice', [OTofficeController::class, 'filter_otoffice'])->name('filter_otoffice');
+// Route::post('/otOffice/store', [OTofficeController::class, 'store'])->name('store');
 Route::post('/otOffice/fetchEmployee', [OTofficeController::class, 'fetchEmployee']);
+Route::get('/otOffice/destroyed/{id}/{emp_id}', [OTofficeController::class, 'destroy'])->name('destroyed');
 //OT Site
 Route::resource('otSite', OTsiteController::class);
+Route::post('/otSite/filter_otsite', [OTsiteController::class, 'filter_otsite'])->name('filter_otsite');
+Route::get('/otSite/destroy/{id}/{emp_id}', [OTsiteController::class, 'destroy'])->name('destroy');
+
 Route::resource('overall_OT', overallOTController::class);
 Route::post('/overallOT/filter_overallot', [overallOTController::class, 'filter_overallot'])->name('filter_overallot');
 

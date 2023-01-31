@@ -77,11 +77,6 @@
                         </button>
                     </div>
                 </div>
-<<<<<<< HEAD
-                <div class="flex mt-5 uppercase">
-                    <p class="text-left text-md uppercase text-gray-600 pt-2 leading-none"><span class="font-bold pr-1">March</span>2022 <span class="text-xs">- Period </span></p>
-                </div>
-=======
                  </form>
                 <?php $month_year = $filters['year']."-".$filters['month']; ?>
                 <?php if(!empty($filters['month'])): ?>
@@ -89,7 +84,6 @@
                     <p class="text-left text-md uppercase text-gray-600 pt-2 leading-none"><span class="font-bold pr-1"></span><?php echo e(date("F Y",strtotime($month_year))); ?> <span class="text-xs">- <?php echo e($filters['cutoff']); ?> </span></p>
                 </div>
                 <?php endif; ?>
->>>>>>> e1fdbac5381f34b2772d369b2089ea74ca4cf791
                 <div class="overflow-x-auto overflow-y-hidden hover:overflow-y-auto h-100 relative max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 sm:rounded-2xl">
                     <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-10">
