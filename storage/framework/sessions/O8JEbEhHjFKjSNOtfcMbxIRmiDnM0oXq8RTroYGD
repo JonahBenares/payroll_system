@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 a:5:{s:6:"_token";s:40:"TiwjPrsrN1jWvMPVzm1hXHj12wXTcnc75ZtKtCL9";s:9:"_previous";a:1:{s:3:"url";s:42:"https://localhost/payroll_system/dashboard";}s:6:"_flash";a:2:{s:3:"old";a:0:{}s:3:"new";a:0:{}}s:50:"login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d";i:1;s:3:"url";a:1:{s:8:"intended";s:53:"https://localhost/payroll_system/otSite/filter_otsite";}}
+=======
+a:5:{s:6:"_token";s:40:"TiwjPrsrN1jWvMPVzm1hXHj12wXTcnc75ZtKtCL9";s:9:"_previous";a:1:{s:3:"url";s:49:"https://localhost/payroll_system/schedules/create";}s:6:"_flash";a:2:{s:3:"old";a:0:{}s:3:"new";a:0:{}}s:50:"login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d";i:1;s:3:"url";a:1:{s:8:"intended";s:53:"https://localhost/payroll_system/otSite/filter_otsite";}}
+>>>>>>> 2dd0f06f19af7ba0492856a26b7e3ec0deb7fb2c
