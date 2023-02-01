@@ -77,6 +77,56 @@ function getMintimeout($schedule_type,$recorded_time,$personal_id){
 }
 
 
+if (!function_exists('getEmployeeTime')) {
+    
+    function getEmployeeTime($recorded_time,$personal_id){
+        $time_count = Timekeeping::selectraw('min(recorded_time) as starttime, max(recorded_time) as endtime, personal_id')
+        ->whereDate('recorded_time',$recorded_time)
+        ->where('personal_id',$personal_id)
+        ->count();
+
+        //echo $recorded_time . ", " . $personal_id . " = " .$time_count . "<br>";
+
+        if($time_count%2==0){ ///// if equal or divisible by 2 ang timekeeping //////////
+            $time = Timekeeping::selectraw('min(recorded_time) as starttime, max(recorded_time) as endtime, personal_id')
+            ->whereDate('recorded_time',$recorded_time)
+            ->where('personal_id',$personal_id)
+            ->get();
+           // if(!empty($time[0]['personal_id'])){
+                $start_time = $time[0]['starttime'];
+                $end_time = $time[0]['endtime'];
+              
+           // }
+           $time = $start_time."_".$end_time;
+        } else {
+
+            $stime = Timekeeping::selectraw('min(recorded_time) as starttime, personal_id')
+            ->whereDate('recorded_time',$recorded_time)
+            ->where('personal_id',$personal_id)
+            ->get();
+
+            $next_day = date('Y-m-d', strtotime($recorded_time . ' +1 day'));
+           
+            $etime = Timekeeping::selectraw('min(recorded_time) as endtime, personal_id')
+            ->whereDate('recorded_time',$next_day)
+            ->where('personal_id',$personal_id)
+            ->get();
+
+            $start_time = $stime[0]['starttime'];
+            $end_time = $etime[0]['endtime'];
+
+            $time = $start_time."_".$end_time;
+
+           
+          
+        }
+
+        return $time;
+    }
+}
+
+
+
 if (!function_exists('getEmployeeName')) {
     
     function getEmployeeName($id){

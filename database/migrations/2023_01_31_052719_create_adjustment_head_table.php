@@ -13,15 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('change_schedule', function (Blueprint $table) {
+        Schema::create('adjustment_head', function (Blueprint $table) {
             $table->id();
-            $table->date('date_applied')->nullable();
-            $table->foreignId('employee_id')->constrained('employees');
             $table->integer('personal_id');
-            $table->string('schedule_code')->nullable();
+            $table->foreignId('employee_id')->constrained('employees');
+            $table->integer('location_id')->constrained('locations');
+            $table->string('period_type')->nullable();
             $table->string('month_year')->nullable();
-            $table->date('start_date')->nullable();
-            $table->date('end_date')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('change_schedule');
+        Schema::dropIfExists('adjustment_head');
     }
 };
