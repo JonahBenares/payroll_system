@@ -6,7 +6,39 @@
         display: none;
         }
     </style>
-           
+    <!-- Main modal -->
+    <div id="cancelModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+        <div class="inline-block w-full max-w-lg p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl lg:max-w-lg">
+            <!-- Modal content -->
+            <div class="relative ">
+                <form>
+                    <div class="">
+                        <div class="flex justify-between">
+                            <div class="w-3/12 ">
+                                <span class="text-red-500 ">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-24 h-24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="w-9/12">
+                                <p class="text-red-500 text-2xl font-bold mb-2">Warning</p>
+                                <span class="text-lg leading-none">Are you sure you dont want to file this (Type of Leave/Failure) (Date)?</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-end px-2 space-x-1 mt-1">
+                            <button type="button" data-modal-hide="cancelModal" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-gray-300 rounded-2xl white:bg-gray-400 white:hover:bg-gray-500 white:focus:bg-gray-500 hover:bg-gray-400 focus:outline-none focus:bg-gray-300 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                                Cancel
+                            </button>
+                            <button type="submit" data-modal-hide="cancelModal" value="Save" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 rounded-2xl white:bg-red-600 white:hover:bg-red-700 white:focus:bg-red-700 hover:bg-red-600 focus:outline-none focus:bg-red-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                                Confirm
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>     
     <div class="p-4 relative h-full w-full text-center my-10 bg-white rounded-2xl shadow-lg white:bg-gray-800 white:border-gray-700">
         <div class="flex justify-between  pb-4 bg-white white:bg-gray-900">
             <div > 
@@ -70,25 +102,37 @@
                     </tr>
                 </thead>
                 <tbody class="sticky top-12">
-                    <tr class=" border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                        <td class="py-3 px-6">asd</td>
-                        <td class="py-3 px-6">asd</td>
-                        <td class="py-3 px-6">asd</td>
-                        <td class="py-3 px-6">asd</td>
-                        <td class="py-3 px-6">asd</td>
-                        <td class="py-3 px-6"></td>
-                        <td class="py-3 px-6"></td>
-                        <td class="py-3 px-6 flex justify-center space-x-1" align="center">
-                            <a href="{{ route('changeSched.edit', 1) }}" class="" title="Update">
-                                <div class="py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
-                                        <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
-                                        <path d="M5.25 5.25a3 3 0 00-3 3v10.5a3 3 0 003 3h10.5a3 3 0 003-3V13.5a.75.75 0 00-1.5 0v5.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V8.25a1.5 1.5 0 011.5-1.5h5.25a.75.75 0 000-1.5H5.25z" />
-                                    </svg>
-                                </div>
-                            </a>
-                        </td>
-                    </tr>
+                    @if(!empty($change_sched))
+                        @foreach($change_sched AS $cs)
+                        @php 
+                            $exp=explode('-',$cs->month_year);
+                            $year=$exp[0];
+                            $month=$exp[1];
+                        @endphp
+                        <tr class=" border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
+                            <td class="py-3 px-6">{{date('F d,Y',strtotime($cs->date_applied))}}</td>
+                            <td class="py-3 px-6">{{$cs->full_name}}</td>
+                            <td class="py-3 px-6">{{date('F',strtotime($month))}}</td>
+                            <td class="py-3 px-6">{{$year}}</td>
+                            <td class="py-3 px-6">{{date('H:i A',strtotime($cs->time_in))."-".date('H:i A',strtotime($cs->time_out))}}</td>
+                            <td class="py-3 px-6">{{date('F d,Y',strtotime($cs->start_date))}}</td>
+                            <td class="py-3 px-6">{{date('F d,Y',strtotime($cs->end_date))}}</td>
+                            <td class="py-3 px-6 flex justify-center space-x-1" align="center">
+                                <a href="{{ route('changeSched.edit', $cs->id) }}" class="" title="Update">
+                                    <div class="py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                            <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
+                                            <path d="M5.25 5.25a3 3 0 00-3 3v10.5a3 3 0 003 3h10.5a3 3 0 003-3V13.5a.75.75 0 00-1.5 0v5.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V8.25a1.5 1.5 0 011.5-1.5h5.25a.75.75 0 000-1.5H5.25z" />
+                                        </svg>
+                                    </div>
+                                </a>
+                                <button data-modal-target="cancelModal" data-modal-toggle="cancelModal" class="py-2 px-2 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" type="button">
+                                    Cancel
+                                </button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    @endif
                 </tbody>
             </table>
         </div>
