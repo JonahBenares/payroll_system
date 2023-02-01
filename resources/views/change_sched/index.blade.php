@@ -11,26 +11,23 @@
         <div class="inline-block w-full max-w-lg p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl lg:max-w-lg">
             <!-- Modal content -->
             <div class="relative ">
-                <form>
+                <form action="{{ route('cancel_sched') }}" method='POST'>
+                    @csrf
                     <div class="">
-                        <div class="flex justify-between">
-                            <div class="w-3/12 ">
-                                <span class="text-red-500 ">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-24 h-24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
-                                    </svg>
-                                </span>
-                            </div>
-                            <div class="w-9/12">
-                                <p class="text-red-500 text-2xl font-bold mb-2">Warning</p>
-                                <span class="text-lg leading-none">Are you sure you dont want to file this (Type of Leave/Failure) (Date)?</span>
-                            </div>
+                        <div class="px-2">
+                            <label for="cancel_date" class="block text-left text-sm text-gray-700 capitalize white:text-gray-200">Cancellation Date</label>
+                            <input type='date' name="cancel_date" id="cancel_date" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                        </div>
+                        <div class="px-2">
+                            <label for="cancel_reason" class="block text-left text-sm text-gray-700 capitalize white:text-gray-200">Reason For Cancellation</label>
+                            <textarea name="cancel_reason" id="cancel_reason" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40"></textarea>
                         </div>
                         <div class="flex justify-end px-2 space-x-1 mt-1">
+                            <input type='hidden' name="checker_id" id='checker_id'>
                             <button type="button" data-modal-hide="cancelModal" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-gray-300 rounded-2xl white:bg-gray-400 white:hover:bg-gray-500 white:focus:bg-gray-500 hover:bg-gray-400 focus:outline-none focus:bg-gray-300 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                                 Cancel
                             </button>
-                            <button type="submit" data-modal-hide="cancelModal" value="Save" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 rounded-2xl white:bg-red-600 white:hover:bg-red-700 white:focus:bg-red-700 hover:bg-red-600 focus:outline-none focus:bg-red-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                            <button type="submit" data-modal-hide="cancelModal" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 rounded-2xl white:bg-red-600 white:hover:bg-red-700 white:focus:bg-red-700 hover:bg-red-600 focus:outline-none focus:bg-red-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                                 Confirm
                             </button>
                         </div>
@@ -126,7 +123,7 @@
                                         </svg>
                                     </div>
                                 </a>
-                                <button data-modal-target="cancelModal" data-modal-toggle="cancelModal" class="py-2 px-2 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" type="button">
+                                <button id="check_id" data-modal-target="cancelModal" data-modal-toggle="cancelModal" class="py-2 px-2 text-xs font-medium text-center text-white bg-red-500 rounded-2xl hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 white:bg-blue-600 white:hover:bg-red-500 white:focus:ring-blue-800" type="button" data-id='{{$cs->id}}'>
                                     Cancel
                                 </button>
                             </td>
@@ -139,7 +136,10 @@
 
 
     </div>
-
-    
-        
+<script>
+    $(document).on("click", "#check_id", function () {
+        var check_id = $(this).attr("data-id");
+        $("#checker_id").val(check_id);
+    });
+</script>
 </x-app-layout>

@@ -18,5 +18,8 @@ class ChangeSchedule extends Model
         'month_year',
         'start_date',
         'end_date',
+        'cancel',
+        'cancel_reason',
+        'cancel_date',
     ];
 }

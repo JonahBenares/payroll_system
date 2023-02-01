@@ -131,6 +131,7 @@ Route::resource('swapschedule', SwapScheduleController::class);
 Route::post('/swapschedule/cancel/{id}/', [SwapScheduleController::class, 'cancel'])->name('cancel');
 
 Route::resource('changeSched', ChangeScheduleController::class);
+Route::post('/changeSched/cancel_schedule/', [ChangeScheduleController::class, 'cancel_schedule'])->name('cancel_sched');
 
 Route::resource('uploadallowance', UploadAllowanceController::class);
 Route::post('/export-allowance',[UploadAllowanceController::class,'exportAllowance'])->name('export-allowance');

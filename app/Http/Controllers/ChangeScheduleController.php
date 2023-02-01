@@ -17,7 +17,7 @@ class ChangeScheduleController extends Controller
      */
     public function index()
     {
-        $change_sched=ChangeSchedule::join('employees','employees.id','=','change_schedule.employee_id')->join('schedule_code','schedule_code.id','=','change_schedule.schedule_code')->get(['change_schedule.id','month_year','date_applied','full_name','time_in','time_out','start_date','end_date']);
+        $change_sched=ChangeSchedule::join('employees','employees.id','=','change_schedule.employee_id')->join('schedule_code','schedule_code.id','=','change_schedule.schedule_code')->where('cancel','0')->get(['change_schedule.id','month_year','date_applied','full_name','time_in','time_out','start_date','end_date']);
         return view('change_sched.index',compact('change_sched'));
     }
 
@@ -52,6 +52,7 @@ class ChangeScheduleController extends Controller
                 'month_year'=> $month_year,
                 'start_date'=> $request->start_date,
                 'end_date'=> $request->end_date,
+                'cancel'=> 0,
             ]
         );
 
@@ -108,9 +109,21 @@ class ChangeScheduleController extends Controller
                 'schedule_code' => $request->schedule_code,
                 'start_date' => $request->start_date,
                 'end_date' => $request->end_date,
+                'cancel'=> 0,
             ]
         );
         return redirect()->route('changeSched.edit',$id)->with('success',"Change Schedule Updated Successfully");
+    }
+
+    public function cancel_schedule(Request $request){
+        $change_schedule = ChangeSchedule::find($request->checker_id);
+        $change_schedule->update(
+            [
+                'cancel_date' => $request->cancel_date,
+                'cancel_reason' => $request->cancel_reason,
+                'cancel'=> 1,
+            ]
+        );
     }
 
     /**
