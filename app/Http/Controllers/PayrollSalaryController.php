@@ -490,6 +490,7 @@ class PayrollSalaryController extends Controller
                                         'holiday_amount'=>$holiday_amount,
                                         'rd_rate'=>$adjustment_rate,
                                         'total_amount'=>$total_daily_rate
+                                        
                                     ]);
                             }
 
