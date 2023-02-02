@@ -626,7 +626,10 @@ class ComposerStaticInitb740f3480b3a58e90e3ea85b9f582af9
         'App\\Http\\Controllers\\Auth\\RegisteredUserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisteredUserController.php',
         'App\\Http\\Controllers\\Auth\\VerifyEmailController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerifyEmailController.php',
         'App\\Http\\Controllers\\BusUnitController' => __DIR__ . '/../..' . '/app/Http/Controllers/BusUnitController.php',
+<<<<<<< HEAD
         'App\\Http\\Controllers\\ChangeScheduleController' => __DIR__ . '/../..' . '/app/Http/Controllers/ChangeScheduleController.php',
+=======
+>>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\CutOffController' => __DIR__ . '/../..' . '/app/Http/Controllers/CutOffController.php',
         'App\\Http\\Controllers\\DTRofficeController' => __DIR__ . '/../..' . '/app/Http/Controllers/DTRofficeController.php',

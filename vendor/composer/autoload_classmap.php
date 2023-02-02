@@ -23,7 +23,10 @@ return array(
     'App\\Http\\Controllers\\Auth\\RegisteredUserController' => $baseDir . '/app/Http/Controllers/Auth/RegisteredUserController.php',
     'App\\Http\\Controllers\\Auth\\VerifyEmailController' => $baseDir . '/app/Http/Controllers/Auth/VerifyEmailController.php',
     'App\\Http\\Controllers\\BusUnitController' => $baseDir . '/app/Http/Controllers/BusUnitController.php',
+<<<<<<< HEAD
     'App\\Http\\Controllers\\ChangeScheduleController' => $baseDir . '/app/Http/Controllers/ChangeScheduleController.php',
+=======
+>>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\CutOffController' => $baseDir . '/app/Http/Controllers/CutOffController.php',
     'App\\Http\\Controllers\\DTRofficeController' => $baseDir . '/app/Http/Controllers/DTRofficeController.php',
@@ -83,7 +86,10 @@ return array(
     'App\\Models\\AllowanceSummary' => $baseDir . '/app/Models/AllowanceSummary.php',
     'App\\Models\\BusUnit' => $baseDir . '/app/Models/BusUnit.php',
     'App\\Models\\BusinessUnit' => $baseDir . '/app/Models/BusinessUnit.php',
+<<<<<<< HEAD
     'App\\Models\\ChangeSchedule' => $baseDir . '/app/Models/ChangeSchedule.php',
+=======
+>>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
     'App\\Models\\CutOff' => $baseDir . '/app/Models/CutOff.php',
     'App\\Models\\DTRoffice' => $baseDir . '/app/Models/DTRoffice.php',
     'App\\Models\\DTRsite' => $baseDir . '/app/Models/DTRsite.php',

@@ -131,7 +131,10 @@ Route::resource('swapschedule', SwapScheduleController::class);
 Route::post('/swapschedule/cancel/{id}/', [SwapScheduleController::class, 'cancel'])->name('cancel');
 
 Route::resource('changeSched', ChangeScheduleController::class);
+<<<<<<< HEAD
 Route::post('/changeSched/cancel_schedule/', [ChangeScheduleController::class, 'cancel_schedule'])->name('cancel_sched');
+=======
+>>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
 
 Route::resource('uploadallowance', UploadAllowanceController::class);
 Route::post('/export-allowance',[UploadAllowanceController::class,'exportAllowance'])->name('export-allowance');
@@ -159,7 +162,10 @@ Route::get('/payrollbonus/show/{personal_id}/{type}/{year}', [PayrollBonusContro
 Route::resource('payrollsalary', PayrollSalaryController::class); 
 Route::get('/payroll_salary/bulk', [PayrollSalaryController::class, 'printBulk'])->middleware(['auth'])->name('printBulkSalary');
 Route::get('/rd_computation/{month}/{year}/{cutoff}', [PayrollSalaryController::class, 'rd_computation'])->name('rd_computation');
+<<<<<<< HEAD
 Route::get('/holiday_computation/{month}/{year}/{cutoff}', [PayrollSalaryController::class, 'holiday_computation'])->name('holiday_computation');
+=======
+>>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
 
 Route::resource('payrollbonus', PayrollBonusController::class); 
 Route::get('/payroll_bonus/bulkprinting', [PayrollBonusController::class, 'printBulk'])->middleware(['auth'])->name('printBulkBonus');

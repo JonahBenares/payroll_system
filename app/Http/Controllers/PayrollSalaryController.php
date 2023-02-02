@@ -96,7 +96,11 @@ class PayrollSalaryController extends Controller
                             ->where('cutoff', $cutoff)
                             ->count();
                 
+<<<<<<< HEAD
                 if($counthead==0){
+=======
+                if($count==0){
+>>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
 
                     $save_head_id = AdjCalcHead::insertGetId([
                         'salary_year'=>$year,
@@ -162,6 +166,7 @@ class PayrollSalaryController extends Controller
                          
                         foreach($getRDsEmp AS $rdemp){
 
+<<<<<<< HEAD
                             // $time_count = Timekeeping::selectraw('min(recorded_time) as starttime, max(recorded_time) as endtime, personal_id')
                             // ->whereDate('recorded_time',$rdemp['rest_days'])
                             // ->where('personal_id',$rdemp['personal_id'])
@@ -203,6 +208,44 @@ class PayrollSalaryController extends Controller
                             $t=explode("_",$time);
                             $start_time=$t[0];
                             $end_time=$t[1];
+=======
+                            $time_count = Timekeeping::selectraw('min(recorded_time) as starttime, max(recorded_time) as endtime, personal_id')
+                            ->whereDate('recorded_time',$rdemp['rest_days'])
+                            ->where('personal_id',$rdemp['personal_id'])
+                            ->count();
+
+                       
+                        
+                            if($time_count%2==0){ ///// if equal or divisible by 2 ang timekeeping //////////
+                                $time = Timekeeping::selectraw('min(recorded_time) as starttime, max(recorded_time) as endtime, personal_id')
+                                ->whereDate('recorded_time',$rdemp['rest_days'])
+                                ->where('personal_id',$rdemp['personal_id'])
+                                ->get();
+                               // if(!empty($time[0]['personal_id'])){
+                                    $start_time = $time[0]['starttime'];
+                                    $end_time = $time[0]['endtime'];
+                                  
+                               // }
+                            } else {
+
+                                $stime = Timekeeping::selectraw('min(recorded_time) as starttime, personal_id')
+                                ->whereDate('recorded_time',$rdemp['rest_days'])
+                                ->where('personal_id',$rdemp['personal_id'])
+                                ->get();
+
+                                $next_day = date('Y-m-d', strtotime($rdemp['rest_days'] . ' +1 day'));
+                               
+                                $etime = Timekeeping::selectraw('min(recorded_time) as endtime, personal_id')
+                                ->whereDate('recorded_time',$next_day)
+                                ->where('personal_id',$rdemp['personal_id'])
+                                ->get();
+
+                                $start_time = $stime[0]['starttime'];
+                                $end_time = $etime[0]['endtime'];
+
+                              
+                            }
+>>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
 
                             if(!empty($end_time)){
                           
@@ -338,6 +381,7 @@ class PayrollSalaryController extends Controller
                                                     $rd_amount = 0;
                                                     $holiday_amount = (8 * PERCENT_RD_SH) * $hourly_rate;
                                                     $np_amount = 0;
+<<<<<<< HEAD
 
                                                     $normal_hours=8;
                                                     $np_hours=0;
@@ -389,11 +433,189 @@ class PayrollSalaryController extends Controller
                                                         $np_hours=$nightdiff;
 
 
+=======
+
+                                                    $normal_hours=8;
+                                                    $np_hours=0;
+
+                                                } else {
+                                                    $total_daily_rate = ($hours * PERCENT_RD_SH) * $hourly_rate;
+                                                    $rd_amount = 0;
+                                                    $holiday_amount = ($hours * PERCENT_RD_SH) * $hourly_rate;
+                                                    $np_amount = 0;
+
+                                                    $normal_hours=$hours;
+                                                    $np_hours=0;
+                                                }
+                                            } else if($nightdiff>0){
+                                              
+
+                                                if($nightdiff == $hours){ /// if all hours are with Night Premium
+                                                    if($hours>=8){
+                                                        $total_daily_rate = ((8 * $hourly_rate) * PERCENT_RD_SH) * $np_rate;
+                                                        $rd_amount = 0;
+                                                        $holiday_amount =((8 * $hourly_rate) * PERCENT_RD_SH);
+                                                        $np_amount = ((8 * $hourly_rate) * PERCENT_RD_SH) * ($np_rate-1);
+
+                                                        $normal_hours=0;
+                                                        $np_hours=8;
+
+
+                                                    } else {
+                                                        $total_daily_rate = (($hours * $hourly_rate) * PERCENT_RD_SH) * $np_rate;
+                                                        $rd_amount = 0;
+                                                        $holiday_amount =(($hours * $hourly_rate) * PERCENT_RD_SH);
+                                                        $np_amount = (($hours * $hourly_rate) * PERCENT_RD_SH) * ($np_rate-1);
+                                                        $normal_hours=0;
+                                                        $np_hours=$hours;
+                                                    }
+                                                } else {  ///// if all hours are not night premium
+                                                 
+                                                    if($hours<8){
+                                                        $normal = $hours - $nightdiff;
+                                                        $normal_calc = (($normal * $hourly_rate) * PERCENT_RD_SH);
+                                                        $nd_calc = (($nightdiff * $hourly_rate) * PERCENT_RD_SH) * $np_rate;
+
+                                                        $total_daily_rate = $normal_calc + $nd_calc;
+
+                                                        $rd_amount = 0;
+                                                        $holiday_amount =(($hours * $hourly_rate) * PERCENT_RD_SH);
+                                                        $np_amount = (($nightdiff * $hourly_rate) * PERCENT_RD_SH) * ($np_rate-1);
+                                                        $normal_hours=$normal;
+                                                        $np_hours=$nightdiff;
+
+
+>>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
                                                     } else { 
                                                         $normal = $hours - $nightdiff;
                                                         $normal_no_ot = 8 - $nightdiff;
                                                         $normal_calc = (($normal_no_ot * $hourly_rate) * PERCENT_RD_SH);
                                                         $nd_calc = (($nightdiff * $hourly_rate) * PERCENT_RD_SH) * $np_rate;
+<<<<<<< HEAD
+=======
+
+                                                        $total_daily_rate = $normal_calc + $nd_calc; 
+
+                                                        $rd_amount = 0;
+                                                        $holiday_amount =((8 * $hourly_rate) * PERCENT_RD_SH);
+                                                        $np_amount = (($nightdiff * $hourly_rate) * PERCENT_RD_SH) * ($np_rate-1);
+                                                        $normal_hours=$normal_no_ot;
+                                                        $np_hours=$nightdiff;
+                                                    }
+
+                                                }
+
+                                            }
+                                        }
+
+                                        $holiday_rate = PERCENT_RD_SH;
+                                    } 
+                                
+                                  
+                                      //////////////////////////  CHECK IF NIGHT DIFFERENTIAL ////////////////////////////////
+                                if($holiday==0 && $nightdiff>0){
+                                    if($deduction_type==1){  
+                                      
+                                        // $normal = $hours - $nightdiff;
+                                        // $normal_calc = ($normal * $adjustment_rate) * $hourly_rate;
+                                        // $nd_calc = (($nightdiff * $adjustment_rate) * $hourly_rate) * $np_rate;
+
+                                        // $total_daily_rate = $normal_calc + $nd_calc;
+
+                                        if($hours<8){
+                                            $normal = $hours - $nightdiff;
+                                            $normal_calc = (($normal * $adjustment_rate) * $hourly_rate);
+                                            $nd_calc = (($nightdiff * $adjustment_rate) * $hourly_rate) * $np_rate;
+
+                                            $total_daily_rate = $normal_calc + $nd_calc;
+                                            $rd_amount =(($hours * $adjustment_rate) * $hourly_rate);
+                                            $holiday_amount =0;
+                                            $np_amount = (($nightdiff * $adjustment_rate) * $hourly_rate) * ($np_rate-1);
+
+                                            $normal_hours=$normal;
+                                            $np_hours=$nightdiff;
+
+                                        } else { 
+                                            $normal = $hours - $nightdiff;
+                                            $normal_no_ot = 8 - $nightdiff;
+                                            //echo $normal_no_ot . " = " . $adjustment_rate . " = " . $hourly_rate . "<br><br>";
+                                            $normal_calc = (($normal_no_ot * $adjustment_rate) * $hourly_rate);
+                                            $nd_calc = (($nightdiff * $adjustment_rate) * $hourly_rate) * $np_rate;
+
+                                            $total_daily_rate = $normal_calc + $nd_calc; 
+
+                                            $rd_amount =((8 * $adjustment_rate) * $hourly_rate);
+                                            $holiday_amount =0;
+                                            $np_amount = (($nightdiff * $adjustment_rate) * $hourly_rate) * ($np_rate-1);
+                                            $normal_hours=$normal_no_ot;
+                                            $np_hours=$nightdiff;
+                                        }
+
+                                    }
+
+                                    $holiday_rate = 0;
+                                }
+                                // echo "personal_id = " . $rdemp['personal_id'] ."<br>".
+                                // "hourly rate = " . $hourly_rate . "<br>".
+                                // "start time = " . $start_time . "<br>".
+                                // "end time = ". $end_time . "<br>".
+                                // "holiday = " . $holiday . "<br> ".
+                                // "hours =".$hours."<br>".
+                                // "nightdiff = ". $nightdiff . "<br>";
+                                // echo "**".$total_daily_rate. "<br><br>";
+                               
+                                //////////////////////////  END CHECK IF NIGHT DIFFERENTIAL ////////////////////////////////
+                                
+                                     ////////////////////////// END CHECK IF HOLIDAY ////////////////////////////////
+                            $counthead= AdjCalcHead::where('salary_month', $month)
+                            ->where('salary_year', $year)
+                            ->where('cutoff', $cutoff)
+                            ->count();
+                                    $save = AdjCalcDetail::create([
+                                        'adj_calc_head_id'=>$save_head_id,
+                                        'employee_id'=>$rdemp['employee_id'],
+                                        'personal_id'=>$rdemp['personal_id'],
+                                        'rd_date'=>$rdemp['rest_days'],
+                                        'rd_hours'=>$hours,
+                                        'normal_hours'=>$normal_hours,
+                                        'np_hours'=>$np_hours,
+                                        'hourly_rate'=>$hourly_rate,
+                                        'rd_amount'=>$rd_amount,
+                                        'np_rate'=>$np_rate,
+                                        'np_amount'=>$np_amount,
+                                        'holiday_rate'=>$holiday_rate,
+                                        'holiday_amount'=>$holiday_amount,
+                                        'rd_rate'=>$adjustment_rate,
+                                        'total_amount'=>$total_daily_rate
+                                    ]);
+
+                            }
+                             
+                    
+                             
+                     }
+                        $getRDsEmp=array();
+                      
+                  
+                   
+            
+
+            
+            //$employee_list = collect($employee_list)->sortBy('name')->toArray();
+           // $payslipinfo = PayslipInfo::all();
+         
+        }
+
+    
+    }
+
+       /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+>>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
 
                                                         $total_daily_rate = $normal_calc + $nd_calc; 
 

@@ -94,7 +94,11 @@
                     <div class="shadow-md rounded-lg bg-white white:bg-gray-700 w-full p">
                         <div class="flex justify-between p-4 px-6 ">
                             <p class="font-bold text-md text-black white:text-white">
+<<<<<<< HEAD
                                 Reminder 
+=======
+                                Reminder
+>>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
                                 <span class="text-sm text-gray-500 white:text-gray-300 white:text-white ml-2">
                                     (05)
                                 </span>

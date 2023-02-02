@@ -15,8 +15,13 @@ return new class extends Migration
     {
         Schema::create('adj_calc_detail', function (Blueprint $table) {
             $table->id();
+<<<<<<< HEAD
             $table->foreignId('adj_calc_head_id')->constrained('adj_calc_head');
             $table->foreignId('employee_id')->constrained('employees');
+=======
+            $table->foreignId('adj_calc_head_id')->contrained('adj_calc_head_id');
+            $table->foreignId('employee_id')->contrained('employees');
+>>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
             $table->integer('personal_id');
             $table->date('rd_date')->nullable();
             $table->float('rd_hours',10,2)->nullable();

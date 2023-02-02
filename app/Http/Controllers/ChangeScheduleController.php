@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\ChangeSchedule;
+<<<<<<< HEAD
 use App\Models\Schedule;
 use App\Models\Employee;
+=======
+>>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -17,8 +20,12 @@ class ChangeScheduleController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         $change_sched=ChangeSchedule::join('employees','employees.id','=','change_schedule.employee_id')->join('schedule_code','schedule_code.id','=','change_schedule.schedule_code')->where('cancel','0')->get(['change_schedule.id','month_year','date_applied','full_name','time_in','time_out','start_date','end_date']);
         return view('change_sched.index',compact('change_sched'));
+=======
+        return view('change_sched.index');
+>>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
     }
 
     /**
@@ -28,9 +35,13 @@ class ChangeScheduleController extends Controller
      */
     public function create()
     {
+<<<<<<< HEAD
         $schedule=Schedule::all();
         $employees=Employee::where('is_active','1')->orderBy('full_name','ASC')->get();
         return view('change_sched.create',compact('employees','schedule'));
+=======
+        return view('change_sched.create');
+>>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
     }
 
     /**
@@ -41,6 +52,7 @@ class ChangeScheduleController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< HEAD
         $emp=Employee::where('id',$request->employee)->where('is_active','1')->first();
         $month_year=$request->year."-".$request->month;
         $res=ChangeSchedule::create(
@@ -61,6 +73,9 @@ class ChangeScheduleController extends Controller
         }else{
             return redirect()->route('changeSched.create')->with('fail',"Error! Try Again!");
         }
+=======
+        //
+>>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
     }
 
     /**
@@ -82,10 +97,14 @@ class ChangeScheduleController extends Controller
      */
     public function edit($id)
     {
+<<<<<<< HEAD
         $change_schedule=ChangeSchedule::where('id',$id)->get();
         $schedule=Schedule::all();
         $employees=Employee::where('is_active','1')->orderBy('full_name','ASC')->get();
         return view('change_sched.edit',compact('change_schedule','schedule','employees'));
+=======
+        return view('changeSched.edit');
+>>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
     }
 
     /**
@@ -95,6 +114,7 @@ class ChangeScheduleController extends Controller
      * @param  \App\Models\ChangeSchedule  $changeSchedule
      * @return \Illuminate\Http\Response
      */
+<<<<<<< HEAD
     public function update(Request $request, $id)
     {
         $change_sched = ChangeSchedule::find($id);
@@ -124,6 +144,11 @@ class ChangeScheduleController extends Controller
                 'cancel'=> 1,
             ]
         );
+=======
+    public function update(Request $request, ChangeSchedule $changeSchedule)
+    {
+        //
+>>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
     }
 
     /**

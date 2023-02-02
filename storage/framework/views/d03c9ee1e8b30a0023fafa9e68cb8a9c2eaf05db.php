@@ -27,6 +27,7 @@
                 </a>
             </div>
         </div>
+<<<<<<< HEAD
         <?php if(Session::has('success')): ?>
             <div class="mb-5 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
                 <span class="block sm:inline"><?php echo e(Session::get('success')); ?></span>
@@ -51,11 +52,23 @@
                         <?php $__currentLoopData = $employees; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $e): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($e->id); ?>"><?php echo e($e->full_name); ?></option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+=======
+        <form  method="post" >
+            <div class="flex justify-between space-x-2">
+                <div class="mt-4 w-6/12">
+                    <label for="email" class="block text-left text-sm text-gray-700 capitalize white:text-gray-200">Date Applied</label>
+                    <input type="date" name="cutoff_start" id="cutoff_start" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                </div>
+                <div class="mt-4 w-6/12">
+                    <label for="email" class="block text-left text-sm text-gray-700 capitalize white:text-gray-200">Employee</label>
+                    <select type="text" name="cutoff_start" id="cutoff_start" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+>>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
                     </select>
                 </div>
             </div>
             <div class="flex justify-between space-x-2">
                 <div class="mt-4 w-3/12">
+<<<<<<< HEAD
                     <label for="month" class="block text-left text-sm text-gray-700 capitalize white:text-gray-200">Month</label>
                     <select name="month" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" required>
                         <option value="" selected>Select Month</option>
@@ -92,11 +105,26 @@
                         <?php $__currentLoopData = $schedule; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $s): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($s->id); ?>"><?php echo e($s->schedule_code); ?></option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+=======
+                    <label for="email" class="block text-left text-sm text-gray-700 capitalize white:text-gray-200">Month</label>
+                    <select type="text" name="cutoff_start" id="cutoff_start" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                    </select>
+                </div>
+                <div class="mt-4 w-3/12">
+                    <label for="email" class="block text-left text-sm text-gray-700 capitalize white:text-gray-200">Year</label>
+                    <select type="text" name="cutoff_start" id="cutoff_start" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                    </select>
+                </div>
+                <div class="mt-4 w-6/12">
+                    <label for="email" class="block text-left text-sm text-gray-700 capitalize white:text-gray-200">New Schedule</label>
+                    <select type="text" name="cutoff_start" id="cutoff_start" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+>>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
                     </select>
                 </div>
             </div>
             <div class="flex justify-between space-x-2">
                 <div class="mt-4 w-6/12">
+<<<<<<< HEAD
                     <label for="start_date" class="block text-left text-sm text-gray-700 capitalize white:text-gray-200">Start Date</label>
                     <input type="date" name="start_date" id="start_date" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                 </div>
@@ -108,6 +136,19 @@
             <div class="flex justify-end mt-6">
                 <button type="submit" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                     Save
+=======
+                    <label for="email" class="block text-left text-sm text-gray-700 capitalize white:text-gray-200">Start Date</label>
+                    <input type="date" name="cutoff_start" id="cutoff_start" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                </div>
+                <div class="mt-4 w-6/12">
+                    <label for="email" class="block text-left text-sm text-gray-700 capitalize white:text-gray-200">End Date</label>
+                    <input type="date" name="cutoff_start" id="cutoff_start" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                </div>
+            </div>
+            <div class="flex justify-end mt-6">
+                <button type="submit" value="Save" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl w-full white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                    Submit
+>>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
                 </button>
             </div>
         </form>
