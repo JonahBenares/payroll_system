@@ -3,9 +3,23 @@ use App\Models\Timekeeping;
 use App\Models\Employee;
 use App\Models\Allowance;
 use App\Models\EmployeeHMO;
+use App\Models\CutOff;
 use App\Models\BusinessUnit;
 use App\Models\UploadAllowanceDetail;
 use App\Models\UploadAllowanceTime;
+use App\Models\ShiftScheduleDetail;
+use App\Models\ShiftSchedule;
+use App\Models\PayslipInfo;
+use App\Models\AllowanceRate;
+use App\Models\AdjustmentRate;
+use App\Models\Holiday;
+
+define('START_NIGHT_HOUR','22');
+define('START_NIGHT_MINUTE','00');
+define('START_NIGHT_SECOND','00');
+define('END_NIGHT_HOUR','06');
+define('END_NIGHT_MINUTE','00');
+define('END_NIGHT_SECOND','00');
 /**
 
  * Write code on Method
@@ -29,7 +43,7 @@ if (!function_exists('getTimeDiff')) {
         $t1=strtotime($start); 
         $t2=strtotime($end); 
       
-        $hours = floor((($t2- $t1)/60)/60);  
+        $hours = (($t2- $t1)/60)/60;  
         //$hours= round(abs($t1-$t2)/60,2);
     
 
@@ -63,6 +77,56 @@ function getMintimeout($schedule_type,$recorded_time,$personal_id){
 }
 
 
+if (!function_exists('getEmployeeTime')) {
+    
+    function getEmployeeTime($recorded_time,$personal_id){
+        $time_count = Timekeeping::selectraw('min(recorded_time) as starttime, max(recorded_time) as endtime, personal_id')
+        ->whereDate('recorded_time',$recorded_time)
+        ->where('personal_id',$personal_id)
+        ->count();
+
+        //echo $recorded_time . ", " . $personal_id . " = " .$time_count . "<br>";
+
+        if($time_count%2==0){ ///// if equal or divisible by 2 ang timekeeping //////////
+            $time = Timekeeping::selectraw('min(recorded_time) as starttime, max(recorded_time) as endtime, personal_id')
+            ->whereDate('recorded_time',$recorded_time)
+            ->where('personal_id',$personal_id)
+            ->get();
+           // if(!empty($time[0]['personal_id'])){
+                $start_time = $time[0]['starttime'];
+                $end_time = $time[0]['endtime'];
+              
+           // }
+           $time = $start_time."_".$end_time;
+        } else {
+
+            $stime = Timekeeping::selectraw('min(recorded_time) as starttime, personal_id')
+            ->whereDate('recorded_time',$recorded_time)
+            ->where('personal_id',$personal_id)
+            ->get();
+
+            $next_day = date('Y-m-d', strtotime($recorded_time . ' +1 day'));
+           
+            $etime = Timekeeping::selectraw('min(recorded_time) as endtime, personal_id')
+            ->whereDate('recorded_time',$next_day)
+            ->where('personal_id',$personal_id)
+            ->get();
+
+            $start_time = $stime[0]['starttime'];
+            $end_time = $etime[0]['endtime'];
+
+            $time = $start_time."_".$end_time;
+
+           
+          
+        }
+
+        return $time;
+    }
+}
+
+
+
 if (!function_exists('getEmployeeName')) {
     
     function getEmployeeName($id){
@@ -76,8 +140,68 @@ if (!function_exists('getEmployeeName')) {
     }
 }
 
-if (!function_exists('getAllowanceName')) {
+if (!function_exists('getEmployeeDetails')) {
     
+    function getEmployeeDetails($id,$column){
+        $emp= Employee::select($column)
+        ->where("id","=",$id)
+        ->get();
+
+        $name= $emp[0][$column];
+
+        return $name;
+    }
+}
+
+if (!function_exists('getPayslipInfo')) {
+    
+    function getPayslipInfo($wherecol, $whereval, $column){
+        $ps= PayslipInfo::select($column)
+        ->where($wherecol,"=",$whereval)
+        ->get();
+
+        $col= $ps[0][$column];
+
+        return $col;
+    }
+}
+
+if (!function_exists('getRates')) {
+    
+    function getRates($ps_id){
+        $ps= AdjustmentRate::select('deduction_type', 'rate_amount')
+        ->where("payslip_info_id","=",$ps_id)
+        ->get();
+
+        $deduction_type= $ps[0]['deduction_type'];
+        $rate_amount= $ps[0]['rate_amount'];
+
+        $return_val = $deduction_type."_".$rate_amount;
+
+        return $return_val;
+    }
+}
+
+if (!function_exists('checkHoliday')) {
+    function checkHoliday($date){
+        $count= Holiday::select('holiday_type')
+        ->where("holiday_date","=",$date)
+        ->count();
+
+        if($count>0){
+            $hol= Holiday::select('holiday_type')
+            ->where("holiday_date","=",$date)
+            ->get();
+            $holiday_type= $hol[0]['holiday_type'];
+        } else {
+            $holiday_type=0;
+        }
+       
+        return $holiday_type;
+    }
+}
+
+if (!function_exists('getAllowanceName')) {
     function getAllowanceName($id){
         $emp= Allowance::select('allowance_name')
         ->where("id","=",$id)
@@ -200,13 +324,51 @@ if (!function_exists('getAllowanceTime')) {
             $emp_rate= Employee::select('monthly_rate')
                 ->where("id","=",$employee_id)->get();
             $rate=$emp_rate[0]['monthly_rate'];
-
         }
-
         return $rate;
-        
        
     }
  }
+
+
+if (!function_exists('night_difference')) {
+    function night_difference($start_work,$end_work)
+    {
+        $start_night = mktime(START_NIGHT_HOUR,START_NIGHT_MINUTE,START_NIGHT_SECOND,date('m',$start_work),date('d',$start_work),date('Y',$start_work));
+        $end_night   = mktime(END_NIGHT_HOUR,END_NIGHT_MINUTE,END_NIGHT_SECOND,date('m',$start_work),date('d',$start_work) + 1,date('Y',$start_work));
+
+        if($start_work >= $start_night && $start_work <= $end_night)
+        {
+            if($end_work >= $end_night)
+            {
+                return ($end_night - $start_work) / 3600;
+            }
+            else
+            {
+                return ($end_work - $start_work) / 3600;
+            }
+        }
+        elseif($end_work >= $start_night && $end_work <= $end_night)
+        {
+            if($start_work <= $start_night)
+            {
+                return ($end_work - $start_night) / 3600;
+            }
+            else
+            {
+                return ($end_work - $start_work) / 3600;
+            }
+        }
+        else
+        {
+            if($start_work < $start_night && $end_work > $end_night)
+            {
+                return ($end_night - $start_night) / 3600;
+            }
+            return 0;
+        }
+    }
+
+}
 
 ?>

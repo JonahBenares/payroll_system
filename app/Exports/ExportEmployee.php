@@ -28,10 +28,6 @@ class ExportEmployee implements FromCollection, WithHeadings, WithStyles, Should
     public function collection()
     {
         return Employee::select('id','personal_id','full_name')
-<<<<<<< HEAD
-                        ->where('emp_location','=','1')
-=======
->>>>>>> 2b184794fb6d0d94523550d520ca7221e2309eba
                         ->orderBy('full_name', 'ASC')->get();
     }
 

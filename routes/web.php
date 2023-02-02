@@ -36,6 +36,7 @@ use App\Http\Controllers\DTRsiteController;
 use App\Http\Controllers\OTofficeController;
 use App\Http\Controllers\OTsiteController;
 use App\Http\Controllers\overallOTController;
+use App\Http\Controllers\ChangeScheduleController;
 
 
 
@@ -116,6 +117,7 @@ Route::resource('busUnit', BusUnitController::class);
 
 // Leave
 Route::resource('leavefailure', LeaveFailureController::class);
+Route::post('/leavefailure/unfiled', [LeaveFailureController::class, 'unfiled'])->name('unfiled');
 
 //FiledLeave
 Route::resource('filedleave', FiledLeaveController::class);
@@ -125,9 +127,11 @@ Route::resource('ot', OvertimeController::class);
 Route::post('/ot/filter_overtime', [OvertimeController::class, 'filter_overtime'])->name('filter_overtime');
 Route::post('/ot/fetchtime', [OvertimeController::class, 'fetchTime']);
 
-
 Route::resource('swapschedule', SwapScheduleController::class); 
 Route::post('/swapschedule/cancel/{id}/', [SwapScheduleController::class, 'cancel'])->name('cancel');
+
+Route::resource('changeSched', ChangeScheduleController::class);
+Route::post('/changeSched/cancel_schedule/', [ChangeScheduleController::class, 'cancel_schedule'])->name('cancel_sched');
 
 Route::resource('uploadallowance', UploadAllowanceController::class);
 Route::post('/export-allowance',[UploadAllowanceController::class,'exportAllowance'])->name('export-allowance');
@@ -147,11 +151,15 @@ Route::get('/payroll_overtime/bulkprinting/{month_year}/{period}', [PayrollOvert
 Route::get('/payrollovertime/show/{personal_id}/{month_year}/{period}', [PayrollOvertimeController::class, 'show'])->name('show');
 
 Route::resource('payrollbonus', PayrollBonusController::class); 
-Route::get('/payroll_bonus/bulkprinting', [PayrollBonusController::class, 'printBulk'])->middleware(['auth'])->name('printBulkBonus');
+//Route::post('/payrollbonus/filter_payroll_bonus', [PayrollBonusController::class, 'filter_payroll_bonus'])->name('filter_payroll_bonus');
+Route::get('/payroll_bonus/bulkprinting/{type}/{year}', [PayrollBonusController::class, 'printBulk'])->middleware(['auth'])->name('printBulkBonus');
+Route::get('/payrollbonus/show/{personal_id}/{type}/{year}', [PayrollBonusController::class, 'show'])->name('show');
 
 
 Route::resource('payrollsalary', PayrollSalaryController::class); 
 Route::get('/payroll_salary/bulk', [PayrollSalaryController::class, 'printBulk'])->middleware(['auth'])->name('printBulkSalary');
+Route::get('/rd_computation/{month}/{year}/{cutoff}', [PayrollSalaryController::class, 'rd_computation'])->name('rd_computation');
+Route::get('/holiday_computation/{month}/{year}/{cutoff}', [PayrollSalaryController::class, 'holiday_computation'])->name('holiday_computation');
 
 Route::resource('payrollbonus', PayrollBonusController::class); 
 Route::get('/payroll_bonus/bulkprinting', [PayrollBonusController::class, 'printBulk'])->middleware(['auth'])->name('printBulkBonus');
@@ -172,9 +180,14 @@ Route::resource('dtrSite', DTRsiteController::class);
 //OT Office
 Route::resource('otOffice', OTofficeController::class);
 Route::post('/otOffice/filter_otoffice', [OTofficeController::class, 'filter_otoffice'])->name('filter_otoffice');
+// Route::post('/otOffice/store', [OTofficeController::class, 'store'])->name('store');
 Route::post('/otOffice/fetchEmployee', [OTofficeController::class, 'fetchEmployee']);
+Route::get('/otOffice/destroyed/{id}/{emp_id}', [OTofficeController::class, 'destroy'])->name('destroyed');
 //OT Site
 Route::resource('otSite', OTsiteController::class);
+Route::post('/otSite/filter_otsite', [OTsiteController::class, 'filter_otsite'])->name('filter_otsite');
+Route::get('/otSite/destroy/{id}/{emp_id}', [OTsiteController::class, 'destroy'])->name('destroy');
+
 Route::resource('overall_OT', overallOTController::class);
 Route::post('/overallOT/filter_overallot', [overallOTController::class, 'filter_overallot'])->name('filter_overallot');
 
