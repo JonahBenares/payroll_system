@@ -6,10 +6,6 @@
         display: none;
         }
     </style>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> Jason_DashboardUI
     <!-- Main modal -->
     <div id="cancelModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
         <div class="inline-block w-full max-w-lg p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl lg:max-w-lg">
@@ -40,12 +36,6 @@
             </div>
         </div>
     </div>     
-<<<<<<< HEAD
-=======
-=======
-           
->>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
->>>>>>> Jason_DashboardUI
     <div class="p-4 relative h-full w-full text-center my-10 bg-white rounded-2xl shadow-lg white:bg-gray-800 white:border-gray-700">
         <div class="flex justify-between  pb-4 bg-white white:bg-gray-900">
             <div > 
@@ -109,10 +99,6 @@
                     </tr>
                 </thead>
                 <tbody class="sticky top-12">
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> Jason_DashboardUI
                     @if(!empty($change_sched))
                         @foreach($change_sched AS $cs)
                         @php 
@@ -144,52 +130,14 @@
                         </tr>
                         @endforeach
                     @endif
-<<<<<<< HEAD
-=======
-=======
-                    <tr class=" border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                        <td class="py-3 px-6">asd</td>
-                        <td class="py-3 px-6">asd</td>
-                        <td class="py-3 px-6">asd</td>
-                        <td class="py-3 px-6">asd</td>
-                        <td class="py-3 px-6">asd</td>
-                        <td class="py-3 px-6"></td>
-                        <td class="py-3 px-6"></td>
-                        <td class="py-3 px-6 flex justify-center space-x-1" align="center">
-                            <a href="{{ route('changeSched.edit', 1) }}" class="" title="Update">
-                                <div class="py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
-                                        <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
-                                        <path d="M5.25 5.25a3 3 0 00-3 3v10.5a3 3 0 003 3h10.5a3 3 0 003-3V13.5a.75.75 0 00-1.5 0v5.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V8.25a1.5 1.5 0 011.5-1.5h5.25a.75.75 0 000-1.5H5.25z" />
-                                    </svg>
-                                </div>
-                            </a>
-                        </td>
-                    </tr>
->>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
->>>>>>> Jason_DashboardUI
                 </tbody>
             </table>
         </div>
-
-
     </div>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> Jason_DashboardUI
 <script>
     $(document).on("click", "#check_id", function () {
         var check_id = $(this).attr("data-id");
         $("#checker_id").val(check_id);
     });
 </script>
-<<<<<<< HEAD
-=======
-=======
-
-    
-        
->>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
->>>>>>> Jason_DashboardUI
 </x-app-layout>
