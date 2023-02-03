@@ -141,7 +141,6 @@ if (!function_exists('getEmployeeName')) {
 }
 
 if (!function_exists('getEmployeeDetails')) {
-<<<<<<< HEAD
     
     function getEmployeeDetails($id,$column){
         $emp= Employee::select($column)
@@ -156,22 +155,6 @@ if (!function_exists('getEmployeeDetails')) {
 
 if (!function_exists('getPayslipInfo')) {
     
-=======
-    
-    function getEmployeeDetails($id,$column){
-        $emp= Employee::select($column)
-        ->where("id","=",$id)
-        ->get();
-
-        $name= $emp[0][$column];
-
-        return $name;
-    }
-}
-
-if (!function_exists('getPayslipInfo')) {
-    
->>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
     function getPayslipInfo($wherecol, $whereval, $column){
         $ps= PayslipInfo::select($column)
         ->where($wherecol,"=",$whereval)
