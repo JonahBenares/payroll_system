@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class ChangeSchedule extends Model
 {
     use HasFactory;
-<<<<<<< HEAD
     protected $table = 'change_schedule';
     protected $primaryKey = 'id';
     protected $fillable = [
@@ -23,6 +22,4 @@ class ChangeSchedule extends Model
         'cancel_reason',
         'cancel_date',
     ];
-=======
->>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
 }
