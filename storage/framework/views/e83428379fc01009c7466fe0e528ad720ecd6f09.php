@@ -686,26 +686,6 @@
                         var dh=0;
                     }else{
                         var dh=dh_disp;
-<<<<<<< HEAD
-                    }
-
-                    if(total_amount==''){
-                        var total=0;
-                    }else{
-                        var total=total_amount;
-                    }
-
-                    // var total_disp = parseFloat(amnt) * parseFloat(dh);
-                    // document.getElementsByClassName("total_amount")[index].value = parseFloat(total_disp);
-
-                    if(amnt=='0' && dh=='0'){
-                        overall_total += parseFloat(total);
-                    }
-
-                    index++;
-                });   
-                document.getElementById("overall_adjustment").innerHTML = parseFloat(overall_total).toFixed(2);
-=======
                     }
 
                     if(total_amount==''){
@@ -753,40 +733,7 @@
                         //$('#nav')[0].reset();
                     }
                 });
->>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
             }
-<<<<<<< HEAD
-=======
-
-            function saveOtreport(){
-                var base_url = '<?php echo e(URL::to("/")); ?>';
-                // var amount = [];
-                // $('input[name="amount[]"]').each( function() {
-                //     amount.push(this.value);
-                // });
-                // var days_hr = [];
-                // $('input[name="days_hr[]"]').each( function() {
-                //     days_hr.push(this.value);
-                // });
-                // var total_amount = [];
-                // $('input[name="total_amount[]"]').each( function() {
-                //     total_amount.push(this.value);
-                // });
-                var form_data = $("#formOT").serialize();
-                $.ajax({
-                    url: base_url+"/otOffice/store",
-                    type: 'POST',
-                    data: {
-                        form_data:form_data,
-                        _token: '<?php echo e(csrf_token()); ?>'
-                    },
-                    success: function(data){
-                        alert(data);
-                        //$('#nav')[0].reset();
-                    }
-                });
-            }
->>>>>>> Jason_DashboardUI
         </script>
         
     </body>
