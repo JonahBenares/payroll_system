@@ -141,8 +141,6 @@
                 </tbody>
             </table>
         </div>
-
-
     </div>
 <script>
     $(document).on("click", "#check_id", function () {

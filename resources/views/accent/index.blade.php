@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="overflow-x-auto overflow-y-hidden hover:overflow-y-auto h-100 relative  sm:rounded-2xl">
-                    <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
+                    <table class="w-full text-sm text-left text-gray-500 white:text-gray-400" id="myTable">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-10">
                             <tr class="">
                                 <th scope="col" class="py-3 px-6" width="%">

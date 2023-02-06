@@ -9,6 +9,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
         
         
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
@@ -127,6 +128,12 @@
             </main>
         </div>
         <!-- Scripts -->
+        <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+        <script>
+            $(document).ready( function () {
+                $('#myTable').DataTable();
+            } );
+        </script>
         <script>
             function isNumberKey(txt, evt){
                 var charCode = (evt.which) ? evt.which : evt.keyCode;
@@ -726,7 +733,7 @@
                         //$('#nav')[0].reset();
                     }
                 });
-            }
+            }---
         </script>
         
     </body>
