@@ -82,7 +82,7 @@
                     <select name="schedule_code" id="schedule_code" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                         <option value="">--Select Schedule--</option>
                         @foreach($schedule AS $s)
-                        <option value="{{ $s->id }}">{{ $s->schedule_code }}</option>
+                        <option value="{{ $s->id }}">{{ "Schedule Time ".$s->time_in." to ".$s->time_out }}</option>
                         @endforeach
                     </select>
                 </div>
