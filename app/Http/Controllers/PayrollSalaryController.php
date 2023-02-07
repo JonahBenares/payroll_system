@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PayrollSalary;
+//use App\Models\PayrollSalary;
 use App\Models\CutOff;
 use App\Models\PayslipInfo;
 use App\Models\Employee;
@@ -13,6 +13,8 @@ use App\Models\Timekeeping;
 use App\Models\Holiday;
 use App\Models\AdjCalcHead;
 use App\Models\AdjCalcDetail;
+use App\Models\PayslipSalary;
+use App\Models\PayslipSalaryDetail;
 
 
 define('PERCENT_RD_RH','2.6');
@@ -28,6 +30,7 @@ class PayrollSalaryController extends Controller
     public function index(Request $request)
     {
         $cutoff = CutOff::all();
+        $cutoff_type=$request->cutoff;
         $filters = array(
             'month'=>'',
             'year'=>'',
@@ -41,20 +44,108 @@ class PayrollSalaryController extends Controller
                 'year'=>$request->year,
                 'cutoff'=>$request->cutoff
             );
+            $count_head = PayslipSalary::where("salary_year",$request->year)
+            ->where("salary_month",$request->month)
+            ->Where("cutoff",$request->cutoff)
+            ->count();
+
+            if($count_head==0){        
+
+                $save_head_id = PayslipSalary::insertGetId([
+                    'salary_year'=>$request->year,
+                    'salary_month'=>$request->month,
+                    'cutoff'=>$request->cutoff,
+                    'created_at'=>date("Y-m-d H:i:s")
+                ]);
+            } else {
+                $get_save_head_id =  PayslipSalary::select('id')
+                    ->where("salary_year",$request->year)
+                    ->where("salary_month",$request->month)
+                    ->Where("cutoff",$request->cutoff)
+                    ->get();
+
+                $save_head_id=$get_save_head_id[0]['id'];
+            }
 
             $employees = Employee::all();
             foreach($employees AS $emp){
                 $employee_list[] = array(
                     'id'=>$emp->id,
-                    'name'=>getEmployeeName($emp->id,$request->month,$request->year,$request->cutoff)
+                    'name'=>getEmployeeName($emp->id,$request->month,$request->year,$request->cutoff),
+                    'personal_id'=>$emp->personal_id
                 );
-               
-            }
+
+                
+                $payslipinfo_head = PayslipInfo::select('payslip_info.id AS id','payslip_info.pay_type','payslip_info.editable','payslip_info.description')
+                ->where("visible","1")
+                ->where("deduction_period",$request->cutoff)
+                ->orWhere("deduction_period","")
+                ->join("deductions","payslip_info.id","=", "deductions.payslip_info_id")
+                ->get();
+            
+    
+              // echo $emp->id ."<br>";
+
+                foreach($payslipinfo_head AS $ps){
+                   // echo $emp->id . " = " .$ps->id ." - ". $ps->description. "<br>";
+
+                    if($ps->pay_type =='3'){
+                        $amount = getDeductionRate($emp->personal_id,$ps->id);
+                    } else {
+                        $amount = 0;
+                    }
+
+                    $count_details = PayslipSalaryDetail::where("payslip_salary_head_id","$save_head_id")
+                    ->where("personal_id",$emp->personal_id)
+                    ->Where("payslip_info_id",$ps->id)
+                    ->count();
+
+                    if($count_details == 0){
+                        $save = PayslipSalaryDetail::create([
+                            'payslip_salary_head_id'=>$save_head_id,
+                            'employee_id'=>$emp->id,
+                            'personal_id'=>$emp->personal_id,
+                            'payslip_info_id'=>$ps->id,
+                            'description'=>$ps->description,
+                            'total_amount'=>$amount,
+                            'created_at'=>date("Y-m-d H:i:s")
+                            
+                        ]);
+                    }
+
+                 }
+
+                 $count_details_sal = PayslipSalaryDetail::where("payslip_salary_head_id","$save_head_id")
+                 ->where("personal_id",$emp->personal_id)
+                 ->Where("payslip_info_id",'0')
+                 ->count();
+
+                 if($count_details_sal == 0){
+                    $monthly = getSalary("Monthly", $emp->id)/2;
+                    $save = PayslipSalaryDetail::create([
+                        'payslip_salary_head_id'=>$save_head_id,
+                        'employee_id'=>$emp->id,
+                        'personal_id'=>$emp->personal_id,
+                        'payslip_info_id'=>0,
+                        'description'=>'Basic Salary',
+                        'total_amount'=>$monthly,
+                        'created_at'=>date("Y-m-d H:i:s")
+                        
+                    ]);
+                }
+
+            }  /// end foreach employees
+           
             $employee_list = collect($employee_list)->sortBy('name')->toArray();
-            $payslipinfo = PayslipInfo::all();
+           
+            $payslipinfo= PayslipInfo::where("visible","1")->get();
+            
+           
+
+
         }
         
-        return view('payroll_salary.index',compact('cutoff','filters','employee_list','payslipinfo'));
+        return view('payroll_salary.index',compact('cutoff','cutoff_type','filters','employee_list','payslipinfo'));
     }
 
 

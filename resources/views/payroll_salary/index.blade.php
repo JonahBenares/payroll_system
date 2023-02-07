@@ -76,18 +76,11 @@
                     <a href="{{ route('rd_computation',['month'=>$filters['month'],'year'=>$filters['year'],'cutoff'=>$filters['cutoff']]) }}" class="flex items-center justify-center px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                         <span>Rest Day</span>
                     </a>
-<<<<<<< HEAD
+
                     <a href="{{ route('holiday_computation',['month'=>$filters['month'],'year'=>$filters['year'],'cutoff'=>$filters['cutoff']]) }}" class="flex items-center justify-center px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-=======
-<<<<<<< HEAD
-                    <a href="{{ route('holiday_computation',['month'=>$filters['month'],'year'=>$filters['year'],'cutoff'=>$filters['cutoff']]) }}" class="flex items-center justify-center px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-=======
-                    <a href="" class="flex items-center justify-center px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
->>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
->>>>>>> Jason_DashboardUI
                         <span>Holiday</span>
                     </a>
-                    <a href="" class="flex items-center justify-center px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                    <a href="{{ route('time_computation',['month'=>$filters['month'],'year'=>$filters['year'],'cutoff'=>$filters['cutoff']]) }}" class="flex items-center justify-center px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                         <span>Night Premium</span>
                     </a>
                 </div>
@@ -134,7 +127,7 @@
                                     {{ $emp['name'] }}
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    {{ number_format(getSalary('Monthly', $emp['id']),2) }}
+                                    {{ number_format(getSalary('Monthly', $emp['id'])/2,2) }}
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     <div x-data="{ modelOpen: false }">
@@ -313,15 +306,18 @@
                                                         </tr>
                                                         @foreach($payslipinfo AS $pi)
                                                             @if($pi->pay_type == 3)
-                                                        <tr class="bg-white border-b">
-                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">{{ $pi->description }}</td>
-                                                                @if($pi->editable == 1)
-                                                                <td align="right"><input type="text" name="deductions_{{ $pi->id }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="00" required></td>
-                                                                @else
-                                                                <td><input type="text" name="deductions_{{ $pi->id }}"  class="border-0 text-right" disabled value="0"></td>
-                                                                <input type="hidden" name="payslip_id_{{ $pi->id }}" value="{{ $pi->id }}">
+                                                                @php $deduc_sched = checkDeductionSchedule($pi->id); @endphp
+                                                                @if($deduc_sched==$cutoff_type || $deduc_sched == "")
+                                                                    <tr class="bg-white border-b">
+                                                                        <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">{{ $pi->description }}</td>
+                                                                            @if($pi->editable == 1)
+                                                                            <td align="right"><input type="text" name="deductions_{{ $pi->id }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="00" required></td>
+                                                                            @else
+                                                                            <td><input type="text" name="deductions_{{ $pi->id }}"  class="border-0 text-right" disabled value="{{ getDeductionRate($emp['personal_id'], $pi->id) }}"></td>
+                                                                            <input type="hidden" name="payslip_id_{{ $pi->id }}" value="{{ $pi->id }}">
+                                                                            @endif
+                                                                    </tr>
                                                                 @endif
-                                                        </tr>
                                                             @endif
                                                          @endforeach
                                                     </table>
