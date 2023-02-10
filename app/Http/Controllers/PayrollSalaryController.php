@@ -38,6 +38,9 @@ class PayrollSalaryController extends Controller
         );
         $employee_list=array();
         $payslipinfo=array();
+        $adj_ids=array();
+        $less_ids=array();
+        $deduction_ids=array();
         if($request->has('month')){
             $filters = array(
                 'month'=>$request->month,
@@ -139,13 +142,30 @@ class PayrollSalaryController extends Controller
             $employee_list = collect($employee_list)->sortBy('name')->toArray();
            
             $payslipinfo= PayslipInfo::where("visible","1")->get();
-            
-           
 
+            $adj_ids = "";
+            $less_ids="";
+            $deduction_ids="";
+            foreach($payslipinfo AS $ps){
+                if($ps->pay_type == 1){
+                    $adj_ids .= $ps->id . "_";
+                }elseif($ps->pay_type == 2){
+                    $less_ids .= $ps->id . "_";
+                }elseif($ps->pay_type == 3){
+                    $deduc_sched = checkDeductionSchedule($ps->id);
+                    if($deduc_sched==$request->cutoff || $deduc_sched == ""){
+                        $deduction_ids.= $ps->id."_";
+                    }
+                }
+            }
+
+            $adj_ids=substr($adj_ids,0,-1);
+            $less_ids=substr($less_ids,0,-1);
+            $deduction_ids=substr($deduction_ids,0,-1);
 
         }
         
-        return view('payroll_salary.index',compact('cutoff','cutoff_type','filters','employee_list','payslipinfo'));
+        return view('payroll_salary.index',compact('cutoff','cutoff_type','filters','employee_list','payslipinfo', 'adj_ids', 'less_ids','deduction_ids'));
     }
 
 
