@@ -21,5 +21,6 @@ class ChangeSchedule extends Model
         'cancel',
         'cancel_reason',
         'cancel_date',
+        'night_shift'
     ];
 }

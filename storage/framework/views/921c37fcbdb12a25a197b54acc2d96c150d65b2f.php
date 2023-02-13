@@ -124,7 +124,9 @@
                                 <?php
                                     $data2 = array();
                                     foreach($timedate AS $value){
+                                        echo getEmployeeTime($value->recorded_time, $value->personal_id);
                                         if($value->personal_id==$e->personal_id){
+                                            
                                             $key = date('Y-m-d',strtotime($value->recorded_time));
                                             if(!isset($data2[$key])) {   
                                                 $data2[$key] = array(
@@ -145,7 +147,7 @@
                                 ?>
                                 <?php $__currentLoopData = $data2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $logs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <?php
-                                        if($logs['schedule_type']=='Regular'){
+                                        if($logs['schedule_type']=='regular'){
                                             $exp=implode("",$logs['recorded_time']);
                                             $exp_time = explode(',', $exp); 
                                             $timecheck=date('Hi',strtotime($logs['time_in']));
