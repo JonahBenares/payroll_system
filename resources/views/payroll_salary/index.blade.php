@@ -76,18 +76,11 @@
                     <a href="{{ route('rd_computation',['month'=>$filters['month'],'year'=>$filters['year'],'cutoff'=>$filters['cutoff']]) }}" class="flex items-center justify-center px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                         <span>Rest Day</span>
                     </a>
-<<<<<<< HEAD
+
                     <a href="{{ route('holiday_computation',['month'=>$filters['month'],'year'=>$filters['year'],'cutoff'=>$filters['cutoff']]) }}" class="flex items-center justify-center px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-=======
-<<<<<<< HEAD
-                    <a href="{{ route('holiday_computation',['month'=>$filters['month'],'year'=>$filters['year'],'cutoff'=>$filters['cutoff']]) }}" class="flex items-center justify-center px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-=======
-                    <a href="" class="flex items-center justify-center px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
->>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
->>>>>>> Jason_DashboardUI
                         <span>Holiday</span>
                     </a>
-                    <a href="" class="flex items-center justify-center px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                    <a href="{{ route('time_computation',['month'=>$filters['month'],'year'=>$filters['year'],'cutoff'=>$filters['cutoff']]) }}" class="flex items-center justify-center px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                         <span>Night Premium</span>
                     </a>
                 </div>
@@ -128,18 +121,21 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php $x=1; @endphp
                             @foreach($employee_list AS $emp)
+                            @php  $sum_outside = "sum_adjustment_outside_".$x; 
+                            $salary ="salary_".$x; @endphp
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     {{ $emp['name'] }}
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    {{ number_format(getSalary('Monthly', $emp['id']),2) }}
+                                    <span id="{{ $salary }}">{{ getSalary('Monthly', $emp['id'])/2 }}</span>
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     <div x-data="{ modelOpen: false }">
                                         <a href="#" @click="modelOpen =!modelOpen" class="my-1 py-2 " title="Update">
-                                              550.00
+                                              <span id="{{  $sum_outside }}">0</span>
                                         </a>
                                 
                                         <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -182,20 +178,26 @@
                                                         <tr class="bg-white border-b">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">{{ $pi->description }}</td>
                                                                 @if($pi->editable == 1)
-                                                                <td align="right"><input type="text" name="adjustment_{{ $pi->id }}" class="text-right bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="00" required></td>
+                                                                <td align="right"><input type="text" name="adjustment_{{ $pi->id }}_{{ $x }}" id="adjustment_{{ $pi->id }}_{{ $x }}" onblur = "salary_computation('adjustment',{{ $pi->id }})" value="0" class="text-right bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" ></td>
                                                                 @else
                                                                 <td align="right">
-                                                                    <input type="text" name="adjustment_{{ $pi->id }}" class="border-0 text-right" disabled value="0">
+                                                                    <input type="text" name="adjustment_{{ $pi->id }}_{{ $x }}" id="adjustment_{{ $pi->id }}_{{ $x }}" class="border-0 text-right" disabled value="0">
                                                                     <input type="hidden" name="payslip_id_{{ $pi->id }}" value="{{ $pi->id }}">
+                                                                   
                                                                 </td>
                                                                 @endif
                                                         </tr>
                                                             @endif
+                                                          
                                                          @endforeach
+                                                         @php 
+                                                         $sum_name = "sum_adjustment_".$x;
+                                                         @endphp
+                                                         <input type="hidden" name="adjustment_ids" id="adjustment_ids" value="{{ $adj_ids }}">
                                                       
                                                         <tr class="bg-white border-b text-lg bg-yellow-200">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Total</td>
-                                                            <td align="right"><b>550</b></td>
+                                                            <td align="right"><b><span id="{{ $sum_name }}"></span></b></td>
                                                         </tr>
                                                     </table>
                                                    
@@ -204,10 +206,11 @@
                                         </div>
                                     </div>
                                 </td>
+                                @php  $sum_lessgp_outside = "sum_lessgp_outside_".$x; @endphp
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     <div x-data="{ modelOpen: false }">
-                                        <a href="#" @click="modelOpen =!modelOpen" class="my-1 py-2 " title="Update">
-                                              242.00
+                                        <a href="#" @click="modelOpen =!modelOpen" class="my-1 py-2 " id="{{ $sum_lessgp_outside }}" title="Update">
+                                              0
                                         </a>
                                 
                                         <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -249,18 +252,19 @@
                                                         <tr class="bg-white border-b">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">{{ $pi->description }}</td>
                                                                 @if($pi->editable == 1)
-                                                                <td align="right"><input type="text" name="less_gp_{{ $pi->id }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="00" required></td>
+                                                                <td align="right"><input type="text" name="less_gp_{{ $pi->id }}_{{ $x }}"  id="less_gp_{{ $pi->id }}_{{ $x }}"  value="0" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="00" required></td>
                                                                 @else
-                                                                <td><input type="text" name="less_gp_{{ $pi->id }}" class="border-0 text-right" disabled value="0"></td>
+                                                                <td><input type="text" name="less_gp_{{ $pi->id }}_{{ $x }}"  id="less_gp_{{ $pi->id }}_{{ $x }}" class="border-0 text-right" disabled value="0"></td>
                                                                 <input type="hidden" name="payslip_id_{{ $pi->id }}" value="{{ $pi->id }}">
                                                                 @endif
                                                         </tr>
                                                             @endif
                                                          @endforeach
-                                                      
+                                                        @php $sum_lessgp = "sum_lessgp_".$x; @endphp
+                                                        <input type="hidden" name="less_ids" id="less_ids" value="{{ $less_ids }}">
                                                         <tr class="bg-white border-b text-lg bg-yellow-200">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Total</td>
-                                                            <td align="right"><b>242</b></td>
+                                                            <td align="right"><b><span id="{{ $sum_lessgp }}"></span></b></td>
                                                         </tr>
                                                     </table>
                                                 </div>
@@ -268,13 +272,16 @@
                                         </div>
                                     </div>
                                 </td>
+                                @php $sum_deductions_name = "sum_deductions_outside_".$x;
+                                    $gross = "gross_".$x;  @endphp
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    30,308.00
+                                    <span id="{{  $gross }}"></span>
                                 </td>
+                                
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     <div x-data="{ modelOpen: false }">
-                                        <a href="#" @click="modelOpen =!modelOpen" class="my-1  py-2" title="Update">
-                                              10,400.00
+                                        <a href="#" @click="modelOpen =!modelOpen" id="{{ $sum_deductions_name  }}" class="my-1  py-2" title="Update">
+                                            
                                         </a>
                                 
                                         <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -313,25 +320,35 @@
                                                         </tr>
                                                         @foreach($payslipinfo AS $pi)
                                                             @if($pi->pay_type == 3)
-                                                        <tr class="bg-white border-b">
-                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">{{ $pi->description }}</td>
-                                                                @if($pi->editable == 1)
-                                                                <td align="right"><input type="text" name="deductions_{{ $pi->id }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="00" required></td>
-                                                                @else
-                                                                <td><input type="text" name="deductions_{{ $pi->id }}"  class="border-0 text-right" disabled value="0"></td>
-                                                                <input type="hidden" name="payslip_id_{{ $pi->id }}" value="{{ $pi->id }}">
+                                                                @php $deduc_sched = checkDeductionSchedule($pi->id); @endphp
+                                                                @if($deduc_sched==$cutoff_type || $deduc_sched == "")
+                                                                    <tr class="bg-white border-b">
+                                                                        <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">{{ $pi->description }}</td>
+                                                                            @if($pi->editable == 1)
+                                                                            <td align="right"><input type="text" name="deductions_{{ $pi->id }}_{{ $x }}" id="deductions_{{ $pi->id }}_{{ $x }}" onblur = "salary_computation('deductions',{{ $pi->id }})" value='0' class="bg-gray-50 border border-gray-300 text-gray-900 text-sm text-right rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required></td>
+                                                                            @else
+                                                                            <td><input type="text" name="deductions_{{ $pi->id }}_{{ $x }}" id="deductions_{{ $pi->id }}_{{ $x }}" class="border-0 w-full text-right" disabled value="{{ getDeductionRate($emp['personal_id'], $pi->id) }}"></td>
+                                                                            <input type="hidden" name="payslip_id_{{ $pi->id }}" value="{{ $pi->id }}">
+                                                                            @endif
+                                                                    </tr>
                                                                 @endif
-                                                        </tr>
                                                             @endif
                                                          @endforeach
+                                                        @php $sum_deduc_name = "sum_deductions_".$x; @endphp
+                                                         <input type="hidden" name="deduction_ids" id="deduction_ids" value="{{ $deduction_ids }}">
+                                                         <tr class="bg-white border-b text-lg bg-yellow-200">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Total</td>
+                                                            <td align="right"><b><span id="{{ $sum_deduc_name }}"></span></b></td>
+                                                        </tr>
                                                     </table>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </td>
+                                @php $net_pay = "netpay_".$x; @endphp
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    19,908.00
+                                    <span id="{{ $net_pay }}"></span>
                                 </td>
                                 <td class="py-3 px-6 justify-center flex" align="center">
                                     <a href="{{ route('payrollsalary.show', '1') }}" class="" title="Update">
@@ -349,7 +366,10 @@
                                     </button>
                                 </td>
                             </tr>
+                            @php $x++ @endphp
+                           
                             @endforeach
+                            <input type='hidden' name='counter' id='counter' value="{{ $x }}">
                         </tbody>
                     </table>
                 </div>

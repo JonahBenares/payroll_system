@@ -5,6 +5,7 @@ use App\Models\Allowance;
 use App\Models\EmployeeHMO;
 use App\Models\CutOff;
 use App\Models\BusinessUnit;
+use App\Models\Deduction;
 use App\Models\UploadAllowanceDetail;
 use App\Models\UploadAllowanceTime;
 use App\Models\ShiftScheduleDetail;
@@ -15,6 +16,8 @@ use App\Models\AdjustmentRate;
 use App\Models\LeaveFailure;
 use App\Models\Holiday;
 use App\Models\ChangeSchedule;
+use App\Models\EmployeeDeduction;
+use App\Models\StatutoryBracket;
 
 define('START_NIGHT_HOUR','22');
 define('START_NIGHT_MINUTE','00');
@@ -110,7 +113,7 @@ if (!function_exists('getEmployeeTime')) {
 
            // echo $recorded_time . ", " . $personal_id . " = " .$time_count . "<br>";
 
-            if($time_count%2==0){ ///// if equal or divisible by 2 ang timekeeping //////////
+            if($time_count%2==0){ ///// if equal or divisible by 2 ang timekeeping, complete logs //////////
                 if($nightshift == 0){  // if dayshift
 
                     $changeschedNS = checkChangeScheduleNS($personal_id, $recorded_time); //check if there's changesched  
@@ -178,7 +181,7 @@ if (!function_exists('getEmployeeTime')) {
                 
           
            // $time = $start_time."_".$end_time;
-            } else {
+            } else { ///// incomplete logs //////
               
                
                 $changeschedNS = checkChangeScheduleNS($personal_id, $recorded_time); //check if there's changesched
@@ -221,6 +224,8 @@ if (!function_exists('getEmployeeTime')) {
                     } else {
                         $end_time= $etime[0]['endtime'];
                     }
+
+                 
                 } else { /// dayshift
 
                     $time = Timekeeping::selectraw('min(recorded_time) as starttime, max(recorded_time) as endtime, personal_id')
@@ -247,7 +252,8 @@ if (!function_exists('getEmployeeTime')) {
             }
 
             if(!empty($end_time) && !empty($start_time)){
-             return  $start_time . " - " . $end_time . "<br>";
+             echo  $start_time . " - " . $end_time . "<br>";
+             echo getTimeDiff($start_time, $end_time);
             }
         }
 
@@ -520,6 +526,75 @@ if (!function_exists('night_difference')) {
             }
             return 0;
         }
+    }
+
+}
+
+if (!function_exists('checkDeductionSchedule')) {
+    function checkDeductionSchedule($payslip_info_id){
+
+        $get_sched= Deduction::select('deduction_period')
+            ->where("payslip_info_id","=",$payslip_info_id)->get();
+        $sched=$get_sched[0]['deduction_period'];
+     
+        return $sched;
+       
+    }
+ }
+
+ if (!function_exists('getDeductionRate')) {
+    function getDeductionRate($personal_id, $payslip_info_id){
+       
+        if($payslip_info_id == 8){ ////SSS Premium
+                $getrate = Employee::select('monthly_rate')
+                ->where("personal_id","=",$personal_id)->get();
+                
+                $rate=$getrate[0]['monthly_rate'];
+
+            
+                $get_count= StatutoryBracket::select('deduction_amount')
+                    ->where("payslip_info_id","=",$payslip_info_id)
+                    ->where("salary_from", "<=", $rate)
+                    ->where("salary_to", ">=", $rate)
+                    ->count();
+                
+                
+                if($get_count==0){
+                    $ded=0;
+                } else {
+
+                    $get_dd= StatutoryBracket::select('deduction_amount')
+                    ->where("payslip_info_id","=",$payslip_info_id)
+                    ->where("salary_from", "<=", $rate)
+                    ->where("salary_to", ">=", $rate)
+                    ->get();
+
+                    $ded=$get_dd[0]['deduction_amount'];
+                }
+            
+            
+            
+            } else {
+                $get_count= EmployeeDeduction::select('employee_rate')
+                ->where("payslip_info_id","=",$payslip_info_id)
+                ->where("personal_id", "=", $personal_id)
+                ->count();
+            
+                
+                    if($get_count==0){
+                        $ded=0;
+                    } else {
+
+                        $get_dd= EmployeeDeduction::select('employee_rate')
+                        ->where("payslip_info_id","=",$payslip_info_id)
+                        ->where("personal_id", "=", $personal_id)
+                        ->get();
+
+                        $ded=$get_dd[0]['employee_rate'];
+                    }
+                
+            } 
+            return $ded;
     }
 
 }
