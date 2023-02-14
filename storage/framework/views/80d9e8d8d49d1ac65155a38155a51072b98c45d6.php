@@ -19,7 +19,8 @@
                                 <div class="px-6 py-6">
                                     
                                     <p class="font-bold text-lg text-white uppercase leading-snone">
-                                        December 20, 2022  <span class="mx-2"> ● </span> January 5, 2023
+                                        <?php echo e($start_date); ?>  <span class="mx-2"> ● </span> <?php echo e($end_date); ?>
+
                                     </p>
                                     <p class="text-sm text-white leading-none"> 
                                         Current Cut Off
@@ -44,13 +45,14 @@
                                     </div>
                                     <div class="px-6 py-4">
                                         <p class="font-bold text-2xl text-lime-400">
-                                            09
+                                            <?php echo e(($unfiled_leave!=0) ? str_pad($unfiled_leave, 2, "0", STR_PAD_LEFT) : '0'); ?>
+
                                         </p>
                                     </div>
                                 </div>
                             </div>
                         </a>
-                        <a href="" class="shadow-md rounded-lg w-full bg-gradient-to-r from-emerald-300 to-lime-300">
+                        <!-- <a href="" class="shadow-md rounded-lg w-full bg-gradient-to-r from-emerald-300 to-lime-300">
                             <div class="bg-[url('images/circle.png')] bg-[length:170px_100px] bg-no-repeat bg-right rounded-lg"> 
                                 <div class="flex justify-between">
                                     <div class="px-6 py-4">
@@ -68,7 +70,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </a> -->
                         <a href="" class="shadow-md rounded-lg w-full bg-gradient-to-r from-emerald-300 to-lime-300">
                             <div class="bg-[url('images/circle.png')] bg-[length:170px_100px] bg-no-repeat bg-right-bottom rounded-lg"> 
                                 <div class="flex justify-between">
