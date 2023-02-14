@@ -137,7 +137,7 @@
                                 @endphp
                                 @foreach($data2 AS $logs)
                                     @php
-                                        if($logs['schedule_type']=='Regular'){
+                                        if($logs['schedule_type']=='regular'){
                                             $exp=implode("",$logs['recorded_time']);
                                             $exp_time = explode(',', $exp); 
                                             $timecheck=date('Hi',strtotime($logs['time_in']));
@@ -159,7 +159,7 @@
                                                 $total_min[]=$interval->format("%i");
                                             }
                                             
-                                        }else if($logs['schedule_type']=='Shifting'){
+                                        }else if($logs['schedule_type']=='shifting'){
                                             $timein_shift = date('H:i',strtotime(getMintimein($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
                                             $intime = date('Hi',strtotime(getMintimein($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
                                             $intimemax = date('H',strtotime(getMaxtimein($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));

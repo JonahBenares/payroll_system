@@ -46,13 +46,13 @@
                                         @php $x=0; @endphp
                                         <option value=''>--Select Overtime Date--</option>
                                         @foreach($data2 AS $d)
-                                            @if($d['schedule_type']=='Regular'){
+                                            @if($d['schedule_type']=='regular'){
                                                 @if($hours[$x]>=9 && $minutes[$x]>=30)
                                                 <option value='{{ $date[$x]}}'>{{ date('F d,Y',strtotime($date[$x]))}}</option>
                                                 @elseif($hours[$x]>=10)
                                                 <option value='{{ $date[$x]}}'>{{ date('F d,Y',strtotime($date[$x]))}}</option>
                                                 @endif
-                                            @else if($d['schedule_type']=='Shifting')
+                                            @else if($d['schedule_type']=='shifting')
                                                 @if($hours[$x]>=8 && $minutes[$x]>=30)
                                                 <option value='{{ $date[$x]}}'>{{ date('F d,Y',strtotime($date[$x]))}}</option>
                                                 @elseif($hours[$x]>=10)

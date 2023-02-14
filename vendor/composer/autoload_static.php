@@ -713,6 +713,8 @@ class ComposerStaticInitb740f3480b3a58e90e3ea85b9f582af9
         'App\\Models\\PayrollOvertime' => __DIR__ . '/../..' . '/app/Models/PayrollOvertime.php',
         'App\\Models\\PayrollSalary' => __DIR__ . '/../..' . '/app/Models/PayrollSalary.php',
         'App\\Models\\PayslipInfo' => __DIR__ . '/../..' . '/app/Models/PayslipInfo.php',
+        'App\\Models\\PayslipSalary' => __DIR__ . '/../..' . '/app/Models/PayslipSalary.php',
+        'App\\Models\\PayslipSalaryDetail' => __DIR__ . '/../..' . '/app/Models/PayslipSalaryDetail.php',
         'App\\Models\\RfdReport' => __DIR__ . '/../..' . '/app/Models/RfdReport.php',
         'App\\Models\\Schedule' => __DIR__ . '/../..' . '/app/Models/Schedule.php',
         'App\\Models\\ShiftSchedule' => __DIR__ . '/../..' . '/app/Models/ShiftSchedule.php',
