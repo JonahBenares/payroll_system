@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\FiledLeave;
-use App\Models\LeaveFailure;
-use App\Models\LeaveFailureDetail;
-use App\Models\Employee;
+use App\Models\Dashboard;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class FiledLeaveController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,30 +14,8 @@ class FiledLeaveController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-        if(isset($_GET['id']) && !empty($_GET['id'])){
-            $employee_id=$_GET['id'];
-        }else{
-            $employee_id='';
-        }
-        if(isset($_GET['month']) && isset($_GET['year'])){
-            $month=$_GET['month'];
-            $year=$_GET['year'];
-            
-        }else{
-            $month=date('m');
-            $year=date('Y');
-        }
-        $employees = Employee::all()->where('is_active', '=', 1);
-        $employee_name = Employee::where('id',$employee_id)->first();
-        $cancelled = LeaveFailureDetail::join('users', 'users.id', '=', 'leave_filing_detail.cancelled_by')->first();
-        $monthName = date('F', mktime(0, 0, 0, $month, 10));
-        $year_disp = $year;
-        $emp_id = $employee_id;
-        $filed = LeaveFailure::join('employees', 'employees.id', '=', 'leave_filing_head.employee_id')
-        ->join('leave_filing_detail', 'leave_filing_head_id', '=', 'leave_filing_head.id')
-        ->where('filed', '=', 1)->where('month',$month)->where('month',$month)->where('year', $year)->where('employee_id', $employee_id)->groupBy('leave_filing_head.personal_id')->get();
-        return view('filed.index',compact('filed','employees','employee_name','cancelled','monthName','year_disp','emp_id'));
+    {
+        return view('dash.index');
     }
 
     /**
@@ -66,10 +42,10 @@ class FiledLeaveController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\FiledLeave  $filedLeave
+     * @param  \App\Models\Dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function show(FiledLeave $filedLeave)
+    public function show(Dashboard $dashboard)
     {
         //
     }
@@ -77,10 +53,10 @@ class FiledLeaveController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\FiledLeave  $filedLeave
+     * @param  \App\Models\Dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function edit(FiledLeave $filedLeave)
+    public function edit(Dashboard $dashboard)
     {
         //
     }
@@ -89,30 +65,1053 @@ class FiledLeaveController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\FiledLeave  $filedLeave
+     * @param  \App\Models\Dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Dashboard $dashboard)
     {
-        $filed = LeaveFailureDetail::find($id);
-        $current_date_time = date('Y-m-d H:i:s');
-        $user = $request->user_id=auth()->id();
-        $filed->update([
-            'cancel_remarks'=>$request->cancel_remarks,
-            'cancel_date'=>$current_date_time,
-            'cancelled_by'=>$user,
-            'cancelled'=>1,
-        ]);
-    return redirect()->route('filedleave.index')->with('popup', 'open');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\FiledLeave  $filedLeave
+     * @param  \App\Models\Dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FiledLeave $filedLeave)
+    public function destroy(Dashboard $dashboard)
+    {
+        //
+    }
+}
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Dashboard;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class DashboardController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('dash.index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Dashboard $dashboard)
+    {
+        //
+    }
+}
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Dashboard;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class DashboardController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('dash.index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Dashboard $dashboard)
+    {
+        //
+    }
+}
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Dashboard;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class DashboardController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('dash.index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Dashboard $dashboard)
+    {
+        //
+    }
+}
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Dashboard;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class DashboardController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('dash.index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Dashboard $dashboard)
+    {
+        //
+    }
+}
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Dashboard;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class DashboardController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('dash.index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Dashboard $dashboard)
+    {
+        //
+    }
+}
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Dashboard;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class DashboardController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('dash.index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Dashboard $dashboard)
+    {
+        //
+    }
+}
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Dashboard;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class DashboardController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('dash.index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Dashboard $dashboard)
+    {
+        //
+    }
+}
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Dashboard;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class DashboardController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('dash.index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Dashboard $dashboard)
+    {
+        //
+    }
+}
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Dashboard;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class DashboardController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('dash.index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Dashboard $dashboard)
+    {
+        //
+    }
+}
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Dashboard;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class DashboardController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('dash.index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Dashboard $dashboard)
+    {
+        //
+    }
+}
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Dashboard;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class DashboardController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('dash.index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Dashboard $dashboard)
+    {
+        //
+    }
+}
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Dashboard;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class DashboardController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('dash.index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Dashboard $dashboard)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Dashboard  $dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Dashboard $dashboard)
     {
         //
     }
