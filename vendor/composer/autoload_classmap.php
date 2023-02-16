@@ -112,6 +112,7 @@ return array(
     'App\\Models\\PayslipInfo' => $baseDir . '/app/Models/PayslipInfo.php',
     'App\\Models\\PayslipSalary' => $baseDir . '/app/Models/PayslipSalary.php',
     'App\\Models\\PayslipSalaryDetail' => $baseDir . '/app/Models/PayslipSalaryDetail.php',
+    'App\\Models\\Reminder' => $baseDir . '/app/Models/Reminder.php',
     'App\\Models\\RfdReport' => $baseDir . '/app/Models/RfdReport.php',
     'App\\Models\\Schedule' => $baseDir . '/app/Models/Schedule.php',
     'App\\Models\\ShiftSchedule' => $baseDir . '/app/Models/ShiftSchedule.php',

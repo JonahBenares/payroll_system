@@ -715,6 +715,7 @@ class ComposerStaticInitb740f3480b3a58e90e3ea85b9f582af9
         'App\\Models\\PayslipInfo' => __DIR__ . '/../..' . '/app/Models/PayslipInfo.php',
         'App\\Models\\PayslipSalary' => __DIR__ . '/../..' . '/app/Models/PayslipSalary.php',
         'App\\Models\\PayslipSalaryDetail' => __DIR__ . '/../..' . '/app/Models/PayslipSalaryDetail.php',
+        'App\\Models\\Reminder' => __DIR__ . '/../..' . '/app/Models/Reminder.php',
         'App\\Models\\RfdReport' => __DIR__ . '/../..' . '/app/Models/RfdReport.php',
         'App\\Models\\Schedule' => __DIR__ . '/../..' . '/app/Models/Schedule.php',
         'App\\Models\\ShiftSchedule' => __DIR__ . '/../..' . '/app/Models/ShiftSchedule.php',

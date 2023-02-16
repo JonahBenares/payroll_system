@@ -706,7 +706,7 @@
                         //$('#nav')[0].reset();
                     }
                 });
-            }---
+            }
         </script>
         {{-- @livewireScripts
         @powerGridScripts --}}

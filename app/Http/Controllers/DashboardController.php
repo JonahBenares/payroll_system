@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Dashboard;
 use App\Models\CutOff;
+use App\Models\Reminder;
+use App\Models\Holiday;
 use App\Models\LeaveFailure;
 use App\Models\LeaveFailureDetail;
 use App\Http\Controllers\Controller;
@@ -11,6 +13,15 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+    public static function dateDifference($date_1 , $date_2)
+    {
+        $datetime2 = date_create($date_2);
+        $datetime1 = date_create($date_1 );
+        $interval = date_diff($datetime2, $datetime1);
+    
+        return $interval->format('%R%a');
+    
+    }
     /**
      * Display a listing of the resource.
      *
@@ -41,7 +52,16 @@ class DashboardController extends Controller
             $end_date=$month_disp." ".str_pad($cutoff_eom->cutoff_end, 2, "0", STR_PAD_LEFT).",".$year;
         }
         $unfiled_leave=LeaveFailureDetail::where('filed','0')->count();
-        return view('dashboard',compact('start_date','end_date','unfiled_leave'));
+        $reminders=Reminder::where('done','0')->orderBy('reminder_date')->get();
+        $holiday=Holiday::all()->sortBy('holiday_date');
+        $day = date('D');
+        $nextMonth=date('Y-m-01', strtotime('+1 month'));
+        $date = new \DateTime('now');
+        $nowTimestamp = $date->getTimestamp();
+        $date->modify($nextMonth);
+        $firstDayOfNextMonthTimestamp = $date->getTimestamp();
+        $nextmonthdisp=($firstDayOfNextMonthTimestamp - $nowTimestamp) / 86400;
+        return view('dashboard',compact('start_date','end_date','unfiled_leave','reminders','day','nextmonthdisp','now','holiday'));
     }
 
     /**
@@ -62,7 +82,18 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $res=Reminder::create(
+            [
+                'reminder_date'=> $request->reminder_date,
+                'reminder'=> $request->reminder,
+                'done'=>0
+            ]
+        );
+        if($res){
+            return redirect()->route('dashboard')->with('success',"Reminder Added Successfully");
+        }else{
+            return redirect()->route('dashboard')->with('fail',"Error! Try Again!");
+        }
     }
 
     /**
@@ -94,9 +125,36 @@ class DashboardController extends Controller
      * @param  \App\Models\Dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Dashboard $dashboard)
+    public function update(Request $request, $id)
     {
-        //
+        $reminders = Reminder::find($id);
+        $reminders->update(
+            [
+                'done' => 1,
+            ]
+        );
+        if($reminders){
+            return redirect()->route('dashboard')->with('success',"Reminder Tag as Done Successfully");
+        }else{
+            return redirect()->route('dashboard')->with('fail',"Error! Try Again!");
+        }
+    }
+
+    public function update_reminder(Request $request)
+    {
+        $id=$request->reminder_id;
+        $reminders = Reminder::find($id);
+        $reminders->update(
+            [
+                'reminder' => $request->reminder,
+                'reminder_date' => $request->reminder_date,
+            ]
+        );
+        if($reminders){
+            return redirect()->route('dashboard')->with('success',"Reminder Updated Successfully");
+        }else{
+            return redirect()->route('dashboard')->with('fail',"Error! Try Again!");
+        }
     }
 
     /**
@@ -105,8 +163,9 @@ class DashboardController extends Controller
      * @param  \App\Models\Dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dashboard $dashboard)
+    public function destroy($id)
     {
-        //
+        Reminder::find($id)->delete();
+        return redirect()->route('dashboard' )->with('fail',"Reminder Deleted Successfully");
     }
 }

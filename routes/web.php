@@ -66,6 +66,10 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 require __DIR__.'/auth.php';
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name("dashboard");
+Route::post('/dashboard/store', [DashboardController::class, 'store'])->name("dashstore");
+Route::get('/dashboard/update/{id}', [DashboardController::class, 'update'])->name("dashupdate");
+Route::get('/dashboard/destroy/{id}', [DashboardController::class, 'destroy'])->name("dashdestroy");
+Route::post('/dashboard/update_reminder', [DashboardController::class, 'update_reminder'])->name("dashupreminder");
 
 // AccountEntry
 Route::resource('entry', AccountingEntryController::class);
