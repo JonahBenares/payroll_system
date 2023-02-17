@@ -1,3 +1,5 @@
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="{{ URL::asset('js/myjs.js') }}"></script>
 <script>
     $(document).ready(function() {
     var counter = document.getElementById("counter").value;  
@@ -426,7 +428,6 @@
                     </table>
                 </div>
             </div>
-            
         </div>
     </div>
 </x-app-layout>

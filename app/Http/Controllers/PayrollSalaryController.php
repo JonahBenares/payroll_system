@@ -273,45 +273,8 @@ class PayrollSalaryController extends Controller
                          
                         foreach($getRDsEmp AS $rdemp){
 
-                            // $time_count = Timekeeping::selectraw('min(recorded_time) as starttime, max(recorded_time) as endtime, personal_id')
-                            // ->whereDate('recorded_time',$rdemp['rest_days'])
-                            // ->where('personal_id',$rdemp['personal_id'])
-                            // ->count();
-
-                       
-                        
-                            // if($time_count%2==0){ ///// if equal or divisible by 2 ang timekeeping //////////
-                            //     $time = Timekeeping::selectraw('min(recorded_time) as starttime, max(recorded_time) as endtime, personal_id')
-                            //     ->whereDate('recorded_time',$rdemp['rest_days'])
-                            //     ->where('personal_id',$rdemp['personal_id'])
-                            //     ->get();
-                            //    // if(!empty($time[0]['personal_id'])){
-                            //         $start_time = $time[0]['starttime'];
-                            //         $end_time = $time[0]['endtime'];
-                                  
-                            //    // }
-                            // } else {
-
-                            //     $stime = Timekeeping::selectraw('min(recorded_time) as starttime, personal_id')
-                            //     ->whereDate('recorded_time',$rdemp['rest_days'])
-                            //     ->where('personal_id',$rdemp['personal_id'])
-                            //     ->get();
-
-                            //     $next_day = date('Y-m-d', strtotime($rdemp['rest_days'] . ' +1 day'));
-                               
-                            //     $etime = Timekeeping::selectraw('min(recorded_time) as endtime, personal_id')
-                            //     ->whereDate('recorded_time',$next_day)
-                            //     ->where('personal_id',$rdemp['personal_id'])
-                            //     ->get();
-
-                            //     $start_time = $stime[0]['starttime'];
-                            //     $end_time = $etime[0]['endtime'];
-
-                              
-                            // }
-
-                            $time = getEmployeeTime($rdemp['rest_days'],$rdemp['personal_id']);
-                            $t=explode("_",$time);
+                            $time = getEmployeeTime($rdemp['rest_days'],$rdemp['personal_id'], 'time');
+                            $t=explode("-",$time);
                             $start_time=$t[0];
                             $end_time=$t[1];
 
