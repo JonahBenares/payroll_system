@@ -59,7 +59,7 @@ if (!function_exists('getTimeDiff')) {
 }
 
 function getMintimein($schedule_type,$recorded_time,$personal_id){
-    if($schedule_type=='Shifting'){
+    if($schedule_type=='shifting'){
         $date=date('Y-m-d',strtotime($recorded_time));
         $getmintimein=Timekeeping::where('personal_id',$personal_id)->where(DB::raw("(STR_TO_DATE(recorded_time,'%Y-%m-%d'))"),$date)->min('recorded_time');
         return $getmintimein;
@@ -67,7 +67,7 @@ function getMintimein($schedule_type,$recorded_time,$personal_id){
 }
 
 function getMaxtimein($schedule_type,$recorded_time,$personal_id){
-    if($schedule_type=='Shifting'){
+    if($schedule_type=='shifting'){
         $date=date('Y-m-d',strtotime($recorded_time));
         $getmintimein=Timekeeping::where('personal_id',$personal_id)->where(DB::raw("(STR_TO_DATE(recorded_time,'%Y-%m-%d'))"),$date)->max('recorded_time');
         return $getmintimein;
@@ -75,7 +75,7 @@ function getMaxtimein($schedule_type,$recorded_time,$personal_id){
 }
 
 function getMintimeout($schedule_type,$recorded_time,$personal_id){
-    if($schedule_type=='Shifting'){
+    if($schedule_type=='shifting'){
         $date2=date('Y-m-d',strtotime($recorded_time." + 1 day"));
         $getmintimeout=Timekeeping::where('personal_id',$personal_id)->where(DB::raw("(STR_TO_DATE(recorded_time,'%Y-%m-%d'))"),$date2)->min('recorded_time');
         return $getmintimeout;
@@ -317,7 +317,7 @@ if (!function_exists('getHMODependent')) {
  }
 
 function getMaxtimeout($schedule_type,$recorded_time,$personal_id){
-    if($schedule_type=='Shifting'){
+    if($schedule_type=='shifting'){
         $date2=date('Y-m-d',strtotime($recorded_time." + 1 day"));
         $getmintimeout=Timekeeping::where('personal_id',$personal_id)->where(DB::raw("(STR_TO_DATE(recorded_time,'%Y-%m-%d'))"),$date2)->max('recorded_time');
         return $getmintimeout;

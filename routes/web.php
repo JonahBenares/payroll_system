@@ -14,6 +14,7 @@ use App\Http\Controllers\AllowanceRateController;
 use App\Http\Controllers\AdjustmentRateController;
 use App\Http\Controllers\HmoRateController;
 use App\Http\Controllers\DeductionController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StatutoryBracketController;
 use App\Http\Controllers\TardinessRateController;
 use App\Http\Controllers\CutOffController;
@@ -64,7 +65,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 require __DIR__.'/auth.php';
-
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name("dashboard");
+Route::post('/dashboard/store', [DashboardController::class, 'store'])->name("dashstore");
+Route::get('/dashboard/update/{id}', [DashboardController::class, 'update'])->name("dashupdate");
+Route::get('/dashboard/destroy/{id}', [DashboardController::class, 'destroy'])->name("dashdestroy");
+Route::post('/dashboard/update_reminder', [DashboardController::class, 'update_reminder'])->name("dashupreminder");
 
 // AccountEntry
 Route::resource('entry', AccountingEntryController::class);
@@ -199,8 +204,6 @@ Route::post('/overallOT/filter_overallot', [overallOTController::class, 'filter_
 // Route::get('/payroll_bonus', [PayrollController::class, 'payroll_bonus'])->middleware(['auth'])->name('payroll_bonus');
 // Route::get('/payroll_overtime', [PayrollController::class, 'payroll_overtime'])->middleware(['auth'])->name('payroll_overtime');
 // Route::get('/upload_allowance', [UploadAllowController::class, 'uploadAllowance'])->middleware(['auth'])->name('upload_allowance');
-
-// Route::get('/dash', [MasterfileController::class, 'dash'])->middleware(['auth'])->name("dash");
 // Route::get('/masterfile/employee_list', 'App\Http\Controllers\MasterfileController@index');
 
 Route::get('/toolkit', function () {
