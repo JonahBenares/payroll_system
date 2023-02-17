@@ -1,3 +1,56 @@
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="{{ URL::asset('js/myjs.js') }}"></script>
+<script>
+    $(document).ready(function() {
+    var counter = document.getElementById("counter").value;  
+    var deduction_ids = document.getElementById("deduction_ids").value; 
+    var less_ids = document.getElementById("less_ids").value; 
+
+   
+    var adjustment_ids = document.getElementById("adjustment_ids").value; 
+    for(var x=1;x<counter;x++){
+        let sum_deductions_outside=0;
+        let sum_less_outside=0;
+        let sum_adjustment_outside=0;
+       
+        var salary = document.getElementById("salary_"+x).innerHTML; 
+
+        
+
+        var ded = deduction_ids.split("_");
+        ded.forEach(function(dedids) {
+            var ded_val = parseFloat(document.getElementById("deductions_"+dedids+"_"+x).value);  
+            sum_deductions_outside+=ded_val;
+        });
+
+
+        var ls = less_ids.split("_");
+        ls.forEach(function(lsids) {
+            var less_val = parseFloat(document.getElementById("less_gp_"+lsids+"_"+x).value);  
+            sum_less_outside+=less_val;
+        });
+
+
+        var adj = adjustment_ids.split("_");
+        adj.forEach(function(adjids) {
+            var adj_val = parseFloat(document.getElementById("adjustment_"+adjids+"_"+x).value);  
+            sum_adjustment_outside+=adj_val;
+        });
+
+        document.getElementById("sum_deductions_"+x).innerHTML = sum_deductions_outside;
+        document.getElementById("sum_lessgp_outside_"+x).innerHTML = sum_less_outside;
+        document.getElementById("sum_deductions_outside_"+x).innerHTML = sum_deductions_outside;
+        document.getElementById("sum_adjustment_"+x).innerHTML = sum_adjustment_outside;
+        document.getElementById("sum_adjustment_outside_"+x).innerHTML = sum_adjustment_outside;
+
+       var gross = (parseFloat(salary) + parseFloat(sum_adjustment_outside)) - parseFloat(sum_less_outside);
+       var netpay = parseFloat(gross) - parseFloat(sum_deductions_outside);
+
+        document.getElementById("gross_"+x).innerHTML = gross;
+        document.getElementById("netpay_"+x).innerHTML = netpay;
+    }
+ });
+</script>
 <x-app-layout>
     <x-slot name="header"></x-slot>
     <!-- component -->
@@ -121,6 +174,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                          
                             @php $x=1; @endphp
                             @foreach($employee_list AS $emp)
                             @php  $sum_outside = "sum_adjustment_outside_".$x; 
@@ -275,7 +329,7 @@
                                 @php $sum_deductions_name = "sum_deductions_outside_".$x;
                                     $gross = "gross_".$x;  @endphp
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    <span id="{{  $gross }}"></span>
+                                    <span id="{{  $gross }}">0</span>
                                 </td>
                                 
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
@@ -374,9 +428,7 @@
                     </table>
                 </div>
             </div>
-            
         </div>
     </div>
-
 </x-app-layout>
 

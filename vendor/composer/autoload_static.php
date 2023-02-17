@@ -724,6 +724,7 @@ class ComposerStaticInitb740f3480b3a58e90e3ea85b9f582af9
         'App\\Models\\SwapSchedule' => __DIR__ . '/../..' . '/app/Models/SwapSchedule.php',
         'App\\Models\\TardinessRate' => __DIR__ . '/../..' . '/app/Models/TardinessRate.php',
         'App\\Models\\Timekeeping' => __DIR__ . '/../..' . '/app/Models/Timekeeping.php',
+        'App\\Models\\TimekeepingLogs' => __DIR__ . '/../..' . '/app/Models/TimekeepingLogs.php',
         'App\\Models\\UploadAllowance' => __DIR__ . '/../..' . '/app/Models/UploadAllowance.php',
         'App\\Models\\UploadAllowanceDetail' => __DIR__ . '/../..' . '/app/Models/UploadAllowanceDetail.php',
         'App\\Models\\UploadAllowanceTime' => __DIR__ . '/../..' . '/app/Models/UploadAllowanceTime.php',

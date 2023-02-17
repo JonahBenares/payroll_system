@@ -121,6 +121,7 @@ return array(
     'App\\Models\\SwapSchedule' => $baseDir . '/app/Models/SwapSchedule.php',
     'App\\Models\\TardinessRate' => $baseDir . '/app/Models/TardinessRate.php',
     'App\\Models\\Timekeeping' => $baseDir . '/app/Models/Timekeeping.php',
+    'App\\Models\\TimekeepingLogs' => $baseDir . '/app/Models/TimekeepingLogs.php',
     'App\\Models\\UploadAllowance' => $baseDir . '/app/Models/UploadAllowance.php',
     'App\\Models\\UploadAllowanceDetail' => $baseDir . '/app/Models/UploadAllowanceDetail.php',
     'App\\Models\\UploadAllowanceTime' => $baseDir . '/app/Models/UploadAllowanceTime.php',
