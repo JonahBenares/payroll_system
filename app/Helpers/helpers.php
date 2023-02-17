@@ -104,6 +104,22 @@ if (!function_exists('getEmployeeTime')) {
        
 }
 
+if (!function_exists('getDetailsLogs')) {
+
+    function getDetailsLogs($log_date, $personal_id, $column){
+
+        $timelogs = TimekeepingLogs::select($column)
+                                   ->where("log_date", $log_date)
+                                   ->where("personal_id", $personal_id)
+                                   ->get();
+        
+        $deets = $timelogs[0][$column];
+        return $deets;
+    }
+
+       
+}
+
 if (!function_exists('checkChangeScheduleNS')) {
    
     function checkChangeScheduleNS($personal_id, $date){

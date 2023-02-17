@@ -219,15 +219,19 @@ function night_difference($start_work,$end_work)
                 }
             }
 
-            $update_dump_logs= mysqli_query($con_hris, "UPDATE timekeeping SET dump_logs = '1' WHERE id = '$fetch_time[id]'");
+          $update_dump_logs= mysqli_query($con_hris, "UPDATE timekeeping SET dump_logs = '1' WHERE id = '$fetch_time[id]'");
          }
     }
 
 
+    //////////////////////////////////////////////////////////// CALCULATE OVERALL AND REGULAR HOURS ///////////////////////////////////////////
 
+    
     foreach($logs AS $l){
         $total_break=0;
         $regular_hours=0;
+       
+       
         $get_complete = mysqli_query($con_payroll, "SELECT * FROM timekeeping_logs WHERE log_date = '$l[logs]' AND personal_id = '$l[personal_id]' AND incomplete!='1'");
         while($fetch_complete = mysqli_fetch_array($get_complete)){
                
@@ -256,18 +260,44 @@ function night_difference($start_work,$end_work)
                         $overall=$total_time;
                         $diff= $total_time;
                     }
-                   
                     if($fetch_complete['night_shift'] == 1){
                         $regular_hours = $overall - $fetch_complete['nd_hours'];
-                       
                     }
+            
+
+         
             //echo $fetch_complete['personal_id'] . " - ". $time_in . " to " . $time_out . " = " . $total_time . ", " . $total_break." - " . $diff . "<br>";
-                
+               // echo $l['logs'] ." = " . $l['personal_id'] . " - " . $holidays . "<br>";
             $update = mysqli_query($con_payroll,"UPDATE timekeeping_logs SET total_time='$total_time', total_breaktime='$total_break', overall_time='$diff',
                              regular_hours = '$regular_hours' WHERE log_date = '$l[logs]' AND personal_id = '$l[personal_id]'");
        
         }
-    
+
+    }
+
+    //////////////////////////////////////////////////////////// GET HOLIDAYS AND REST DAYS ///////////////////////////////////////////
+    foreach($logs AS $l){
+
+        $holidays = 0;
+        $rest_day=0;
+        $get_holidays =  mysqli_query($con_payroll, "SELECT id FROM holidays WHERE holiday_date = '$l[logs]'");
+        $row_holidays =  mysqli_num_rows($get_holidays);
+        $get_complete = mysqli_query($con_payroll, "SELECT * FROM timekeeping_logs WHERE log_date = '$l[logs]' AND personal_id = '$l[personal_id]'");
+        while($fetch_complete = mysqli_fetch_array($get_complete)){
+            $getrestday = mysqli_query($con_payroll, "SELECT SH.id FROM schedule_head SH INNER JOIN schedule_detail SD ON SH.id = sd.schedule_head_id 
+            WHERE SH.personal_id = '$l[personal_id]' AND SD.rest_day = '$l[logs]'");
+            $rows_restday = mysqli_num_rows($getrestday);
+
+            if($rows_restday > 0){
+            $rest_day=1;
+            }
+            if($row_holidays>0){
+            $holidays=1;
+            }
+
+            $update = mysqli_query($con_payroll,"UPDATE timekeeping_logs SET holiday='$holidays', rest_day='$rest_day' WHERE log_date = '$l[logs]' AND personal_id = '$l[personal_id]'");
+
+        }
     }
    
     
