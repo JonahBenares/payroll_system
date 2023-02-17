@@ -15,6 +15,7 @@ use App\Models\AdjCalcHead;
 use App\Models\AdjCalcDetail;
 use App\Models\PayslipSalary;
 use App\Models\PayslipSalaryDetail;
+use App\Models\TimekeepingLogs;
 
 
 define('PERCENT_RD_RH','2.6');
@@ -577,10 +578,8 @@ class PayrollSalaryController extends Controller
                       
             //$employee_list = collect($employee_list)->sortBy('name')->toArray();
            // $payslipinfo = PayslipInfo::all();
-         
         }
 
-    
     }
 
        /**
@@ -698,14 +697,130 @@ class PayrollSalaryController extends Controller
 
     }
 
-    public function time_computation($month, $year, $cutoff)
+    public function adjustment_computation($month, $year, $cutoff){
+
+        $dates = explode("_",$this->period_dates($month, $year, $cutoff));
+        $start_date = $dates[0];
+        $end_date = $dates[1];
+
+        //echo $start_date . " to " . $end_date;
+        $get_logs = TimekeepingLogs::whereBetween('log_date',[$start_date, $end_date])->get();
+
+        $save_head_id = AdjCalcHead::insertGetId([
+            'salary_year'=>$year,
+            'salary_month'=>$month,
+            'cutoff'=>$cutoff,
+            'created_at'=>date("Y-m-d H:i:s")
+        ]);
+
+        foreach($get_logs AS $logs){
+
+             $getemp = Employee::select('id')->where('personal_id', $logs->personal_id)->get();
+             $employee_id = $getemp[0]['id'];
+
+             
+
+                if($logs->night_shift =='1'){
+                    if($logs->nd_hours >= 8){
+                        $np_hours= 8;
+                        $regular_hours =0;
+
+                    } else {
+                        $np_hours= $logs->nd_hours;
+                        $regular_hours = 8-$logs->nd_hours;
+                    }
+                } else {
+                    $np_hours=0;
+                    if($logs->overall_time>=8){
+                        $regular_hours = 8;  
+                    } else {
+                        $regular_hours = $logs->overall_time;
+                    }
+                }
+                
+                $hourly_rate = getEmployeeDetails($logs->personal_id, 'hourly_rate');
+
+                if($logs->holiday == '0' && $logs->rest_day == '0' && $logs->night_shift == '0'){
+                    
+                    $regular_amount = $hourly_rate * $regular_hours;
+                    $rest_day=0;
+                    $rd_rate=0;
+                    $rd_amount=0;
+                    $holiday = 0;
+                    $holiday_rate = 0;
+                    $holiday_amount = 0;
+                    $night_premium = 0;
+                    $np_rate = 0;
+                    $np_amount = 0;
+                    
+                }
+                else if($logs->holiday == '1' && $logs->rest_day == '0' && $logs->night_shift == '0'){
+                    $holiday_rate = getHolidayRate($logs->log_date);
+                    $hol_amount = ($hourly_rate * $regular_hours) * ($holiday_rate-1);
+                    $regular_amount = $hourly_rate * $regular_hours;
+                    $rest_day=0;
+                    $rd_rate=0;
+                    $rd_amount=0;
+                    $holiday = 1;
+                    $holiday_rate = $holiday_rate;
+                    $holiday_amount = 0;
+
+                }
+                else if($logs->holiday == '0' && $logs->rest_day == '1' && $logs->night_shift == '0'){
+                    
+                    $ps_id = getPayslipInfo('description', 'Rest Day', 'id');
+                    //$nd_id = getPayslipInfo('description', 'Night Premium', 'id');
+                    $rates = getRates($ps_id);
+                    //$nd_rate = getRates($nd_id);
+
+                    $restday_rate = $rate_array[1];
+
+                    // $nd_array =  explode("_",$nd_rate);
+                    // $np_rate = $nd_array[1];
+                    
+                    $rdamount = ($hourly_rate * $regular_hours) * (1-$restday_rate);
+
+                    $regular_amount = $hourly_rate * $regular_hours;
+                    $rest_day=1;
+                    $rd_rate=$restday_rate;
+                    $rd_amount=$rdamount;
+                    $holiday = 0;
+                    $holiday_rate = $holiday_rate;
+                    $holiday_amount = 0;
+
+                }
+             $save = AdjCalcDetail::create([
+                    'adj_calc_head_id'=>$save_head_id,
+                    'employee_id'=>$employee_id,
+                    'personal_id'=>$logs->personal_id,
+                    'log_date'=>$logs->log_date,
+                    'regular_hours'=>$regular_hours,
+                    'np_hours'=>0,
+                    'hourly_rate'=>$hourly_rate,
+                    'rd_amount'=>0,
+                    'rest_day'=>0,
+                    'rd_rate'=>0,
+                    'rd_amount'=>0,
+                    'holiday'=>0,
+                    'holiday_rate'=>$hol->holiday_rate,
+                    'holiday_amount'=>$total_amount,
+                    'night_premium'=>0,
+                    'np_rate'=>0,
+                    'np_amount'=>0,
+                    'total_amount'=>$total_amount
+                ]);
+        }
+
+    }
+
+    public function period_dates($month, $year, $cutoff)
     {
         if( $cutoff== 'EOM'){
             $cut = CutOff::select('cutoff_start','cutoff_end')
                 ->where("cutoff_type","=",$cutoff)->get();
-            
-            $start=$cut[0]['cutoff_start'];
-            $end=$cut[0]['cutoff_end'];
+                
+            $start=str_pad($cut[0]['cutoff_start'],2,"0",STR_PAD_LEFT);
+            $end=str_pad($cut[0]['cutoff_end'],2,"0",STR_PAD_LEFT);
 
             $start_date = $year."-".$month."-".$start;
             $end_date = $year."-".$month."-".$end;
@@ -713,15 +828,16 @@ class PayrollSalaryController extends Controller
             $cut = CutOff::select('cutoff_start','cutoff_end')
             ->where("cutoff_type","=",$cutoff)->get();
         
-            $start=$cut[0]['cutoff_start'];
-            $end=$cut[0]['cutoff_end'];
+            $start=str_pad($cut[0]['cutoff_start'],2,"0",STR_PAD_LEFT);
+            $end=str_pad($cut[0]['cutoff_end'],2,"0",STR_PAD_LEFT);
 
             $start_d = $year."-".$month."-".$start;
             $end_date = $year."-".$month."-".$end;
 
             $start_date = date("Y-m-d", strtotime ('-1 month',strtotime ($start_d)));
         }
-        echo getEmployeeTime('2023-01-06','1' );
+       // echo getEmployeeTime('2023-01-06','1' );
+       return $start_date ." _ ".$end_date;
     }
     public function create()
     {

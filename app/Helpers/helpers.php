@@ -93,7 +93,7 @@ if (!function_exists('getEmployeeTime')) {
                                    ->get();
         
         if($column == 'time'){
-            $time = $timelogs[0]['time_in'] . " - " .  $timelogs[0]['time_out'];
+            $time = $timelogs[0]['time_in'] . " _ " .  $timelogs[0]['time_out'];
         } else if($column == 'overall_time'){
             $time = $timelogs[0]['overall_time'];
         }
@@ -218,6 +218,26 @@ if (!function_exists('checkHoliday')) {
         return $holiday_type;
     }
 }
+
+if (!function_exists('getHolidayRate')) {
+    function getHolidayRate($date){
+        $count= Holiday::select('holiday_rate')
+        ->where("holiday_date","=",$date)
+        ->count();
+
+        if($count>0){
+            $hol= Holiday::select('holiday_rate')
+            ->where("holiday_date","=",$date)
+            ->get();
+            $holiday_rate= $hol[0]['holiday_rate'];
+        } else {
+            $holiday_rate=0;
+        }
+       
+        return $holiday_rate;
+    }
+}
+
 
 if (!function_exists('getAllowanceName')) {
     function getAllowanceName($id){

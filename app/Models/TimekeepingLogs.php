@@ -25,6 +25,11 @@ class TimekeepingLogs extends Model
         'total_breaktime',
         'overall_time',
         'incomplete',
-        'incomplete_time_desc'
+        'incomplete_time_desc',
+        'night_shift',
+        'nd_hours',
+        'regular_hours',
+        'rest_day',
+        'holiday'
     ];
 }

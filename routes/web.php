@@ -165,7 +165,8 @@ Route::resource('payrollsalary', PayrollSalaryController::class);
 Route::get('/payroll_salary/bulk', [PayrollSalaryController::class, 'printBulk'])->middleware(['auth'])->name('printBulkSalary');
 Route::get('/rd_computation/{month}/{year}/{cutoff}', [PayrollSalaryController::class, 'rd_computation'])->name('rd_computation');
 Route::get('/holiday_computation/{month}/{year}/{cutoff}', [PayrollSalaryController::class, 'holiday_computation'])->name('holiday_computation');
-Route::get('/time_computation/{month}/{year}/{cutoff}', [PayrollSalaryController::class, 'time_computation'])->name('time_computation');
+Route::get('/adjustment_computation/{month}/{year}/{cutoff}', [PayrollSalaryController::class, 'adjustment_computation'])->name('adjustment_computation');
+//Route::get('/time_computation/{month}/{year}/{cutoff}', [PayrollSalaryController::class, 'time_computation'])->name('time_computation');
 
 Route::resource('payrollbonus', PayrollBonusController::class); 
 Route::get('/payroll_bonus/bulkprinting', [PayrollBonusController::class, 'printBulk'])->middleware(['auth'])->name('printBulkBonus');

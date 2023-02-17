@@ -103,7 +103,7 @@
                     <div class="mx-2 text-left">
                         <select name="year" required class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
                             <option value="" selected>Select Year</option>
-                            @for($x=2023; $x<=$curr_year;$x++)
+                            @for($x=2022; $x<=$curr_year;$x++)
                             <option value="{{ $x }}">{{ $x }}</option>
                             @endfor
                         </select>
@@ -133,7 +133,7 @@
                     <a href="{{ route('holiday_computation',['month'=>$filters['month'],'year'=>$filters['year'],'cutoff'=>$filters['cutoff']]) }}" class="flex items-center justify-center px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                         <span>Holiday</span>
                     </a>
-                    <a href="{{ route('time_computation',['month'=>$filters['month'],'year'=>$filters['year'],'cutoff'=>$filters['cutoff']]) }}" class="flex items-center justify-center px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                    <a href="{{ route('adjustment_computation',['month'=>$filters['month'],'year'=>$filters['year'],'cutoff'=>$filters['cutoff']]) }}" class="flex items-center justify-center px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                         <span>Night Premium</span>
                     </a>
                 </div>
