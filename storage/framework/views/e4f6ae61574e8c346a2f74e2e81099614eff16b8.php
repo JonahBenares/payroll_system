@@ -1,3 +1,56 @@
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="<?php echo e(URL::asset('js/myjs.js')); ?>"></script>
+<script>
+    $(document).ready(function() {
+    var counter = document.getElementById("counter").value;  
+    var deduction_ids = document.getElementById("deduction_ids").value; 
+    var less_ids = document.getElementById("less_ids").value; 
+
+   
+    var adjustment_ids = document.getElementById("adjustment_ids").value; 
+    for(var x=1;x<counter;x++){
+        let sum_deductions_outside=0;
+        let sum_less_outside=0;
+        let sum_adjustment_outside=0;
+       
+        var salary = document.getElementById("salary_"+x).innerHTML; 
+
+        
+
+        var ded = deduction_ids.split("_");
+        ded.forEach(function(dedids) {
+            var ded_val = parseFloat(document.getElementById("deductions_"+dedids+"_"+x).value);  
+            sum_deductions_outside+=ded_val;
+        });
+
+
+        var ls = less_ids.split("_");
+        ls.forEach(function(lsids) {
+            var less_val = parseFloat(document.getElementById("less_gp_"+lsids+"_"+x).value);  
+            sum_less_outside+=less_val;
+        });
+
+
+        var adj = adjustment_ids.split("_");
+        adj.forEach(function(adjids) {
+            var adj_val = parseFloat(document.getElementById("adjustment_"+adjids+"_"+x).value);  
+            sum_adjustment_outside+=adj_val;
+        });
+
+        document.getElementById("sum_deductions_"+x).innerHTML = sum_deductions_outside;
+        document.getElementById("sum_lessgp_outside_"+x).innerHTML = sum_less_outside;
+        document.getElementById("sum_deductions_outside_"+x).innerHTML = sum_deductions_outside;
+        document.getElementById("sum_adjustment_"+x).innerHTML = sum_adjustment_outside;
+        document.getElementById("sum_adjustment_outside_"+x).innerHTML = sum_adjustment_outside;
+
+       var gross = (parseFloat(salary) + parseFloat(sum_adjustment_outside)) - parseFloat(sum_less_outside);
+       var netpay = parseFloat(gross) - parseFloat(sum_deductions_outside);
+
+        document.getElementById("gross_"+x).innerHTML = gross;
+        document.getElementById("netpay_"+x).innerHTML = netpay;
+    }
+ });
+</script>
 <?php if (isset($component)) { $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da = $component; } ?>
 <?php $component = App\View\Components\AppLayout::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('app-layout'); ?>
@@ -58,7 +111,7 @@
                     <div class="mx-2 text-left">
                         <select name="year" required class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
                             <option value="" selected>Select Year</option>
-                            <?php for($x=2023; $x<=$curr_year;$x++): ?>
+                            <?php for($x=2022; $x<=$curr_year;$x++): ?>
                             <option value="<?php echo e($x); ?>"><?php echo e($x); ?></option>
                             <?php endfor; ?>
                         </select>
@@ -84,18 +137,11 @@
                     <a href="<?php echo e(route('rd_computation',['month'=>$filters['month'],'year'=>$filters['year'],'cutoff'=>$filters['cutoff']])); ?>" class="flex items-center justify-center px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                         <span>Rest Day</span>
                     </a>
-<<<<<<< HEAD
+
                     <a href="<?php echo e(route('holiday_computation',['month'=>$filters['month'],'year'=>$filters['year'],'cutoff'=>$filters['cutoff']])); ?>" class="flex items-center justify-center px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-=======
-<<<<<<< HEAD
-                    <a href="<?php echo e(route('holiday_computation',['month'=>$filters['month'],'year'=>$filters['year'],'cutoff'=>$filters['cutoff']])); ?>" class="flex items-center justify-center px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-=======
-                    <a href="" class="flex items-center justify-center px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
->>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
->>>>>>> Jason_DashboardUI
                         <span>Holiday</span>
                     </a>
-                    <a href="" class="flex items-center justify-center px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                    <a href="<?php echo e(route('adjustment_computation',['month'=>$filters['month'],'year'=>$filters['year'],'cutoff'=>$filters['cutoff']])); ?>" class="flex items-center justify-center px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                         <span>Night Premium</span>
                     </a>
                 </div>
@@ -136,20 +182,23 @@
                             </tr>
                         </thead>
                         <tbody>
+                          
+                            <?php $x=1; ?>
                             <?php $__currentLoopData = $employee_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $emp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php  $sum_outside = "sum_adjustment_outside_".$x; 
+                            $salary ="salary_".$x; ?>
                             <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     <?php echo e($emp['name']); ?>
 
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    <?php echo e(number_format(getSalary('Monthly', $emp['id']),2)); ?>
-
+                                    <span id="<?php echo e($salary); ?>"><?php echo e(getSalary('Monthly', $emp['id'])/2); ?></span>
                                 </td>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     <div x-data="{ modelOpen: false }">
                                         <a href="#" @click="modelOpen =!modelOpen" class="my-1 py-2 " title="Update">
-                                              550.00
+                                              <span id="<?php echo e($sum_outside); ?>">0</span>
                                         </a>
                                 
                                         <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -192,20 +241,26 @@
                                                         <tr class="bg-white border-b">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap "><?php echo e($pi->description); ?></td>
                                                                 <?php if($pi->editable == 1): ?>
-                                                                <td align="right"><input type="text" name="adjustment_<?php echo e($pi->id); ?>" class="text-right bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="00" required></td>
+                                                                <td align="right"><input type="text" name="adjustment_<?php echo e($pi->id); ?>_<?php echo e($x); ?>" id="adjustment_<?php echo e($pi->id); ?>_<?php echo e($x); ?>" onblur = "salary_computation('adjustment',<?php echo e($pi->id); ?>)" value="0" class="text-right bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" ></td>
                                                                 <?php else: ?>
                                                                 <td align="right">
-                                                                    <input type="text" name="adjustment_<?php echo e($pi->id); ?>" class="border-0 text-right" disabled value="0">
+                                                                    <input type="text" name="adjustment_<?php echo e($pi->id); ?>_<?php echo e($x); ?>" id="adjustment_<?php echo e($pi->id); ?>_<?php echo e($x); ?>" class="border-0 text-right" disabled value="0">
                                                                     <input type="hidden" name="payslip_id_<?php echo e($pi->id); ?>" value="<?php echo e($pi->id); ?>">
+                                                                   
                                                                 </td>
                                                                 <?php endif; ?>
                                                         </tr>
                                                             <?php endif; ?>
+                                                          
                                                          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                         <?php 
+                                                         $sum_name = "sum_adjustment_".$x;
+                                                         ?>
+                                                         <input type="hidden" name="adjustment_ids" id="adjustment_ids" value="<?php echo e($adj_ids); ?>">
                                                       
                                                         <tr class="bg-white border-b text-lg bg-yellow-200">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Total</td>
-                                                            <td align="right"><b>550</b></td>
+                                                            <td align="right"><b><span id="<?php echo e($sum_name); ?>"></span></b></td>
                                                         </tr>
                                                     </table>
                                                    
@@ -214,10 +269,11 @@
                                         </div>
                                     </div>
                                 </td>
+                                <?php  $sum_lessgp_outside = "sum_lessgp_outside_".$x; ?>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     <div x-data="{ modelOpen: false }">
-                                        <a href="#" @click="modelOpen =!modelOpen" class="my-1 py-2 " title="Update">
-                                              242.00
+                                        <a href="#" @click="modelOpen =!modelOpen" class="my-1 py-2 " id="<?php echo e($sum_lessgp_outside); ?>" title="Update">
+                                              0
                                         </a>
                                 
                                         <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -259,18 +315,19 @@
                                                         <tr class="bg-white border-b">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap "><?php echo e($pi->description); ?></td>
                                                                 <?php if($pi->editable == 1): ?>
-                                                                <td align="right"><input type="text" name="less_gp_<?php echo e($pi->id); ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="00" required></td>
+                                                                <td align="right"><input type="text" name="less_gp_<?php echo e($pi->id); ?>_<?php echo e($x); ?>"  id="less_gp_<?php echo e($pi->id); ?>_<?php echo e($x); ?>"  value="0" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="00" required></td>
                                                                 <?php else: ?>
-                                                                <td><input type="text" name="less_gp_<?php echo e($pi->id); ?>" class="border-0 text-right" disabled value="0"></td>
+                                                                <td><input type="text" name="less_gp_<?php echo e($pi->id); ?>_<?php echo e($x); ?>"  id="less_gp_<?php echo e($pi->id); ?>_<?php echo e($x); ?>" class="border-0 text-right" disabled value="0"></td>
                                                                 <input type="hidden" name="payslip_id_<?php echo e($pi->id); ?>" value="<?php echo e($pi->id); ?>">
                                                                 <?php endif; ?>
                                                         </tr>
                                                             <?php endif; ?>
                                                          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                      
+                                                        <?php $sum_lessgp = "sum_lessgp_".$x; ?>
+                                                        <input type="hidden" name="less_ids" id="less_ids" value="<?php echo e($less_ids); ?>">
                                                         <tr class="bg-white border-b text-lg bg-yellow-200">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Total</td>
-                                                            <td align="right"><b>242</b></td>
+                                                            <td align="right"><b><span id="<?php echo e($sum_lessgp); ?>"></span></b></td>
                                                         </tr>
                                                     </table>
                                                 </div>
@@ -278,13 +335,16 @@
                                         </div>
                                     </div>
                                 </td>
+                                <?php $sum_deductions_name = "sum_deductions_outside_".$x;
+                                    $gross = "gross_".$x;  ?>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    30,308.00
+                                    <span id="<?php echo e($gross); ?>">0</span>
                                 </td>
+                                
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     <div x-data="{ modelOpen: false }">
-                                        <a href="#" @click="modelOpen =!modelOpen" class="my-1  py-2" title="Update">
-                                              10,400.00
+                                        <a href="#" @click="modelOpen =!modelOpen" id="<?php echo e($sum_deductions_name); ?>" class="my-1  py-2" title="Update">
+                                            
                                         </a>
                                 
                                         <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -323,25 +383,35 @@
                                                         </tr>
                                                         <?php $__currentLoopData = $payslipinfo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                             <?php if($pi->pay_type == 3): ?>
-                                                        <tr class="bg-white border-b">
-                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap "><?php echo e($pi->description); ?></td>
-                                                                <?php if($pi->editable == 1): ?>
-                                                                <td align="right"><input type="text" name="deductions_<?php echo e($pi->id); ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="00" required></td>
-                                                                <?php else: ?>
-                                                                <td><input type="text" name="deductions_<?php echo e($pi->id); ?>"  class="border-0 text-right" disabled value="0"></td>
-                                                                <input type="hidden" name="payslip_id_<?php echo e($pi->id); ?>" value="<?php echo e($pi->id); ?>">
+                                                                <?php $deduc_sched = checkDeductionSchedule($pi->id); ?>
+                                                                <?php if($deduc_sched==$cutoff_type || $deduc_sched == ""): ?>
+                                                                    <tr class="bg-white border-b">
+                                                                        <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap "><?php echo e($pi->description); ?></td>
+                                                                            <?php if($pi->editable == 1): ?>
+                                                                            <td align="right"><input type="text" name="deductions_<?php echo e($pi->id); ?>_<?php echo e($x); ?>" id="deductions_<?php echo e($pi->id); ?>_<?php echo e($x); ?>" onblur = "salary_computation('deductions',<?php echo e($pi->id); ?>)" value='0' class="bg-gray-50 border border-gray-300 text-gray-900 text-sm text-right rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required></td>
+                                                                            <?php else: ?>
+                                                                            <td><input type="text" name="deductions_<?php echo e($pi->id); ?>_<?php echo e($x); ?>" id="deductions_<?php echo e($pi->id); ?>_<?php echo e($x); ?>" class="border-0 w-full text-right" disabled value="<?php echo e(getDeductionRate($emp['personal_id'], $pi->id)); ?>"></td>
+                                                                            <input type="hidden" name="payslip_id_<?php echo e($pi->id); ?>" value="<?php echo e($pi->id); ?>">
+                                                                            <?php endif; ?>
+                                                                    </tr>
                                                                 <?php endif; ?>
-                                                        </tr>
                                                             <?php endif; ?>
                                                          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                        <?php $sum_deduc_name = "sum_deductions_".$x; ?>
+                                                         <input type="hidden" name="deduction_ids" id="deduction_ids" value="<?php echo e($deduction_ids); ?>">
+                                                         <tr class="bg-white border-b text-lg bg-yellow-200">
+                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">Total</td>
+                                                            <td align="right"><b><span id="<?php echo e($sum_deduc_name); ?>"></span></b></td>
+                                                        </tr>
                                                     </table>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </td>
+                                <?php $net_pay = "netpay_".$x; ?>
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                    19,908.00
+                                    <span id="<?php echo e($net_pay); ?>"></span>
                                 </td>
                                 <td class="py-3 px-6 justify-center flex" align="center">
                                     <a href="<?php echo e(route('payrollsalary.show', '1')); ?>" class="" title="Update">
@@ -359,15 +429,16 @@
                                     </button>
                                 </td>
                             </tr>
+                            <?php $x++ ?>
+                           
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <input type='hidden' name='counter' id='counter' value="<?php echo e($x); ?>">
                         </tbody>
                     </table>
                 </div>
             </div>
-            
         </div>
     </div>
-
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da)): ?>

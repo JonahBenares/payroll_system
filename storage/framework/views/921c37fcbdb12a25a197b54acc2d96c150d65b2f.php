@@ -145,7 +145,7 @@
                                 ?>
                                 <?php $__currentLoopData = $data2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $logs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <?php
-                                        if($logs['schedule_type']=='Regular'){
+                                        if($logs['schedule_type']=='regular'){
                                             $exp=implode("",$logs['recorded_time']);
                                             $exp_time = explode(',', $exp); 
                                             $timecheck=date('Hi',strtotime($logs['time_in']));

@@ -23,14 +23,7 @@ return array(
     'App\\Http\\Controllers\\Auth\\RegisteredUserController' => $baseDir . '/app/Http/Controllers/Auth/RegisteredUserController.php',
     'App\\Http\\Controllers\\Auth\\VerifyEmailController' => $baseDir . '/app/Http/Controllers/Auth/VerifyEmailController.php',
     'App\\Http\\Controllers\\BusUnitController' => $baseDir . '/app/Http/Controllers/BusUnitController.php',
-<<<<<<< HEAD
     'App\\Http\\Controllers\\ChangeScheduleController' => $baseDir . '/app/Http/Controllers/ChangeScheduleController.php',
-=======
-<<<<<<< HEAD
-    'App\\Http\\Controllers\\ChangeScheduleController' => $baseDir . '/app/Http/Controllers/ChangeScheduleController.php',
-=======
->>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
->>>>>>> Jason_DashboardUI
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\CutOffController' => $baseDir . '/app/Http/Controllers/CutOffController.php',
     'App\\Http\\Controllers\\DTRofficeController' => $baseDir . '/app/Http/Controllers/DTRofficeController.php',
@@ -90,14 +83,7 @@ return array(
     'App\\Models\\AllowanceSummary' => $baseDir . '/app/Models/AllowanceSummary.php',
     'App\\Models\\BusUnit' => $baseDir . '/app/Models/BusUnit.php',
     'App\\Models\\BusinessUnit' => $baseDir . '/app/Models/BusinessUnit.php',
-<<<<<<< HEAD
     'App\\Models\\ChangeSchedule' => $baseDir . '/app/Models/ChangeSchedule.php',
-=======
-<<<<<<< HEAD
-    'App\\Models\\ChangeSchedule' => $baseDir . '/app/Models/ChangeSchedule.php',
-=======
->>>>>>> 25c1ed314941e9c72afe617b7fd45db92cf68dc8
->>>>>>> Jason_DashboardUI
     'App\\Models\\CutOff' => $baseDir . '/app/Models/CutOff.php',
     'App\\Models\\DTRoffice' => $baseDir . '/app/Models/DTRoffice.php',
     'App\\Models\\DTRsite' => $baseDir . '/app/Models/DTRsite.php',
@@ -124,6 +110,9 @@ return array(
     'App\\Models\\PayrollOvertime' => $baseDir . '/app/Models/PayrollOvertime.php',
     'App\\Models\\PayrollSalary' => $baseDir . '/app/Models/PayrollSalary.php',
     'App\\Models\\PayslipInfo' => $baseDir . '/app/Models/PayslipInfo.php',
+    'App\\Models\\PayslipSalary' => $baseDir . '/app/Models/PayslipSalary.php',
+    'App\\Models\\PayslipSalaryDetail' => $baseDir . '/app/Models/PayslipSalaryDetail.php',
+    'App\\Models\\Reminder' => $baseDir . '/app/Models/Reminder.php',
     'App\\Models\\RfdReport' => $baseDir . '/app/Models/RfdReport.php',
     'App\\Models\\Schedule' => $baseDir . '/app/Models/Schedule.php',
     'App\\Models\\ShiftSchedule' => $baseDir . '/app/Models/ShiftSchedule.php',
@@ -132,6 +121,7 @@ return array(
     'App\\Models\\SwapSchedule' => $baseDir . '/app/Models/SwapSchedule.php',
     'App\\Models\\TardinessRate' => $baseDir . '/app/Models/TardinessRate.php',
     'App\\Models\\Timekeeping' => $baseDir . '/app/Models/Timekeeping.php',
+    'App\\Models\\TimekeepingLogs' => $baseDir . '/app/Models/TimekeepingLogs.php',
     'App\\Models\\UploadAllowance' => $baseDir . '/app/Models/UploadAllowance.php',
     'App\\Models\\UploadAllowanceDetail' => $baseDir . '/app/Models/UploadAllowanceDetail.php',
     'App\\Models\\UploadAllowanceTime' => $baseDir . '/app/Models/UploadAllowanceTime.php',
