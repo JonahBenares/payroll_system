@@ -9,8 +9,8 @@
     
     <div class="overflow-auto h-screen pb-28 pt-2 pr-2 pl-2 md:pt-0 md:pr-0 md:pl-0">
         <div class="flex flex-col flex-wrap sm:flex-row ">
-            <div class="p-4 relative h-full w-full text-center bg-white rounded-lg shadow-lg white:bg-gray-800 white:border-gray-700">
-                <div class="flex justify-between  pb-4 bg-white white:bg-gray-900">
+            <div class="relative h-full w-full text-center bg-white rounded-lg shadow-lg white:bg-gray-800 white:border-gray-700">
+                <div class="flex justify-between p-4 rounded-t-lg bg-gray-50  white:bg-gray-900">
                     <div > 
                         <h2 class="uppercase font-semibold py-2">Accounting Entry</h2>
                     </div>
@@ -23,7 +23,7 @@
                                 <span>Add New</span>
                             </div>
                         </a>
-                        <label for="table-search" class="sr-only">Search</label>
+                        {{-- <label for="table-search" class="sr-only">Search</label>
                         <form class="flex items-center">   
                             <label for="simple-search" class="sr-only">Search</label>
                             <div class="relative w-full">
@@ -36,10 +36,10 @@
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                                 <span class="sr-only">Search</span>
                             </button>
-                        </form>
+                        </form> --}}
                     </div>
                 </div>
-                <div class="overflow-x-auto overflow-y-hidden hover:overflow-y-auto h-100 relative  sm:rounded-2xl">
+                <div class="overflow-x-auto overflow-y-hidden hover:overflow-y-auto h-100 relative p-4 rounded-b-lg ">
                     <table class="w-full text-sm text-left text-gray-500 white:text-gray-400" id="myTable">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-10">
                             <tr class="">
