@@ -36,7 +36,7 @@
                 </div>
                 <div class="overflow-x-auto overflow-y-hidden hover:overflow-y-auto h-100 relative p-4 rounded-b-lg ">
                     <table class="w-full text-sm text-left text-gray-500 white:text-gray-400" id="myTable">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-10">
+                        <thead class="text-xs text-gray-700 uppercase white:bg-gray-700 white:text-gray-400 sticky top-0 z-10">
                             <tr class="">
                                 <th scope="col" class="py-3 px-6" width="%">
                                     Description
@@ -51,13 +51,12 @@
                        
                         <tbody>
                         <?php $__currentLoopData = $accountingentries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ent): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                      
-                            <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
+                            <tr class="bg-white hover:bg-gray-50 ">
                                 <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                     <?php echo e($ent->description); ?>
 
                                 </td>
-                                <td class="py-3 px-6 justify-center flex" align="center">
+                                <td class="justify-center flex" align="center">
                                     <a href="<?php echo e(route('entry.edit', $ent)); ?>" class="" title="Update">
                                         <div class="py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
