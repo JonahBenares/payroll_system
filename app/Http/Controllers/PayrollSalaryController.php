@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PayrollSalary;
+//use App\Models\PayrollSalary;
 use App\Models\CutOff;
 use App\Models\PayslipInfo;
 use App\Models\Employee;
@@ -13,6 +13,9 @@ use App\Models\Timekeeping;
 use App\Models\Holiday;
 use App\Models\AdjCalcHead;
 use App\Models\AdjCalcDetail;
+use App\Models\PayslipSalary;
+use App\Models\PayslipSalaryDetail;
+use App\Models\TimekeepingLogs;
 
 
 define('PERCENT_RD_RH','2.6');
@@ -28,6 +31,7 @@ class PayrollSalaryController extends Controller
     public function index(Request $request)
     {
         $cutoff = CutOff::all();
+        $cutoff_type=$request->cutoff;
         $filters = array(
             'month'=>'',
             'year'=>'',
@@ -35,26 +39,134 @@ class PayrollSalaryController extends Controller
         );
         $employee_list=array();
         $payslipinfo=array();
+        $adj_ids=array();
+        $less_ids=array();
+        $deduction_ids=array();
         if($request->has('month')){
             $filters = array(
                 'month'=>$request->month,
                 'year'=>$request->year,
                 'cutoff'=>$request->cutoff
             );
+            $count_head = PayslipSalary::where("salary_year",$request->year)
+            ->where("salary_month",$request->month)
+            ->Where("cutoff",$request->cutoff)
+            ->count();
+
+            if($count_head==0){        
+
+                $save_head_id = PayslipSalary::insertGetId([
+                    'salary_year'=>$request->year,
+                    'salary_month'=>$request->month,
+                    'cutoff'=>$request->cutoff,
+                    'created_at'=>date("Y-m-d H:i:s")
+                ]);
+            } else {
+                $get_save_head_id =  PayslipSalary::select('id')
+                    ->where("salary_year",$request->year)
+                    ->where("salary_month",$request->month)
+                    ->Where("cutoff",$request->cutoff)
+                    ->get();
+
+                $save_head_id=$get_save_head_id[0]['id'];
+            }
 
             $employees = Employee::all();
             foreach($employees AS $emp){
                 $employee_list[] = array(
                     'id'=>$emp->id,
-                    'name'=>getEmployeeName($emp->id,$request->month,$request->year,$request->cutoff)
+                    'name'=>getEmployeeName($emp->id,$request->month,$request->year,$request->cutoff),
+                    'personal_id'=>$emp->personal_id
                 );
-               
-            }
+
+                
+                $payslipinfo_head = PayslipInfo::select('payslip_info.id AS id','payslip_info.pay_type','payslip_info.editable','payslip_info.description')
+                ->where("visible","1")
+                ->where("deduction_period",$request->cutoff)
+                ->orWhere("deduction_period","")
+                ->join("deductions","payslip_info.id","=", "deductions.payslip_info_id")
+                ->get();
+            
+    
+              // echo $emp->id ."<br>";
+
+                foreach($payslipinfo_head AS $ps){
+                   // echo $emp->id . " = " .$ps->id ." - ". $ps->description. "<br>";
+
+                    if($ps->pay_type =='3'){
+                        $amount = getDeductionRate($emp->personal_id,$ps->id);
+                    } else {
+                        $amount = 0;
+                    }
+
+                    $count_details = PayslipSalaryDetail::where("payslip_salary_head_id","$save_head_id")
+                    ->where("personal_id",$emp->personal_id)
+                    ->Where("payslip_info_id",$ps->id)
+                    ->count();
+
+                    if($count_details == 0){
+                        $save = PayslipSalaryDetail::create([
+                            'payslip_salary_head_id'=>$save_head_id,
+                            'employee_id'=>$emp->id,
+                            'personal_id'=>$emp->personal_id,
+                            'payslip_info_id'=>$ps->id,
+                            'description'=>$ps->description,
+                            'total_amount'=>$amount,
+                            'created_at'=>date("Y-m-d H:i:s")
+                            
+                        ]);
+                    }
+
+                 }
+
+                 $count_details_sal = PayslipSalaryDetail::where("payslip_salary_head_id","$save_head_id")
+                 ->where("personal_id",$emp->personal_id)
+                 ->Where("payslip_info_id",'0')
+                 ->count();
+
+                 if($count_details_sal == 0){
+                    $monthly = getSalary("Monthly", $emp->id)/2;
+                    $save = PayslipSalaryDetail::create([
+                        'payslip_salary_head_id'=>$save_head_id,
+                        'employee_id'=>$emp->id,
+                        'personal_id'=>$emp->personal_id,
+                        'payslip_info_id'=>0,
+                        'description'=>'Basic Salary',
+                        'total_amount'=>$monthly,
+                        'created_at'=>date("Y-m-d H:i:s")
+                        
+                    ]);
+                }
+
+            }  /// end foreach employees
+           
             $employee_list = collect($employee_list)->sortBy('name')->toArray();
-            $payslipinfo = PayslipInfo::all();
+           
+            $payslipinfo= PayslipInfo::where("visible","1")->get();
+
+            $adj_ids = "";
+            $less_ids="";
+            $deduction_ids="";
+            foreach($payslipinfo AS $ps){
+                if($ps->pay_type == 1){
+                    $adj_ids .= $ps->id . "_";
+                }elseif($ps->pay_type == 2){
+                    $less_ids .= $ps->id . "_";
+                }elseif($ps->pay_type == 3){
+                    $deduc_sched = checkDeductionSchedule($ps->id);
+                    if($deduc_sched==$request->cutoff || $deduc_sched == ""){
+                        $deduction_ids.= $ps->id."_";
+                    }
+                }
+            }
+
+            $adj_ids=substr($adj_ids,0,-1);
+            $less_ids=substr($less_ids,0,-1);
+            $deduction_ids=substr($deduction_ids,0,-1);
+
         }
         
-        return view('payroll_salary.index',compact('cutoff','filters','employee_list','payslipinfo'));
+        return view('payroll_salary.index',compact('cutoff','cutoff_type','filters','employee_list','payslipinfo', 'adj_ids', 'less_ids','deduction_ids'));
     }
 
 
@@ -162,45 +274,8 @@ class PayrollSalaryController extends Controller
                          
                         foreach($getRDsEmp AS $rdemp){
 
-                            // $time_count = Timekeeping::selectraw('min(recorded_time) as starttime, max(recorded_time) as endtime, personal_id')
-                            // ->whereDate('recorded_time',$rdemp['rest_days'])
-                            // ->where('personal_id',$rdemp['personal_id'])
-                            // ->count();
-
-                       
-                        
-                            // if($time_count%2==0){ ///// if equal or divisible by 2 ang timekeeping //////////
-                            //     $time = Timekeeping::selectraw('min(recorded_time) as starttime, max(recorded_time) as endtime, personal_id')
-                            //     ->whereDate('recorded_time',$rdemp['rest_days'])
-                            //     ->where('personal_id',$rdemp['personal_id'])
-                            //     ->get();
-                            //    // if(!empty($time[0]['personal_id'])){
-                            //         $start_time = $time[0]['starttime'];
-                            //         $end_time = $time[0]['endtime'];
-                                  
-                            //    // }
-                            // } else {
-
-                            //     $stime = Timekeeping::selectraw('min(recorded_time) as starttime, personal_id')
-                            //     ->whereDate('recorded_time',$rdemp['rest_days'])
-                            //     ->where('personal_id',$rdemp['personal_id'])
-                            //     ->get();
-
-                            //     $next_day = date('Y-m-d', strtotime($rdemp['rest_days'] . ' +1 day'));
-                               
-                            //     $etime = Timekeeping::selectraw('min(recorded_time) as endtime, personal_id')
-                            //     ->whereDate('recorded_time',$next_day)
-                            //     ->where('personal_id',$rdemp['personal_id'])
-                            //     ->get();
-
-                            //     $start_time = $stime[0]['starttime'];
-                            //     $end_time = $etime[0]['endtime'];
-
-                              
-                            // }
-
-                            $time = getEmployeeTime($rdemp['rest_days'],$rdemp['personal_id']);
-                            $t=explode("_",$time);
+                            $time = getEmployeeTime($rdemp['rest_days'],$rdemp['personal_id'], 'time');
+                            $t=explode("-",$time);
                             $start_time=$t[0];
                             $end_time=$t[1];
 
@@ -503,10 +578,8 @@ class PayrollSalaryController extends Controller
                       
             //$employee_list = collect($employee_list)->sortBy('name')->toArray();
            // $payslipinfo = PayslipInfo::all();
-         
         }
 
-    
     }
 
        /**
@@ -624,14 +697,130 @@ class PayrollSalaryController extends Controller
 
     }
 
-    public function time_computation($month, $year, $cutoff)
+    public function adjustment_computation($month, $year, $cutoff){
+
+        $dates = explode("_",$this->period_dates($month, $year, $cutoff));
+        $start_date = $dates[0];
+        $end_date = $dates[1];
+
+        //echo $start_date . " to " . $end_date;
+        $get_logs = TimekeepingLogs::whereBetween('log_date',[$start_date, $end_date])->get();
+
+        $save_head_id = AdjCalcHead::insertGetId([
+            'salary_year'=>$year,
+            'salary_month'=>$month,
+            'cutoff'=>$cutoff,
+            'created_at'=>date("Y-m-d H:i:s")
+        ]);
+
+        foreach($get_logs AS $logs){
+
+             $getemp = Employee::select('id')->where('personal_id', $logs->personal_id)->get();
+             $employee_id = $getemp[0]['id'];
+
+             
+
+                if($logs->night_shift =='1'){
+                    if($logs->nd_hours >= 8){
+                        $np_hours= 8;
+                        $regular_hours =0;
+
+                    } else {
+                        $np_hours= $logs->nd_hours;
+                        $regular_hours = 8-$logs->nd_hours;
+                    }
+                } else {
+                    $np_hours=0;
+                    if($logs->overall_time>=8){
+                        $regular_hours = 8;  
+                    } else {
+                        $regular_hours = $logs->overall_time;
+                    }
+                }
+                
+                $hourly_rate = getEmployeeDetails($logs->personal_id, 'hourly_rate');
+
+                if($logs->holiday == '0' && $logs->rest_day == '0' && $logs->night_shift == '0'){
+                    
+                    $regular_amount = $hourly_rate * $regular_hours;
+                    $rest_day=0;
+                    $rd_rate=0;
+                    $rd_amount=0;
+                    $holiday = 0;
+                    $holiday_rate = 0;
+                    $holiday_amount = 0;
+                    $night_premium = 0;
+                    $np_rate = 0;
+                    $np_amount = 0;
+                    
+                }
+                else if($logs->holiday == '1' && $logs->rest_day == '0' && $logs->night_shift == '0'){
+                    $holiday_rate = getHolidayRate($logs->log_date);
+                    $hol_amount = ($hourly_rate * $regular_hours) * ($holiday_rate-1);
+                    $regular_amount = $hourly_rate * $regular_hours;
+                    $rest_day=0;
+                    $rd_rate=0;
+                    $rd_amount=0;
+                    $holiday = 1;
+                    $holiday_rate = $holiday_rate;
+                    $holiday_amount = 0;
+
+                }
+                else if($logs->holiday == '0' && $logs->rest_day == '1' && $logs->night_shift == '0'){
+                    
+                    $ps_id = getPayslipInfo('description', 'Rest Day', 'id');
+                    //$nd_id = getPayslipInfo('description', 'Night Premium', 'id');
+                    $rates = getRates($ps_id);
+                    //$nd_rate = getRates($nd_id);
+
+                    $restday_rate = $rate_array[1];
+
+                    // $nd_array =  explode("_",$nd_rate);
+                    // $np_rate = $nd_array[1];
+                    
+                    $rdamount = ($hourly_rate * $regular_hours) * (1-$restday_rate);
+
+                    $regular_amount = $hourly_rate * $regular_hours;
+                    $rest_day=1;
+                    $rd_rate=$restday_rate;
+                    $rd_amount=$rdamount;
+                    $holiday = 0;
+                    $holiday_rate = $holiday_rate;
+                    $holiday_amount = 0;
+
+                }
+             $save = AdjCalcDetail::create([
+                    'adj_calc_head_id'=>$save_head_id,
+                    'employee_id'=>$employee_id,
+                    'personal_id'=>$logs->personal_id,
+                    'log_date'=>$logs->log_date,
+                    'regular_hours'=>$regular_hours,
+                    'np_hours'=>0,
+                    'hourly_rate'=>$hourly_rate,
+                    'rd_amount'=>0,
+                    'rest_day'=>0,
+                    'rd_rate'=>0,
+                    'rd_amount'=>0,
+                    'holiday'=>0,
+                    'holiday_rate'=>$hol->holiday_rate,
+                    'holiday_amount'=>$total_amount,
+                    'night_premium'=>0,
+                    'np_rate'=>0,
+                    'np_amount'=>0,
+                    'total_amount'=>$total_amount
+                ]);
+        }
+
+    }
+
+    public function period_dates($month, $year, $cutoff)
     {
         if( $cutoff== 'EOM'){
             $cut = CutOff::select('cutoff_start','cutoff_end')
                 ->where("cutoff_type","=",$cutoff)->get();
-            
-            $start=$cut[0]['cutoff_start'];
-            $end=$cut[0]['cutoff_end'];
+                
+            $start=str_pad($cut[0]['cutoff_start'],2,"0",STR_PAD_LEFT);
+            $end=str_pad($cut[0]['cutoff_end'],2,"0",STR_PAD_LEFT);
 
             $start_date = $year."-".$month."-".$start;
             $end_date = $year."-".$month."-".$end;
@@ -639,15 +828,16 @@ class PayrollSalaryController extends Controller
             $cut = CutOff::select('cutoff_start','cutoff_end')
             ->where("cutoff_type","=",$cutoff)->get();
         
-            $start=$cut[0]['cutoff_start'];
-            $end=$cut[0]['cutoff_end'];
+            $start=str_pad($cut[0]['cutoff_start'],2,"0",STR_PAD_LEFT);
+            $end=str_pad($cut[0]['cutoff_end'],2,"0",STR_PAD_LEFT);
 
             $start_d = $year."-".$month."-".$start;
             $end_date = $year."-".$month."-".$end;
 
             $start_date = date("Y-m-d", strtotime ('-1 month',strtotime ($start_d)));
         }
-        echo getEmployeeTime('2023-01-06','1' );
+       // echo getEmployeeTime('2023-01-06','1' );
+       return $start_date ." _ ".$end_date;
     }
     public function create()
     {

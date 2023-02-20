@@ -99,8 +99,8 @@ class OvertimeController extends Controller
             $exp_period='';
         }
        
-        $timekeeping = Timekeeping::join('db_payroll.employees', 'db_payroll.employees.personal_id', '=', 'timekeeping.personal_id')->select('db_payroll.employees.id', 'db_payroll.employees.personal_id','db_payroll.employees.full_name', 'timekeeping.recorded_time', DB::raw('GROUP_CONCAT(timekeeping.recorded_time ORDER BY timekeeping.recorded_time ASC) as in_out_time'))->where('supervisory','0')->where('is_active','1')->whereMonth('recorded_time',$month)->whereYear('recorded_time', $year)->whereBetween('recorded_time', [$exp_date1, $exp_date2])->groupBy('db_payroll.employees.personal_id')->get();
-        $timedate = DB::select("SELECT t.personal_id,recorded_time, GROUP_CONCAT(recorded_time) AS timer,time_in,schedule_type FROM timekeeping t INNER JOIN schedule_head sh ON t.personal_id=sh.personal_id INNER JOIN schedule_code sc ON sh.schedule_code=sc.id WHERE (MONTH(recorded_time)='$month' OR MONTH(recorded_time)='$added_month') AND YEAR(recorded_time)='$year' AND recorded_time BETWEEN '$exp_date1' AND '$exp_date2' GROUP BY t.personal_id,recorded_time ORDER BY recorded_time ASC");
+        $timekeeping = Timekeeping::join('db_payroll.employees', 'db_payroll.employees.personal_id', '=', 'db_hris.timekeeping.personal_id')->select('db_payroll.employees.id', 'db_payroll.employees.personal_id','db_payroll.employees.full_name', 'db_hris.timekeeping.recorded_time', DB::raw('GROUP_CONCAT(db_hris.timekeeping.recorded_time ORDER BY db_hris.timekeeping.recorded_time ASC) as in_out_time'))->where('supervisory','0')->where('is_active','1')->whereMonth('recorded_time',$month)->whereYear('recorded_time', $year)->whereBetween('recorded_time', [$exp_date1, $exp_date2])->groupBy('db_payroll.employees.personal_id')->get();
+        $timedate = DB::select("SELECT t.personal_id,recorded_time, GROUP_CONCAT(recorded_time) AS timer,time_in,schedule_type FROM db_hris.timekeeping t INNER JOIN schedule_head sh ON t.personal_id=sh.personal_id INNER JOIN schedule_code sc ON sh.schedule_code=sc.id WHERE (MONTH(recorded_time)='$month' OR MONTH(recorded_time)='$added_month') AND YEAR(recorded_time)='$year' AND recorded_time BETWEEN '$exp_date1' AND '$exp_date2' GROUP BY t.personal_id,recorded_time ORDER BY recorded_time ASC");
         $getmintimein=[];
         $getmintimeout=[];
         $x=0;
@@ -171,7 +171,7 @@ class OvertimeController extends Controller
 
         $get_data=OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where('employee_id',$request->employee_id)->where('personal_id',$request->personal_id)->where('month_year','LIKE','%'.$request->month_year.'%')->where('overtime_date',$request->overtimedate)->first();
       
-        $timedate = DB::select("SELECT t.personal_id,recorded_time, GROUP_CONCAT(recorded_time) AS timer,time_in,schedule_type FROM timekeeping t INNER JOIN schedule_head sh ON t.personal_id=sh.personal_id INNER JOIN schedule_code sc ON sh.schedule_code=sc.id WHERE t.personal_id='$personal_id' AND (MONTH(recorded_time)='$exp_date[1]' OR MONTH(recorded_time)='$add_month]') AND (YEAR(recorded_time)='$exp_date[0]' OR YEAR(recorded_time)='$add_year') $query GROUP BY t.personal_id,recorded_time ORDER BY recorded_time ASC");
+        $timedate = DB::select("SELECT t.personal_id,recorded_time, GROUP_CONCAT(recorded_time) AS timer,time_in,schedule_type FROM db_hris.timekeeping t INNER JOIN schedule_head sh ON t.personal_id=sh.personal_id INNER JOIN schedule_code sc ON sh.schedule_code=sc.id WHERE t.personal_id='$personal_id' AND (MONTH(recorded_time)='$exp_date[1]' OR MONTH(recorded_time)='$add_month]') AND (YEAR(recorded_time)='$exp_date[0]' OR YEAR(recorded_time)='$add_year') $query GROUP BY t.personal_id,recorded_time ORDER BY recorded_time ASC");
         $data2 = array();
         foreach($timedate AS $value){
             $key = date('Y-m-d',strtotime($value->recorded_time));
@@ -197,7 +197,7 @@ class OvertimeController extends Controller
         $date=[];
         $x=0;
         foreach($data2 AS $logs){
-            if($logs['schedule_type']=='Regular'){
+            if($logs['schedule_type']=='regular'){
                 $exp=implode("",$logs['recorded_time']);
                 $exp_time = explode(',', $exp); 
                 //$timedisp= date('Y-m-d',strtotime($exp_time[0]))." ".$logs['time_in'];
@@ -217,7 +217,7 @@ class OvertimeController extends Controller
                 $exp_date = explode(',', $expdate); 
                 $date[$x]=$exp_date[0];
                 $x++;
-            }else if($logs['schedule_type']=='Shifting'){
+            }else if($logs['schedule_type']=='shifting'){
                 $timein_shift = date('H:i',strtotime(getMintimein($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
                 $intime = date('Hi',strtotime(getMintimein($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
                 $intimemax = date('H',strtotime(getMaxtimein($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
@@ -600,7 +600,7 @@ class OvertimeController extends Controller
     {
         $personal_id = $request->personal_id;
         $overtime_date = $request->overtime_date;
-        $timedate = DB::select("SELECT t.personal_id,recorded_time, GROUP_CONCAT(recorded_time) AS timer,time_in,schedule_type FROM timekeeping t INNER JOIN schedule_head sh ON t.personal_id=sh.personal_id INNER JOIN schedule_code sc ON sh.schedule_code=sc.id WHERE t.personal_id='$personal_id' AND recorded_time LIKE '%$overtime_date%' GROUP BY t.personal_id,recorded_time ORDER BY recorded_time ASC");
+        $timedate = DB::select("SELECT t.personal_id,recorded_time, GROUP_CONCAT(recorded_time) AS timer,time_in,schedule_type FROM db_hris.timekeeping t INNER JOIN schedule_head sh ON t.personal_id=sh.personal_id INNER JOIN schedule_code sc ON sh.schedule_code=sc.id WHERE t.personal_id='$personal_id' AND recorded_time LIKE '%$overtime_date%' GROUP BY t.personal_id,recorded_time ORDER BY recorded_time ASC");
         $data2 = array();
         foreach($timedate AS $value){
             $key = date('Y-m-d',strtotime($value->recorded_time));
@@ -620,7 +620,7 @@ class OvertimeController extends Controller
         $total_mins=[];
         $overall_time=[];
         foreach($data2 AS $logs){
-            if($logs['schedule_type']=='Regular'){
+            if($logs['schedule_type']=='regular'){
                 $exp=implode("",$logs['recorded_time']);
                 $exp_time = explode(',', $exp); 
                 $timecheck=date('Hi',strtotime($logs['time_in']));
@@ -645,7 +645,7 @@ class OvertimeController extends Controller
                 }
                 $timein=$exp_time[0];
                 $timeout=$exp_time[1];
-            }else if($logs['schedule_type']=='Shifting'){
+            }else if($logs['schedule_type']=='shifting'){
                 $timein_shift = date('H:i',strtotime(getMintimein($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
                 $intime = date('Hi',strtotime(getMintimein($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
                 $intimemax = date('H',strtotime(getMaxtimein($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));

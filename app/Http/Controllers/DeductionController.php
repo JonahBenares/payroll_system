@@ -17,8 +17,8 @@ class DeductionController extends Controller
      */
     public function index()
     {
-        $deduct = Deduction::join('payslip_info', 'payslip_info.id', '=', 'deductions.payslip_info_id')->leftJoin('cutoff', 'cutoff.id', '=', 'deductions.deduction_period')
-        ->get(['deductions.id','payslip_info.description','deductions.deduction_frequency','cutoff.cutoff_type']);
+        $deduct = Deduction::join('payslip_info', 'payslip_info.id', '=', 'deductions.payslip_info_id')
+        ->get(['deductions.id','payslip_info.description','deductions.deduction_frequency','deductions.deduction_period']);
         return view ('deduct.index')->with('deduction', $deduct);
     }
 

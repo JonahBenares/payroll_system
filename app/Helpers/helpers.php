@@ -5,6 +5,7 @@ use App\Models\Allowance;
 use App\Models\EmployeeHMO;
 use App\Models\CutOff;
 use App\Models\BusinessUnit;
+use App\Models\Deduction;
 use App\Models\UploadAllowanceDetail;
 use App\Models\UploadAllowanceTime;
 use App\Models\ShiftScheduleDetail;
@@ -15,6 +16,9 @@ use App\Models\AdjustmentRate;
 use App\Models\LeaveFailure;
 use App\Models\Holiday;
 use App\Models\ChangeSchedule;
+use App\Models\EmployeeDeduction;
+use App\Models\StatutoryBracket;
+use App\Models\TimekeepingLogs;
 
 define('START_NIGHT_HOUR','22');
 define('START_NIGHT_MINUTE','00');
@@ -55,7 +59,7 @@ if (!function_exists('getTimeDiff')) {
 }
 
 function getMintimein($schedule_type,$recorded_time,$personal_id){
-    if($schedule_type=='Shifting'){
+    if($schedule_type=='shifting'){
         $date=date('Y-m-d',strtotime($recorded_time));
         $getmintimein=Timekeeping::where('personal_id',$personal_id)->where(DB::raw("(STR_TO_DATE(recorded_time,'%Y-%m-%d'))"),$date)->min('recorded_time');
         return $getmintimein;
@@ -63,7 +67,7 @@ function getMintimein($schedule_type,$recorded_time,$personal_id){
 }
 
 function getMaxtimein($schedule_type,$recorded_time,$personal_id){
-    if($schedule_type=='Shifting'){
+    if($schedule_type=='shifting'){
         $date=date('Y-m-d',strtotime($recorded_time));
         $getmintimein=Timekeeping::where('personal_id',$personal_id)->where(DB::raw("(STR_TO_DATE(recorded_time,'%Y-%m-%d'))"),$date)->max('recorded_time');
         return $getmintimein;
@@ -71,7 +75,7 @@ function getMaxtimein($schedule_type,$recorded_time,$personal_id){
 }
 
 function getMintimeout($schedule_type,$recorded_time,$personal_id){
-    if($schedule_type=='Shifting'){
+    if($schedule_type=='shifting'){
         $date2=date('Y-m-d',strtotime($recorded_time." + 1 day"));
         $getmintimeout=Timekeeping::where('personal_id',$personal_id)->where(DB::raw("(STR_TO_DATE(recorded_time,'%Y-%m-%d'))"),$date2)->min('recorded_time');
         return $getmintimeout;
@@ -81,178 +85,39 @@ function getMintimeout($schedule_type,$recorded_time,$personal_id){
 
 if (!function_exists('getEmployeeTime')) {
 
+    function getEmployeeTime($log_date, $personal_id, $column){
 
-    function getEmployeeTime($recorded_time, $personal_id){
-
-        // $begin = new DateTime($start);
-        // $end = new DateTime($end_time);
+        $timelogs = TimekeepingLogs::select("time_in", "time_out", "total_time", "total_breaktime", "overall_time")
+                                   ->where("log_date", $log_date)
+                                   ->where("personal_id", $personal_id)
+                                   ->get();
         
-        // $interval = DateInterval::createFromDateString('1 day');
-        // $period = new DatePeriod($begin, $interval, $end);
-
-       
-        // foreach ($period as $dt) {
-        //     $recorded_time = $dt->format("Y-m-d");
-         
-        //     $year_month = $dt->format("Y-m");
-            $year_month = date("Y-m",strtotime($recorded_time));
-
-            $getnightshift = ShiftSchedule::where('personal_id', $personal_id)
-                        ->where('month_year', $year_month)
-                        ->get();
-
-            $nightshift = $getnightshift[0]['night_shift'];
-
-            $time_count = Timekeeping::selectraw('min(recorded_time) as starttime, max(recorded_time) as endtime, personal_id')
-            ->whereDate('recorded_time',$recorded_time)
-            ->where('personal_id',$personal_id)
-            ->count();
-
-           // echo $recorded_time . ", " . $personal_id . " = " .$time_count . "<br>";
-
-            if($time_count%2==0){ ///// if equal or divisible by 2 ang timekeeping //////////
-                if($nightshift == 0){  // if dayshift
-
-                    $changeschedNS = checkChangeScheduleNS($personal_id, $recorded_time); //check if there's changesched  
-                    if($changeschedNS == 0 || $changeschedNS == 'none'){ //still dayshift
-                        $time = Timekeeping::selectraw('min(recorded_time) as starttime, max(recorded_time) as endtime, personal_id')
-                        ->whereDate('recorded_time',$recorded_time)
-                        ->where('personal_id',$personal_id)
-                        ->get();
-
-
-                        $start_time = $time[0]['starttime'];
-                        $end_time = $time[0]['endtime'];
-                    } else {  // if change sched is night shift
-
-                        $stime = Timekeeping::selectraw('max(recorded_time) as starttime, personal_id')
-                        ->whereDate('recorded_time',$recorded_time)
-                        ->where('personal_id',$personal_id)
-                        ->get();
-        
-                        $next_day = date('Y-m-d', strtotime($recorded_time . ' +1 day'));
-                    
-                        $etime = Timekeeping::selectraw('min(recorded_time) as endtime, personal_id')
-                        ->whereDate('recorded_time',$next_day)
-                        ->where('personal_id',$personal_id)
-                        ->get();
-        
-                        $start_time = $stime[0]['starttime'];
-                        $end_time = $etime[0]['endtime'];
-
-                    }
-                } else {  // if nightshift
-                   //echo "nightshift";
-
-                    $changeschedNS = checkChangeScheduleNS($personal_id, $recorded_time); //check if there's changesched  
-                    if($changeschedNS == 0){ // dayshift
-                        $time = Timekeeping::selectraw('min(recorded_time) as starttime, max(recorded_time) as endtime, personal_id')
-                        ->whereDate('recorded_time',$recorded_time)
-                        ->where('personal_id',$personal_id)
-                        ->get();
-
-
-                        $start_time = $time[0]['starttime'];
-                        $end_time = $time[0]['endtime'];
-
-                        //echo 'changesched';
-                    } else { //nightshift
-                        $stime = Timekeeping::selectraw('max(recorded_time) as starttime, personal_id')
-                        ->whereDate('recorded_time',$recorded_time)
-                        ->where('personal_id',$personal_id)
-                        ->get();
-        
-                        $next_day = date('Y-m-d', strtotime($recorded_time . ' +1 day'));
-                    
-                        $etime = Timekeeping::selectraw('min(recorded_time) as endtime, personal_id')
-                        ->whereDate('recorded_time',$next_day)
-                        ->where('personal_id',$personal_id)
-                        ->get();
-        
-                        $start_time = $stime[0]['starttime'];
-                        $end_time = $etime[0]['endtime'];
-                    }
-                }
-
-                
-                
-          
-           // $time = $start_time."_".$end_time;
-            } else {
-              
-               
-                $changeschedNS = checkChangeScheduleNS($personal_id, $recorded_time); //check if there's changesched
-                
-               // echo $changeschedNS;
-                if($changeschedNS == 1 || $changeschedNS == 'none'){ // nightshift
-            
-                    $stime = Timekeeping::selectraw('max(recorded_time) as starttime, personal_id')
-                    ->whereDate('recorded_time',$recorded_time)
-                    ->where('personal_id',$personal_id)
-                    ->get();
-
-                    $next_day = date('Y-m-d', strtotime($recorded_time . ' +1 day'));
-                
-                    $etime = Timekeeping::selectraw('min(recorded_time) as endtime, personal_id')
-                    ->whereDate('recorded_time',$next_day)
-                    ->where('personal_id',$personal_id)
-                    ->get();
-
-                    $start_time = $stime[0]['starttime'];
-                        
-                    $year = date("Y",strtotime($recorded_time));
-                    $month = date("m",strtotime($recorded_time));
-                    
-                    $count_leave = LeaveFailure::join('leave_filing_detail', 'leave_filing_head.id','=','leave_filing_detail.leave_filing_head_id')
-                    ->where('date_absent',$recorded_time)
-                    ->where('personal_id',$personal_id)
-                    ->where('filed','!=','0')
-                    ->count();
-
-                   // echo "leave=".$count_leave . "<br>";
-                    if($count_leave!=0){
-                        $get_actual_time = LeaveFailure::join('leave_filing_detail', 'leave_filing_head.id','=','leave_filing_detail.leave_filing_head_id')
-                        ->where('date_absent',$recorded_time)
-                        ->where('personal_id',$personal_id)
-                        ->where('filed','!=','0')
-                        ->get();
-
-                        $end_time = $get_actual_time[0]['actual_time'];
-                    } else {
-                        $end_time= $etime[0]['endtime'];
-                    }
-                } else { /// dayshift
-
-                    $time = Timekeeping::selectraw('min(recorded_time) as starttime, max(recorded_time) as endtime, personal_id')
-                    ->whereDate('recorded_time',$recorded_time)
-                    ->where('personal_id',$personal_id)
-                    ->get();
-
-
-                    $start_time = $time[0]['starttime'];
-                    $end_time = $time[0]['endtime'];
-
-
-
-                }
-
-                // ShiftSchedule::select('schedule_head.employee_id','schedule_head.schedule_code')
-                //             ->join('schedule_detail','schedule_detail.schedule_head_id','=','schedule_head.id')
-                //             ->where('schedule_head.employee_id','=',$employee_id)
-                //             ->where('schedule_detail.rest_day','=',$date)
-                //             ->get();
-            
-                
-                
-            }
-
-            if(!empty($end_time) && !empty($start_time)){
-             return  $start_time . " - " . $end_time . "<br>";
-            }
+        if($column == 'time'){
+            $time = $timelogs[0]['time_in'] . " _ " .  $timelogs[0]['time_out'];
+        } else if($column == 'overall_time'){
+            $time = $timelogs[0]['overall_time'];
         }
 
-        //echo  $time;
-   // }
+        return $time;
+    }
+
+       
+}
+
+if (!function_exists('getDetailsLogs')) {
+
+    function getDetailsLogs($log_date, $personal_id, $column){
+
+        $timelogs = TimekeepingLogs::select($column)
+                                   ->where("log_date", $log_date)
+                                   ->where("personal_id", $personal_id)
+                                   ->get();
+        
+        $deets = $timelogs[0][$column];
+        return $deets;
+    }
+
+       
 }
 
 if (!function_exists('checkChangeScheduleNS')) {
@@ -354,6 +219,26 @@ if (!function_exists('checkHoliday')) {
     }
 }
 
+if (!function_exists('getHolidayRate')) {
+    function getHolidayRate($date){
+        $count= Holiday::select('holiday_rate')
+        ->where("holiday_date","=",$date)
+        ->count();
+
+        if($count>0){
+            $hol= Holiday::select('holiday_rate')
+            ->where("holiday_date","=",$date)
+            ->get();
+            $holiday_rate= $hol[0]['holiday_rate'];
+        } else {
+            $holiday_rate=0;
+        }
+       
+        return $holiday_rate;
+    }
+}
+
+
 if (!function_exists('getAllowanceName')) {
     function getAllowanceName($id){
         $emp= Allowance::select('allowance_name')
@@ -452,7 +337,7 @@ if (!function_exists('getHMODependent')) {
  }
 
 function getMaxtimeout($schedule_type,$recorded_time,$personal_id){
-    if($schedule_type=='Shifting'){
+    if($schedule_type=='shifting'){
         $date2=date('Y-m-d',strtotime($recorded_time." + 1 day"));
         $getmintimeout=Timekeeping::where('personal_id',$personal_id)->where(DB::raw("(STR_TO_DATE(recorded_time,'%Y-%m-%d'))"),$date2)->max('recorded_time');
         return $getmintimeout;
@@ -489,7 +374,6 @@ if (!function_exists('night_difference')) {
     {
         $start_night = mktime(START_NIGHT_HOUR,START_NIGHT_MINUTE,START_NIGHT_SECOND,date('m',$start_work),date('d',$start_work),date('Y',$start_work));
         $end_night   = mktime(END_NIGHT_HOUR,END_NIGHT_MINUTE,END_NIGHT_SECOND,date('m',$start_work),date('d',$start_work) + 1,date('Y',$start_work));
-
         if($start_work >= $start_night && $start_work <= $end_night)
         {
             if($end_work >= $end_night)
@@ -520,6 +404,72 @@ if (!function_exists('night_difference')) {
             }
             return 0;
         }
+    }
+
+}
+
+if (!function_exists('checkDeductionSchedule')) {
+    function checkDeductionSchedule($payslip_info_id){
+
+        $get_sched= Deduction::select('deduction_period')
+            ->where("payslip_info_id","=",$payslip_info_id)->get();
+        $sched=$get_sched[0]['deduction_period'];
+     
+        return $sched;
+       
+    }
+ }
+
+ if (!function_exists('getDeductionRate')) {
+    function getDeductionRate($personal_id, $payslip_info_id){
+       
+        if($payslip_info_id == 8){ ////SSS Premium
+                $getrate = Employee::select('monthly_rate')
+                ->where("personal_id","=",$personal_id)->get();
+                
+                $rate=$getrate[0]['monthly_rate'];
+
+            
+                $get_count= StatutoryBracket::select('deduction_amount')
+                    ->where("payslip_info_id","=",$payslip_info_id)
+                    ->where("salary_from", "<=", $rate)
+                    ->where("salary_to", ">=", $rate)
+                    ->count();
+                
+                if($get_count==0){
+                    $ded=0;
+                } else {
+
+                    $get_dd= StatutoryBracket::select('deduction_amount')
+                    ->where("payslip_info_id","=",$payslip_info_id)
+                    ->where("salary_from", "<=", $rate)
+                    ->where("salary_to", ">=", $rate)
+                    ->get();
+
+                    $ded=$get_dd[0]['deduction_amount'];
+                }
+            
+            } else {
+                $get_count= EmployeeDeduction::select('employee_rate')
+                ->where("payslip_info_id","=",$payslip_info_id)
+                ->where("personal_id", "=", $personal_id)
+                ->count();
+            
+                
+                    if($get_count==0){
+                        $ded=0;
+                    } else {
+
+                        $get_dd= EmployeeDeduction::select('employee_rate')
+                        ->where("payslip_info_id","=",$payslip_info_id)
+                        ->where("personal_id", "=", $personal_id)
+                        ->get();
+
+                        $ded=$get_dd[0]['employee_rate'];
+                    }
+                
+            } 
+            return $ded;
     }
 
 }
