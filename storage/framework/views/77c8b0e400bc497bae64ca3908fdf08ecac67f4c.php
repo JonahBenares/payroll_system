@@ -74,6 +74,16 @@
                 </form>
             </div>
         </div>
+        <?php if(Session::has('success')): ?>
+            <div class="mb-5 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                <span class="block sm:inline"><?php echo e(Session::get('success')); ?></span>
+            </div>
+        <?php endif; ?>
+        <?php if(Session::has('fail')): ?>
+            <div class="mb-5 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                <span class="block sm:inline"><?php echo e(Session::get('fail')); ?></span>
+            </div>
+        <?php endif; ?>
         <div class="overflow-x-auto relative  sm:rounded-2xl">
             <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0">
@@ -109,16 +119,11 @@
                 <tbody class="sticky top-12">
                     <?php if(!empty($change_sched)): ?>
                         <?php $__currentLoopData = $change_sched; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <?php 
-                            $exp=explode('-',$cs->month_year);
-                            $year=$exp[0];
-                            $month=$exp[1];
-                        ?>
                         <tr class=" border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                             <td class="py-3 px-6"><?php echo e(date('F d,Y',strtotime($cs->date_applied))); ?></td>
                             <td class="py-3 px-6"><?php echo e($cs->full_name); ?></td>
-                            <td class="py-3 px-6"><?php echo e(date('F',strtotime($month))); ?></td>
-                            <td class="py-3 px-6"><?php echo e($year); ?></td>
+                            <td class="py-3 px-6"><?php echo e(date('F',strtotime($cs->month_year))); ?></td>
+                            <td class="py-3 px-6"><?php echo e(date('Y',strtotime($cs->month_year))); ?></td>
                             <td class="py-3 px-6"><?php echo e(date('H:i A',strtotime($cs->time_in))."-".date('H:i A',strtotime($cs->time_out))); ?></td>
                             <td class="py-3 px-6"><?php echo e(date('F d,Y',strtotime($cs->start_date))); ?></td>
                             <td class="py-3 px-6"><?php echo e(date('F d,Y',strtotime($cs->end_date))); ?></td>
