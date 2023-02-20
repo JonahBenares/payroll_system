@@ -43,6 +43,11 @@ class ChangeScheduleController extends Controller
     {
         $emp=Employee::where('id',$request->employee)->where('is_active','1')->first();
         $month_year=$request->year."-".$request->month;
+        if(!empty($request->night_shift)){
+            $nightshift=1;
+        }else{
+            $nightshift=0;
+        }
         $res=ChangeSchedule::create(
             [
                 'date_applied'=> $request->date_applied,
@@ -53,6 +58,7 @@ class ChangeScheduleController extends Controller
                 'start_date'=> $request->start_date,
                 'end_date'=> $request->end_date,
                 'cancel'=> 0,
+                'night_shift'=>$nightshift
             ]
         );
 
@@ -100,6 +106,11 @@ class ChangeScheduleController extends Controller
         $change_sched = ChangeSchedule::find($id);
         $month_year=$request->year."-".$request->month;
         $emp=Employee::where('id',$request->employee)->where('is_active','1')->first();
+        if(!empty($request->night_shift)){
+            $nightshift=1;
+        }else{
+            $nightshift=0;
+        }
         $change_sched->update(
             [
                 'date_applied' => $request->date_applied,
@@ -110,6 +121,7 @@ class ChangeScheduleController extends Controller
                 'start_date' => $request->start_date,
                 'end_date' => $request->end_date,
                 'cancel'=> 0,
+                'night_shift'=>$nightshift
             ]
         );
         return redirect()->route('changeSched.edit',$id)->with('success',"Change Schedule Updated Successfully");
@@ -124,6 +136,11 @@ class ChangeScheduleController extends Controller
                 'cancel'=> 1,
             ]
         );
+        if($change_schedule) {  
+            return redirect()->route('changeSched.index')->with('success',"Cancelled Successfully");
+        }else{
+            return redirect()->route('changeSched.index')->with('fail',"Error! Try Again!");
+        }
     }
 
     /**

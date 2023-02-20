@@ -72,7 +72,7 @@
                         @php
                             $years=date('Y');
                         @endphp
-                        @for($y=2015;$y<=$years;$y++)
+                        @for($y=$years;$y<=$years;$y++)
                             <option value="{{ $y }}">{{ $y }}</option>
                         @endfor
                     </select>
@@ -99,7 +99,7 @@
             </div>
             <div class="mt-4 w-full  flex">
                 <div class="flex items-center">
-                    <input name="alternate" type="checkbox" value="1" class=" w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
+                    <input name="night_shift" type="checkbox" value="1" class=" w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600">
                     <label for="checked-checkbox" class="ml-2 text-sm font-medium text-gray-900 white:text-gray-300">Night Shift</label>
                 </div>
             </div>
