@@ -47,14 +47,14 @@ table.dataTable thead th,table.dataTable tfoot th{font-weight:bold}
 table.dataTable thead th,table.dataTable thead td{padding:10px;border-bottom:0px solid rgba(0, 0, 0, 0.3)}
 table.dataTable thead th:active,table.dataTable thead td:active{outline:none}
 table.dataTable tfoot th,table.dataTable tfoot td{padding:10px 10px 6px 10px;border-top:1px solid rgba(0, 0, 0, 0.3)}
-table.dataTable tbody tr{background-color:transparent;border-bottom:1px solid rgba(112, 112, 112, 0.3)!important}
+table.dataTable tbody tr{background-color:transparent;}
 table.dataTable tbody tr.selected>*{box-shadow:inset 0 0 0 9999px rgba(13, 110, 253, 0.9);color:white}
 table.dataTable tbody tr.selected a{color:#090a0b}
 table.dataTable tbody th,table.dataTable tbody td{padding:8px 10px}
 
 
 table.dataTable thead {background-color: #f9fafb!important;}
-table.dataTable tbody tr{border-bottom: 1px solid #5e5e5e28!important;}
+table.dataTable tbody tr{border-bottom: 1px solid #5e5e5e1a!important;}
 table.dataTable.row-border tbody th,table.dataTable.row-border tbody td,table.dataTable.display tbody th,table.dataTable.display tbody td{border-top:1px solid rgba(0, 0, 0, 0.15)}
 table.dataTable.row-border tbody tr:first-child th,table.dataTable.row-border tbody tr:first-child td,table.dataTable.display tbody tr:first-child th,table.dataTable.display tbody tr:first-child td{border-top:none}
 table.dataTable.cell-border tbody th,table.dataTable.cell-border tbody td{border-top:1px solid rgba(0, 0, 0, 0.15);border-right:1px solid rgba(0, 0, 0, 0.15)}
@@ -88,13 +88,13 @@ table.dataTable.display tbody tr:hover.selected>.sorting_3,table.dataTable.order
 table.dataTable.compact thead th,table.dataTable.compact thead td,table.dataTable.compact tfoot th,table.dataTable.compact tfoot td,table.dataTable.compact tbody th,table.dataTable.compact tbody td{padding:4px}
 table.dataTable th,table.dataTable td{box-sizing:content-box}
 .dataTables_wrapper{position:relative;clear:both;font-size: 0.875rem}
-.dataTables_wrapper .dataTables_length{float:left}
-.dataTables_wrapper .dataTables_length select{border:1px solid #aaa;border-radius:3px;padding-top: 0.3rem!important;padding-bottom: 0.3rem!important;padding-right:30px;background-color:transparent;font-size: 0.875rem;margin-bottom: 16px;}
+.dataTables_wrapper .dataTables_length{float:left;}
+.dataTables_wrapper .dataTables_length select{border:1px solid #aaa;border-radius:3px;padding-top: 0.3rem!important;padding-bottom: 0.3rem!important;padding-right:30px;background-color:transparent;font-size: 0.875rem;margin-bottom: 16px;border-radius: 20px;}
 .dataTables_wrapper .dataTables_filter{float:right;text-align:right}
-/* .dataTables_wrapper .dataTables_filter label{} */
-.dataTables_wrapper .dataTables_filter input{border:1px solid #aaa;border-radius:3px;padding-top: 0.3rem!important;padding-bottom: 0.3rem!important;padding-right:30px;background-color:transparent;font-size: 0.875rem;margin-bottom: 16px}
-.dataTables_wrapper .dataTables_info{clear:both;float:left;padding-top:1.5em}
-
+.dataTables_wrapper .dataTables_filter label, .dataTables_wrapper .dataTables_length label{color:#6b7490}
+.dataTables_wrapper .dataTables_filter input{border:1px solid #aaa;border-radius:3px;padding-top: 0.3rem!important;padding-bottom: 0.3rem!important;padding-right:10px;background-color:transparent;font-size: 0.875rem;margin-bottom: 16px;border-radius: 20px;margin-left: 5px;width:230px}
+.dataTables_wrapper .dataTables_info{clear:both;float:left;padding-top:1.5em;}
+.dataTables_info{color:#6b7490!important}
 
 .dataTables_wrapper .dataTables_paginate{float:right;text-align:right;padding-top:1em}
 .dataTables_wrapper .dataTables_paginate .paginate_button{box-sizing:border-box;display:inline-block;min-width:1.5em;padding:.4em .8em;margin-left:2px;text-align:center;text-decoration:none !important;cursor:pointer;color:inherit !important;border:1px solid transparent;border-radius:2px}
@@ -121,3 +121,5 @@ table.dataTable th,table.dataTable td{box-sizing:content-box}
 @media screen and (max-width: 640px){.dataTables_wrapper .dataTables_length,.dataTables_wrapper .dataTables_filter{float:none;text-align:center}
 .dataTables_wrapper .dataTables_filter{margin-top:.5em}
 }
+
+

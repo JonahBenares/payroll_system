@@ -16,10 +16,10 @@
     </style>
     
     <div class="overflow-auto h-screen pb-28 pt-2 pr-2 pl-2 md:pt-0 md:pr-0 md:pl-0">
-        <div class="flex flex-col flex-wrap sm:flex-row ">
-            <div class="relative h-full w-full text-center bg-white rounded-lg shadow-lg white:bg-gray-800 white:border-gray-700">
-                <div class="flex justify-between p-4 rounded-t-lg bg-gray-50  white:bg-gray-900">
-                    <div > 
+        <div class="flex flex-col flex-wrap sm:flex-row">
+            <div class="relative h-full w-full text-center bg-white rounded-lg shadow-lg">
+                <div class="flex justify-between pr-4 pl-4 pt-4 rounded-t-lg ">
+                    <div> 
                         <h2 class="uppercase font-semibold py-2">Accounting Entry</h2>
                     </div>
                     <div class="flex">
@@ -34,9 +34,14 @@
                         
                     </div>
                 </div>
-                <div class="overflow-x-auto overflow-y-hidden hover:overflow-y-auto h-100 relative p-4 rounded-b-lg ">
-                    <table class="w-full text-sm text-left text-gray-500 white:text-gray-400" id="myTable">
-                        <thead class="text-xs text-gray-700 uppercase white:bg-gray-700 white:text-gray-400 sticky top-0 z-10">
+                <?php if(Session::has('success')): ?>
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline"><?php echo e(Session::get('success')); ?></span>
+                    </div>
+                <?php endif; ?>
+                <div class="overflow-x-auto overflow-y-hidden hover:overflow-y-auto h-100 relative p-4 rounded-b-lg">
+                    <table class="w-full text-sm text-left white:text-gray-400" id="table_overall">
+                        <thead class="text-xs text-gray-700 uppercase sticky top-0 z-10">
                             <tr class="">
                                 <th scope="col" class="py-3 px-6" width="%">
                                     Description
@@ -51,8 +56,8 @@
                        
                         <tbody>
                         <?php $__currentLoopData = $accountingentries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ent): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <tr class="bg-white hover:bg-gray-50 ">
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                            <tr class="bg-white text-gray-500 font-medium hover:bg-gray-50 hover:text-gray-900 hover:font-semibold">
+                                <td scope="row" class="py-3 px-6 whitespace-nowrap white:text-white">
                                     <?php echo e($ent->description); ?>
 
                                 </td>
