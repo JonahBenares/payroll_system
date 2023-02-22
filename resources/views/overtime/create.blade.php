@@ -43,23 +43,25 @@
                                 <label for="" class="block text-left text-sm text-gray-700 capitalize white:text-gray-200 px-2   w-60">Overtime Date: </label>
                                 <div class="px-2 flex justify-between">
                                     <select id="overtime_date" name="overtime_date" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" onchange="getRecordedtime('{{$_GET['personal_id']}}')">
-                                        @php $x=0; @endphp
                                         <option value=''>--Select Overtime Date--</option>
-                                        @foreach($data2 AS $d)
-                                            @if($d['schedule_type']=='regular'){
-                                                @if($hours[$x]>=9 && $minutes[$x]>=30)
-                                                <option value='{{ $date[$x]}}'>{{ date('F d,Y',strtotime($date[$x]))}}</option>
-                                                @elseif($hours[$x]>=10)
-                                                <option value='{{ $date[$x]}}'>{{ date('F d,Y',strtotime($date[$x]))}}</option>
+                                        @foreach($timedate AS $d)
+                                            @php 
+                                                $hours=date('H',strtotime($d->total_time));
+                                                $minutes=date('i',strtotime($d->total_time));
+                                            @endphp
+                                            @if($d->schedule_type=='regular'){
+                                                @if($hours>=9 && $minutes>=30)
+                                                <option value='{{ $d->log_date }}'>{{ date('F d,Y',strtotime($d->log_date ))}}</option>
+                                                @elseif($hours>=10)
+                                                <option value='{{ $d->log_date }}'>{{ date('F d,Y',strtotime($d->log_date ))}}</option>
                                                 @endif
-                                            @else if($d['schedule_type']=='shifting')
-                                                @if($hours[$x]>=8 && $minutes[$x]>=30)
-                                                <option value='{{ $date[$x]}}'>{{ date('F d,Y',strtotime($date[$x]))}}</option>
-                                                @elseif($hours[$x]>=10)
-                                                <option value='{{ $date[$x]}}'>{{ date('F d,Y',strtotime($date[$x]))}}</option>
+                                            @else if($d->schedule_type=='shifting')
+                                                @if($hours>=8 && $minutes>=30)
+                                                <option value='{{ $d->log_date }}'>{{ date('F d,Y',strtotime($d->log_date ))}}</option>
+                                                @elseif($hours>=10)
+                                                <option value='{{ $d->log_date }}'>{{ date('F d,Y',strtotime($d->log_date ))}}</option>
                                                 @endif
                                             @endif
-                                            @php $x++; @endphp
                                         @endforeach
                                     </select>
                                 </div>
