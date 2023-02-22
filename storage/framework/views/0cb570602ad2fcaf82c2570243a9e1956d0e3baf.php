@@ -41,7 +41,7 @@
                 
                 <!-- component -->
                 <div class="overflow-x-auto h-110 border ">
-                    <table class="text-sm" width="150%">
+                    <table class="text-sm" width="150%" >
                         <tr class="border-b text-xs text-gray-700 uppercase bg-gray-50 sticky top-0 z-10">
                             <td class="px-3 py-3 text-center" width="7%">Employee No.</td>
                             <td class="px-3 py-3 sticky left-0 bg-gray-50 z-10" width="20%">Employee Name</td>
