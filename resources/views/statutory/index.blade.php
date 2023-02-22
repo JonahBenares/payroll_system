@@ -9,34 +9,20 @@
     
     <div class="overflow-auto h-screen pb-28 pt-2 pr-2 pl-2 md:pt-0 md:pr-0 md:pl-0">
         <div class="flex flex-col flex-wrap sm:flex-row ">
-            <div class="p-4 relative h-full w-full text-center bg-white rounded-lg shadow-lg white:bg-gray-800 white:border-gray-700">
-                <div class="flex justify-between pb-2 bg-white white:bg-gray-900">
+            <div class="relative h-full w-full text-center bg-white rounded-lg shadow-lg">
+                <div class="flex justify-between pr-4 pl-4 pt-4 rounded-t-lg ">
                     <div > 
                         <h2 class="uppercase font-semibold py-2">Statutory Bracket</h2>
                     </div>
                     <div class="flex">
                         <a href="{{ route('statutorybracket.create') }}" type="button" >
-                            <div class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white transition-colors duration-200 transform bg-indigo-500 rounded-3xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                            <div class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-3xl white:bg-blue-600 white:hover:bg-blue-700 white:focus:bg-blue-700 hover:bg-blue-600 focus:outline-none focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-50">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
                                 </svg>
                                 <span>Add New</span>
                             </div>
                         </a>
-                        <label for="table-search" class="sr-only">Search</label>
-                        <form class="flex items-center">   
-                            <label for="simple-search" class="sr-only">Search</label>
-                            <div class="relative w-full">
-                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                    <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
-                                </div>
-                                <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 px-3 py-2 rounded-l-2xl" placeholder="Search" required>
-                            </div>
-                            <button type="submit" class="px-2 py-2 text-sm font-medium text-white border border-gray-300 bg-gray-300 rounded-r-2xl hover:bg-gray-400 hover:border hover:border-gray-400 focus:outline-none focus:bg-gray-500 focus:ring focus:ring-gray-300 focus:ring-opacity-50 ">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                                <span class="sr-only">Search</span>
-                            </button>
-                        </form>
                     </div>
                 </div>
                 @if(Session::has('success'))
@@ -44,8 +30,8 @@
                         <span class="block sm:inline">{{Session::get('success')}}</span>
                     </div>
                 @endif
-                <div class="overflow-x-auto h-100 relative  sm:rounded-2xl">
-                    <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
+                <div class="overflow-x-auto overflow-y-hidden hover:overflow-y-auto h-100 relative p-4 rounded-b-lg">
+                    <table class="w-full text-sm text-left white:text-gray-400" id="table_overall">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-10">
                             <tr class="">
                                 <th scope="col" class="py-3 px-6" width="%">
@@ -72,10 +58,10 @@
                         </thead>
                         <tbody>
                         @foreach($statutory as $stat)
-                            <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                                <th scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                            <tr class="bg-white text-gray-500 font-medium hover:bg-gray-50 hover:text-gray-900 hover:font-semibold">
+                                <td scope="row" class="py-3 px-6 whitespace-nowrap white:text-white">
                                 {{ $stat->description }}
-                                </th>
+                                </td>
                                 <td class="py-3 px-6">
                                 {{ number_format($stat->salary_from,2) }}
                                 </td>

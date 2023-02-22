@@ -36,21 +36,27 @@ class DashboardController extends Controller
         $now=date('Y-m-d');
         $cutoff_mid=CutOff::where('cutoff_type','MID')->first();
         $cutoff_eom=CutOff::where('cutoff_type','EOM')->first();
-        if($check_date>=$cutoff_mid->cutoff_start || $check_date<=$cutoff_mid->cutoff_end){
-            //echo 'MID';
-            $inc_month=date('F',strtotime($now." +1 Months"));
-            if($month=='12'){
-                $inc_year=date('Y',strtotime($now." +1 year"));
-            }else{
-                $inc_year=$year;
+        $cutoff_count=CutOff::count();
+        $start_date='';
+        $end_date='';
+        if($cutoff_count!=0){
+            if($check_date>=$cutoff_mid->cutoff_start || $check_date<=$cutoff_mid->cutoff_end){
+                //echo 'MID';
+                $inc_month=date('F',strtotime($now." +1 Months"));
+                if($month=='12'){
+                    $inc_year=date('Y',strtotime($now." +1 year"));
+                }else{
+                    $inc_year=$year;
+                }
+                $start_date=$month_disp." ".str_pad($cutoff_mid->cutoff_start, 2, "0", STR_PAD_LEFT).",".$year;
+                $end_date=$inc_month." ".str_pad($cutoff_mid->cutoff_end, 2, "0", STR_PAD_LEFT).",".$inc_year;
+            }else if($check_date>=$cutoff_eom->cutoff_start || $check_date<=$cutoff_eom->cutoff_end){
+                //echo 'EOM';
+                $start_date=$month_disp." ".str_pad($cutoff_eom->cutoff_start, 2, "0", STR_PAD_LEFT).",".$year;
+                $end_date=$month_disp." ".str_pad($cutoff_eom->cutoff_end, 2, "0", STR_PAD_LEFT).",".$year;
             }
-            $start_date=$month_disp." ".str_pad($cutoff_mid->cutoff_start, 2, "0", STR_PAD_LEFT).",".$year;
-            $end_date=$inc_month." ".str_pad($cutoff_mid->cutoff_end, 2, "0", STR_PAD_LEFT).",".$inc_year;
-        }else if($check_date>=$cutoff_eom->cutoff_start || $check_date<=$cutoff_eom->cutoff_end){
-            //echo 'EOM';
-            $start_date=$month_disp." ".str_pad($cutoff_eom->cutoff_start, 2, "0", STR_PAD_LEFT).",".$year;
-            $end_date=$month_disp." ".str_pad($cutoff_eom->cutoff_end, 2, "0", STR_PAD_LEFT).",".$year;
         }
+
         $unfiled_leave=LeaveFailureDetail::where('filed','0')->count();
         $reminders=Reminder::where('done','0')->orderBy('reminder_date')->get();
         $holiday=Holiday::all()->sortBy('holiday_date');

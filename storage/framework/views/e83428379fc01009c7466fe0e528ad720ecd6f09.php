@@ -9,20 +9,10 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
-<<<<<<< HEAD
         <link rel="stylesheet" href="../../css/jquery.dataTables.min.css">
         <link rel="stylesheet" href="../../css/flowbite.min.css">
         <script defer src="../../js/flowbite.min.js"></script>
         
-=======
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
-        
-        
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
-       
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
->>>>>>> 8cc7f942665afe1645767c157ba25461ced8ba81
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cd:\Program Files\Microsoft VS Code\resources\app\out\vs\code\electron-sandbox\workbench\workbench.htmldn.min.js"></script>
@@ -140,8 +130,19 @@
         <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
         <script>
             $(document).ready( function () {
-                $('#myTable').DataTable();
+                $('#table_overall').DataTable();
             } );
+        </script>
+        <script>
+            document.getElementById('sched_type').addEventListener("change", function (e) {
+                if (e.target.value === 'regular') {
+                    document.getElementById('regulars').style.display = 'block';
+                    document.getElementById('shiftings').style.display = 'none';
+                } else {
+                    document.getElementById('regulars').style.display = 'none';
+                    document.getElementById('shiftings').style.display = 'block'
+                }
+            });
         </script>
         <script>
             function isNumberKey(txt, evt){
