@@ -23,7 +23,7 @@
                     </div>
                     <div class="flex">
                         <a href="<?php echo e(route('empDeduction.index')); ?>" type="button">
-                            <div class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white transition-colors duration-200 transform bg-indigo-500 rounded-3xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                            <div class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-3xl white:bg-blue-600 white:hover:bg-blue-700 white:focus:bg-blue-700 hover:bg-blue-600 focus:outline-none focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-50">
                                 <span>Show List</span>
                             </div>
                         </a>
@@ -39,6 +39,9 @@
                         <span class="block sm:inline"><?php echo e(Session::get('fail')); ?></span>
                     </div>
                 <?php endif; ?>
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" id='show_alert' role="alert" style="display:none">
+                    <span class="block sm:inline" id="alerterror"></span>
+                </div>
                 <div class="flex flex-row justify-between">
                     <div class="px-1 w-6/12">
                         <span class="block w-full text-left">Deduciton Name</span>
@@ -50,9 +53,7 @@
                         Action
                     </div>
                 </div>
-                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" id='show_alert' role="alert" style="display:none">
-                    <span class="block sm:inline" id="alerterror"></span>
-                </div>
+                
                 <?php $x=1; ?>
                 <?php $__currentLoopData = $deductions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <form action="<?php echo e(route('empDeduction.update',$ar->employee_id)); ?>" method='POST'>
@@ -76,7 +77,7 @@
                             <input type="hidden" name="employee_deduction_id[]" id="employee_deduction_id" value="<?php echo e($ar->id); ?>">
 
 
-                            <button class="flex items-center justify-center my-2 py-2 px-2 text-xs tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50 addInfo">
+                            <button class="flex items-center justify-center my-2 py-2 px-2 text-xs tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-500 rounded-2xl white:bg-blue-600 white:hover:bg-blue-700 white:focus:bg-blue-700 hover:bg-blue-600 focus:outline-none focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-50 addInfo">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                                   </svg>
