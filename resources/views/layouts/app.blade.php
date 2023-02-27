@@ -106,6 +106,16 @@
             $(document).ready( function () {
                 $('#table_overall').DataTable();
             } );
+            $(document).ready(function() {
+                var table = $('#emp_table').DataTable( {
+                    scrollX:        true,
+                    scrollY:        "330px",
+                    aLengthMenu: [
+                        [5, 20, 50, 100, -1],
+                        [5, 20, 50, 100, "All"]
+                    ],
+                } );
+            } );
         </script>
         <script>
             document.getElementById('sched_type').addEventListener("change", function (e) {
