@@ -110,79 +110,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if(!empty($timekeeping))
-                            @php 
-                                $x=0;
-                                $total_hours=[];
-                                $total_min=[];
-                                $overall_time=[];
-                                $time_difference=[];
-                                $overtime_calculation=0;
-                                $overtime_amnt_calculation=0;
-                            @endphp
-                            @foreach($timekeeping AS $e)
-                                @php $y=0; @endphp
-                                @foreach($timedate AS $t)
-                                    @php 
-                                        if($e->personal_id==$t->personal_id){
-                                            $overtime_calculation=$overtime_sum[$y];
-                                            $overtime_amnt_calculation=$overtime_amount[$y];
-                                            if($t->schedule_type=='regular'){
-                                                $hours=date('H',strtotime($t->total_time));
-                                                $minutes=date('i',strtotime($t->total_time));
-                                                if($hours>=9 && $minutes>=30){
-                                                    $time_difference[]=$t->total_time*60-540;
-                                                }else if($hours>=10){
-                                                    $time_difference[]=$t->total_time*60-540;   
-                                                }
-                                            }else if($t->schedule_type=='shifting'){
-                                                if($t->night_shift==1){
-                                                    $hours=date('H',strtotime($t->total_time));
-                                                    $minutes=date('i',strtotime($t->total_time));
-                                                    if($hours>=8 && $minutes>=30){
-                                                        $time_difference[]=$t->regular_hours;  
-                                                    }else if($hours>=10){
-                                                        $time_difference[]=$t->regular_hours;  
-                                                    } 
-                                                }else{
-                                                    $hours=date('H',strtotime($t->total_time));
-                                                    $minutes=date('i',strtotime($t->total_time));
-                                                    if($hours>=8 && $minutes>=30){
-                                                        $time_difference[]=$t->total_time*60-480;
-                                                    }else if($hours>=10){
-                                                        $time_difference[]=$t->total_time*60-480;   
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        $y++;
-                                    @endphp
-                                @endforeach
-                                @php 
-                                    $total_calculation = array_sum($time_difference);
-                                    print_r($time_difference);
-                                @endphp
+                            @if(!empty($res))
+                                @foreach($res as $d)
                                 <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                     <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                        {{ $e->full_name }}
+                                        {{ getEmployeeName($d['employee_id']) }}
                                     </td>
                                     <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                        <a target='_blank' href="{{ route('ot.create',['employee_id' => $e->id,'personal_id' => $e->personal_id,'month_year' => $year."-".$month, 'period' => $exp_period]) }}"  class="my-1  py-2" title="Update">
-                                            {{number_format(round(abs($total_calculation) / 60,2),2)." hr/s"}}
-                                        </a> 
+                                        <a target='_blank' href="{{ route('ot.create',['employee_id' => $d['employee_id'],'personal_id' => $d['personal_id'],'month_year' => $year."-".$month, 'period' => $exp_period]) }}"  class="my-1  py-2" title="Update">
+                                            {{ convertTime($d['hours'])." hr/s" }}
+                                        </a>
                                     </td>
                                     <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                        {{$overtime_calculation." hr/s."}}
+                                        {{$d['overtime_sum']." hr/s."}}
                                     </td>
                                     <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                        {{ number_format($overtime_amnt_calculation,2) }}
+                                        {{ number_format($d['overtime_amount'],2) }}
                                     </td>
                                 </tr>
-                                
-                                @php 
-                                    $x++;
-                                @endphp
-                            @endforeach
+                                @endforeach
                             @endif
                         </tbody>
                     </table>
