@@ -88,7 +88,7 @@ class AccountingEntryController extends Controller
         $input = $request->all();
         $accountingentries->update($input);
 
-        return redirect()->route('entry.edit',$id)->with('success',"Schedule Updated Successfully");
+        return redirect()->route('entry.edit',$id)->with('success',"Accounting Entry Updated Successfully");
     }
 
     /**
@@ -101,7 +101,7 @@ class AccountingEntryController extends Controller
     {
         $accountingentries = AccountingEntry::find($id);
         $accountingentries->delete();
-        return redirect()->route('entry.index');
+        return redirect()->route('entry.index')->with('success',"Accounting Entry Deleted Successfully");;
 
     }
 }

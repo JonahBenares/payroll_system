@@ -8,6 +8,7 @@ use App\Models\Employee;
 use App\Models\Holiday;
 use App\Models\CutOff;
 use App\Models\Timekeeping;
+use App\Models\TimekeepingLogs;
 use App\Models\Schedule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -91,51 +92,35 @@ class OvertimeController extends Controller
                 $exp_date1=$year."-".$month."-".$padded_day1;
                 $exp_date2=$year."-".$month."-".$padded_day2;
                 $added_month=date('m',strtotime($exp_date2));
+                $inc_year='';
             }
         }else{
             $period='';
             $exp_date1='';
             $exp_date2='';
             $exp_period='';
+            $inc_year='';
         }
-       
-        $timekeeping = Timekeeping::join('db_payroll.employees', 'db_payroll.employees.personal_id', '=', 'db_hris.timekeeping.personal_id')->select('db_payroll.employees.id', 'db_payroll.employees.personal_id','db_payroll.employees.full_name', 'db_hris.timekeeping.recorded_time', DB::raw('GROUP_CONCAT(db_hris.timekeeping.recorded_time ORDER BY db_hris.timekeeping.recorded_time ASC) as in_out_time'))->where('supervisory','0')->where('is_active','1')->whereMonth('recorded_time',$month)->whereYear('recorded_time', $year)->whereBetween('recorded_time', [$exp_date1, $exp_date2])->groupBy('db_payroll.employees.personal_id')->get();
-        $timedate = DB::select("SELECT t.personal_id,recorded_time, GROUP_CONCAT(recorded_time) AS timer,time_in,schedule_type FROM db_hris.timekeeping t INNER JOIN schedule_head sh ON t.personal_id=sh.personal_id INNER JOIN schedule_code sc ON sh.schedule_code=sc.id WHERE (MONTH(recorded_time)='$month' OR MONTH(recorded_time)='$added_month') AND YEAR(recorded_time)='$year' AND recorded_time BETWEEN '$exp_date1' AND '$exp_date2' GROUP BY t.personal_id,recorded_time ORDER BY recorded_time ASC");
-        $getmintimein=[];
-        $getmintimeout=[];
+        $timekeeping=TimekeepingLogs::join('schedule_head','schedule_head.employee_id','=','timekeeping_logs.employee_id')->join('schedule_code','schedule_code.id','=','schedule_head.schedule_code')->join('employees','employees.id','=','timekeeping_logs.employee_id')->where('supervisory','0')->whereOr('supervisory','')->where('is_active','1')->where('period',$exp_period)->where('month',$month)->where('year',$year)->whereBetween('log_date', [$exp_date1, $exp_date2])->groupBy('timekeeping_logs.personal_id')->orderBydesc('employees.personal_id')->get();
+        $timedate=TimekeepingLogs::join('schedule_head','schedule_head.employee_id','=','timekeeping_logs.employee_id')->join('schedule_code','schedule_code.id','=','schedule_head.schedule_code')->join('employees','employees.id','=','timekeeping_logs.employee_id')->where('supervisory','0')->whereOr('supervisory','')->where('is_active','1')->where('period',$exp_period)->where('month',$month)->orWhere('month',$added_month)->where('year',$year)->orWhere('year',$inc_year)->whereBetween('log_date', [$exp_date1, $exp_date2])->orderBydesc('employees.personal_id')->get(['full_name','timekeeping_logs.night_shift','timekeeping_logs.personal_id','schedule_type','total_time','nd_hours','regular_hours']);
+        // $getmintimein=[];
+        // $getmintimeout=[];
         $x=0;
         $overtime_sum=[];
         $overtime_amount=[];
-        foreach($timekeeping AS $t){
+        $total_regular=[];
+        $total_night=[];
+        //$total_hours=[];
+        //$total_min=[];
+        //$overall_time=[];
+        foreach($timedate AS $t){
             $overtime_sum[$x]=OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where('personal_id',$t->personal_id)->where('payroll_period',$exp_period)->where('month_year','LIKE','%'.$year."-".$month.'%')->sum(\DB::raw('IFNULL(reg_day_hr,0) + IFNULL(RD_HR,0) + IFNULL(SH_RD_HR,0) + IFNULL(SH_HR,0) + IFNULL(RH_HR,0) + IFNULL(RH_RD_HR,0) + IFNULL(reg_day_np_hr,0) + IFNULL(reg_np_ot_hr,0) + IFNULL(SH_RD_NP_HR,0) + IFNULL(SH_OT_NP_HR,0) + IFNULL(SH_RD_OT_NP_HR,0) + IFNULL(RH_NP_HR,0) + IFNULL(RH_RD_NP_HR,0) + IFNULL(RH_RD_OT_NP_HR,0) + IFNULL(RH_OT_NP_HR,0) + IFNULL(RD_SH_NP_HR,0) + IFNULL(RD_SH_NP_OT_HR,0)'));
             $overtime_amount[$x]=OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where('personal_id',$t->personal_id)->where('payroll_period',$exp_period)->where('month_year','LIKE','%'.$year."-".$month.'%')->sum('total_amount');
             $x++;
         }
-        $cutoff=CutOff::all();
-        return view('overtime.index',compact('timekeeping','timedate','cutoff','exp_period','month','year','overtime_sum','overtime_amount','getmintimein','getmintimeout'));
-
-        //$timekeeping=Timekeeping::whereMonth('recorded_time',$month)->whereYear('recorded_time', $year)->whereBetween('recorded_time', [$exp_date1, $exp_date2])->get();
-
-        // $timekeeping=Timekeeping::whereMonth('recorded_time',$month)->whereYear('recorded_time', $year)->whereBetween('recorded_time', [$exp_date1, $exp_date2])->get();
-        // $employees=Employee::where('supervisory','0')->where('is_active','1')->get();
-        // $x=0;
-        // $overtime_sum=[];
-        // $overtime_amount=[];
-        // foreach($timekeeping AS $t){
-            
-        //     $overtime_sum[$x]=OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where('personal_id',$t->personal_id)->where('month_year','LIKE','%'.$year."-".$month.'%')->sum(\DB::raw('IFNULL(reg_day_hr,0) + IFNULL(RD_HR,0) + IFNULL(SH_RD_HR,0) + IFNULL(SH_HR,0) + IFNULL(RH_HR,0) + IFNULL(RH_RD_HR,0) + IFNULL(reg_day_np_hr,0) + IFNULL(reg_np_ot_hr,0) + IFNULL(SH_RD_NP_HR,0) + IFNULL(SH_OT_NP_HR,0) + IFNULL(SH_RD_OT_NP_HR,0) + IFNULL(RH_NP_HR,0) + IFNULL(RH_RD_NP_HR,0) + IFNULL(RH_RD_OT_NP_HR,0) + IFNULL(RH_OT_NP_HR,0) + IFNULL(RD_SH_NP_HR,0) + IFNULL(RD_SH_NP_OT_HR,0)'));
-        //     $overtime_amount[$x]=OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where('personal_id',$t->personal_id)->where('month_year','LIKE','%'.$year."-".$month.'%')->first('total_amount');
-        //     $x++;
-        // }
-
-        // $timedate=Timekeeping::whereMonth('recorded_time',$month)->whereOr(DB::RAW('month(recorded_time)'), $added_month)->whereYear('recorded_time', $year)->whereBetween('recorded_time', [$exp_date1, $exp_date2])->get();
-        // foreach($timedate AS $td){
-        //     $schedule=Schedule::join('schedule_head', 'schedule_head.schedule_code', '=', 'schedule_code.id')->where('personal_id',$td->personal_id)->value('time_in');
-        // }
-       
-        // $cutoff=CutOff::all();
         
-        // return view('overtime.index',compact('timekeeping','employees','timedate','cutoff','exp_period','month','year','overtime_sum','overtime_amount','schedule'));
+        $cutoff=CutOff::all();
+        return view('overtime.index',compact('timedate','timekeeping','cutoff','exp_period','month','year','overtime_sum','overtime_amount','total_regular','total_night'));
     }
 
     /**
@@ -160,166 +145,20 @@ class OvertimeController extends Controller
             $cutoff_end=CutOff::where('cutoff_type','MID')->value('cutoff_end');
             $start_date=str_pad($exp_date[0], 2, "0", STR_PAD_LEFT)."-".str_pad($exp_date[1], 2, "0", STR_PAD_LEFT)."-".str_pad($cutoff_start, 2, "0", STR_PAD_LEFT);
             $end_date=str_pad($add_year, 2, "0", STR_PAD_LEFT)."-".str_pad($add_month, 2, "0", STR_PAD_LEFT)."-".str_pad($cutoff_end, 2, "0", STR_PAD_LEFT);
-            $query="AND recorded_time>='$start_date' AND recorded_time<='$end_date'";
+            $query="AND log_date>='$start_date' AND log_date<='$end_date'";
         }else{
             $add_month=$exp_date[1];
             $add_year=$exp_date[0];
             $cutoff_start=CutOff::where('cutoff_type','EOM')->value('cutoff_start');
             $cutoff_end=CutOff::where('cutoff_type','EOM')->value('cutoff_end');
-            $query="AND DAY(recorded_time) BETWEEN '$cutoff_start' AND '$cutoff_end'";
+            $query="AND DAY(log_date) BETWEEN '$cutoff_start' AND '$cutoff_end'";
         }
 
         $get_data=OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where('employee_id',$request->employee_id)->where('personal_id',$request->personal_id)->where('month_year','LIKE','%'.$request->month_year.'%')->where('overtime_date',$request->overtimedate)->first();
-      
-        $timedate = DB::select("SELECT t.personal_id,recorded_time, GROUP_CONCAT(recorded_time) AS timer,time_in,schedule_type FROM db_hris.timekeeping t INNER JOIN schedule_head sh ON t.personal_id=sh.personal_id INNER JOIN schedule_code sc ON sh.schedule_code=sc.id WHERE t.personal_id='$personal_id' AND (MONTH(recorded_time)='$exp_date[1]' OR MONTH(recorded_time)='$add_month]') AND (YEAR(recorded_time)='$exp_date[0]' OR YEAR(recorded_time)='$add_year') $query GROUP BY t.personal_id,recorded_time ORDER BY recorded_time ASC");
-        $data2 = array();
-        foreach($timedate AS $value){
-            $key = date('Y-m-d',strtotime($value->recorded_time));
-            if(!isset($data2[$key])) {   
-                $data2[$key] = array(
-                    'personal_id'=>$value->personal_id,
-                    'time_in'=>$value->time_in,
-                    'rec_time'=>$value->recorded_time,
-                    'schedule_type'=>$value->schedule_type,
-                    'recorded_time' => array(),
-                    'recorded_date' => array(),
-                );
-            }        
-            $data2[$key]['recorded_time'][] = date('Y-m-d H:i',strtotime($value->recorded_time)).",";  
-            $data2[$key]['recorded_date'][] = date('Y-m-d',strtotime($value->recorded_time)).",";  
-        }
-        $total_hours=[];
-        $total_min=[];
-        $total_mins=[];
-        $overall_time=[];
-        $hours=[];
-        $minutes=[];
-        $date=[];
-        $x=0;
-        foreach($data2 AS $logs){
-            if($logs['schedule_type']=='regular'){
-                $exp=implode("",$logs['recorded_time']);
-                $exp_time = explode(',', $exp); 
-                //$timedisp= date('Y-m-d',strtotime($exp_time[0]))." ".$logs['time_in'];
-                $timecheck=date('Hi',strtotime($logs['time_in']));
-                if(date('Hi',strtotime($exp_time[0]))>=$timecheck){
-                    $timedisp=$exp_time[0];
-                }else {
-                    $timedisp=date('Y-m-d',strtotime($exp_time[0]))." ".$logs['time_in'];
-                }
-                $date1 = new \DateTime($timedisp);
-                $date2 = new \DateTime($exp_time[1]);
-                $interval = $date2->diff($date1);
-                $hours[$x]   = $interval->format('%h'); 
-                $minutes[$x] = $interval->format('%i');
-
-                $expdate=implode("",$logs['recorded_date']);
-                $exp_date = explode(',', $expdate); 
-                $date[$x]=$exp_date[0];
-                $x++;
-            }else if($logs['schedule_type']=='shifting'){
-                $timein_shift = date('H:i',strtotime(getMintimein($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
-                $intime = date('Hi',strtotime(getMintimein($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
-                $intimemax = date('H',strtotime(getMaxtimein($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
-
-                $timeout_shift = date('Y-m-d H:i',strtotime(getMintimeout($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
-                $outtime = date('Hi',strtotime(getMintimeout($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
-                $outtimemax = date('Hi',strtotime(getMaxtimeout($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
-
-                $exp=implode("",$logs['recorded_time']);
-                $exp_time = explode(',', $exp);
-                $nightHoursPerDay=0;
-                if($intime<='0600' && ($intime<='1359' || $intime<='1459')) { 
-                    $timein=$exp_time[0];
-                    $timeout=$exp_time[1];
-                    $sched_time=date('Y-m-d',strtotime($timein)).' 06:00';
-                }else if(($intime>='1359' || $intime>='1459') && $intime<='2200' && $exp_time[1]!='') { 
-                    $timein=$exp_time[0];
-                    $timeout=$exp_time[1];
-                    $sched_time=date('Y-m-d',strtotime($timein)).' 14:00';
-                }else if($intimemax<='22' || $intime<='0600') { 
-                    if($exp_time[0]!='' && $exp_time[1]==''){
-                        $timein=$exp_time[0];
-                        $timeout=$timeout_shift;
-                        if($timeout!='00:00'){
-                            if(date('Hi',strtotime($timein))<='0600' || date('Hi',strtotime($timein))<='0659'){
-                                $sched_time=date('Y-m-d',strtotime($timein)).' 06:00';
-                            }else{
-                                $sched_time=date('Y-m-d',strtotime($timein)).' 22:00';
-                            }
-                            $nightHoursPerDay = date('H',strtotime($timeout)) + ( 24 - date('H',strtotime($sched_time)));
-                        }else{
-                            $sched_time='00-00-0000 00:00';
-                        }
-                    }else if($exp_time[0]!='' && $exp_time[1]!='' && $intimemax>='06' && $outtimemax>='2200'){
-                        $timein=$exp_time[0];
-                        $timeout=$exp_time[1];
-                        if($timeout!='00:00'){
-                            if(date('Hi',strtotime($timein))<='0600' || date('Hi',strtotime($timein))<='0659'){
-                                $sched_time=date('Y-m-d',strtotime($timein)).' 06:00';
-                            }else{
-                                $sched_time=date('Y-m-d',strtotime($timein)).' 14:00';
-                            }
-                        }else{
-                            $sched_time='00:00';
-                        }
-                    }else{
-                        if((date('Hi',strtotime($exp_time[1]))<='1359' || date('Hi',strtotime($exp_time[1]))<='1459')){
-                            $timein=$exp_time[0];
-                            $timeout=$exp_time[1];
-                        }else{
-                            $timein=$exp_time[1];
-                            $timeout=$timeout_shift;
-                        }
-                        if($timeout!='00:00'){
-                            if(date('Hi',strtotime($timein))<='0600' || date('Hi',strtotime($timein))<='0659'){
-                                $sched_time=date('Y-m-d',strtotime($timein)).' 06:00';
-                            }else if(date('Hi',strtotime($timein))<='1359' || date('Hi',strtotime($timein))<='1459'){
-                                $sched_time=date('Y-m-d',strtotime($timein)).' 14:00';
-                            }else{
-                                $sched_time=date('Y-m-d',strtotime($timein)).' 22:00';
-                            }
-                            $nightHoursPerDay = date('H',strtotime($timeout)) + ( 24 - date('H',strtotime($sched_time)));
-                        }else{
-                            $sched_time='00-00-0000 00:00';
-                        }
-                    }
-                }
-                
-                // $date1 = new \DateTime($sched_time);
-                // $date2 = new \DateTime($timeout);
-                // $interval = $date2->diff($date1);
-                // $hours[$x]   = ($nightHoursPerDay==0) ? $interval->format('%h') : $nightHoursPerDay; 
-                // $minutes[$x] = $interval->format('%i');
-                if(date('Hi',strtotime($timein))<='0615' && date('Hi',strtotime($timein))<='1459'){
-                    $timedisp=$sched_time;
-                }else if(date('Hi',strtotime($timein))>='0615' && date('Hi',strtotime($timein))<='1400' && date('Hi',strtotime($timein))<='2259'){
-                    $timedisp=$timein;
-                }
-
-                if(date('Hi',strtotime($timein))<='1415' && date('Hi',strtotime($timein))>='0659'){
-                    $timedisp=$sched_time;
-                }else if(date('Hi',strtotime($timein))>='1415' && (date('Hi',strtotime($timein))>='2159' || date('Hi',strtotime($timein))>='2259')){
-                    $timedisp=$timein;
-                }
-
-                if((date('Hi',strtotime($timein))<='2159' || date('Hi',strtotime($timein))<='2259') && date('Hi',strtotime($timein))>='1459'){
-                    $timedisp=$sched_time;
-                }else if((date('Hi',strtotime($timein))>='2159' || date('Hi',strtotime($timein))>='2259')){
-                    $timedisp=$timein;
-                }
-                $date1 = \DateTime::createFromFormat('Y-m-d H:i', $timedisp);
-                $date2 = \DateTime::createFromFormat('Y-m-d H:i', $timeout);
-                $interval = $date1->diff($date2);
-                $hours[$x] = $interval->h;
-                $minutes[$x] = $interval->i;
-                $expdate=implode("",$logs['recorded_date']);
-                $exp_date = explode(',', $expdate); 
-                $date[$x]=$exp_date[0];
-                $x++;   
-            }
-        }
-        return view('overtime.create',compact('get_data','data2','hours','minutes','date'));
+        $timedate = DB::select("SELECT * FROM timekeeping_logs t INNER JOIN schedule_head sh ON t.personal_id=sh.personal_id INNER JOIN schedule_code sc ON sh.schedule_code=sc.id WHERE t.personal_id='$personal_id' AND period='$request->period' AND (MONTH(log_date)='$exp_date[1]' OR MONTH(log_date)='$add_month]') AND (YEAR(log_date)='$exp_date[0]' OR YEAR(log_date)='$add_year') $query GROUP BY t.personal_id,log_date ORDER BY log_date ASC");
+        //$timedate=TimekeepingLogs::join('schedule_head','schedule_head.employee_id','=','timekeeping_logs.employee_id')->join('schedule_code','schedule_code.id','=','schedule_head.schedule_code')->where('timekeeping_logs.personal_id',$personal_id)->where('period',$request->period)->where('month',$exp_date[1])->orWhere('month',$add_month)->where('year',$exp_date[0])->orWhere('year',$add_year)->whereBetween('log_date', [$exp_date1, $exp_date2])->orderBydesc('employees.personal_id')->get(['full_name','timekeeping_logs.night_shift','timekeeping_logs.personal_id','schedule_type','total_time','nd_hours','regular_hours']);
+        
+        return view('overtime.create',compact('get_data','timedate'));
     }
 
     /**
@@ -600,179 +439,67 @@ class OvertimeController extends Controller
     {
         $personal_id = $request->personal_id;
         $overtime_date = $request->overtime_date;
-        $timedate = DB::select("SELECT t.personal_id,recorded_time, GROUP_CONCAT(recorded_time) AS timer,time_in,schedule_type FROM db_hris.timekeeping t INNER JOIN schedule_head sh ON t.personal_id=sh.personal_id INNER JOIN schedule_code sc ON sh.schedule_code=sc.id WHERE t.personal_id='$personal_id' AND recorded_time LIKE '%$overtime_date%' GROUP BY t.personal_id,recorded_time ORDER BY recorded_time ASC");
-        $data2 = array();
-        foreach($timedate AS $value){
-            $key = date('Y-m-d',strtotime($value->recorded_time));
-            if(!isset($data2[$key])) {   
-                $data2[$key] = array(
-                    'personal_id'=>$value->personal_id,
-                    'time_in'=>$value->time_in,
-                    'rec_time'=>$value->recorded_time,
-                    'schedule_type'=>$value->schedule_type,
-                    'recorded_time' => array(),
-                );
-            }        
-            $data2[$key]['recorded_time'][] = date('Y-m-d H:i',strtotime($value->recorded_time)).",";  
-        }
-        $total_hours=[];
-        $total_min=[];
-        $total_mins=[];
-        $overall_time=[];
-        foreach($data2 AS $logs){
-            if($logs['schedule_type']=='regular'){
-                $exp=implode("",$logs['recorded_time']);
-                $exp_time = explode(',', $exp); 
-                $timecheck=date('Hi',strtotime($logs['time_in']));
-                if(date('Hi',strtotime($exp_time[0]))>=$timecheck){
-                    $timedisp=$exp_time[0];
-                }else {
-                    $timedisp=date('Y-m-d',strtotime($exp_time[0]))." ".$logs['time_in'];
-                }
-                $date1 = new \DateTime($timedisp);
-                $date2 = new \DateTime($exp_time[1]);
-                $interval = $date2->diff($date1);
-                $hours   = $interval->format('%h'); 
-                $minutes = $interval->format('%i');
+        //$timedate = DB::select("SELECT t.personal_id,log_date, GROUP_CONCAT(log_date) AS timer,t.time_in,schedule_type FROM timekeeping_logs t INNER JOIN schedule_head sh ON t.personal_id=sh.personal_id INNER JOIN schedule_code sc ON sh.schedule_code=sc.id WHERE t.personal_id='$personal_id' AND log_date LIKE '%$overtime_date%' GROUP BY t.personal_id,log_date ORDER BY log_date ASC");
+        
+        $timedate=TimekeepingLogs::join('schedule_head','schedule_head.employee_id','=','timekeeping_logs.employee_id')->join('schedule_code','schedule_code.id','=','schedule_head.schedule_code')->where('timekeeping_logs.personal_id',$personal_id)->where('log_date',$overtime_date)->get(['timekeeping_logs.night_shift','schedule_type','total_time','nd_hours','regular_hours','timekeeping_logs.time_in','timekeeping_logs.time_out']);
+        // $total_hours=[];
+        // $total_min=[];
+        // $total_mins=[];
+        $time_difference=0;
+        foreach($timedate AS $t){
+            if($t->schedule_type=='regular'){
+                $hours=date('H',strtotime($t->total_time));
+                $minutes=date('i',strtotime($t->total_time));
                 if($hours>=9 && $minutes>=30){
-                    $total_hours[]=$interval->format("%H")*60 - 540;
-                    $total_min[]=$interval->format("%i");
-                    $total_mins[]=$interval->format("%H:%i");
+                    $time_difference+=$t->total_time*60-540;
                 }else if($hours>=10){
-                    $total_hours[]=$interval->format("%H")*60 - 540;
-                    $total_min[]=$interval->format("%i");
-                    $total_mins[]=$interval->format("%H:%i");
+                    $time_difference+=$t->total_time*60-540;   
                 }
-                $timein=$exp_time[0];
-                $timeout=$exp_time[1];
-            }else if($logs['schedule_type']=='shifting'){
-                $timein_shift = date('H:i',strtotime(getMintimein($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
-                $intime = date('Hi',strtotime(getMintimein($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
-                $intimemax = date('H',strtotime(getMaxtimein($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
-
-                $timeout_shift = date('Y-m-d H:i',strtotime(getMintimeout($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
-                $outtime = date('Hi',strtotime(getMintimeout($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
-                $outtimemax = date('Hi',strtotime(getMaxtimeout($logs['schedule_type'],$logs['rec_time'],$logs['personal_id'])));
-
-                $exp=implode("",$logs['recorded_time']);
-                $exp_time = explode(',', $exp);
-                $nightHoursPerDay=0;
-                if($intime<='0600' && ($intime<='1359' || $intime<='1459')) { 
-                    $timein=$exp_time[0];
-                    $timeout=$exp_time[1];
-                    $sched_time=date('Y-m-d',strtotime($timein)).' 06:00';
-                }else if(($intime>='1359' || $intime>='1459') && $intime<='2200' && $exp_time[1]!='') { 
-                    $timein=$exp_time[0];
-                    $timeout=$exp_time[1];
-                    $sched_time=date('Y-m-d',strtotime($timein)).' 14:00';
-                }else if($intimemax<='22' || $intime<='0600') { 
-                    if($exp_time[0]!='' && $exp_time[1]==''){
-                        $timein=$exp_time[0];
-                        $timeout=$timeout_shift;
-                        if($timeout!='00:00'){
-                            if(date('Hi',strtotime($timein))<='0600' || date('Hi',strtotime($timein))<='0659'){
-                                $sched_time=date('Y-m-d',strtotime($timein)).' 06:00';
-                            }else{
-                                $sched_time=date('Y-m-d',strtotime($timein)).' 22:00';
-                            }
-                            $nightHoursPerDay = date('H',strtotime($timeout)) + ( 24 - date('H',strtotime($sched_time)));
-                        }else{
-                            $sched_time='00-00-0000 00:00';
-                        }
-                    }else if($exp_time[0]!='' && $exp_time[1]!='' && $intimemax>='06' && $outtimemax>='2200'){
-                        $timein=$exp_time[0];
-                        $timeout=$exp_time[1];
-                        if($timeout!='00:00'){
-                            if(date('Hi',strtotime($timein))<='0600' || date('Hi',strtotime($timein))<='0659'){
-                                $sched_time=date('Y-m-d',strtotime($timein)).' 06:00';
-                            }else{
-                                $sched_time=date('Y-m-d',strtotime($timein)).' 14:00';
-                            }
-                        }else{
-                            $sched_time='00:00';
-                        }
-                    }else{
-                        if((date('Hi',strtotime($exp_time[1]))<='1359' || date('Hi',strtotime($exp_time[1]))<='1459')){
-                            $timein=$exp_time[0];
-                            $timeout=$exp_time[1];
-                        }else{
-                            $timein=$exp_time[1];
-                            $timeout=$timeout_shift;
-                        }
-                        if($timeout!='00:00'){
-                            if(date('Hi',strtotime($timein))<='0600' || date('Hi',strtotime($timein))<='0659'){
-                                $sched_time=date('Y-m-d',strtotime($timein)).' 06:00';
-                            }else if(date('Hi',strtotime($timein))<='1359' || date('Hi',strtotime($timein))<='1459'){
-                                $sched_time=date('Y-m-d',strtotime($timein)).' 14:00';
-                            }else{
-                                $sched_time=date('Y-m-d',strtotime($timein)).' 22:00';
-                            }
-                            $nightHoursPerDay = date('H',strtotime($timeout)) + ( 24 - date('H',strtotime($sched_time)));
-                        }else{
-                            $sched_time='00-00-0000 00:00';
-                        }
+            }else if($t->schedule_type=='shifting'){
+                if($t->night_shift==1){
+                    $hours=date('H',strtotime($t->total_time));
+                    $minutes=date('i',strtotime($t->total_time));
+                    if($hours>=8 && $minutes>=30){
+                        $time_difference+=$t->regular_hours;  
+                    }else if($hours>=10){
+                        $time_difference+=$t->regular_hours;  
+                    } 
+                }else{
+                    $hours=date('H',strtotime($t->total_time));
+                    $minutes=date('i',strtotime($t->total_time));
+                    if($hours>=8 && $minutes>=30){
+                        $time_difference+=$t->total_time*60-480;
+                    }else if($hours>=10){
+                        $time_difference+=$t->total_time*60-480;   
                     }
                 }
-                if(date('Hi',strtotime($timein))<='0615' && date('Hi',strtotime($timein))<='1459'){
-                    $timedisp=$sched_time;
-                }else if(date('Hi',strtotime($timein))>='0615' && date('Hi',strtotime($timein))<='1400' && date('Hi',strtotime($timein))<='2259'){
-                    $timedisp=$timein;
-                }
-
-                if(date('Hi',strtotime($timein))<='1415' && date('Hi',strtotime($timein))>='0659'){
-                    $timedisp=$sched_time;
-                }else if(date('Hi',strtotime($timein))>='1415' && (date('Hi',strtotime($timein))>='2159' || date('Hi',strtotime($timein))>='2259')){
-                    $timedisp=$timein;
-                }
-
-                if((date('Hi',strtotime($timein))<='2159' || date('Hi',strtotime($timein))<='2259') && date('Hi',strtotime($timein))>='1459'){
-                    $timedisp=$sched_time;
-                }else if((date('Hi',strtotime($timein))>='2159' || date('Hi',strtotime($timein))>='2259')){
-                    $timedisp=$timein;
-                }
-                $date1 = \DateTime::createFromFormat('Y-m-d H:i', $timedisp);
-                $date2 = \DateTime::createFromFormat('Y-m-d H:i', $timeout);
-                $interval = $date1->diff($date2);
-                $hours    = $interval->h;
-                $minutes = $interval->i;
-                if($hours>=8 && $minutes>=30){
-                    $total_hours[]=$interval->h * 60 - 480;
-                    $total_min[]=$interval->i;
-                }else if($hours>=10){
-                    $total_hours[]=$interval->h * 60 - 480;
-                    $total_min[]=$interval->i;
-                }
-                
-                // $date1 = new \DateTime($sched_time);
-                // $date2 = new \DateTime($timeout);
-                // $interval = $date2->diff($date1);
-                // $hours   = ($nightHoursPerDay==0) ? $interval->format('%h') : $nightHoursPerDay; 
-                // $minutes = $interval->format('%i');
-                // if($hours>=9 && $minutes>=30){
-                //     $total_hours[]=$interval->format("%H")*60 - 540;
-                //     $total_min[]=$interval->format("%i");
-                // }else if($hours>=10){
-                //     $total_hours[]=$interval->format("%H")*60 - 540;
-                //     $total_min[]=$interval->format("%i");
-                // }
             }
+            
+            $holiday=Holiday::where('holiday_date',$overtime_date)->first();
+            $employees=Employee::where('personal_id',$personal_id)->first();
+            $ot_head_id=OvertimeDetails::where('personal_id',$personal_id)->where('overtime_date',$overtime_date)->value('ot_head_id');
+            if($t->night_shift==1){
+                $time_calculation=number_format($time_difference,2);
+            }else{
+                $time_calculation=round(abs($time_difference) / 60,2);
+            }
+
+            $exp_timecalc=explode('.',$time_calculation);
+            $time_hours=$exp_timecalc[0];
+            $time_minute=$exp_timecalc[1];
+            $data=[
+                'fullname' => $employees->full_name,
+                'ot_head_id' => $ot_head_id,
+                'time_in' => date('H:i',strtotime($t->time_in)),
+                'time_out' => date('H:i',strtotime($t->time_out)),
+                'total_sumhour' =>$time_hours,
+                'total_timemins' => $time_minute,
+                'holiday' => (!empty($holiday)) ? $holiday->holiday_name : '',
+            ];
         }
-        $total_timehour = array_sum($total_hours);
-        $total_timemins = array_sum($total_min);
-        $total_sumhour=$total_timehour / 60;
-        $holiday=Holiday::where('holiday_date',$overtime_date)->first();
-        $employees=Employee::where('personal_id',$personal_id)->first();
-        $ot_head_id=OvertimeDetails::where('personal_id',$personal_id)->where('overtime_date',$overtime_date)->value('ot_head_id');
-        $data=[
-            'fullname' => $employees->full_name,
-            'ot_head_id' => $ot_head_id,
-            'time_in' => date('H:i',strtotime($timein)),
-            'time_out' => date('H:i',strtotime($timeout)),
-            'total_sumhour' => $total_sumhour,
-            'total_timemins' => $total_timemins,
-            'holiday' => (!empty($holiday)) ? $holiday->holiday_name : '',
-        ];
+        
         return response()->json($data);
+
         // if(!empty($total_min)){
         //     // echo 'Time In:'.$exp_time[0]." <br>Time Out:".$exp_time[1]." <br>Number of Hours: ".number_format(round(abs($total_sum),2),2)." hrs.";
         //     echo ($total_sumhour!=0) ? "Employee Name: ".$employees->full_name.'<br>Time In:'.$exp_time[0]." <br>Time Out:".$exp_time[1]." <br>Number of Hours: ".$total_sumhour." hr/s. & ".$total_timemins ." min/s." : "Employee Name: ".$employees->full_name.'<br>Time In:'.$exp_time[0]." <br>Time Out:".$exp_time[1]." <br>Number of Hours: ".$total_timemins ." min/s.";

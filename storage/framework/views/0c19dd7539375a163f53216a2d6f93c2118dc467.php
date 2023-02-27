@@ -51,23 +51,25 @@
                                 <label for="" class="block text-left text-sm text-gray-700 capitalize white:text-gray-200 px-2   w-60">Overtime Date: </label>
                                 <div class="px-2 flex justify-between">
                                     <select id="overtime_date" name="overtime_date" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" onchange="getRecordedtime('<?php echo e($_GET['personal_id']); ?>')">
-                                        <?php $x=0; ?>
                                         <option value=''>--Select Overtime Date--</option>
-                                        <?php $__currentLoopData = $data2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $d): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <?php if($d['schedule_type']=='regular'): ?>{
-                                                <?php if($hours[$x]>=9 && $minutes[$x]>=30): ?>
-                                                <option value='<?php echo e($date[$x]); ?>'><?php echo e(date('F d,Y',strtotime($date[$x]))); ?></option>
-                                                <?php elseif($hours[$x]>=10): ?>
-                                                <option value='<?php echo e($date[$x]); ?>'><?php echo e(date('F d,Y',strtotime($date[$x]))); ?></option>
+                                        <?php $__currentLoopData = $timedate; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $d): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <?php 
+                                                $hours=date('H',strtotime($d->total_time));
+                                                $minutes=date('i',strtotime($d->total_time));
+                                            ?>
+                                            <?php if($d->schedule_type=='regular'): ?>{
+                                                <?php if($hours>=9 && $minutes>=30): ?>
+                                                <option value='<?php echo e($d->log_date); ?>'><?php echo e(date('F d,Y',strtotime($d->log_date ))); ?></option>
+                                                <?php elseif($hours>=10): ?>
+                                                <option value='<?php echo e($d->log_date); ?>'><?php echo e(date('F d,Y',strtotime($d->log_date ))); ?></option>
                                                 <?php endif; ?>
-                                            <?php else: ?> if($d['schedule_type']=='shifting')
-                                                <?php if($hours[$x]>=8 && $minutes[$x]>=30): ?>
-                                                <option value='<?php echo e($date[$x]); ?>'><?php echo e(date('F d,Y',strtotime($date[$x]))); ?></option>
-                                                <?php elseif($hours[$x]>=10): ?>
-                                                <option value='<?php echo e($date[$x]); ?>'><?php echo e(date('F d,Y',strtotime($date[$x]))); ?></option>
+                                            <?php else: ?> if($d->schedule_type=='shifting')
+                                                <?php if($hours>=8 && $minutes>=30): ?>
+                                                <option value='<?php echo e($d->log_date); ?>'><?php echo e(date('F d,Y',strtotime($d->log_date ))); ?></option>
+                                                <?php elseif($hours>=10): ?>
+                                                <option value='<?php echo e($d->log_date); ?>'><?php echo e(date('F d,Y',strtotime($d->log_date ))); ?></option>
                                                 <?php endif; ?>
                                             <?php endif; ?>
-                                            <?php $x++; ?>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                 </div>

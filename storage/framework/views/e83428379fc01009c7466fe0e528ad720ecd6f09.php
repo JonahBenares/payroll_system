@@ -130,8 +130,29 @@
         <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
         <script>
             $(document).ready( function () {
-                $('#myTable').DataTable();
+                $('#table_overall').DataTable();
             } );
+            $(document).ready(function() {
+                var table = $('#emp_table').DataTable( {
+                    scrollX:        true,
+                    scrollY:        "330px",
+                    aLengthMenu: [
+                        [5, 20, 50, 100, -1],
+                        [5, 20, 50, 100, "All"]
+                    ],
+                } );
+            } );
+        </script>
+        <script>
+            document.getElementById('sched_type').addEventListener("change", function (e) {
+                if (e.target.value === 'regular') {
+                    document.getElementById('regulars').style.display = 'block';
+                    document.getElementById('shiftings').style.display = 'none';
+                } else {
+                    document.getElementById('regulars').style.display = 'none';
+                    document.getElementById('shiftings').style.display = 'block'
+                }
+            });
         </script>
         <script>
             function isNumberKey(txt, evt){

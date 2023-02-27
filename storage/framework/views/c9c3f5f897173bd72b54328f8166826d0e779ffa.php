@@ -16,27 +16,31 @@
     </style>
     
     <div class="overflow-auto h-screen pb-28 pt-2 pr-2 pl-2 md:pt-0 md:pr-0 md:pl-0">
-        <div class="flex flex-col flex-wrap sm:flex-row ">
-            <div class="relative h-full w-full text-center bg-white rounded-lg shadow-lg white:bg-gray-800 white:border-gray-700">
-                <div class="flex justify-between p-4 rounded-t-lg bg-gray-50  white:bg-gray-900">
-                    <div > 
+        <div class="flex flex-col flex-wrap sm:flex-row">
+            <div class="relative h-full w-full text-center bg-white rounded-lg shadow-lg">
+                <div class="flex justify-between pr-4 pl-4 pt-4 rounded-t-lg ">
+                    <div> 
                         <h2 class="uppercase font-semibold py-2">Accounting Entry</h2>
                     </div>
                     <div class="flex">
                         <a href="<?php echo e(route('entry.create')); ?>"  type="button" >
-                            <div class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white transition-colors duration-200 transform bg-indigo-500 rounded-3xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                            <div class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-3xl white:bg-blue-600 white:hover:bg-blue-700 white:focus:bg-blue-700 hover:bg-blue-600 focus:outline-none focus:bg-blue-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
                                 </svg>
                                 <span>Add New</span>
                             </div>
                         </a>
-                        
                     </div>
                 </div>
-                <div class="overflow-x-auto overflow-y-hidden hover:overflow-y-auto h-100 relative p-4 rounded-b-lg ">
-                    <table class="w-full text-sm text-left text-gray-500 white:text-gray-400" id="myTable">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-10">
+                <?php if(Session::has('success')): ?>
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline"><?php echo e(Session::get('success')); ?></span>
+                    </div>
+                <?php endif; ?>
+                <div class="overflow-x-auto overflow-y-hidden hover:overflow-y-auto h-100 relative p-4 rounded-b-lg">
+                    <table class="w-full text-sm text-left white:text-gray-400" id="table_overall">
+                        <thead class="text-xs text-gray-700 uppercase sticky top-0 z-10">
                             <tr class="">
                                 <th scope="col" class="py-3 px-6" width="%">
                                     Description
@@ -51,13 +55,12 @@
                        
                         <tbody>
                         <?php $__currentLoopData = $accountingentries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ent): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                      
-                            <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
-                                <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
+                            <tr class="bg-white text-gray-500 font-medium hover:bg-gray-50 hover:text-gray-900 hover:font-semibold">
+                                <td scope="row" class="py-3 px-6 whitespace-nowrap white:text-white">
                                     <?php echo e($ent->description); ?>
 
                                 </td>
-                                <td class="py-3 px-6 justify-center flex" align="center">
+                                <td class="justify-center flex" align="center">
                                     <a href="<?php echo e(route('entry.edit', $ent)); ?>" class="" title="Update">
                                         <div class="py-2 px-2 text-xs font-medium text-center text-white transition-colors bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
