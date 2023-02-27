@@ -13,6 +13,7 @@ class TimekeepingLogs extends Model
     protected $fillable = [
         'employee_id', 
         'personal_id', 
+        'month_year',
         'year',
         'month',
         'period',

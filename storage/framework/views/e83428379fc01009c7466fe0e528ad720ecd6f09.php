@@ -387,7 +387,12 @@
                         }else{
                             document.getElementById("no_hrs").innerHTML  = response.total_sumhour+' hr/s. & '+response.total_timemins+' min/s.';
                         }
-                        document.getElementById("holidays").innerHTML  = response.holiday;
+                        if(response.holiday!=''){
+                            document.getElementById('holiday_disp').style.display = "block";
+                            document.getElementById("holidays").innerHTML  = response.holiday;
+                        }else{
+                            document.getElementById('holiday_disp').style.display = "none";
+                        }
                         document.getElementById("overtimedate").value  = overtime_date;
                         $('#loadpage').load(replace_url+" #loadpage");
                         

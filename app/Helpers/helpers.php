@@ -420,6 +420,20 @@ if (!function_exists('checkDeductionSchedule')) {
     }
  }
 
+ if (!function_exists('getScheduleType')) {
+    function getScheduleType($employee_id, $month_year){
+
+        $get_sched= ShiftSchedule::select('schedule_type')
+            ->where("employee_id","=",$employee_id)
+            ->where("month_year","=",$month_year)
+            ->get();
+        $sched=$get_sched[0]['schedule_type'];
+     
+        return $sched;
+       
+    }
+ }
+
  if (!function_exists('getDeductionRate')) {
     function getDeductionRate($personal_id, $payslip_info_id){
        
@@ -472,6 +486,21 @@ if (!function_exists('checkDeductionSchedule')) {
             return $ded;
     }
 
+}
+
+function lz($num)
+{
+    return (strlen($num) < 2) ? "0{$num}" : $num;
+}
+
+function convertTime($dec)
+{
+    $seconds = ($dec * 3600);
+    $hours = floor($dec);
+    $seconds -= $hours * 3600;
+    $minutes = floor($seconds / 60);
+    $seconds -= $minutes * 60;
+    return lz($hours).".".lz($minutes);
 }
 
 ?>
