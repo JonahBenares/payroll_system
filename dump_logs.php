@@ -1,4 +1,7 @@
 <?php 
+$con_hris=mysqli_connect("localhost","root","","db_hris");
+$con_payroll=mysqli_connect("localhost","root","","db_payroll_new");
+
 define('START_NIGHT_HOUR','22');
 define('START_NIGHT_MINUTE','00');
 define('START_NIGHT_SECOND','00');
@@ -6,14 +9,42 @@ define('END_NIGHT_HOUR','06');
 define('END_NIGHT_MINUTE','00');
 define('END_NIGHT_SECOND','00');
 
+function getTimein($schedule_code,$con_payroll){
+   
+    $get_time = mysqli_query($con_payroll, "SELECT time_in FROM schedule_code WHERE schedule_code = '$schedule_code'");
+    $fetch_time = mysqli_fetch_array($get_time);
+    $time_in = $fetch_time['time_in'];
+    return $time_in;
+}
+
+function getScheduleCode($personal_id, $month_year,$rows_change_sched,$con_payroll){
+   
+    if($rows_change_sched==0){
+        $getSC = mysqli_query($con_payroll, "SELECT schedule_code FROM schedule_head WHERE personal_id = '$personal_id' AND month_year ='$month_year'");
+        $fetchSC = mysqli_fetch_array($getSC);
+        $sc = $fetchSC['schedule_code'];
+    } else {
+        $getSC = mysqli_query($con_payroll, "SELECT schedule_code FROM change_schedule WHERE personal_id = '$personal_id' AND month_year ='$month_year'");
+        $fetchSC = mysqli_fetch_array($getSC);
+        $sc = $fetchSC['schedule_code'];
+    }
+    return $sc;
+}
 function getTimeDiff($starttime,$endtime){
    
-
     $datetime1 = new DateTime($starttime);
     $datetime2 = new DateTime($endtime);
     $interval = $datetime1->diff($datetime2);
     return $interval->format('%h') .".".$interval->format('%i');
+ 
+}
 
+function getSeconds($starttime,$endtime){
+   
+    $timestamp1 = strtotime($starttime);
+    $timestamp2 = strtotime($endtime);
+    $difference = $timestamp2 - $timestamp1;
+    return $difference/60;
 }
 function lz($num)
 {
@@ -67,13 +98,10 @@ function night_difference($start_work,$end_work)
         }
     }
 
-    $con_hris=mysqli_connect("localhost","root","","db_hris_new");
-    $con_payroll=mysqli_connect("localhost","root","","db_payroll");
-
+  
     $get_logs = mysqli_query($con_hris,"SELECT DISTINCT DATE_FORMAT(recorded_time, '%Y-%m-%d') as logs, personal_id FROM timekeeping WHERE log_type != '' AND dump_logs='0'");
     while($fetch_logs = mysqli_fetch_array($get_logs)){
-
-        
+   
        $logs[] = array(
         'logs'=> $fetch_logs['logs'],
         'personal_id'=>$fetch_logs['personal_id']
@@ -119,7 +147,16 @@ function night_difference($start_work,$end_work)
             if($night_shift == 0){
                 if($fetch_change_sched['night_shift'] == 0 || $rows_change_sched == 0){
                     if($fetch_time['log_type'] == 'Time in'){
-                        $time_in = $fetch_time['recorded_time'];
+                        $in = date("H:i:s",strtotime($fetch_time['recorded_time']));
+                        $sc_code = getScheduleCode($fetch_time['personal_id'],$month_year,$rows_change_sched,$con_payroll);
+                        $t_in = getTimein($sc_code,$con_payroll);
+
+                        $diff= getSeconds($t_in,$in);
+                        if($diff<=15){
+                            $time_in = date("Y-m-d",strtotime($fetch_time['recorded_time']))." " .$t_in;
+                        } else {
+                            $time_in = date("Y-m-d",strtotime($fetch_time['recorded_time']))." " .$in;
+                        }
                     } else if($fetch_time['log_type'] == 'Time out'){
                         $time_out = $fetch_time['recorded_time'];
                     } else if($fetch_time['log_type'] == 'Break in'){
@@ -135,6 +172,16 @@ function night_difference($start_work,$end_work)
                   
                      if($fetch_time['log_type'] == 'Time in'){
                         $time_in = $fetch_time['recorded_time'];
+                        $in = date("H:i:s",strtotime($fetch_time['recorded_time']));
+                        $sc_code = getScheduleCode($fetch_time['personal_id'],$month_year,$rows_change_sched,$con_payroll);
+                        $t_in = getTimein($sc_code,$con_payroll);
+
+                        $diff= getSeconds($t_in,$in);
+                        if($diff<=15){
+                            $time_in = date("Y-m-d",strtotime($fetch_time['recorded_time']))." " .$t_in;
+                        } else {
+                            $time_in = date("Y-m-d",strtotime($fetch_time['recorded_time']))." " .$in;
+                        }
                      } 
                     if($fetch_out['log_type'] == 'Time out'){
                         $time_out = $fetch_out['recorded_time'];
@@ -152,7 +199,17 @@ function night_difference($start_work,$end_work)
                     $fetch_out = mysqli_fetch_array($get_out);
                 
                     if($fetch_time['log_type'] == 'Time in'){
-                        $time_in = $fetch_time['recorded_time'];
+                      
+                         $in = date("H:i:s",strtotime($fetch_time['recorded_time']));
+                        $sc_code = getScheduleCode($fetch_time['personal_id'],$month_year,$rows_change_sched,$con_payroll);
+                        $t_in = getTimein($sc_code,$con_payroll);
+
+                        $diff= getSeconds($t_in,$in);
+                        if($diff<=15){
+                            $time_in = date("Y-m-d",strtotime($fetch_time['recorded_time']))." " .$t_in;
+                        } else {
+                            $time_in = date("Y-m-d",strtotime($fetch_time['recorded_time']))." " .$in;
+                        }
                     } 
                     if($fetch_out['log_type'] == 'Time out'){
                         $time_out = $fetch_out['recorded_time'];
@@ -162,7 +219,17 @@ function night_difference($start_work,$end_work)
                     
                 } else {
                     if($fetch_time['log_type'] == 'Time in'){
-                        $time_in = $fetch_time['recorded_time'];
+                       
+                        $in = date("H:i:s",strtotime($fetch_time['recorded_time']));
+                        $sc_code = getScheduleCode($fetch_time['personal_id'],$month_year,$rows_change_sched,$con_payroll);
+                        $t_in = getTimein($sc_code,$con_payroll);
+
+                        $diff= getSeconds($t_in,$in);
+                        if($diff<=15){
+                            $time_in = date("Y-m-d",strtotime($fetch_time['recorded_time']))." " .$t_in;
+                        } else {
+                            $time_in = date("Y-m-d",strtotime($fetch_time['recorded_time']))." " .$in;
+                        }
                     } else if($fetch_time['log_type'] == 'Time out'){
                         $time_out = $fetch_time['recorded_time'];
                     } else if($fetch_time['log_type'] == 'Break in'){
@@ -206,11 +273,11 @@ function night_difference($start_work,$end_work)
                 }
 
                 //echo $year. " - " . $month . " - ". $day. "<br>";
-
+                $month_year = $year ."-".$month;
                 if($count_date == 0){
                    
-                    $insert = mysqli_query($con_payroll, "INSERT INTO timekeeping_logs (employee_id, personal_id, year, month, period, log_date, time_in, time_out, break_in, break_out, incomplete, incomplete_time_desc, night_shift, nd_hours)
-                                        VALUES ('$emp_id', '$l[personal_id]', '$year', '$month', '$period','$l[logs]', '$time_in', '$time_out', '$break_in', '$break_out', '$incomplete', '$incomplete_desc','$nightdiff','$nd_hours')");
+                    $insert = mysqli_query($con_payroll, "INSERT INTO timekeeping_logs (employee_id, personal_id, month_year, period, log_date, time_in, time_out, break_in, break_out, incomplete, incomplete_time_desc, night_shift, nd_hours)
+                                        VALUES ('$emp_id', '$l[personal_id]', '$month_year', '$period','$l[logs]', '$time_in', '$time_out', '$break_in', '$break_out', '$incomplete', '$incomplete_desc','$nightdiff','$nd_hours')");
                     //echo $fetch_time['personal_id'] ." = ".  $time_in . " - ".  $time_out . " - ".  $break_in . " - ".  $break_out . " <br> ";
                 } else {
                     $update = mysqli_query($con_payroll,"UPDATE timekeeping_logs SET time_in = '$time_in', time_out = '$time_out', break_in = '$break_in',
@@ -234,8 +301,17 @@ function night_difference($start_work,$end_work)
        
         $get_complete = mysqli_query($con_payroll, "SELECT * FROM timekeeping_logs WHERE log_date = '$l[logs]' AND personal_id = '$l[personal_id]' AND incomplete!='1'");
         while($fetch_complete = mysqli_fetch_array($get_complete)){
-               
-                    $time_in = $fetch_complete['time_in'];
+                $time_in = $fetch_complete['time_in'];
+                //    $in = date("H:i",strtotime($fetch_time['recorded_time']));
+                //     $sc_code = getScheduleCode($fetch_time['personal_id'],$month_year,$rows_change_sched,$con_payroll);
+                //     $t_in = getTimein($sc_code,$con_payroll);
+
+                //     $diff= getSeconds($t_in,$in);
+                //         if($diff<=15){
+                //             $time_in = date("Y-m-d",strtotime($fetch_time['recorded_time']))." " .$t_in;
+                //         } else {
+                //             $time_in = date("Y-m-d",strtotime($fetch_time['recorded_time']))." " .$in;
+                //         }
                     $time_out = $fetch_complete['time_out'];
                     $total_time = getTimeDiff($time_in,$time_out);
 
@@ -268,8 +344,8 @@ function night_difference($start_work,$end_work)
          
             //echo $fetch_complete['personal_id'] . " - ". $time_in . " to " . $time_out . " = " . $total_time . ", " . $total_break." - " . $diff . "<br>";
                // echo $l['logs'] ." = " . $l['personal_id'] . " - " . $holidays . "<br>";
-            $update = mysqli_query($con_payroll,"UPDATE timekeeping_logs SET total_time='$total_time', total_breaktime='$total_break', overall_time='$diff',
-                             regular_hours = '$regular_hours' WHERE log_date = '$l[logs]' AND personal_id = '$l[personal_id]'");
+           $update = mysqli_query($con_payroll,"UPDATE timekeeping_logs SET total_time='$total_time', total_breaktime='$total_break', overall_time='$diff',
+                            regular_hours = '$regular_hours' WHERE log_date = '$l[logs]' AND personal_id = '$l[personal_id]'");
        
         }
 

@@ -88,7 +88,7 @@
                             <?php
                                 $years=date('Y');
                             ?>
-                            <?php for($y=2015;$y<=$years;$y++): ?>
+                            <?php for($y=$years;$y<=$years;$y++): ?>
                                 <option value="<?php echo e($y); ?>"  <?php echo e((!empty($year)) ? ($year==$y) ? 'selected' : '' : ''); ?>><?php echo e($y); ?></option>
                             <?php endfor; ?>
                         </select>
@@ -111,6 +111,12 @@
                     <div class="mt-4 w-6/12">
                         <label for="end_date" class="block text-left text-sm text-gray-700 capitalize white:text-gray-200">End Date</label>
                         <input type="date" name="end_date" id="end_date" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" value='<?php echo e($cs->end_date); ?>'>
+                    </div>
+                </div>
+                <div class="mt-4 w-full  flex">
+                    <div class="flex items-center">
+                        <input name="night_shift" type="checkbox" value="1" class=" w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 white:focus:ring-blue-600 white:ring-offset-gray-800 focus:ring-2 white:bg-gray-700 white:border-gray-600" <?php echo e(($cs->night_shift!=0) ? 'checked' : ''); ?>>
+                        <label for="checked-checkbox" class="ml-2 text-sm font-medium text-gray-900 white:text-gray-300">Night Shift</label>
                     </div>
                 </div>
                 <div class="flex justify-end mt-6">

@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('adj_calc_detail', function (Blueprint $table) {
+            
             $table->float('regular_amount',10,2)->default('0')->after('normal_hours');
             $table->integer('rest_day')->default('0')->after('hourly_rate');
             $table->integer('holiday')->default('0')->after('rd_amount');

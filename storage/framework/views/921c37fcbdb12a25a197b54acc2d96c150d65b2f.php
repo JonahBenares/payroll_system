@@ -124,7 +124,9 @@
                                 <?php
                                     $data2 = array();
                                     foreach($timedate AS $value){
+                                        echo getEmployeeTime($value->recorded_time, $value->personal_id);
                                         if($value->personal_id==$e->personal_id){
+                                            
                                             $key = date('Y-m-d',strtotime($value->recorded_time));
                                             if(!isset($data2[$key])) {   
                                                 $data2[$key] = array(
