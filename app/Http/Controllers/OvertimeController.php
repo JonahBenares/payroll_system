@@ -20,9 +20,64 @@ class OvertimeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-        $cutoff=CutOff::all();
-        return view('overtime.index',compact('cutoff'));
+    public function index(Request $request){
+        $months=$request->get('month');
+        $years=$request->get('year');
+        $exp_period=$request->get('period');
+        if(!empty($months) && !empty($years) && !empty($exp_period)){
+            if(isset($months) && isset($years)){
+                $month=$months;
+                $year=$years;
+            }else{
+                $month=date('m');
+                $year=date('Y');
+            }
+            $year_m = $year."-".$month;
+            $timedate = TimekeepingLogs::where('period',$exp_period)->where('month_year',$year_m)->get();
+            $data=array();
+            $x=0;
+            $overtime_sum=0;
+            $overtime_amount=0;
+            foreach($timedate AS $t){
+                $type= getScheduleType($t->employee_id, $t->month_year); 
+                if($type=='regular'){
+                    if($t->overall_time >= 9.30){
+                        $time_difference=$t->overall_time*60-540;
+                    }
+                }else if($type=='shifting'){
+                    if($t->overall_time >= 8.30){
+                        $time_difference=$t->overall_time*60-540;
+                    }
+                }  
+                $overtime_sum=OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where('personal_id',$t->personal_id)->where('payroll_period',$exp_period)->where('month_year',$t->month_year)->sum(\DB::raw('IFNULL(reg_day_hr,0) + IFNULL(RD_HR,0) + IFNULL(SH_RD_HR,0) + IFNULL(SH_HR,0) + IFNULL(RH_HR,0) + IFNULL(RH_RD_HR,0) + IFNULL(reg_day_np_hr,0) + IFNULL(reg_np_ot_hr,0) + IFNULL(SH_RD_NP_HR,0) + IFNULL(SH_OT_NP_HR,0) + IFNULL(SH_RD_OT_NP_HR,0) + IFNULL(RH_NP_HR,0) + IFNULL(RH_RD_NP_HR,0) + IFNULL(RH_RD_OT_NP_HR,0) + IFNULL(RH_OT_NP_HR,0) + IFNULL(RD_SH_NP_HR,0) + IFNULL(RD_SH_NP_OT_HR,0)'));
+                $overtime_amount=OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where('personal_id',$t->personal_id)->where('payroll_period',$exp_period)->where('month_year',$t->month_year)->sum('total_amount');          
+                $data[]=array(
+                    "personal_id"=>$t->personal_id,
+                    "employee_id"=>$t->employee_id,
+                    "overtime_sum"=>$overtime_sum,
+                    "overtime_amount"=>$overtime_amount,
+                    "hours"=>$time_difference/60,
+                );
+            }
+            
+            $res  = array();
+            foreach($data as $vals){
+                if(array_key_exists($vals['employee_id'],$res)){
+                    $res[$vals['employee_id']]['personal_id']    = $vals['personal_id'];
+                    $res[$vals['employee_id']]['employee_id']    = $vals['employee_id'];
+                    $res[$vals['employee_id']]['overtime_sum']    = $vals['overtime_sum'];
+                    $res[$vals['employee_id']]['overtime_amount']    = $vals['overtime_amount'];
+                    $res[$vals['employee_id']]['hours']   += $vals['hours'];
+                }else{
+                    $res[$vals['employee_id']]  = $vals;
+                }
+            }
+            $cutoff=CutOff::all();
+            return view('overtime.index',compact('res','cutoff','exp_period','month','year','overtime_sum','overtime_amount'));
+        }else{
+            $cutoff=CutOff::all();
+            return view('overtime.index',compact('cutoff'));
+        }
     }
 
     public function filter_overtime(Request $request){
@@ -72,6 +127,8 @@ class OvertimeController extends Controller
         $timedate = TimekeepingLogs::where('period',$exp_period)->where('month_year',$year_m)->get();
         $data=array();
         $x=0;
+        $overtime_sum=0;
+        $overtime_amount=0;
         foreach($timedate AS $t){
             $type= getScheduleType($t->employee_id, $t->month_year); 
             if($type=='regular'){
