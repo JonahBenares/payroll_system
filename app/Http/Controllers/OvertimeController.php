@@ -15,48 +15,70 @@ use Illuminate\Http\Request;
 
 class OvertimeController extends Controller
 {
-
-    public static function AddPlayTime($times) {
-        $minutes = 0; //declare minutes either it gives Notice: Undefined variable
-        // loop throught all the times
-        foreach ($times as $time) {
-            list($hour, $minute) = explode(':', $time);
-            $minutes += $hour * 60;
-            $minutes += $minute;
-        }
-    
-        $hours = floor($minutes / 60);
-        $minutes -= $hours * 60;
-    
-        // returns the time already formatted
-        return sprintf('%02d.%02d', $hours, $minutes);
-    }
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-        $cutoff=CutOff::all();
-        return view('overtime.index',compact('cutoff'));
+    public function index(Request $request){
+        $months=$request->get('month');
+        $years=$request->get('year');
+        $exp_period=$request->get('period');
+        if(!empty($months) && !empty($years) && !empty($exp_period)){
+            if(isset($months) && isset($years)){
+                $month=$months;
+                $year=$years;
+            }else{
+                $month=date('m');
+                $year=date('Y');
+            }
+            $year_m = $year."-".$month;
+            $timedate = TimekeepingLogs::where('period',$exp_period)->where('month_year',$year_m)->get();
+            $data=array();
+            $x=0;
+            $overtime_sum=0;
+            $overtime_amount=0;
+            foreach($timedate AS $t){
+                $type= getScheduleType($t->employee_id, $t->month_year); 
+                if($type=='regular'){
+                    if($t->overall_time >= 9.30){
+                        $time_difference=$t->overall_time*60-540;
+                    }
+                }else if($type=='shifting'){
+                    if($t->overall_time >= 8.30){
+                        $time_difference=$t->overall_time*60-540;
+                    }
+                }  
+                $overtime_sum=OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where('personal_id',$t->personal_id)->where('payroll_period',$exp_period)->where('month_year',$t->month_year)->sum(\DB::raw('IFNULL(reg_day_hr,0) + IFNULL(RD_HR,0) + IFNULL(SH_RD_HR,0) + IFNULL(SH_HR,0) + IFNULL(RH_HR,0) + IFNULL(RH_RD_HR,0) + IFNULL(reg_day_np_hr,0) + IFNULL(reg_np_ot_hr,0) + IFNULL(SH_RD_NP_HR,0) + IFNULL(SH_OT_NP_HR,0) + IFNULL(SH_RD_OT_NP_HR,0) + IFNULL(RH_NP_HR,0) + IFNULL(RH_RD_NP_HR,0) + IFNULL(RH_RD_OT_NP_HR,0) + IFNULL(RH_OT_NP_HR,0) + IFNULL(RD_SH_NP_HR,0) + IFNULL(RD_SH_NP_OT_HR,0)'));
+                $overtime_amount=OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where('personal_id',$t->personal_id)->where('payroll_period',$exp_period)->where('month_year',$t->month_year)->sum('total_amount');          
+                $data[]=array(
+                    "personal_id"=>$t->personal_id,
+                    "employee_id"=>$t->employee_id,
+                    "overtime_sum"=>$overtime_sum,
+                    "overtime_amount"=>$overtime_amount,
+                    "hours"=>$time_difference/60,
+                );
+            }
+            
+            $res  = array();
+            foreach($data as $vals){
+                if(array_key_exists($vals['employee_id'],$res)){
+                    $res[$vals['employee_id']]['personal_id']    = $vals['personal_id'];
+                    $res[$vals['employee_id']]['employee_id']    = $vals['employee_id'];
+                    $res[$vals['employee_id']]['overtime_sum']    = $vals['overtime_sum'];
+                    $res[$vals['employee_id']]['overtime_amount']    = $vals['overtime_amount'];
+                    $res[$vals['employee_id']]['hours']   += $vals['hours'];
+                }else{
+                    $res[$vals['employee_id']]  = $vals;
+                }
+            }
+            $cutoff=CutOff::all();
+            return view('overtime.index',compact('res','cutoff','exp_period','month','year','overtime_sum','overtime_amount'));
+        }else{
+            $cutoff=CutOff::all();
+            return view('overtime.index',compact('cutoff'));
+        }
     }
-
-    // public static function getMintimein($schedule_type,$recorded_time,$personal_id){
-    //     if($schedule_type=='Shifting'){
-    //         $date=date('Y-m-d',strtotime($recorded_time));
-    //         $getmintimein=Timekeeping::where('personal_id',$personal_id)->where(DB::raw("(STR_TO_DATE(recorded_time,'%Y-%m-%d'))"),$date)->min('recorded_time');
-    //         return $getmintimein;
-    //     }  
-    // }
-
-    // public static function getMintimeout($schedule_type,$recorded_time,$personal_id){
-    //     if($schedule_type=='Shifting'){
-    //         $date2=date('Y-m-d',strtotime($recorded_time." + 1 day"));
-    //         $getmintimeout=Timekeeping::where('personal_id',$personal_id)->where(DB::raw("(STR_TO_DATE(recorded_time,'%Y-%m-%d'))"),$date2)->min('recorded_time');
-    //         return $getmintimeout;
-    //     }  
-    // }
 
     public function filter_overtime(Request $request){
         if(isset($request->month) && isset($request->year)){
@@ -101,26 +123,48 @@ class OvertimeController extends Controller
             $exp_period='';
             $inc_year='';
         }
-        $timekeeping=TimekeepingLogs::join('schedule_head','schedule_head.employee_id','=','timekeeping_logs.employee_id')->join('schedule_code','schedule_code.id','=','schedule_head.schedule_code')->join('employees','employees.id','=','timekeeping_logs.employee_id')->where('supervisory','0')->whereOr('supervisory','')->where('is_active','1')->where('period',$exp_period)->where('month',$month)->where('year',$year)->whereBetween('log_date', [$exp_date1, $exp_date2])->groupBy('timekeeping_logs.personal_id')->orderBydesc('employees.personal_id')->get();
-        $timedate=TimekeepingLogs::join('schedule_head','schedule_head.employee_id','=','timekeeping_logs.employee_id')->join('schedule_code','schedule_code.id','=','schedule_head.schedule_code')->join('employees','employees.id','=','timekeeping_logs.employee_id')->where('supervisory','0')->whereOr('supervisory','')->where('is_active','1')->where('period',$exp_period)->where('month',$month)->orWhere('month',$added_month)->where('year',$year)->orWhere('year',$inc_year)->whereBetween('log_date', [$exp_date1, $exp_date2])->orderBydesc('employees.personal_id')->get(['full_name','timekeeping_logs.night_shift','timekeeping_logs.personal_id','schedule_type','total_time','nd_hours','regular_hours']);
-        // $getmintimein=[];
-        // $getmintimeout=[];
+        $year_m = $year."-".$month;
+        $timedate = TimekeepingLogs::where('period',$exp_period)->where('month_year',$year_m)->get();
+        $data=array();
         $x=0;
-        $overtime_sum=[];
-        $overtime_amount=[];
-        $total_regular=[];
-        $total_night=[];
-        //$total_hours=[];
-        //$total_min=[];
-        //$overall_time=[];
+        $overtime_sum=0;
+        $overtime_amount=0;
         foreach($timedate AS $t){
-            $overtime_sum[$x]=OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where('personal_id',$t->personal_id)->where('payroll_period',$exp_period)->where('month_year','LIKE','%'.$year."-".$month.'%')->sum(\DB::raw('IFNULL(reg_day_hr,0) + IFNULL(RD_HR,0) + IFNULL(SH_RD_HR,0) + IFNULL(SH_HR,0) + IFNULL(RH_HR,0) + IFNULL(RH_RD_HR,0) + IFNULL(reg_day_np_hr,0) + IFNULL(reg_np_ot_hr,0) + IFNULL(SH_RD_NP_HR,0) + IFNULL(SH_OT_NP_HR,0) + IFNULL(SH_RD_OT_NP_HR,0) + IFNULL(RH_NP_HR,0) + IFNULL(RH_RD_NP_HR,0) + IFNULL(RH_RD_OT_NP_HR,0) + IFNULL(RH_OT_NP_HR,0) + IFNULL(RD_SH_NP_HR,0) + IFNULL(RD_SH_NP_OT_HR,0)'));
-            $overtime_amount[$x]=OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where('personal_id',$t->personal_id)->where('payroll_period',$exp_period)->where('month_year','LIKE','%'.$year."-".$month.'%')->sum('total_amount');
-            $x++;
+            $type= getScheduleType($t->employee_id, $t->month_year); 
+            if($type=='regular'){
+                if($t->overall_time >= 9.30){
+                    $time_difference=$t->overall_time*60-540;
+                }
+            }else if($type=='shifting'){
+                if($t->overall_time >= 8.30){
+                    $time_difference=$t->overall_time*60-540;
+                }
+            }  
+            $overtime_sum=OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where('personal_id',$t->personal_id)->where('payroll_period',$exp_period)->where('month_year',$t->month_year)->sum(\DB::raw('IFNULL(reg_day_hr,0) + IFNULL(RD_HR,0) + IFNULL(SH_RD_HR,0) + IFNULL(SH_HR,0) + IFNULL(RH_HR,0) + IFNULL(RH_RD_HR,0) + IFNULL(reg_day_np_hr,0) + IFNULL(reg_np_ot_hr,0) + IFNULL(SH_RD_NP_HR,0) + IFNULL(SH_OT_NP_HR,0) + IFNULL(SH_RD_OT_NP_HR,0) + IFNULL(RH_NP_HR,0) + IFNULL(RH_RD_NP_HR,0) + IFNULL(RH_RD_OT_NP_HR,0) + IFNULL(RH_OT_NP_HR,0) + IFNULL(RD_SH_NP_HR,0) + IFNULL(RD_SH_NP_OT_HR,0)'));
+            $overtime_amount=OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where('personal_id',$t->personal_id)->where('payroll_period',$exp_period)->where('month_year',$t->month_year)->sum('total_amount');          
+            $data[]=array(
+                "personal_id"=>$t->personal_id,
+                "employee_id"=>$t->employee_id,
+                "overtime_sum"=>$overtime_sum,
+                "overtime_amount"=>$overtime_amount,
+                "hours"=>$time_difference/60,
+             );
         }
         
+        $res  = array();
+        foreach($data as $vals){
+            if(array_key_exists($vals['employee_id'],$res)){
+                $res[$vals['employee_id']]['personal_id']    = $vals['personal_id'];
+                $res[$vals['employee_id']]['employee_id']    = $vals['employee_id'];
+                $res[$vals['employee_id']]['overtime_sum']    = $vals['overtime_sum'];
+                $res[$vals['employee_id']]['overtime_amount']    = $vals['overtime_amount'];
+                $res[$vals['employee_id']]['hours']   += $vals['hours'];
+            }else{
+                $res[$vals['employee_id']]  = $vals;
+            }
+        }
         $cutoff=CutOff::all();
-        return view('overtime.index',compact('timedate','timekeeping','cutoff','exp_period','month','year','overtime_sum','overtime_amount','total_regular','total_night'));
+        return view('overtime.index',compact('res','cutoff','exp_period','month','year','overtime_sum','overtime_amount'));
     }
 
     /**
@@ -155,7 +199,8 @@ class OvertimeController extends Controller
         }
 
         $get_data=OvertimeDetails::join('ot_head','ot_head.id','=','ot_detail.ot_head_id')->where('employee_id',$request->employee_id)->where('personal_id',$request->personal_id)->where('month_year','LIKE','%'.$request->month_year.'%')->where('overtime_date',$request->overtimedate)->first();
-        $timedate = DB::select("SELECT * FROM timekeeping_logs t INNER JOIN schedule_head sh ON t.personal_id=sh.personal_id INNER JOIN schedule_code sc ON sh.schedule_code=sc.id WHERE t.personal_id='$personal_id' AND period='$request->period' AND (MONTH(log_date)='$exp_date[1]' OR MONTH(log_date)='$add_month]') AND (YEAR(log_date)='$exp_date[0]' OR YEAR(log_date)='$add_year') $query GROUP BY t.personal_id,log_date ORDER BY log_date ASC");
+        $timedate = TimekeepingLogs::where('personal_id',$personal_id)->where('period',$request->period)->where('month_year',$request->month_year)->get();
+        // $timedate = DB::select("SELECT * FROM timekeeping_logs t INNER JOIN schedule_head sh ON t.personal_id=sh.personal_id INNER JOIN schedule_code sc ON sh.schedule_code=sc.id WHERE t.personal_id='$personal_id' AND period='$request->period' AND (MONTH(log_date)='$exp_date[1]' OR MONTH(log_date)='$add_month]') AND (YEAR(log_date)='$exp_date[0]' OR YEAR(log_date)='$add_year') $query GROUP BY t.personal_id,log_date ORDER BY log_date ASC");
         //$timedate=TimekeepingLogs::join('schedule_head','schedule_head.employee_id','=','timekeeping_logs.employee_id')->join('schedule_code','schedule_code.id','=','schedule_head.schedule_code')->where('timekeeping_logs.personal_id',$personal_id)->where('period',$request->period)->where('month',$exp_date[1])->orWhere('month',$add_month)->where('year',$exp_date[0])->orWhere('year',$add_year)->whereBetween('log_date', [$exp_date1, $exp_date2])->orderBydesc('employees.personal_id')->get(['full_name','timekeeping_logs.night_shift','timekeeping_logs.personal_id','schedule_type','total_time','nd_hours','regular_hours']);
         
         return view('overtime.create',compact('get_data','timedate'));
@@ -440,52 +485,28 @@ class OvertimeController extends Controller
         $personal_id = $request->personal_id;
         $overtime_date = $request->overtime_date;
         //$timedate = DB::select("SELECT t.personal_id,log_date, GROUP_CONCAT(log_date) AS timer,t.time_in,schedule_type FROM timekeeping_logs t INNER JOIN schedule_head sh ON t.personal_id=sh.personal_id INNER JOIN schedule_code sc ON sh.schedule_code=sc.id WHERE t.personal_id='$personal_id' AND log_date LIKE '%$overtime_date%' GROUP BY t.personal_id,log_date ORDER BY log_date ASC");
-        
-        $timedate=TimekeepingLogs::join('schedule_head','schedule_head.employee_id','=','timekeeping_logs.employee_id')->join('schedule_code','schedule_code.id','=','schedule_head.schedule_code')->where('timekeeping_logs.personal_id',$personal_id)->where('log_date',$overtime_date)->get(['timekeeping_logs.night_shift','schedule_type','total_time','nd_hours','regular_hours','timekeeping_logs.time_in','timekeeping_logs.time_out']);
-        // $total_hours=[];
-        // $total_min=[];
-        // $total_mins=[];
-        $time_difference=0;
+        $timedate=TimekeepingLogs::where('personal_id',$personal_id)->where('log_date',$overtime_date)->get();
         foreach($timedate AS $t){
-            if($t->schedule_type=='regular'){
-                $hours=date('H',strtotime($t->total_time));
-                $minutes=date('i',strtotime($t->total_time));
-                if($hours>=9 && $minutes>=30){
-                    $time_difference+=$t->total_time*60-540;
-                }else if($hours>=10){
-                    $time_difference+=$t->total_time*60-540;   
+            $type= getScheduleType($t->employee_id, $t->month_year); 
+            // $roundoff=floor($t->overall_time * 100) / 100;
+            // $roundoff_disp=number_format(floor($roundoff*100)/100, 2);
+            if($type=='regular'){
+                if($t->overall_time >= 9.30){
+                    $time_difference=$t->overall_time;
+                    $minus=9;
                 }
-            }else if($t->schedule_type=='shifting'){
-                if($t->night_shift==1){
-                    $hours=date('H',strtotime($t->total_time));
-                    $minutes=date('i',strtotime($t->total_time));
-                    if($hours>=8 && $minutes>=30){
-                        $time_difference+=$t->regular_hours;  
-                    }else if($hours>=10){
-                        $time_difference+=$t->regular_hours;  
-                    } 
-                }else{
-                    $hours=date('H',strtotime($t->total_time));
-                    $minutes=date('i',strtotime($t->total_time));
-                    if($hours>=8 && $minutes>=30){
-                        $time_difference+=$t->total_time*60-480;
-                    }else if($hours>=10){
-                        $time_difference+=$t->total_time*60-480;   
-                    }
+            }else if($type=='shifting'){
+                if($t->overall_time >= 8.30){
+                    $time_difference=$t->overall_time;
+                    $minus=8;
                 }
-            }
-            
+            }      
             $holiday=Holiday::where('holiday_date',$overtime_date)->first();
             $employees=Employee::where('personal_id',$personal_id)->first();
             $ot_head_id=OvertimeDetails::where('personal_id',$personal_id)->where('overtime_date',$overtime_date)->value('ot_head_id');
-            if($t->night_shift==1){
-                $time_calculation=number_format($time_difference,2);
-            }else{
-                $time_calculation=round(abs($time_difference) / 60,2);
-            }
-
+            $time_calculation=$time_difference;
             $exp_timecalc=explode('.',$time_calculation);
-            $time_hours=$exp_timecalc[0];
+            $time_hours=$exp_timecalc[0] - $minus;
             $time_minute=$exp_timecalc[1];
             $data=[
                 'fullname' => $employees->full_name,
@@ -497,18 +518,7 @@ class OvertimeController extends Controller
                 'holiday' => (!empty($holiday)) ? $holiday->holiday_name : '',
             ];
         }
-        
         return response()->json($data);
-
-        // if(!empty($total_min)){
-        //     // echo 'Time In:'.$exp_time[0]." <br>Time Out:".$exp_time[1]." <br>Number of Hours: ".number_format(round(abs($total_sum),2),2)." hrs.";
-        //     echo ($total_sumhour!=0) ? "Employee Name: ".$employees->full_name.'<br>Time In:'.$exp_time[0]." <br>Time Out:".$exp_time[1]." <br>Number of Hours: ".$total_sumhour." hr/s. & ".$total_timemins ." min/s." : "Employee Name: ".$employees->full_name.'<br>Time In:'.$exp_time[0]." <br>Time Out:".$exp_time[1]." <br>Number of Hours: ".$total_timemins ." min/s.";
-        //     if(!empty($holiday)){
-        //         echo "<br>Holiday: ".$holiday->holiday_name." | ".$holiday->holiday_type;
-        //     }
-        // }else{
-        //     echo 'No OT Hours';
-        // }
     }
 
     /**

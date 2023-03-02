@@ -6,9 +6,12 @@ use App\Models\Dashboard;
 use App\Models\CutOff;
 use App\Models\Reminder;
 use App\Models\Holiday;
+use App\Models\TimekeepingLogs;
+use App\Models\OvertimeDetails;
 use App\Models\LeaveFailure;
 use App\Models\LeaveFailureDetail;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -34,6 +37,7 @@ class DashboardController extends Controller
         $month=date('m');
         $year=date('Y');
         $now=date('Y-m-d');
+        $year_month=$year."-".$month;
         $cutoff_mid=CutOff::where('cutoff_type','MID')->first();
         $cutoff_eom=CutOff::where('cutoff_type','EOM')->first();
         $cutoff_count=CutOff::count();
@@ -41,17 +45,29 @@ class DashboardController extends Controller
         $end_date='';
         if($cutoff_count!=0){
             if($check_date>=$cutoff_mid->cutoff_start || $check_date<=$cutoff_mid->cutoff_end){
-                //echo 'MID';
-                $inc_month=date('F',strtotime($now." +1 Months"));
-                if($month=='12'){
-                    $inc_year=date('Y',strtotime($now." +1 year"));
+                $period='MID';
+                if($check_date<=$cutoff_mid->cutoff_start && $check_date<=$cutoff_mid->cutoff_end){
+                    $inc_month=date('F',strtotime($now));
+                    $prev_month=date('F',strtotime($now." -1 Months"));
+                    if($month=='12'){
+                        $inc_year=date('Y',strtotime($now." +1 year"));
+                    }else{
+                        $inc_year=$year;
+                    }
+                    $start_date=$prev_month." ".str_pad($cutoff_mid->cutoff_start, 2, "0", STR_PAD_LEFT).",".$year;
+                    $end_date=$inc_month." ".str_pad($cutoff_mid->cutoff_end, 2, "0", STR_PAD_LEFT).",".$inc_year;
                 }else{
-                    $inc_year=$year;
+                    $inc_month=date('F',strtotime($now." +1 Months"));
+                    if($month=='12'){
+                        $inc_year=date('Y',strtotime($now." +1 year"));
+                    }else{
+                        $inc_year=$year;
+                    }
+                    $start_date=$month_disp." ".str_pad($cutoff_mid->cutoff_start, 2, "0", STR_PAD_LEFT).",".$year;
+                    $end_date=$inc_month." ".str_pad($cutoff_mid->cutoff_end, 2, "0", STR_PAD_LEFT).",".$inc_year;
                 }
-                $start_date=$month_disp." ".str_pad($cutoff_mid->cutoff_start, 2, "0", STR_PAD_LEFT).",".$year;
-                $end_date=$inc_month." ".str_pad($cutoff_mid->cutoff_end, 2, "0", STR_PAD_LEFT).",".$inc_year;
             }else if($check_date>=$cutoff_eom->cutoff_start || $check_date<=$cutoff_eom->cutoff_end){
-                //echo 'EOM';
+                $period='EOM';
                 $start_date=$month_disp." ".str_pad($cutoff_eom->cutoff_start, 2, "0", STR_PAD_LEFT).",".$year;
                 $end_date=$month_disp." ".str_pad($cutoff_eom->cutoff_end, 2, "0", STR_PAD_LEFT).",".$year;
             }
@@ -67,7 +83,39 @@ class DashboardController extends Controller
         $date->modify($nextMonth);
         $firstDayOfNextMonthTimestamp = $date->getTimestamp();
         $nextmonthdisp=($firstDayOfNextMonthTimestamp - $nowTimestamp) / 86400;
-        return view('dashboard',compact('start_date','end_date','unfiled_leave','reminders','day','nextmonthdisp','now','holiday'));
+        
+        $time_disp=[];
+        $data=array();
+        $timedate = TimekeepingLogs::where('period',$period)->where('month_year',$year_month)->get();
+        foreach($timedate AS $t){
+            $type= getScheduleType($t->employee_id, $t->month_year); 
+            if($type=='regular'){
+                if($t->overall_time >= 9.30){
+                    $data[]=array(
+                        "personal_id"=>$t->personal_id,
+                        "employee_id"=>$t->employee_id,
+                    );
+                }
+            }else if($type=='shifting'){
+                if($t->overall_time >= 8.30){
+                    $data[]=array(
+                        "personal_id"=>$t->personal_id,
+                        "employee_id"=>$t->employee_id,
+                    );
+                }
+            }  
+            
+        }
+        $res  = array();
+        foreach($data as $vals){
+            if(array_key_exists($vals['employee_id'],$res)){
+                $res[$vals['employee_id']]['personal_id']    = $vals['personal_id'];
+            }else{
+                $res[$vals['employee_id']]  = $vals;
+            }
+        }
+        $unfiled_overtime=count($res);
+        return view('dashboard',compact('start_date','end_date','unfiled_leave','reminders','day','nextmonthdisp','now','holiday','unfiled_overtime','month','year','period'));
     }
 
     /**

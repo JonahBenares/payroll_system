@@ -96,9 +96,11 @@
                         </div>
                     </div>
                 </form>
+                <?php if(!empty($month)): ?>
                 <div class="flex mt-5 uppercase">
                     <p class="text-left text-md uppercase text-gray-600 pt-2 leading-none"><span class="font-bold pr-1"><?php echo e(date('F',strtotime($monthName))); ?></span><?php echo e((isset($year)) ? $year : ''); ?> <span class="text-xs">- <?php echo e((isset($exp_period)) ? $exp_period : ''); ?> </span></p>
                 </div>
+                <?php endif; ?>
                 <div class="overflow-x-auto overflow-y-hidden hover:overflow-y-auto h-100 relative max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 sm:rounded-2xl">
                     <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-10">
@@ -118,83 +120,29 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if(!empty($timekeeping)): ?>
-                            <?php 
-                                $x=0;
-                                $total_hours=[];
-                                $total_min=[];
-                                $overall_time=[];
-                                $time_difference=[];
-                                $overtime_calculation=0;
-                                $overtime_amnt_calculation=0;
-                            ?>
-                            <?php $__currentLoopData = $timekeeping; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $e): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <?php $y=0; ?>
-                                <?php $__currentLoopData = $timedate; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $t): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <?php 
-                                        if($e->personal_id==$t->personal_id){
-                                            $overtime_calculation=$overtime_sum[$y];
-                                            $overtime_amnt_calculation=$overtime_amount[$y];
-                                            if($t->schedule_type=='regular'){
-                                                $hours=date('H',strtotime($t->total_time));
-                                                $minutes=date('i',strtotime($t->total_time));
-                                                if($hours>=9 && $minutes>=30){
-                                                    $time_difference[]=$t->total_time*60-540;
-                                                }else if($hours>=10){
-                                                    $time_difference[]=$t->total_time*60-540;   
-                                                }
-                                            }else if($t->schedule_type=='shifting'){
-                                                if($t->night_shift==1){
-                                                    $hours=date('H',strtotime($t->total_time));
-                                                    $minutes=date('i',strtotime($t->total_time));
-                                                    if($hours>=8 && $minutes>=30){
-                                                        $time_difference[]=$t->regular_hours;  
-                                                    }else if($hours>=10){
-                                                        $time_difference[]=$t->regular_hours;  
-                                                    } 
-                                                }else{
-                                                    $hours=date('H',strtotime($t->total_time));
-                                                    $minutes=date('i',strtotime($t->total_time));
-                                                    if($hours>=8 && $minutes>=30){
-                                                        $time_difference[]=$t->total_time*60-480;
-                                                    }else if($hours>=10){
-                                                        $time_difference[]=$t->total_time*60-480;   
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        $y++;
-                                    ?>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                <?php 
-                                    $total_calculation = array_sum($time_difference);
-                                    print_r($time_difference);
-                                ?>
+                            <?php if(!empty($res)): ?>
+                                <?php $__currentLoopData = $res; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $d): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr class="bg-white border-b white:bg-gray-800 white:border-gray-700 hover:bg-gray-50 white:hover:bg-gray-600">
                                     <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                        <?php echo e($e->full_name); ?>
+                                        <?php echo e(getEmployeeName($d['employee_id'])); ?>
 
                                     </td>
                                     <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                        <a target='_blank' href="<?php echo e(route('ot.create',['employee_id' => $e->id,'personal_id' => $e->personal_id,'month_year' => $year."-".$month, 'period' => $exp_period])); ?>"  class="my-1  py-2" title="Update">
-                                            <?php echo e(number_format(round(abs($total_calculation) / 60,2),2)." hr/s"); ?>
+                                        <a target='_blank' href="<?php echo e(route('ot.create',['employee_id' => $d['employee_id'],'personal_id' => $d['personal_id'],'month_year' => $year."-".$month, 'period' => $exp_period])); ?>"  class="my-1  py-2" title="Update">
+                                            <?php echo e(convertTime($d['hours'])." hr/s"); ?>
 
-                                        </a> 
+                                        </a>
                                     </td>
                                     <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                        <?php echo e($overtime_calculation." hr/s."); ?>
+                                        <?php echo e($d['overtime_sum']." hr/s."); ?>
 
                                     </td>
                                     <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
-                                        <?php echo e(number_format($overtime_amnt_calculation,2)); ?>
+                                        <?php echo e(number_format($d['overtime_amount'],2)); ?>
 
                                     </td>
                                 </tr>
-                                
-                                <?php 
-                                    $x++;
-                                ?>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             <?php endif; ?>
                         </tbody>
                     </table>
