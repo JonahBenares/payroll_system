@@ -760,6 +760,26 @@
                     }
                 });
             }
+
+            function saveRemarks(count,date,personal_id,employee_id){
+                var base_url = '<?php echo e(URL::to("/")); ?>';
+                var redirect = base_url+"/dtrOffice/saveremarks";
+                var remarks=document.getElementById("remarks"+count).value;
+                $.ajax({
+                    type: "POST",
+                    url: redirect,
+                    data: {
+                        personal_id:personal_id,
+                        employee_id:employee_id,
+                        date:date,
+                        remarks:remarks,
+                        _token: '<?php echo e(csrf_token()); ?>'
+                    },
+                    success: function(output){
+                        document.getElementById("remarks"+count).value=output;
+                    }
+                });
+            }
         </script>
         
     </body>

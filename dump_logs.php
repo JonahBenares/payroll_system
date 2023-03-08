@@ -1,6 +1,6 @@
 <?php 
 $con_hris=mysqli_connect("localhost","root","","db_hris");
-$con_payroll=mysqli_connect("localhost","root","","db_payroll_new");
+$con_payroll=mysqli_connect("localhost","root","","db_payroll");
 
 define('START_NIGHT_HOUR','22');
 define('START_NIGHT_MINUTE','00');
@@ -171,7 +171,7 @@ function night_difference($start_work,$end_work)
                     $fetch_out = mysqli_fetch_array($get_out);
                   
                      if($fetch_time['log_type'] == 'Time in'){
-                        $time_in = $fetch_time['recorded_time'];
+                       // $time_in = $fetch_time['recorded_time'];
                         $in = date("H:i:s",strtotime($fetch_time['recorded_time']));
                         $sc_code = getScheduleCode($fetch_time['personal_id'],$month_year,$rows_change_sched,$con_payroll);
                         $t_in = getTimein($sc_code,$con_payroll);

@@ -183,7 +183,10 @@ Route::get('rfd_report/print/{head_id}', [RfdReportController::class, 'print'])-
 Route::get('/upload/receive', [UploadAllowanceController::class, 'receive'])->middleware(['auth'])->name('receiveForm');
 Route::resource('payrollComp', PayrollComputationController::class);
 Route::resource('dtrOffice', DTRofficeController::class);
+Route::post('/dtrOffice/filter_dtroffice', [DTRofficeController::class, 'filter_dtroffice'])->name('filter_dtroffice');
+Route::post('/dtrOffice/saveremarks', [DTRofficeController::class, 'save_remarks']);
 Route::resource('dtrSite', DTRsiteController::class);
+Route::post('/dtrSite/filter_dtrsite', [DTRsiteController::class, 'filter_dtrsite'])->name('filter_dtrsite');
 //OT Office
 Route::resource('otOffice', OTofficeController::class);
 Route::post('/otOffice/filter_otoffice', [OTofficeController::class, 'filter_otoffice'])->name('filter_otoffice');

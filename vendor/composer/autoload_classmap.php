@@ -90,6 +90,7 @@ return array(
     'App\\Models\\Dashboard' => $baseDir . '/app/Models/Dashboard.php',
     'App\\Models\\Deduction' => $baseDir . '/app/Models/Deduction.php',
     'App\\Models\\Department' => $baseDir . '/app/Models/Department.php',
+    'App\\Models\\DtrRemarks' => $baseDir . '/app/Models/DtrRemarks.php',
     'App\\Models\\Employee' => $baseDir . '/app/Models/Employee.php',
     'App\\Models\\EmployeeDeduction' => $baseDir . '/app/Models/EmployeeDeduction.php',
     'App\\Models\\EmployeeHMO' => $baseDir . '/app/Models/EmployeeHMO.php',

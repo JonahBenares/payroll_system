@@ -693,6 +693,7 @@ class ComposerStaticInitb740f3480b3a58e90e3ea85b9f582af9
         'App\\Models\\Dashboard' => __DIR__ . '/../..' . '/app/Models/Dashboard.php',
         'App\\Models\\Deduction' => __DIR__ . '/../..' . '/app/Models/Deduction.php',
         'App\\Models\\Department' => __DIR__ . '/../..' . '/app/Models/Department.php',
+        'App\\Models\\DtrRemarks' => __DIR__ . '/../..' . '/app/Models/DtrRemarks.php',
         'App\\Models\\Employee' => __DIR__ . '/../..' . '/app/Models/Employee.php',
         'App\\Models\\EmployeeDeduction' => __DIR__ . '/../..' . '/app/Models/EmployeeDeduction.php',
         'App\\Models\\EmployeeHMO' => __DIR__ . '/../..' . '/app/Models/EmployeeHMO.php',
