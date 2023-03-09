@@ -120,7 +120,7 @@
                                     </td>
                                     <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
                                         <a target='_blank' href="{{ route('ot.create',['employee_id' => $d['employee_id'],'personal_id' => $d['personal_id'],'month_year' => $year."-".$month, 'period' => $exp_period]) }}"  class="my-1  py-2" title="Update">
-                                            {{ convertTime($d['hours'])." hr/s" }}
+                                            {{ $d['hours']." hr/s" }}
                                         </a>
                                     </td>
                                     <td scope="row" class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap white:text-white">
