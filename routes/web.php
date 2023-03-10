@@ -158,7 +158,7 @@ Route::get('/payrollovertime/show/{personal_id}/{month_year}/{period}', [Payroll
 Route::resource('payrollbonus', PayrollBonusController::class); 
 //Route::post('/payrollbonus/filter_payroll_bonus', [PayrollBonusController::class, 'filter_payroll_bonus'])->name('filter_payroll_bonus');
 Route::get('/payroll_bonus/bulkprinting/{type}/{year}', [PayrollBonusController::class, 'printBulk'])->middleware(['auth'])->name('printBulkBonus');
-Route::get('/payrollbonus/show/{personal_id}/{type}/{year}', [PayrollBonusController::class, 'show'])->name('show');
+//Route::get('/payrollbonus/show/{personal_id}/{type}/{year}', [PayrollBonusController::class, 'show'])->name('show');
 
 
 Route::resource('payrollsalary', PayrollSalaryController::class); 
