@@ -38,7 +38,7 @@
                 </div>
                 <div class="mb-2 mx-0 xl:mr-2">
                     <div class="flex justify-between space-x-2">
-                        <a href="" class="shadow-md rounded-lg w-full bg-gradient-to-r from-emerald-300 to-lime-300">
+                        <a href="<?php echo e(route('leavefailure.index',['month' => $month,'year' => $year,'period' => $period])); ?>" class="shadow-md rounded-lg w-full bg-gradient-to-r from-emerald-300 to-lime-300">
                             <div class="bg-[url('images/circle.png')] bg-[length:170px_100px] bg-no-repeat bg-right-top rounded-lg"> 
                                 <div class="flex justify-between">
                                     <div class="px-6 py-4">
@@ -77,7 +77,7 @@
                                 </div>
                             </div>
                         </a> -->
-                        <a href="" class="shadow-md rounded-lg w-full bg-gradient-to-r from-emerald-300 to-lime-300">
+                        <a href="<?php echo e(route('ot.index',['month' => $month,'year' => $year,'period' => $period])); ?>" class="shadow-md rounded-lg w-full bg-gradient-to-r from-emerald-300 to-lime-300">
                             <div class="bg-[url('images/circle.png')] bg-[length:170px_100px] bg-no-repeat bg-right-top rounded-lg"> 
                                 <div class="flex justify-between">
                                     <div class="px-6 py-4">
@@ -90,7 +90,8 @@
                                     </div>
                                     <div class="px-6 py-4">
                                         <p class="font-bold text-2xl text-lime-400">
-                                            09
+                                            <?php echo e($unfiled_overtime); ?>
+
                                         </p>
                                     </div>
                                 </div>

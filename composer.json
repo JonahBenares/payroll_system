@@ -7,7 +7,7 @@
     "require": {
         "php": "^8.0.2",
         "doctrine/common": "^3.4",
-        "doctrine/dbal": "^3.5",
+        "doctrine/dbal": "^3.6",
         "doctrine/event-manager": "^2.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/breeze": "^1.14",

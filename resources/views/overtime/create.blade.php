@@ -45,20 +45,18 @@
                                     <select id="overtime_date" name="overtime_date" class="text-sm block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" onchange="getRecordedtime('{{$_GET['personal_id']}}')">
                                         <option value=''>--Select Overtime Date--</option>
                                         @foreach($timedate AS $d)
-                                            @php 
-                                                $hours=date('H',strtotime($d->total_time));
-                                                $minutes=date('i',strtotime($d->total_time));
+                                            @php
+                                                $schedule_type=getScheduleType($d->employee_id, $d->month_year); 
+                                                $exp_time=explode('.',$d->overall_time);
+                                                $exp_disp1=$exp_time[0];
+                                                $exp_disp2=$exp_time[1];
                                             @endphp
-                                            @if($d->schedule_type=='regular'){
-                                                @if($hours>=9 && $minutes>=30)
-                                                <option value='{{ $d->log_date }}'>{{ date('F d,Y',strtotime($d->log_date ))}}</option>
-                                                @elseif($hours>=10)
+                                            @if($schedule_type=='regular'){
+                                                @if(($exp_disp1>=9 && $exp_disp2>=30) || ($exp_disp1>=10))
                                                 <option value='{{ $d->log_date }}'>{{ date('F d,Y',strtotime($d->log_date ))}}</option>
                                                 @endif
-                                            @else if($d->schedule_type=='shifting')
-                                                @if($hours>=8 && $minutes>=30)
-                                                <option value='{{ $d->log_date }}'>{{ date('F d,Y',strtotime($d->log_date ))}}</option>
-                                                @elseif($hours>=10)
+                                            @else if($schedule_type=='shifting')
+                                                @if(($exp_disp1>=8 && $exp_disp2>=30) || ($exp_disp1>=10))
                                                 <option value='{{ $d->log_date }}'>{{ date('F d,Y',strtotime($d->log_date ))}}</option>
                                                 @endif
                                             @endif
@@ -83,7 +81,7 @@
                                 </div>
                             </div>
                             <div class="w-6/12 text-left px-2 mt-2">
-                                <div class="">
+                                <div class="" id="holiday_disp">
                                     Holiday: <span id="holidays"></span>
                                 </div>
                             </div>

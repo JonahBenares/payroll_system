@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Employee extends Model
 {
     use HasFactory;
-    protected $table = 'db_payroll.employees';
+    protected $table = 'employees';
     protected $fillable = [
         'supervisory',
         'hourly_rate',

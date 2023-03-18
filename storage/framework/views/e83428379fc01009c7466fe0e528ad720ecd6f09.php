@@ -10,9 +10,10 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
         <link rel="stylesheet" href="../../css/jquery.dataTables.min.css">
-        <link rel="stylesheet" href="../../css/flowbite.min.css">
-        <script defer src="../../js/flowbite.min.js"></script>
-        
+        <!-- <link rel="stylesheet" href="../../css/flowbite.min.css">
+        <script defer src="../../js/flowbite.min.js"></script> -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cd:\Program Files\Microsoft VS Code\resources\app\out\vs\code\electron-sandbox\workbench\workbench.htmldn.min.js"></script>
@@ -405,7 +406,12 @@
                         }else{
                             document.getElementById("no_hrs").innerHTML  = response.total_sumhour+' hr/s. & '+response.total_timemins+' min/s.';
                         }
-                        document.getElementById("holidays").innerHTML  = response.holiday;
+                        if(response.holiday!=''){
+                            document.getElementById('holiday_disp').style.display = "block";
+                            document.getElementById("holidays").innerHTML  = response.holiday;
+                        }else{
+                            document.getElementById('holiday_disp').style.display = "none";
+                        }
                         document.getElementById("overtimedate").value  = overtime_date;
                         $('#loadpage').load(replace_url+" #loadpage");
                         
