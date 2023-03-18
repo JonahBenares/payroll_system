@@ -2,54 +2,54 @@
 <script type="text/javascript" src="{{ URL::asset('js/myjs.js') }}"></script>
 <script>
     $(document).ready(function() {
-    var counter = document.getElementById("counter").value;  
-    var deduction_ids = document.getElementById("deduction_ids").value; 
-    var less_ids = document.getElementById("less_ids").value; 
+        var counter = document.getElementById("counter").value;  
+        var deduction_ids = document.getElementById("deduction_ids").value; 
+        var less_ids = document.getElementById("less_ids").value; 
 
-   
-    var adjustment_ids = document.getElementById("adjustment_ids").value; 
-    for(var x=1;x<counter;x++){
-        let sum_deductions_outside=0;
-        let sum_less_outside=0;
-        let sum_adjustment_outside=0;
-       
-        var salary = document.getElementById("salary_"+x).innerHTML; 
-
+    
+        var adjustment_ids = document.getElementById("adjustment_ids").value; 
+        for(var x=1;x<counter;x++){
+            let sum_deductions_outside=0;
+            let sum_less_outside=0;
+            let sum_adjustment_outside=0;
         
+            var salary = document.getElementById("salary_"+x).innerHTML; 
 
-        var ded = deduction_ids.split("_");
-        ded.forEach(function(dedids) {
-            var ded_val = parseFloat(document.getElementById("deductions_"+dedids+"_"+x).value);  
-            sum_deductions_outside+=ded_val;
-        });
+            
 
-
-        var ls = less_ids.split("_");
-        ls.forEach(function(lsids) {
-            var less_val = parseFloat(document.getElementById("less_gp_"+lsids+"_"+x).value);  
-            sum_less_outside+=less_val;
-        });
+            var ded = deduction_ids.split("_");
+            ded.forEach(function(dedids) {
+                var ded_val = parseFloat(document.getElementById("deductions_"+dedids+"_"+x).value);  
+                sum_deductions_outside+=ded_val;
+            });
 
 
-        var adj = adjustment_ids.split("_");
-        adj.forEach(function(adjids) {
-            var adj_val = parseFloat(document.getElementById("adjustment_"+adjids+"_"+x).value);  
-            sum_adjustment_outside+=adj_val;
-        });
+            var ls = less_ids.split("_");
+            ls.forEach(function(lsids) {
+                var less_val = parseFloat(document.getElementById("less_gp_"+lsids+"_"+x).value);  
+                sum_less_outside+=less_val;
+            });
 
-        document.getElementById("sum_deductions_"+x).innerHTML = sum_deductions_outside;
-        document.getElementById("sum_lessgp_outside_"+x).innerHTML = sum_less_outside;
-        document.getElementById("sum_deductions_outside_"+x).innerHTML = sum_deductions_outside;
-        document.getElementById("sum_adjustment_"+x).innerHTML = sum_adjustment_outside;
-        document.getElementById("sum_adjustment_outside_"+x).innerHTML = sum_adjustment_outside;
 
-       var gross = (parseFloat(salary) + parseFloat(sum_adjustment_outside)) - parseFloat(sum_less_outside);
-       var netpay = parseFloat(gross) - parseFloat(sum_deductions_outside);
+            var adj = adjustment_ids.split("_");
+            adj.forEach(function(adjids) {
+                var adj_val = parseFloat(document.getElementById("adjustment_"+adjids+"_"+x).value);  
+                sum_adjustment_outside+=adj_val;
+            });
 
-        document.getElementById("gross_"+x).innerHTML = gross;
-        document.getElementById("netpay_"+x).innerHTML = netpay;
-    }
- });
+            document.getElementById("sum_deductions_"+x).innerHTML = sum_deductions_outside;
+            document.getElementById("sum_lessgp_outside_"+x).innerHTML = sum_less_outside;
+            document.getElementById("sum_deductions_outside_"+x).innerHTML = sum_deductions_outside;
+            document.getElementById("sum_adjustment_"+x).innerHTML = sum_adjustment_outside;
+            document.getElementById("sum_adjustment_outside_"+x).innerHTML = sum_adjustment_outside;
+
+        var gross = (parseFloat(salary) + parseFloat(sum_adjustment_outside)) - parseFloat(sum_less_outside);
+        var netpay = parseFloat(gross) - parseFloat(sum_deductions_outside);
+
+            document.getElementById("gross_"+x).innerHTML = gross;
+            document.getElementById("netpay_"+x).innerHTML = netpay;
+        }
+    });
 </script>
 <x-app-layout>
     <x-slot name="header"></x-slot>
@@ -81,48 +81,48 @@
                     </div>
                 </div>
                 <form method='GET'>
-                <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900">
-                    <div class="mx-2 text-left">
-                        <select name="month" required class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
-                            <option value="" selected>Select Month</option>
-                            <option value="01">January</option>
-                            <option value="02">February</option>
-                            <option value="03">March</option>
-                            <option value="04">April</option>
-                            <option value="05">May</option>
-                            <option value="06">June</option>
-                            <option value="07">July</option>
-                            <option value="08">August</option>
-                            <option value="09">September</option>
-                            <option value="10">October</option>
-                            <option value="11">November</option>
-                            <option value="12">December</option>
-                        </select>
+                    <div class="flex justify-center pb-1 pt-2 bg-white white:bg-gray-900">
+                        <div class="mx-2 text-left">
+                            <select name="month" required class="block text-sm w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
+                                <option value="" selected>Select Month</option>
+                                <option value="01">January</option>
+                                <option value="02">February</option>
+                                <option value="03">March</option>
+                                <option value="04">April</option>
+                                <option value="05">May</option>
+                                <option value="06">June</option>
+                                <option value="07">July</option>
+                                <option value="08">August</option>
+                                <option value="09">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                        </div>
+                        @php $curr_year = date("Y"); @endphp
+                        <div class="mx-2 text-left">
+                            <select name="year" required class="block text-sm w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
+                                <option value="" selected>Select Year</option>
+                                @for($x=2022; $x<=$curr_year;$x++)
+                                <option value="{{ $x }}">{{ $x }}</option>
+                                @endfor
+                            </select>
+                        </div>
+                        <div class="mx-2 text-left">
+                            <select name="cutoff" required class="block text-sm w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
+                                <option value="" selected>Period</option>
+                                @foreach($cutoff AS $co)
+                                <option value="{{ $co->cutoff_type }}">{{ $co->cutoff_type }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="mx-2 pt-2 text-left">
+                            <button type="submit" class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                                <span>Generate</span>
+                            </button>
+                        </div>
                     </div>
-                    @php $curr_year = date("Y"); @endphp
-                    <div class="mx-2 text-left">
-                        <select name="year" required class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
-                            <option value="" selected>Select Year</option>
-                            @for($x=2022; $x<=$curr_year;$x++)
-                            <option value="{{ $x }}">{{ $x }}</option>
-                            @endfor
-                        </select>
-                    </div>
-                    <div class="mx-2 text-left">
-                        <select name="cutoff" required class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 w-60">
-                            <option value="" selected>Period</option>
-                            @foreach($cutoff AS $co)
-                            <option value="{{ $co->cutoff_type }}">{{ $co->cutoff_type }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="mx-2 pt-3 text-left">
-                        <button type="submit" class="flex items-center justify-center px-3 py-2 mx-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                            <span>Generate</span>
-                        </button>
-                    </div>
-                </div>
-                 </form>
+                </form>
                 @php $month_year = $filters['year']."-".$filters['month']; @endphp
                 @if(!empty($filters['month']))
                 <div class="flex justify-center space-x-2">
@@ -142,6 +142,85 @@
                     <p class="text-left text-md uppercase text-gray-600 pt-2 leading-none"><span class="font-bold pr-1"></span>{{ date("F Y",strtotime($month_year)) }} <span class="text-xs">- {{ $filters['cutoff'] }} </span></p>
                 </div>
                 @endif
+                <div class="overflow-x-auto overflow-y-hidden hover:overflow-y-auto h-64 relative pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 sm:rounded-2xl border border-yellow-500">
+                    <div class="sticky top-0 bg-yellow-500 w-full z-20 text-left px-5 text-md py-2 text-white">The following employees have incomplete logs:</div>
+                    <table  class="w-full text-sm text-left text-gray-500 white:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-10 z-10">
+                            <tr class="">
+                                <th class="py-2 px-6" width="23%">
+                                    Name
+                                </th>
+                                <th class="py-2 px-6" width="16%">
+                                    Date
+                                </th>
+                                <th class="py-2 px-6" width="9%">
+                                    Log Type
+                                </th>
+                                <th class="py-2 px-6" width="1%" align="center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                                    </svg>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="py-2 px-6">Jonah Benares</td>
+                                <td class="py-2 px-6">Jan 10, 2023</td>
+                                <td class="py-2 px-6"></td>
+                                <td class="py-2 px-6" align="center">
+                                    <button class="flex items-center justify-center px-3 py-1 mx-2 space-x-2 text-xs tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                                        File
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 px-6">Jonah Benares</td>
+                                <td class="py-2 px-6">Jan 10, 2023</td>
+                                <td class="py-2 px-6"></td>
+                                <td class="py-2 px-6" align="center">
+                                    <button class="flex items-center justify-center px-3 py-1 mx-2 space-x-2 text-xs tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                                        File
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 px-6">Jonah Benares</td>
+                                <td class="py-2 px-6">Jan 10, 2023</td>
+                                <td class="py-2 px-6"></td>
+                                <td class="py-2 px-6" align="center">
+                                    <button class="flex items-center justify-center px-3 py-1 mx-2 space-x-2 text-xs tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                                        File
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 px-6">Jonah Benares</td>
+                                <td class="py-2 px-6">Jan 10, 2023</td>
+                                <td class="py-2 px-6"></td>
+                                <td class="py-2 px-6" align="center">
+                                    <button class="flex items-center justify-center px-3 py-1 mx-2 space-x-2 text-xs tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                                        File
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 px-6">Jonah Benares</td>
+                                <td class="py-2 px-6">Jan 10, 2023</td>
+                                <td class="py-2 px-6"></td>
+                                <td class="py-2 px-6" align="center">
+                                    <button class="flex items-center justify-center px-3 py-1 mx-2 space-x-2 text-xs tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                                        File
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="sticky bottom-0 bg-gray-100 w-full z-20 text-left px-5 text-sm py-2 flex justify-center space-x-2">
+                        <button class="py-1 px-2 bg-gray-500 text-white rounded-2xl w-40 hover:bg-gray-600">Skip</button>
+                        <button class="py-1 px-2 bg-blue-500 text-white rounded-2xl w-40 hover:bg-blue-600">Proceed</button>
+                    </div>
+                </div>
                 <div class="overflow-x-auto overflow-y-hidden hover:overflow-y-auto h-100 relative max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 sm:rounded-2xl">
                     <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-10">
