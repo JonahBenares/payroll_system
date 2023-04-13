@@ -519,9 +519,9 @@ if (!function_exists('getAdjustmentRate')) {
         $restrates = getRates('1'); // restday
         $r=explode("_",$restrates);
         $rdrates = $r[1];
-
+      
         if($payslip_info_id == 1 ){ // REST DAY ONLY
-           
+          
             $getRDonly = TimekeepingLogs::where('month_year', $month_year)
                                     ->where('period',$cutoff)
                                     ->where('personal_id', $personal_id)
@@ -529,6 +529,7 @@ if (!function_exists('getAdjustmentRate')) {
                                     ->where('holiday','0')
                                     ->where('night_shift','0')
                                     ->whereNotNull('overall_time')->count();
+        
             if($getRDonly>0){
 
                 $getRD = TimekeepingLogs::where('month_year', $month_year)
@@ -672,7 +673,7 @@ if (!function_exists('getAdjustmentRate')) {
             
         }
 
-        if($payslip_info_id == 2){ // HOLIDAY  
+        else if($payslip_info_id == 2){ // HOLIDAY  
            
             $getHolOnly = TimekeepingLogs::where('month_year', $month_year)
             ->where('period',$cutoff)
@@ -740,7 +741,7 @@ if (!function_exists('getAdjustmentRate')) {
             
         }
 
-        if($payslip_info_id ==4){ // NIGHT PREMIUM  
+        else if($payslip_info_id ==4){ // NIGHT PREMIUM  
             $getNPcount= TimekeepingLogs::where('month_year', $month_year)
             ->where('period',$cutoff)
             ->where('personal_id', $personal_id)
@@ -775,6 +776,8 @@ if (!function_exists('getAdjustmentRate')) {
 
 
              return $total;
+        } else {
+            return 0;
         }
     }
 }

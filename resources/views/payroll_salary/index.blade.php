@@ -282,13 +282,15 @@
                                                         </tr>
                                                         @foreach($payslipinfo AS $pi)
                                                             @if($pi->pay_type == 1)
+                                                         
+                                                            
                                                         <tr class="bg-white border-b">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">{{ $pi->description }}</td>
                                                                 @if($pi->editable == 1)
                                                                 <td align="right"><input type="text" name="adjustment_{{ $pi->id }}_{{ $x }}" id="adjustment_{{ $pi->id }}_{{ $x }}" onblur = "salary_computation('adjustment',{{ $pi->id }})" value="0" class="text-right bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" ></td>
                                                                 @else
                                                                 <td align="right">
-                                                                    <input type="text" name="adjustment_{{ $pi->id }}_{{ $x }}" id="adjustment_{{ $pi->id }}_{{ $x }}" class="border-0 text-right" disabled value="0">
+                                                                    <input type="text" name="adjustment_{{ $pi->id }}_{{ $x }}" id="adjustment_{{ $pi->id }}_{{ $x }}" value="{{  getAdjustmentRate($emp['personal_id'], $pi->id, $year, $month, $cutoff_type)  }}" class="border-0 text-right" disabled value="0">
                                                                     <input type="hidden" name="payslip_id_{{ $pi->id }}" value="{{ $pi->id }}">
                                                                    
                                                                 </td>

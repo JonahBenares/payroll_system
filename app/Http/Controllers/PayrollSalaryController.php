@@ -32,6 +32,8 @@ class PayrollSalaryController extends Controller
     {
         $cutoff = CutOff::all();
         $cutoff_type=$request->cutoff;
+        $year = $request->year;
+        $month = $request->month;
         $filters = array(
             'month'=>'',
             'year'=>'',
@@ -149,14 +151,14 @@ class PayrollSalaryController extends Controller
                  ->get();
 
                
-                 foreach($payslipinfo_adj AS $adj){
+                //  foreach($payslipinfo_adj AS $adj){
 
-                    if($adj->pay_type =='1'){  ///adjustment    
+                //     if($adj->pay_type =='1'){  ///adjustment    
                      
-                         //echo $emp->personal_id . " = " .  $adj->description . " - " . getAdjustmentRate($emp->personal_id, $adj->id, $request->year, $request->month, $request->cutoff) . "<br>";
-                         getAdjustmentRate($emp->personal_id, $adj->id, $request->year, $request->month, $request->cutoff);
-                    }
-                 }
+                //          echo $emp->personal_id . " = " .  $adj->description . " - " . getAdjustmentRate($emp->personal_id, $adj->id, $request->year, $request->month, $request->cutoff) . "<br>";
+                //          getAdjustmentRate($emp->personal_id, $adj->id, $request->year, $request->month, $request->cutoff);
+                //     }
+                //  }
 
                  $count_details_sal = PayslipSalaryDetail::where("payslip_salary_head_id","$save_head_id")
                  ->where("personal_id",$emp->personal_id)
@@ -208,7 +210,7 @@ class PayrollSalaryController extends Controller
             $deduction_ids=substr($deduction_ids,0,-1);   
 
         }
-        return view('payroll_salary.index',compact('cutoff','cutoff_type','filters','employee_list','payslipinfo', 'adj_ids', 'less_ids','deduction_ids', 'incompletelogs'));
+        return view('payroll_salary.index',compact('cutoff','cutoff_type','filters','employee_list','payslipinfo', 'adj_ids', 'less_ids','deduction_ids', 'incompletelogs','year','month'));
     }
 
 
