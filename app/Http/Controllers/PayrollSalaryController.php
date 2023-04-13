@@ -35,24 +35,47 @@ class PayrollSalaryController extends Controller
         $filters = array(
             'month'=>'',
             'year'=>'',
-            'cutoff'=>''
+            'cutoff'=>'',
+            'status'=>''
         );
         $employee_list=array();
         $payslipinfo=array();
         $adj_ids=array();
         $less_ids=array();
         $deduction_ids=array();
-        if($request->has('month')){
+        $incompletelogs=array();
+        if($request->has('month') && $request->status=='incomplete'){
             $filters = array(
                 'month'=>$request->month,
                 'year'=>$request->year,
-                'cutoff'=>$request->cutoff
+                'cutoff'=>$request->cutoff,
+                'status'=>$request->status
+            );
+
+            $year_month = $request->year."-".$request->month;
+
+           
+            $count_inc = TimekeepingLogs::where("month_year", $year_month)->where("period",$request->cutoff)->where("overall_time",NULL)->count();
+            
+            if($count_inc>0){
+               $incompletelogs= TimekeepingLogs::where("month_year", $year_month)->where("period",$request->cutoff)->where("overall_time",NULL)->get();
+            }
+        }
+        if($request->has('month') && $request->status=='generate'){
+
+          
+            $filters = array(
+                'month'=>$request->month,
+                'year'=>$request->year,
+                'cutoff'=>$request->cutoff,
+                'status'=>$request->status
             );
             $count_head = PayslipSalary::where("salary_year",$request->year)
             ->where("salary_month",$request->month)
             ->Where("cutoff",$request->cutoff)
             ->count();
 
+          
             if($count_head==0){        
 
                 $save_head_id = PayslipSalary::insertGetId([
@@ -73,9 +96,10 @@ class PayrollSalaryController extends Controller
 
             $employees = Employee::all();
             foreach($employees AS $emp){
+              
                 $employee_list[] = array(
                     'id'=>$emp->id,
-                    'name'=>getEmployeeName($emp->id,$request->month,$request->year,$request->cutoff),
+                    'name'=>getEmployeeName($emp->id),
                     'personal_id'=>$emp->personal_id
                 );
 
@@ -85,14 +109,13 @@ class PayrollSalaryController extends Controller
                 ->where("deduction_period",$request->cutoff)
                 ->orWhere("deduction_period","")
                 ->join("deductions","payslip_info.id","=", "deductions.payslip_info_id")
-                ->get();
+                ->get();  ///DEDUCTIONS ONLY
             
-    
+             
               // echo $emp->id ."<br>";
 
                 foreach($payslipinfo_head AS $ps){
-                   // echo $emp->id . " = " .$ps->id ." - ". $ps->description. "<br>";
-
+                  
                     if($ps->pay_type =='3'){
                         $amount = getDeductionRate($emp->personal_id,$ps->id);
                     } else {
@@ -119,6 +142,22 @@ class PayrollSalaryController extends Controller
 
                  }
 
+
+                 $payslipinfo_adj = PayslipInfo::select('payslip_info.id AS id','payslip_info.pay_type','payslip_info.editable','payslip_info.description')
+                 ->where("visible","1")
+                 ->where("pay_type","1")
+                 ->get();
+
+               
+                 foreach($payslipinfo_adj AS $adj){
+
+                    if($adj->pay_type =='1'){  ///adjustment    
+                     
+                         //echo $emp->personal_id . " = " .  $adj->description . " - " . getAdjustmentRate($emp->personal_id, $adj->id, $request->year, $request->month, $request->cutoff) . "<br>";
+                         getAdjustmentRate($emp->personal_id, $adj->id, $request->year, $request->month, $request->cutoff);
+                    }
+                 }
+
                  $count_details_sal = PayslipSalaryDetail::where("payslip_salary_head_id","$save_head_id")
                  ->where("personal_id",$emp->personal_id)
                  ->Where("payslip_info_id",'0')
@@ -140,33 +179,36 @@ class PayrollSalaryController extends Controller
 
             }  /// end foreach employees
            
-            $employee_list = collect($employee_list)->sortBy('name')->toArray();
+             $employee_list = collect($employee_list)->sortBy('name')->toArray();
            
             $payslipinfo= PayslipInfo::where("visible","1")->get();
-
+          
             $adj_ids = "";
             $less_ids="";
             $deduction_ids="";
-            foreach($payslipinfo AS $ps){
-                if($ps->pay_type == 1){
-                    $adj_ids .= $ps->id . "_";
-                }elseif($ps->pay_type == 2){
-                    $less_ids .= $ps->id . "_";
-                }elseif($ps->pay_type == 3){
-                    $deduc_sched = checkDeductionSchedule($ps->id);
+             foreach($payslipinfo AS $ps){
+             
+                 if($ps->pay_type == 1){
+                     $adj_ids .= $ps->id . "_";
+
+                  
+                 }elseif($ps->pay_type == 2){
+                     $less_ids .= $ps->id . "_";
+                 }elseif($ps->pay_type == 3){
+                      $deduc_sched = checkDeductionSchedule($ps->id);
+
                     if($deduc_sched==$request->cutoff || $deduc_sched == ""){
                         $deduction_ids.= $ps->id."_";
                     }
-                }
-            }
+                 }
+             }
 
             $adj_ids=substr($adj_ids,0,-1);
             $less_ids=substr($less_ids,0,-1);
-            $deduction_ids=substr($deduction_ids,0,-1);
+            $deduction_ids=substr($deduction_ids,0,-1);   
 
         }
-        
-        return view('payroll_salary.index',compact('cutoff','cutoff_type','filters','employee_list','payslipinfo', 'adj_ids', 'less_ids','deduction_ids'));
+        return view('payroll_salary.index',compact('cutoff','cutoff_type','filters','employee_list','payslipinfo', 'adj_ids', 'less_ids','deduction_ids', 'incompletelogs'));
     }
 
 

@@ -122,9 +122,10 @@
                             </button>
                         </div>
                     </div>
+                    <input type='hidden' name='status' value='incomplete'>
                 </form>
                 @php $month_year = $filters['year']."-".$filters['month']; @endphp
-                @if(!empty($filters['month']))
+                @if($filters['status'] == 'incomplete')
                 <div class="flex justify-center space-x-2">
                     <a href="{{ route('rd_computation',['month'=>$filters['month'],'year'=>$filters['year'],'cutoff'=>$filters['cutoff']]) }}" class="flex items-center justify-center px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                         <span>Rest Day</span>
@@ -141,9 +142,10 @@
                 <div class="flex mt-5 uppercase">
                     <p class="text-left text-md uppercase text-gray-600 pt-2 leading-none"><span class="font-bold pr-1"></span>{{ date("F Y",strtotime($month_year)) }} <span class="text-xs">- {{ $filters['cutoff'] }} </span></p>
                 </div>
-                @endif
+                <form method="GET">
                 <div class="overflow-x-auto overflow-y-hidden hover:overflow-y-auto h-64 relative pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 sm:rounded-2xl border border-yellow-500">
                     <div class="sticky top-0 bg-yellow-500 w-full z-20 text-left px-5 text-md py-2 text-white">The following employees have incomplete logs:</div>
+                   
                     <table  class="w-full text-sm text-left text-gray-500 white:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-10 z-10">
                             <tr class="">
@@ -164,64 +166,36 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($incompletelogs AS $il)
                             <tr>
-                                <td class="py-2 px-6">Jonah Benares</td>
-                                <td class="py-2 px-6">Jan 10, 2023</td>
-                                <td class="py-2 px-6"></td>
+                                <td class="py-2 px-6">{{ getEmployeeName($il->employee_id) }}</td>
+                                <td class="py-2 px-6">{{ date("M j, Y", strtotime($il->log_date)) }}</td>
+                                <td class="py-2 px-6">{{ $il->incomplete_time_desc }}</td>
                                 <td class="py-2 px-6" align="center">
                                     <button class="flex items-center justify-center px-3 py-1 mx-2 space-x-2 text-xs tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                                         File
                                     </button>
                                 </td>
                             </tr>
-                            <tr>
-                                <td class="py-2 px-6">Jonah Benares</td>
-                                <td class="py-2 px-6">Jan 10, 2023</td>
-                                <td class="py-2 px-6"></td>
-                                <td class="py-2 px-6" align="center">
-                                    <button class="flex items-center justify-center px-3 py-1 mx-2 space-x-2 text-xs tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                        File
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="py-2 px-6">Jonah Benares</td>
-                                <td class="py-2 px-6">Jan 10, 2023</td>
-                                <td class="py-2 px-6"></td>
-                                <td class="py-2 px-6" align="center">
-                                    <button class="flex items-center justify-center px-3 py-1 mx-2 space-x-2 text-xs tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                        File
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="py-2 px-6">Jonah Benares</td>
-                                <td class="py-2 px-6">Jan 10, 2023</td>
-                                <td class="py-2 px-6"></td>
-                                <td class="py-2 px-6" align="center">
-                                    <button class="flex items-center justify-center px-3 py-1 mx-2 space-x-2 text-xs tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                        File
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="py-2 px-6">Jonah Benares</td>
-                                <td class="py-2 px-6">Jan 10, 2023</td>
-                                <td class="py-2 px-6"></td>
-                                <td class="py-2 px-6" align="center">
-                                    <button class="flex items-center justify-center px-3 py-1 mx-2 space-x-2 text-xs tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-2xl white:bg-indigo-600 white:hover:bg-indigo-700 white:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                        File
-                                    </button>
-                                </td>
-                            </tr>
+                            @endforeach
+                         
                         </tbody>
                     </table>
+                  
                     <div class="sticky bottom-0 bg-gray-100 w-full z-20 text-left px-5 text-sm py-2 flex justify-center space-x-2">
-                        <button class="py-1 px-2 bg-gray-500 text-white rounded-2xl w-40 hover:bg-gray-600">Skip</button>
+                        <!-- <a href='' class="py-1 px-2 bg-gray-500 text-white rounded-2xl w-40 hover:bg-gray-600">Skip</a> -->
                         <button class="py-1 px-2 bg-blue-500 text-white rounded-2xl w-40 hover:bg-blue-600">Proceed</button>
                     </div>
                 </div>
-                <div class="overflow-x-auto overflow-y-hidden hover:overflow-y-auto h-100 relative max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 sm:rounded-2xl">
+                <input type='hidden' name='month' value="{{ $filters['month'] }}">
+                <input type='hidden' name='year' value="{{ $filters['year'] }}">
+                <input type='hidden' name='cutoff' value="{{ $filters['cutoff'] }}">
+                <input type='hidden' name='status' value='generate'>
+                </form>
+                @endif
+
+                @if($filters['status'] == 'generate')
+                    <div class="overflow-x-auto overflow-y-hidden hover:overflow-y-auto h-100 relative max-h-100 pt-2 pr-2 pl-2 mt-3 md:pt-0 md:pr-0 md:pl-0 sm:rounded-2xl">
                     <table class="w-full text-sm text-left text-gray-500 white:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 white:bg-gray-700 white:text-gray-400 sticky top-0 z-10">
                             <tr class="">
@@ -506,6 +480,9 @@
                         </tbody>
                     </table>
                 </div>
+                @endif
+              
+               
             </div>
         </div>
     </div>

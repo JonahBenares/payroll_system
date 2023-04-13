@@ -149,7 +149,7 @@ if (!function_exists('getEmployeeName')) {
     
     function getEmployeeName($id){
         $emp= Employee::select('full_name')
-        ->where("id","=",$id)
+        ->where("id",$id)
         ->get();
 
         $name= $emp[0]['full_name'];
@@ -197,6 +197,18 @@ if (!function_exists('getRates')) {
         $return_val = $deduction_type."_".$rate_amount;
 
         return $return_val;
+    }
+}
+
+if (!function_exists('getRatesByCode')) {
+    
+    function getRatesByCode($code){
+        $ps= AdjustmentRate::select('deduction_type', 'rate_amount')
+        ->where("code","=",$code)
+        ->get();
+
+        $rate_amount= $ps[0]['rate_amount'];
+        return $rate_amount;
     }
 }
 
@@ -410,12 +422,13 @@ if (!function_exists('night_difference')) {
 
 if (!function_exists('checkDeductionSchedule')) {
     function checkDeductionSchedule($payslip_info_id){
-
-        $get_sched= Deduction::select('deduction_period')
-            ->where("payslip_info_id","=",$payslip_info_id)->get();
-        $sched=$get_sched[0]['deduction_period'];
-     
-        return $sched;
+       
+        $get_sched= Deduction::where("payslip_info_id",$payslip_info_id)->get();
+    
+       // echo $get_sched[0]['deduction_period'] . "<br>";
+        $sched = $get_sched[0]['deduction_period'];
+  
+       return $sched;
        
     }
  }
@@ -443,7 +456,6 @@ if (!function_exists('checkDeductionSchedule')) {
                 
                 $rate=$getrate[0]['monthly_rate'];
 
-            
                 $get_count= StatutoryBracket::select('deduction_amount')
                     ->where("payslip_info_id","=",$payslip_info_id)
                     ->where("salary_from", "<=", $rate)
@@ -488,6 +500,284 @@ if (!function_exists('checkDeductionSchedule')) {
 
 }
 
+if (!function_exists('getAdjustmentRate')) {
+    function getAdjustmentRate($personal_id, $payslip_info_id, $year, $month, $cutoff){
+        $rd_amount=array();
+        $np_amount=array();
+        $hd_amount=array();
+     
+        $getrate = Employee::select('daily_rate','hourly_rate')
+        ->where("personal_id","=",$personal_id)->get();
+        
+        $dailyrate=$getrate[0]['daily_rate'];
+        $hourlyrate=$getrate[0]['hourly_rate'];
+        $month_year = $year."-".$month;
+        $np = getRates('4'); //np
+        $rnp=explode("_",$np);
+        $nprates = $rnp[1];
+
+        $restrates = getRates('1'); // restday
+        $r=explode("_",$restrates);
+        $rdrates = $r[1];
+
+        if($payslip_info_id == 1 ){ // REST DAY ONLY
+           
+            $getRDonly = TimekeepingLogs::where('month_year', $month_year)
+                                    ->where('period',$cutoff)
+                                    ->where('personal_id', $personal_id)
+                                    ->where('rest_day','1')
+                                    ->where('holiday','0')
+                                    ->where('night_shift','0')
+                                    ->whereNotNull('overall_time')->count();
+            if($getRDonly>0){
+
+                $getRD = TimekeepingLogs::where('month_year', $month_year)
+                ->where('period',$cutoff)
+                ->where('personal_id', $personal_id)
+                ->where('rest_day','1')
+                ->where('holiday','0')
+                ->where('night_shift','0')
+                ->whereNotNull('overall_time')->get();
+
+                foreach($getRD AS $rd){
+                  // echo "RDONLY ". $rd->overall_time ." * ". $hourlyrate ." * ". $rdrates . "<br>";
+                    $rd_amount[] = $rd->overall_time * $hourlyrate * $rdrates;
+                    
+                }
+                
+                $total= array_sum($rd_amount);
+            } else {
+                $total=0;
+            }
+
+            $getRDwNP= TimekeepingLogs::where('month_year', $month_year)
+            ->where('period',$cutoff)
+            ->where('personal_id', $personal_id)
+            ->where('rest_day','1')
+            ->where('holiday','0')
+            ->where('night_shift','1')
+            ->whereNotNull('overall_time')->count();
+
+            if($getRDwNP>0){  /// RD with NP
+            
+                $getRDNP = TimekeepingLogs::where('month_year', $month_year)
+                ->where('period',$cutoff)
+                ->where('personal_id', $personal_id)
+                ->where('rest_day','1')
+                ->where('holiday','0')
+                ->where('night_shift','1')
+                ->whereNotNull('overall_time')->get();
+
+                foreach($getRDNP AS $rdnp){
+                   //echo "RDNP ". $rdnp->nd_hours ." * ". $hourlyrate ." * ". $rdrates ." * " . $nprates . "<br>";
+                   $nprate= ($rdnp->nd_hours * $hourlyrate * $rdrates) * $nprates;
+                   $regrate =  ($rdnp->regular_hours * $hourlyrate * $rdrates);
+                    $rdnp_amount[] =$nprate+$regrate;
+                    
+                }
+                
+                $total= array_sum($rdnp_amount);
+            } else {
+                $total=0;
+            }
+
+
+            $getRDwHOL= TimekeepingLogs::where('month_year', $month_year)
+            ->where('period',$cutoff)
+            ->where('personal_id', $personal_id)
+            ->where('rest_day','1')
+            ->where('holiday','1')
+            ->where('night_shift','0')
+            ->whereNotNull('overall_time')->count();
+
+            if($getRDwHOL>0){  /// RD with HOLIDAY
+            
+                $getRDHOL = TimekeepingLogs::where('month_year', $month_year)
+                ->where('period',$cutoff)
+                ->where('personal_id', $personal_id)
+                ->where('rest_day','1')
+                ->where('holiday','1')
+                ->where('night_shift','0')
+                ->whereNotNull('overall_time')->get();
+
+                foreach($getRDHOL AS $rdhol){
+                   
+                    $holiday_type= checkHoliday($rdhol->log_date);
+                 
+                    if($holiday_type == "Special"){
+                        $rdrates = getRatesByCode('SHRD');
+                    }
+                    if($holiday_type == "Regular"){
+                        $rdrates = getRatesByCode('RHRD');
+                    }
+                    if($holiday_type == "Double"){
+                        $rdrates = getRatesByCode('DHRD');
+                    }
+                   // echo "RDwHD " . $rdhol->overall_time ." * ". $hourlyrate ." * ". $rdrates . "<br>";
+                    $rdhol_amount[] = $rdhol->overall_time * $hourlyrate * $rdrates;
+                    
+                }
+                
+                $total= array_sum($rdhol_amount);
+            } else {
+                $total=0;
+            }
+
+            $getRDwHOLNP= TimekeepingLogs::where('month_year', $month_year)
+            ->where('period',$cutoff)
+            ->where('personal_id', $personal_id)
+            ->where('rest_day','1')
+            ->where('holiday','1')
+            ->where('night_shift','1')
+            ->whereNotNull('overall_time')->count();
+
+            if($getRDwHOLNP>0){  /// RD with HOLIDAY with Night Premium
+            
+                $getRDHOL = TimekeepingLogs::where('month_year', $month_year)
+                ->where('period',$cutoff)
+                ->where('personal_id', $personal_id)
+                ->where('rest_day','1')
+                ->where('holiday','1')
+                ->where('night_shift','1')
+                ->whereNotNull('overall_time')->get();
+
+                foreach($getRDHOL AS $rdhol){
+                   
+                    $holiday_type= checkHoliday($rdhol->log_date);
+                 
+                    if($holiday_type == "Special"){
+                        $rdrates = getRatesByCode('SHRD');
+                    }
+                    if($holiday_type == "Regular"){
+                        $rdrates = getRatesByCode('RHRD');
+                    }
+                    if($holiday_type == "Double"){
+                        $rdrates = getRatesByCode('DHRD');
+                    }
+                    //echo "RDwHDwNP " . $rdhol->overall_time ." * ". $hourlyrate ." * ". $rdrates ." * " . $nprates . "<br>";
+
+                    $nprate= ($rdhol->nd_hours * $hourlyrate * $rdrates) * $nprates;
+                    $regrate =  ($rdhol->regular_hours * $hourlyrate * $rdrates);
+
+                    $rdholnp_amount[] =  $nprate+$regrate;
+                    
+                }
+                
+                $total= array_sum($rdholnp_amount);
+            } else {
+                $total=0;
+            }
+
+            return $total;
+            
+        }
+
+        if($payslip_info_id == 2){ // HOLIDAY  
+           
+            $getHolOnly = TimekeepingLogs::where('month_year', $month_year)
+            ->where('period',$cutoff)
+            ->where('personal_id', $personal_id)
+            ->where('rest_day','0')
+            ->where('holiday','1')
+            ->where('night_shift','0')
+            ->whereNotNull('overall_time')->count();
+            if($getHolOnly>0){  // HOLIDAY ONLY
+
+                $getHol = TimekeepingLogs::where('month_year', $month_year)
+                                        ->where('period',$cutoff)
+                                        ->where('personal_id', $personal_id)
+                                        ->where('rest_day','0')
+                                        ->where('holiday','1')
+                                        ->where('night_shift','0')
+                                        ->whereNotNull('overall_time')->get();
+                foreach($getHol AS $rd){
+                    $holrate = getHolidayRate($rd->log_date);
+                    //echo "HOLONLY " . $rd->overall_time  . " * " . $hourlyrate  . " * " . $holrate . "<br>";
+                    $hd_amount[] = $rd->overall_time * $hourlyrate * $holrate;
+                
+                }
+                $total= array_sum($hd_amount);
+            } else {
+                $total=0;
+            }
+
+            $getHolNPcount= TimekeepingLogs::where('month_year', $month_year)
+            ->where('period',$cutoff)
+            ->where('personal_id', $personal_id)
+            ->where('rest_day','0')
+            ->where('holiday','1')
+            ->where('night_shift','1')
+            ->whereNotNull('overall_time')->count();
+
+            if($getHolNPcount>0){
+
+                $getHolNP = TimekeepingLogs::where('month_year', $month_year)
+                                        ->where('period',$cutoff)
+                                        ->where('personal_id', $personal_id)
+                                        ->where('rest_day','0')
+                                        ->where('holiday','1')
+                                        ->where('night_shift','1')
+                                        ->whereNotNull('overall_time')->get();
+                foreach($getHolNP AS $rd){
+                    $holrate = getHolidayRate($rd->log_date);
+                   // echo "HOLNP " . $rd->overall_time  . " * " . $hourlyrate  . " * " . $holrate . " * " . $nprates . "<br>";
+
+                    $nprate= ($rd->nd_hours * $hourlyrate * $holrate) * $nprates;
+                    $regrate =  ($rd->regular_hours * $hourlyrate * $holrate);
+
+                    $hdnp_amount[] =  $nprate+$regrate;
+                
+                }
+                $total= array_sum($hdnp_amount);
+            } else {
+                $total=0;
+            }
+
+
+
+             return $total;
+
+            
+        }
+
+        if($payslip_info_id ==4){ // NIGHT PREMIUM  
+            $getNPcount= TimekeepingLogs::where('month_year', $month_year)
+            ->where('period',$cutoff)
+            ->where('personal_id', $personal_id)
+            ->where('rest_day','0')
+            ->where('holiday','0')
+            ->where('night_shift','1')
+            ->whereNotNull('overall_time')->count();
+
+            if($getNPcount>0){ // NIGHT PREMIUM ONLY
+
+                $getNP = TimekeepingLogs::where('month_year', $month_year)
+                                        ->where('period',$cutoff)
+                                        ->where('personal_id', $personal_id)
+                                        ->where('rest_day','0')
+                                        ->where('holiday','0')
+                                        ->where('night_shift','1')
+                                        ->whereNotNull('overall_time')->get();
+                foreach($getNP AS $rd){
+                   
+                    //echo "NPONLY " . $rd->nd_hours  . " * " . $hourlyrate  . " * " . $nprates . "<br>";
+
+                    $nprate= ($rd->nd_hours * $hourlyrate) * $nprates;
+                    $regrate =  ($rd->regular_hours * $hourlyrate);
+                    $np_amount[] = $nprate+$regrate;
+                
+                }
+                $total= array_sum($np_amount);
+            } else {
+                $total=0;
+            }
+
+
+
+             return $total;
+        }
+    }
+}
 function lz($num)
 {
     return (strlen($num) < 2) ? "0{$num}" : $num;
@@ -502,5 +792,6 @@ function convertTime($dec)
     $seconds -= $minutes * 60;
     return lz($hours).".".lz($minutes);
 }
+
 
 ?>
