@@ -296,7 +296,7 @@
                                                         <tr class="bg-white border-b">
                                                             <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap "><?php echo e($pi->description); ?></td>
                                                                 <?php if($pi->editable == 1): ?>
-                                                                <td align="right"><input type="text" name="adjustment_<?php echo e($pi->id); ?>_<?php echo e($x); ?>" id="adjustment_<?php echo e($pi->id); ?>_<?php echo e($x); ?>" onblur = "salary_computation('adjustment',<?php echo e($pi->id); ?>)" value="0" class="text-right bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" ></td>
+                                                                <td align="right"><input type="text" name="adjustment_<?php echo e($pi->id); ?>_<?php echo e($x); ?>" id="adjustment_<?php echo e($pi->id); ?>_<?php echo e($x); ?>" onblur = "salary_computation('adjustment',<?php echo e($pi->id); ?>, <?php echo e($x); ?>)" value="0" class="text-right bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" ></td>
                                                                 <?php else: ?>
                                                                 <td align="right">
                                                                     <input type="text" name="adjustment_<?php echo e($pi->id); ?>_<?php echo e($x); ?>" id="adjustment_<?php echo e($pi->id); ?>_<?php echo e($x); ?>" value="<?php echo e(getAdjustmentRate($emp['personal_id'], $pi->id, $year, $month, $cutoff_type)); ?>" class="border-0 text-right" disabled value="0">
@@ -310,6 +310,7 @@
                                                          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                          <?php 
                                                          $sum_name = "sum_adjustment_".$x;
+                                                        
                                                          ?>
                                                          <input type="hidden" name="adjustment_ids" id="adjustment_ids" value="<?php echo e($adj_ids); ?>">
                                                       
@@ -443,7 +444,7 @@
                                                                     <tr class="bg-white border-b">
                                                                         <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap "><?php echo e($pi->description); ?></td>
                                                                             <?php if($pi->editable == 1): ?>
-                                                                            <td align="right"><input type="text" name="deductions_<?php echo e($pi->id); ?>_<?php echo e($x); ?>" id="deductions_<?php echo e($pi->id); ?>_<?php echo e($x); ?>" onblur = "salary_computation('deductions',<?php echo e($pi->id); ?>)" value='0' class="bg-gray-50 border border-gray-300 text-gray-900 text-sm text-right rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required></td>
+                                                                            <td align="right"><input type="text" name="deductions_<?php echo e($pi->id); ?>_<?php echo e($x); ?>" id="deductions_<?php echo e($pi->id); ?>_<?php echo e($x); ?>" onblur = "salary_computation('deductions',<?php echo e($pi->id); ?>, <?php echo e($x); ?>)" value='0' class="bg-gray-50 border border-gray-300 text-gray-900 text-sm text-right rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required></td>
                                                                             <?php else: ?>
                                                                             <td><input type="text" name="deductions_<?php echo e($pi->id); ?>_<?php echo e($x); ?>" id="deductions_<?php echo e($pi->id); ?>_<?php echo e($x); ?>" class="border-0 w-full text-right" disabled value="<?php echo e(getDeductionRate($emp['personal_id'], $pi->id)); ?>"></td>
                                                                             <input type="hidden" name="payslip_id_<?php echo e($pi->id); ?>" value="<?php echo e($pi->id); ?>">
