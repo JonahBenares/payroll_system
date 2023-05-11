@@ -359,15 +359,22 @@
                                                         </tr>
                                                         @foreach($payslipinfo AS $pi)
                                                             @if($pi->pay_type == 2)
-                                                        <tr class="bg-white border-b">
-                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">{{ $pi->description }}</td>
-                                                                @if($pi->editable == 1)
-                                                                <td align="right"><input type="text" name="less_gp_{{ $pi->id }}_{{ $x }}"  id="less_gp_{{ $pi->id }}_{{ $x }}"  value="0" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="00" required></td>
-                                                                @else
-                                                                <td><input type="text" name="less_gp_{{ $pi->id }}_{{ $x }}"  id="less_gp_{{ $pi->id }}_{{ $x }}" class="border-0 text-right" disabled value="0"></td>
-                                                                <input type="hidden" name="payslip_id_{{ $pi->id }}" value="{{ $pi->id }}">
-                                                                @endif
-                                                        </tr>
+                                                              @if($pi->description == "Absences/Undertime")
+                                                                @php $ded = undertimeCalc($emp['id'], $emp['personal_id'], $year, $month, $cutoff_type); @endphp
+                                                              @else
+                                                                @php $ded = 0;  @endphp
+                                                              @endif
+                                                                <tr class="bg-white border-b">
+                                                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap ">{{ $pi->description }}</td>
+                                                                        @if($pi->editable == 1)
+                                                                        <td align="right"><input type="text" name="less_gp_{{ $pi->id }}_{{ $x }}"  id="less_gp_{{ $pi->id }}_{{ $x }}"  value="0" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="00" required></td>
+                                                                        @else
+                                                                        <td><input type="text" name="less_gp_{{ $pi->id }}_{{ $x }}"  id="less_gp_{{ $pi->id }}_{{ $x }}" class="border-0 text-right" disabled value="{{ $ded }}"></td>
+                                                                        <input type="hidden" name="payslip_id_{{ $pi->id }}" value="{{ $pi->id }}">
+                                                                        @endif
+                                                                </tr>
+                                                              
+                                                              
                                                             @endif
                                                          @endforeach
                                                         @php $sum_lessgp = "sum_lessgp_".$x; @endphp

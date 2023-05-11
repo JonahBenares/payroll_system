@@ -368,15 +368,22 @@
                                                         </tr>
                                                         <?php $__currentLoopData = $payslipinfo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                             <?php if($pi->pay_type == 2): ?>
-                                                        <tr class="bg-white border-b">
-                                                            <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap "><?php echo e($pi->description); ?></td>
-                                                                <?php if($pi->editable == 1): ?>
-                                                                <td align="right"><input type="text" name="less_gp_<?php echo e($pi->id); ?>_<?php echo e($x); ?>"  id="less_gp_<?php echo e($pi->id); ?>_<?php echo e($x); ?>"  value="0" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="00" required></td>
-                                                                <?php else: ?>
-                                                                <td><input type="text" name="less_gp_<?php echo e($pi->id); ?>_<?php echo e($x); ?>"  id="less_gp_<?php echo e($pi->id); ?>_<?php echo e($x); ?>" class="border-0 text-right" disabled value="0"></td>
-                                                                <input type="hidden" name="payslip_id_<?php echo e($pi->id); ?>" value="<?php echo e($pi->id); ?>">
-                                                                <?php endif; ?>
-                                                        </tr>
+                                                              <?php if($pi->description == "Absences/Undertime"): ?>
+                                                                <?php $ded = undertimeCalc($emp['id'], $emp['personal_id'], $year, $month, $cutoff_type); ?>
+                                                              <?php else: ?>
+                                                                <?php $ded = 0;  ?>
+                                                              <?php endif; ?>
+                                                                <tr class="bg-white border-b">
+                                                                    <td scope="row" class="py-2 px-2 font-medium text-gray-900 whitespace-nowrap "><?php echo e($pi->description); ?></td>
+                                                                        <?php if($pi->editable == 1): ?>
+                                                                        <td align="right"><input type="text" name="less_gp_<?php echo e($pi->id); ?>_<?php echo e($x); ?>"  id="less_gp_<?php echo e($pi->id); ?>_<?php echo e($x); ?>"  value="0" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="00" required></td>
+                                                                        <?php else: ?>
+                                                                        <td><input type="text" name="less_gp_<?php echo e($pi->id); ?>_<?php echo e($x); ?>"  id="less_gp_<?php echo e($pi->id); ?>_<?php echo e($x); ?>" class="border-0 text-right" disabled value="<?php echo e($ded); ?>"></td>
+                                                                        <input type="hidden" name="payslip_id_<?php echo e($pi->id); ?>" value="<?php echo e($pi->id); ?>">
+                                                                        <?php endif; ?>
+                                                                </tr>
+                                                              
+                                                              
                                                             <?php endif; ?>
                                                          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                         <?php $sum_lessgp = "sum_lessgp_".$x; ?>

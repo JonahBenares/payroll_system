@@ -14,11 +14,13 @@ use App\Models\PayslipInfo;
 use App\Models\AllowanceRate;
 use App\Models\AdjustmentRate;
 use App\Models\LeaveFailure;
+use App\Models\LeaveFailureDetail;
 use App\Models\Holiday;
 use App\Models\ChangeSchedule;
 use App\Models\EmployeeDeduction;
 use App\Models\StatutoryBracket;
 use App\Models\TimekeepingLogs;
+use App\Models\TardinessRate;
 
 define('START_NIGHT_HOUR','22');
 define('START_NIGHT_MINUTE','00');
@@ -796,5 +798,60 @@ function convertTime($dec)
     return lz($hours).".".lz($minutes);
 }
 
+function undertimeCalc($emp_id, $personal_id, $year, $month, $cutoff){
+    $undertime_count = LeaveFailure::where("personal_id",$personal_id)
+                ->where("year",$year)
+                ->where("month",$month)
+                ->where("pay_period",$cutoff)
+                ->count();
+              
+    $total_deduct=array();
+    if($undertime_count > 0){
+        
+        $undertime_head = LeaveFailure::where("personal_id",$personal_id)
+                ->where("year",$year)
+                ->where("month",$month)
+                ->where("pay_period",$cutoff)
+                ->get();
+                
+        $head_id = $undertime_head[0]['id'];
+         $undertime = LeaveFailureDetail::where("leave_filing_head_id",$head_id)->get();
+        if(count($undertime) > 0){
+             $hourly_rate = getEmployeeDetails($emp_id,'hourly_rate');
+
+             foreach($undertime AS $ud){
+               
+                 $tardy = TardinessRate::where("minute_from","<=",$ud->undertime_mins)
+                             ->where("minute_to",">=",$ud->undertime_mins)
+                             ->get();
+              
+                if(count($tardy)>0){
+
+                 $deduction_percent = $tardy[0]['deduction_percent'];
+                 $total_deduct[]=$deduction_percent * $hourly_rate;
+                } else {
+                    $total_deduct[]=0;
+                }
+             
+             }
+
+            
+        
+            $total_absences = $undertime_head[0]['absences'];
+        
+            $daily_rate = getEmployeeDetails($emp_id,'daily_rate');
+            $under = array_sum($total_deduct);
+            $abs = $total_absences * $daily_rate;
+
+            $total = $under + $abs;
+        } else {
+            $total=0;
+        }
+    } else {
+        $total=0;
+        $head_id=0;
+    }
+    return $total;
+}
 
 ?>
